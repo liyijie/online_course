@@ -26,3 +26,24 @@ hr {border:1px #ffffff dashed;border-bottom:0;border-right:0;
 	background: image-url("logo.jpg") no-repeat left top;
 
 }
+
+.btn-md { 
+	/* 中按钮*/  
+	padding: 8px 12px;  
+	font-size: 18px;  
+	line-height: 1.5; 
+	border-radius: 3px; 
+ }
+
+ .pad-top-bot-10 {
+ 	padding-top: 10px;padding-bottom: 10px;
+ }
+
+
+ .pad-top-bot-20 {
+ 	padding-top: 20px;padding-bottom: 20px;
+ }
+
+ footer {
+ 	padding-top: 20px;
+ }

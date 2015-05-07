@@ -1,8 +1,14 @@
 <div class="panel-heading" style="background: #ffffff;">
-  <p class="text-center">
-    <button type="button" class="btn btn-primary btn-lg"> 用户登录 </button>
-    <button type="button" class="btn btn-default btn-lg"> 免费注册 </button>
-  </p>
+    <!-- <button type="button" class="btn btn-primary btn-lg"> 用户登录 </button>
+    <button type="button" class="btn btn-default btn-lg"> 免费注册 </button> -->
+    <ul class="nav nav-pills lead pad-top-bot-10">
+      <li class="active">
+        <a href="#"><strong>用户登录</strong></a>
+      </li>
+      <li class=" navbar-right">
+        <a href="#"><strong>免费注册</strong></a>
+      </li>
+    </ul>
 </div>
 
 <div class="panel-body">
@@ -11,9 +17,9 @@
     <%= render 'common/login_messages'%>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "pad-top-bot-10"}) do |f| %>
 
-    <div class="form-group">
+    <div class="form-group pad-top-bot-10">
       <label class="sr-only" for="username">用户名</label>
       <div class="input-group">
         <div class="input-group-addon">
@@ -31,10 +37,10 @@
         <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "请输入密码" %>
       </div>
     </div>
-    <div class="checkbox">
+    <div class="checkbox pad-top-bot-10">
       <label><%= f.check_box :remember_me %> 记住密码</label>
       <p class="pull-right"><%= link_to "忘记密码?", "#" %></p>
-    </div><br/>
-    <p class="text-center"><%= f.submit "登 录", class: "btn btn-info", style: "width:100%;" %></p>
+    </div>
+    <p class="text-center"><%= f.submit "登 录", class: "btn btn-info btn-md", style: "width:100%;" %></p>
   <% end %>
 </div>
