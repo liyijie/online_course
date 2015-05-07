@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
 
   layout :get_layout
 
+  # 捕捉权限异常
+  rescue_from CanCan::AccessDenied do |e|
+    flash[:error] = I18n.t(:no_premission)
+    session = nil
+    redirect_to new_session_path(:user)
+  end
+
 
   # layout全局设置
   #【引数】

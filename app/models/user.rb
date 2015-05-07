@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
 
+  #用户权限划分
+  enum role: { system: 1, teacher: 2, student: 3}
+  ROLE = { system: "管理员", teacher: "教师", student: "学生"}
+
+
   def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup
    login = conditions.delete(:login)

@@ -1,0 +1,8 @@
+<% for name in [:info, :warning, :error, :notice] %>
+    <% if flash[name] %>
+        <p class="<%= get_message_class name%> text-center">
+        	<%= flash[name].html_safe %><%= "。" unless flash[name].to_s.include?('。') %>
+        </p>
+        <% flash[name] = nil %>
+    <% end %>
+<% end %>
