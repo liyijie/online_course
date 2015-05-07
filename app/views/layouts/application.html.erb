@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>上海工商技术学院</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	
+	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <a class="navbar-brand"  style="padding-top:0px;" href="#">
+		        <img src="<%= asset_path 'logo.jpg' %>"  alt="上海工商技术学院" />
+		      </a>
+	    </div>
+
+	    <nav class="collapse navbar-collapse bs-navbar-collapse">
+	     <div id="navbar" class="navbar-collapse collapse col-md-2 col-md-offset-4">
+		      <form class="navbar-form navbar-left" role="search">
+				<div class="input-group">
+			      <input type="text" class="form-control" placeholder="搜索">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button">
+			        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
+			      </span>
+			    </div>
+			  </form> 
+		    </div>
+	      
+	      <p class="navbar-text navbar-right">
+		      <% if current_user %>
+		          <%= link_to('登出', destroy_user_session_path, :method => :delete, class: "navbar-link") %> |
+		      <% else %>
+		          <%= link_to('登录', new_session_path(:user), class: "navbar-link") %> | 
+		          <%#= link_to('注册', new_registration_path(:user), class: "navbar-link") %>
+		          <%= link_to('注册', "#", class: "navbar-link") %>
+		      <% end %>
+		    </p>
+	    </nav>
+	  </div>
+	</header>
+
+	
+	<div id="login" class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 col-md-offset-2 panel panel-default">
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+
+	<footer class="navbar-fixed" align="center">
+	  <div>
+	    <p>关于我门 | 联系我们</p>
+	    <p>Copyright©2015 上海大唐移动通信设备公司</p>
+	  </div>
+	</footer>
+</body>
+</html>
