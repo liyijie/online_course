@@ -1,8 +1,5 @@
 <% flash.each do |key, value| %>
     <% if value.present? %>
-        <div class="notification <%= key%>">
-          <p class="leftP alert_<%= key%>"></p>
-          <p class="alertContent"><%= value%></p>
-        </div>
+        <p class="text-danger"><%= value%></p>
     <% end %>
   <% end %>
