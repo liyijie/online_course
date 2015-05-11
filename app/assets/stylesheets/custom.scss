@@ -4,17 +4,17 @@
 hr {border:1px #ffffff dashed;border-bottom:0;border-right:0;
            border-left:0;}
 
+.login-bg {
+	position: relative;
+	img{
+	  width: 100%;
+	}
 
-
-#login {
-	background: image-url("login_bg.jpg") no-repeat center;
-	backgroundackground-size:cover; 
 }
-
-.panel {
-	background-color: #ffffff;
-	margin-top: 80px;
-	margin-bottom: 80px;
+.login-form {
+	position: absolute;
+	left: 0;
+	top: 130px;
 }
 
 .btn-100 {
