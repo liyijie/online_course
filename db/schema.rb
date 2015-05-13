@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513013117) do
+ActiveRecord::Schema.define(version: 20150513055141) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -21,6 +21,36 @@ ActiveRecord::Schema.define(version: 20150513013117) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string   "number",      limit: 255
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.string   "content",     limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "exam_items", force: :cascade do |t|
+    t.integer  "exam_id",     limit: 4
+    t.integer  "question_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "exam_items", ["exam_id"], name: "index_exam_items_on_exam_id", using: :btree
+  add_index "exam_items", ["question_id"], name: "index_exam_items_on_question_id", using: :btree
+
+  create_table "exams", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.integer  "sub_course_id", limit: 4
+    t.integer  "total_score",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "exams", ["sub_course_id"], name: "index_exams_on_sub_course_id", using: :btree
+  add_index "exams", ["user_id"], name: "index_exams_on_user_id", using: :btree
+
   create_table "grades", force: :cascade do |t|
     t.integer  "academy_id", limit: 4
     t.string   "name",       limit: 255
@@ -29,12 +59,43 @@ ActiveRecord::Schema.define(version: 20150513013117) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "options", force: :cascade do |t|
+    t.string   "index_type",  limit: 255
+    t.string   "name",        limit: 255
+    t.boolean  "be_right",    limit: 1
+    t.integer  "question_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",         limit: 255
+    t.integer  "signal_score",  limit: 4
+    t.integer  "sub_course_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "questions", ["sub_course_id"], name: "index_questions_on_sub_course_id", using: :btree
+
   create_table "schools", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "deleted_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "sub_courses", force: :cascade do |t|
+    t.integer  "course_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.string   "content",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "sub_courses", ["course_id"], name: "index_sub_courses_on_course_id", using: :btree
 
   create_table "teachers", force: :cascade do |t|
     t.string   "phone",                  limit: 255,   default: "", null: false
@@ -82,7 +143,12 @@ ActiveRecord::Schema.define(version: 20150513013117) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "username",               limit: 255, default: ""
-    t.integer  "role",                   limit: 4,                null: false
+    t.string   "name",                   limit: 255
+    t.string   "avatar",                 limit: 255
+    t.string   "position",               limit: 255
+    t.string   "number",                 limit: 255
+    t.integer  "grade_id",               limit: 4
+    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,4 +156,11 @@ ActiveRecord::Schema.define(version: 20150513013117) do
   add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "exam_items", "exams"
+  add_foreign_key "exam_items", "questions"
+  add_foreign_key "exams", "sub_courses"
+  add_foreign_key "exams", "users"
+  add_foreign_key "options", "questions"
+  add_foreign_key "questions", "sub_courses"
+  add_foreign_key "sub_courses", "courses"
 end

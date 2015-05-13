@@ -73,6 +73,84 @@ begin
 			tec_expertise: 'C语言基础、java变成基础、数据库安全与设计',
 			resume: ''
 		}])
+	Course.create!([
+		  {id: 1,
+		   number: '98947322', 
+		   name: 'Ruby课程入门', 
+		   description: 'Ruby是一门编程语言，多用于...', 
+		   content: '这是文件视屏或者图片，pdf等'
+		  },{
+		   id: 2,
+			 number: '38946552', 
+		   name: 'Python课程入门',
+		   description: 'Python是一门编程语言，多用于...', 
+		   content: '这是文件视屏或者图片，pdf等'}])
+	SubCourse.create!([
+		  {id: 1,
+		   course_id: 1,
+		   name: '第一节课，课程大纲',
+		   content: '这是文件视屏或者图片，pdf等'
+		  },{
+		   id: 2,
+		   course_id: 1,
+		   name: '第二节课，第一个ruby项目', 
+		   content: '这是文件视屏或者图片，pdf等'
+		 },{
+		   id: 3,
+		   course_id: 2,
+		   name: '第1节课，python可以做什么',
+		   content: '这是文件视屏或者图片，pdf等'
+		 }])
+  Question.create!([
+    {
+    	id: 1,
+    	sub_course_id: 1, 
+    	title: "Ruby中变量的写法那一项是错误的？"，
+    	signal_score: 2
+    },
+    {
+    	id: 2,
+    	sub_course_id: 1, 
+    	title: "RubyChina的创始人是谁？"，
+    	signal_score: 2
+    },
+    {
+    	id: 3,
+    	sub_course_id: 1, 
+    	title: "Ruby中关于块的论述正确的选项？"，
+    	signal_score: 2
+    }
+  	])
+  Option.create!([
+    {
+    	id: 1,
+    	index_type: "A"
+    	question_id: 2, 
+    	title: "hunlunlee"，
+    	signal_score: 2
+    },
+    {
+    	id: 2,
+    	index_type: "B"
+    	question_id: 2, 
+    	title: "rei"，
+    	signal_score: 2
+    },
+    {
+    	id: 3,
+    	index_type: "C"
+    	question_id: 2, 
+    	title: "luke"，
+    	signal_score: 2
+    },
+    {
+    	id: 4,
+    	index_type: "D"
+    	question_id: 2, 
+    	title: "aliceton"，
+    	signal_score: 2
+    }
+  	])
 rescue Exception => e
 	pp e.message
 end
