@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   #【注意】
   #【著作】2015/05/7 by fw
   def get_layout
-    if params[:controller].match /^devise\//
+    if devise_controller?
     	'login'
     end
   end

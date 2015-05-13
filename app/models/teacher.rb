@@ -1,20 +1,12 @@
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable#, :validatable
+         :recoverable, :rememberable, :trackable
 
-
-  belongs_to :grade
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
   attr_accessor :role
 
-
-  #用户权限划分
-  # enum role: { system: 1, teacher: 2, student: 3}
-  # ROLE = { system: "管理员", teacher: "教师", student: "学生"}
 
 
   def self.find_for_database_authentication(warden_conditions)

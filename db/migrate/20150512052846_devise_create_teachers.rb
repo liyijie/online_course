@@ -1,6 +1,6 @@
-class DeviseCreateUsers < ActiveRecord::Migration
+class DeviseCreateTeachers < ActiveRecord::Migration
   def change
-    create_table(:users) do |t|
+    create_table(:teachers) do |t|
       ## Database authenticatable
       t.string :phone,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -32,20 +32,28 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       #other
       t.string :username, default: ""
-
+      t.string :number
       t.string :name
       t.string :avatar
-      t.string :position
-      t.string :number
-      t.integer :grade_id
+      t.string :birthday
+      t.string :tec_position
+      t.string :email
+      t.string :qualification
+      t.string :fax
+      t.string :final_education
+      t.string :final_degree
+      t.string :tec_expertise
+      t.text   :resume
+      t.text   :tec_situation
+      t.text   :tec_service
       t.datetime :deleted_at
 
       t.timestamps
     end
 
-    add_index :users, :phone,                unique: true
-    add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
-    # add_index :users, :unlock_token,         unique: true
+    add_index :teachers, :phone,                unique: true
+    add_index :teachers, :reset_password_token, unique: true
+    # add_index :teachers, :confirmation_token,   unique: true
+    # add_index :teachers, :unlock_token,         unique: true
   end
 end
