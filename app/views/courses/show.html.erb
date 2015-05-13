@@ -1,0 +1,9 @@
+<%= @course.name%>
+<%= @course.description%>
+<%= @course.content%>
+<%- @sub_courses.each do |sub_course|%>
+  <p>
+	<%= sub_course.name%>
+  <%= sub_course.content%>
+  </p>
+<%end%>
