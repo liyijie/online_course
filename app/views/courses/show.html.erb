@@ -5,5 +5,6 @@
   <p>
 	<%= sub_course.name%>
   <%= sub_course.content%>
+  <%= link_to "测试", new_exam_path(sub_course_id: sub_course.id)%>
   </p>
 <%end%>

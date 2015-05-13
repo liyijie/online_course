@@ -1,0 +1,10 @@
+<%= form_for Exam.new do |f|%>
+  <%- @questions.each_with_index do |question, index|%>
+    <p><%= index + 1%> <%= question.title%>
+    <%- question.options.each do |option|%>
+     <%= radio_button(:exam, "signal_score"+"_"+index.to_s, index)%>
+     <span><%= option.name%></span>
+    <%end%>
+  <%end%>
+  <%= f.submit '提交'%>
+<%end%>

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "courses/show", to: "courses#show"
   resources :courses, only: [:index] do
   	resources :sub_courses
-  end 
+  end
+
+  resources :exams, only: [:new, :create]
 
 end
