@@ -1,58 +1,52 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-hr {border:1px #ffffff dashed;border-bottom:0;border-right:0;
-           border-left:0;}
+body.devise__sessions__new{
+	hr { border: 1px #ffffff dashed;
+		border-bottom: 0;border-right:0;
+    border-left:0;
+  }
 
-.login-bg {
-	position: relative;
-	img{
-	  width: 100%;
+	.login-bg {
+		position: relative;
+		img{
+		  width: 100%;
+		}
 	}
-
-}
-.login-form {
-	position: absolute;
-	left: 0;
-	top: 130px;
-}
-
-.btn-100 {
-	width: 100%;
-}
-
-
-.logo {
-	background: image-url("logo.jpg") no-repeat left top;
-}
-
-.btn-md { 
-	/* 中按钮*/  
-	padding: 8px 12px;  
-	font-size: 18px;  
-	line-height: 1.5; 
-	border-radius: 3px; 
- }
-
- .pad-top-bot-10 {
- 	padding-top: 10px;padding-bottom: 10px;
- }
-
-
- .pad-top-bot-20 {
- 	padding-top: 20px;padding-bottom: 20px;
- }
-
-
-.mar-top-bot-10 {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	.login-form {
+		position: absolute;
+		left: 0;
+		top: 130px;
+	}
+	.btn-100 {
+		width: 100%;
+	}
+	.logo {
+		background: image-url("logo.jpg") no-repeat left top;
+	}
+	.btn-md { 
+		/* 中按钮*/  
+		padding: 8px 12px;  
+		font-size: 18px;  
+		line-height: 1.5; 
+		border-radius: 3px; 
+	 }
+	 .pad-top-bot-10 {
+	 	padding-top: 10px;padding-bottom: 10px;
+	 }
+	 .pad-top-bot-20 {
+	 	padding-top: 20px;padding-bottom: 20px;
+	 }
+	.mar-top-bot-10 {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.mar-top-bot-20 {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	 footer {
+	 	padding-top: 20px;
+	 }
 }
 
-.mar-top-bot-20 {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
- footer {
- 	padding-top: 20px;
- }
