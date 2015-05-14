@@ -140,9 +140,12 @@ SimpleForm.setup do |config|
       end
 
       ba.use :input, class: 'form-control'
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+     
     end
+    
+    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+
   end
 
   config.wrappers :password_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
@@ -161,16 +164,8 @@ SimpleForm.setup do |config|
       end
 
       ba.use :input, class: 'form-control'
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
-  end
 
-  config.wrappers :login_boolean, tag: 'p', class: 'pull-left' , error_class: 'has-error' do |b|
-    b.use :html5
-    b.optional :readonly
-
-    b.use :label_input
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end

@@ -1,0 +1,36 @@
+zh-CN:
+  activerecord:
+    models:
+      user:  "用户"
+      teacher: "教师"
+    attributes:
+      user:
+        login: "用户名或账号"
+        phone: “用户名”
+
+    errors:
+      models:
+        user:
+          attributes:
+            phone:
+              blank: "用户名不能为空"
+              taken: "该用户已存在"
+            password:
+              blank: "密码不能为空"
+              too_long: "密码长度必须小于%{count}个字符" 
+              too_short: "密码长度必须大于%{count}个字符" 
+            password_confirmation:
+              blank: "确认密码不能为空"
+              confirmation: "两次密码输入不一致，请重新输入"
+        teacher:
+          attributes:
+            phone:
+              blank: "用户名不能为空"
+              taken: "该用户已存在"
+            password:
+              blank: "密码不能为空"
+              too_long: "密码长度必须小于%{count}个字符" 
+              too_short: "密码长度必须大于%{count}个字符" 
+            password_confirmation:
+              blank: "确认密码不能为空"
+              confirmation: "两次密码输入不一致，请重新输入"
