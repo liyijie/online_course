@@ -50,3 +50,24 @@ body.devise__sessions__new{
 	}
 }
 
+/*轮播图片大小*/
+.main-home-header {
+	img.carousel-image {
+		width: 100%;
+	}
+	.buoyan-tec-carousel {
+    bottom: -30px;
+    li{
+    	height: 5px;
+    	width: 50px;
+    	background: #8d9d9d;
+    	border-radius: none;
+    	-webkit-border-radius: none;
+    	-o-border-radius: none;
+    	&.active {
+    	background: #5bcadb;
+    	margin-bottom: 1px;
+    }
+    }
+	}
+}
