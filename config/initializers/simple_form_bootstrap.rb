@@ -179,6 +179,15 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
+  config.wrappers :login_boolean, tag: 'p', class: 'pull-left' , error_class: 'has-error' do |b|
+    b.use :html5
+    b.optional :readonly
+
+    b.use :label_input
+    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+  end
+
 
   # Wrappers for forms and inputs using the Bootstrap toolkit.
   # Check the Bootstrap docs (http://getbootstrap.com)
