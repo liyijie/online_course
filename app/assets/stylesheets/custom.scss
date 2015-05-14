@@ -1,5 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+/*全局*/
+.wrapper {
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
 
 body.devise__sessions__new,body.devise__registrations__new,body.devise__registrations__create { 
 	hr { border: 1px #ffffff dashed;
@@ -50,6 +56,44 @@ body.devise__sessions__new,body.devise__registrations__new,body.devise__registra
 	}
 }
 
+/*网站首页*/
+body.home__index {
+  section.common-title {
+  	height: 60px;
+  	line-height: 60px;
+  	padding: 0 0 0 50px;
+  	background: image-url('title-bg.png') no-repeat 0 10px;
+  	span.pull-left {
+  		font-size: 24px;
+  		font-weight: bold;
+  		color: #070707;
+  	}
+  	span.pull-right {
+  		color: #669ad3;
+  	}
+  }
+  section.department-tabs {
+    span a {
+    	height: 32px;
+    	line-height: 32px;
+    	display: block;
+    	float: left;
+    	color: #070707;
+    	background: #eaeeff;
+    	&.active, &:hover {
+    	  color: #fff;
+    		background: #6599d2;
+    	}
+    }
+  }
+  .vedio-content {
+  	width: 28%;
+  	height: 320px;
+  	float: left;
+  	margin: 0 4%;
+  }
+}
+
 /*轮播图片大小*/
 .main-home-header {
 	img.carousel-image {
@@ -57,7 +101,7 @@ body.devise__sessions__new,body.devise__registrations__new,body.devise__registra
 	}
 	.buoyan-tec-carousel {
     bottom: -30px;
-    li{
+    li {
     	height: 5px;
     	width: 50px;
     	background: #8d9d9d;
