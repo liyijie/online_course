@@ -2,7 +2,11 @@
   <%- @questions.each_with_index do |question, index|%>
     <p><%= index + 1%> <%= question.title%>
     <%- question.options.each do |option|%>
-     <%= radio_button(:exam, "signal_score"+"_"+index.to_s, index)%>
+      <%- if option.be_right %>
+        <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(question.signal_score.to_s))%>
+      <%- else%>
+        <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(['a','b','c'].shuffle.first))%>
+      <%end%>
      <span><%= option.name%></span>
     <%end%>
   <%end%>
