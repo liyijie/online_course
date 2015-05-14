@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body.devise__sessions__new{
+body.devise__sessions__new,body.devise__registrations__new,body.devise__registrations__create { 
 	hr { border: 1px #ffffff dashed;
 		border-bottom: 0;border-right:0;
     border-left:0;

@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
-  attr_accessor :role
+
+  validates_presence_of     :phone
+  validates_uniqueness_of   :phone, case_sensitive: false
+  validates :password, presence: true, length: {minimum:6,maximum: 32}
+  validates_confirmation_of :password
 
 
   #用户权限划分
