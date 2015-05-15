@@ -16,13 +16,16 @@ begin
 		{name: '应用外语系', school_id: 1},
 		{name: '机电工程系', school_id: 1},
 		{name: '商务管理系', school_id: 1},
-		{name: '计算机系', school_id: 1},
-		{name: '基础系', school_id: 1},
-		{name: '继续教育系', school_id: 1},
-		{name: '餐饮服务系', school_id: 1}])
+		{name: '计算机信息系', school_id: 1},
+		{name: '基础部', school_id: 1},
+		{name: '继续教育学院', school_id: 1},
+		{name: '餐饮服务学院', school_id: 1}])
 
-	Grade.create!([{name: '2015级计算机（1）班', academy_id: 7},
-			{name: '2015级计算机（2）班', academy_id: 7}])
+    Specialty.create!([{name: '计算机科学与技术', academy_id: 7},
+            {name: '网络工程', academy_id: 7}])
+
+	Grade.create!([{name: '2015级计算机（1）班', specialty_id: 1},
+			{name: '2015级计算机（2）班', specialty_id: 7}])
 
 	User.create!([{
 			phone: '13600001111',
@@ -31,6 +34,7 @@ begin
 			password_confirmation: 'dtby123456',
 			name: '唐邦彦',
 			number: '20154802001',
+            position: '学生',
 			grade_id: 1
 		},{
 			phone: '13600002222',
@@ -39,6 +43,7 @@ begin
 			password_confirmation: 'dtby123456',
 			name: '唐邦彦2号',
 			number: '20154802002',
+            position: "学生",
 			grade_id: 1,
 		}])
 

@@ -7,7 +7,7 @@
 #  question_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  answer      :string
+#  answer      :string(255)
 #  correct     :boolean
 #  item_index  :integer
 #
