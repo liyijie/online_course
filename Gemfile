@@ -42,6 +42,15 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # rspec-rails is a testing framework for Rails 3.x and 4.x.
+  gem 'rspec-rails', '~> 3.0'
+
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners that test common Rails functionality.
+  gem 'shoulda-matchers'
+
+  # factory_girl is a fixtures replacement with a straightforward definition syntax
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 gem 'devise', '~> 3.4.1'

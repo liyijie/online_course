@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513055141) do
+ActiveRecord::Schema.define(version: 20150515025257) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id"
@@ -35,9 +35,13 @@ ActiveRecord::Schema.define(version: 20150513055141) do
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "answer"
+    t.boolean  "correct"
+    t.integer  "item_index"
   end
 
   add_index "exam_items", ["exam_id"], name: "index_exam_items_on_exam_id"
+  add_index "exam_items", ["item_index"], name: "index_exam_items_on_item_index"
   add_index "exam_items", ["question_id"], name: "index_exam_items_on_question_id"
 
   create_table "exams", force: :cascade do |t|
@@ -46,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150513055141) do
     t.integer  "total_score"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "correct_count"
+    t.integer  "all_count"
   end
 
   add_index "exams", ["sub_course_id"], name: "index_exams_on_sub_course_id"
@@ -74,8 +80,10 @@ ActiveRecord::Schema.define(version: 20150513055141) do
     t.string   "title"
     t.integer  "signal_score"
     t.integer  "sub_course_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "correct_option"
+    t.string   "correct_hint"
   end
 
   add_index "questions", ["sub_course_id"], name: "index_questions_on_sub_course_id"
