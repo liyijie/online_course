@@ -6,7 +6,12 @@ zh-CN:
     attributes:
       user:
         login: "用户名或账号"
-        phone: “用户名”
+        phone: "手机号码"
+        nickname: "昵称"
+        name: "名字"
+        number: "学号"
+        gender: "性别"
+        signature: "个性签名"
 
     errors:
       models:

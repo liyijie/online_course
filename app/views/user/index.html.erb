@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-3 div-frame">
       	    <div class="pull-left"><%= image_tag("user.png")%></div>
           </div>
           <div class="col-md-9">
@@ -38,15 +38,15 @@
 		        <td><span class="text-primary">&bull;&nbsp;</span>未学课程：10门</td>
 		      </tr>
 		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>系部：计算机系</td>
+		        <td><span class="text-primary">&bull;&nbsp;</span>系部：<%= current_user.grade.specialty.academy.name %></td>
 		        <td><span class="text-primary">&bull;&nbsp;</span>考试次数：12次</td>
 		      </tr>
 		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>专业：计算机专业</td>
+		        <td><span class="text-primary">&bull;&nbsp;</span>专业：<%= current_user.grade.specialty.name %></td>
 		        <td><span class="text-primary">&bull;&nbsp;</span>提问数量：18条</td>
 		      </tr>
 		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>班级：2015级计算机（1）班</td>
+		        <td><span class="text-primary">&bull;&nbsp;</span>班级：<%= current_user.grade.name %></td>
 		        <td><span class="text-primary">&bull;&nbsp;</span>回答数量：21条</td>
 		      </tr>
 			</table>
@@ -65,7 +65,21 @@
 	</div>
 
 	<div class="row">
-	  
+	  <ul class="nav nav-tabs">
+		<li role="presentation" class="active"><a href="#">个人资料</a></li>
+		<li role="presentation"><a href="#">修改密码</a></li>
+	  </ul>
+
+	  <div class="container div-form">
+		<%= simple_form_for(current_user,url: registration_path(:user),wrapper: "horizontal_form" ,html: { method: :put, class: "form-horizontal" }) do |f| %>
+		  <%= f.input :nickname, autofocus: true %>
+		  <%= f.input :name %>
+		  <%= f.input :number %>
+		  <%= f.input :phone, required: false %>
+		  <%= f.input :gender, collection: User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons, wrapper: "horizontal_radio_and_checkboxes", item_wrapper_class: "radio-inline" %>
+		  <%= f.input :signature, as: :text %>
+		<% end %>
+	  </div>
 	</div>
   </div>
 

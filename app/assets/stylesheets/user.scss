@@ -32,5 +32,35 @@
   	padding: 5px;
 
   }
+
+  .div-frame {
+    border: 1px solid #dcdcdc;
+  }
+
+
+  .nav-tabs {
+    border-bottom: 3px solid #337ab7;
+
+    li {
+      margin-bottom: -3px;
+    }
+
+    li.active {
+
+      a {
+        border: 3px solid #337ab7;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  .div-form {
+    padding: 20px;
+  }
+
+  .radio-inline {
+    padding-left: 0px;
+    padding-right: 15px;
+  }
 	
 }

@@ -22,6 +22,9 @@
 #  deleted_at             :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
+#  nickname               :string(255)
+#  gender                 :boolean          default(TRUE)
+#  signature              :text(65535)
 #
 
 class User < ActiveRecord::Base
@@ -45,6 +48,10 @@ class User < ActiveRecord::Base
   #用户权限划分
   # enum role: { system: 1, teacher: 2, student: 3}
   # ROLE = { system: "管理员", teacher: "教师", student: "学生"}
+
+  enum gender: {man: true, woman: false}
+  PartnerGender = {man: '男性', woman: '女性'}
+
 
 
   def self.find_for_database_authentication(warden_conditions)
