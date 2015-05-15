@@ -1,6 +1,15 @@
-<%= @course.name%>
-<%= @course.description%>
-<%= @course.content%>
+<div class="wrapper">
+  <div class="col-sm-12 col-md-12">
+    <div class="col-sm-4 col-md-4 pull-left">
+      <%= image_tag("vedio-bg.png")%>
+    </div>
+    <div class="col-sm-8 col-md-8 pull-right">
+      <h1><%= @course.name%></h1>
+      <p><%= @course.description%></p>
+    </div>
+  </div>
+</div>
+
 <%- @sub_courses.each do |sub_course|%>
   <p>
 	<%= sub_course.name%>

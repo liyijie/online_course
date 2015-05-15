@@ -19,7 +19,11 @@ footer {
     padding: 26px 0 38px 0;
   }
 }
-
+/*导航栏*/
+.main-nav {
+  width: 100%;
+  background: #fff;
+}
 body.devise__sessions__new,body.devise__registrations__new,body.devise__registrations__create { 
 	hr { border: 1px #ffffff dashed;
 		border-bottom: 0;border-right:0;
@@ -68,12 +72,16 @@ body.devise__sessions__new,body.devise__registrations__new,body.devise__registra
 
 /*网站首页*/
 body.home__index {
+  .main-content {
+   background: #fff;
+   padding: 20px;
+  }
   section.common-title {
   	height: 60px;
   	line-height: 60px;
-  	padding: 0 30px 0 60px;
+  	padding: 0 16px 0 60px;
     margin-top: 20px;
-  	background: image-url('title-bg.png') no-repeat 20px 15px;
+  	background: image-url('title-bg.png') no-repeat 8px 15px;
   	span.pull-left {
   		font-size: 24px;
   		font-weight: bold;
@@ -94,7 +102,7 @@ body.home__index {
     overflow: hidden;
     width: 100%;
     height: 30px;
-    padding: 0 20px;
+    padding: 0 8px;
     span a {
       width: 138px;
     	height: 30px;
@@ -104,53 +112,74 @@ body.home__index {
     	float: left;
     	color: #070707;
     	background: image-url("tabs-bg.png") no-repeat 0 0;
+      border-bottom: 2px solid #6599d2;
+      &.first-tab {
+        width: 82px;
+        background: image-url("ftab-bg.png") no-repeat 0 0;
+        &.factive, &:hover {
+          background: image-url("ftab-active.png") no-repeat -2px 0;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
     	&.active, &:hover {
     	  color: #fff;
-    		background: #6599d2;
+    		background: image-url("tabs-active-bg.png") no-repeat 0 0;
+        text-decoration: none;
     	}
     }
   }
-  a.single-vedio-content {
-    height: 320px;
-    width: 360px;
-    display: block;
-    float: left;
-    margin: 10px 20px;
-    padding: 10px;
-    border: solid #dfdede 1px;
-    &:hover {
-      border: #669ad3 1px solid;
-      text-decoration: none 0;
-      color: #669ad3;
-    }
+  .single-vedio-content {
     .vedio-content {
+      height: 320px;
+      width: 370px;
+      display: block;
+      float: left;
+      margin: 10px 8px;
+      padding: 10px;
+      border: solid #dfdede 1px;
     	overflow: hidden;
-    	p.title {
+    	p.title  a {
     		height: 30px;
     		line-height: 30px;
     		color: #070707;
     		font-size: 16px;
     		overflow: hidden;
     	}
-    	p.description {
-    		color: #5d5d5d;
-    		height: 26px;
-    		line-height: 26px;
-    		overflow: hidden;
-        span.favorite {
-          width: 50%;
-          text-align: right;
-          background: image-url('shoucang.png') no-repeat 70px 5px;
+    	p.description{
+        height: 26px;
+        line-height: 26px;
+        overflow: hidden;
+        a {
+          color: #5d5d5d;
+          display: block;
+          width: 200px;
+          overflow: hidden;
         }
-    	}
+        a.favorite {
+          width: 148px;
+          text-align: right;
+          background: image-url('shoucang.png') no-repeat 46px 5px;
+        }
+      }
     }
+  }
+  .info-teachers-content {
+    height: 220px;
+    overflow: hidden;
   }
   .teacher-content {
   	width: 170px;
+    margin: 0 31px;
   	height: 220px;
   	float: left;
-  	margin: 0 15px;
+    overflow: hidden;
   	position: relative;
+    img {
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+      box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    }
   	p {
   		height: 26px;
   		width: 100%;
@@ -209,7 +238,7 @@ body.home__index {
   }
 }
 
-/*轮播图片大小*/
+/*大轮播图片大小*/
 .main-home-header {
 	img.carousel-image {
 		width: 100%;
@@ -229,4 +258,66 @@ body.home__index {
     }
     }
 	}
+}
+/*小轮播图的样式*/
+.xc-carousel {
+  height: auto;
+  position: relative;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      margin: 0;
+      padding: 0;
+      float: left;
+      display: block;
+    }
+    img {
+      width: 100% !important;
+      height: auto !important;
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+      box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+      margin: 10px 0;
+    }
+  }
+  .nav {
+    display: block;
+    width: 4%;
+    height: 100%;
+    float: left;
+    text-indent: -9999px;
+  }
+  .prev { height: 182px;
+    width: 48px;
+    display: block;
+    border: solid 1px #eee;
+    position: absolute;
+    left: 8px;
+    text-indent: -9999px;
+    background: #fff image-url("arrow-bg") no-repeat 7px center;
+    z-index: 9999;
+  }
+  .next { height: 182px;
+    width: 48px;
+    display: block;
+    border: solid 1px #eee;
+    position: absolute;
+    right: 8px;
+    text-indent: -9999px;
+    z-index: 9999;
+    background: #fff image-url("arrow-bg") no-repeat -60px center;
+  }
+  .carousel_items_holder { background: #fff;
+    width: 92%;
+    overflow: hidden;
+    float: left;
+    left: 70px;
+    height: 100%;
+    position: relative;
+  }
+  .carousel_items {
+    position: absolute;
+  }
 }

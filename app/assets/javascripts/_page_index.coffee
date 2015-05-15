@@ -5,8 +5,6 @@ $ ->
       _this.find("p").fadeIn("fast")
       _this.siblings().find("p").fadeOut("fast")
 $ ->
-  $('#school-slide-content').bxCarousel({
-    display_num: 4,
-    move: 1,
-    margin: 20
-  });
+  $('#xc-carousel').responsiveCarousel({
+    carousel_item_width_default: .20
+  })
