@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   root :to => "home#index"
 
   get "courses/show", to: "courses#show"
+
+
   resources :courses, only: [:index] do
   	resources :sub_courses
   end
 
   resources :exams, only: [:new, :create]
+
+  resources :users, only: [:show, :index]
 
 end
