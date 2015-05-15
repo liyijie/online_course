@@ -2,12 +2,14 @@
 #
 # Table name: questions
 #
-#  id            :integer          not null, primary key
-#  title         :string
-#  signal_score  :integer
-#  sub_course_id :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id             :integer          not null, primary key
+#  title          :string
+#  signal_score   :integer
+#  sub_course_id  :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  correct_option :string
+#  correct_hint   :string
 #
 
 class Question < ActiveRecord::Base

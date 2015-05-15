@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515023545) do
+ActiveRecord::Schema.define(version: 20150515024633) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id"
@@ -78,8 +78,10 @@ ActiveRecord::Schema.define(version: 20150515023545) do
     t.string   "title"
     t.integer  "signal_score"
     t.integer  "sub_course_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "correct_option"
+    t.string   "correct_hint"
   end
 
   add_index "questions", ["sub_course_id"], name: "index_questions_on_sub_course_id"
