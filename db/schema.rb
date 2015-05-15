@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515024633) do
+ActiveRecord::Schema.define(version: 20150515025257) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150515024633) do
     t.integer  "total_score"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "correct_count"
+    t.integer  "all_count"
   end
 
   add_index "exams", ["sub_course_id"], name: "index_exams_on_sub_course_id"
