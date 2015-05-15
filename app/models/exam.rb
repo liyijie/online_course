@@ -15,7 +15,7 @@
 class Exam < ActiveRecord::Base
   belongs_to :user
   belongs_to :sub_course
-  has_many :exam_items
+  has_many :exam_items, dependent: :destroy
 
   # 根据页面传入的答题params来更新exam对象
   # 创建Exam对象的过程中，也会创建对应的ExamItem对象

@@ -3,31 +3,31 @@
 # Table name: teachers
 #
 #  id                     :integer          not null, primary key
-#  phone                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
+#  phone                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
 #  sign_in_count          :integer          default(0), not null
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string
-#  last_sign_in_ip        :string
-#  username               :string           default("")
-#  number                 :string
-#  name                   :string
-#  avatar                 :string
-#  birthday               :string
-#  tec_position           :string
-#  email                  :string
-#  qualification          :string
-#  fax                    :string
-#  final_education        :string
-#  final_degree           :string
-#  tec_expertise          :string
-#  resume                 :text
-#  tec_situation          :text
-#  tec_service            :text
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  username               :string(255)      default("")
+#  number                 :string(255)
+#  name                   :string(255)
+#  avatar                 :string(255)
+#  birthday               :string(255)
+#  tec_position           :string(255)
+#  email                  :string(255)
+#  qualification          :string(255)
+#  fax                    :string(255)
+#  final_education        :string(255)
+#  final_degree           :string(255)
+#  tec_expertise          :string(255)
+#  resume                 :text(65535)
+#  tec_situation          :text(65535)
+#  tec_service            :text(65535)
 #  deleted_at             :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
