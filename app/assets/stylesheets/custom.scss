@@ -61,8 +61,9 @@ body.home__index {
   section.common-title {
   	height: 60px;
   	line-height: 60px;
-  	padding: 0 0 0 50px;
-  	background: image-url('title-bg.png') no-repeat 0 10px;
+  	padding: 0 30px 0 60px;
+    margin-top: 20px;
+  	background: image-url('title-bg.png') no-repeat 20px 15px;
   	span.pull-left {
   		font-size: 24px;
   		font-weight: bold;
@@ -70,27 +71,131 @@ body.home__index {
   	}
   	span.pull-right {
   		color: #669ad3;
+      a.more {
+        width: 55px;
+        height: 60px;
+        line-height: 60px;
+        display: block;
+        background: image-url('more.png') no-repeat center right;
+      }
   	}
   }
   section.department-tabs {
+    overflow: hidden;
+    width: 100%;
+    height: 30px;
+    padding: 0 20px;
     span a {
-    	height: 32px;
-    	line-height: 32px;
+      width: 138px;
+    	height: 30px;
+    	line-height: 30px;
+      text-align: center;
     	display: block;
     	float: left;
     	color: #070707;
-    	background: #eaeeff;
+    	background: image-url("tabs-bg.png") no-repeat 0 0;
     	&.active, &:hover {
     	  color: #fff;
     		background: #6599d2;
     	}
     }
   }
-  .vedio-content {
-  	width: 28%;
-  	height: 320px;
+  a.single-vedio-content {
+    height: 320px;
+    width: 360px;
+    display: block;
+    float: left;
+    margin: 10px 20px;
+    padding: 10px;
+    border: solid #dfdede 1px;
+    &:hover {
+      border: #669ad3 1px solid;
+      text-decoration: none 0;
+      color: #669ad3;
+    }
+    .vedio-content {
+    	overflow: hidden;
+    	p.title {
+    		height: 30px;
+    		line-height: 30px;
+    		color: #070707;
+    		font-size: 16px;
+    		overflow: hidden;
+    	}
+    	p.description {
+    		color: #5d5d5d;
+    		height: 26px;
+    		line-height: 26px;
+    		overflow: hidden;
+        span.favorite {
+          width: 50%;
+          text-align: right;
+          background: image-url('shoucang.png') no-repeat 70px 5px;
+        }
+    	}
+    }
+  }
+  .teacher-content {
+  	width: 170px;
+  	height: 220px;
   	float: left;
-  	margin: 0 4%;
+  	margin: 0 15px;
+  	position: relative;
+  	p {
+  		height: 26px;
+  		width: 100%;
+  		line-height: 26px;
+  		color: #fff;
+  		text-align: center;
+  		background: #000;
+  		position: absolute;
+  		bottom: -8px;
+  		opacity: 0.5;
+      display: none;
+  	}
+  }
+
+  .control-wrap a.prev {
+    height: 188px;
+    width: 48px;
+    display: block;
+    border: solid 1px #eee;
+    position: absolute;
+    left: 14px;
+    text-indent: -9999px;
+    background: url("arrow-bg") no-repeat 7px center;
+  }
+  .control-wrap a.next {
+    height: 188px;
+    width: 48px;
+    display: block;
+    border: solid 1px #eee;
+    position: absolute;
+    right: 20px;
+    text-indent: -9999px;
+    background: url("arrow-bg") no-repeat -60px center;
+  }
+  .info-school-content {
+  	height: 188px;
+    padding: 0 13px;
+  	overflow: hidden;
+    position: relative;
+  	.school-content {
+	  	width: 249px;
+	  	height: 186px;
+	  	float: left;
+      margin: 0 10px;
+      overflow: hidden;
+	  }
+  }
+  .xc-slider .item img {
+  	float:left;
+  	margin: 0 5px;
+  }
+  .slide-content{
+    width: 1078px;
+    overflow: hidden;
+    float: left;
   }
 }
 

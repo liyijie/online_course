@@ -1,6 +1,6 @@
 <section class="common-title">
 	<span class="pull-left">精品课程</span>
-	<span class="pull-right"><%= link_to "更多>>>", "#" %></span>
+	<span class="pull-right"><%= link_to "更多", "#", class: "more" %></span>
 </section>
 <section class="department-tabs">
   <span><%= link_to "珠宝系", "#", class: "active"%></span>
@@ -11,23 +11,116 @@
   <span><%= link_to "商务与管理系"%></span>
   <span><%= link_to "计算机信息系"%></span>
   <span><%= link_to "基础部"%></span>
-  <span><%= link_to "继续教育学院"%></span>
-  <span><%= link_to "餐旅服务学院"%></span>
 </section>
-<div class="wrapper">
-  <div class="vedio-content">
-    <%= image_tag("vedio-bg.png")%>
-    <p class="title">Python编程交互入门</p>
-    <p class="description">该课程一共15个课时</p>
+<div class="vedio-course-content wrapper">
+  <%= link_to "", class: 'single-vedio-content' do %>
+	  <div class="vedio-content">
+	    <%= image_tag("vedio-bg.png")%>
+	    <p class="title">Python编程交互入门</p>
+	    <p class="description">
+        <span class="pull-left">该课程一共15个课时</span>
+        <span class="pull-right favorite">20000人收藏</span>
+      </p>
+	  </div>
+	<%end%>
+  <%= link_to "", class: 'single-vedio-content' do %>
+	  <div class="vedio-content">
+	    <%= image_tag("vedio-bg.png")%>
+	    <p class="title">Python编程交互入门</p>
+	    <p class="description">
+        <span class="pull-left">该课程一共15个课时</span>
+        <span class="pull-right favorite">20000人收藏</span>
+      </p>
+	  </div>
+	<%end%>
+  <%= link_to "",  class: 'single-vedio-content' do %>
+	  <div class="vedio-content">
+	    <%= image_tag("vedio-bg.png")%>
+	    <p class="title">Python编程交互入门</p>
+	    <p class="description">
+        <span class="pull-left">该课程一共15个课时</span>
+        <span class="pull-right favorite">20000人收藏</span>
+      </p>
+	  </div>
+	<%end%>
+	<%= link_to "", class: 'single-vedio-content' do %>
+	  <div class="vedio-content">
+	    <%= image_tag("vedio-bg.png")%>
+	    <p class="title">Python编程交互入门</p>
+	    <p class="description">
+        <span class="pull-left">该课程一共15个课时</span>
+        <span class="pull-right favorite">20000人收藏</span>
+      </p>
+	  </div>
+	<%end%>
+	<%= link_to "", class: 'single-vedio-content' do %>
+	  <div class="vedio-content">
+	    <%= image_tag("vedio-bg.png")%>
+	    <p class="title">Python编程交互入门</p>
+	    <p class="description">
+        <span class="pull-left">该课程一共15个课时</span>
+        <span class="pull-right favorite">20000人收藏</span>
+      </p>
+	  </div>
+	<%end%>
+	<%= link_to "", class: 'single-vedio-content' do %>
+	  <div class="vedio-content">
+	    <%= image_tag("vedio-bg.png")%>
+	    <p class="title">Python编程交互入门</p>
+	    <p class="description">
+        <span class="pull-left">该课程一共15个课时</span>
+        <span class="pull-right favorite">20000人收藏</span>
+      </p>
+	  </div>
+	<%end%>
+</div>
+<section class="common-title">
+	<span class="pull-left">教师风采</span>
+	<span class="pull-right"><%= link_to "更多", "#", class: "more" %></span>
+</section>
+<div class="info-teachers-content wrapper">
+  <div class="teacher-content">
+    <%= link_to image_tag("teacher.png")%>
+    <p>国家优秀教师称号</p>
   </div>
-  <div class="vedio-content">
-    <%= image_tag("vedio-bg.png")%>
-    <p class="title">Python编程交互入门</p>
-    <p class="description">该课程一共15个课时</p>
+  <div class="teacher-content">
+    <%= link_to image_tag("teacher.png")%>
+    <p>国家优秀教师称号</p>
   </div>
-  <div class="vedio-content">
-    <%= image_tag("vedio-bg.png")%>
-    <p class="title">Python编程交互入门</p>
-    <p class="description">该课程一共15个课时</p>
+  <div class="teacher-content">
+    <%= link_to image_tag("teacher.png")%>
+    <p>国家优秀教师称号</p>
+  </div>
+  <div class="teacher-content">
+    <%= link_to image_tag("teacher.png")%>
+    <p>国家优秀教师称号</p>
+  </div>
+  <div class="teacher-content">
+    <%= link_to image_tag("teacher.png")%>
+    <p>国家优秀教师称号</p>
+  </div>
+  <div class="teacher-content">
+    <%= link_to image_tag("teacher.png")%>
+    <p>国家优秀教师称号</p>
+  </div>
+</div>
+<section class="common-title">
+	<span class="pull-left">校园文化</span>
+	<span class="pull-right"><%= link_to "更多", "#", class: "more" %></span>
+</section>
+
+<div class="info-school-content wrapper">
+  <div class="control-wrap"><a class="prev" href="">向左</a><a class="next" href="">向右</a>
+    <div class="bx_container">
+      <ul id="school-slide-content">
+        <li><%= image_tag("school.png", style: "height: 190px; width: 250px")%></li>
+        <li><%= image_tag("school.png", style: "height: 190px; width: 250px")%></li>
+        <li><%= image_tag("school.png", style: "height: 190px; width: 250px")%></li>
+        <li><%= image_tag("school.png", style: "height: 190px; width: 250px")%></li>
+        <li><%= image_tag("school.png", style: "height: 190px; width: 250px")%></li>
+        <li><%= image_tag("school.png", style: "height: 190px; width: 250px")%></li>
+        <li><%= image_tag("school.png", style: "height: 190px; width: 250px")%></li>
+      </ul>
+    </div>
   </div>
 </div>
