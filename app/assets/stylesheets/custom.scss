@@ -7,6 +7,19 @@
 	overflow: hidden;
 }
 
+body {
+  background: #ebebeb;
+}
+
+footer {
+  background: #1a5aa0;
+  color: #fff;
+  margin-top: 34px;
+  .footer-content {
+    padding: 26px 0 38px 0;
+  }
+}
+
 body.devise__sessions__new,body.devise__registrations__new,body.devise__registrations__create { 
 	hr { border: 1px #ffffff dashed;
 		border-bottom: 0;border-right:0;
@@ -50,9 +63,6 @@ body.devise__sessions__new,body.devise__registrations__new,body.devise__registra
 	.mar-top-bot-20 {
 		margin-top: 20px;
 		margin-bottom: 20px;
-	}
-	footer {
-	 	padding-top: 20px;
 	}
 }
 

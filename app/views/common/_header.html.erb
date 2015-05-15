@@ -18,8 +18,7 @@
 		    </div>
 		  </form> 
 	    </div>
-	  
-	  <p class="navbar-text navbar-right">
+	  <p class="navbar-text pull-right">
 	      <% if current_user %>
 	      	  <span>学生：</span><span><%= current_user.phone%></span> | 
 	          <%= link_to('退出', destroy_user_session_path, :method => :delete, class: "navbar-link") %>
