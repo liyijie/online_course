@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515031756) do
+ActiveRecord::Schema.define(version: 20150515080032) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -148,17 +148,17 @@ ActiveRecord::Schema.define(version: 20150515031756) do
   add_index "teachers", ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "phone",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "phone",                  limit: 255,   default: "",   null: false
+    t.string   "encrypted_password",     limit: 255,   default: "",   null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.string   "username",               limit: 255, default: ""
+    t.string   "username",               limit: 255,   default: ""
     t.string   "name",                   limit: 255
     t.string   "avatar",                 limit: 255
     t.string   "position",               limit: 255
@@ -167,6 +167,9 @@ ActiveRecord::Schema.define(version: 20150515031756) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nickname",               limit: 255
+    t.boolean  "gender",                 limit: 1,     default: true
+    t.text     "signature",              limit: 65535
   end
 
   add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree

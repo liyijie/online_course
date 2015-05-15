@@ -30,6 +30,7 @@ begin
 	User.create!([{
 			phone: '13600001111',
 			username: 'dtby', 
+            nickname: '张三丰',
 			password: 'dtby123456', 
 			password_confirmation: 'dtby123456',
 			name: '唐邦彦',
@@ -39,6 +40,7 @@ begin
 		},{
 			phone: '13600002222',
 			username: 'dtby', 
+            nickname: '张无忌',
 			password: 'dtby123456', 
 			password_confirmation: 'dtby123456',
 			name: '唐邦彦2号',
