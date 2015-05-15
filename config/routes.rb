@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   resources :exams, only: [:new, :create]
 
-  resources :users, only: [:show, :index]
+  resources :user, only: [:show, :index]
 
 end
