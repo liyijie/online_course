@@ -11,6 +11,38 @@ body {
   background: #ebebeb;
 }
 
+header {
+  nav.navbar-default {
+    background-color: #1a5aa0;
+
+    ul.navbar-nav{
+      margin-left: 20px;
+      li {
+        a {
+          background-color: #1a5aa0;
+          color: #fff;
+        }
+
+        a:hover {
+          background-color: #b0c4de;
+          color: #fff;
+        }
+      }
+
+      .active {
+        a {
+          background-color: #b0c4de;
+          color: #fff;
+        }
+        a:hover {
+          background-color: #b0c4de;
+          color: #fff;
+        }
+      }
+    }   
+  }  
+}
+
 footer {
   background: #1a5aa0;
   color: #fff;
@@ -25,11 +57,6 @@ footer {
   background: #fff;
 }
 body.devise__sessions__new,body.devise__registrations__new,body.devise__registrations__create { 
-	hr { border: 1px #ffffff dashed;
-		border-bottom: 0;border-right:0;
-    border-left:0;
-  }
-
 	.login-bg {
 		position: relative;
 		img{
@@ -44,9 +71,7 @@ body.devise__sessions__new,body.devise__registrations__new,body.devise__registra
 	.btn-100 {
 		width: 100%;
 	}
-	.logo {
-		background: image-url("logo.jpg") no-repeat left top;
-	}
+	
 	.btn-md { 
 		/* 中按钮*/  
 		padding: 8px 12px;  
@@ -54,20 +79,7 @@ body.devise__sessions__new,body.devise__registrations__new,body.devise__registra
 		line-height: 1.5; 
 		border-radius: 3px; 
 	}
-	.pad-top-bot-10 {
-	 	padding-top: 10px;padding-bottom: 10px;
-	}
-	.pad-top-bot-20 {
-	 	padding-top: 20px;padding-bottom: 20px;
-	}
-	.mar-top-bot-10 {
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
-	.mar-top-bot-20 {
-		margin-top: 20px;
-		margin-bottom: 20px;
-	}
+
 }
 
 /*网站首页*/
@@ -286,7 +298,7 @@ body.home__index {
     display: block;
     width: 4%;
     height: 100%;
-    float: left;
+    float: left; 
     text-indent: -9999px;
   }
   .prev { height: 182px;

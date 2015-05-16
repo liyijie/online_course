@@ -1,70 +1,15 @@
 <div class="row">
 
   <div class="col-md-2" role="complementary">
-  <nav class="navbar navbar-default">
-  	<p class="text-primary self-info"><strong>个人中心</strong></p>
-
-    <ul class="nav nav-pills nav-stacked center-block">
-      <li class="active"><a href="#">我的课程</a></li>
-      <li class=""><a href="#">我的考试</a></li>
-      <li class=""><a href="#">成绩查询</a></li>
-      <li class=""><a href="#">我的收藏</a></li>
-      <li class=""><a href="#">我的问答</a></li>
-      <li class=""><a href="#">讨论中心</a></li>
-      <li class=""><a href="#">我的账户</a></li>
-    </ul>
-    </nav>
+	<%= render :partial => "nav_left" %>
   </div>
 
   <div class="col-md-10">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-3 div-frame">
-      	    <div class="pull-left"><%= image_tag("user.png")%></div>
-          </div>
-          <div class="col-md-9">
-            <table class="table">
-		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>姓名：<%= current_user.name%></td>
-		        <td><span class="text-primary">&bull;&nbsp;</span>学习时长：830小时40分钟10秒</td>
-		      </tr>
-		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>职位：<%= current_user.position%></td>
-		        <td><span class="text-primary">&bull;&nbsp;</span>已学课程：34门</td>
-		      </tr>
-		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>学号：<%= current_user.number%></td>
-		        <td><span class="text-primary">&bull;&nbsp;</span>未学课程：10门</td>
-		      </tr>
-		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>系部：<%= current_user.grade.specialty.academy.name %></td>
-		        <td><span class="text-primary">&bull;&nbsp;</span>考试次数：12次</td>
-		      </tr>
-		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>专业：<%= current_user.grade.specialty.name %></td>
-		        <td><span class="text-primary">&bull;&nbsp;</span>提问数量：18条</td>
-		      </tr>
-		      <tr>
-		        <td><span class="text-primary">&bull;&nbsp;</span>班级：<%= current_user.grade.name %></td>
-		        <td><span class="text-primary">&bull;&nbsp;</span>回答数量：21条</td>
-		      </tr>
-			</table>
-          </div>
-        </div>
-      	
-      </div>
-	  <div class="col-md-4" >
-	    <div class="gray-line">
-	    	<div><button type="button" class="btn btn-info">今日提醒</button><span class="pull-right">2015-04-08 星期三</span></div><br>
-	    	<p>
-	    	  &nbsp;&nbsp;&nbsp;&nbsp;今天下午02：30有一场关于<span class="text-danger">《CSS实现网页平滑过渡效果》</span>的考试，请抓紧复习，要记住时间，到时记得参加考试哦~
-	    	<p>
-	    </div>
-	  </div>
+    <div class="row common-info">
+      <%= render :partial => "base_info" %>
 	</div>
 
-	<div class="row">
+	<div class="row self-main-context">
 	  <ul class="nav nav-tabs">
 		<li role="presentation" class="active"><a href="#">个人资料</a></li>
 		<li role="presentation"><a href="#">修改密码</a></li>

@@ -2,16 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user__index {
+body.user__index {
 
   nav { 
 	  text-align: center; 
     
     p.self-info{
-      line-height: 40px;
-      border-top: 6px solid #337ab7;
-      border-bottom: 6px solid #337ab7;
-      margin-bottom: 20px;
+      line-height: 30px;
+      border-top: 5px solid #337ab7;
+      border-bottom: 5px solid #337ab7;
+      margin-bottom: 30px;
+    }
+
+    li {
+      a {
+       color: #000;
+      }
     }
 
   }
@@ -62,5 +68,24 @@
     padding-left: 0px;
     padding-right: 15px;
   }
+
+  .self-main-context {
+   margin-top: 20px;
+   background: #fff;
+   padding-top: 20px;
+   padding-lef: 15px;
+  }
+
+  .common-info {
+    background: #fff;
+    padding-top: 20px;
+  }
+
+
+  .navbar-left {
+    background-color: #fff;
+  }
+
+
 	
 }
