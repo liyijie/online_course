@@ -565,3 +565,38 @@ body.courses__show {
     }
   }
 }
+/*考试页面*/
+body.exams__new {
+  .main-content {
+    padding: 20px 40px;
+    background: #fff;
+    .main-title {
+      width: 762px;
+      height: 88px;
+      line-height: 70px;
+      font-size: 24px;
+      color: #fff;
+      text-align: center;
+      margin: 0 auto;
+      background: image-url("new-exam-bg") no-repeat 0 0;
+    }
+    .question-content {
+      margin-top: 50px;
+      p.title {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 20px;
+        //background: #b0d6ff;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b0d6ff), to(#fff));
+        background: -o-linear-gradient(left, #b0d6ff, #fff);
+        background: -moz-linear-gradient(left, #b0d6ff, #fff);
+        margin: 20px 0;
+      }
+      p.option {
+        font-size: 14px;
+        line-height: 36px;
+        padding-left:  60px;
+      }
+    }
+  }
+}

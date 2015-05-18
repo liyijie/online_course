@@ -1,14 +1,28 @@
-<%= form_for Exam.new do |f|%>
-  <%- @questions.each_with_index do |question, index|%>
-    <p><%= index + 1%> <%= question.title%>
-    <%- question.options.each do |option|%>
-      <%- if option.be_right %>
-        <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(question.signal_score.to_s))%>
-      <%- else%>
-        <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(['a','b','c'].shuffle.first))%>
+<div class="main-content">
+  <a href="javascript:void(0)" class="btn btn-primary">题目列表</a>
+  <div class="main-title">
+    网络设备维护基础（一）测试
+  </div>
+  <div class="question-content">
+    <%= form_for Exam.new do |f|%>
+      <%- @questions.each_with_index do |question, index|%>
+        <p class="title"><%= index + 1%> <%= question.title%></p>
+        <% question.options.each do |option|%>
+          <%- if option.be_right %>
+            <p class="option">
+              <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(question.signal_score.to_s))%>
+              <span><%= option.name%></span>
+            </p>
+          <%- else%>
+            <p class="option">
+              <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(['a','b','c'].shuffle.first))%>
+              <span><%= option.name%></span>
+            </p>
+          <%end%>
+        <%end%>
       <%end%>
-     <span><%= option.name%></span>
+      <%= f.submit '提交', class: "btn btn-primary"%>
     <%end%>
-  <%end%>
-  <%= f.submit '提交'%>
-<%end%>
+    <%= link_to "成绩查询", " ", class: "btn btn-warning"%>
+  </div>
+</div>
