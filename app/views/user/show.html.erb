@@ -17,7 +17,7 @@
 
 	  <div class="container div-form">
 		<%= simple_form_for(@user, url: user_path(current_user.id), wrapper: "horizontal_form", html: { method: :put, class: "form-horizontal" }) do |f| %>
-		  <%= f.input :nickname, autofocus: true %>
+		  <%= f.input :nickname %>
 		  <div class="form-group string optional user_avatar">
 		    <label class="string optional col-sm-2 control-label" for="user_avatar">头像</label>
 		    <div class="col-sm-5">
