@@ -25,7 +25,7 @@ begin
             {name: '网络工程', academy_id: 7}])
 
 	Grade.create!([{name: '2015级计算机（1）班', specialty_id: 1},
-			{name: '2015级计算机（2）班', specialty_id: 7}])
+			{name: '2015级计算机（2）班', specialty_id: 1}])
 
 	User.create!([{
 			phone: '13600001111',

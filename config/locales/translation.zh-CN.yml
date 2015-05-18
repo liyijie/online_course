@@ -10,8 +10,12 @@ zh-CN:
         nickname: "昵称"
         name: "名字"
         number: "学号"
+        position: "职位"
         gender: "性别"
         signature: "个性签名"
+        academy_id: "学院"
+        specialty_id: "专业"
+        grade: "班级"
 
     errors:
       models:
@@ -27,6 +31,8 @@ zh-CN:
             password_confirmation:
               blank: "确认密码不能为空"
               confirmation: "两次密码输入不一致，请重新输入"
+            number:
+              taken: "该学号已存在"
         teacher:
           attributes:
             phone:

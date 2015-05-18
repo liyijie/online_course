@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :exams, only: [:new, :create]
 
-  resources :user, only: [:show, :index]
+  resources :user, only: [:show, :update] do
+  	collection do
+      post 'get_specialties'
+      post 'get_grades'
+    end
+  end
 
 end

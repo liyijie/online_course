@@ -6,28 +6,64 @@
 	  <div class="col-md-9">
 	    <table class="table">
 	      <tr>
-	        <td><span class="text-primary">&bull;&nbsp;</span>姓名：<%= current_user.name%></td>
-	        <td><span class="text-primary">&bull;&nbsp;</span>学习时长：830小时40分钟10秒</td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          姓名：<%= current_user.name%>
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          学习时长：830小时40分钟10秒
+	        </td>
 	      </tr>
 	      <tr>
-	        <td><span class="text-primary">&bull;&nbsp;</span>职位：<%= current_user.position%></td>
-	        <td><span class="text-primary">&bull;&nbsp;</span>已学课程：34门</td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          职位：<%= current_user.position%>
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          已学课程：34门
+	        </td>
 	      </tr>
 	      <tr>
-	        <td><span class="text-primary">&bull;&nbsp;</span>学号：<%= current_user.number%></td>
-	        <td><span class="text-primary">&bull;&nbsp;</span>未学课程：10门</td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          学号：<%= current_user.number%>
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          未学课程：10门
+	        </td>
 	      </tr>
 	      <tr>
-	        <td><span class="text-primary">&bull;&nbsp;</span>系部：<%= current_user.grade.specialty.academy.name %></td>
-	        <td><span class="text-primary">&bull;&nbsp;</span>考试次数：12次</td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          系部：<%= current_user.try(:grade).try(:specialty).try(:academy).try(:name) %>
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          考试次数：12次
+	        </td>
 	      </tr>
 	      <tr>
-	        <td><span class="text-primary">&bull;&nbsp;</span>专业：<%= current_user.grade.specialty.name %></td>
-	        <td><span class="text-primary">&bull;&nbsp;</span>提问数量：18条</td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          专业：<%= current_user.try(:grade).try(:specialty).try(:name) %>
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          提问数量：18条
+	        </td>
 	      </tr>
 	      <tr>
-	        <td><span class="text-primary">&bull;&nbsp;</span>班级：<%= current_user.grade.name %></td>
-	        <td><span class="text-primary">&bull;&nbsp;</span>回答数量：21条</td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          班级：<%= current_user.try(:grade).try(:name) %>
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          回答数量：21条
+	        </td>
 	      </tr>
 		</table>
 	  </div>

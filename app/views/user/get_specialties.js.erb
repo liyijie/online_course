@@ -1,0 +1,16 @@
+$('#user_specialty_id').replaceWith("<%= escape_javascript( select('user', 'specialty_id', [['请选择专业','']] + @specialties , 
+	{},class: 'select optional form-control' )) %>");
+
+$('#user_grade_id').replaceWith("<%= escape_javascript( select('user', 'grade_id', [['请选择班级','']] , 
+	{},class: 'select optional form-control' )) %>");
+
+
+ $(function(){
+  $("#user_specialty_id").change(function(){
+	  $.ajax({
+      url: "<%= get_grades_user_index_path %>",
+      type: 'POST',
+      data: { specialty_id: $(this).val() }
+    });
+  });
+});

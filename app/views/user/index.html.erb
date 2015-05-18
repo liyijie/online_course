@@ -10,21 +10,7 @@
 	</div>
 
 	<div class="row self-main-context">
-	  <ul class="nav nav-tabs">
-		<li role="presentation" class="active"><a href="#">个人资料</a></li>
-		<li role="presentation"><a href="#">修改密码</a></li>
-	  </ul>
-
-	  <div class="container div-form">
-		<%= simple_form_for(current_user,url: registration_path(:user),wrapper: "horizontal_form" ,html: { method: :put, class: "form-horizontal" }) do |f| %>
-		  <%= f.input :nickname, autofocus: true %>
-		  <%= f.input :name %>
-		  <%= f.input :number %>
-		  <%= f.input :phone, required: false %>
-		  <%= f.input :gender, collection: User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons, wrapper: "horizontal_radio_and_checkboxes", item_wrapper_class: "radio-inline" %>
-		  <%= f.input :signature, as: :text %>
-		<% end %>
-	  </div>
+	
 	</div>
   </div>
 
