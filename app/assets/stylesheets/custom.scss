@@ -11,6 +11,19 @@ body {
   background: #ebebeb;
 }
 
+button, p, a, h1, h2, h3, h4, h5, h6, form, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+form {
+  display: inline;
+}
+
 header {
   nav.navbar-default {
     background-color: #1a5aa0;
@@ -271,7 +284,8 @@ body.home__index {
     }
 	}
 }
-/*小轮播图的样式*/
+
+/*首页小轮播图的样式*/
 .xc-carousel {
   height: auto;
   position: relative;
@@ -331,5 +345,223 @@ body.home__index {
   }
   .carousel_items {
     position: absolute;
+  }
+}
+
+/*课程展示页*/
+body.courses__show {
+  .main-content {
+    .top-content {
+      background: #fff;
+      padding: 30px 20px;
+      overflow: hidden;
+      .left-content {
+        float: left;
+        width: 514px;
+        .course-and-score {
+          margin-top: 14px;
+          a {
+            height: 70px;
+            line-height: 70px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            width: 50%;
+            float: left;
+            display: block;
+            &.course {
+              background: #1a5aa0;
+            }
+            &.score {
+              background: #edc628;
+            }
+          }
+        }
+      }
+      .right-content {
+        width: 620px;
+        margin-left: 26px;
+        float: left;
+        .collect-zan-btns {
+          margin-top: 20px;
+        }
+        ul.course-main{
+          li:before {
+            content: counter(li);
+            counter-increment: li;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            line-height: 7px;
+            text-align:center;
+            color: #FFF;
+            background: image-url("li-bg.png") no-repeat 0px 11px;
+          }
+          li {
+            margin-top: 20px;
+            p.title, span.title {
+              font-size: 20px;
+              line-height: 30px;
+              margin-left: 15px;
+              color: #000;
+            }
+            &.course-info {
+              span.content {
+                font-size: 14px;
+                line-height: 14px;
+                color: #6b6b6b;
+              }
+            }
+            &.teach-team {
+              .teachers .teacher-info {
+                width: 60px;
+                float: left;
+                margin-right: 8px;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+    /*相关课程*/
+    .related-courses {
+      margin-top: 40px;
+      padding: 20px 30px;
+      background: #fff;
+      .courses-list {
+        height: 200px;
+        overflow: hidden;
+        li {
+          height: 46px;
+          line-height: 46px;
+          border-bottom: 2px solid #c7e0fb;
+        }
+        li:before {
+          content: counter(li);
+          counter-increment: li;
+          position: absolute;
+          width: 40px;
+          height: 46px;
+          line-height: 46px;
+          text-align:center;
+          color: #FFF;
+          background: image-url("li-arrow.png") no-repeat 0px 17px;
+        }
+      }
+      a.drop-down-arrow {
+        height: 24px;
+        width: 100px;
+        line-height: 24px;
+        margin-top: 20px;
+        text-align: center;
+        display: block;
+        background: image-url("drop-down-arrow.png") no-repeat 12px 0;
+      }
+    }
+    /*分类效果*/
+    .category-list {
+      padding: 20px;
+      margin-top: 40px;
+      background: #fff;
+      overflow: hidden;
+      a {
+        height: 132px;
+        line-height: 174px;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        display: block;
+        float: left;
+        &.public-common-style {
+          width: 95px;
+          margin: 0 10px;
+        }
+        &.public-active-style {
+          width: 120px;
+          margin: 0;
+          color: #000;
+          line-height: 168px;
+        }
+        &.index {
+          background: image-url("category-bg.png") no-repeat -8px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat 0px 0;
+          }
+        }
+        &.material {
+          background: image-url("category-bg.png") no-repeat -125px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -192px 0;
+          }
+        }
+        &.setup {
+          background: image-url("category-bg.png") no-repeat -243px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -382px 0;
+          }
+        }
+        &.team {
+          background: image-url("category-bg.png") no-repeat -360px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -564px 0;
+          }
+        }
+        &.condition {
+          background: image-url("category-bg.png") no-repeat -477px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -726px 0;
+          }
+        }
+        &.method {
+          background: image-url("category-bg.png") no-repeat -594px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -914px 0;
+          }
+        }
+        &.content {
+          background: image-url("category-bg.png") no-repeat -712px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -1092px 0;
+          }
+        }
+        &.resource {
+          background: image-url("category-bg.png") no-repeat -828px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -1252px 0;
+          }
+        }
+        &.effect {
+          background: image-url("category-bg.png") no-repeat -949px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -1414px 0;
+          }
+        }
+        &.policy {
+          background: image-url("category-bg.png") no-repeat -1066px 16px;
+          &.active {
+            background: image-url("category-active-bg.png") no-repeat -1568px 0;
+          }
+        }
+      }
+    }
+    .category-list-content {
+      margin-top: 40px;
+      padding: 20px 30px;
+      background: #fff;
+      .text-content {
+        color: #000;
+        display: none;
+      }
+    }
+    .fast-entry {
+      margin-top: 40px;
+      padding: 20px 30px;
+      background: #fff;
+      .entry-content {
+        display: none;
+      }
+    }
   }
 }
