@@ -1,0 +1,50 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_user" %>
+<% end %>
+<div class="row user">
+
+  <div class="col-md-2" role="complementary">
+	<%= render :partial => "nav_left" %>
+  </div>
+
+  <div class="col-md-10">
+
+    <div class="row common-info">
+      <%= render :partial => "base_info" %>
+	  </div>
+
+	  <div class="row self-main-context">
+
+	    <ul class="nav nav-pills show-content">
+        <li role="presentation" class="active"><%= link_to "已完成的考试","#" %></li>
+      </ul>
+
+      <div class="div-content scoure-search">
+        <div class="row score-list">
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="col-sm-7 ov-hidden"><%= image_tag "score-search1.png" %></div>
+                <div class="col-sm-5"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="col-sm-7 ov-hidden"><%= image_tag "score-search2.png" %></div>
+                <div class="col-sm-5"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+	    </div>
+
+    </div>
+
+  </div>
+
+</div>

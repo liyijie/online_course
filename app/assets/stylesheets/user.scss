@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.user__index, body.user__show, body.user__update, body.user__my_courses {
+body.user__index, body.user__show, body.user__update, body.user__my_courses, body.user__my_exams, 
+body.user__score_search
+{
   div.row.user {
     font-size: 13px;
     a {
@@ -11,6 +13,11 @@ body.user__index, body.user__show, body.user__update, body.user__my_courses {
     li.active a {
       color: #fff;
     }
+  }
+
+  //div中图片溢出处理
+  .ov-hidden {
+    overflow: hidden;
   }
   
   //右侧菜单栏
@@ -91,7 +98,7 @@ body.user__index, body.user__show, body.user__update, body.user__my_courses {
   .my-course-container{
     padding-top: 20px;
     div.row.my-course {
-      padding: 30px;
+      padding: 20px;
       border-bottom: 1px solid #dcdcdc; 
 
       //课程描述
@@ -118,6 +125,53 @@ body.user__index, body.user__show, body.user__update, body.user__my_courses {
       }
     }
   }
+
+  //我的考试一览
+  .my-exams-container{
+    padding-top: 20px;
+    div.row.my-exams {
+      padding: 30px;
+      border-bottom: 1px solid #dcdcdc; 
+
+      //课程描述
+      .my-exams-desc {
+        margin-left: 15px;
+        color: #808080;
+        font-size: 12px;
+
+        h4 {
+          line-height: 1.5;
+          color: #000;
+          font-weight: normal;
+
+          small span {
+            padding-right: 80px;
+          }
+        }
+      }
+
+      //进度
+      .badge {
+        min-width: 60px;
+        line-height: 4;
+        border-radius: 30px;
+        position: absolute;
+        left: 115px;
+        bottom: 50px;
+      }
+    }
+  }
+
+  //成绩查询
+  .scoure-search {
+    padding-top: 20px;
+    padding-right: 15px;
+
+    .score-list {
+      padding: 20px;
+    }
+  }
+  
   
 
 

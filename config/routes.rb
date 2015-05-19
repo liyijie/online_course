@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       post 'get_grades'
       get 'show'
       get 'my_courses'
+      get 'my_exams'
+      get 'score_search'
     end
   end
 

@@ -1,0 +1,97 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_user" %>
+<% end %>
+<div class="row user">
+
+  <div class="col-md-2" role="complementary">
+	<%= render :partial => "nav_left" %>
+  </div>
+
+  <div class="col-md-10">
+
+    <div class="row common-info">
+      <%= render :partial => "base_info" %>
+	  </div>
+
+	  <div class="row self-main-context">
+
+	    <ul class="nav nav-pills show-content">
+        <li role="presentation" class="active"><%= link_to "正在进行的考试","#" %></li>
+        <li role="presentation"><%= link_to "完成的考试","#" %></li>
+        <li role="presentation"><%= link_to "即将开始的考试","#" %></li>
+      </ul>
+      <!-- ###########################正在进行的考试########################## -->
+      <div class="my-exams-container div-content">
+        <div class="row my-exams">
+          <div class="col-sm-3 ov-hidden">
+            <%= image_tag "my-course.png" %>
+            <span class="badge">7%</span>
+          </div>
+          <div class="col-sm-7">
+            <div class="my-exams-desc"> 
+              <h4>CSS实现网页平滑过渡效果<br>
+                <small>
+                  <span>考试时间：1小时30分钟</span>
+                  <span>已经进行：35分钟</span>
+                </small>
+              </h4><br>
+              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
+            </div>
+          </div>
+          <div class="col-sm-2">
+              <button type="button" class="btn btn-info">继续考试</button>
+            </div>
+        </div>
+	    </div>
+      <!-- ###########################正在进行的考试########################## -->
+
+      <!-- ###########################完成的考试########################## -->
+      <div class="my-exams-container div-content" style="display: none;">
+        <div class="row my-exams">
+          <div class="col-sm-3 ov-hidden">
+            <%= image_tag "my-course.png" %>
+          </div>
+          <div class="col-sm-9">
+            <div class="my-exams-desc"> 
+              <h4>CSS实现网页平滑过渡效果<br>
+                <small>
+                  <span>考试时间：1小时30分钟</span>
+                  <span>考试结束时间：2015-06-15 18:00:00</span>
+                </small>
+              </h4><br>
+              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
+            </div>
+          </div>
+          <div class="col-sm-3">
+              <button type="button" class="btn btn-info">继续考试</button>
+            </div>
+        </div>
+      </div>
+      <!-- ###########################完成的考试########################## -->
+
+      <!-- ###########################即将开始的考试########################## -->
+      <div class="my-exams-container div-content" style="display: none;" >
+        <div class="row my-exams">
+          <div class="col-sm-3 ov-hidden">
+            <%= image_tag "my-course.png" %>
+          </div>
+          <div class="col-sm-9">
+            <div class="my-exams-desc"> 
+              <h4>CSS实现网页平滑过渡效果<br>
+                <small>
+                  <span>考试开始时间：2015-07-01 14:00:00</span>
+                  <span>考试时间：1小时30分钟</span>
+                </small>
+              </h4><br>
+              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ###########################即将开始的考试########################## -->
+
+    </div>
+
+  </div>
+
+</div>

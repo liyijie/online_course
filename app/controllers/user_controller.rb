@@ -61,6 +61,15 @@ class UserController < ApplicationController
     
   end
 
+  #我的考试
+  def my_exams
+    
+  end
+
+  def my_scores
+    
+  end
+
   #根据系别的id，查找到该系下所有的专业
   #参数：academy_id,系的id
   def get_specialties
