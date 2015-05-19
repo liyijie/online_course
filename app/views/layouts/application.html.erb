@@ -10,8 +10,11 @@
 <body class="<%= controller.controller_path.gsub('/','__') + '__' + controller.action_name %>" >
 	<!-- header -->
 	<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-		<%= render :partial => "/common/header" %>
-		<%= render :partial => "/common/home_header" %>
+		<%= render partial: "/common/header" %>
+		<nav class="navbar navbar-default main-home-header" role="navigation">
+		  <%= render partial: "/common/nav" %>
+		  <%= yield :lunbo %>
+		</nav>
 	</header>
 	<!-- header -->
 

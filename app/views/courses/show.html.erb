@@ -2,6 +2,10 @@
   <%= javascript_include_tag "_course_show" %>
 <%end%>
 
+<%= content_for :lunbo do %>
+  <%= render partial: "/common/lunbo"%>
+<%end%>
+
 <div class="main-content">
   <div class="top-content">
     <div class="left-content">
@@ -58,42 +62,14 @@ JSON数据处理技术，Cocos2d游戏编程技术，Xcode、Interface Builder�
   <div class="related-courses">
     <a href="javascript:void(0)" class="btn btn-primary">相关课程</a>
     <ul class="courses-list">
-      <li class="col-sm-12">
-        <a href="" class="col-sm-6">项目一 初识IOS</a>
-        <a href class="col-sm-2">PPT (25页)</a>
-        <a href="" class="col-sm-2">已学 (10/25)</a>
-        <a href= <%= new_courses_exams_new_path%> class="col-sm-2">测试</a>
-      </li>
-      <li class="col-sm-12">
-        <a href="" class="col-sm-6">项目一 初识IOS</a>
-        <a href class="col-sm-2">PPT (25页)</a>
-        <a href="" class="col-sm-2">已学 (10/25)</a>
-        <a href= <%= new_courses_exams_new_path%> class="col-sm-2">测试</a>
-      </li>
-      <li class="col-sm-12">
-        <a href="" class="col-sm-6">项目一 初识IOS</a>
-        <a href class="col-sm-2">PPT (25页)</a>
-        <a href="" class="col-sm-2">已学 (10/25)</a>
-        <a href= <%= new_courses_exams_new_path%> class="col-sm-2">测试</a>
-      </li>
-      <li class="col-sm-12">
-        <a href="" class="col-sm-6">项目一 初识IOS</a>
-        <a href class="col-sm-2">PPT (25页)</a>
-        <a href="" class="col-sm-2">已学 (10/25)</a>
-        <a href= <%= new_courses_exams_new_path%> class="col-sm-2">测试</a>
-      </li>
-      <li class="col-sm-12">
-        <a href="" class="col-sm-6">项目一 初识IOS</a>
-        <a href class="col-sm-2">PPT (25页)</a>
-        <a href="" class="col-sm-2">已学 (10/25)</a>
-        <a href= <%= new_courses_exams_new_path%> class="col-sm-2">测试</a>
-      </li>
-      <li class="col-sm-12">
-        <a href="" class="col-sm-6">项目一 初识IOS</a>
-        <a href class="col-sm-2">PPT (25页)</a>
-        <a href="" class="col-sm-2">已学 (10/25)</a>
-        <a href= <%= new_courses_exams_new_path%> class="col-sm-2">测试</a>
-      </li>
+      <% @sub_courses.each do |sub_course|%>
+        <li class="col-sm-12">
+          <a href="" class="col-sm-6">项目一 初识IOS</a>
+          <a href class="col-sm-2">PPT (25页)</a>
+          <a href="" class="col-sm-2">已学 (10/25)</a>
+          <a href= <%= new_courses_exams_path(sub_course_id: sub_course.id)%> class="col-sm-2">测试</a>
+        </li>
+      <% end %>
     </ul>
     <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
   </div>
@@ -110,7 +86,7 @@ JSON数据处理技术，Cocos2d游戏编程技术，Xcode、Interface Builder�
     <a href="javascript:void(0)" class="policy public-common-style">特色与政策</a>
   </div>
   <div class="category-list-content">
-    <a href="javascript:void(0)" class="btn btn-primary">课程设计理念</a>
+    <a href="javascript:void(0)" class="btn btn-primary by-btn-bg">课程设计理念</a>
     <div class="text-content">
       课程设计的理念
     </div>

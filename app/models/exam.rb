@@ -26,7 +26,7 @@ class Exam < ActiveRecord::Base
       item = self.exam_items.build item_index: index,  answer: answer, question_id: question_id
 
       # 与问题的正确答案对比考试这题的答案是否正确
-      question = Question.find item.question_id
+      question = Question.find_by_id item.question_id
       next if question.blank?
       if answer == question.correct_option
         item.correct = true

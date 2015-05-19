@@ -111,19 +111,22 @@ begin
 	 Question.create!([
     {
     	id: 1,
-    	sub_course_id: 1, 
+    	sub_course_id: 1,
+        correct_option: "A",
     	title: "Ruby中变量的写法那一项是错误的？",
     	signal_score: 2
     },
     {
     	id: 2,
-    	sub_course_id: 1, 
+    	sub_course_id: 1,
+        correct_option: "B",
     	title: "RubyChina的创始人是谁？",
     	signal_score: 2
     },
     {
     	id: 3,
-    	sub_course_id: 1, 
+    	sub_course_id: 1,
+        correct_option: "C",
     	title: "Ruby中关于块的论述正确的选项？",
     	signal_score: 2
     }

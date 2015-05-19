@@ -4,25 +4,42 @@
     网络设备维护基础（一）测试
   </div>
   <div class="question-content">
-    <%= form_for Exam.new do |f|%>
-      <%- @questions.each_with_index do |question, index|%>
-        <p class="title"><%= index + 1%> <%= question.title%></p>
-        <% question.options.each do |option|%>
-          <%- if option.be_right %>
+    <%= simple_form_for Exam.new do |f|%>
+      <% @questions.each_with_index do |question, index|%>
+        <p class="title"><%= index + 1 %> <%= question.title%></p>
+          <% question.options.each do |option|%>
             <p class="option">
-              <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(question.signal_score.to_s))%>
-              <span><%= option.name%></span>
+              <%= radio_button_tag("option_" + index.to_s, option.index_type)%>
+              <span><%= option.index_type %>.  <%= option.name%></span>
             </p>
-          <%- else%>
-            <p class="option">
-              <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(['a','b','c'].shuffle.first))%>
-              <span><%= option.name%></span>
-            </p>
-          <%end%>
-        <%end%>
-      <%end%>
-      <%= f.submit '提交', class: "btn btn-primary"%>
-    <%end%>
+          <% end %>
+        <% end %>
+        <%= f.submit '提交', class: "btn btn-primary"%>
+      <% end %>
     <%= link_to "成绩查询", " ", class: "btn btn-warning"%>
   </div>
+  <div class="tieshi">
+  </div>
 </div>
+<!--思路： 创建exam对象， question为题目， option为选择项-->
+<!--
+<%= form_for Exam.new do |f|%>
+  <%- @questions.each_with_index do |question, index|%>
+    <p class="title"><%= index + 1%> <%= question.title%></p>
+    <% question.options.each do |option|%>
+      <%- if option.be_right %>
+        <p class="option">
+          <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(question.signal_score.to_s))%>
+          <span><%= option.name%></span>
+        </p>
+      <%- else%>
+        <p class="option">
+          <%= radio_button(:exam, "score"+"_"+index.to_s, Des.encode(['a','b','c'].shuffle.first))%>
+          <span><%= option.name%></span>
+        </p>
+      <%end%>
+    <%end%>
+  <%end%>
+  <%= f.submit '提交', class: "btn btn-primary"%>
+<%end%>
+-->
