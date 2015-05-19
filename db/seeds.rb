@@ -50,6 +50,7 @@ begin
 		}])
 
 	Teacher.create!([{
+            number: '498483984',
 			phone: '18800001111',
 			username: 'dtby', 
 			password: 'dtby123456', 
@@ -65,6 +66,7 @@ begin
 			tec_expertise: 'C语言基础、java变成基础、数据库安全与设计',
 			resume: ''
 		},{
+            number: '89439934',
 			phone: '18800002222',
 			username: 'dtby', 
 			password: 'dtby123456', 

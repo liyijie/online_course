@@ -194,7 +194,7 @@ body.home__index {
   		text-align: center;
   		background: #000;
   		position: absolute;
-  		bottom: -8px;
+      bottom: 0;
   		opacity: 0.5;
       display: none;
   	}
@@ -568,9 +568,10 @@ body.exams__new {
         line-height: 40px;
         padding-left: 20px;
         //background: #b0d6ff;
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b0d6ff), to(#fff));
+        background: -webkit-gradient(linear, 100% 0%, 100% 100%, from(#b0d6ff), to(#fff));
         background: -o-linear-gradient(left, #b0d6ff, #fff);
         background: -moz-linear-gradient(left, #b0d6ff, #fff);
+        FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#b0d6ff,endColorStr=#ffffff);
         margin: 20px 0;
       }
       p.option {
@@ -581,13 +582,79 @@ body.exams__new {
     }
     .tieshi {
       width: 200px;
-      height: 565px;
+      height: 505px;
       position: fixed;
       left: 50%;
-      margin-left: 220px;
-      top: 700px;
+      margin-left: 350px;
+      top: 200px;
       z-index: 2333;
       background: image-url("tieshi-bg.png") no-repeat 0 0;
+      #countdown {
+        text-align: center;
+        font-size: 20px;
+        padding-top: 256px;
+        color: #fff;
+      }
+      ul.question-num {
+        li {
+          height: 72px;
+          padding: 10px 0;
+          p.title, p.number {
+            text-align: center;
+            height: 32px;
+            line-height: 32px;
+          }
+          span {
+            color: #d62727;
+          }
+        }
+      }
+      a#back-to-top {
+        width: 200px;
+        height: 64px;
+        display: block;
+        background: image-url("tieshi-bg.png") no-repeat 0 -500px;
+      }
     }
+  }
+}
+
+/*教师页面左边栏*/
+#left-bar {
+  width: 184px;
+  float: left;
+  .out-wrap {
+    width: 172px;
+    background: #fff;
+    margin: 0 auto;
+    .top-title {
+      height: 40px;
+      line-height: 34px;
+      text-align: center;
+      color: $main-color;
+      font-weight: bold;
+      border-top: 4px solid $main-color;
+      border-bottom: 4px solid $main-color;
+    }
+    ul.list li {
+      width: 184px;
+      &.active {
+        background: image-url("teacher-active-bg.png") no-repeat 0 0;
+        a {
+          color: #fff;
+        }
+      }
+      a {
+        height: 46px;
+        line-height: 46px;
+        text-align: center;
+        margin: 20px 0;
+        display: block;
+      }
+    }
+  }
+}
+body.teachers__my_courses {
+  .main-content {
   }
 }

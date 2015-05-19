@@ -64,30 +64,12 @@
   	<span class="pull-right"><%= link_to "更多", "#", class: "more" %></span>
   </section>
   <div class="info-teachers-content wrapper">
-    <div class="teacher-content">
-      <%= link_to image_tag("teacher.png")%>
-      <p>国家优秀教师称号</p>
-    </div>
-    <div class="teacher-content">
-      <%= link_to image_tag("teacher.png")%>
-      <p>国家优秀教师称号</p>
-    </div>
-    <div class="teacher-content">
-      <%= link_to image_tag("teacher.png")%>
-      <p>国家优秀教师称号</p>
-    </div>
-    <div class="teacher-content">
-      <%= link_to image_tag("teacher.png")%>
-      <p>国家优秀教师称号</p>
-    </div>
-    <div class="teacher-content">
-      <%= link_to image_tag("teacher.png")%>
-      <p>国家优秀教师称号</p>
-    </div>
-    <div class="teacher-content">
-      <%= link_to image_tag("teacher.png")%>
-      <p>国家优秀教师称号</p>
-    </div>
+    <% @teachers.each do |teacher|%>
+      <div class="teacher-content">
+        <%= link_to image_tag("teacher.png"), my_courses_teachers_path(teacher.number)%>
+        <p>国家优秀教师称号</p>
+      </div>
+    <%end%>
   </div>
   <section class="common-title">
   	<span class="pull-left">校园文化</span>
