@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
 
 
   belongs_to :grade
+  has_one :image, as: :imageable
+
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
@@ -47,6 +49,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: :create
   validates_confirmation_of :password, on: :create
   validates_uniqueness_of   :number
+  validates_associated :image
+
 
 
   #用户权限划分

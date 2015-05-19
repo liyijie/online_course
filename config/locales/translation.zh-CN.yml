@@ -16,6 +16,7 @@ zh-CN:
         academy_id: "学院"
         specialty_id: "专业"
         grade: "班级"
+        image: "头像"
 
     errors:
       models:
@@ -33,6 +34,8 @@ zh-CN:
               confirmation: "两次密码输入不一致，请重新输入"
             number:
               taken: "该学号已存在"
+            image:
+              invalid: "图片格式不正确"
         teacher:
           attributes:
             phone:

@@ -16,14 +16,9 @@
 	  </ul>
 
 	  <div class="container div-form">
-		<%= simple_form_for(@user, url: user_path(current_user.id), wrapper: "horizontal_form", html: { method: :put, class: "form-horizontal" }) do |f| %>
-		  <%= f.input :nickname, autofocus: true %>
-		  <div class="form-group string optional user_avatar">
-		    <label class="string optional col-sm-2 control-label" for="user_avatar">头像</label>
-		    <div class="col-sm-5">
-		      <%= image_tag("user.png")%>
-		    </div>
-		  </div>
+		<%= simple_form_for(@user, url: user_path(current_user.id), wrapper: "horizontal_form", html: { method: :put, multipart: true, class: "form-horizontal" }) do |f| %>
+		  <%= f.input :nickname %>
+		  <%= f.input :image , as: :file, wrapper: "horizontal_file_input"%>
 		  <%= f.input :name %>
 		  <%= f.input :number %>
 		  <%= f.input :position %>
@@ -47,7 +42,10 @@
 
 </div>
 
-
 <%= content_for :script do %>
+  <%= javascript_tag do %>
+    get_specialties_path = "<%= get_specialties_user_index_path %>"
+    get_grades_path = "<%= get_grades_user_index_path %>"
+  <% end %>
   <%= javascript_include_tag "_user" %>
 <% end %>

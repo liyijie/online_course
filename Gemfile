@@ -62,5 +62,8 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'simple_form', '~> 3.1.0'
 
+gem "paperclip", "~> 4.2.1"
+
+
 
 
