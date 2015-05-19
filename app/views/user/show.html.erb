@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row user">
 
   <div class="col-md-2" role="complementary">
 	<%= render :partial => "nav_left" %>
@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="row self-main-context">
-	  <ul class="nav nav-tabs">
+	  <ul class="nav nav-pills">
 		<li role="presentation" class="active"><a href="#">个人资料</a></li>
 		<li role="presentation"><a href="#">修改密码</a></li>
 	  </ul>
@@ -23,7 +23,7 @@
 		  <%= f.input :number %>
 		  <%= f.input :position %>
 		  <%= f.input :academy_id, collection: [['请选择系别','']] + Academy.all.pluck(:name,:id), as: :select, include_blank: false %>
-		  <%= f.input :specialty_id, collection: [['请选择专业','']] + @specialties,as: :select %>
+		  <%= f.input :specialty_id, collection: [['请选择专业','']] + @specialties,as: :select, include_blank: false %>
 		  <%= f.association :grade, collection: [['请选择班级','']] + @grades, as: :select, include_blank: false %>
 		  <%= f.input :phone, required: false %>
 		  <%= f.input :gender, collection: User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons, wrapper: "horizontal_radio_and_checkboxes", item_wrapper_class: "radio-inline" %>
@@ -47,5 +47,5 @@
     get_specialties_path = "<%= get_specialties_user_index_path %>"
     get_grades_path = "<%= get_grades_user_index_path %>"
   <% end %>
-  <%= javascript_include_tag "_user" %>
+  <%= javascript_include_tag "_user_show" %>
 <% end %>

@@ -3,65 +3,50 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.user__index, body.user__show, body.user__update, body.user__my_courses {
-
-  nav { 
+  div.row.user {
+    font-size: 13px;
+    a {
+      color: #000;
+    }
+    li.active a {
+      color: #fff;
+    }
+  }
+  
+  //右侧菜单栏
+  div.row nav { 
 	  text-align: center; 
     
     p.self-info{
       line-height: 30px;
       border-top: 5px solid #337ab7;
       border-bottom: 5px solid #337ab7;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    li {
-      a {
-       color: #000;
-      }
-    }
-
-  }
-
-  table {
-  	tr {
-  	  td {
-  	   padding: 2px;
-  	   border: 0px;
-  	  }
-  	}
-  }
-
-
-  .gray-line {
-  	border-left: 1px solid #dcdcdc; 
-  	height: 140px;
-  	padding: 5px;
-
-  }
-
-  .div-frame {
-    border: 1px solid #dcdcdc;
-  }
-
-
-  .nav-tabs {
-    border-bottom: 3px solid #337ab7;
-
-    li {
-      margin-bottom: -3px;
-    }
-
-    li.active {
-
-      a {
-        border: 3px solid #337ab7;
-        border-bottom-color: transparent;
-      }
+    .nav li a {
+      padding: 20px 15px;
     }
   }
 
+  
+
+  div.row.self-main-context {
+    border-top: 4px solid #337ab7;
+    .nav {
+      li {
+        padding-left: 20px; 
+      } 
+    }
+  }
+
+  //个人信息表单
   .div-form {
-    padding: 20px;
+    padding: 30px;
+    color: #808080;
+    input, select, textarea {
+      color: #808080;
+    }
   }
 
   .radio-inline {
@@ -72,13 +57,29 @@ body.user__index, body.user__show, body.user__update, body.user__my_courses {
   .self-main-context {
    margin-top: 20px;
    background: #fff;
-   padding-top: 20px;
-   padding-lef: 15px;
+   padding-top: 5px;
   }
 
-  .common-info {
+  div.row.common-info {
     background: #fff;
     padding-top: 20px;
+
+    .gray-line {
+      border-left: 2px solid #dcdcdc; 
+      height: 140px;
+      padding: 5px;
+
+      p {
+        padding: 15px;
+      }
+    }
+
+    //公共信息table
+    table.no-border tbody tr td {
+      padding: 3px;
+      border: 0!important;
+    }
+
   }
 
 
@@ -86,15 +87,38 @@ body.user__index, body.user__show, body.user__update, body.user__my_courses {
     background-color: #fff;
   }
 
-  div.row.my-course {
-    padding: 30px;
-    border-bottom: 1px solid #dcdcdc; 
+  //我的课程一览
+  .my-course-container{
+    padding-top: 20px;
+    div.row.my-course {
+      padding: 30px;
+      border-bottom: 1px solid #dcdcdc; 
 
-    .my-course-desc {
-      margin-left: 15px;
+      //课程描述
+      .my-course-desc {
+        margin-left: 15px;
+        color: #808080;
+        font-size: 12px;
+
+        h4 {
+          line-height: 1.5;
+          color: #000;
+          font-weight: normal;
+        }
+      }
+
+      //进度
+      .badge {
+        min-width: 60px;
+        line-height: 4;
+        border-radius: 30px;
+        position: absolute;
+        left: 115px;
+        bottom: 50px;
+      }
     }
   }
+  
 
 
-	
 }

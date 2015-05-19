@@ -2,12 +2,40 @@
  <p class="text-primary self-info"><strong>个人中心</strong></p>
 
   <ul class="nav nav-pills nav-stacked center-block">
-    <li><%= link_to "我的课程", my_courses_user_index_path %></li>
-    <li class=""><a href="#">我的考试</a></li>
-    <li class=""><a href="#">成绩查询</a></li>
-    <li class=""><a href="#">我的收藏</a></li>
-    <li class=""><a href="#">我的问答</a></li>
-    <li class=""><a href="#">讨论中心</a></li>
-    <li class="active"><%= link_to "我的账户", user_index_path %></li>
+    <li class="active">
+      <%= link_to my_courses_user_index_path do %>
+      	<span class="glyphicon glyphicon-sound-dolby" aria-hidden="true"></span> 我的课程
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+      	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 我的考试
+      <% end %>
+    </li>
+     <li>
+      <%= link_to "#" do %>
+      	<span class="glyphicon glyphicon-search" aria-hidden="true"></span> 成绩查询
+      <% end %>
+    </li>
+     <li>
+      <%= link_to "#" do %>
+      	<span class="glyphicon glyphicon-star" aria-hidden="true"></span> 我的收藏
+      <% end %>
+    </li>
+     <li>
+      <%= link_to "#" do %>
+      	<span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 我的问答
+      <% end %>
+    </li>
+     <li>
+      <%= link_to "#" do %>
+      	<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 讨论中心
+      <% end %>
+    </li>
+    <li>
+      <%= link_to user_index_path do %>
+      	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 我的账户
+      <% end %>
+    </li>
   </ul>
 </nav>

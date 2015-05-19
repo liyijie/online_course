@@ -22,6 +22,7 @@ class UserController < ApplicationController
   end
 
 
+  #个人资料更新
   def update
   	@user = User.where(id: params[:id]).first 
 

@@ -1,10 +1,10 @@
 <div class="panel-heading" style="background: #ffffff;">
     <ul class="nav nav-pills lead">
-      <li>
-        <%= link_to(resource_name == :user ? '用户登录' : '教师登录', new_session_path(resource_name), class: "navbar-link") %>
+      <li class="<%= resource_name == :user ? 'active' : '' %>">
+        <%= link_to('用户注册', new_registration_path(:user), class: "navbar-link") %>
       </li>
-      <li class="active navbar-right">
-      <%= link_to('免费注册', new_registration_path(resource_name), class: "navbar-link") %>
+      <li class="navbar-right <%= resource_name == :teacher ? 'active' : '' %>">
+        <%= link_to("教师注册", new_registration_path(:teacher), class: "navbar-link") %>
       </li>
     </ul>
 </div>

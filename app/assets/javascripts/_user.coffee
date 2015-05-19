@@ -1,15 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 $ ->
-  $('#user_academy_id').change ->
-    $.ajax get_specialties_path,
-      type: 'POST'
-      data: { academy_id: $(this).val() }
-
-  $('#user_specialty_id').change ->
-    $.ajax get_grades_path,
-      type: 'POST'
-      data: { specialty_id: $(this).val() }
-
+  $(".show-content li").click ->
+  	#将点击的菜单选中
+    $(".show-content li").removeAttr("class")
+    $(this).attr("class","active")
+    #显示对应的内容
+    $(".div-content").hide()
+    $(".div-content").eq($(this).index()).show()

@@ -4,7 +4,7 @@
 		    <div class="pull-left"><%= image_tag current_user.try(:image).try(:avatar).try(:url, :thumb) %></div>
 	  </div>
 	  <div class="col-md-9">
-	    <table class="table">
+	    <table class="table no-border">
 	      <tr>
 	        <td>
 	          <span class="text-primary">&bull;</span>
@@ -72,7 +72,10 @@
 	</div>
 	<div class="col-md-4" >
 	<div class="gray-line">
-		<div><button type="button" class="btn btn-info">今日提醒</button><span class="pull-right">2015-04-08 星期三</span></div><br>
+		<div>
+		  <button type="button" class="btn btn-primary">今日提醒</button>
+		  <span class="pull-right">2015-04-08 星期三</span>
+		</div>
 		<p>
 		  &nbsp;&nbsp;&nbsp;&nbsp;今天下午02：30有一场关于<span class="text-danger">《CSS实现网页平滑过渡效果》</span>的考试，请抓紧复习，要记住时间，到时记得参加考试哦~
 		<p>
