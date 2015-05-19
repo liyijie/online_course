@@ -168,7 +168,23 @@ body.user__score_search
     padding-right: 15px;
 
     .score-list {
-      padding: 20px;
+      padding: 10px 15px;
+    }
+
+    .panel-body {
+      padding: 15px 0;
+    }
+
+    h4 {
+      line-height: 2;
+    }
+
+    div.score-detail {
+      line-height: 2;
+    }
+
+    button.btn.btn-warning {
+      margin-top: 5px;
     }
   }
   
