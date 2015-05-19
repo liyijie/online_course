@@ -1,7 +1,7 @@
 <div class="col-md-8">
 	<div class="row">
 	  <div class="col-md-3">
-		    <div class="pull-left"><%= image_tag("user.png")%></div>
+		    <div class="pull-left"><%= image_tag current_user.try(:image).try(:avatar).try(:url, :thumb) %></div>
 	  </div>
 	  <div class="col-md-9">
 	    <table class="table">

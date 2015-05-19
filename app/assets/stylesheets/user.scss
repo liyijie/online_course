@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.user__index, body.user__show, body.user__update {
+body.user__index, body.user__show, body.user__update, body.user__my_courses {
 
   nav { 
 	  text-align: center; 
@@ -84,6 +84,15 @@ body.user__index, body.user__show, body.user__update {
 
   nav.navbar.navbar-default.nav-left {
     background-color: #fff;
+  }
+
+  div.row.my-course {
+    padding: 30px;
+    border-bottom: 1px solid #dcdcdc; 
+
+    .my-course-desc {
+      margin-left: 15px;
+    }
   }
 
 

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post 'get_specialties'
       post 'get_grades'
       get 'show'
+      get 'my_courses'
     end
   end
 

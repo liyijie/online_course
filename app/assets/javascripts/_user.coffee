@@ -4,12 +4,12 @@
 
 $ ->
   $('#user_academy_id').change ->
-    $.ajax '/user/get_specialties',
+    $.ajax get_specialties_path,
       type: 'POST'
       data: { academy_id: $(this).val() }
 
   $('#user_specialty_id').change ->
-    $.ajax '/user/get_grades',
+    $.ajax get_grades_path,
       type: 'POST'
       data: { specialty_id: $(this).val() }
 
