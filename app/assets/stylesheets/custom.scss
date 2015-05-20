@@ -654,12 +654,16 @@ body.exams__new {
     }
   }
 }
-/*公共教师信息页*/
-#teacher-info {
+
+/*教师信息公共宽度*/
+.teacher-wrapper {
   width: 1000px;
   float: left;
   margin-left: 16px;
   background: #fff;
+}
+/*公共教师信息页*/
+#teacher-info {
   padding: 20px;
   .teacher-img {
     float: left;
@@ -716,5 +720,43 @@ body.exams__new {
 /*教师我的课程*/
 body.teachers__my_courses {
   .main-content {
+    .teacher-courses-content {
+      margin-top: 20px;
+      border-top: solid 5px $main-color;
+      .nav-bar {
+        padding-left: 46px;
+        margin-top: 5px;
+      }
+      ul.courses-list {
+        width: 936px;
+        margin: 20px auto 0 auto;
+        overflow: hidden;
+        li {
+          border: solid 1px #dbdbdb;
+          margin-bottom: 24px;
+          &.course {
+            width: 282px;
+            margin: 20px 15px;
+            float: left;
+          }
+          .description, p.course-title a {
+            padding: 0 10px;
+            height: 40px;
+            line-height: 40px;
+          }
+          .description label {
+            color: #555555;
+            float: right;
+            font-weight: normal;
+            a span {
+              color: #ffc704;
+            }
+          }
+          p.course-title a {
+            color: #000;
+          }
+        }
+      }
+    }
   }
 }
