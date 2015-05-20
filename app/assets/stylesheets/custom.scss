@@ -654,6 +654,66 @@ body.exams__new {
     }
   }
 }
+/*公共教师信息页*/
+#teacher-info {
+  width: 1000px;
+  float: left;
+  margin-left: 16px;
+  background: #fff;
+  padding: 20px;
+  .teacher-img {
+    float: left;
+  }
+  .teacher-data {
+    width: 660px;
+    margin-left: 20px;
+    float: left;
+    div.title-content {
+      overflow: hidden;
+      p.title {
+        height: 40px;
+        color: $main-color;
+        font-size: 20px;
+        font-weight: bold;
+        width: 14%;
+        float: left;
+      }
+      p.line {
+        border-top: solid 4px $main-color;
+        width:  86%;
+        float: left;
+        margin-top: 11px;
+      }
+    }
+    ul {
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    ul li {
+      height: 32px;
+      font-size: 14px;
+      line-height: 32px;
+      padding-left: 10px;
+      position: relative;
+      &.width-100 {
+        width: 100%;
+      }
+      &.width-50 {
+        width: 50%;
+        float: left;
+      }
+    }
+    li:before {
+      content: image-url("li-bg.png");
+      position: absolute;
+      width: 20px;
+      height: 28px;
+      left: 0;
+      top: -2px;
+    }
+  }
+}
+/*教师我的课程*/
 body.teachers__my_courses {
   .main-content {
   }
