@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
 
   belongs_to :grade
   has_one :image, as: :imageable
+  has_many :exams, dependent: :destroy
+
+  has_many :comment, as: :usertable, dependent: :destroy
 
 
   # Virtual attribute for authenticating by either username or phone

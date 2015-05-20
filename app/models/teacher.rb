@@ -38,6 +38,8 @@ class Teacher < ActiveRecord::Base
          :recoverable, :rememberable, :trackable#, :validatable
 
 
+  has_many :comment, as: :usertable, dependent: :destroy
+
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
 

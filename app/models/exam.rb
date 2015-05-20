@@ -8,8 +8,8 @@
 #  total_score   :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  correct_count :integer
-#  all_count     :integer
+#  correct_count :integer          default(0)
+#  all_count     :integer          default(0)
 #
 
 class Exam < ActiveRecord::Base

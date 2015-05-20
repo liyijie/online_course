@@ -11,13 +11,22 @@ body.user__score_search, body.user__my_collect, body.user__questions_answers, bo
   }
 
   div.row.user {
-    font-size: 13px;
     a {
       color: #000;
     }
     li.active a {
       color: #fff;
     }
+  }
+
+  //没有数据时样式
+  .blank {
+    margin: 15px;
+    height: 100px;
+    font-size: 30px;
+    text-align:center;//居中 
+    padding: 25px;
+    color: #808080;               
   }
 
   //div中图片溢出处理
@@ -173,7 +182,7 @@ body.user__score_search, body.user__my_collect, body.user__questions_answers, bo
 
   //成绩查询
   .scoure-search {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-right: 15px;
 
     .score-list {

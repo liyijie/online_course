@@ -12,5 +12,6 @@
 #
 
 class Course < ActiveRecord::Base
+	acts_as_commentable
 	has_many :sub_courses, dependent: :destroy
 end

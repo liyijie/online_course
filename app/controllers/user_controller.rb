@@ -66,9 +66,26 @@ class UserController < ApplicationController
     
   end
 
-  def my_scores
-    
+  #成绩查询
+  def score_search
+    @exams = current_user.try(:exams)
   end
+
+  #我的收藏
+  def my_collect
+
+  end
+
+  #我的问答
+  def questions_answers
+
+  end
+
+  #我的账户
+  def discuss_center
+
+  end
+
 
   #根据系别的id，查找到该系下所有的专业
   #参数：academy_id,系的id
