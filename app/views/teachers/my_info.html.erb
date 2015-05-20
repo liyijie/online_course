@@ -1,0 +1,22 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_teacher_page" %>
+<%end%>
+
+<div class="main-content">
+	<%= render "left_bar" %>
+  <%= render "teacher_info" %>
+  <div class="teacher-content teacher-wrapper">
+  	<div class="nav-bar">
+  		<a href="javascript:void(0)" class="btn btn-default by-btn-bg">教学情况</a>
+  		<a href="javascript:void(0)" class="btn btn-default">技术服务</a>
+  	</div>
+  	<div class="teacher-info-content teacher-wrapper">
+  		<div class="infos">
+  		 	教学情况
+  		</div>
+  		<div class="infos">
+  		 	技术服务
+  		</div>
+  	</div>
+  </div>
+</div>

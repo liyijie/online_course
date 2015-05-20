@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get :my_courses
       get :my_grades
+      get :my_info
     end
   end
 

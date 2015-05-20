@@ -717,10 +717,10 @@ body.exams__new {
     }
   }
 }
-/*教师我的课程*/
-body.teachers__my_courses {
+/*教师我的课程, 我的班级, 教师介绍*/
+body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info {
   .main-content {
-    .teacher-courses-content {
+    .teacher-content {
       margin-top: 20px;
       border-top: solid 5px $main-color;
       .nav-bar {
@@ -757,19 +757,6 @@ body.teachers__my_courses {
           }
         }
       }
-    }
-  }
-}
-/*教师我的班级*/
-body.teachers__my_grades {
-  .main-content {
-    .teacher-grades-content {
-      margin-top: 20px;
-      border-top: solid 5px $main-color;
-      .nav-bar {
-        padding-left: 46px;
-        margin-top: 5px;
-      }
       ul.grades-list {
         width: 992px;
         margin: 20px auto 0 auto;
@@ -801,6 +788,9 @@ body.teachers__my_grades {
             color: #000;
           }
         }
+      }
+      .teacher-info-content .infos {
+        display: none;
       }
     }
   }
