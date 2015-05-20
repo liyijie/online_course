@@ -4,9 +4,14 @@ Rails.application.routes.draw do
   root :to => "home#index"
   get "courses/:number", to: "courses#show", as: :show_courses
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
-  get "teachers/:number/my_courses", to: "teachers#my_courses", as: :my_courses_teachers
   resources :courses, only: [:index] do
   	resources :sub_courses
+  end
+
+  resources :teachers, only: [] do
+    collection do
+      get :my_courses
+    end
   end
 
   resources :exams, only: [:new, :create]
