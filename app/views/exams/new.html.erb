@@ -9,7 +9,7 @@
   </div>
   <div class="question-content">
     <%= simple_form_for Exam.new do |f|%>
-      <%= f.hidden_field :sub_course_id, value: params[:sub_course_id]%>
+      <%= f.hidden_field :sub_course_number, value: params[:sub_course_number]%>
       <% @questions.each_with_index do |question, index|%>
         <p class="title"><%= index + 1 %> <%= question.title%></p>
           <% question.options.each do |option|%>

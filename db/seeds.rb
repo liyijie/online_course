@@ -96,16 +96,19 @@ begin
 		   content: '这是文件视屏或者图片，pdf等'}])
 	SubCourse.create!([
 		  {id: 1,
+           number: '124322533',
 		   course_id: 1,
 		   name: '第一节课，课程大纲',
 		   content: '这是文件视屏或者图片，pdf等'
 		  },{
 		   id: 2,
+           number: '6434354345',
 		   course_id: 1,
 		   name: '第二节课，第一个ruby项目', 
 		   content: '这是文件视屏或者图片，pdf等'
 		 },{
 		   id: 3,
+           number: '775757345',
 		   course_id: 2,
 		   name: '第1节课，python可以做什么',
 		   content: '这是文件视屏或者图片，pdf等'
