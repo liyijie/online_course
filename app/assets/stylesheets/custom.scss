@@ -717,16 +717,22 @@ body.exams__new {
     }
   }
 }
-/*教师我的课程, 我的班级, 教师介绍*/
-body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info {
+/*教师我的课程, 我的班级, 教师介绍, 我的账户*/
+body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info,
+body.teachers__my_account, body.teachers__upload_course_ware,
+body.teachers__my_faqs {
   .main-content {
     .teacher-content {
       margin-top: 20px;
       border-top: solid 5px $main-color;
+      &.none-mt {
+        margin-top: 0;
+      }
       .nav-bar {
         padding-left: 46px;
         margin-top: 5px;
       }
+      /*课程列表*/
       ul.courses-list {
         width: 936px;
         margin: 20px auto 0 auto;
@@ -757,6 +763,7 @@ body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info {
           }
         }
       }
+      /*班级列表*/
       ul.grades-list {
         width: 992px;
         margin: 20px auto 0 auto;
@@ -789,7 +796,44 @@ body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info {
           }
         }
       }
+      /*提问列表*/
+      ul.my-questions li {
+        padding: 20px 0px 20px 32px;
+        border-bottom: dotted 1px #edf1f2;
+        overflow: hidden;
+        .avatar {
+          width: 55px;
+          height: 55px;
+          overflow: hidden;
+          float: left;
+        }
+        .question-info {
+          width: 700px;
+          float: left;
+          margin-left: 20px;
+          overflow: hidden;
+          p.time, p.name span {
+            color: #b5bdc0;
+          }
+        }
+        .answer-broswer {
+          float: left;
+          .list {
+            min-width: 40px;
+            color: #b5bdc0;
+            text-align: center;
+            float: left;
+            &.bl {
+              border-right: solid 1px #edf1f2;
+            }
+          }
+        }
+      }
+      ul.my-answers {
+        
+      }
       .teacher-info-content .infos {
+        margin-top: 20px;
         display: none;
       }
     }

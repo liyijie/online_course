@@ -1,0 +1,48 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_teacher_page" %>
+<%end%>
+
+<div class="main-content">
+  <%= render "left_bar" %>
+  <%= render "teacher_info" %>
+  <div class="teacher-content teacher-wrapper">
+  	<div class="nav-bar">
+  		<a href="javascript:void(0)" class="btn btn-default by-btn-bg">我的提问</a>
+  		<a href="javascript:void(0)" class="btn btn-default">我的回复</a>
+  	</div>
+  	<div class="teacher-info-content teacher-wrapper">
+  		<div class="infos">
+  		 	<ul class="my-questions">
+  		 	  <% 5.times do %>
+	  		 		<li>
+	  		 		  <div class="avatar">
+	  		 		  	<%= image_tag("teacher-avatar.png")%>
+	  		 		  </div>
+	  		 		  <div class="question-info">
+	  		 		  	<p class="name">
+		  		 		    <%= current_teacher.phone %>
+		  		 		    <span>提问</span>
+		  		 		  </p>
+		  		 		  <p class="content">10个web前端jquery开发者必备的源码组件</p>
+		  		 		  <p class="time">时间: 2小时前</p>
+	  		 		  </div>
+	  		 		  <div class="answer-broswer">
+	  		 		  	<div class="list bl">
+	  		 		  		<p class="num">0</p>
+	  		 		  		<p class="answer">回答</p>
+	  		 		  	</div>
+	  		 		  	<div class="list">
+	  		 		  		<p class="num">0</p>
+	  		 		  		<p class="answer">浏览</p>
+	  		 		  	</div>
+	  		 		  </div>
+	  		 		</li>
+	  		 	<%end%>
+  		 	</ul>
+  		</div>
+  		<div class="infos">
+  		 	我的回复
+  		</div>
+  	</div>
+  </div>
+</div>

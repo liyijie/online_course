@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   	resources :sub_courses
   end
 
-  resources :teachers, only: [] do
+  resources :teachers, only: [:update] do
     collection do
       get :my_courses
       get :my_grades
       get :my_info
+      get :my_account
+      get :upload_course_ware
+      get :discuss_center
+      get :my_faqs
     end
   end
 
