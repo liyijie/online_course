@@ -1,5 +1,9 @@
 class TeachersController < ApplicationController
+	#我的课程
 	def my_courses
-		@teacher = Teacher.find_by_number(params[:number])
+	end
+
+  #我的班级
+	def my_grades
 	end
 end

@@ -6,71 +6,21 @@
   		<span class="btn btn-primary by-btn-bg">课程中心</span>
   	</div>
   	<ul class="courses-list cl-sm-12">
-  		<li class="course">
-  			<%= link_to image_tag("my-courses.png")%>
-  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
-  			<div class="description">
-  				<span>该课程一共有15课时</span>
-  				<label>
-  					<%= link_to "" do %>
-		  			  <span class="glyphicon glyphicon-star"></span>
-		  			<%end%>
-		  			<span>2015人收藏</span>
-  				</label>
-  			</div>
-  		</li>
-  		<li class="course">
-  			<%= link_to image_tag("my-courses.png")%>
-  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
-  			<div class="description">
-  				<span>该课程一共有15课时</span>
-  				<label>
-  					<%= link_to "" do %>
-		  			  <span class="glyphicon glyphicon-star"></span>
-		  			<%end%>
-		  			<span>2015人收藏</span>
-  				</label>
-  			</div>
-  		</li>
-  		<li class="course">
-  			<%= link_to image_tag("my-courses.png")%>
-  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
-  			<div class="description">
-  				<span>该课程一共有15课时</span>
-  				<label>
-  					<%= link_to "" do %>
-		  			  <span class="glyphicon glyphicon-star"></span>
-		  			<%end%>
-		  			<span>2015人收藏</span>
-  				</label>
-  			</div>
-  		</li>
-  		<li class="course">
-  			<%= link_to image_tag("my-courses.png")%>
-  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
-  			<div class="description">
-  				<span>该课程一共有15课时</span>
-  				<label>
-  					<%= link_to "" do %>
-		  			  <span class="glyphicon glyphicon-star"></span>
-		  			<%end%>
-		  			<span>2015人收藏</span>
-  				</label>
-  			</div>
-  		</li>
-  		<li class="course">
-  			<%= link_to image_tag("my-courses.png")%>
-  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
-  			<div class="description">
-  				<span>该课程一共有15课时</span>
-  				<label>
-  					<%= link_to "" do %>
-		  			  <span class="glyphicon glyphicon-star"></span>
-		  			<%end%>
-		  			<span>2015人收藏</span>
-  				</label>
-  			</div>
-  		</li>
+      <% 6.times do%>
+    		<li class="course">
+    			<%= link_to image_tag("my-courses.png")%>
+    			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
+    			<div class="description">
+    				<span>该课程一共有15课时</span>
+    				<label>
+    					<%= link_to "" do %>
+  		  			  <span class="glyphicon glyphicon-star"></span>
+  		  			<%end%>
+  		  			<span>2015人收藏</span>
+    				</label>
+    			</div>
+    		</li>
+      <%end%>
   	</ul>
   </div>
 </div>

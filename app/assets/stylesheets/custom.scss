@@ -760,3 +760,48 @@ body.teachers__my_courses {
     }
   }
 }
+/*教师我的班级*/
+body.teachers__my_grades {
+  .main-content {
+    .teacher-grades-content {
+      margin-top: 20px;
+      border-top: solid 5px $main-color;
+      .nav-bar {
+        padding-left: 46px;
+        margin-top: 5px;
+      }
+      ul.grades-list {
+        width: 992px;
+        margin: 20px auto 0 auto;
+        overflow: hidden;
+        li {
+          border: solid 1px #dbdbdb;
+          margin-bottom: 24px;
+          &.grade {
+            width: 224px;
+            margin: 20px 12px;
+            float: left;
+          }
+          .description, p.course-title a {
+            padding: 0 10px;
+            height: 40px;
+            line-height: 40px;
+          }
+          .description label {
+            color: #555555;
+            float: right;
+            font-weight: normal;
+            span.name {
+            }
+            a span {
+              color: #ffc704;
+            }
+          }
+          p.course-title a {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}

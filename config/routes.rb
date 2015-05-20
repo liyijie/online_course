@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :teachers, only: [] do
     collection do
       get :my_courses
+      get :my_grades
     end
   end
 
