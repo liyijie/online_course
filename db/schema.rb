@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519012927) do
+ActiveRecord::Schema.define(version: 20150520051416) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 20150519012927) do
     t.integer  "user_id",       limit: 4
     t.integer  "sub_course_id", limit: 4
     t.integer  "total_score",   limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "correct_count", limit: 4
-    t.integer  "all_count",     limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "correct_count", limit: 4, default: 0
+    t.integer  "all_count",     limit: 4, default: 0
   end
 
   add_index "exams", ["sub_course_id"], name: "index_exams_on_sub_course_id", using: :btree
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20150519012927) do
     t.string   "content",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "number",     limit: 255
   end
 
   add_index "sub_courses", ["course_id"], name: "index_sub_courses_on_course_id", using: :btree

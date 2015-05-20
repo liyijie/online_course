@@ -1,5 +1,5 @@
 class ExamsController < ApplicationController
-
+  before_action :authenticate_user!
 	def new
 		@sub_course = SubCourse.find_by_id(params[:sub_course_id])
 		@questions = @sub_course.questions 
@@ -13,6 +13,7 @@ class ExamsController < ApplicationController
 			val = "option_" + index.to_s
 			qid = question.id
 		  answer_params = {qid => params[val]}
+		  @exam.user_id = current_user.id
 		  @exam.generate_by_answer_params(answer_params)
 		end
 	end
