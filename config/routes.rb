@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       get 'my_courses'
       get 'my_exams'
       get 'score_search'
+      get 'my_collect'
+      get 'questions_answers'
+      get 'discuss_center'
     end
   end
 

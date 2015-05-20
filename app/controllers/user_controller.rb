@@ -58,7 +58,7 @@ class UserController < ApplicationController
 
   #我的课程
   def my_courses
-    
+    current_user.image = Image.new if current_user.image.blank?
   end
 
   #我的考试

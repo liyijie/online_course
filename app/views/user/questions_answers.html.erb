@@ -1,0 +1,71 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_user" %>
+<% end %>
+<div class="row user">
+
+  <div class="col-md-2" role="complementary">
+	<%= render :partial => "nav_left" %>
+  </div>
+
+  <div class="col-md-10">
+
+    <div class="row common-info">
+      <%= render :partial => "base_info" %>
+	  </div>
+
+	  <div class="row self-main-context">
+
+	    <ul class="nav nav-pills show-content">
+        <li role="presentation" class="active"><%= link_to "我的提问","#" %></li>
+        <li role="presentation"><%= link_to "我的回答","#" %></li>
+      </ul>
+
+      <!-- ###############################我的提问##################### -->
+      <div class="div-content questions-answers-content">
+      <% (1..8).each do |i| %>
+        <div class="row questions-answers-list">
+          <div class="col-sm-1">
+            <%= image_tag current_user.try(:image).try(:avatar).try(:url, :thumb),class: "img-rounded max60" %>
+          </div>
+          <div class="col-sm-9">
+            <div>奋斗在路上 <span class="grey-font">提问</span></div>
+            <p>【小牧送福利了】小牧带你参加GO语言与Gocker分享会！速度报名哦</p><br>
+            <div class="grey-font">时间：2小时前</div>
+          </div>
+          <div class="col-sm-2 grey-font">
+            <table class="table no-border">
+              <tr align="center"><td>0</td><td class="left-border">1</td></tr>
+              <tr align="center"><td>回答</td><td class="left-border">浏览</td></tr>
+            </table>
+          </div>
+        </div>
+        <% end %>
+	    </div>
+      <!-- ###############################我的提问##################### -->
+
+      <!-- ###############################我的回答##################### -->
+      <div class="div-content questions-answers-content" style="display:none">
+      <% (1..8).each do |i| %>
+        <div class="row questions-answers-list">
+          <div class="col-sm-1">
+            <%= image_tag current_user.try(:image).try(:avatar).try(:url, :thumb),class: "img-rounded max60" %>
+          </div>
+          <div class="col-sm-9">
+            <div>奋斗在路上 <span class="grey-font">回答</span></div>
+            <p>可以使用xxxxx来实现，参考ruby-china</p><br>
+            <div class="grey-font">时间：2小时前</div>
+          </div>
+          <div class="col-sm-2 grey-font">
+            <table class="table no-border">
+              <tr align="center"><td>2</td><td class="left-border">3</td></tr>
+              <tr align="center"><td>回答</td><td class="left-border">浏览</td></tr>
+            </table>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <!-- ###############################我的回答##################### -->
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_user" %>
+<% end %>
+<div class="row user">
+
+  <div class="col-md-2" role="complementary">
+	<%= render :partial => "nav_left" %>
+  </div>
+
+  <div class="col-md-10">
+
+    <div class="row common-info">
+      <%= render :partial => "base_info" %>
+	  </div>
+
+	  <div class="row self-main-context">
+
+	    <ul class="nav nav-pills show-content">
+        <li role="presentation" class="active"><%= link_to "收藏的课程","#" %></li>
+      </ul>
+      <div class="div-content my-collect-content">
+      <% (1..5).each do |i|%>
+
+        <div class="row collect-list">
+
+          <div class="col-sm-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="ov-hidden"><%= image_tag "my_collect1.png" %></div>
+                <div class="collect-desc">
+                  <h5>Python交互编程入门</h5>
+                  <div>
+                    该课程一个15个课时
+                    <span class="pull-right">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                      254人收藏
+                    </span>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="ov-hidden"><%= image_tag "my_collect2.png" %></div>
+                <div class="collect-desc">
+                  <h5>Python交互编程入门</h5>
+                  <div>
+                    该课程一个15个课时
+                    <span class="pull-right">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                      254人收藏
+                    </span>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="ov-hidden"><%= image_tag "my_collect3.png" %></div>
+                <div class="collect-desc">
+                  <h5>Python交互编程入门</h5>
+                  <div>
+                    该课程一个15个课时
+                    <span class="pull-right">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                      254人收藏
+                    </span>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+      <% end %>
+
+	    </div>
+    </div>
+  </div>
+</div>

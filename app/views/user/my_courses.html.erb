@@ -22,6 +22,7 @@
       </ul>
       <!-- ###########################正在学习的课程########################## -->
       <div class="my-course-container div-content">
+      <% (1..5).each do |i| %>
         <div class="row my-course">
           <div class="col-sm-3 ov-hidden">
             <%= image_tag "my-course.png" %>
@@ -43,94 +44,7 @@
               <button type="button" class="btn btn-success">开始学习</button>
             </div>
         </div>
-
-        <div class="row my-course">
-          <div class="col-sm-3 ov-hidden">
-            <%= image_tag "my-course.png" %>
-            <span class="badge">23%</span>
-          </div>
-          <div class="col-sm-7">
-            <div class="my-course-desc"> 
-              <h4>CSS实现网页平滑过渡效果<br>
-                <small>
-                  <span class="text-success">18小时前更新至3-3</span> | 
-                  学习耗时：15分钟 |
-                  最后学习：32分钟
-                </small>
-              </h4><br>
-              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
-            </div>
-          </div>
-          <div class="col-sm-2">
-              <button type="button" class="btn btn-success">开始学习</button>
-            </div>
-        </div>
-
-        <div class="row my-course">
-          <div class="col-sm-3 ov-hidden">
-            <%= image_tag "my-course.png" %>
-            <span class="badge">23%</span>
-          </div>
-          <div class="col-sm-7">
-            <div class="my-course-desc"> 
-              <h4>CSS实现网页平滑过渡效果<br>
-                <small>
-                  <span class="text-success">18小时前更新至3-3</span> | 
-                  学习耗时：15分钟 |
-                  最后学习：32分钟
-                </small>
-              </h4><br>
-              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
-            </div>
-          </div>
-          <div class="col-sm-2">
-              <button type="button" class="btn btn-success">开始学习</button>
-            </div>
-        </div>
-
-        <div class="row my-course">
-          <div class="col-sm-3 ov-hidden">
-            <%= image_tag "my-course.png" %>
-            <span class="badge">18%</span>
-          </div>
-          <div class="col-sm-7">
-            <div class="my-course-desc"> 
-              <h4>CSS实现网页平滑过渡效果<br>
-                <small>
-                  <span class="text-success">18小时前更新至3-3</span> | 
-                  学习耗时：15分钟 |
-                  最后学习：32分钟
-                </small>
-              </h4><br>
-              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
-            </div>
-          </div>
-          <div class="col-sm-2">
-              <button type="button" class="btn btn-success">开始学习</button>
-            </div>
-        </div>
-
-        <div class="row my-course">
-          <div class="col-sm-3 ov-hidden">
-            <%= image_tag "my-course.png" %>
-            <span class="badge">13%</span>
-          </div>
-          <div class="col-sm-7">
-            <div class="my-course-desc"> 
-              <h4>CSS实现网页平滑过渡效果<br>
-                <small>
-                  <span class="text-success">18小时前更新至3-3</span> | 
-                  学习耗时：15分钟 |
-                  最后学习：32分钟
-                </small>
-              </h4><br>
-              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
-            </div>
-          </div>
-          <div class="col-sm-2">
-              <button type="button" class="btn btn-success">开始学习</button>
-            </div>
-        </div>
+        <% end %>
 	    </div>
       <!-- ###########################正在学习的课程########################## -->
 

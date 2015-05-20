@@ -3,8 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.user__index, body.user__show, body.user__update, body.user__my_courses, body.user__my_exams, 
-body.user__score_search
+body.user__score_search, body.user__my_collect, body.user__questions_answers, body.user__discuss_center
 {
+
+  .grey-font {
+    color: #808080;
+  }
+
   div.row.user {
     font-size: 13px;
     a {
@@ -54,6 +59,9 @@ body.user__score_search
     input, select, textarea {
       color: #808080;
     }
+    .btn {
+     color: #fff;
+    }
   }
 
   .radio-inline {
@@ -67,6 +75,7 @@ body.user__score_search
    padding-top: 5px;
   }
 
+  //学生公共信息
   div.row.common-info {
     background: #fff;
     padding-top: 20px;
@@ -164,7 +173,7 @@ body.user__score_search
 
   //成绩查询
   .scoure-search {
-    padding-top: 20px;
+    padding-top: 30px;
     padding-right: 15px;
 
     .score-list {
@@ -187,6 +196,111 @@ body.user__score_search
       margin-top: 5px;
     }
   }
+
+  //我的收藏
+  .my-collect-content {
+    padding-top: 30px;
+    padding-right: 15px;
+
+    .collect-list {
+       padding: 10px 15px;
+    }
+
+    .panel-body {
+      padding: 0 0 5px 0;
+      img {
+        width: 100%;
+      }
+
+      h5 {
+        line-height: 2;
+        padding-bottom: 5px;
+      }
+      .collect-desc {
+        padding: 5px;
+
+        div {
+          color: #808080;
+          .glyphicon.glyphicon-star {
+            color: orange;
+          }
+        }
+      }
+    }
+  }
+
+  //我的问答
+  .questions-answers-content {
+    padding-top: 30px;
+    padding-right: 15px;
+
+    .questions-answers-list {
+      padding: 15px 40px;
+      margin: 10px 5px 10px 5px;
+      border-bottom: 1px dotted #dcdcdc;
+
+      .max60 {
+        max-height: 60px;
+        max-width: 60px;
+      }
+
+      table.no-border tbody tr td {
+        padding: 2px;
+        border: 0;
+      }
+      table.no-border tbody tr td.left-border {
+          border-left: 1px solid #dcdcdc;
+      }
+    }
+  }
+
+  //讨论中心
+  .discuss-center-content {
+    padding-top: 30px;
+    padding-right: 15px;
+
+    .discuss-center-list {
+      padding: 15px 40px;
+      margin: 10px 5px 10px 5px;
+      border-bottom: 1px dotted #dcdcdc;
+
+      .max60 {
+        max-height: 60px;
+        max-width: 60px;
+      }
+
+      .max20 {
+        max-height: 20px;
+        max-width: 20px;
+      }
+
+       table.no-border tbody tr td {
+        padding: 2px;
+        border: 0;
+      }
+      table.no-border tbody tr td.left-border {
+          border-left: 1px solid #dcdcdc;
+      }
+
+      .glyphicon-question-sign {
+        color: #77ddff;
+      }
+
+      .glyphicon-info-sign {
+        color: #808080;
+      }
+
+      .no-padding {
+        padding: 0;
+      }
+
+      h5 {
+       line-height: 2;
+      }
+    }
+  }
+
+
   
   
 
