@@ -20,6 +20,7 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
+  validates :title, presence: true if "commentable_id.blank?"
   validates :body, :presence => true
   validates :usertable, :presence => true
 

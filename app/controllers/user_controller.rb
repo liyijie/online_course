@@ -1,10 +1,6 @@
 class UserController < ApplicationController
   before_action :authenticate_user!  
 	
-  def index
-  	
-  end
-
   #我的账户
   def show
   	@user = current_user
@@ -12,9 +8,6 @@ class UserController < ApplicationController
   	#学院专业回显赋值
   	@user.academy_id = @user.try(:grade).try(:specialty).try(:academy).try(:id)
   	@user.specialty_id = @user.try(:grade).try(:specialty).try(:id)
-
-    #头像处理,未上传头像显示默认图片
-    @user.image = Image.new if @user.image.blank?
 
     #专业、班级下拉对应值查
   	@specialties = Specialty.where(academy_id: @user.academy_id).pluck(:name, :id)
@@ -33,7 +26,11 @@ class UserController < ApplicationController
   	end
 
     #头像赋值
-    @user.image.avatar = params[:user][:image] if params[:user][:image]
+    if params[:user][:image]
+      #头像处理,未上传头像显示默认图片
+      @user.image = Image.new if @user.image.blank?
+      @user.image.avatar = params[:user][:image] 
+    end
 
   	if @user.update(user_params)
 
@@ -58,7 +55,7 @@ class UserController < ApplicationController
 
   #我的课程
   def my_courses
-    current_user.image = Image.new if current_user.image.blank?
+
   end
 
   #我的考试
@@ -81,9 +78,26 @@ class UserController < ApplicationController
 
   end
 
-  #我的账户
+  #讨论中心
   def discuss_center
+    @new_comments = Comment.where(commentable_id: nil, parent_id: nil).order("created_at DESC").limit(10)
 
+    @comment = Comment.new
+  end
+
+
+  #讨论中心-发布话题
+  def comment_create
+    @comment = Comment.new comment_params
+    @comment.usertable_id = current_user.id
+    @comment.usertable_type = current_user.class
+    if @comment.save
+      flash[:notice] = "发布话题成功"
+      redirect_to discuss_center_user_index_path
+    else
+      @new_comments = Comment.where(commentable_id: nil, parent_id: nil).order("created_at DESC").limit(10)
+      render :discuss_center
+    end
   end
 
 
@@ -111,4 +125,8 @@ class UserController < ApplicationController
 		params.require(:user).permit(:nickname, :name, :number, :position, :academy_id, :specialty_id, :grade_id, 
 			:phone, :gender, :signature)
 	end
+
+  def comment_params
+    params.require(:comment).permit(:title, :body)
+  end
 end

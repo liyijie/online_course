@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :exams, only: [:new, :create]
 
   resources :user, only: [:show, :update] do
-  	collection do
+    collection do
       post 'get_specialties'
       post 'get_grades'
       get 'show'
@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       get 'my_collect'
       get 'questions_answers'
       get 'discuss_center'
+
+      post 'comment_create'
     end
   end
 

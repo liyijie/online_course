@@ -25,7 +25,7 @@
       <% (1..8).each do |i| %>
         <div class="row questions-answers-list">
           <div class="col-sm-1">
-            <%= image_tag current_user.try(:image).try(:avatar).try(:url, :thumb),class: "img-rounded max60" %>
+            <%= image_tag current_user.image.present? ? current_user.try(:image).try(:avatar).try(:url, :thumb) : "missing.png", class: "img-rounded max60" %>
           </div>
           <div class="col-sm-9">
             <div>奋斗在路上 <span class="grey-font">提问</span></div>
@@ -48,7 +48,7 @@
       <% (1..8).each do |i| %>
         <div class="row questions-answers-list">
           <div class="col-sm-1">
-            <%= image_tag current_user.try(:image).try(:avatar).try(:url, :thumb),class: "img-rounded max60" %>
+            <%= image_tag current_user.image.present? ? current_user.try(:image).try(:avatar).try(:url, :thumb) : "missing.png",class: "img-rounded max60" %>
           </div>
           <div class="col-sm-9">
             <div>奋斗在路上 <span class="grey-font">回答</span></div>

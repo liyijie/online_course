@@ -1,5 +1,9 @@
 <%= content_for :script do %>
   <%= javascript_include_tag "_user" %>
+  <%= javascript_tag do %>
+    action = "<%= controller.action_name %>"
+  <% end %>
+  <%= javascript_include_tag "_user_discuss_center" %>
 <% end %>
 <div class="row user">
 
@@ -19,37 +23,42 @@
         <li role="presentation" class="active"><%= link_to "最新话题","#" %></li>
         <li role="presentation"><%= link_to "热门话题","#" %></li>
         <li role="presentation"><%= link_to "等待回复","#" %></li>
+        <li role="presentation"><%= link_to "发布话题","#" %></li>
       </ul>
 
       <!-- ######################最新话题##################### -->
       <div class="div-content discuss-center-content">
-      <% (1..8).each do |i| %>
-        <div class="row discuss-center-list">
-          <div class="col-sm-1 no-padding">
-            <%= image_tag current_user.try(:image).try(:avatar).try(:url, :thumb),class: "img-circle max60" %>
-            <p class="center-block grey-font">斯塔克</p>
-          </div>
-          <div class="col-sm-9">
-            <h5>
-              <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-              关于 生命变量var timer=null 的位置问题
-            </h5>
-            <p>
-              <span class="glyphicon glyphicon-info-sign" aria-hidden="true">
-              <span class="grey-font">嗯 ~ ~，这个问题大家都在考虑</span>
-            </p><br>
-            <div class="grey-font">
-              提问时间：2小时前
-              <span class="label label-default">JavaScript</span>
+        <% if @new_comments.blank? %>
+        <div class="blank">没有最新话题</div>
+        <% else %>
+          <% @new_comments.each do |comment| %>
+          <div class="row discuss-center-list">
+            <div class="col-sm-1 no-padding">
+              <%= image_tag comment.try(:usertable).try(:image).try(:avatar).try(:url, :thumb),class: "img-circle max60" %>
+              <p class="center-block grey-font"><%= comment.try(:usertable).try(:name) %></p>
+            </div>
+            <div class="col-sm-9">
+              <h5>
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                <%= comment.title %>
+              </h5>
+              <p>
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true">
+                <span class="grey-font"><%= comment.body%></span>
+              </p><br>
+              <div class="grey-font">
+                <%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
+                <span class="label label-default">JavaScript</span>
+              </div>
+            </div>
+            <div class="col-sm-2 grey-font">
+              <table class="table no-border">
+                <tr align="center"><td>0</td><td class="left-border"><%= comment.children.size %></td></tr>
+                <tr align="center"><td>回答</td><td class="left-border">浏览</td></tr>
+              </table>
             </div>
           </div>
-          <div class="col-sm-2 grey-font">
-            <table class="table no-border">
-              <tr align="center"><td>0</td><td class="left-border">7</td></tr>
-              <tr align="center"><td>回答</td><td class="left-border">浏览</td></tr>
-            </table>
-          </div>
-        </div>
+          <% end %>
         <% end %>
       </div>
       <!-- ######################最新话题##################### -->
@@ -121,6 +130,26 @@
         <% end %>
       </div>
       <!-- ######################等待回复##################### -->
+
+
+      <!-- ######################发布话题##################### -->
+      <div class="div-content discuss-center-content container div-form" style="display: none;">
+        <%= simple_form_for(@comment, url: comment_create_user_index_path, wrapper: "horizontal_form", html: { method: :post, class: "form-horizontal" }) do |f| %>
+          <%= f.input :title, required: false %>
+          <%= f.input :body, as: :text, required: false %>
+
+          <div class="col-sm-5 col-sm-offset-2">
+          <p class="text-center">
+            <%= f.submit "发布话题", class: "btn btn-success" %>
+          </p>
+          </div>
+        <% end %>
+      </div>
+      <!-- ######################发布话题##################### -->
+      
+
+
+
     </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ zh-CN:
     models:
       user:  "用户"
       teacher: "教师"
+      comment: "评论"
     attributes:
       user:
         login: "用户名或账号"
@@ -17,6 +18,10 @@ zh-CN:
         specialty_id: "专业"
         grade: "班级"
         image: "头像"
+
+      comment: 
+        title: "标题"
+        body: "内容"
 
     errors:
       models:
@@ -48,3 +53,9 @@ zh-CN:
             password_confirmation:
               blank: "确认密码不能为空"
               confirmation: "两次密码输入不一致，请重新输入"
+        comment:
+          attributes:
+            title:
+              blank: "标题必须填写"
+            body:
+              blank: "内容必须填写"
