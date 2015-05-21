@@ -4,46 +4,85 @@
       个人中心
     </div>
     <ul class="list">
-      <li class="active">
-        <%= link_to my_courses_teachers_path, class: 'active' do %>
+      <div class="list-bg"></div>
+      <li>
+        <%= link_to my_courses_teachers_path do %>
           <span class="glyphicon glyphicon-film">我的课程</span>
         <%end%>
       </li>
       <li>
-        <%= link_to my_grades_teachers_path, class: 'active' do %>
+        <%= link_to my_grades_teachers_path do %>
           <span class="glyphicon glyphicon-tasks">我的班级</span>
         <%end%>
       </li>
       <li>
-        <%= link_to "", class: 'active' do %>
+        <%= link_to my_score_teachers_path do %>
           <span class="glyphicon glyphicon-eye-open">成绩查询</span>
         <%end%>
       </li>
       <li>
-        <%= link_to my_faqs_teachers_path, class: 'active' do %>
+        <%= link_to my_faqs_teachers_path do %>
           <span class="glyphicon glyphicon-book">我的问答</span>
         <%end%>
       </li>
       <li>
-        <%= link_to discuss_center_teachers_path, class: 'active' do %>
+        <%= link_to discuss_center_teachers_path do %>
           <span class="glyphicon glyphicon-list-alt">讨论中心</span>
         <%end%>
       </li>
       <li>
-        <%= link_to upload_course_ware_teachers_path, class: 'active' do %>
+        <%= link_to upload_course_ware_teachers_path do %>
           <span class="glyphicon glyphicon-upload">上传课件</span>
         <%end%>
       </li>
       <li>
-        <%= link_to my_info_teachers_path, class: 'active' do %>
+        <%= link_to my_info_teachers_path do %>
           <span class="glyphicon glyphicon-user">教师介绍</span>
         <%end%>
       </li>
       <li>
-        <%= link_to my_account_teachers_path, class: 'active' do %>
+        <%= link_to my_account_teachers_path do %>
           <span class="glyphicon glyphicon-cog">我的账户</span>
         <%end%>
       </li>
     </ul>
   </div>
 </div>
+<script type="text/javascript">
+  $(function(){
+    $("#left-bar .list li").each(function(index){
+      var _this = $(this);
+      var _index = index;
+      if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_courses"){
+        $("#left-bar .list .list-bg").css("top", "62px");
+      }
+      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_grades"){
+        $("#left-bar .list .list-bg").css("top", "128px");
+      }
+      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_score"){
+        $("#left-bar .list .list-bg").css("top", "194px");
+      }
+      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_faqs"){
+        $("#left-bar .list .list-bg").css("top", "260px");
+      }
+      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "discuss_center"){
+        $("#left-bar .list .list-bg").css("top", "326px");
+      }
+      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "upload_course_ware"){
+        $("#left-bar .list .list-bg").css("top", "392px");
+      }
+      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_info"){
+        $("#left-bar .list .list-bg").css("top", "458px");
+      }
+      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_account"){
+        $("#left-bar .list .list-bg").css("top", "524px");
+      }
+      //_this.hover(function(){
+        //var top = 62 + _index * 66 + "px";
+        //$("#left-bar .list .list-bg").css("top", top);
+        //_this.find("a").addClass("active");
+        //_this.siblings().find("a").removeClass("active");
+      //})
+    })
+  });
+</script>

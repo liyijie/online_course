@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :upload_course_ware
       get :discuss_center
       get :my_faqs
+      get :my_score
     end
   end
 

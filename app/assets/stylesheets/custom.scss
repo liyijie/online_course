@@ -623,6 +623,7 @@ body.exams__new {
 #left-bar {
   width: 184px;
   float: left;
+  position: relative;
   .out-wrap {
     width: 172px;
     background: #fff;
@@ -636,20 +637,27 @@ body.exams__new {
       border-top: 4px solid $main-color;
       border-bottom: 4px solid $main-color;
     }
+    .list-bg {
+      height: 46px;
+      width: 184px;
+      color: #fff;
+      position: absolute;
+      top: 62px;
+      left: 0;
+      background: image-url("teacher-active-bg.png") no-repeat 0 0;
+    }
     ul.list li {
       width: 184px;
-      &.active {
-        background: image-url("teacher-active-bg.png") no-repeat 0 0;
-        a {
-          color: #fff;
-        }
-      }
       a {
         height: 46px;
         line-height: 46px;
         text-align: center;
         margin: 20px 0;
         display: block;
+        color: #535353;
+        &.active {
+          color: #fff;
+        }
       }
     }
   }
@@ -669,7 +677,7 @@ body.exams__new {
     float: left;
   }
   .teacher-data {
-    width: 660px;
+    width: 658px;
     margin-left: 20px;
     float: left;
     div.title-content {
@@ -724,6 +732,7 @@ body.teachers__my_faqs {
   .main-content {
     .teacher-content {
       margin-top: 20px;
+      float: right;
       border-top: solid 5px $main-color;
       &.none-mt {
         margin-top: 0;
@@ -830,7 +839,6 @@ body.teachers__my_faqs {
         }
       }
       ul.my-answers {
-        
       }
       .teacher-info-content .infos {
         margin-top: 20px;

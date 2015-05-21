@@ -12,6 +12,10 @@ class TeachersController < ApplicationController
 	def my_info
 	end
 
+  #成绩查询
+	def my_score
+	end
+
 	#我的账户
 	def my_account
 	end
