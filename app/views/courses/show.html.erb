@@ -1,4 +1,7 @@
 <%= content_for :script do %>
+  <%= javascript_tag do %>
+    user_login = <%= current_user.present? %>
+  <% end %>
   <%= javascript_include_tag "_course_show" %>
 <%end%>
 
@@ -20,14 +23,21 @@
     <div class="right-content">
       <h1>IOS图形界面开发</h1>
       <div class="collect-zan-btns">
-        <%= link_to "", class: "btn btn-default " do %>
-          <span class="glyphicon glyphicon-star"></span>
-          <span>取消收藏</span>
-        <%end%>
-        <%= link_to "", class: "btn btn-default" do %>
-          <span class="glyphicon glyphicon-heart"></span>
-          <span>360个赞</span>
-        <%end%>
+        <%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do%>
+          <%= hidden_field_tag "course_id", @course.id%>
+          <button id="courseCollectBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
+            <span class="glyphicon glyphicon-star"></span>
+            <% collect_count = @course.get_likes(vote_scope: "collect").size %>
+            <span id="collectFont" count="<%= collect_count %>" 
+              iscollect = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>" >
+              <%= collect_count %>人收藏
+            </span>
+          </button>
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-heart"></span>
+            360个赞
+          </button>
+        <% end %>
       </div>
       <ul class="course-main">
         <li class="course-info">

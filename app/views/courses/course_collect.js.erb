@@ -1,0 +1,16 @@
+var new_count = 0;
+var collect = "<%= @collect %>";
+if(collect == "collect"){
+	$("#collectFont").attr("iscollect","false")
+	new_count = parseInt($("#collectFont").attr("count")) - 1;
+	$("#collectFont").attr("count",new_count)
+	$("#collectFont").text(new_count + "人收藏")
+	alert("收藏已取消");
+}else{
+	$("#collectFont").attr("iscollect","true")
+	new_count = parseInt($("#collectFont").attr("count")) + 1;
+	$("#collectFont").attr("count",new_count)
+	$("#collectFont").text(new_count + "人收藏")
+	alert("收藏成功");
+}
+

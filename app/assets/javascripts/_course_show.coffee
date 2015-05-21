@@ -28,7 +28,30 @@ _entry_toggle_btn = ->
       _this.siblings().addClass("btn-default").removeClass("btn-primary")
       _entry_content.eq(index).show().siblings().hide()
 
+
+
+
 $(".courses__show").ready ->
   _drop_down()
   _category_toggle()
   _entry_toggle_btn()
+
+  #用户登录时绑定以下函数
+  if user_login
+    #点击收藏按钮
+    $("#courseCollectBtn").click ->
+      $("#courseCollectPraise").submit()
+
+    #鼠标移入收藏按钮
+    $("#courseCollectBtn").mouseenter ->
+      collect_str = ""
+      if $("#collectFont").attr("iscollect") is "true"
+        collect_str = "取消收藏"
+      else
+        collect_str = "收藏"
+      $("#collectFont").text(collect_str)
+
+    #鼠标移出收藏按钮
+    $("#courseCollectBtn").mouseleave ->
+      count = $("#collectFont").attr("count")
+      $("#collectFont").text(count + "人收藏")  

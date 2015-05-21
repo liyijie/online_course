@@ -104,6 +104,12 @@ body.home__index {
       }
   	}
   }
+
+  //收藏图标
+  .glyphicon-star {
+    color: orange;
+  }
+  
   section.department-tabs {
     overflow: hidden;
     width: 100%;
@@ -399,6 +405,22 @@ body.courses__show {
         }
       }
     }
+
+    //收藏图标
+    .glyphicon-star {
+      color: orange;
+    }
+    //赞图标
+    .glyphicon-heart {
+      color: pink;
+    }
+
+    .btn-default-no:hover {
+      background-color: #fff;
+      cursor: default;
+      border-color: #ccc;
+    }
+
     /*相关课程*/
     .related-courses {
       margin-top: 40px;

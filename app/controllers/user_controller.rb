@@ -70,7 +70,7 @@ class UserController < ApplicationController
 
   #我的收藏
   def my_collect
-    @collect_course = current_user.find_voted_items vote_scope: "collect", votable_type: "Course"
+    @collect_course = current_user.find_up_voted_items vote_scope: "collect", votable_type: "Course"
   end
 
   #我的问答

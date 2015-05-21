@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
   resources :courses, only: [:index, :create] do
   	resources :sub_courses
+    collection do
+      post :course_collect
+    end
   end
 
   resources :teachers, only: [:update] do
