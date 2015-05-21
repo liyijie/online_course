@@ -26,7 +26,6 @@ class Course < ActiveRecord::Base
 	end
 
 
-
 	#课程收藏(赞)或取消收藏（取消赞）
 	#参数：课程：couorse_id,当前登录用户
 	#返回值：第一个返回值表示操作是否成功，true，false
@@ -44,6 +43,11 @@ class Course < ActiveRecord::Base
 			#未收藏（赞）则收藏（赞）
 			course.like_by current_user, vote_scope: vote_scope.to_sym
 			return true, "un#{vote_scope}"
+			return true, vote_scope
+		else
+			#未收藏（赞）则收藏（赞）
+			course.like_by current_user, vote_scope: vote_scope.to_sym
+			return true,"un#{vote_scope}"
 		end
 	end
 end

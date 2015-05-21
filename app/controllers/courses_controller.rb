@@ -24,38 +24,39 @@ class CoursesController < ApplicationController
 	end
 
 
-  	#课程的收藏或者取消收藏
-  	def course_collect
-  		collect_sucess, @collect = Course.course_collect_or_praise params[:course_id], current_user, "collect"
-  	
-  		if collect_sucess
-  	  		respond_to do |format|
-  	  		format.js {""}
-      	end
-  		else
-  	 		respond_to do |format|
-  	  			format.js { render js: "alert('用户登录后才可以收藏');" }
-      		end
-  		end 
-  	end
+	#课程的收藏或者取消收藏
+	def course_collect
+		collect_sucess, @collect = Course.course_collect_or_praise params[:course_id], current_user, "collect"
+	
+		if collect_sucess
+	  		respond_to do |format|
+	  		format.js {""}
+    	end
+		else
+	 		respond_to do |format|
+	  			format.js { render js: "alert('用户登录后才可以收藏');" }
+    		end
+		end 
+	end
 
-  	#课程点赞或者取消赞
-  	def course_praise
-  		praise_sucess, @praise = Course.course_collect_or_praise params[:course_id], current_user, "praise"
-  	
-  		if praise_sucess
-  	  		respond_to do |format|
-  	  		format.js {""}
-      	end
-  		else
-  	 		respond_to do |format|
-  	  			format.js { render js: "alert('用户登录后才可以收藏');" }
-      		end
-  		end 
-  	end
+	#课程点赞或者取消赞
+	def course_praise
+		praise_sucess, @praise = Course.course_collect_or_praise params[:course_id], current_user, "praise"
+	
+		if praise_sucess
+	  		respond_to do |format|
+	  		format.js {""}
+    	end
+		else
+	 		respond_to do |format|
+	  			format.js { render js: "alert('用户登录后才可以收藏');" }
+    		end
+		end 
+	end
 
 	private
 	  def course_params
 	  	params.require(:course).permit(:number, :name, :description)
 	  end
+
 end

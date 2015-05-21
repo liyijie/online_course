@@ -38,7 +38,7 @@
             <span class="glyphicon glyphicon-heart"></span>
             <% praise_count = @course.get_likes(vote_scope: :praise).size %>
             <span id="praiseFont" count="<%= praise_count %>" 
-              iscollect = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>" >
+              ispraise = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>" >
               <%= praise_count %>个赞
             </span>
           </button>
