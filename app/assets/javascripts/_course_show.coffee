@@ -55,3 +55,22 @@ $(".courses__show").ready ->
     $("#courseCollectBtn").mouseleave ->
       count = $("#collectFont").attr("count")
       $("#collectFont").text(count + "人收藏")  
+
+    #点击赞按钮
+    $("#coursePraiseBtn").click ->
+      $("#courseCollectPraise").attr("action",course_praise_path)
+      $("#courseCollectPraise").submit()
+
+    #鼠标移入赞按钮
+    $("#coursePraiseBtn").mouseenter ->
+      praise_str = ""
+      if $("#praiseFont").attr("ispraise") is "true"
+        praise_str = "取消赞"
+      else
+        praise_str = "赞"
+      $("#praiseFont").text(praise_str)
+
+    #鼠标移出赞按钮
+    $("#coursePraiseBtn").mouseleave ->
+      count = $("#praiseFont").attr("count")
+      $("#praiseFont").text(count + "人赞")  

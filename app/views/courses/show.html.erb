@@ -1,6 +1,7 @@
 <%= content_for :script do %>
   <%= javascript_tag do %>
     user_login = <%= current_user.present? %>
+    course_praise_path = "<%= course_praise_courses_path%>"
   <% end %>
   <%= javascript_include_tag "_course_show" %>
 <%end%>
@@ -27,15 +28,19 @@
           <%= hidden_field_tag "course_id", @course.id%>
           <button id="courseCollectBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
             <span class="glyphicon glyphicon-star"></span>
-            <% collect_count = @course.get_likes(vote_scope: "collect").size %>
+            <% collect_count = @course.get_likes(vote_scope: :collect).size %>
             <span id="collectFont" count="<%= collect_count %>" 
               iscollect = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>" >
               <%= collect_count %>人收藏
             </span>
           </button>
-          <button type="button" class="btn btn-default">
+          <button id="coursePraiseBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
             <span class="glyphicon glyphicon-heart"></span>
-            360个赞
+            <% praise_count = @course.get_likes(vote_scope: :praise).size %>
+            <span id="praiseFont" count="<%= praise_count %>" 
+              iscollect = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>" >
+              <%= praise_count %>个赞
+            </span>
           </button>
         <% end %>
       </div>

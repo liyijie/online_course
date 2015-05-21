@@ -5,7 +5,7 @@ if(collect == "collect"){
 	new_count = parseInt($("#collectFont").attr("count")) - 1;
 	$("#collectFont").attr("count",new_count)
 	$("#collectFont").text(new_count + "人收藏")
-	alert("收藏已取消");
+	alert("已取消收藏");
 }else{
 	$("#collectFont").attr("iscollect","true")
 	new_count = parseInt($("#collectFont").attr("count")) + 1;

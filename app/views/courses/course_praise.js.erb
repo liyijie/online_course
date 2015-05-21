@@ -1,0 +1,16 @@
+var new_count = 0;
+var praise = "<%= @praise %>";
+if(praise == "praise"){
+	$("#praiseFont").attr("ispraise","false");
+	new_count = parseInt($("#praiseFont").attr("count")) - 1;
+	$("#praiseFont").attr("count",new_count);
+	$("#praiseFont").text(new_count + "个赞");
+	alert("已取消赞");
+}else{
+	$("#praiseFont").attr("ispraise","true");
+	new_count = parseInt($("#praiseFont").attr("count")) + 1;
+	$("#praiseFont").attr("count",new_count);
+	$("#praiseFont").text(new_count + "个赞");
+	alert("已赞");
+}
+

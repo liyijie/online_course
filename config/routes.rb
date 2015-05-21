@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   root :to => "home#index"
   get "courses/:number", to: "courses#show", as: :show_courses
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
-  resources :courses, only: [:index, :create] do
+  resources :courses, only: [:index] do
   	resources :sub_courses
     collection do
       post :course_collect
+      post :course_praise
     end
   end
 
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
       get :upload_course_ware
       get :discuss_center
       get :my_faqs
-      get :my_score
     end
   end
 
