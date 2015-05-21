@@ -50,39 +50,45 @@
 </div>
 <script type="text/javascript">
   $(function(){
-    $("#left-bar .list li").each(function(index){
-      var _this = $(this);
-      var _index = index;
-      if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_courses"){
-        $("#left-bar .list .list-bg").css("top", "62px");
-      }
-      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_grades"){
-        $("#left-bar .list .list-bg").css("top", "128px");
-      }
-      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_score"){
-        $("#left-bar .list .list-bg").css("top", "194px");
-      }
-      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_faqs"){
-        $("#left-bar .list .list-bg").css("top", "260px");
-      }
-      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "discuss_center"){
-        $("#left-bar .list .list-bg").css("top", "326px");
-      }
-      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "upload_course_ware"){
-        $("#left-bar .list .list-bg").css("top", "392px");
-      }
-      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_info"){
-        $("#left-bar .list .list-bg").css("top", "458px");
-      }
-      else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_account"){
-        $("#left-bar .list .list-bg").css("top", "524px");
-      }
-      //_this.hover(function(){
-        //var top = 62 + _index * 66 + "px";
-        //$("#left-bar .list .list-bg").css("top", top);
-        //_this.find("a").addClass("active");
-        //_this.siblings().find("a").removeClass("active");
-      //})
-    })
+    if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_courses"){
+      $("#left-bar .list .list-bg").css("top", "62px");
+      $("#left-bar .list li").eq(0).find("a").addClass("active");
+      $("#left-bar .list li").eq(0).siblings().find("a").removeClass("active");
+    }
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_grades"){
+      $("#left-bar .list .list-bg").css("top", "128px");
+      $("#left-bar .list li").eq(1).find("a").addClass("active");
+      $("#left-bar .list li").eq(1).siblings().find("a").removeClass("active");
+    }
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_score"){
+      $("#left-bar .list .list-bg").css("top", "194px");
+      $("#left-bar .list li").eq(2).find("a").addClass("active");
+      $("#left-bar .list li").eq(2).siblings().find("a").removeClass("active");
+    }
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_faqs"){
+      $("#left-bar .list .list-bg").css("top", "260px");
+      $("#left-bar .list li").eq(3).find("a").addClass("active");
+      $("#left-bar .list li").eq(3).siblings().find("a").removeClass("active");
+    }
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "discuss_center"){
+      $("#left-bar .list .list-bg").css("top", "326px");
+      $("#left-bar .list li").eq(4).find("a").addClass("active");
+      $("#left-bar .list li").eq(4).siblings().find("a").removeClass("active");
+    }
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "upload_course_ware"){
+      $("#left-bar .list .list-bg").css("top", "392px");
+      $("#left-bar .list li").eq(5).find("a").addClass("active");
+      $("#left-bar .list li").eq(5).siblings().find("a").removeClass("active");
+    }
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_info"){
+      $("#left-bar .list .list-bg").css("top", "458px");
+      $("#left-bar .list li").eq(6).find("a").addClass("active");
+      $("#left-bar .list li").eq(6).siblings().find("a").removeClass("active");
+    }
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_account"){
+      $("#left-bar .list .list-bg").css("top", "524px");
+      $("#left-bar .list li").eq(7).find("a").addClass("active");
+      $("#left-bar .list li").eq(7).siblings().find("a").removeClass("active");
+    }
   });
 </script>

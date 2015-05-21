@@ -11,7 +11,7 @@
   	</div>
   	<div class="teacher-info-content teacher-wrapper">
   		<div class="infos">
-		  	<%= simple_form_for current_teacher, as: 'user_horizontal', html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|%>
+		  	<%= simple_form_for current_teacher, as: 'user_horizontal', html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input } do |f|%>
 		  		<%= f.input :name, label: "姓名" %>
 		  		<%= f.input :avatar, as: :file, label: "我的头像" %>
 		  		<%= f.submit "确认修改"%>

@@ -31,21 +31,21 @@
       <li>
         <p class="title">总有单选题</p>
         <p class="number">
-          <span>20</span>
+          <span><%= @questions.length%></span>
           题
         </p>
       </li>
       <li>
         <p class="title">已答题数</p>
         <p class="number">
-          <span>15</span>
+          <span class="already-reply-questions">0</span>
           题
         </p>
       </li>
       <li>
         <p class="title">未答题数</p>
         <p class="number">
-          <span>5</span>
+          <span class="yet-reply-questions">0</span>
           题
         </p>
       </li>
@@ -57,6 +57,8 @@
 <script type="text/javascript">
   $('#countdown').countdown('2015/05/21', function(event) {
     $(this).html(event.strftime('%H:%M:%S'));
+  });
+  $(function(){
   });
   $(function () {
     $(window).scroll(function(){
