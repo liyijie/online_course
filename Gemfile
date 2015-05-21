@@ -66,6 +66,9 @@ gem "paperclip", "~> 4.2.1"
 
 gem 'acts_as_commentable_with_threading', '~> 2.0.0'
 
+gem 'acts_as_votable', '~> 0.10.0'
+
+
 
 
 

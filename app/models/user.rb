@@ -33,12 +33,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
+  acts_as_voter 
 
   belongs_to :grade
   has_one :image, as: :imageable
   has_many :exams, dependent: :destroy
 
   has_many :comment, as: :usertable, dependent: :destroy
+
 
 
   # Virtual attribute for authenticating by either username or phone

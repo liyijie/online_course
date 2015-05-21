@@ -12,6 +12,10 @@
 #
 
 class Course < ActiveRecord::Base
-	acts_as_commentable
+	#评论回复
+	acts_as_commentable  
+	#关注、喜欢、收藏
+	acts_as_votable
+	
 	has_many :sub_courses, dependent: :destroy
 end

@@ -8,8 +8,8 @@
 #  title            :string(255)
 #  body             :text(65535)
 #  subject          :string(255)
-#  usertable_id     :integer
-#  usertable_type   :string(255)
+#  usertable_id     :integer          not null
+#  usertable_type   :string(255)      not null
 #  parent_id        :integer
 #  lft              :integer
 #  rgt              :integer

@@ -19,21 +19,25 @@
         <li role="presentation" class="active"><%= link_to "收藏的课程","#" %></li>
       </ul>
       <div class="div-content my-collect-content">
-      <% (1..5).each do |i|%>
-
-        <div class="row collect-list">
+      <% if @collect_course.blank? %>
+        <div class="blank">没有收藏的课程</div>
+      <% else %>
+        <% @collect_course.each_with_index do |course,index| %>
+          <% if index%3 == 0 %>
+            <div class="row collect-list">
+          <% end %>
 
           <div class="col-sm-4">
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="ov-hidden"><%= image_tag "my_collect1.png" %></div>
                 <div class="collect-desc">
-                  <h5>Python交互编程入门</h5>
+                  <h5><%= course.name %></h5>
                   <div>
                     该课程一个15个课时
                     <span class="pull-right">
                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                      254人收藏
+                      <%= course.votes_for.size %>人收藏
                     </span>
                   </div>  
                 </div>
@@ -41,44 +45,11 @@
             </div>
           </div>
 
-          <div class="col-sm-4">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="ov-hidden"><%= image_tag "my_collect2.png" %></div>
-                <div class="collect-desc">
-                  <h5>Python交互编程入门</h5>
-                  <div>
-                    该课程一个15个课时
-                    <span class="pull-right">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                      254人收藏
-                    </span>
-                  </div>  
-                </div>
-              </div>
+          <% if index%3 == 2 %>
             </div>
-          </div>
+          <% end %>
 
-          <div class="col-sm-4">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="ov-hidden"><%= image_tag "my_collect3.png" %></div>
-                <div class="collect-desc">
-                  <h5>Python交互编程入门</h5>
-                  <div>
-                    该课程一个15个课时
-                    <span class="pull-right">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                      254人收藏
-                    </span>
-                  </div>  
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        
+        <% end %>
       <% end %>
 
 	    </div>
