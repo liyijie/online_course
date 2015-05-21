@@ -4,7 +4,7 @@
 <div class="row user">
 
   <div class="col-md-2" role="complementary">
-	<%= render :partial => "nav_left" %>
+	  <%= render :partial => "nav_left" %>
   </div>
 
   <div class="col-md-10">
@@ -25,7 +25,7 @@
           <div class="blank">没有可供查询的成绩</div>
         <% else %>
           <% @exams.each_with_index do |exam,index| %>
-            <% if index/2 == 0 %>
+            <% if index % 2 == 0 %>
               <div class="row score-list">
             <% end %>
             <div class="col-sm-6">
@@ -52,60 +52,12 @@
               </div>
             </div>
 
-            <% if index/2 == 0 %>
+            <% if index % 2 == 1 %>
               </div>
             <% end %>
-          <% end %>
-          <!-- <div class="row score-list">
-            <div class="col-sm-6">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="col-sm-7 ov-hidden"><%#= image_tag "score-search1.png" %></div>
-                  <div class="col-sm-5">
-                    <h4>前端自动化工具</h4>
-                    <div class="score-detail">
-                      <span class="text-primary">&bull;</span>
-                      时间：2015-08-28
-                    </div>
-                    <div class="score-detail">
-                      <span class="text-primary">&bull;</span>
-                      总分：100分
-                    </div>
-                    <div class="score-detail">
-                      <span class="text-primary">&bull;</span>
-                      得分：80分
-                    </div>
-                    <button type="button" class="btn btn-warning">查看试卷</button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-sm-6">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="col-sm-7 ov-hidden"><%#= image_tag "score-search2.png" %></div>
-                  <div class="col-sm-5">
-                    <h4>前端自动化工具</h4>
-                    <div class="score-detail">
-                      <span class="text-primary">&bull;</span>
-                      时间：2015-08-28
-                    </div>
-                    <div class="score-detail">
-                      <span class="text-primary">&bull;</span>
-                      总分：100分
-                    </div>
-                    <div class="score-detail">
-                      <span class="text-primary">&bull;</span>
-                      得分：80分
-                    </div>
-                    <button type="button" class="btn btn-warning">查看试卷</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
- -->
+          <% end %>
+          
         <% end %>
         
 	    </div>

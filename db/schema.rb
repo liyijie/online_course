@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20150520062331) do
     t.string   "title",            limit: 255
     t.text     "body",             limit: 65535
     t.string   "subject",          limit: 255
-    t.integer  "usertable_id",     limit: 4
-    t.string   "usertable_type",   limit: 255
+    t.integer  "usertable_id",     limit: 4,     null: false
+    t.string   "usertable_type",   limit: 255,   null: false
     t.integer  "parent_id",        limit: 4
     t.integer  "lft",              limit: 4
     t.integer  "rgt",              limit: 4

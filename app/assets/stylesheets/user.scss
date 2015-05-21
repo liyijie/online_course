@@ -20,13 +20,16 @@ body.user__comment_create
     }
   }
 
+  #left-bar {
+    padding-right: 20px;
+  }
+
   //没有数据时样式
   .blank {
-    margin: 15px;
     height: 100px;
     font-size: 30px;
     text-align:center;//居中 
-    padding: 25px;
+    padding: 10px;
     color: #808080;               
   }
 
@@ -35,7 +38,7 @@ body.user__comment_create
     overflow: hidden;
   }
   
-  //右侧菜单栏
+  //左侧菜单栏
   div.row nav { 
 	  text-align: center; 
     
@@ -47,7 +50,24 @@ body.user__comment_create
     }
 
     .nav li a {
-      padding: 20px 15px;
+      //padding: 20px 15px;
+    }
+
+    .nav li {
+      width: 184px;
+      &.active {
+        background: image-url("teacher-active-bg.png") no-repeat 0 0;
+        a {
+          color: #fff;
+        }
+      }
+      a {
+        height: 46px;
+        line-height: 46px;
+        text-align: center;
+        margin: 20px 0;
+        display: block;
+      }
     }
   }
 

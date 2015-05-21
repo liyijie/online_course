@@ -20,7 +20,6 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
-  validates :title, presence: true if "commentable_id.blank?"
   validates :body, :presence => true
   validates :usertable, :presence => true
 
@@ -81,5 +80,11 @@ class Comment < ActiveRecord::Base
   # given the commentable class name and id
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
+  end
+
+  #参数：评论的发布者
+  #返回：当前发布者发起的评论
+  def self.find_root_comment_by_usertable usertable
+    Comment.where(parent_id: nil, usertable_id: usertable.id, usertable_type: usertable.class).order("created_at DESC")
   end
 end

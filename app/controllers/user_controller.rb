@@ -60,7 +60,7 @@ class UserController < ApplicationController
 
   #我的考试
   def my_exams
-    
+    @complete_exams = current_user.try(:exams)
   end
 
   #成绩查询
@@ -80,24 +80,7 @@ class UserController < ApplicationController
 
   #讨论中心
   def discuss_center
-    @new_comments = Comment.where(commentable_id: nil, parent_id: nil).order("created_at DESC").limit(10)
-
-    @comment = Comment.new
-  end
-
-
-  #讨论中心-发布话题
-  def comment_create
-    @comment = Comment.new comment_params
-    @comment.usertable_id = current_user.id
-    @comment.usertable_type = current_user.class
-    if @comment.save
-      flash[:notice] = "发布话题成功"
-      redirect_to discuss_center_user_index_path
-    else
-      @new_comments = Comment.where(commentable_id: nil, parent_id: nil).order("created_at DESC").limit(10)
-      render :discuss_center
-    end
+    @comments = Comment.find_root_comment_by_usertable current_user
   end
 
 
