@@ -4,15 +4,17 @@
   	<div class="nav-bar">
   		<a href="javascript:void(0)" class="btn btn-default by-btn-bg">上传课件</a>
   	</div>
-  	<%= simple_form_for Course.new, as: 'user_horizontal', html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|%>
-		  		<%= f.input :name, label: "课件名称" %>
-		  		<div class="form-group">
+  	<%= simple_form_for Course.new, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input} do |f|%>
+		  		<%= f.input :name, label: "课程名称" %>
+		  		<%= f.input :name, label: "课程描述" %>
+		  		<!-- <div class="form-group">
 		  			<%= f.input :description, collection: 18..60, prompt: "请选择系别", label: "所属专业" %>
 		  			<%= f.input :description, collection: 18..60, prompt: "请选择专业", label: " " %>
 		  		</div>
 		  		<%= f.input :description, collection: 18..60, prompt: "请选择课件类型", label: "课件类型" %>
-		  		<%= f.input :content, as: :file, label: "选择课件" %>
-		  		<%= f.submit "确认修改"%>
+		  		<%= f.input :content, as: :file, label: "选择课件" %> -->
+		  		<%= f.input :image, as: :file, label: "课程图片" %>
+		  		<%= f.button :submit, value: "确认修改", class: "btn btn-primary"%>
   		 	<%end%>
   </div>
 </div>

@@ -14,6 +14,7 @@ class ExamsController < ApplicationController
 			qid = question.id
 		  answer_params = {qid => params[val]}
 		  @exam.user_id = current_user.id
+		  @exam.sub_course_id = sub_course.id
 		  @exam.generate_by_answer_params(answer_params)
 		end
 	end

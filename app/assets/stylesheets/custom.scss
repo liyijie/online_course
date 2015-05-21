@@ -152,20 +152,18 @@ body.home__index {
     		font-size: 16px;
     		overflow: hidden;
     	}
-    	p.description{
+    	.description{
         height: 26px;
         line-height: 26px;
         overflow: hidden;
+        span.section {
+          width: 50%;
+        }
+        label {
+          font-size: normal;
+        }
         a {
           color: #5d5d5d;
-          display: block;
-          width: 200px;
-          overflow: hidden;
-        }
-        a.favorite {
-          width: 148px;
-          text-align: right;
-          background: image-url('shoucang.png') no-repeat 46px 5px;
         }
       }
     }
@@ -181,11 +179,6 @@ body.home__index {
   	float: left;
     overflow: hidden;
   	position: relative;
-    img {
-      -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
-      -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
-      box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
-    }
   	p {
   		height: 26px;
   		width: 100%;

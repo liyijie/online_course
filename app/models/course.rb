@@ -17,5 +17,11 @@ class Course < ActiveRecord::Base
 	#关注、喜欢、收藏
 	acts_as_votable
 	
+	acts_as_commentable
+	has_one :image, as: :imageable
 	has_many :sub_courses, dependent: :destroy
+
+	before_create do
+		self.number = NumberHelper.random_course_number
+  end
 end
