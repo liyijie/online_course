@@ -42,11 +42,6 @@ class Course < ActiveRecord::Base
 		else
 			#未收藏（赞）则收藏（赞）
 			course.like_by current_user, vote_scope: vote_scope.to_sym
-			return true, "un#{vote_scope}"
-			return true, vote_scope
-		else
-			#未收藏（赞）则收藏（赞）
-			course.like_by current_user, vote_scope: vote_scope.to_sym
 			return true,"un#{vote_scope}"
 		end
 	end
