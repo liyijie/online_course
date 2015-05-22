@@ -35,6 +35,9 @@ class TeachersController < ApplicationController
   #修改个人信息
 	def update
 		if current_teacher.update(teacher_params)
+			current_teacher.image = Image.new
+			current_teacher.image.avatar = params[:teacher][:avatar] if params[:teacher][:avatar].present?
+			current_teacher.image.save
 			flash.now[:notice] = "信息修改成功"
 			redirect_to my_account_teachers_url
 		else
@@ -71,6 +74,7 @@ class TeachersController < ApplicationController
 		params.require(:teacher).permit(:phone, :username, :number, :name, :avatar,
 			                              :birthday, :tec_position, :email, :qualification,
 			                              :fax, :final_education, :final_degree, :tec_expertise,
-			                              :resume, :tec_situation, :tec_service, :deleted_at)
+			                              :resume, :tec_situation, :tec_service, :deleted_at,
+			                              :sex, :grade_id, :signature)
 	end
 end

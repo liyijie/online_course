@@ -18,20 +18,23 @@
 #  name                   :string(255)
 #  avatar                 :string(255)
 #  birthday               :string(255)
-#  tec_position           :string(255)   #专业技术职位
+#  tec_position           :string(255)
 #  email                  :string(255)
-#  qualification          :string(255)   #资格证书
+#  qualification          :string(255)
 #  fax                    :string(255)
-#  final_education        :string(255)   #最终学历
-#  final_degree           :string(255)   #最终学位
-#  tec_expertise          :string(255)   #教学技术专长
-#  resume                 :text(65535)   #工作简历
-#  tec_situation          :text(65535)   #教学情况
-#  tec_service            :text(65535)   #技术服务
+#  final_education        :string(255)
+#  final_degree           :string(255)
+#  tec_expertise          :string(255)
+#  resume                 :text(65535)
+#  tec_situation          :text(65535)
+#  tec_service            :text(65535)
 #  deleted_at             :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
-# 2015.05.22 TODO  教师缺少性别， 所属班级关系, 个性签名
+#  sex                    :string(255)
+#  grade_id               :integer
+#  signature              :text(65535)
+#
 
 class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
@@ -39,6 +42,7 @@ class Teacher < ActiveRecord::Base
 
 
   has_many :comment, as: :usertable, dependent: :destroy
+  has_one :image, as: :imageable
 
   #教师学位列表
   TeacherDegree =[{text: '大专', value: 'dazhuan'}, {text: '本科', value: 'benke'}, {text: '硕士', value: 'shuoshi'}, {text: '博士', value: 'boshi'}]

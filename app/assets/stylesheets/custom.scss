@@ -846,9 +846,12 @@ body.teachers__my_faqs {
       }
       ul.my-answers {
       }
-      .teacher-info-content .infos {
-        margin-top: 20px;
-        display: none;
+      .teacher-info-content {
+        padding: 20px 0;
+        .infos {
+          margin-top: 20px;
+          display: none;
+        }
       }
     }
   }
