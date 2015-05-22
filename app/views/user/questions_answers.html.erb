@@ -31,7 +31,7 @@
                 <%= image_tag current_user.image.present? ? current_user.try(:image).try(:avatar).try(:url, :thumb) : "missing.png",class: "img-rounded max60" %>
               </div>
               <div class="col-sm-9">
-                <div><% current_user.name %> <span class="grey-font">提问</span></div>
+                <div><%= current_user.show_name %> <span class="grey-font">提问</span></div>
                 <p><%= comment.body %></p><br>
                 <div class="grey-font">时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></div>
               </div>

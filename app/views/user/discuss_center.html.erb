@@ -32,7 +32,7 @@
             <div class="row discuss-center-list">
               <div class="col-sm-1 no-padding">
                 <%= image_tag comment.try(:usertable).try(:image).try(:avatar).try(:url, :thumb),class: "img-circle max60" %>
-                <p class="center-block grey-font"><%= comment.try(:usertable).try(:name) %></p>
+                <p class="center-block grey-font"><%= comment.try(:usertable).try(:show_name) %></p>
               </div>
               <div class="col-sm-9">
                 <h5>
@@ -43,7 +43,7 @@
                   <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                   <% if comment.has_children? %>
                     <span class="text-muted">[最新回答]</span>
-                    <span><%= comment.children.last.try(:usertable).try(:name) %>:<span>
+                    <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
                     <span class="text-muted"><%= comment.children.last.try(:body) %></span>
                   <% else %>
                     <span class="text-muted">嗯 ~ ~，这个提问大家都在考虑....</span>

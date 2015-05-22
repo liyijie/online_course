@@ -74,4 +74,9 @@ class User < ActiveRecord::Base
 
    where(conditions).where(["lower(username) = :value OR lower(phone) = :value", { :value => login.strip.downcase }]).first
   end
+
+  #有你昵称显示昵称，没有则显示其名字
+  def show_name 
+    self.nickname || self.name
+  end
 end

@@ -3,12 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#user_academy_id').change ->
+  $('#common_academy_id').change ->
     $.ajax get_specialties_path,
       type: 'POST'
       data: { academy_id: $(this).val() }
 
-  $('#user_specialty_id').change ->
+  $('#common_specialty_id').change ->
     $.ajax get_grades_path,
       type: 'POST'
       data: { specialty_id: $(this).val() }

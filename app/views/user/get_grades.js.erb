@@ -1,2 +1,5 @@
-$('#user_grade_id').replaceWith("<%= escape_javascript( select('user', 'grade_id', [['请选择班级','']] + @grades , 
-	{},class: 'select optional form-control' )) %>");
+var grade_option = "<option>请选择班级</option>";
+<% @grades.each do |s| %>
+	grade_option = grade_option + "<option value='<%= s[1]%>'><%= s[0]%></option>"
+<% end %>
+$("#common_grade_id").html(grade_option);
