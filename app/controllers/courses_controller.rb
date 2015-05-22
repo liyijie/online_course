@@ -23,6 +23,12 @@ class CoursesController < ApplicationController
 		end
 	end
 
+  #课后作业
+	def after_class
+		course = Course.find_by(number: params[:number])
+		@sub_courses = course.sub_courses
+	end
+
 
 	#课程的收藏或者取消收藏
 	def course_collect

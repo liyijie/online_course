@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   devise_for :teachers
   root :to => "home#index"
   get "courses/:number", to: "courses#show", as: :show_courses
+  get "courses/:number/after_class", to: "courses#after_class", as: :after_class_courses
+  get "courses/:number/sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses_courses
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
+
   resources :courses, only: [:index] do
   	resources :sub_courses
     collection do

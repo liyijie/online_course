@@ -11,14 +11,19 @@
   	</div>
   	<div class="teacher-info-content teacher-wrapper">
   		<div class="infos">
-		  	<%= simple_form_for current_teacher, as: 'user_horizontal', html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input } do |f|%>
+		  	<%= simple_form_for current_teacher, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input } do |f|%>
 		  		<%= f.input :name, label: "姓名" %>
 		  		<%= f.input :avatar, as: :file, label: "我的头像" %>
 		  		<%= f.submit "确认修改"%>
   		 	<%end%>
   		</div>
   		<div class="infos">
-  		 	技术服务
+  		 	<%= simple_form_for current_teacher, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|%>
+          <%= f.input :password, label: "原始密码", placeholder: '请输入原始密码', autofocus: false %>
+          <%= f.input :new_password, label: "新密码", placeholder: '请输入新密码', autofocus: false %>
+          <%= f.input :confirm_new_password, label: "确认密码", placeholder: '请输入确认密码', autofocus: false %>
+          <%= f.button :submit, "确认修改"%>
+        <%end%>
   		</div>
   	</div>
   </div>

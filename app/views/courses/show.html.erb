@@ -16,8 +16,8 @@
       <div class="course-image">
         <%= image_tag("course-show.png")%>
         <div class="course-and-score">
-          <%= link_to "课后作业", "#", class: "course"%>
-          <%= link_to "成绩查询", "#", class: "score"%>
+          <%= link_to "课后作业", after_class_courses_path, class: "course"%>
+          <%= link_to "成绩查询", "", class: "score"%>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@ JSON数据处理技术，Cocos2d游戏编程技术，Xcode、Interface Builder�
     <ul class="courses-list">
       <% @sub_courses.each do |sub_course|%>
         <li class="col-sm-12">
-          <a href="" class="col-sm-6">项目一 初识IOS</a>
+          <a href= <%= show_sub_courses_courses_path%> class="col-sm-6">项目一 初识IOS</a>
           <a href class="col-sm-2">PPT (25页)</a>
           <a href="" class="col-sm-2">已学 (10/25)</a>
           <a href= <%= new_courses_exams_path(sub_course_number: sub_course.number)%> class="col-sm-2">测试</a>
