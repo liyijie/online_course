@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :teachers, only: [:update] do
+  get "teachers/:number", to: "teachers#show", as: :show_teachers
+  resources :teachers, only: [:index, :update] do
     collection do
       get :my_courses
       get :my_grades

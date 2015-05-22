@@ -65,28 +65,22 @@ body.devise__sessions__new,body.devise__registrations__new,body.devise__registra
 	.btn-100 {
 		width: 100%;
 	}
-
 }
 
-/*网站首页*/
-body.home__index {
-  .main-content {
-   background: #fff;
-   padding: 20px;
-  }
+body.home__index, body.teachers__index{
   section.common-title {
-  	height: 60px;
-  	line-height: 60px;
-  	padding: 0 16px 0 60px;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 16px 0 60px;
     margin-top: 20px;
-  	background: image-url('title-bg.png') no-repeat 8px 15px;
-  	span.pull-left {
-  		font-size: 24px;
-  		font-weight: bold;
-  		color: #070707;
-  	}
-  	span.pull-right {
-  		color: #669ad3;
+    background: image-url('title-bg.png') no-repeat 8px 15px;
+    span.pull-left {
+      font-size: 24px;
+      font-weight: bold;
+      color: #070707;
+    }
+    span.pull-right {
+      color: #669ad3;
       a.more {
         width: 55px;
         height: 60px;
@@ -94,14 +88,19 @@ body.home__index {
         display: block;
         background: image-url('more.png') no-repeat center right;
       }
-  	}
+    }
   }
-
+}
+/*网站首页*/
+body.home__index {
+  .main-content {
+   background: #fff;
+   padding: 20px;
+  }
   //收藏图标
   .glyphicon-star {
     color: orange;
   }
-  
   section.department-tabs {
     overflow: hidden;
     width: 100%;
@@ -852,6 +851,20 @@ body.teachers__my_faqs {
           margin-top: 20px;
           display: none;
         }
+      }
+    }
+  }
+}
+/*教师风采*/
+body.teachers__index {
+  .main-content {
+    padding: 20px 30px;
+    background: #fff;
+    ul.teachers-list {
+      overflow: hidden;
+      li {
+        float: left;
+        margin: 15px 28px;
       }
     }
   }

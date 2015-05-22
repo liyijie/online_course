@@ -1,5 +1,16 @@
 class TeachersController < ApplicationController
-	before_action :authenticate_teacher!
+	before_action :authenticate_teacher!, except: [:index]
+
+	#教师风采
+	def index
+		@teachers = Teacher.all
+	end
+
+	#教师展示
+	def show
+		@teacher = Teacher.find_by(number: params[:number])
+	end
+
 	#我的课程
 	def my_courses
 	end

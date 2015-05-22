@@ -1,0 +1,12 @@
+<div class="main-content">
+  <section class="common-title">
+  	<span class="pull-left">教师风采</span>
+  </section>
+  <ul class="teachers-list">
+    <% @teachers.each do |teacher|%>
+      <li>
+		  	<%= link_to image_tag("teacher.png"), show_teachers_path(teacher.number)%>
+		  </li>
+	  <%end%>
+  </ul>
+</div>
