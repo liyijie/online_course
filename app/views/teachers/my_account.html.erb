@@ -11,18 +11,27 @@
   	</div>
   	<div class="teacher-info-content teacher-wrapper">
   		<div class="infos">
-		  	<%= simple_form_for current_teacher, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input } do |f|%>
-		  		<%= f.input :name, label: "姓名" %>
+		  	<%= simple_form_for current_teacher, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input, radio_buttons: :horizontal_radio_and_checkboxes } do |f|%>
+		  		<%= f.input :name, label: "我的姓名" %>
 		  		<%= f.input :avatar, as: :file, label: "我的头像" %>
+          <%= f.input :name, label: "所属系别" %>
+          <%= f.input :final_degree, label: "专业技术职位" %>
+          <%= f.input :qualification, label: "资格证书" %>
+          <%= f.input :final_education, label: "我的学历" %>
+          <%= f.input :tec_expertise, label: "教学与技术专长" %>
+          <%= f.input :phone, label: "手机号码" %>
+          <%= f.input :name, as: :radio_buttons, collection: ["男", "女"], label: "性别" %>
+          <%= f.input :name, label: "个性签名" %>
 		  		<%= f.submit "确认修改"%>
   		 	<%end%>
   		</div>
   		<div class="infos">
-  		 	<%= simple_form_for current_teacher, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|%>
+  		 	<%= simple_form_for current_teacher, url: update_password_teacher_path(current_teacher, remote: true), html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|%>
+          <div class="error-info"></div>
           <%= f.input :password, label: "原始密码", placeholder: '请输入原始密码', autofocus: false %>
           <%= f.input :new_password, label: "新密码", placeholder: '请输入新密码', autofocus: false %>
           <%= f.input :confirm_new_password, label: "确认密码", placeholder: '请输入确认密码', autofocus: false %>
-          <%= f.button :submit, "确认修改"%>
+          <%= f.submit "确认修改", class: "btn btn-primary"%>
         <%end%>
   		</div>
   	</div>

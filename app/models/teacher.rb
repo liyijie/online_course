@@ -18,20 +18,20 @@
 #  name                   :string(255)
 #  avatar                 :string(255)
 #  birthday               :string(255)
-#  tec_position           :string(255)
+#  tec_position           :string(255)   #专业技术职位
 #  email                  :string(255)
-#  qualification          :string(255)
+#  qualification          :string(255)   #资格证书
 #  fax                    :string(255)
-#  final_education        :string(255)
-#  final_degree           :string(255)
-#  tec_expertise          :string(255)
-#  resume                 :text(65535)
-#  tec_situation          :text(65535)
-#  tec_service            :text(65535)
+#  final_education        :string(255)   #最终学历
+#  final_degree           :string(255)   #最终学位
+#  tec_expertise          :string(255)   #教学技术专长
+#  resume                 :text(65535)   #工作简历
+#  tec_situation          :text(65535)   #教学情况
+#  tec_service            :text(65535)   #技术服务
 #  deleted_at             :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
-#
+# 2015.05.22 TODO  教师缺少性别， 所属班级关系
 
 class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,

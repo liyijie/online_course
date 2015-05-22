@@ -31,4 +31,30 @@ class TeachersController < ApplicationController
   #我的问答
 	def my_faqs
 	end
+
+  #修改个人信息
+	def update
+	end
+
+  #修改密码
+	def update_password
+		if params[:teacher][:password] != current_teacher.password
+			return render js: "$('.error-info').html('*原始密码不正确！');"
+			#return render text: '原始密码不正确'
+		end
+		if params[:teacher][:new_password].blank?
+			return render js: "$('.error-info').html('*新密码不能为空！');"
+			#return render text: '新密码不能为空'
+		end
+		if params[:teacher][:new_password] != params[:teacher][:confirm_new_password]
+			return render js: "$('.error-info').html('*两次输入不一致！');"
+			#return render text: '两次输入不一致'
+		end
+		current_teacher.update_attributes(password: params[:teacher][:new_password])
+		flash.now[:notice] = "密码修改成功"
+		return redirect_to my_account_teachers_url
+		respond_to do |format|
+			format.js
+		end
+	end
 end

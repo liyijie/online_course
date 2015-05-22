@@ -1,6 +1,14 @@
 require 'rack/test'
 
-FactoryGirl.define do  factory :image do
+FactoryGirl.define do  factory :user_course do
+    user nil
+course nil
+  end
+  factory :attachment do
+    sub_course nil
+content "MyString"
+  end
+  factory :image do
     
   end
   

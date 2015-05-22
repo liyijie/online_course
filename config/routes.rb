@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       get :my_faqs
       get :my_score
     end
+    member do
+      patch :update_password
+    end
   end
 
   resources :exams, only: [:new, :create]
