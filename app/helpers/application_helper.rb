@@ -14,8 +14,14 @@ module ApplicationHelper
 	#controller.action_name
 	menu << content_tag('li', link_to('首页', root_path), class: controller.controller_path == 'home' ? 'active' : '')
 	menu << content_tag('li', link_to('课程中心', courses_path), class: controller.controller_path == 'courses' ? 'active' : '')
-	menu << content_tag('li', link_to('教师风采', "#"), class: controller.controller_path == 'teachers' ? 'active' : '' )
-	menu << content_tag('li', link_to('个人中心', my_courses_user_index_path) , class: controller.controller_path == 'user' ? 'active' : '')
+	menu << content_tag('li', link_to('教师风采', "#"), class: controller.controller_path == 'xxxx' ? 'active' : '' )
+	if user_signed_in?
+		menu << content_tag('li', link_to('个人中心', my_courses_user_index_path) , class: controller.controller_path == 'user' ? 'active' : '')
+	end
+
+	if teacher_signed_in?
+		menu << content_tag('li', link_to('个人中心', my_courses_teachers_path) , class: controller.controller_path == 'teachers' ? 'active' : '')
+	end
 	menu.join.html_safe
   end
 
