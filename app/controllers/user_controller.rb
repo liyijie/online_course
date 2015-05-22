@@ -70,17 +70,17 @@ class UserController < ApplicationController
 
   #我的收藏
   def my_collect
-    @collect_course = current_user.find_up_voted_items vote_scope: "collect", votable_type: "Course"
+    @collect_course = current_user.find_up_voted_items vote_scope: :collect, votable_type: :Course
   end
 
   #我的问答
   def questions_answers
-
+    @question_comments = Comment.find_root_comments_by_usertable current_user, :question
   end
 
   #讨论中心
   def discuss_center
-    @comments = Comment.find_root_comment_by_usertable current_user
+    @comments = Comment.find_root_comments_by_usertable current_user, :discuss
   end
 
 

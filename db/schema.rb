@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521032913) do
+ActiveRecord::Schema.define(version: 20150522020958) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150521032913) do
     t.integer  "rgt",              limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment_scope",    limit: 255
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree

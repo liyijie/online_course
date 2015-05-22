@@ -15,7 +15,10 @@
 #  rgt              :integer
 #  created_at       :datetime
 #  updated_at       :datetime
+#  comment_scope    :string(255)
 #
+
+# comment_scope: discuss表示评论，question表示问答
 
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
@@ -45,12 +48,12 @@ class Comment < ActiveRecord::Base
   #     :body        => comment,
   #     :user_id  => user_id
   # end
-  def self.build_from(obj, usertable, comment)
+  def self.build_from(obj, usertable, comment, comment_scope)
     new \
-      :commentable => obj,
-      :body        => comment,
-      :usertable_id  => usertable.id,
-      :usertable_type => usertable.class
+      commentable: obj,
+      body: comment,
+      usertable: usertable,
+      comment_scope: comment_scope
   end
   #edit by fw 2015/05/20  学生和教师都需可以评论
 
@@ -66,14 +69,14 @@ class Comment < ActiveRecord::Base
   #   where(:user_id => user.id).order('created_at DESC')
   # }
   scope :find_comments_by_user, lambda { |user|
-    where(:usertable_id => user.id,:usertable_type => user.class).order('created_at DESC')
+    where(usertable: user).order('created_at DESC')
   }
   #edit by fw 2015/05/20  学生和教师都需可以评论
 
   # Helper class method to look up all comments for
   # commentable class name and commentable id.
   scope :find_comments_for_commentable, lambda { |commentable_str, commentable_id|
-    where(:commentable_type => commentable_str.to_s, :commentable_id => commentable_id).order('created_at DESC')
+    where(commentable_type: commentable_str.to_s, commentable_id: commentable_id).order('created_at DESC')
   }
 
   # Helper class method to look up a commentable object
@@ -82,9 +85,10 @@ class Comment < ActiveRecord::Base
     commentable_str.constantize.find(commentable_id)
   end
 
-  #参数：评论的发布者
-  #返回：当前发布者发起的评论
-  def self.find_root_comment_by_usertable usertable
-    Comment.where(parent_id: nil, usertable_id: usertable.id, usertable_type: usertable.class).order("created_at DESC")
+  #取得用户的评论或者提问
+  #参数：评论的发布者，comment_scope查找评论还是问题
+  #返回：当前发布者的评论或者问题
+  def self.find_root_comments_by_usertable usertable, comment_scope
+    Comment.where(parent_id:nil, usertable: usertable, comment_scope: comment_scope).order("created_at DESC")
   end
 end
