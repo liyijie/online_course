@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522032228) do
+ActiveRecord::Schema.define(version: 20150522062015) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -182,8 +182,12 @@ ActiveRecord::Schema.define(version: 20150522032228) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sex",                    limit: 255
+    t.integer  "grade_id",               limit: 4
+    t.text     "signature",              limit: 65535
   end
 
+  add_index "teachers", ["grade_id"], name: "index_teachers_on_grade_id", using: :btree
   add_index "teachers", ["phone"], name: "index_teachers_on_phone", unique: true, using: :btree
   add_index "teachers", ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true, using: :btree
 
@@ -248,6 +252,7 @@ ActiveRecord::Schema.define(version: 20150522032228) do
   add_foreign_key "options", "questions"
   add_foreign_key "questions", "sub_courses"
   add_foreign_key "sub_courses", "courses"
+  add_foreign_key "teachers", "grades"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"
 end

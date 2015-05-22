@@ -34,6 +34,14 @@ class TeachersController < ApplicationController
 
   #修改个人信息
 	def update
+		if current_teacher.update(teacher_params)
+			flash.now[:notice] = "信息修改成功"
+			redirect_to my_account_teachers_url
+		else
+			p current_teacher.errors
+			flash.now[:notice] = "信息修改失败"
+			redirect_to my_account_teachers_url
+		end
 	end
 
   #修改密码
@@ -56,5 +64,13 @@ class TeachersController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
+
+	private
+	def teacher_params
+		params.require(:teacher).permit(:phone, :username, :number, :name, :avatar,
+			                              :birthday, :tec_position, :email, :qualification,
+			                              :fax, :final_education, :final_degree, :tec_expertise,
+			                              :resume, :tec_situation, :tec_service, :deleted_at)
 	end
 end

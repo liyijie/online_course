@@ -31,7 +31,7 @@
 #  deleted_at             :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
-# 2015.05.22 TODO  教师缺少性别， 所属班级关系
+# 2015.05.22 TODO  教师缺少性别， 所属班级关系, 个性签名
 
 class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
@@ -40,13 +40,16 @@ class Teacher < ActiveRecord::Base
 
   has_many :comment, as: :usertable, dependent: :destroy
 
+  #教师学位列表
+  TeacherDegree =[{text: '大专', value: 'dazhuan'}, {text: '本科', value: 'benke'}, {text: '硕士', value: 'shuoshi'}, {text: '博士', value: 'boshi'}]
+
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
 
   validates_presence_of     :phone
   validates_uniqueness_of   :phone, case_sensitive: false
-  validates :password, presence: true, length: {minimum:6,maximum: 32}
-  validates_confirmation_of :password
+  validates :password, presence: true, length: {minimum:6,maximum: 32}, on: :create
+  validates_confirmation_of :password, on: :create
 
 
 
