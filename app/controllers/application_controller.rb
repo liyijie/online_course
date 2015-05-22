@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
  #登录后不能再进入登录页面
   def is_login!
-    if (user_signed_in? || teacher_signed_in?) && controller.actine_name == "sign_in"
+    if (user_signed_in? || teacher_signed_in?) && params[:action] == "sign_in"
       flash[:error] = "你已经登录系统，不能重复登录"
       redirect_to root_url
     end
