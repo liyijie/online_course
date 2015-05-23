@@ -50,4 +50,8 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    root "home#index"
+  end
+
 end
