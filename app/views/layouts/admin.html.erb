@@ -20,8 +20,8 @@
       <% end %>
       <% if content_for? :toolbar %>
         <%= yield :toolbar %>
-        <%= yield %>
       <% end %>
+      <%= yield %>
     </div>
   </div>
   <%= render 'admin/common/footer'%>
