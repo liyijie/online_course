@@ -45,7 +45,7 @@
   <div class="info-teachers-content wrapper">
     <% @teachers.each do |teacher|%>
       <div class="teacher-content">
-        <%= link_to image_tag("teacher.png"), my_courses_teachers_path%>
+        <%= link_to image_tag(teacher.image.avatar), my_courses_teachers_path if teacher.image%>
         <p>国家优秀教师称号</p>
       </div>
     <%end%>

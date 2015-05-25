@@ -59,7 +59,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "home#index"
-    resources :courses
+    resources :courses do
+      resources :sub_courses
+    end
   end
 
 end

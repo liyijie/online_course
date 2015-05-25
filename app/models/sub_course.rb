@@ -14,5 +14,11 @@
 class SubCourse < ActiveRecord::Base
   acts_as_commentable
   belongs_to :course
+  has_one :attachment
   has_many :questions, dependent: :destroy
+
+  #创建sub_course生成编号
+	before_create do
+		self.number = NumberHelper.random_course_number
+	end
 end
