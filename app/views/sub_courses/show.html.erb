@@ -1,0 +1,84 @@
+<div class="video_page ">
+	<div class="row">
+		<div class="col-md-8 videoplayer">
+			<div class="col-md-12">
+				<%= image_tag "video-play1.jpg", class:"video"%>
+			</div>
+			<div class="col-md-12 collect">
+				<div class="col-md-3 col-md-offset-9 collecttab">
+					<span class="glyphicon glyphicon-heart pull-right" aria-hidden="true"><span class="collectword">我喜欢</span></span>
+					<span class="glyphicon glyphicon-star pull-right" aria-hidden="true"><span class="collectword">收藏</span></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1 video_blank">&nbsp</div>
+		<div class="video_lists col-md-3">
+			<div class="col-md-12 list_title">
+				<%= image_tag "videolist-titletab.jpg"%><span>相关视频</span>
+			</div>
+			<% (1..3).each do |i| %>
+			<div class="col-md-12 video_lists_win"><%= image_tag "video-play2.jpg", class:"photo2"%></div>
+			<% end %>
+			<div class="course-and-score">
+				<%= link_to "课后作业", after_class_courses_path, class: "course"%>
+				<%= link_to "成绩查询", "", class: "score"%>
+			</div>
+		</div>
+		<div class="col-md-8 video_comment">
+			<div class="col-md-12">
+				<a href="#" class="btn btn-primary comment_tab">评论</a>
+				<div class="col-md-12">
+				<form>
+				<textarea class="comment_text" name="textfield" type="text" rows="5" cols="85" value="扯淡、吐槽、表扬、鼓励......想说啥就说啥！" onfocus='this.value=""' onblur='this.value="扯淡、吐槽、表扬、鼓励......想说啥就说啥！"'/></textarea>
+				<a href="#" class="btn btn-success pull-right submit_btn">评论</a>
+				</form>
+				</div>
+				<ul class="media-list">
+					<% (1..6).each do |i| %>
+					<li class="media">
+						<hr>
+						<div class="media-left">
+							<a href="#">
+								<%= image_tag "user-picture1.jpg"%>
+							</a>
+						</div>
+						<div class="media-body">
+							<h5 class="media-heading">闲逛的蚂蚁</h5>
+							<p>谢谢郭大侠的无私奉献。</p>
+							<p class="comment_date">
+								<span>时间：2015-5-23  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
+								<button class="btn btn-primary btn-xs comment_reply" type="button">回复</button>
+								<button type="button" class="btn pull-right"><span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> </button>
+							</p>
+						</div>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-1 video_blank">&nbsp</div>
+		<div class="col-md-3 video_member">
+			<div class="col-md-12 ">
+				<span class="online_number">1053</span> 位共同战斗的同学
+				<hr>
+			</div>
+			<div class="col-md-12 video_member_list">
+				<ul class="media-list">
+					<% (1..6).each do |i| %>
+					<li class="media">
+						<div class="media-left">
+							<a href="#">
+								<%= image_tag "user-picture1.jpg"%>
+							</a>
+						</div>
+						<div class="media-body">
+							<h5 class="media-heading">猪虫鼠小弟</h5>
+							<p class="comment_date">Web前段工程师</p>
+						</div>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
