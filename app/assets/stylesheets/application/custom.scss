@@ -320,7 +320,7 @@ body.home__index {
 }
 
 /*课程展示页*/
-body.courses__show {
+body.courses__show, body.courses__after_class {
   .main-content {
     .top-content {
       background: #fff;
@@ -382,6 +382,14 @@ body.courses__show {
                 font-size: 14px;
                 line-height: 14px;
                 color: #6b6b6b;
+                &.lg-height {
+                  height: 180px;
+                  overflow: hidden;
+                }
+                &.sm-height {
+                  height: 180px;
+                  overflow: hidden;
+                }
               }
             }
             &.teach-team {
@@ -912,6 +920,26 @@ body.teachers__show {
           margin: 20px 23px;
           overflow: hidden;
           border: solid 1px #efefef;
+          a.image {
+            width: 340px;
+            height: 196px;
+            overflow: hidden;
+            display: block;
+          }
+          a img {
+            -webkit-transition:all 0.25s ease-in-out;
+            -moz-transition:all 0.25s ease-in-out;
+            -o-transition:all 0.25s ease-in-out;
+            -ms-transition:all 0.25s ease-in-out;
+            transition:all 0.25s ease-in-out;
+          }
+          a:hover img {
+            transform: scale(1.15,1.15);
+            -webkit-transform:scale(1.15,1.15);
+            -moz-transform:scale(1.15,1.15);
+            -ms-transform:scale(1.15,1.15);
+            -o-transform:scale(1.15,1.15);
+          }
           .description, p.course-title a {
             padding: 0 10px;
             height: 40px;

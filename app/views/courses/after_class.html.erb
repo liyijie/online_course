@@ -1,3 +1,77 @@
-<% @sub_courses.each do |sub_course|%>
-  <p><%= link_to sub_course.name%></p>
-<%end%>
+<div class="main-content">
+  <div class="top-content">
+    <div class="left-content">
+      <div class="course-image">
+        <%= image_tag("course-show.png")%>
+      </div>
+    </div>
+    <div class="right-content">
+      <h1>IOS图形界面开发</h1>
+      <div class="collect-zan-btns">
+        <%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do%>
+          <%= hidden_field_tag "course_id", @course.id%>
+          <button id="courseCollectBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
+            <span class="glyphicon glyphicon-star"></span>
+            <% collect_count = @course.get_likes(vote_scope: :collect).size %>
+            <span id="collectFont" count="<%= collect_count %>" 
+              iscollect = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>" >
+              <%= collect_count %>人收藏
+            </span>
+          </button>
+          <button id="coursePraiseBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
+            <span class="glyphicon glyphicon-heart"></span>
+            <% praise_count = @course.get_likes(vote_scope: :praise).size %>
+            <span id="praiseFont" count="<%= praise_count %>" 
+              ispraise = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>" >
+              <%= praise_count %>个赞
+            </span>
+          </button>
+        <% end %>
+      </div>
+      <ul class="course-main">
+        <li class="course-info">
+          <span class="title">课程简介</span>
+          <span class="content sm-height">《iOS图形界面开发》是计算机软件应用专业的重点骨干课程，通过本课程的学习，学生能够学习到iOS
+项目开发必备的知识和技能：图形界面设计思想，Objective-C编程技术，Socket、iCloud等网络连接技术，XML、
+JSON数据处理技术，Cocos2d游戏编程技术，Xcode、Interface Builder、iOS模拟器、调试器、Instruments等开发
+工具的使用。本课程共包含16个项目内容。内容安排强调基本概念、技术和方法的阐述，注重知识联系实际操作。每一部分都列举许多经典实例、实用操作题，操作题内容由浅入深，引导学员利用本项目的知识点进行思考和程序设计，利于学员提高解决实际问题的能力。初学者可根据情况另外，本课程还配有电子版实验指导手册可供下载，通过应用实例的分析和上机实践培养和提高学员iOS图形界面开发应用能力和解决实际问题的能力，该实验手册也可以作为开放式实验、家庭作业以及自学用。</span>
+        </li>
+        <li class="teach-team">
+          <p class="title">教学团队</p>
+          <div class="teachers">
+            <div class="teacher-info">
+               <%= image_tag("teach-team.png")%>
+               <p>彭新松</p>
+            </div>
+            <div class="teacher-info">
+               <%= image_tag("teach-team.png")%>
+               <p>彭新松</p>
+            </div>
+            <div class="teacher-info">
+               <%= image_tag("teach-team.png")%>
+               <p>彭新松</p>
+            </div>
+            <div class="teacher-info">
+               <%= image_tag("teach-team.png")%>
+               <p>彭新松</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="related-courses">
+    <a href="javascript:void(0)" class="btn btn-primary">相关课程</a>
+    <ul class="courses-list">
+      <% @sub_courses.each do |sub_course|%>
+        <li class="col-sm-12">
+          <a href= <%= show_sub_courses_courses_path%> class="col-sm-6">项目一 初识IOS</a>
+          <a href class="col-sm-2">PPT (25页)</a>
+          <a href="" class="col-sm-2">已学 (10/25)</a>
+          <a href= <%= new_courses_exams_path(sub_course_number: sub_course.number)%> class="col-sm-2">测试</a>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
+  </div>
+</div>

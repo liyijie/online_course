@@ -64,7 +64,9 @@
   	<ul class="courses">
   	  <% 6.times do %>
 	  		<li>
-	  			<%= link_to image_tag("340x200.png")%>
+	  			<%= link_to "#", class: 'image' do%>
+	  			  <%= image_tag("340x200.png")%>
+	  			<% end %>
 	  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
 	    			<div class="description">
 	    				<span>该课程一共有15课时</span>
