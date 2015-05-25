@@ -1,0 +1,82 @@
+<div class="main-content">
+	<div id="teacher-info" class="wrapper">
+		<div class="teacher-img">
+			<%= image_tag("my-teacher.png")%>
+		</div>
+		<div class="teacher-data plus">
+		  <div class="title-content">
+	      <p class="title">基本信息</p>
+	      <p class="line"></p>
+		  </div>
+		  <ul>
+		  	<li class="width-50">
+		  		姓名:	钱红
+		  	</li>
+		  	<li class="width-50">
+		  		出生年月:	 1982-09
+		  	</li>
+		  	<li class="width-50">
+		  		专业技术职位:	讲师
+		  	</li>
+		  	<li class="width-50">
+		  		所属院系:	 计算机信息系
+		  	</li>
+		  	<li class="width-50">
+		  		手机号码:	 13636338706
+		  	</li>
+		  	<li class="width-50">
+		  		电子邮箱:	 qianhong@aliyun.com
+		  	</li>
+		  	<li class="width-50">
+		  		资格证书:	 高级教师资格， 信息安全讲师
+		  	</li>
+		  	<li class="width-50">
+		  		传真号码:	 暂无
+		  	</li>
+		  	<li class="width-50">
+		  		最终学历:	 本科
+		  	</li>
+		  	<li class="width-50">
+		  		最高学位:	 硕士
+		  	</li>
+		  	<li class="width-100">
+		  		教学与技术专长:	 C语言程序基础，ASP.NET开发， java编程基础， 数据库技术
+		  	</li>
+		  </ul>
+		  <div class="title-content">
+	      <p class="title">工作简历</p>
+	      <p class="line"></p>
+		  </div>
+		  <ul>
+		  	<li class="width-100">
+		  		2013年2月-至今: 	上海新侨职业技术学院 计算机信息系专任教师
+		  	</li>
+		  	<li class="width-100">
+		  		2005年2月-2013年1月: 	上海新侨职业技术学院 计算机信息系专任教师
+		  	</li>
+		  </ul>
+		</div>
+	</div>
+	<div class="course-center">
+		<div class="nav-bar">
+  		<span class="btn btn-primary by-btn-bg">课程中心</span>
+  	</div>
+  	<ul class="courses">
+  	  <% 6.times do %>
+	  		<li>
+	  			<%= link_to image_tag("340x200.png")%>
+	  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
+	    			<div class="description">
+	    				<span>该课程一共有15课时</span>
+	    				<label>
+	    					<%= link_to "" do %>
+	  		  			  <span class="glyphicon glyphicon-star"></span>
+	  		  			<%end%>
+	  		  			<span>2015人收藏</span>
+	    				</label>
+	    			</div>
+	  		</li>
+	  	<% end %>
+  	</ul>
+	</div>
+</div>

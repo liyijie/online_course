@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-	before_action :authenticate_teacher!, except: [:index]
+	before_action :authenticate_teacher!, except: [:index, :show]
 
 	#教师风采
 	def index

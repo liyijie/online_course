@@ -675,16 +675,24 @@ body.exams__new {
   margin-left: 16px;
   background: #fff;
 }
+
 /*公共教师信息页*/
 #teacher-info {
   padding: 20px;
+  background: #fff;
   .teacher-img {
+    width: 280px;
+    height: 370px;
+    overflow: hidden;
     float: left;
   }
   .teacher-data {
     width: 658px;
     margin-left: 20px;
     float: left;
+    &.plus {
+      width: 860px;
+    }
     div.title-content {
       overflow: hidden;
       p.title {
@@ -865,6 +873,62 @@ body.teachers__index {
       li {
         float: left;
         margin: 15px 28px;
+      }
+    }
+  }
+}
+/*教师信息展示*/
+body.teachers__show {
+  .main-content {
+    .teacher-info {
+      padding: 20px;
+      background: #fff;
+      overflow: hidden;
+      .left-image {
+        width: 300px;
+        float: left;
+      }
+      .right-info {
+        width: 800px;
+        float: left;
+        margin-left: 30px;
+      }
+    }
+    .course-center {
+      margin-top: 20px;
+      background: #fff;
+      border-top: solid 5px $main-color;
+      .nav-bar {
+        padding-left: 46px;
+        margin-top: 5px;
+      }
+      ul.courses {
+        padding: 20px;
+        overflow: hidden;
+        li {
+          width: 340px;
+          height: 290px;
+          float: left;
+          margin: 20px 23px;
+          overflow: hidden;
+          border: solid 1px #efefef;
+          .description, p.course-title a {
+            padding: 0 10px;
+            height: 40px;
+            line-height: 40px;
+          }
+          .description label {
+            color: #555555;
+            float: right;
+            font-weight: normal;
+            a span {
+              color: #ffc704;
+            }
+          }
+          p.course-title a {
+            color: #000;
+          }
+        }
       }
     }
   }
