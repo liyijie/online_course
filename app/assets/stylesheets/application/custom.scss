@@ -559,7 +559,7 @@ body.courses__show, body.courses__after_class {
   }
 }
 /*考试页面*/
-body.exams__new {
+body.exams__new, body.exams__show {
   .main-content {
     padding: 20px 40px;
     background: #fff;
@@ -590,6 +590,13 @@ body.exams__new {
         font-size: 14px;
         line-height: 36px;
         padding-left:  60px;
+      }
+
+      .right-answer {
+        border-top: 2px dotted #b0d6ff;
+        margin-top: 20px;
+        padding: 20px 50px;
+        color: red;
       }
     }
     .tieshi {

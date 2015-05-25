@@ -31,9 +31,11 @@
             <div class="col-sm-6">
               <div class="panel panel-default">
                 <div class="panel-body">
-                  <div class="col-sm-7 ov-hidden"><%= image_tag "score-search1.png" %></div>
+                  <div class="col-sm-7 ov-hidden">
+                     <%= link_to image_tag("score-search1.png"), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %>
+                  </div>
                   <div class="col-sm-5">
-                    <h4><%= exam.try(:sub_course).try(:name) %></h4>
+                    <h4><%= link_to exam.try(:sub_course).try(:name), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %></h4>
                     <div class="score-detail">
                       <span class="text-primary">&bull;</span>
                       时间：<%= exam.created_at.try(:strftime,'%Y-%m-%d').try(:to_s) %>
@@ -46,7 +48,7 @@
                       <span class="text-primary">&bull;</span>
                       得分：<%= exam.total_score %>分
                     </div>
-                    <button type="button" class="btn btn-warning">查看试卷</button>
+                    <%= link_to "查看试卷",exam_path(exam.id) ,class: "btn btn-warning"%>
                   </div>
                 </div>
               </div>

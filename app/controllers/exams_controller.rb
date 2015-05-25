@@ -19,6 +19,14 @@ class ExamsController < ApplicationController
 		end
 	end
 
+	def show
+		@exam = Exam.where(id: params[:id]).first
+		if @exam.blank?
+			flash[:notice] = "查看的试卷不存在"
+			redirect_to root_path
+		end
+	end
+
 	private
 	def exam_params
 		params.require(:exam).permit(:user_id, :sub_course_id, :total_score, :correct_count, :all_count)
