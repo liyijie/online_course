@@ -75,12 +75,12 @@ class UserController < ApplicationController
 
   #我的问答
   def questions_answers
-    @question_comments = Comment.find_root_comments_by_usertable current_user, :question
+    @question_comments = Comment.find_root_comments_by_usertable(current_user, :question).page(params[:page])
   end
 
   #讨论中心
   def discuss_center
-    @comments = Comment.find_root_comments_by_usertable current_user, :discuss
+    @comments = Comment.find_root_comments_by_usertable(current_user, :discuss).page(params[:page])
   end
 
 
