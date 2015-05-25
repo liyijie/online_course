@@ -22,7 +22,7 @@ class UserController < ApplicationController
   	#未查找到对应数据时处理
   	if @user.blank?
   	  flash[:error] = "当前个人资料不存在"
-  	  edirect_to user_index_path
+  	  redirect_to user_index_path
   	end
 
     #头像赋值
@@ -74,8 +74,14 @@ class UserController < ApplicationController
   end
 
   #我的问答
-  def questions_answers
+  def my_questions
     @question_comments = Comment.find_root_comments_by_usertable(current_user, :question).page(params[:page])
+  end
+
+  #我的回答
+  def my_answers
+     @answer_comments = Comment.find_answer_by_usertable(current_user).page(params[:page])
+     pp @answer_comments
   end
 
   #讨论中心
@@ -83,6 +89,10 @@ class UserController < ApplicationController
     @comments = Comment.find_root_comments_by_usertable(current_user, :discuss).page(params[:page])
   end
 
+  #修改密码
+  def update_password
+
+  end
 
   #根据系别的id，查找到该系下所有的专业
   #参数：academy_id,系的id

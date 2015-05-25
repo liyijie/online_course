@@ -91,4 +91,9 @@ class Comment < ActiveRecord::Base
   def self.find_root_comments_by_usertable usertable, comment_scope
     Comment.where(parent_id:nil, usertable: usertable, comment_scope: comment_scope).order("created_at DESC")
   end
+
+  #获取用户对提问的回答
+  def self.find_answer_by_usertable usertable
+    Comment.where(usertable: usertable).order("created_at DESC")
+  end
 end

@@ -36,17 +36,19 @@ Rails.application.routes.draw do
 
   resources :user, only: [:show, :update] do
     collection do
-      post 'get_specialties'
-      post 'get_grades'
-      get 'show'
-      get 'my_courses'
-      get 'my_exams'
-      get 'score_search'
-      get 'my_collect'
-      get 'questions_answers'
-      get 'discuss_center'
+      post :get_specialties
+      post :get_grades
+      get :show
+      get :my_courses
+      get :my_exams
+      get :score_search
+      get :my_collect
+      get :my_questions
+      get :my_answers
+      get :discuss_center
 
-      post 'comment_create'
+      post :comment_create
+      post :update_password
     end
   end
 

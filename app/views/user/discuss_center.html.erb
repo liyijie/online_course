@@ -31,7 +31,7 @@
           <% @comments.each do |comment| %>
             <div class="row discuss-center-list">
               <div class="col-sm-1 no-padding">
-                <%= image_tag comment.try(:usertable).try(:image).try(:avatar).try(:url, :thumb),class: "img-circle max60" %>
+                <%= image_tag comment.try(:usertable).try(:show_image),class: "img-circle max60" %>
                 <p class="center-block grey-font"><%= comment.try(:usertable).try(:show_name) %></p>
               </div>
               <div class="col-sm-9">

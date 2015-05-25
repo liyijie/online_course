@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :phone
   validates_uniqueness_of   :phone, case_sensitive: false
-  validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: :create
-  validates_confirmation_of :password, on: :create
+  validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: [:create, :update_password]
+  validates_confirmation_of :password, on: [:create, :update_password]
   validates_uniqueness_of   :number
   validates_associated :image
 
@@ -65,7 +65,15 @@ class User < ActiveRecord::Base
   enum gender: {man: true, woman: false}
   PartnerGender = {man: '男', woman: '女'}
 
+   #页面头像显示
+  def show_image 
+    self.image.present? ? self.try(:image).try(:avatar).try(:url, :thumb) : "missing.png"
+  end
 
+  #有你昵称显示昵称，没有则显示其名字
+  def show_name 
+    self.nickname || self.name
+  end
 
   def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup
@@ -75,8 +83,4 @@ class User < ActiveRecord::Base
    where(conditions).where(["lower(username) = :value OR lower(phone) = :value", { :value => login.strip.downcase }]).first
   end
 
-  #有你昵称显示昵称，没有则显示其名字
-  def show_name 
-    self.nickname || self.name
-  end
 end
