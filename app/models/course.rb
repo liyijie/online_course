@@ -20,7 +20,8 @@ class Course < ActiveRecord::Base
 	acts_as_commentable
 	has_one :image, as: :imageable
 	has_many :sub_courses, dependent: :destroy
-
+ 
+  #创建course生成编号
 	before_create do
 		self.number = NumberHelper.random_course_number
 	end

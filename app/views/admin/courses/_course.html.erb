@@ -1,5 +1,5 @@
 <tr>
-  <td><%= course.image.avatar if course.image%></td>
+  <td><%= image_tag(course.image.avatar) if course.image%></td>
   <td><%= course.number %></td>
   <td><%= course.name %></td>
   <td><%= course.description.to_s[0..20] %></td>

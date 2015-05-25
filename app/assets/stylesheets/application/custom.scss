@@ -136,6 +136,11 @@ body.home__index {
       padding: 10px;
       border: solid #dfdede 1px;
     	overflow: hidden;
+      a.img {
+        width: 345px;
+        height: 230px;
+        display: block;
+      }
     	p.title  a {
     		height: 30px;
     		line-height: 30px;

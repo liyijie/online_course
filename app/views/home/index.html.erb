@@ -25,7 +25,7 @@
     <% @courses.each do |course|%>
       <div class='single-vedio-content'>
     	  <div class="vedio-content">
-    	    <%= link_to image_tag("vedio-bg.png"), show_courses_path(course.number)%>
+    	    <%= link_to image_tag(course.image.avatar), show_courses_path(course.number), class: 'img' if course.image%>
     	    <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
     	    <p class="description">
             <span class="pull-left section"><%= link_to course.description.to_s[0..10], show_courses_path(course.number) %></span>
