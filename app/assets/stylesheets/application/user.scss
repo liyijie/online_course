@@ -24,15 +24,6 @@ body.user__comment_create, body.user__update_password
     padding-right: 20px;
   }
 
-  //没有数据时样式
-  .blank {
-    height: 100px;
-    font-size: 30px;
-    text-align:center;//居中 
-    padding: 10px;
-    color: #808080;               
-  }
-
   //div中图片溢出处理
   .ov-hidden {
     overflow: hidden;

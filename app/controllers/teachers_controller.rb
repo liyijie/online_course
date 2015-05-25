@@ -39,8 +39,14 @@ class TeachersController < ApplicationController
 	def discuss_center
 	end
 
-  #我的问答
-	def my_faqs
+  #我的提问
+	def my_questions
+		@question_comments = Comment.find_root_comments_by_usertable(current_teacher, :question).page(params[:page])
+	end
+
+  #我的回答
+	def my_answers
+		@answer_comments = Comment.find_answer_by_usertable(current_teacher).page(params[:page])
 	end
 
   #修改个人信息

@@ -1,0 +1,57 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_teacher_page" %>
+<%end%>
+
+<div class="main-content">
+  <%= render "left_bar" %>
+  <%= render "teacher_info" %>
+  <div class="teacher-content teacher-wrapper">
+  	<div class="nav-bar">
+  		<%= link_to  "我的提问" , my_questions_teachers_path, class: "btn btn-default" %>
+  		<%= link_to  "我的回复", my_answers_teachers_path , class: "btn btn-default by-btn-bg" %>
+  	</div>
+  	<div class="teacher-info-content teacher-wrapper">
+  		<div class="infos">
+  		 	<ul class="my-questions">
+  		 		<% if @answer_comments.blank? %>
+		          <div class="blank">暂时没有回答</div>
+		        <% else %>
+		        	<% @answer_comments.each do |comment| %>
+		        		<li>
+		  		 		  <div class="avatar">
+		  		 		  	<%= image_tag("teacher-avatar.png")%>
+		  		 		  </div>
+		  		 		  <div class="question-info">
+		  		 		  	<p class="name">
+			  		 		    <%= current_teacher.show_name %>
+			  		 		    <span>回答</span>
+			  		 		  </p>
+			  		 		  <p class="content"><%= comment.body %></p>
+			  		 		  <% if comment.has_children? %>
+			                    <p><span class="text-muted">[最新回答]</span>
+			                    <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
+			                    <span class="text-muted"><%= comment.children.last.try(:body) %></span></p>
+			                  <% end %>
+			  		 		  <p class="time">时间: <%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></p>
+		  		 		  </div>
+		  		 		  <div class="answer-broswer">
+		  		 		  	<div class="list bl <%= comment.has_children? ? "text-success" : "text-muted"%>">
+		  		 		  		<p class="num"><%= comment.children.size %></p>
+		  		 		  		<p class="answer">回答</p>
+		  		 		  	</div>
+		  		 		  	<div class="list">
+		  		 		  		<p class="num">0</p>
+		  		 		  		<p class="answer">浏览</p>
+		  		 		  	</div>
+		  		 		  </div>
+		  		 		</li>
+		        	<% end %>
+		        <% end %>
+  		 	</ul>
+  		</div>
+  	</div>
+  	<div class="paginate text-center">
+        <%= paginate @answer_comments %>
+    </div>
+  </div>
+</div>

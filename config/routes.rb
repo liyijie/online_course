@@ -28,7 +28,8 @@ Rails.application.routes.draw do
       get :my_account
       get :upload_course_ware
       get :discuss_center
-      get :my_faqs
+      get :my_questions
+      get :my_answers
       get :my_score
     end
     member do

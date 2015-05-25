@@ -21,7 +21,7 @@
         <%end%>
       </li>
       <li>
-        <%= link_to my_faqs_teachers_path do %>
+        <%= link_to my_questions_teachers_path do %>
           <span class="glyphicon glyphicon-book">我的问答</span>
         <%end%>
       </li>
@@ -65,7 +65,7 @@
       $("#left-bar .list li").eq(2).find("a").addClass("active");
       $("#left-bar .list li").eq(2).siblings().find("a").removeClass("active");
     }
-    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_faqs"){
+    else if("<%= controller.controller_path %>" == "teachers" && ("<%= controller.action_name%>" == "my_questions" || "<%= controller.action_name%>" == "my_answers")){
       $("#left-bar .list .list-bg").css("top", "260px");
       $("#left-bar .list li").eq(3).find("a").addClass("active");
       $("#left-bar .list li").eq(3).siblings().find("a").removeClass("active");
