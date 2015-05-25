@@ -70,6 +70,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'kaminari', '~> 0.16.3'
 
+gem "mediaelement_rails"
 
 
 

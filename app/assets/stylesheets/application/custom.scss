@@ -966,3 +966,104 @@ body.teachers__show {
     }
   }
 }
+
+/*课程详情页面*/
+body.sub_courses__show  {
+  .main-content {
+    overflow: hidden;
+    .left-content {
+      width: 900px;
+      float: left;
+      .video-content {
+        padding: 20px;
+        background: #fff;
+        .collect-content {
+          height: 32px;
+          line-height: 32px;
+          width: 100%;
+          background: #434343;
+          .collect {
+            width: 80px;
+            float: right;
+          }
+        }
+      }
+      .comments-content {
+        width: 900px;
+        padding: 20px;
+        margin-top: 40px;
+        background: #fff;
+        .links {
+          margin: 0 0 20px 0;
+        }
+        .links-content {
+          overflow: hidden;
+          .comment-input {
+            overflow: hidden;
+          }
+          textarea {
+            color: #a9a9a9;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: solid 1px #d3dce0;
+          }
+        }
+        ul.comment-list {
+          li {
+            .comment_date {
+              color: #969b9e;
+            }
+          }
+        }
+      }
+    }
+    .right-bar {
+      width: 280px;
+      float: left;
+      margin-left: 20px;
+      .related-video {
+        background: #fff;
+        padding: 10px;
+        .title {
+          font-size: 18px;
+          line-height: 18px;
+          font-weight: bold;
+          color: $main-color;
+          padding-left: 10px;
+          border-left: solid 4px $main-color;
+        }
+       ul.videos li {
+         text-align: center;
+         display: block;
+         margin: 15px 0;
+        }
+        .buttons {
+          text-align: center;
+        }
+      }
+      .students-content {
+        margin-top: 40px;
+        background: #fff;
+        padding: 20px;
+        p.total {
+          height: 46px;
+          line-height: 46px;
+          text-align: center;
+          border-bottom: solid 1px #e3e6e8;
+          span.text {
+            color: #be3948;
+          }
+          a span {
+            color: #b1b1b1;
+          }
+        }
+        ul.students li {
+          margin: 25px 0;
+          .comment-info {
+            color: #969b9e;
+          }
+        }
+      }
+    }
+  }
+}

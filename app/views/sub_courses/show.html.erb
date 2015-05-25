@@ -1,71 +1,105 @@
-<div class="video_page ">
-	<div class="row">
-		<div class="col-md-8 videoplayer">
-			<div class="col-md-12">
-				<%= image_tag "video-play1.jpg", class:"video"%>
-			</div>
-			<div class="col-md-12 collect">
-				<div class="col-md-3 col-md-offset-9 collecttab">
-					<span class="glyphicon glyphicon-heart pull-right" aria-hidden="true"><span class="collectword">我喜欢</span></span>
-					<span class="glyphicon glyphicon-star pull-right" aria-hidden="true"><span class="collectword">收藏</span></span>
+<div class="main-content">
+	<div class="left-content">
+	  <div class="video-content">
+	  	<video width="860" height="500" poster="poster.jpg" controls="controls" preload="none">
+	    <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+	    <source type="video/mp4" src="http://7xj8j2.com1.z0.glb.clouddn.com/images/files/3/_邓紫棋_喜欢你_hd.mp4" />
+	    <!-- WebM/VP8 for Firefox4, Opera, and Chrome -->
+	    <source type="video/webm" src="myvideo.webm" />
+	    <!-- Ogg/Vorbis for older Firefox and Opera versions -->
+	    <source type="video/ogg" src="myvideo.ogv" />
+	    <!-- Optional: Add subtitles for each language -->
+	    <track kind="subtitles" src="subtitles.srt" srclang="en" />
+	    <!-- Optional: Add chapters -->
+	    <track kind="chapters" src="chapters.srt" srclang="en" /> 
+	    <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
+	      <object width="860" height="500" type="application/x-shockwave-flash" data="flashmediaelement.swf">
+	        <param name="movie" value="flashmediaelement.swf" />
+	        <param name="flashvars" value="controls=true&file=myvideo.mp4" />
+	        <!-- Image as a last resort -->
+	        <img src="myvideo.jpg" width="320" height="240" title="No video playback capabilities" />
+		    </object>
+		  </video>
+			<div class="collect-content">
+				<div class="collect">
+				  <%= link_to "" do %>
+				    <span class="glyphicon glyphicon-heart"></span>
+				  <% end %>
+				  <span>我喜欢</span>
 				</div>
-			</div>
-		</div>
-		<div class="col-md-1 video_blank">&nbsp</div>
-		<div class="video_lists col-md-3">
-			<div class="col-md-12 list_title">
-				<%= image_tag "videolist-titletab.jpg"%><span>相关视频</span>
-			</div>
-			<% (1..3).each do |i| %>
-			<div class="col-md-12 video_lists_win"><%= image_tag "video-play2.jpg", class:"photo2"%></div>
-			<% end %>
-			<div class="course-and-score">
-				<%= link_to "课后作业", after_class_courses_path, class: "course"%>
-				<%= link_to "成绩查询", "", class: "score"%>
-			</div>
-		</div>
-		<div class="col-md-8 video_comment">
-			<div class="col-md-12">
-				<a href="#" class="btn btn-primary comment_tab">评论</a>
-				<div class="col-md-12">
-				<form>
-				<textarea class="comment_text" name="textfield" type="text" rows="5" cols="85" value="扯淡、吐槽、表扬、鼓励......想说啥就说啥！" onfocus='this.value=""' onblur='this.value="扯淡、吐槽、表扬、鼓励......想说啥就说啥！"'/></textarea>
-				<a href="#" class="btn btn-success pull-right submit_btn">评论</a>
-				</form>
+			  <div class="collect">
+				  <%= link_to "" do %>
+				    <span class="glyphicon glyphicon-star"></span>
+				  <% end %>
+				  <span>收藏</span>
 				</div>
-				<ul class="media-list">
-					<% (1..6).each do |i| %>
-					<li class="media">
-						<hr>
-						<div class="media-left">
-							<a href="#">
-								<%= image_tag "user-picture1.jpg"%>
-							</a>
-						</div>
-						<div class="media-body">
-							<h5 class="media-heading">闲逛的蚂蚁</h5>
-							<p>谢谢郭大侠的无私奉献。</p>
-							<p class="comment_date">
-								<span>时间：2015-5-23  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
-								<button class="btn btn-primary btn-xs comment_reply" type="button">回复</button>
-								<button type="button" class="btn pull-right"><span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> </button>
-							</p>
-						</div>
-					</li>
+	    </div>
+	  </div>
+	  <div class="comments-content">
+		  <div class="links">
+		  	<a href="#" class="btn btn-primary">评论</a>
+			  <a href="#" class="btn btn-default">回答</a>
+		  </div>
+			<div class="links-content">
+			  <div class="comment-input">
+			  	<textarea class="comment_text" name="textfield" autofocus=false type="text" rows="5" cols="118" value="扯淡、吐槽、表扬、鼓励......想说啥就说啥！" onfocus='this.value=""' onblur='this.value="扯淡、吐槽、表扬、鼓励......想说啥就说啥！"'/></textarea>
+			    <a href="#" class="btn btn-success pull-right">发表评论</a>
+			  </div>
+			  <ul class="comment-list">
+			    <% 6.times do%>
+		        <li class="media">
+							<hr>
+							<div class="media-left">
+								<a href="#">
+									<%= image_tag "user-picture1.jpg"%>
+								</a>
+							</div>
+							<div class="media-body">
+								<h5 class="media-heading">闲逛的蚂蚁</h5>
+								<p>谢谢郭大侠的无私奉献。</p>
+								<p class="comment_date">
+									<span>时间：2015-5-23  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
+									<button class="btn btn-primary btn-xs comment_reply" type="button">回复</button>
+									<button type="button" class="btn pull-right"><span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> </button>
+								</p>
+							</div>
+						</li>
 					<% end %>
-				</ul>
+			  </ul>
+			</div>
+	  </div>
+	</div>
+	<div class="right-bar">
+		<div class="related-video">
+			<p class="title">
+				相关视频
+			</p>
+			<ul class="videos">
+				<li>
+				  <%= image_tag "video-play2.jpg", class:"photo2"%>
+			  </li>
+			  <li>
+				  <%= image_tag "video-play2.jpg", class:"photo2"%>
+			  </li>
+			  <li>
+				  <%= image_tag "video-play2.jpg", class:"photo2"%>
+			  </li>
+			</ul>
+			<div class="buttons">
+				<%= link_to "课后作业", after_class_courses_path, class: "btn btn-primary"%>
+				<%= link_to "成绩查询", "", class: "btn btn-success"%>
 			</div>
 		</div>
-		<div class="col-md-1 video_blank">&nbsp</div>
-		<div class="col-md-3 video_member">
-			<div class="col-md-12 ">
-				<span class="online_number">1053</span> 位共同战斗的同学
-				<hr>
-			</div>
-			<div class="col-md-12 video_member_list">
-				<ul class="media-list">
-					<% (1..6).each do |i| %>
-					<li class="media">
+		<div class="students-content">
+		  <p class="total">
+				<span class="text">1053</span> 位共同战斗的同学
+				<%= link_to "" do %>
+				  <span class="glyphicon glyphicon-refresh"></span>
+				<% end %>
+			</p>
+		  <ul class="students">
+		  	<% (1..6).each do |i| %>
+					<li>
 						<div class="media-left">
 							<a href="#">
 								<%= image_tag "user-picture1.jpg"%>
@@ -73,12 +107,15 @@
 						</div>
 						<div class="media-body">
 							<h5 class="media-heading">猪虫鼠小弟</h5>
-							<p class="comment_date">Web前段工程师</p>
+							<p class="comment-info">Web前段工程师</p>
 						</div>
 					</li>
-					<% end %>
-				</ul>
-			</div>
+				<% end %>
+			</ul>
 		</div>
 	</div>
 </div>
+<script>
+// using jQuery
+$('video,audio').mediaelementplayer(/* Options */);
+</script>
