@@ -636,6 +636,35 @@ body.exams__new, body.exams__show {
       }
     }
   }
+
+  //成绩查询弹出框
+  .modal {
+    font-weight: bold;
+
+    .modal-header {
+      background-color: #337ab7;
+      color: #fff;
+      text-align: center;
+    }
+
+    ul li {
+      padding: 8px;
+    }
+
+    .total-score {
+      color: #a94442;
+      font-size: 30px;
+    }
+
+    span.left-20 {
+      padding-left: 20px;
+    }
+
+    .modal-footer {
+      background-color: #ec971f;
+    }
+  }
+  
 }
 
 /*教师页面左边栏*/
