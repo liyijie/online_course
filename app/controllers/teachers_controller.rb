@@ -37,6 +37,7 @@ class TeachersController < ApplicationController
 
   #讨论中心
 	def discuss_center
+		@comments = Comment.find_root_comments_by_usertable(current_teacher, :discuss).page(params[:page])
 	end
 
   #我的提问
