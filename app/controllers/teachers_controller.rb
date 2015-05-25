@@ -25,6 +25,7 @@ class TeachersController < ApplicationController
 
   #成绩查询
 	def my_score
+		@academies = Academy.all.pluck(:id, :name)
 	end
 
 	#我的账户

@@ -1,3 +1,35 @@
 <div class="main-content">
-	<%= render "left_bar" %>
+  <%= render "left_bar" %>
+
+  <div class="teacher-wrapper">
+
+	<div class="search-step col-sm-offset-3">
+	  <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="javascript:void(0)">第一步 选择专业</a></li>
+        <li role="presentation"><a href="javascript:void(0)">第二步 选择班级</a></li>
+        <li role="presentation"><a href="javascript:void(0)">第三步 选择课程</a></li>
+      </ul>
+	</div>
+	<% @academies.each_with_index do |academy,index| %>
+	  <% if index%4 == 0 %>
+	  <div class="condition-row">
+	  <% end %>
+		<div class="col-sm-3"><input id="academy_<%= index %>" type="radio" name="academy" value="<%= academy[0]%>"> <lable for="academy_<%= index %>"><%= academy[1] %></lable></div>
+	  <% if index%4 == 3 %>
+	  </div>
+	  <% end %>
+	<% end %>
+	
+	<% if @academies.length % 4 != 3 %>
+	   </div>
+	<% end %>
+
+	
+
+	<div class="search-score-btn">
+	  <button type="button" class="btn btn-primary btn-lg">&nbsp;下一步&nbsp;</button>
+	  <button type="button" class="btn btn-danger btn-lg">返回首页</button>
+	</div>
+
+  </div>
 </div>
