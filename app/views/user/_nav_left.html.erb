@@ -66,7 +66,7 @@
       $("#left-bar .list li").eq(3).find("a").addClass("active");
       $("#left-bar .list li").eq(3).siblings().find("a").removeClass("active");
     }
-    else if("<%= controller.controller_path %>" == "user" && "<%= controller.action_name%>" == "questions_answers"){
+    else if("<%= controller.controller_path %>" == "user" && ("<%= controller.action_name%>" == "my_questions" || "<%= controller.action_name%>" == "my_answers")){
       $("#left-bar .list .list-bg").css("top", "326px");
       $("#left-bar .list li").eq(4).find("a").addClass("active");
       $("#left-bar .list li").eq(4).siblings().find("a").removeClass("active");
