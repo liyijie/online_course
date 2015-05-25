@@ -43,4 +43,26 @@ class Exam < ActiveRecord::Base
     self.total_score = all_count == 0 ? 0 : correct_count * 100 / all_count
     self.save
   end
+
+
+  #获取考试回答正确的题 
+  def right_items
+    rights = []
+    self.exam_items.each_with_index {|item,index| rights << (index + 1) if item.correct}
+    rights
+  end
+
+  #获取考试回答错误的题 
+  def wrong_items
+    wrong = []
+    self.exam_items.each_with_index {|item,index| wrong << (index + 1) if !item.correct}
+    wrong
+  end
+
+  #获取考试没有回答的题
+  def no_answer_items
+    no_answer = []
+    self.exam_items.each_with_index {|item,index| no_answer << (index + 1) if item.answer.blank?}
+    no_answer
+  end
 end

@@ -39,14 +39,14 @@
       <li>
         <p class="title">已答题数</p>
         <p class="number">
-          <span class="already-reply-questions"><%= @exam.exam_items.length%></span>
+          <span class="already-reply-questions"><%= @exam.exam_items.size - @exam.no_answer_items.size %></span>
           题
         </p>
       </li>
       <li>
         <p class="title">未答题数</p>
         <p class="number">
-          <span class="yet-reply-questions">0</span>
+          <span class="yet-reply-questions"><%= @exam.no_answer_items.size %></span>
           题
         </p>
       </li>
@@ -54,4 +54,4 @@
     <a href="javascript:void(0)" id="back-to-top"></a>
   </div>
 </div>
- <%= render :partial => "score_model_fade.html.erb" %>
+ <%= render :partial => "score_modal_fade.html.erb" %>
