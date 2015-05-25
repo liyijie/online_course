@@ -378,17 +378,21 @@ body.courses__show, body.courses__after_class {
               color: #000;
             }
             &.course-info {
-              span.content {
+              div.content {
                 font-size: 14px;
                 line-height: 14px;
                 color: #6b6b6b;
+                display: block;
+                overflow: hidden;
+                p {
+                  font-size: 14px;
+                  line-height: 20px;
+                }
                 &.lg-height {
-                  height: 180px;
-                  overflow: hidden;
+                  height: 162px;
                 }
                 &.sm-height {
-                  height: 180px;
-                  overflow: hidden;
+                  height: 82px;
                 }
               }
             }
