@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   def get_layout
     if devise_controller?
     	'login'
+    elsif is_admin?
+      'admin'
     end
   end
 
@@ -24,6 +26,11 @@ class ApplicationController < ActionController::Base
 
 
   protected
+
+  #是否后台页面
+  def is_admin?
+    params[:controller].split("/").first=="admin"
+  end
 
   def configure_permitted_parameters
      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:phone, :password, :password_confirmation) }
