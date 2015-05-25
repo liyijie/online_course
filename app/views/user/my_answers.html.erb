@@ -1,0 +1,58 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_user" %>
+<% end %>
+<div class="row user">
+
+  <div class="col-md-2" role="complementary">
+	<%= render :partial => "nav_left" %>
+  </div>
+
+  <div class="col-md-10">
+
+    <div class="row common-info">
+      <%= render :partial => "base_info" %>
+	  </div>
+
+	  <div class="row self-main-context">
+
+	    <ul class="nav nav-pills">
+        <li role="presentation"><%= link_to "我的提问",my_questions_user_index_path %></li>
+        <li role="presentation" class="active"><%= link_to "我的回答",my_answers_user_index_path %></li>
+      </ul>
+
+      <!-- ###############################我的回答##################### -->
+      <div class="questions-answers-content">
+        <% if @answer_comments.blank? %>
+          <div class="blank">暂时没有提问</div>
+        <% else %>
+          <% @answer_comments.each do |comment| %>
+            <div class="row questions-answers-list">
+              <div class="col-sm-1">
+                <%= image_tag current_user.show_image ,class: "img-rounded max60" %>
+              </div>
+              <div class="col-sm-9">
+                <div>奋斗在路上 <span class="grey-font">回答</span></div>
+                <p><%= comment.body%></p><br>
+                <div class="grey-font">时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></div>
+              </div>
+              <div class="col-sm-2 grey-font">
+                 <table class="table no-border">
+                  <tr align="center">
+                    <td class="<%= comment.has_children? ? "text-success" : "text-muted"%>"><%= comment.children.size %></td>
+                    <td class="left-border">0</td>
+                  </tr>
+                  <tr align="center">
+                    <td class="<%= comment.has_children? ? "text-success" : "text-muted"%>">回答</td>
+                    <td class="left-border">浏览</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- ###############################我的回答##################### -->
+
+    </div>
+  </div>
+</div>
