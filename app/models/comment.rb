@@ -94,6 +94,6 @@ class Comment < ActiveRecord::Base
 
   #获取用户对提问的回答
   def self.find_answer_by_usertable usertable
-    Comment.where(usertable: usertable).order("created_at DESC")
+    Comment.where(usertable: usertable, comment_scope: :answer).order("created_at DESC")
   end
 end

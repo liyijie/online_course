@@ -35,8 +35,8 @@
                 <p><%= comment.body%></p><br>
                 <div class="grey-font">时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></div>
               </div>
-              <div class="col-sm-2 grey-font">
-                 <table class="table no-border">
+              <div class="col-sm-2">
+                 <table class="table no-border text-muted">
                   <tr align="center">
                     <td class="<%= comment.has_children? ? "text-success" : "text-muted"%>"><%= comment.children.size %></td>
                     <td class="left-border">0</td>
@@ -50,7 +50,11 @@
             </div>
           <% end %>
         <% end %>
-         
+
+      </div>
+
+      <div class="paginate text-center">
+        <%= paginate @answer_comments %>
       </div>
       <!-- ###############################我的回答##################### -->
 

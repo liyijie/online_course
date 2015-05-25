@@ -81,7 +81,6 @@ class UserController < ApplicationController
   #我的回答
   def my_answers
      @answer_comments = Comment.find_answer_by_usertable(current_user).page(params[:page])
-     pp @answer_comments
   end
 
   #讨论中心
