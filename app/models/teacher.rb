@@ -55,7 +55,10 @@ class Teacher < ActiveRecord::Base
   validates :password, presence: true, length: {minimum:6,maximum: 32}, on: :create
   validates_confirmation_of :password, on: :create
 
-
+  #创建teacher生成编号
+  before_create do
+    self.number = NumberHelper.random_course_number
+  end
 
   def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup

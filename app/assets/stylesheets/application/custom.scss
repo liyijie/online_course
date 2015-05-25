@@ -140,6 +140,21 @@ body.home__index {
         width: 345px;
         height: 230px;
         display: block;
+        overflow: hidden;
+      }
+      a.img img {
+        -webkit-transition:all 0.25s ease-in-out;
+        -moz-transition:all 0.25s ease-in-out;
+        -o-transition:all 0.25s ease-in-out;
+        -ms-transition:all 0.25s ease-in-out;
+        transition:all 0.25s ease-in-out;
+      }
+      a.img:hover img {
+        transform: scale(1.15,1.15);
+        -webkit-transform:scale(1.15,1.15);
+        -moz-transform:scale(1.15,1.15);
+        -ms-transform:scale(1.15,1.15);
+        -o-transform:scale(1.15,1.15);
       }
     	p.title  a {
     		height: 30px;
