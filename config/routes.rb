@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   get "courses/:number/sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses_courses
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
 
+  #当子课程为pdf等格式文件时下载链接
+  get "/sub_courses/:number/download", to: "sub_courses#download", as: :download_sub_course
+
   resources :courses, only: [:index] do
-  	resources :sub_courses
+  	resources :sub_courses, only: [:show]
     collection do
       post :course_collect
       post :course_praise

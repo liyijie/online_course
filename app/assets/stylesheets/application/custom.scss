@@ -431,10 +431,25 @@ body.courses__show, body.courses__after_class {
       .courses-list {
         height: 200px;
         overflow: hidden;
+        a {
+          float: left;
+          &.title {
+            width: 60%;
+          }
+          &.total {
+            text-align: center;
+            width: 20%;
+          }
+          &.already {
+            text-align: center;
+            width: 20%;
+          }
+        }
         li {
           height: 46px;
           line-height: 46px;
           border-bottom: 2px solid #c7e0fb;
+          overflow: hidden;
         }
         li:before {
           content: counter(li);
