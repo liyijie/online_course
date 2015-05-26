@@ -819,7 +819,7 @@ body.exams__new, body.exams__show {
 body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info,
 body.teachers__my_account, body.teachers__upload_course_ware,
 body.teachers__my_questions, body.teachers__my_answers, body.teachers__discuss_center,
-body.teachers__my_score {
+body.teachers__my_score, body.teachers__select_grade, body.teachers__select_course {
   .main-content {
     .teacher-content {
       margin-top: 20px;
@@ -944,7 +944,19 @@ body.teachers__my_score {
     div.search-step {
       padding: 20px;
       
-      
+      a:hover {
+        background-color: #fff;
+        cursor: default;
+        border-color: #ccc;
+        color: #337ab7;
+      }
+
+      .active a:hover {
+        background-color: #337ab7;
+        cursor: default;
+        border-color: #ccc;
+        color: #fff;
+      }
     }
     .condition-row {
       padding: 20px;

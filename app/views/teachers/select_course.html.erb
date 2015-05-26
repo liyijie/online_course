@@ -1,0 +1,44 @@
+<div class="main-content">
+  <%= render "left_bar" %>
+
+  <div class="teacher-wrapper">
+
+	<div class="search-step col-sm-offset-3">
+	  <ul class="nav nav-pills">
+        <li role="presentation"><a href="javascript:void(0)">第一步 选择专业</a></li>
+        <li role="presentation"><a href="javascript:void(0)">第二步 选择班级</a></li>
+        <li role="presentation" class="active"><a href="javascript:void(0)">第三步 选择课程</a></li>
+      </ul>
+	</div>
+	<%= form_tag select_course_teachers_path, method: :post do %>
+	  <% if @courses.present? %>
+	  	<% @courses.each_with_index do |course,index| %>
+		  <% if index%4 == 0 %>
+		  <div class="condition-row">
+		  <% end %>
+			<div class="col-sm-3">
+			  <%= check_box_tag "course_ids",course[0] %>
+			  <lable for="course_ids_<%= index + 1 %>"><%= course[1] %></lable>
+			</div>
+		  <% if index%4 == 3 %>
+		  </div>
+		  <% end %>
+		<% end %>
+		
+		<% if @courses.length % 4 != 3 %>
+		   </div>
+		<% end %>
+	  <% else %>
+	  	<div class="blank">当前学院没有课程</div>
+	  <% end %>
+
+	  <%= hidden_field_tag "academy_id", params[:academy_id]%>
+	  <%= hidden_field_tag "grade_id", params[:grade_id]%>
+	  <div class="search-score-btn">
+		<button type="button" class="btn btn-primary btn-lg">上一步</button>
+		<%= submit_tag "下一步", class: "btn btn-danger btn-lg" %>
+	  </div>
+	<% end %>
+
+  </div>
+</div>

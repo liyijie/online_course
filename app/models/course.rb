@@ -9,6 +9,7 @@
 #  content     :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  academy_id  :integer
 #
 
 class Course < ActiveRecord::Base
@@ -20,6 +21,7 @@ class Course < ActiveRecord::Base
 	acts_as_commentable
 	has_one :image, as: :imageable
 	has_many :sub_courses, dependent: :destroy
+	belongs_to :academy
  
   #创建course生成编号
 	before_create do

@@ -28,8 +28,19 @@ class TeachersController < ApplicationController
 		@academies = Academy.all.pluck(:id, :name)
 	end
 
+	#成绩查询----选择班级
+	def select_grade
+		@grades = Grade.joins(:specialty).where(specialties: {academy_id: params[:academy_id]}).pluck("grades.id","grades.name")
+	end
+
+	#成绩查询----选择课程
+	def select_course
+		@courses = Course.where(academy_id: params[:academy_id]).pluck(:id, :name)
+	end
+
 	#我的账户
 	def my_account
+	
 	end
 
   #上传课件

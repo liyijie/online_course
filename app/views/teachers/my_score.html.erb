@@ -10,26 +10,30 @@
         <li role="presentation"><a href="javascript:void(0)">第三步 选择课程</a></li>
       </ul>
 	</div>
-	<% @academies.each_with_index do |academy,index| %>
-	  <% if index%4 == 0 %>
-	  <div class="condition-row">
-	  <% end %>
-		<div class="col-sm-3"><input id="academy_<%= index %>" type="radio" name="academy" value="<%= academy[0]%>"> <lable for="academy_<%= index %>"><%= academy[1] %></lable></div>
-	  <% if index%4 == 3 %>
-	  </div>
-	  <% end %>
+	<%= form_tag select_grade_teachers_path, method: :post do %>
+		<% @academies.each_with_index do |academy,index| %>
+		  <% if index%4 == 0 %>
+		  <div class="condition-row">
+		  <% end %>
+			<div class="col-sm-3">
+			  <%= radio_button_tag "academy_id",academy[0], academy[0] == params[:academy_id] %>
+			  <lable for="academy_id_<%= index + 1 %>"><%= academy[1] %></lable>
+			</div>
+		  <% if index%4 == 3 %>
+		  </div>
+		  <% end %>
+		<% end %>
+		
+		<% if @academies.length % 4 != 3 %>
+		   </div>
+		<% end %>
+
+		<div class="search-score-btn">
+		  <%= submit_tag "下一步", class: "btn btn-primary btn-lg" %>
+		  <a href="<%= root_path%>" class="btn btn-danger btn-lg">返回首页</a>
+		</div>
 	<% end %>
 	
-	<% if @academies.length % 4 != 3 %>
-	   </div>
-	<% end %>
-
-	
-
-	<div class="search-score-btn">
-	  <button type="button" class="btn btn-primary btn-lg">&nbsp;下一步&nbsp;</button>
-	  <button type="button" class="btn btn-danger btn-lg">返回首页</button>
-	</div>
 
   </div>
 </div>

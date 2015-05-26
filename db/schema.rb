@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525090021) do
+ActiveRecord::Schema.define(version: 20150526012429) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(version: 20150525090021) do
     t.string   "content",     limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "academy_id",  limit: 4
   end
+
+  add_index "courses", ["academy_id"], name: "index_courses_on_academy_id", using: :btree
 
   create_table "exam_items", force: :cascade do |t|
     t.integer  "exam_id",     limit: 4
@@ -248,6 +251,7 @@ ActiveRecord::Schema.define(version: 20150525090021) do
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "attachments", "sub_courses"
+  add_foreign_key "courses", "academies"
   add_foreign_key "exam_items", "exams"
   add_foreign_key "exam_items", "questions"
   add_foreign_key "exams", "sub_courses"
