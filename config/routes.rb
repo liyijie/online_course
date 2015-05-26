@@ -65,7 +65,13 @@ Rails.application.routes.draw do
   namespace :admin do
     root "home#index"
     resources :courses do
-      resources :sub_courses
+      resources :sub_courses do
+        resources :questions, only: [:index] do
+          collection do
+            post :import
+          end
+        end
+      end
     end
   end
 

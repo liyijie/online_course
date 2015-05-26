@@ -15,4 +15,11 @@
 class Question < ActiveRecord::Base
   belongs_to :sub_course
   has_many :options, dependent: :destroy
+
+  require 'csv' #注意必须小写
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Users.create! row.to_hash
+    end
+  end
 end
