@@ -9,7 +9,7 @@
     <%= label_tag :teachers, '教师团队', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <% Teacher.all.each do |teacher| %>
-        <%= check_box_tag("course[teacher_course_ids][]", teacher.id)%>
+        <%= check_box_tag("course[teacher_ids][]", teacher.id, teacher.id.in?(@course.teachers.collect(&:id)))%>
         <%= teacher.name%>
       <%end%>
     </div>

@@ -13,6 +13,8 @@ module Admin
 			@course = Course.new(course_params)
 			@course.image = Image.new
 			@course.image.avatar = params[:course][:image]
+			@course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids],
+				                        course_id: @course.id)
 			if @course.save && @course.image.save
 				flash.now[:notice] = "课程创建成功"
 				return redirect_to admin_courses_url
@@ -27,6 +29,7 @@ module Admin
 
 		def update
 			@course.image = Image.new if @course.image.blank?
+			params[:course][:teacher_ids] ||= []
 			if @course.update(course_params) && @course.image.update(avatar: params[:course][:image])
 				flash.now[:notice] = "课程更新成功"
 				redirect_to admin_courses_url
@@ -42,7 +45,7 @@ module Admin
 		private
 
 		def course_params
-			params.require(:course).permit(:name, :description, :academy_id)
+			params.require(:course).permit(:name, :description, :academy_id, {teacher_ids: []})
 		end
 
 		def set_course

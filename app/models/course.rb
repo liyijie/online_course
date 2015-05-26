@@ -23,7 +23,7 @@ class Course < ActiveRecord::Base
 	has_many :sub_courses, dependent: :destroy
 	belongs_to :academy
 	has_many :teacher_courses, dependent: :destroy
- 
+  has_many :teachers, through: :teacher_courses
   #创建course生成编号
 	before_create do
 		self.number = NumberHelper.random_course_number
