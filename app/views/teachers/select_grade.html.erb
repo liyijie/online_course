@@ -17,8 +17,8 @@
 		  <div class="condition-row">
 		  <% end %>
 			<div class="col-sm-3">
-			  <%= radio_button_tag "grade_id",grade[0], grade[0] == params[:grade_id] %>
-			  <lable for="grade_id_<%= index + 1 %>"><%= grade[1] %></lable>
+			  <%= check_box_tag "grade_ids[#{index}]",grade[0] %>
+			  <lable for="grade_ids_<%= index %>"><%= grade[1] %></lable>
 			</div>
 		  <% if index%4 == 3 %>
 		  </div>

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get :my_score
       post :select_grade
       post :select_course
+      post :show_score
     end
     member do
       patch :update_password

@@ -819,7 +819,9 @@ body.exams__new, body.exams__show {
 body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info,
 body.teachers__my_account, body.teachers__upload_course_ware,
 body.teachers__my_questions, body.teachers__my_answers, body.teachers__discuss_center,
-body.teachers__my_score, body.teachers__select_grade, body.teachers__select_course {
+body.teachers__my_score, body.teachers__select_grade, body.teachers__select_course,
+body.teachers__show_score
+ {
   .main-content {
     .teacher-content {
       margin-top: 20px;
@@ -969,6 +971,32 @@ body.teachers__my_score, body.teachers__select_grade, body.teachers__select_cour
         padding-right:20px;
       }
     }
+
+    .show-score-title {
+      padding: 20px;
+      .main-title {
+        width: 762px;
+        height: 88px;
+        line-height: 70px;
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+        margin: 0 auto;
+        background: image-url("new-exam-bg") no-repeat 0 0;
+      }
+    }
+
+    //教师查阅统计图
+    .average-score {
+      #averageScore {
+        height: 380px;
+      }
+
+      .col-sm-4 {
+        padding-top: 200px;
+      }
+    }
+    
 
   }
 }

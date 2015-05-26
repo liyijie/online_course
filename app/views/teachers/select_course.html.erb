@@ -10,15 +10,15 @@
         <li role="presentation" class="active"><a href="javascript:void(0)">第三步 选择课程</a></li>
       </ul>
 	</div>
-	<%= form_tag select_course_teachers_path, method: :post do %>
+	<%= form_tag show_score_teachers_path, method: :post do %>
 	  <% if @courses.present? %>
 	  	<% @courses.each_with_index do |course,index| %>
 		  <% if index%4 == 0 %>
 		  <div class="condition-row">
 		  <% end %>
 			<div class="col-sm-3">
-			  <%= check_box_tag "course_ids",course[0] %>
-			  <lable for="course_ids_<%= index + 1 %>"><%= course[1] %></lable>
+			  <%= radio_button_tag "course_id",course[0] %>
+			  <lable for="course_id_<%= index + 1 %>"><%= course[1] %></lable>
 			</div>
 		  <% if index%4 == 3 %>
 		  </div>

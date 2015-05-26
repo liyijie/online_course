@@ -38,6 +38,11 @@ class TeachersController < ApplicationController
 		@courses = Course.where(academy_id: params[:academy_id]).pluck(:id, :name)
 	end
 
+	#成绩查询----显示查询结果
+	def show_score
+		
+	end
+
 	#我的账户
 	def my_account
 	

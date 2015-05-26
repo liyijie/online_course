@@ -1,0 +1,131 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag 'echarts/echarts-all' %>
+<% end %>
+<div class="main-content">
+  <%= render "left_bar" %>
+
+  <div class="teacher-wrapper">
+  	<div class="show-score-title">
+  	  <a href="javascript:void(0)" class="btn btn-primary">教师查阅</a>
+      <div class="main-title">网络设备维护基础（一）测试</div>
+  	</div>
+	
+	<div class="average-score row">
+  	  <div id="averageScore" class="col-sm-8"></div>
+  	  <div class="col-sm-4">
+  	  	<div>平均分最高的班级是：<span>计算机（5）班</span></div>
+  	  	<div>平均分最低的班级是：<span>计算机（4）班</span></div>
+  	  </div>
+	</div>
+
+	<div class="score-percentage row">
+  	  <div id="scorePercentage" class="col-sm-4" style="height: 250px;"></div>
+  	  
+	</div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+        var averageScore = echarts.init(document.getElementById('averageScore')); 
+
+        option = {
+		    title: {
+		        text: '每个班每门课的平均分统计图',
+		        textStyle: {
+		        	color: "#337ab7"
+		        }
+		    },
+		    tooltip: {
+		        trigger: 'item'
+		    },
+		    xAxis: [
+		        {
+		            type: 'category',
+		            data: ['1班', '2班', '3班', '4班', '5班', '6班', '7班'],
+		            name: "班级"
+		        }
+		    ],
+		    yAxis: [
+		        {
+		            type: 'value',
+		            name: "平均分",
+		            splitNumber: 10
+		        }
+		    ],
+		    series: [
+		        {
+		            type: 'bar',
+		            itemStyle: {
+		                normal: {
+		                    color: function(params) {
+		                        // build a color map as your need.
+		                        var colorList = [
+		                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+		                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+		                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+		                        ];
+		                        return colorList[params.dataIndex]
+		                    },
+		                    label: {
+		                        show: true,
+		                        position: 'top',
+		                        formatter: '{c}'
+		                    }
+		                }
+		            },
+		            data: [70,60,80,50,90,70,85],
+		        }
+		    ]
+		};
+        averageScore.setOption(option);  
+
+        //==========================================================================================================================
+
+        var scorePercentage = echarts.init(document.getElementById('scorePercentage')); 
+
+		option = {
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{b} : {c}人 ({d}%)"
+		    },
+		    series : [
+		        {
+		            name:'分数段',
+		            type:'pie',
+		            radius : "60%",
+		            center: ['50%', '60%'],
+		            itemStyle : {
+		                normal : {
+		                    label : {
+		                        position : 'inner',
+		                        formatter : function (params) {                         
+		                          return (params.percent - 0).toFixed(0) + '%'
+		                        }
+		                    },
+		                    labelLine : {
+		                        show : false
+		                    }
+		                },
+		                emphasis : {
+		                    label : {
+		                        show : true,
+		                        formatter : "{b}\n{d}%"
+		                    }
+		                }
+		                
+		            },
+		            data:[
+		                {value:10, name:'60分以下'},
+		                {value:14, name:'60-70分'},
+		                {value:23, name:'79-80分'},
+		                {value:8, name:'80-90分'},
+		                {value:4, name:'90分以上'}
+		            ]
+		        }
+		    ]
+		};
+                    
+        scorePercentage.setOption(option);             
+
+    </script>
