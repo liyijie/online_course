@@ -4,13 +4,14 @@
 <div class="main-content">
   <%= render "left_bar" %>
 
-  <div class="teacher-wrapper">
+  <div class="teacher-wrapper show-score">
   	<div class="show-score-title">
   	  <a href="javascript:void(0)" class="btn btn-primary">教师查阅</a>
       <div class="main-title">网络设备维护基础（一）测试</div>
   	</div>
 	
 	<div class="average-score row">
+	  <div class="sub-title"><span class="badge">1</span>每个班每门课的平均分统计图</div>
   	  <div id="averageScore" class="col-sm-8"></div>
   	  <div class="col-sm-4">
   	  	<div>平均分最高的班级是：<span>计算机（5）班</span></div>
@@ -18,11 +19,26 @@
   	  </div>
 	</div>
 
-	<div class="score-percentage row">
-  	  <div id="scorePercentage" class="col-sm-4" style="height: 250px;"></div>
-  	  
+	<div class="score-percentage">
+	  <div class="sub-title"><span class="badge">2</span>每个班每门课的平均分统计图</div>
+
+	  <div class="row">
+	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
+  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
+  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
+	  </div>
+
+	  <div class="row">
+	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
+  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
+  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
+	  </div>
 	</div>
 
+	<div class="search-score-btn">
+		<button type="button" class="btn btn-primary btn-lg">到处EXCEL</button>
+		<button type="button" class="btn btn-danger btn-lg">进入下一页</button>
+	</div>
   </div>
 </div>
 
@@ -30,12 +46,6 @@
         var averageScore = echarts.init(document.getElementById('averageScore')); 
 
         option = {
-		    title: {
-		        text: '每个班每门课的平均分统计图',
-		        textStyle: {
-		        	color: "#337ab7"
-		        }
-		    },
 		    tooltip: {
 		        trigger: 'item'
 		    },
@@ -82,9 +92,13 @@
 
         //==========================================================================================================================
 
-        var scorePercentage = echarts.init(document.getElementById('scorePercentage')); 
 
 		option = {
+			title: {
+				x: "center",
+				y: "bottom",
+				text: "计算机（1）班"
+			},
 		    tooltip : {
 		        trigger: 'item',
 		        formatter: "{b} : {c}人 ({d}%)"
@@ -94,7 +108,7 @@
 		            name:'分数段',
 		            type:'pie',
 		            radius : "60%",
-		            center: ['50%', '60%'],
+		            center: ['50%', '50%'],
 		            itemStyle : {
 		                normal : {
 		                    label : {
@@ -118,14 +132,16 @@
 		            data:[
 		                {value:10, name:'60分以下'},
 		                {value:14, name:'60-70分'},
-		                {value:23, name:'79-80分'},
+		                {value:23, name:'70-80分'},
 		                {value:8, name:'80-90分'},
 		                {value:4, name:'90分以上'}
 		            ]
 		        }
 		    ]
 		};
-                    
-        scorePercentage.setOption(option);             
 
+		$('.score-percentage-picture').each(function(){
+			var scorePercentage = echarts.init($(this).get(0)); 
+        	scorePercentage.setOption(option);   
+		});
     </script>
