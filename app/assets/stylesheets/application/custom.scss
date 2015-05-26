@@ -438,170 +438,179 @@ body.courses__show, body.courses__after_class {
 			border-color: #ccc;
 		}
 
-    /*相关课程*/
-    .related-courses {
-      margin-top: 40px;
-      padding: 20px 30px;
-      background: #fff;
-      .courses-list {
-        height: 200px;
-        overflow: hidden;
-        li {
-          height: 46px;
-          line-height: 46px;
-          border-bottom: 2px solid #c7e0fb;
-        }
-        li:before {
-          content: counter(li);
-          counter-increment: li;
-          position: absolute;
-          width: 40px;
-          height: 46px;
-          line-height: 46px;
-          text-align:center;
-          color: #FFF;
-          background: image-url("li-arrow.png") no-repeat 0px 17px;
-        }
-      }
-    }
-    a.drop-down-arrow {
-      height: 24px;
-      width: 100px;
-      line-height: 24px;
-      margin-top: 20px;
-      text-align: center;
-      display: block;
-      background: image-url("drop-down-arrow.png") no-repeat 12px 0;
-    }
-    /*分类效果*/
-    .category-list {
-      padding: 20px;
-      margin-top: 40px;
-      background: #fff;
-      overflow: hidden;
-      a {
-        height: 132px;
-        line-height: 174px;
-        text-align: center;
-        color: #fff;
-        font-weight: bold;
-        display: block;
-        float: left;
-        &.public-common-style {
-          width: 95px;
-          margin: 0 10px;
-        }
-        &.public-active-style {
-          width: 120px;
-          margin: 0;
-          color: #000;
-          line-height: 168px;
-        }
-        &.index {
-          background: image-url("category-bg.png") no-repeat -8px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat 0px 0;
-          }
-        }
-        &.material {
-          background: image-url("category-bg.png") no-repeat -125px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -192px 0;
-          }
-        }
-        &.setup {
-          background: image-url("category-bg.png") no-repeat -243px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -382px 0;
-          }
-        }
-        &.team {
-          background: image-url("category-bg.png") no-repeat -360px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -564px 0;
-          }
-        }
-        &.condition {
-          background: image-url("category-bg.png") no-repeat -477px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -726px 0;
-          }
-        }
-        &.method {
-          background: image-url("category-bg.png") no-repeat -594px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -914px 0;
-          }
-        }
-        &.content {
-          background: image-url("category-bg.png") no-repeat -712px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -1092px 0;
-          }
-        }
-        &.resource {
-          background: image-url("category-bg.png") no-repeat -828px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -1252px 0;
-          }
-        }
-        &.effect {
-          background: image-url("category-bg.png") no-repeat -949px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -1414px 0;
-          }
-        }
-        &.policy {
-          background: image-url("category-bg.png") no-repeat -1066px 16px;
-          &.active {
-            background: image-url("category-active-bg.png") no-repeat -1568px 0;
-          }
-        }
-      }
-    }
-    .category-list-content {
-      margin-top: 40px;
-      padding: 20px 30px;
-      background: #fff;
-      .text-content {
-        color: #000;
-        display: none;
-        margin-top: 15px;
-      }
-    }
-    .fast-entry {
-      margin-top: 40px;
-      padding: 20px 30px;
-      background: #fff;
-      .entry-content {
-        display: none;
-        margin-top: 15px;
-        .entry-content-title{
-          font-size: 18px;
-          color: #337AB7;
-          padding-left: 5px;
-        }
-        .entry-content-table{
-          width: 800px;
-          padding: 10px;
-          margin-left: 30px;
-          .table{
-            th,td{
-              vertical-align: middle;
-              text-align: center;
-            }
-          }
-        }
-      }
-    }
-    h5{
-      padding: 15px 0;
-      padding-left: 20px;
-    }
-    p{
-      margin-bottom: 5px;
-    }
-  }
+		/*相关课程*/
+		.related-courses {
+			margin-top: 40px;
+			padding: 20px 30px;
+			background: #fff;
+			.courses-list {
+				height: 200px;
+				overflow: hidden;
+				li {
+					height: 46px;
+					line-height: 46px;
+					border-bottom: 2px solid #c7e0fb;
+				}
+				li:before {
+					content: counter(li);
+					counter-increment: li;
+					position: absolute;
+					width: 40px;
+					height: 46px;
+					line-height: 46px;
+					text-align:center;
+					color: #FFF;
+					background: image-url("li-arrow.png") no-repeat 0px 17px;
+				}
+			}
+		}
+		a.drop-down-arrow {
+			height: 24px;
+			width: 100px;
+			line-height: 24px;
+			margin-top: 20px;
+			text-align: center;
+			display: block;
+			background: image-url("drop-down-arrow.png") no-repeat 12px 0;
+		}
+		/*分类效果*/
+		.category-list {
+			padding: 20px;
+			margin-top: 40px;
+			background: #fff;
+			overflow: hidden;
+			a {
+				height: 132px;
+				line-height: 174px;
+				text-align: center;
+				color: #fff;
+				font-weight: bold;
+				display: block;
+				float: left;
+				&.public-common-style {
+					width: 95px;
+					margin: 0 10px;
+				}
+				&.public-active-style {
+					width: 120px;
+					margin: 0;
+					color: #000;
+					line-height: 168px;
+				}
+				&.index {
+					background: image-url("category-bg.png") no-repeat -8px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat 0px 0;
+					}
+				}
+				&.material {
+					background: image-url("category-bg.png") no-repeat -125px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -192px 0;
+					}
+				}
+				&.setup {
+					background: image-url("category-bg.png") no-repeat -243px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -382px 0;
+					}
+				}
+				&.team {
+					background: image-url("category-bg.png") no-repeat -360px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -564px 0;
+					}
+				}
+				&.condition {
+					background: image-url("category-bg.png") no-repeat -477px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -726px 0;
+					}
+				}
+				&.method {
+					background: image-url("category-bg.png") no-repeat -594px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -914px 0;
+					}
+				}
+				&.content {
+					background: image-url("category-bg.png") no-repeat -712px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -1092px 0;
+					}
+				}
+				&.resource {
+					background: image-url("category-bg.png") no-repeat -828px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -1252px 0;
+					}
+				}
+				&.effect {
+					background: image-url("category-bg.png") no-repeat -949px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -1414px 0;
+					}
+				}
+				&.policy {
+					background: image-url("category-bg.png") no-repeat -1066px 16px;
+					&.active {
+						background: image-url("category-active-bg.png") no-repeat -1568px 0;
+					}
+				}
+			}
+		}
+		.category-list-content {
+			margin-top: 40px;
+			padding: 20px 30px;
+			background: #fff;
+			.text-content {
+				color: #000;
+				display: none;
+				margin-top: 15px;
+				li {
+					height: 46px;
+					line-height: 46px;
+					border-bottom: 2px dashed #d6d6d6;
+					img{
+						padding-bottom: 5px;
+					}
+				}
+				h5{
+					padding-left: 45px;
+				}
+			}
+		}
+		.fast-entry {
+			margin-top: 40px;
+			padding: 20px 30px;
+			background: #fff;
+			.entry-content {
+				display: none;
+				margin-top: 15px;
+				.entry-content-title{
+					font-size: 18px;
+					color: #337AB7;
+				}
+				.entry-content-table{
+					width: 800px;
+					padding: 10px;
+					margin: 5px;
+					.table{
+						th,td{
+							vertical-align: middle;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+		h5{
+			padding: 15px 0;
+		}
+		p{
+			margin-bottom: 5px;
+		}
+	}
 }
 /*考试页面*/
 body.exams__new, body.exams__show {
