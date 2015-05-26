@@ -107,18 +107,18 @@
 		        {
 		            name:'分数段',
 		            type:'pie',
-		            radius : "60%",
+		            radius : "40%",
 		            center: ['50%', '50%'],
 		            itemStyle : {
 		                normal : {
 		                    label : {
-		                        position : 'inner',
+		                        position : 'outter',
 		                        formatter : function (params) {                         
-		                          return (params.percent - 0).toFixed(0) + '%'
+		                          return params.name + ':' + (params.percent - 0).toFixed(0) + '%'
 		                        }
 		                    },
 		                    labelLine : {
-		                        show : false
+		                        show : true
 		                    }
 		                },
 		                emphasis : {
