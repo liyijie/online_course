@@ -3,440 +3,440 @@
 @import "variable";
 
 header {
-  nav.navbar-default {
-    background-color: $main-color;
-    ul.navbar-nav{
-      margin-left: 20px;
-      li {
-        a {
-          background-color: $main-color;
-          color: #fff;
-        }
-        a:hover {
-          background-color: #b0c4de;
-          color: #fff;
-        }
-      }
-      .active {
-        a {
-          background-color: #b0c4de;
-          color: #fff;
-        }
-        a:hover {
-          background-color: #b0c4de;
-          color: #fff;
-        }
-      }
-    }
-  }
+	nav.navbar-default {
+		background-color: $main-color;
+		ul.navbar-nav{
+			margin-left: 20px;
+			li {
+				a {
+					background-color: $main-color;
+					color: #fff;
+				}
+				a:hover {
+					background-color: #b0c4de;
+					color: #fff;
+				}
+			}
+			.active {
+				a {
+					background-color: #b0c4de;
+					color: #fff;
+				}
+				a:hover {
+					background-color: #b0c4de;
+					color: #fff;
+				}
+			}
+		}
+	}
 }
 
 footer {
-  background: #1a5aa0;
-  color: #fff;
-  margin-top: 34px;
-  .footer-content {
-    padding: 26px 0 38px 0;
-  }
+	background: #1a5aa0;
+	color: #fff;
+	margin-top: 34px;
+	.footer-content {
+		padding: 26px 0 38px 0;
+	}
 }
 /*导航栏*/
 .main-nav {
-  width: 100%;
-  background: #fff;
+	width: 100%;
+	background: #fff;
 }
 body.devise__sessions__new,body.devise__registrations__new,body.devise__registrations__create { 
-  .login-bg {
-    position: relative;
-    img{
-      width: 100%;
-    }
-  }
-  .login-form {
-    position: absolute;
-    left: 0;
-    top: 130px;
-  }
-  .btn-100 {
-    width: 100%;
-  }
+	.login-bg {
+		position: relative;
+		img{
+			width: 100%;
+		}
+	}
+	.login-form {
+		position: absolute;
+		left: 0;
+		top: 130px;
+	}
+	.btn-100 {
+		width: 100%;
+	}
 }
 
 body.home__index, body.teachers__index{
-  section.common-title {
-    height: 60px;
-    line-height: 60px;
-    padding: 0 16px 0 60px;
-    margin-top: 20px;
-    background: image-url('title-bg.png') no-repeat 8px 15px;
-    span.pull-left {
-      font-size: 24px;
-      font-weight: bold;
-      color: #070707;
-    }
-    span.pull-right {
-      color: #669ad3;
-      a.more {
-        width: 55px;
-        height: 60px;
-        line-height: 60px;
-        display: block;
-        background: image-url('more.png') no-repeat center right;
-      }
-    }
-  }
+	section.common-title {
+		height: 60px;
+		line-height: 60px;
+		padding: 0 16px 0 60px;
+		margin-top: 20px;
+		background: image-url('title-bg.png') no-repeat 8px 15px;
+		span.pull-left {
+			font-size: 24px;
+			font-weight: bold;
+			color: #070707;
+		}
+		span.pull-right {
+			color: #669ad3;
+			a.more {
+				width: 55px;
+				height: 60px;
+				line-height: 60px;
+				display: block;
+				background: image-url('more.png') no-repeat center right;
+			}
+		}
+	}
 }
 /*网站首页*/
 body.home__index {
-  .main-content {
-   background: #fff;
-   padding: 20px;
-  }
-  //收藏图标
-  .glyphicon-star {
-    color: orange;
-  }
-  section.department-tabs {
-    overflow: hidden;
-    width: 100%;
-    height: 30px;
-    padding: 0 8px;
-    position: relative;
-    span a {
-      width: 138px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      display: block;
-      float: left;
-      color: #070707;
-      background: image-url("tabs-bg.png") no-repeat 0 0;
-      border-bottom: 2px solid #6599d2;
-      &.common-tab {
-        position: absolute;
-      }
-      &.first-tab {
-        width: 82px;
-        background: image-url("ftab-bg.png") no-repeat 0 0;
-        &.factive, &:hover {
-          background: image-url("ftab-active.png") no-repeat -2px 0;
-          color: #fff;
-          text-decoration: none;
-        }
-      }
-      &.active, &:hover {
-        color: #fff;
-        background: image-url("tabs-active-bg.png") no-repeat 0 0;
-        text-decoration: none;
-      }
-    }
-  }
-  .single-vedio-content {
-    .vedio-content {
-      height: 320px;
-      width: 370px;
-      display: block;
-      float: left;
-      margin: 10px 8px;
-      padding: 10px;
-      border: solid #dfdede 1px;
-      overflow: hidden;
-      a.img {
-        width: 345px;
-        height: 230px;
-        -webkit-transition:all 0.25s ease-in-out;
-        -moz-transition:all 0.25s ease-in-out;
-        -o-transition:all 0.25s ease-in-out;
-        -ms-transition:all 0.25s ease-in-out;
-        transition:all 0.25s ease-in-out;
-      }
-      a.img:hover img {
-        transform: scale(1.15,1.15);
-        -webkit-transform:scale(1.15,1.15);
-        -moz-transform:scale(1.15,1.15);
-        -ms-transform:scale(1.15,1.15);
-        -o-transform:scale(1.15,1.15);
-      }
-      p.title  a {
-        height: 30px;
-        line-height: 30px;
-        color: #070707;
-        font-size: 16px;
-        overflow: hidden;
-      }
-      .description{
-        height: 26px;
-        line-height: 26px;
-        overflow: hidden;
-        span.section {
-          width: 50%;
-        }
-        label {
-          font-size: normal;
-        }
-        a {
-          color: #5d5d5d;
-        }
-      }
-    }
-  }
-  .info-teachers-content {
-    height: 220px;
-    overflow: hidden;
-  }
-  .teacher-content {
-    width: 170px;
-    margin: 0 31px;
-    height: 220px;
-    float: left;
-    overflow: hidden;
-    position: relative;
-    p {
-      height: 26px;
-      width: 100%;
-      line-height: 26px;
-      color: #fff;
-      text-align: center;
-      background: #000;
-      position: absolute;
-      bottom: 0;
-      opacity: 0.5;
-      display: none;
-    }
-  }
+	.main-content {
+	 background: #fff;
+	 padding: 20px;
+	}
+	//收藏图标
+	.glyphicon-star {
+		color: orange;
+	}
+	section.department-tabs {
+		overflow: hidden;
+		width: 100%;
+		height: 30px;
+		padding: 0 8px;
+		span a {
+			width: 138px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			display: block;
+			float: left;
+			color: #070707;
+			background: image-url("tabs-bg.png") no-repeat 0 0;
+			border-bottom: 2px solid #6599d2;
+			&.first-tab {
+				width: 82px;
+				background: image-url("ftab-bg.png") no-repeat 0 0;
+				&.factive, &:hover {
+					background: image-url("ftab-active.png") no-repeat -2px 0;
+					color: #fff;
+					text-decoration: none;
+				}
+			}
+			&.active, &:hover {
+				color: #fff;
+				background: image-url("tabs-active-bg.png") no-repeat 0 0;
+				text-decoration: none;
+			}
+		}
+	}
+	.single-vedio-content {
+		.vedio-content {
+			height: 320px;
+			width: 370px;
+			display: block;
+			float: left;
+			margin: 10px 8px;
+			padding: 10px;
+			border: solid #dfdede 1px;
+			overflow: hidden;
+			a.img {
+				width: 345px;
+				height: 230px;
+				display: block;
+				overflow: hidden;
+			}
+			a.img img {
+				-webkit-transition:all 0.25s ease-in-out;
+				-moz-transition:all 0.25s ease-in-out;
+				-o-transition:all 0.25s ease-in-out;
+				-ms-transition:all 0.25s ease-in-out;
+				transition:all 0.25s ease-in-out;
+			}
+			a.img:hover img {
+				transform: scale(1.15,1.15);
+				-webkit-transform:scale(1.15,1.15);
+				-moz-transform:scale(1.15,1.15);
+				-ms-transform:scale(1.15,1.15);
+				-o-transform:scale(1.15,1.15);
+			}
+			p.title  a {
+				height: 30px;
+				line-height: 30px;
+				color: #070707;
+				font-size: 16px;
+				overflow: hidden;
+			}
+			.description{
+				height: 26px;
+				line-height: 26px;
+				overflow: hidden;
+				span.section {
+					width: 50%;
+				}
+				label {
+					font-size: normal;
+				}
+				a {
+					color: #5d5d5d;
+				}
+			}
+		}
+	}
+	.info-teachers-content {
+		height: 220px;
+		overflow: hidden;
+	}
+	.teacher-content {
+		width: 170px;
+		margin: 0 31px;
+		height: 220px;
+		float: left;
+		overflow: hidden;
+		position: relative;
+		p {
+			height: 26px;
+			width: 100%;
+			line-height: 26px;
+			color: #fff;
+			text-align: center;
+			background: #000;
+			position: absolute;
+			bottom: 0;
+			opacity: 0.5;
+			display: none;
+		}
+	}
 
-  .control-wrap a.prev {
-    height: 188px;
-    width: 48px;
-    display: block;
-    border: solid 1px #eee;
-    position: absolute;
-    left: 14px;
-    text-indent: -9999px;
-    background: url("arrow-bg") no-repeat 7px center;
-  }
-  .control-wrap a.next {
-    height: 188px;
-    width: 48px;
-    display: block;
-    border: solid 1px #eee;
-    position: absolute;
-    right: 20px;
-    text-indent: -9999px;
-    background: url("arrow-bg") no-repeat -60px center;
-  }
-  .info-school-content {
-    height: 188px;
-    padding: 0 13px;
-    overflow: hidden;
-    position: relative;
-    .school-content {
-      width: 249px;
-      height: 186px;
-      float: left;
-      margin: 0 10px;
-      overflow: hidden;
-    }
-  }
-  .xc-slider .item img {
-    float:left;
-    margin: 0 5px;
-  }
-  .slide-content{
-    width: 1078px;
-    overflow: hidden;
-    float: left;
-  }
+	.control-wrap a.prev {
+		height: 188px;
+		width: 48px;
+		display: block;
+		border: solid 1px #eee;
+		position: absolute;
+		left: 14px;
+		text-indent: -9999px;
+		background: url("arrow-bg") no-repeat 7px center;
+	}
+	.control-wrap a.next {
+		height: 188px;
+		width: 48px;
+		display: block;
+		border: solid 1px #eee;
+		position: absolute;
+		right: 20px;
+		text-indent: -9999px;
+		background: url("arrow-bg") no-repeat -60px center;
+	}
+	.info-school-content {
+		height: 188px;
+		padding: 0 13px;
+		overflow: hidden;
+		position: relative;
+		.school-content {
+			width: 249px;
+			height: 186px;
+			float: left;
+			margin: 0 10px;
+			overflow: hidden;
+		}
+	}
+	.xc-slider .item img {
+		float:left;
+		margin: 0 5px;
+	}
+	.slide-content{
+		width: 1078px;
+		overflow: hidden;
+		float: left;
+	}
 }
 
 /*大轮播图片大小*/
 .main-home-header {
-  img.carousel-image {
-    width: 100%;
-  }
-  .buoyan-tec-carousel {
-    bottom: -30px;
-    li {
-      height: 5px;
-      width: 50px;
-      background: #8d9d9d;
-      border-radius: none;
-      -webkit-border-radius: none;
-      -o-border-radius: none;
-      &.active {
-      background: #5bcadb;
-      margin-bottom: 1px;
-    }
-    }
-  }
+	img.carousel-image {
+		width: 100%;
+	}
+	.buoyan-tec-carousel {
+		bottom: -30px;
+		li {
+			height: 5px;
+			width: 50px;
+			background: #8d9d9d;
+			border-radius: none;
+			-webkit-border-radius: none;
+			-o-border-radius: none;
+			&.active {
+			background: #5bcadb;
+			margin-bottom: 1px;
+		}
+		}
+	}
 }
 
 /*首页小轮播图的样式*/
 .xc-carousel {
-  height: auto;
-  position: relative;
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    li {
-      margin: 0;
-      padding: 0;
-      float: left;
-      display: block;
-    }
-    img {
-      width: 100% !important;
-      height: auto !important;
-      -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
-      -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
-      box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
-      margin: 10px 0;
-    }
-  }
-  .nav {
-    display: block;
-    width: 4%;
-    height: 100%;
-    float: left; 
-    text-indent: -9999px;
-  }
-  .prev { height: 182px;
-    width: 48px;
-    display: block;
-    border: solid 1px #eee;
-    position: absolute;
-    left: 8px;
-    text-indent: -9999px;
-    background: #fff image-url("arrow-bg") no-repeat 7px center;
-    z-index: 9999;
-  }
-  .next { height: 182px;
-    width: 48px;
-    display: block;
-    border: solid 1px #eee;
-    position: absolute;
-    right: 8px;
-    text-indent: -9999px;
-    z-index: 9999;
-    background: #fff image-url("arrow-bg") no-repeat -60px center;
-  }
-  .carousel_items_holder { background: #fff;
-    width: 92%;
-    overflow: hidden;
-    float: left;
-    left: 70px;
-    height: 100%;
-    position: relative;
-  }
-  .carousel_items {
-    position: absolute;
-  }
+	height: auto;
+	position: relative;
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		li {
+			margin: 0;
+			padding: 0;
+			float: left;
+			display: block;
+		}
+		img {
+			width: 100% !important;
+			height: auto !important;
+			-webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+			-moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+			box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+			margin: 10px 0;
+		}
+	}
+	.nav {
+		display: block;
+		width: 4%;
+		height: 100%;
+		float: left; 
+		text-indent: -9999px;
+	}
+	.prev { height: 182px;
+		width: 48px;
+		display: block;
+		border: solid 1px #eee;
+		position: absolute;
+		left: 8px;
+		text-indent: -9999px;
+		background: #fff image-url("arrow-bg") no-repeat 7px center;
+		z-index: 9999;
+	}
+	.next { height: 182px;
+		width: 48px;
+		display: block;
+		border: solid 1px #eee;
+		position: absolute;
+		right: 8px;
+		text-indent: -9999px;
+		z-index: 9999;
+		background: #fff image-url("arrow-bg") no-repeat -60px center;
+	}
+	.carousel_items_holder { background: #fff;
+		width: 92%;
+		overflow: hidden;
+		float: left;
+		left: 70px;
+		height: 100%;
+		position: relative;
+	}
+	.carousel_items {
+		position: absolute;
+	}
 }
 
 /*课程展示页*/
 body.courses__show, body.courses__after_class {
-  .main-content {
-    .top-content {
-      background: #fff;
-      padding: 30px 20px;
-      overflow: hidden;
-      .left-content {
-        float: left;
-        width: 514px;
-        .course-and-score {
-          margin-top: 14px;
-          a {
-            height: 70px;
-            line-height: 70px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            text-align: center;
-            width: 50%;
-            float: left;
-            display: block;
-            &.course {
-              background: #1a5aa0;
-            }
-            &.score {
-              background: #edc628;
-            }
-          }
-        }
-      }
-      .right-content {
-        width: 620px;
-        margin-left: 26px;
-        float: left;
-        .collect-zan-btns {
-          margin-top: 20px;
-        }
-        ul.course-main{
-          li:before {
-            content: counter(li);
-            counter-increment: li;
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            line-height: 7px;
-            text-align:center;
-            color: #FFF;
-            background: image-url("li-bg.png") no-repeat 0px 11px;
-          }
-          li {
-            margin-top: 20px;
-            p.title, span.title {
-              font-size: 20px;
-              line-height: 30px;
-              margin-left: 15px;
-              color: #000;
-            }
-            &.course-info {
-              div.content {
-                font-size: 14px;
-                line-height: 14px;
-                color: #6b6b6b;
-                display: block;
-                overflow: hidden;
-                p {
-                  font-size: 14px;
-                  line-height: 20px;
-                }
-                &.lg-height {
-                  height: 162px;
-                }
-                &.sm-height {
-                  height: 82px;
-                }
-              }
-            }
-            &.teach-team {
-              .teachers .teacher-info {
-                width: 60px;
-                float: left;
-                margin-right: 8px;
-                text-align: center;
-              }
-            }
-          }
-        }
-      }
-    }
+	.main-content {
+		.top-content {
+			background: #fff;
+			padding: 30px 20px;
+			overflow: hidden;
+			.left-content {
+				float: left;
+				width: 514px;
+				.course-and-score {
+					margin-top: 14px;
+					a {
+						height: 70px;
+						line-height: 70px;
+						font-size: 18px;
+						font-weight: bold;
+						color: #fff;
+						text-align: center;
+						width: 50%;
+						float: left;
+						display: block;
+						&.course {
+							background: #1a5aa0;
+						}
+						&.score {
+							background: #edc628;
+						}
+					}
+				}
+			}
+			.right-content {
+				width: 620px;
+				margin-left: 26px;
+				float: left;
+				.collect-zan-btns {
+					margin-top: 20px;
+				}
+				ul.course-main{
+					li:before {
+						content: counter(li);
+						counter-increment: li;
+						position: absolute;
+						width: 20px;
+						height: 20px;
+						line-height: 7px;
+						text-align:center;
+						color: #FFF;
+						background: image-url("li-bg.png") no-repeat 0px 11px;
+					}
+					li {
+						margin-top: 20px;
+						p.title, span.title {
+							font-size: 20px;
+							line-height: 30px;
+							margin-left: 15px;
+							color: #000;
+						}
+						&.course-info {
+							div.content {
+								font-size: 14px;
+								line-height: 14px;
+								color: #6b6b6b;
+								display: block;
+								overflow: hidden;
+								p {
+									font-size: 14px;
+									line-height: 20px;
+								}
+								&.lg-height {
+									height: 162px;
+								}
+								&.sm-height {
+									height: 82px;
+								}
+							}
+						}
+						&.teach-team {
+							.teachers .teacher-info {
+								width: 60px;
+								float: left;
+								margin-right: 8px;
+								text-align: center;
+							}
+						}
+					}
+				}
+			}
+		}
 
-    //收藏图标
-    .glyphicon-star {
-      color: orange;
-    }
-    //赞图标
-    .glyphicon-heart {
-      color: pink;
-    }
+		//收藏图标
+		.glyphicon-star {
+			color: orange;
+		}
+		//赞图标
+		.glyphicon-heart {
+			color: pink;
+		}
 
-    .btn-default-no:hover {
-      background-color: #fff;
-      cursor: default;
-      border-color: #ccc;
-    }
+		.btn-default-no:hover {
+			background-color: #fff;
+			cursor: default;
+			border-color: #ccc;
+		}
 
     /*相关课程*/
     .related-courses {
@@ -605,225 +605,234 @@ body.courses__show, body.courses__after_class {
 }
 /*考试页面*/
 body.exams__new, body.exams__show {
-  .main-content {
-    padding: 20px 40px;
-    background: #fff;
-    .main-title {
-      width: 762px;
-      height: 88px;
-      line-height: 70px;
-      font-size: 24px;
-      color: #fff;
-      text-align: center;
-      margin: 0 auto;
-      background: image-url("new-exam-bg") no-repeat 0 0;
-    }
-    .question-content {
-      margin-top: 50px;
-      p.title {
-        height: 40px;
-        line-height: 40px;
-        padding-left: 20px;
-        //background: #b0d6ff;
-        background: -webkit-gradient(linear, 100% 0%, 100% 100%, from(#b0d6ff), to(#fff));
-        background: -o-linear-gradient(left, #b0d6ff, #fff);
-        background: -moz-linear-gradient(left, #b0d6ff, #fff);
-        FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#b0d6ff,endColorStr=#ffffff);
-        margin: 20px 0;
-      }
-      p.option {
-        font-size: 14px;
-        line-height: 36px;
-        padding-left:  60px;
-      }
+	.main-content {
+		padding: 20px 40px;
+		background: #fff;
+		.main-title {
+			width: 762px;
+			height: 88px;
+			line-height: 70px;
+			font-size: 24px;
+			color: #fff;
+			text-align: center;
+			margin: 0 auto;
+			background: image-url("new-exam-bg") no-repeat 0 0;
+		}
+		.question-content {
+			margin-top: 50px;
+			p.title {
+				height: 40px;
+				line-height: 40px;
+				padding-left: 20px;
+				//background: #b0d6ff;
+				background: -webkit-gradient(linear, 100% 0%, 100% 100%, from(#b0d6ff), to(#fff));
+				background: -o-linear-gradient(left, #b0d6ff, #fff);
+				background: -moz-linear-gradient(left, #b0d6ff, #fff);
+				FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#b0d6ff,endColorStr=#ffffff);
+				margin: 20px 0;
+			}
+			p.option {
+				font-size: 14px;
+				line-height: 36px;
+				padding-left:  60px;
+			}
 
-      .right-answer {
-        border-top: 2px dotted #b0d6ff;
-        margin-top: 20px;
-        padding: 20px 50px;
-        color: red;
-      }
-    }
-    .tieshi {
-      width: 200px;
-      height: 505px;
-      position: fixed;
-      left: 50%;
-      margin-left: 350px;
-      top: 200px;
-      z-index: 2333;
-      background: image-url("tieshi-bg.png") no-repeat 0 0;
-      #countdown {
-        text-align: center;
-        font-size: 20px;
-        padding-top: 256px;
-        color: #fff;
-      }
-      ul.question-num {
-        li {
-          height: 72px;
-          padding: 10px 0;
-          p.title, p.number {
-            text-align: center;
-            height: 32px;
-            line-height: 32px;
-          }
-          span {
-            color: #d62727;
-          }
-        }
-      }
-      a#back-to-top {
-        width: 200px;
-        height: 64px;
-        display: block;
-        background: image-url("tieshi-bg.png") no-repeat 0 -500px;
-      }
-    }
-  }
+			.right-answer {
+				border-top: 2px dotted #b0d6ff;
+				margin-top: 20px;
+				padding: 20px 50px;
+				color: red;
+			}
+		}
+		.tieshi {
+			width: 200px;
+			height: 505px;
+			position: fixed;
+			left: 50%;
+			margin-left: 350px;
+			top: 200px;
+			z-index: 2333;
+			background: image-url("tieshi-bg.png") no-repeat 0 0;
+			#countdown {
+				text-align: center;
+				font-size: 20px;
+				padding-top: 256px;
+				color: #fff;
+			}
+			ul.question-num {
+				li {
+					height: 72px;
+					padding: 10px 0;
+					p.title, p.number {
+						text-align: center;
+						height: 32px;
+						line-height: 32px;
+					}
+					span {
+						color: #d62727;
+					}
+				}
+			}
+			a#back-to-top {
+				width: 200px;
+				height: 64px;
+				display: block;
+				background: image-url("tieshi-bg.png") no-repeat 0 -500px;
+			}
+		}
+	}
+	//成绩查询弹出框
+	.modal {
+		font-weight: bold;
+		.modal-header {
+			background-color: #337ab7;
+			color: #fff;
+			text-align: center;
+		}
+		.score-bg{
+			background: url(/assets/score-search-bg.png) no-repeat;
+			background-size: 100% 100%;
 
-  //成绩查询弹出框
-  .modal {
-    font-weight: bold;
+			ul li {
+				padding: 8px;
+			}
 
-    .modal-header {
-      background-color: #337ab7;
-      color: #fff;
-      text-align: center;
-    }
+			.total-score {
+				color: #a94442;
+				font-size: 30px;
+			}
 
-    ul li {
-      padding: 8px;
-    }
-
-    .total-score {
-      color: #a94442;
-      font-size: 30px;
-    }
-
-    span.left-20 {
-      padding-left: 20px;
-    }
-
-    .modal-footer {
-      background-color: #ec971f;
-    }
-  }
-  
+			span.left-20 {
+				padding-left: 20px;
+			}
+			.score-log{
+				padding :0 25px;
+				.blue-icon{
+					width: 7px;
+				}
+			}			
+			.modal-btn{
+				padding: 40px 0;
+				padding-left: 65px;
+				.small{
+					padding: 5px 22px;
+				}
+			}
+		}
+	}
 }
-
 /*教师页面左边栏*/
 #left-bar {
-  width: 184px;
-  float: left;
-  position: relative;
-  .out-wrap {
-    width: 172px;
-    background: #fff;
-    margin: 0 auto;
-    .top-title {
-      height: 40px;
-      line-height: 34px;
-      text-align: center;
-      color: $main-color;
-      font-weight: bold;
-      border-top: 4px solid $main-color;
-      border-bottom: 4px solid $main-color;
-    }
-    .list-bg {
-      height: 46px;
-      width: 184px;
-      position: absolute;
-      top: 62px;
-      left: 0;
-      background: image-url("teacher-active-bg.png") no-repeat 0 0;
-    }
-    ul.list li {
-      width: 184px;
-      a {
-        height: 46px;
-        line-height: 46px;
-        text-align: center;
-        margin: 20px 0;
-        display: block;
-        color: #535353;
-        &.active {
-          color: #fff;
-        }
-      }
-    }
-  }
+	width: 184px;
+	float: left;
+	position: relative;
+	.out-wrap {
+		width: 172px;
+		background: #fff;
+		margin: 0 auto;
+		.top-title {
+			height: 40px;
+			line-height: 34px;
+			text-align: center;
+			color: $main-color;
+			font-weight: bold;
+			border-top: 4px solid $main-color;
+			border-bottom: 4px solid $main-color;
+		}
+		.list-bg {
+			height: 46px;
+			width: 184px;
+			position: absolute;
+			top: 62px;
+			left: 0;
+			background: image-url("teacher-active-bg.png") no-repeat 0 0;
+		}
+		ul.list li {
+			width: 184px;
+			a {
+				height: 46px;
+				line-height: 46px;
+				text-align: center;
+				margin: 20px 0;
+				display: block;
+				color: #535353;
+				&.active {
+					color: #fff;
+				}
+			}
+		}
+	}
 }
 
 /*教师信息公共宽度*/
 .teacher-wrapper {
-  width: 1000px;
-  float: left;
-  margin-left: 16px;
-  background: #fff;
+	width: 1000px;
+	float: left;
+	margin-left: 16px;
+	background: #fff;
 }
 
 /*公共教师信息页*/
 #teacher-info {
-  padding: 20px;
-  background: #fff;
-  .teacher-img {
-    width: 280px;
-    height: 370px;
-    overflow: hidden;
-    float: left;
-  }
-  .teacher-data {
-    width: 658px;
-    margin-left: 20px;
-    float: left;
-    &.plus {
-      width: 860px;
-    }
-    div.title-content {
-      overflow: hidden;
-      p.title {
-        height: 40px;
-        color: $main-color;
-        font-size: 20px;
-        font-weight: bold;
-        width: 14%;
-        float: left;
-      }
-      p.line {
-        border-top: solid 4px $main-color;
-        width:  86%;
-        float: left;
-        margin-top: 11px;
-      }
-    }
-    ul {
-      margin-bottom: 10px;
-      overflow: hidden;
-    }
-    ul li {
-      height: 32px;
-      font-size: 14px;
-      line-height: 32px;
-      padding-left: 10px;
-      position: relative;
-      &.width-100 {
-        width: 100%;
-      }
-      &.width-50 {
-        width: 50%;
-        float: left;
-      }
-    }
-    li:before {
-      content: image-url("li-bg.png");
-      position: absolute;
-      width: 20px;
-      height: 28px;
-      left: 0;
-      top: -2px;
-    }
-  }
+	padding: 20px;
+	background: #fff;
+	.teacher-img {
+		width: 280px;
+		height: 370px;
+		overflow: hidden;
+		float: left;
+	}
+	.teacher-data {
+		width: 658px;
+		margin-left: 20px;
+		float: left;
+		&.plus {
+			width: 860px;
+		}
+		div.title-content {
+			overflow: hidden;
+			p.title {
+				height: 40px;
+				color: $main-color;
+				font-size: 20px;
+				font-weight: bold;
+				width: 14%;
+				float: left;
+			}
+			p.line {
+				border-top: solid 4px $main-color;
+				width:  86%;
+				float: left;
+				margin-top: 11px;
+			}
+		}
+		ul {
+			margin-bottom: 10px;
+			overflow: hidden;
+		}
+		ul li {
+			height: 32px;
+			font-size: 14px;
+			line-height: 32px;
+			padding-left: 10px;
+			position: relative;
+			&.width-100 {
+				width: 100%;
+			}
+			&.width-50 {
+				width: 50%;
+				float: left;
+			}
+		}
+		li:before {
+			content: image-url("li-bg.png");
+			position: absolute;
+			width: 20px;
+			height: 28px;
+			left: 0;
+			top: -2px;
+		}
+	}
 }
 /*教师我的课程, 我的班级, 教师介绍, 我的账户*/
 body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info,
@@ -950,24 +959,24 @@ body.teachers__show_score {
         }
       }
 
-    }
-    //成绩查询
-    div.search-step {
-      padding: 20px;
-      
-      
-    }
-    .condition-row {
-      padding: 20px;
-    }
+		}
+		//成绩查询
+		div.search-step {
+			padding: 20px;
+			
+			
+		}
+		.condition-row {
+			padding: 20px;
+		}
 
-    .search-score-btn{
-      padding: 20px;
-      text-align: center;
-      .btn-lg {
-        padding-right:20px;
-      }
-    }
+		.search-score-btn{
+			padding: 20px;
+			text-align: center;
+			.btn-lg {
+				padding-right:20px;
+			}
+		}
 
      //成绩查询
     div.search-step {
@@ -1041,192 +1050,192 @@ body.teachers__show_score {
 }
 /*教师风采*/
 body.teachers__index {
-  .main-content {
-    padding: 20px 30px;
-    background: #fff;
-    ul.teachers-list {
-      overflow: hidden;
-      li {
-        float: left;
-        margin: 15px 28px;
-      }
-    }
-  }
+	.main-content {
+		padding: 20px 30px;
+		background: #fff;
+		ul.teachers-list {
+			overflow: hidden;
+			li {
+				float: left;
+				margin: 15px 28px;
+			}
+		}
+	}
 }
 /*教师信息展示*/
 body.teachers__show {
-  .main-content {
-    .teacher-info {
-      padding: 20px;
-      background: #fff;
-      overflow: hidden;
-      .left-image {
-        width: 300px;
-        float: left;
-      }
-      .right-info {
-        width: 800px;
-        float: left;
-        margin-left: 30px;
-      }
-    }
-    .course-center {
-      margin-top: 20px;
-      background: #fff;
-      border-top: solid 5px $main-color;
-      .nav-bar {
-        padding-left: 46px;
-        margin-top: 5px;
-      }
-      ul.courses {
-        padding: 20px;
-        overflow: hidden;
-        li {
-          width: 340px;
-          height: 290px;
-          float: left;
-          margin: 20px 23px;
-          overflow: hidden;
-          border: solid 1px #efefef;
-          a.image {
-            width: 340px;
-            height: 196px;
-            overflow: hidden;
-            display: block;
-          }
-          a img {
-            -webkit-transition:all 0.25s ease-in-out;
-            -moz-transition:all 0.25s ease-in-out;
-            -o-transition:all 0.25s ease-in-out;
-            -ms-transition:all 0.25s ease-in-out;
-            transition:all 0.25s ease-in-out;
-          }
-          a:hover img {
-            transform: scale(1.15,1.15);
-            -webkit-transform:scale(1.15,1.15);
-            -moz-transform:scale(1.15,1.15);
-            -ms-transform:scale(1.15,1.15);
-            -o-transform:scale(1.15,1.15);
-          }
-          .description, p.course-title a {
-            padding: 0 10px;
-            height: 40px;
-            line-height: 40px;
-          }
-          .description label {
-            color: #555555;
-            float: right;
-            font-weight: normal;
-            a span {
-              color: #ffc704;
-            }
-          }
-          p.course-title a {
-            color: #000;
-          }
-        }
-      }
-    }
-  }
+	.main-content {
+		.teacher-info {
+			padding: 20px;
+			background: #fff;
+			overflow: hidden;
+			.left-image {
+				width: 300px;
+				float: left;
+			}
+			.right-info {
+				width: 800px;
+				float: left;
+				margin-left: 30px;
+			}
+		}
+		.course-center {
+			margin-top: 20px;
+			background: #fff;
+			border-top: solid 5px $main-color;
+			.nav-bar {
+				padding-left: 46px;
+				margin-top: 5px;
+			}
+			ul.courses {
+				padding: 20px;
+				overflow: hidden;
+				li {
+					width: 340px;
+					height: 290px;
+					float: left;
+					margin: 20px 23px;
+					overflow: hidden;
+					border: solid 1px #efefef;
+					a.image {
+						width: 340px;
+						height: 196px;
+						overflow: hidden;
+						display: block;
+					}
+					a img {
+						-webkit-transition:all 0.25s ease-in-out;
+						-moz-transition:all 0.25s ease-in-out;
+						-o-transition:all 0.25s ease-in-out;
+						-ms-transition:all 0.25s ease-in-out;
+						transition:all 0.25s ease-in-out;
+					}
+					a:hover img {
+						transform: scale(1.15,1.15);
+						-webkit-transform:scale(1.15,1.15);
+						-moz-transform:scale(1.15,1.15);
+						-ms-transform:scale(1.15,1.15);
+						-o-transform:scale(1.15,1.15);
+					}
+					.description, p.course-title a {
+						padding: 0 10px;
+						height: 40px;
+						line-height: 40px;
+					}
+					.description label {
+						color: #555555;
+						float: right;
+						font-weight: normal;
+						a span {
+							color: #ffc704;
+						}
+					}
+					p.course-title a {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
 }
 
 /*课程详情页面*/
 body.sub_courses__show  {
-  .main-content {
-    overflow: hidden;
-    .left-content {
-      width: 900px;
-      float: left;
-      .video-content {
-        padding: 20px;
-        background: #fff;
-        .collect-content {
-          height: 32px;
-          line-height: 32px;
-          width: 100%;
-          background: #434343;
-          .collect {
-            width: 80px;
-            float: right;
-          }
-        }
-      }
-      .comments-content {
-        width: 900px;
-        padding: 20px;
-        margin-top: 40px;
-        background: #fff;
-        .links {
-          margin: 0 0 20px 0;
-        }
-        .links-content {
-          overflow: hidden;
-          .comment-input {
-            overflow: hidden;
-          }
-          textarea {
-            color: #a9a9a9;
-            padding: 5px;
-            margin-bottom: 10px;
-            border: solid 1px #d3dce0;
-          }
-        }
-        ul.comment-list {
-          li {
-            .comment_date {
-              color: #969b9e;
-            }
-          }
-        }
-      }
-    }
-    .right-bar {
-      width: 280px;
-      float: left;
-      margin-left: 20px;
-      .related-video {
-        background: #fff;
-        padding: 10px;
-        .title {
-          font-size: 18px;
-          line-height: 18px;
-          font-weight: bold;
-          color: $main-color;
-          padding-left: 10px;
-          border-left: solid 4px $main-color;
-        }
-       ul.videos li {
-         text-align: center;
-         display: block;
-         margin: 15px 0;
-        }
-        .buttons {
-          text-align: center;
-        }
-      }
-      .students-content {
-        margin-top: 40px;
-        background: #fff;
-        padding: 20px;
-        p.total {
-          height: 46px;
-          line-height: 46px;
-          text-align: center;
-          border-bottom: solid 1px #e3e6e8;
-          span.text {
-            color: #be3948;
-          }
-          a span {
-            color: #b1b1b1;
-          }
-        }
-        ul.students li {
-          margin: 25px 0;
-          .comment-info {
-            color: #969b9e;
-          }
-        }
-      }
-    }
-  }
+	.main-content {
+		overflow: hidden;
+		.left-content {
+			width: 900px;
+			float: left;
+			.video-content {
+				padding: 20px;
+				background: #fff;
+				.collect-content {
+					height: 32px;
+					line-height: 32px;
+					width: 100%;
+					background: #434343;
+					.collect {
+						width: 80px;
+						float: right;
+					}
+				}
+			}
+			.comments-content {
+				width: 900px;
+				padding: 20px;
+				margin-top: 40px;
+				background: #fff;
+				.links {
+					margin: 0 0 20px 0;
+				}
+				.links-content {
+					overflow: hidden;
+					.comment-input {
+						overflow: hidden;
+					}
+					textarea {
+						color: #a9a9a9;
+						padding: 5px;
+						margin-bottom: 10px;
+						border: solid 1px #d3dce0;
+					}
+				}
+				ul.comment-list {
+					li {
+						.comment_date {
+							color: #969b9e;
+						}
+					}
+				}
+			}
+		}
+		.right-bar {
+			width: 280px;
+			float: left;
+			margin-left: 20px;
+			.related-video {
+				background: #fff;
+				padding: 10px;
+				.title {
+					font-size: 18px;
+					line-height: 18px;
+					font-weight: bold;
+					color: $main-color;
+					padding-left: 10px;
+					border-left: solid 4px $main-color;
+				}
+			 ul.videos li {
+				 text-align: center;
+				 display: block;
+				 margin: 15px 0;
+				}
+				.buttons {
+					text-align: center;
+				}
+			}
+			.students-content {
+				margin-top: 40px;
+				background: #fff;
+				padding: 20px;
+				p.total {
+					height: 46px;
+					line-height: 46px;
+					text-align: center;
+					border-bottom: solid 1px #e3e6e8;
+					span.text {
+						color: #be3948;
+					}
+					a span {
+						color: #b1b1b1;
+					}
+				}
+				ul.students li {
+					margin: 25px 0;
+					.comment-info {
+						color: #969b9e;
+					}
+				}
+			}
+		}
+	}
 }

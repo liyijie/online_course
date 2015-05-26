@@ -1,52 +1,57 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">测试结果</h4>
-      </div>
-      <div class="modal-body">
-        <ul>
-          <li>最终成绩：<span class="total-score"><%= @exam.total_score %></span>分</li>
-          <li>总分：100分</li>
-          <li>
-            <span>答对题数：<span class="text-danger"><%= @exam.right_items.size %></span></span>
-            <% if  @exam.right_items.present? %>
-              <span class="left-20">分别是：
-              <% @exam.right_items.each do |item| %>
-                <span>第<%= item %>题</span>
-              <% end %>
-            </span>
-            <% end %>
-          </li>
-          <li>
-            <span>答错题数：<span class="text-danger"><%= @exam.wrong_items.size %></span></span>
-            <% if  @exam.wrong_items.present? %>
-              <span class="left-20">分别是：
-              <% @exam.wrong_items.each do |item| %>
-                <span>第<%= item %>题</span>
-              <% end %>
-            </span>
-            <% end %>
-          </li>
-          <li>
-            <span>未答题数：<span class="text-danger"><%= @exam.no_answer_items.size %></span></span>
-            <% if  @exam.no_answer_items.present? %>
-              <span class="left-20">分别是：
-               <% @exam.no_answer_items.each do |item| %>
-                <span>第<%= item %>题</span>
-              <% end %>
-            </span>
-            <% end %>
-          </li>
-        </ul>
-        <div align="center">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">关闭</button>
-        </div>
-      </div>
-     <div class="modal-footer">
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">测试结果</h4>
+			</div>
+			<div class="score-bg">
+				<div class="modal-body">
+					<ul>
+						<li>
+							<span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>最终成绩：<span class="total-score"><%= @exam.total_score %></span>分
+						</li>
+						<li>
+							<span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>总分：100分
+						</li>
+						<li>
+							<span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>答对题数：<span class="text-danger"><%= @exam.right_items.size %></span>
+							<% if  @exam.right_items.present? %>
+								<span class="left-20">分别是：
+								<% @exam.right_items.each do |item| %>
+									<span>第<%= item %>题</span>
+								<% end %>
+							</span>
+							<% end %>
+						</li>
+						<li>
+							<span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>答错题数：<span class="text-danger"><%= @exam.wrong_items.size %></span>
+							<% if  @exam.wrong_items.present? %>
+								<span class="left-20">分别是：
+								<% @exam.wrong_items.each do |item| %>
+									<span>第<%= item %>题</span>
+								<% end %>
+							</span>
+							<% end %>
+						</li>
+						<li>
+							<span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>未答题数：<span class="text-danger"><%= @exam.no_answer_items.size %></span>
+							<% if  @exam.no_answer_items.present? %>
+								<span class="left-20">分别是：
+								 <% @exam.no_answer_items.each do |item| %>
+									<span>第<%= item %>题</span>
+								<% end %>
+							</span>
+							<% end %>
+						</li>
+					</ul>
+					<div  class="modal-btn">
+						<button type="button" class="btn btn-primary  btn-sm" data-dismiss="modal">查看题目</button>
+						<button type="button" class="btn btn-warning btn-sm small" data-dismiss="modal" style="margin-left:50px;">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
