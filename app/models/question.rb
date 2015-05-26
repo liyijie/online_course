@@ -11,15 +11,36 @@
 #  correct_option :string(255)
 #  correct_hint   :string(255)
 #
-
+require 'csv'
 class Question < ActiveRecord::Base
   belongs_to :sub_course
   has_many :options, dependent: :destroy
 
-  require 'csv' #注意必须小写
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      Users.create! row.to_hash
+    allowed_attributes = [ "title", "signal_score", "correct_option", "correct_hint"]
+    spreadsheet = open_spreadsheet(file)
+    header = spreadsheet.row(2)
+    (3..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      question = Question.new
+      question.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+      question.save!
+      option_length = row.length - 4  #行中减去question选项长度
+      (1..option_length).each do |i|
+        _opt = 'option_' + i.to_s
+        option = question.options.new
+        option.name = row[_opt]
+        option.save!
+      end
+    end
+  end
+
+  def self.open_spreadsheet(file)
+    case File.extname(file.original_filename)
+    when ".csv" then Roo::CSV.new(file.path)
+    when ".xls" then Roo::Excel.new(file.path)
+    when ".xlsx" then Roo::Excelx.new(file.path)
+    else raise "未知格式: #{file.original_filename}"
     end
   end
 end

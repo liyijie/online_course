@@ -1,4 +1,45 @@
-<%= form_tag import_admin_course_sub_course_questions_path(@course.id, @sub_course.id), multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import CSV" %>
+<%= content_for :nav do%>
+  <li>
+  	<a href="#{admin_root_path}">后台</a>
+  </li>
+  <!-- <li>
+    <a href="#{admin_courses_path}">课程列表</a>
+  </li>
+  <li>
+    <a href="#"><%= @course.id %></a>
+  </li> -->
+  <li class="active">子课程列表</li>
+<%end%>
+
+<hr></hr>
+<table class="table table-hover table-bordered text-center">
+	<thead>
+		<tr>
+		  <th class="col-sm-2 text-center">题目标题</th>
+			<th class="col-sm-2 text-center">单项分数</th>
+			<th class="col-sm-2 text-center">正确选项</th>
+      <th class="col-sm-6 text-center">题目分析</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @questions %>
+	</tbody>
+</table>
+<%= paginate @questions%>
+<hr></hr>
+<%= form_tag import_admin_questions_path, multipart: true do %>
+  <%= hidden_field_tag :sub_course_id, @sub_course.id%>
+  <%= hidden_field_tag :course_id, @course.id%>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="col-sm-4">
+        <%= file_field_tag :file, class: 'form-control' %>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-success" type="submit">
+          <span class="glyphicon glyphicon-floppy-save">导入EXCEL试题</span>
+        </button>
+      </div>
+    </div>
+  </div>
 <% end %>

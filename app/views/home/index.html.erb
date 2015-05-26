@@ -13,19 +13,17 @@
   </section>
   <section class="department-tabs">
     <span><%= link_to "全部", "#", class: "first-tab factive"%></span>
-    <span><%= link_to "艺术设计系"%></span>
-    <span><%= link_to "汽车工程系"%></span>
-    <span><%= link_to "应用外语系"%></span>
-    <span><%= link_to "机电工程系"%></span>
-    <span><%= link_to "商务与管理系"%></span>
-    <span><%= link_to "计算机信息系"%></span>
-    <span><%= link_to "基础部"%></span>
+    <% @academies.each_with_index do |academy, index| %>
+      <span><%= link_to academy.name, "javascript:void(0)", class: 'common-tab', style: "left: #{index * 118 + 68 }px" %></span>
+    <% end %>
   </section>
   <div class="vedio-course-content wrapper">
     <% @courses.each do |course|%>
       <div class='single-vedio-content'>
     	  <div class="vedio-content">
-    	    <%= link_to image_tag(course.image.avatar), show_courses_path(course.number), class: 'img' if course.image%>
+          <div class="image-wrapper">
+            <%= link_to image_tag(course.image.avatar), show_courses_path(course.number), class: 'img' if course.image%>
+          </div>
     	    <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
     	    <p class="description">
             <span class="pull-left section"><%= link_to course.description.to_s[0..10], show_courses_path(course.number) %></span>

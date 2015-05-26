@@ -22,6 +22,7 @@ class Course < ActiveRecord::Base
 	has_one :image, as: :imageable
 	has_many :sub_courses, dependent: :destroy
 	belongs_to :academy
+	has_many :teacher_courses, dependent: :destroy
  
   #创建course生成编号
 	before_create do

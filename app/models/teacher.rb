@@ -43,6 +43,7 @@ class Teacher < ActiveRecord::Base
 
   has_many :comment, as: :usertable, dependent: :destroy
   has_one :image, as: :imageable
+  has_many :teacher_courses, dependent: :destroy
 
   #教师学位列表
   TeacherDegree =[{text: '大专', value: 'dazhuan'}, {text: '本科', value: 'benke'}, {text: '硕士', value: 'shuoshi'}, {text: '博士', value: 'boshi'}]

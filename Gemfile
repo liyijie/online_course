@@ -72,6 +72,9 @@ gem 'kaminari', '~> 0.16.3'
 
 gem "mediaelement_rails"
 
+#导入功能
+gem "roo"
+
 
 
 

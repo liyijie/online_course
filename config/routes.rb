@@ -62,16 +62,17 @@ Rails.application.routes.draw do
       post :update_password
     end
   end
-
+  
   namespace :admin do
     root "home#index"
+    resources :questions, only: [] do
+      collection do
+         post :import
+      end
+    end
     resources :courses do
       resources :sub_courses do
-        resources :questions, only: [:index] do
-          collection do
-            post :import
-          end
-        end
+        resources :questions, only: [:index]
       end
     end
   end

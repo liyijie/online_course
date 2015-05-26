@@ -1,7 +1,7 @@
 <tr>
   <td><%= sub_course.number %></td>
   <td><%= sub_course.name %></td>
-  <td><%= sub_course.attachment.content if sub_course.attachment%></td>
+  <td><%= sub_course.attachment.content.to_s[0..10] if sub_course.attachment%></td>
   <td>
     <%= link_to "测试题目", admin_course_sub_course_questions_path(@course.id, sub_course)%>
   </td>

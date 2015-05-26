@@ -87,107 +87,127 @@ body.home__index, body.teachers__index{
 }
 /*网站首页*/
 body.home__index {
-	.main-content {
-	 background: #fff;
-	 padding: 20px;
-	}
-	//收藏图标
-	.glyphicon-star {
-		color: orange;
-	}
-	section.department-tabs {
-		overflow: hidden;
-		width: 100%;
-		height: 30px;
-		padding: 0 8px;
-		span a {
-			width: 138px;
-			height: 30px;
-			line-height: 30px;
-			text-align: center;
-			display: block;
-			float: left;
-			color: #070707;
-			background: image-url("tabs-bg.png") no-repeat 0 0;
-			border-bottom: 2px solid #6599d2;
-			&.first-tab {
-				width: 82px;
-				background: image-url("ftab-bg.png") no-repeat 0 0;
-				&.factive, &:hover {
-					background: image-url("ftab-active.png") no-repeat -2px 0;
-					color: #fff;
-					text-decoration: none;
-				}
-			}
-			&.active, &:hover {
-				color: #fff;
-				background: image-url("tabs-active-bg.png") no-repeat 0 0;
-				text-decoration: none;
-			}
-		}
-	}
-	.single-vedio-content {
-		.vedio-content {
-			height: 320px;
-			width: 370px;
-			display: block;
-			float: left;
-			margin: 10px 8px;
-			padding: 10px;
-			border: solid #dfdede 1px;
-			overflow: hidden;
-			a.img {
-				width: 345px;
-				height: 230px;
-				display: block;
-			}
-			p.title  a {
-				height: 30px;
-				line-height: 30px;
-				color: #070707;
-				font-size: 16px;
-				overflow: hidden;
-			}
-			.description{
-				height: 26px;
-				line-height: 26px;
-				overflow: hidden;
-				span.section {
-					width: 50%;
-				}
-				label {
-					font-size: normal;
-				}
-				a {
-					color: #5d5d5d;
-				}
-			}
-		}
-	}
-	.info-teachers-content {
-		height: 220px;
-		overflow: hidden;
-	}
-	.teacher-content {
-		width: 170px;
-		margin: 0 31px;
-		height: 220px;
-		float: left;
-		overflow: hidden;
-		position: relative;
-		p {
-			height: 26px;
-			width: 100%;
-			line-height: 26px;
-			color: #fff;
-			text-align: center;
-			background: #000;
-			position: absolute;
-			bottom: 0;
-			opacity: 0.5;
-			display: none;
-		}
-	}
+  .main-content {
+   background: #fff;
+   padding: 20px;
+  }
+  //收藏图标
+  .glyphicon-star {
+    color: orange;
+  }
+  section.department-tabs {
+    overflow: hidden;
+    width: 100%;
+    height: 30px;
+    padding: 0 8px;
+    position: relative;
+    span a {
+      width: 138px;
+    	height: 30px;
+    	line-height: 30px;
+      text-align: center;
+    	display: block;
+    	float: left;
+    	color: #070707;
+    	background: image-url("tabs-bg.png") no-repeat 0 0;
+      border-bottom: 2px solid #6599d2;
+      &.common-tab {
+        position: absolute;
+      }
+      &.first-tab {
+        width: 82px;
+        background: image-url("ftab-bg.png") no-repeat 0 0;
+        &.factive, &:hover {
+          background: image-url("ftab-active.png") no-repeat -2px 0;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    	&.active, &:hover {
+    	  color: #fff;
+    		background: image-url("tabs-active-bg.png") no-repeat 0 0;
+        text-decoration: none;
+    	}
+    }
+  }
+  .single-vedio-content {
+    .vedio-content {
+      height: 320px;
+      width: 370px;
+      display: block;
+      float: left;
+      margin: 10px 8px;
+      padding: 10px;
+      border: solid #dfdede 1px;
+    	overflow: hidden;
+      .image-wrapper {
+        width: 345px;
+        height: 230px;
+        overflow: hidden;
+      }
+      a.img img {
+        width: 345px;
+        height: 230px;
+        -webkit-transition:all 0.25s ease-in-out;
+        -moz-transition:all 0.25s ease-in-out;
+        -o-transition:all 0.25s ease-in-out;
+        -ms-transition:all 0.25s ease-in-out;
+        transition:all 0.25s ease-in-out;
+      }
+      a.img:hover img {
+        transform: scale(1.15,1.15);
+        -webkit-transform:scale(1.15,1.15);
+        -moz-transform:scale(1.15,1.15);
+        -ms-transform:scale(1.15,1.15);
+        -o-transform:scale(1.15,1.15);
+      }
+    	p.title  a {
+    		height: 30px;
+    		line-height: 30px;
+    		color: #070707;
+    		font-size: 16px;
+    		overflow: hidden;
+    	}
+    	.description{
+        height: 26px;
+        line-height: 26px;
+        overflow: hidden;
+        span.section {
+          width: 50%;
+        }
+        label {
+          font-size: normal;
+        }
+        a {
+          color: #5d5d5d;
+        }
+      }
+    }
+  }
+  .info-teachers-content {
+    height: 220px;
+    overflow: hidden;
+  }
+  .teacher-content {
+  	width: 170px;
+    margin: 0 31px;
+  	height: 220px;
+  	float: left;
+    overflow: hidden;
+  	position: relative;
+  	p {
+  		height: 26px;
+  		width: 100%;
+  		line-height: 26px;
+  		color: #fff;
+  		text-align: center;
+  		background: #000;
+  		position: absolute;
+      bottom: 0;
+  		opacity: 0.5;
+      display: none;
+  	}
+  }
 
 	.control-wrap a.prev {
 		height: 188px;
