@@ -1,187 +1,275 @@
 <%= content_for :script do %>
-  <%= javascript_tag do %>
-    user_login = <%= current_user.present? %>
-    course_praise_path = "<%= course_praise_courses_path%>"
-  <% end %>
-  <%= javascript_include_tag "_course_show" %>
+	<%= javascript_tag do %>
+		user_login = <%= current_user.present? %>
+		course_praise_path = "<%= course_praise_courses_path%>"
+	<% end %>
+	<%= javascript_include_tag "_course_show" %>
 <%end%>
 
 <%= content_for :lunbo do %>
-  <%= render partial: "/common/lunbo"%>
+	<%= render partial: "/common/lunbo"%>
 <%end%>
 
 <div class="main-content">
-  <div class="top-content">
-    <div class="left-content">
-      <div class="course-image">
-        <%= image_tag("course-show.png")%>
-        <div class="course-and-score">
-          <%= link_to "课后作业", after_class_courses_path, class: "course"%>
-          <%= link_to "成绩查询", "", class: "score"%>
-        </div>
-      </div>
-    </div>
-    <div class="right-content">
-      <h1><%= @course.name %></h1>
-      <div class="collect-zan-btns">
-        <%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do%>
-          <%= hidden_field_tag "course_id", @course.id%>
-          <button id="courseCollectBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
-            <span class="glyphicon glyphicon-star"></span>
-            <% collect_count = @course.get_likes(vote_scope: :collect).size %>
-            <span id="collectFont" count="<%= collect_count %>" 
-              iscollect = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>" >
-              <%= collect_count %>人收藏
-            </span>
-          </button>
-          <button id="coursePraiseBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
-            <span class="glyphicon glyphicon-heart"></span>
-            <% praise_count = @course.get_likes(vote_scope: :praise).size %>
-            <span id="praiseFont" count="<%= praise_count %>" 
-              ispraise = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>" >
-              <%= praise_count %>个赞
-            </span>
-          </button>
-        <% end %>
-      </div>
-      <ul class="course-main">
-        <li class="course-info">
-          <span class="title">课程简介</span>
-          <div class="content lg-height">
-          <p><%= @course.description %></p>
-         </div>
-        </li>
-        <li class="teach-team">
-          <p class="title">教学团队</p>
-          <div class="teachers">
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="related-courses">
-    <a href="javascript:void(0)" class="btn btn-primary">相关课程</a>
-    <ul class="courses-list">
-      <% @sub_courses.each do |sub_course|%>
-        <li class="col-sm-12">
-          <% if sub_course.attachment && sub_course.attachment.content.content_type == "video/mp4"%>
-            <a href= <%= show_sub_courses_courses_path%> class="title"><%= sub_course.name %></a>
-          <% else %>
-            <%=link_to sub_course.name, download_sub_course_path( sub_course.number), class: "title" %>
-          <% end %>
-          <a href="" class="total">PPT (25页)</a>
-          <a href="" class="already">已学 (10/25)</a>
-        </li>
-      <% end %>
-    </ul>
-    <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
-  </div>
-  <div class="category-list">
-    <a href="javascript:void(0)" class="index public-common-style">首页</a>
-    <a href="javascript:void(0)" class="material public-common-style">申报材料</a>
-    <a href="javascript:void(0)" class="setup public-common-style">课程设置</a>
-    <a href="javascript:void(0)" class="team public-common-style">教学队伍</a>
-    <a href="javascript:void(0)" class="condition public-common-style">教学条件</a>
-    <a href="javascript:void(0)" class="method public-common-style">教学方法</a>
-    <a href="javascript:void(0)" class="content public-common-style">教学内容</a>
-    <a href="javascript:void(0)" class="resource public-common-style">教学资源</a>
-    <a href="javascript:void(0)" class="effect public-common-style">教学效果</a>
-    <a href="javascript:void(0)" class="policy public-common-style">特色与政策</a>
-  </div>
-  <div class="category-list-content">
-    <a href="javascript:void(0)" class="btn btn-primary by-btn-bg">课程设计理念</a>
-    <div class="text-content">
-      课程设计的理念
-    </div>
-    <div class="text-content">
-      申报材料
-    </div>
-    <div class="text-content">
-      课程设置
-    </div>
-    <div class="text-content">
-      教学队伍
-    </div>
-    <div class="text-content">
-      教学条件
-    </div>
-    <div class="text-content">
-      教学内容
-    </div>
-    <div class="text-content">
-      教学资源
-    </div>
-    <div class="text-content">
-      教学效果
-    </div>
-    <div class="text-content">
-      特色与政策
-    </div>
-  </div>
-  <div class="fast-entry">
-    <div class="fast-entry-links">
-      <a href="javascript:void(0)" class="btn btn-default">教学内容</a>
-      &nbsp;&nbsp;
-      <a href="javascript:void(0)" class="btn btn-default">教学方法</a>
-      &nbsp;&nbsp;
-      <a href="javascript:void(0)" class="btn btn-default">教学条件</a>
-      &nbsp;&nbsp;
-      <a href="javascript:void(0)" class="btn btn-default">教学效果</a>
-      &nbsp;&nbsp;
-      <a href="javascript:void(0)" class="btn btn-default">申报材料</a>
-    </div>
-    <div class="fast-entry-content">
-      <div class="entry-content">
-        教学内容
-      </div>
-      <div class="entry-content">
-        教学方法
-      </div>
-      <div class="entry-content">
-        教学条件
-      </div>
-      <div class="entry-content">
-        教学效果
-      </div>
-      <div class="entry-content">
-        申报材料
-      </div>
-    </div>
-  </div>
+	<div class="top-content">
+		<div class="left-content">
+			<div class="course-image">
+				<%= image_tag("course-show.png")%>
+				<div class="course-and-score">
+					<%= link_to "课后作业", after_class_courses_path, class: "course"%>
+					<%= link_to "成绩查询", "", class: "score"%>
+				</div>
+			</div>
+		</div>
+		<div class="right-content">
+			<h1>IOS图形界面开发</h1>
+			<div class="collect-zan-btns">
+				<%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do%>
+					<%= hidden_field_tag "course_id", @course.id%>
+					<button id="courseCollectBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
+						<span class="glyphicon glyphicon-star"></span>
+						<% collect_count = @course.get_likes(vote_scope: :collect).size %>
+						<span id="collectFont" count="<%= collect_count %>" 
+							iscollect = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>" >
+							<%= collect_count %>人收藏
+						</span>
+					</button>
+					<button id="coursePraiseBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
+						<span class="glyphicon glyphicon-heart"></span>
+						<% praise_count = @course.get_likes(vote_scope: :praise).size %>
+						<span id="praiseFont" count="<%= praise_count %>" 
+							ispraise = "<%= current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>" >
+							<%= praise_count %>个赞
+						</span>
+					</button>
+				<% end %>
+			</div>
+			<ul class="course-main">
+				<li class="course-info">
+					<span class="title">课程简介</span>
+					<div class="content lg-height">
+					<p>《iOS图形界面开发》是计算机软件应用专业的重点骨干课程，通过本课程的学习，学生能够学习到iOS
+项目开发必备的知识和技能：图形界面设计思想，Objective-C编程技术，Socket、iCloud等网络连接技术，XML、
+JSON数据处理技术，Cocos2d游戏编程技术，Xcode、Interface Builder、iOS模拟器、调试器、Instruments等开发
+工具的使用。本课程共包含16个项目内容。内容安排强调基本概念、技术和方法的阐述，注重知识联系实际操作。每一部分都列举许多经典实例、实用操作题，操作题内容由浅入深，引导学员利用本项目的知识点进行思考和程序设计，利于学员提高解决实际问题的能力。初学者可根据情况另外，本课程还配有电子版实验指导手册可供下载，通过应用实例的分析和上机实践培养和提高学员iOS图形界面开发应用能力和解决实际问题的能力，该实验手册也可以作为开放式实验、家庭作业以及自学用。</p>
+				 </div>
+				</li>
+				<li class="teach-team">
+					<p class="title">教学团队</p>
+					<div class="teachers">
+						<div class="teacher-info">
+							 <%= image_tag("teach-team.png")%>
+							 <p>彭新松</p>
+						</div>
+						<div class="teacher-info">
+							 <%= image_tag("teach-team.png")%>
+							 <p>彭新松</p>
+						</div>
+						<div class="teacher-info">
+							 <%= image_tag("teach-team.png")%>
+							 <p>彭新松</p>
+						</div>
+						<div class="teacher-info">
+							 <%= image_tag("teach-team.png")%>
+							 <p>彭新松</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="related-courses">
+		<a href="javascript:void(0)" class="btn btn-primary">相关课程</a>
+		<ul class="courses-list">
+			<% @sub_courses.each do |sub_course|%>
+				<li class="col-sm-12">
+					<a href= <%= show_sub_courses_courses_path%> class="col-sm-6">项目一 初识IOS</a>
+					<a href class="col-sm-2">PPT (25页)</a>
+					<a href="" class="col-sm-2">已学 (10/25)</a>
+					<a href= <%= new_courses_exams_path(sub_course_number: sub_course.number)%> class="col-sm-2">测试</a>
+				</li>
+			<% end %>
+		</ul>
+		<%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
+	</div>
+	<div class="category-list">
+		<a href="javascript:void(0)" class="index public-common-style">首页</a>
+		<a href="javascript:void(0)" class="material public-common-style">申报材料</a>
+		<a href="javascript:void(0)" class="setup public-common-style">课程设置</a>
+		<a href="javascript:void(0)" class="team public-common-style">教学队伍</a>
+		<a href="javascript:void(0)" class="condition public-common-style">教学条件</a>
+		<a href="javascript:void(0)" class="method public-common-style">教学方法</a>
+		<a href="javascript:void(0)" class="content public-common-style">教学内容</a>
+		<a href="javascript:void(0)" class="resource public-common-style">教学资源</a>
+		<a href="javascript:void(0)" class="effect public-common-style">教学效果</a>
+		<a href="javascript:void(0)" class="policy public-common-style">特色与政策</a>
+	</div>
+	<div class="category-list-content">
+		<a href="javascript:void(0)" class="btn btn-primary by-btn-bg">课程设计理念</a>
+		<div class="text-content">
+			<h5>1.课程设计的理念</h5>
+			<h5>1.1 教学过程与企业用人要求对接，课程内容与职业标准对接</h5>
+			<h5>学习过程与典型的工作过程的对接 </h5> 
+			<h5>教师与开发人员的对接</h5>
+			<h5>训练项目与实际项目的对接</h5>
+			<h5>工作能力与企业用人要求的对接</h5>
+			<h5>1.2 基于岗位需求的人才培养</h5>
+			<h5>根据不同岗位需求来培养学生，在课程的学习与实践过程中注重培养学生的职业岗位素质与能力。</h5>
+			<h5>2.课程设计的思路</h5>
+			<h5>本课程一直有学校专任教师和企业资深工程师合作授课。专任教师具有丰富的课堂教学经验，擅长于只是的讲解与传授，企业工程师非常了解市场对人才的需求，有丰富的实际工作经验，能够营造真实的企业工作环境，带领学生做真实的企业项目开发，更好的培养学生的职业能力。</h5>
+			<h5>2.1为学生提供企业环境和项目开发……</h5>
+			<%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
+		</div>
+		<div class="text-content">
+			申报材料
+		</div>
+		<div class="text-content">
+			课程设置
+		</div>
+		<div class="text-content">
+			教学队伍
+		</div>
+		<div class="text-content">
+			教学条件
+		</div>
+		<div class="text-content">
+			教学内容
+		</div>
+		<div class="text-content">
+			教学资源
+		</div>
+		<div class="text-content">
+			教学效果
+		</div>
+		<div class="text-content">
+			特色与政策
+		</div>
+	</div>
+	<div class="fast-entry">
+		<div class="fast-entry-links">
+			<a href="javascript:void(0)" class="btn btn-default">教学内容</a>
+			&nbsp;&nbsp;
+			<a href="javascript:void(0)" class="btn btn-default">教学方法</a>
+			&nbsp;&nbsp;
+			<a href="javascript:void(0)" class="btn btn-default">教学条件</a>
+			&nbsp;&nbsp;
+			<a href="javascript:void(0)" class="btn btn-default">教学效果</a>
+			&nbsp;&nbsp;
+			<a href="javascript:void(0)" class="btn btn-default">申报材料</a>
+		</div>
+		<div class="fast-entry-content">
+			<div class="entry-content">
+				<h5 class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 教学内容的具体变现形式</h5>
+				<h5>1.引入企业真实项目，编写校本教材</h5>
+				<h5>2.与企业工程师编写校本实验、实训讲义</h5>
+				<h5>3.其他教学资料齐全</h5>
+				<h5>4.录制教学演示录像</h5>
+				<h5>5.建立满足课堂教学需要的网络教学资源</h5>
+				<h5 class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 教学内容的组织与安排</h5>
+				<h5>1. 教学内容的组织</h5>
+				<h5>教学内容的组织以项目实践教学为主，通过项目实践的手段，真实再现企业iOS界面开发理念。教学内容组织过程中让学员自己通过对案例的理解与分析，以及在团队开发中的共同讨论，促使学员进入特定的iOS界面开发情景与过程，建立真实的开发环境和培养规范化的开发规范。</h5>
+				<h5>实施过程：</h5>
+				<h5>
+					<p>（1）项目选择和学生分组。以项目来划分项目组。建立对不同岗位需求与角色的认知，并以平时成绩平均安排每个小组的技术实力。</p>
+					<p>（2）实践项目模拟企业真实的小型项目，这些项目真实且有社会效益，规模和难度适中，容易理解，可以激发学生的开发兴趣。</p>
+					<p>（3）必要的理论合理的融入项目阶段需求进行讲授，同时分解项目的各项子任务进行练习，边学边练、学以致用，减少纯理论知识的讲解。</p>
+				</h5>
+				<h5>2. 课程安排</h5>       
+				<div class="entry-content-table">
+					<table class="table table-bordered">
+						<thead>
+							<tr class="active">
+								<th>总课时</th>
+								<th>开课时间</th>
+								<th>有效期至</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td >353</td>
+								<td>2015.04.20</td>
+								<td>2016.07.20</td>
+							</tr>            
+						</tbody>
+					</table>
+
+					<table class="table table-bordered">
+						<thead>
+							<tr class="danger">
+								<th>授课内容</th>
+								<th>课时</th>
+								<th>单课时长</th>
+								<th>学习频率</th>
+								<th>上课方式</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="active">
+								<td>课程</td>
+								<td>36</td>
+								<td>20分钟</td>
+								<td>每周四节</td>
+								<td>随时学，反复学<br>也可下载到手机，ipad离线学</td>
+							</tr>
+							<tr>
+								<td>训练课</td>
+								<td>36</td>
+								<td>20分钟</td>
+								<td>每周1节</td>
+								<td rowspan="4">预约上课，pc，手机，ipad都支持</td>
+							</tr>
+							<% (0..2).each do |index|%>
+							<tr>
+								<td>训练课</td>
+								<td>36</td>
+								<td>20分钟</td>
+								<td>每周1节</td>
+							</tr>
+							<% end %>
+							<tr class="active">
+								<td>阶段评估体系</td>
+								<td>36</td>
+								<td>25分钟</td>
+								<td>每周一次</td>
+								<td>测试评估系统</td>
+							</tr>              
+						</tbody>
+					</table>
+				</div>
+				<%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
+			</div>
+			<div class="entry-content">
+				教学方法
+			</div>
+			<div class="entry-content">
+				教学条件
+			</div>
+			<div class="entry-content">
+				教学效果
+			</div>
+			<div class="entry-content">
+				申报材料
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- <div class="wrapper">
-  <div class="col-sm-12 col-md-12">
-    <div class="col-sm-4 col-md-4 pull-left">
-      <%= image_tag("vedio-bg.png")%>
-    </div>
-    <div class="col-sm-8 col-md-8 pull-right">
-      <h1><%= @course.name%></h1>
-      <p><%= @course.description%></p>
-    </div>
-  </div>
+	<div class="col-sm-12 col-md-12">
+		<div class="col-sm-4 col-md-4 pull-left">
+			<%= image_tag("vedio-bg.png")%>
+		</div>
+		<div class="col-sm-8 col-md-8 pull-right">
+			<h1><%= @course.name%></h1>
+			<p><%= @course.description%></p>
+		</div>
+	</div>
 </div>
 
 <%- @sub_courses.each do |sub_course|%>
-  <p>
+	<p>
 	<%= sub_course.name%>
-  <%= sub_course.content%>
-  <%= link_to "测试", new_exam_path(sub_course_id: sub_course.id)%>
-  </p>
+	<%= sub_course.content%>
+	<%= link_to "测试", new_exam_path(sub_course_id: sub_course.id)%>
+	</p>
 <%end%> -->
