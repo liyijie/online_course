@@ -447,6 +447,24 @@ body.courses__show, body.courses__after_class {
 				height: 200px;
 				overflow: hidden;
 				li {
+					overflow: hidden;
+				}
+				a.title {
+					width: 740px;
+					padding-left: 20px;
+					float: left;
+				}
+				a.total {
+					width: 200px;
+					text-align:center;
+					float: left;
+				}
+				a.already {
+					width: 200px;
+					text-align:center;
+					float: left;
+				}
+				li {
 					height: 46px;
 					line-height: 46px;
 					border-bottom: 2px solid #c7e0fb;

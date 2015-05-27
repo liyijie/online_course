@@ -22,9 +22,9 @@
       </div>
     </div>
     <div class="right-content">
-      <h1>IOS图形界面开发</h1>
+      <h1><%= @course.name %></h1>
       <div class="collect-zan-btns">
-        <%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do%>
+        <%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do %>
           <%= hidden_field_tag "course_id", @course.id%>
           <button id="courseCollectBtn" type="button" class="btn btn-default <%= current_user.blank? ? 'btn-default-no' : '' %>">
             <span class="glyphicon glyphicon-star"></span>
@@ -48,31 +48,18 @@
         <li class="course-info">
           <span class="title">课程简介</span>
           <div class="content lg-height">
-          <p>《iOS图形界面开发》是计算机软件应用专业的重点骨干课程，通过本课程的学习，学生能够学习到iOS
-项目开发必备的知识和技能：图形界面设计思想，Objective-C编程技术，Socket、iCloud等网络连接技术，XML、
-JSON数据处理技术，Cocos2d游戏编程技术，Xcode、Interface Builder、iOS模拟器、调试器、Instruments等开发
-工具的使用。本课程共包含16个项目内容。内容安排强调基本概念、技术和方法的阐述，注重知识联系实际操作。每一部分都列举许多经典实例、实用操作题，操作题内容由浅入深，引导学员利用本项目的知识点进行思考和程序设计，利于学员提高解决实际问题的能力。初学者可根据情况另外，本课程还配有电子版实验指导手册可供下载，通过应用实例的分析和上机实践培养和提高学员iOS图形界面开发应用能力和解决实际问题的能力，该实验手册也可以作为开放式实验、家庭作业以及自学用。</p>
+          <p><%= @course.description %></p>
          </div>
         </li>
         <li class="teach-team">
           <p class="title">教学团队</p>
           <div class="teachers">
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
-            <div class="teacher-info">
-               <%= image_tag("teach-team.png")%>
-               <p>彭新松</p>
-            </div>
+            <% @teacher_courses.each do |teacher_course|%>
+              <div class="teacher-info">
+                 <%= link_to image_tag(teacher_course.teacher.image.avatar.url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
+                 <p><%= teacher_course.teacher.name %></p>
+              </div>
+            <% end %>
           </div>
         </li>
       </ul>
@@ -82,11 +69,21 @@ JSON数据处理技术，Cocos2d游戏编程技术，Xcode、Interface Builder�
     <a href="javascript:void(0)" class="btn btn-primary">相关课程</a>
     <ul class="courses-list">
       <% @sub_courses.each do |sub_course|%>
-        <li class="col-sm-12">
-          <a href= <%= show_sub_courses_courses_path%> class="col-sm-6">项目一 初识IOS</a>
-          <a href class="col-sm-2"><%= image_tag "ppt_icon.png"%>&nbsp;&nbsp;&nbsp;&nbsp;PPT (25页)</a>
-          <a href="" class="col-sm-2"><%= image_tag "havelearn_icon.png"%>&nbsp;&nbsp;&nbsp;&nbsp;已学 (10/25)</a>
-          <a href= <%= new_courses_exams_path(sub_course_number: sub_course.number)%> class="col-sm-2">测试</a>
+        <li>
+          <!-- 如果是视频如mp4, flv等格式文件进入播放页 -->
+          <% if sub_course.attachment && sub_course.attachment.content.content_type =~ /video(.*)/%>
+            <a href= <%= show_sub_courses_courses_path%> class="title"><%= sub_course.name %></a>
+          <!-- 如果是视频如pdf, docx等格式文件执行下载 -->
+          <% elsif sub_course.attachment && sub_course.attachment.content.content_type =~ /application(.*)/ %>
+            <%=link_to sub_course.name, download_sub_course_path( sub_course.number), class: "title" %>
+          <% end %>
+          <a href="" class="total">格式<%= File.extname(sub_course.attachment.content_file_name).split(".").last%></a>
+          <!-- 显示KB还是Mb判断 -->
+          <% if sub_course.attachment.content_file_size / 1048576 < 1 %>
+            <a href="" class="already">（文件<%= sub_course.attachment.content_file_size / 1024%>Kb）</a>
+          <% else %>
+            <a href="" class="already">（文件<%= sub_course.attachment.content_file_size / 1048576%>Mb）</a>
+          <% end %>
         </li>
       <% end %>
     </ul>

@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
 	def show
 		@course = Course.find_by(number: params[:number])
 		@sub_courses = @course.sub_courses
+		@teacher_courses = @course.teacher_courses
 	end
 
 	def create
