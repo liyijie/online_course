@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :teachers
   root :to => "home#index"
+
+  get "select_courses", to: "home#select_courses", as: :select_courses_home
   get "courses/:number", to: "courses#show", as: :show_courses
   get "courses/:number/after_class", to: "courses#after_class", as: :after_class_courses
   get "courses/:number/sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses_courses
