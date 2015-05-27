@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
 
    #页面头像显示
   def show_image 
-    self.image.present? ? self.try(:image).try(:avatar).try(:url, :thumb) : "missing.png"
+    self.image.present? ? self.try(:image).try(:avatar).try(:url, :thumb) : "user-default.jpg"
   end
 
   #有你昵称显示昵称，没有则显示其名字

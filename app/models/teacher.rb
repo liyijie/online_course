@@ -73,4 +73,9 @@ class Teacher < ActiveRecord::Base
   def show_name 
     self.name
   end
+
+   #页面头像显示
+  def show_image 
+    self.image.present? ? self.try(:image).try(:avatar).try(:url, :thumb) : "teacher-default.jpg"
+  end
 end
