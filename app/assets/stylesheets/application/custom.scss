@@ -447,6 +447,27 @@ body.courses__show, body.courses__after_class {
 				height: 200px;
 				overflow: hidden;
 				li {
+					overflow: hidden;
+				}
+				a.title {
+					width: 740px;
+					padding-left: 20px;
+					float: left;
+				}
+				a.total {
+					width: 200px;
+					text-align:center;
+					float: left;
+				}
+				a.already {
+					width: 200px;
+					text-align:center;
+					float: left;
+				}
+				span.title {
+					padding-left: 20px;
+				}
+				li {
 					height: 46px;
 					line-height: 46px;
 					border-bottom: 2px solid #c7e0fb;
@@ -566,17 +587,10 @@ body.courses__show, body.courses__after_class {
 			.text-content {
 				color: #000;
 				display: none;
-				margin-top: 15px;
 				li {
 					height: 46px;
 					line-height: 46px;
 					border-bottom: 2px dashed #d6d6d6;
-					img{
-						padding-bottom: 5px;
-					}
-				}
-				h5{
-					padding-left: 45px;
 				}
 			}
 		}
@@ -1034,7 +1048,7 @@ body.teachers__show_score {
       }
 
       .average-score {
-        #averageScore {
+        #averageScore, #wrongPercentage {
           height: 380px;
         }
 
@@ -1052,6 +1066,10 @@ body.teachers__show_score {
           font-size: 18px;
           background-color: #337ab7;
         }
+      }
+
+      .score-percentage-picture {
+      	height: 250px;
       }
     }
   }

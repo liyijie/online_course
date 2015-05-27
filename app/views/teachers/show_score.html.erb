@@ -1,5 +1,5 @@
 <%= content_for :script do %>
-  <%= javascript_include_tag 'echarts/echarts-all' %>
+  <%= javascript_include_tag 'echarts/echarts-all','data-turbolinks-track' => true %>
 <% end %>
 <div class="main-content">
   <%= render "left_bar" %>
@@ -10,35 +10,246 @@
       <div class="main-title">网络设备维护基础（一）测试</div>
   	</div>
 	
-	<div class="average-score row">
-	  <div class="sub-title"><span class="badge">1</span>每个班每门课的平均分统计图</div>
-  	  <div id="averageScore" class="col-sm-8"></div>
-  	  <div class="col-sm-4">
-  	  	<div>平均分最高的班级是：<span>计算机（5）班</span></div>
-  	  	<div>平均分最低的班级是：<span>计算机（4）班</span></div>
-  	  </div>
+	<div class="mutil-grade-picture">
+	    <div class="average-score row">
+		  <div class="sub-title"><span class="badge">1</span>每个班每门课的平均分统计图</div>
+	  	  <div id="averageScore" class="col-sm-8"></div>
+	  	  <div class="col-sm-4">
+	  	  	<div>平均分最高的班级是：<span>计算机（5）班</span></div>
+	  	  	<div>平均分最低的班级是：<span>计算机（4）班</span></div>
+	  	  </div>
+		</div>
+
+		<div class="score-percentage">
+		  <div class="sub-title"><span class="badge">2</span>每个班xx课程的分数段分布概率统计图</div>
+
+		  <div class="row">
+		  	<div class="col-sm-4 score-percentage-picture"></div>
+	  	  	<div class="col-sm-4 score-percentage-picture"></div>
+	  	  	<div class="col-sm-4 score-percentage-picture"></div>
+		  </div>
+
+		  <div class="row">
+		  	<div class="col-sm-4 score-percentage-picture"></div>
+	  	  	<div class="col-sm-4 score-percentage-picture"></div>
+	  	  	<div class="col-sm-4 score-percentage-picture"></div>
+		  </div>
+		</div>
+
+		<div class="search-score-btn">
+			<button type="button" class="btn btn-primary btn-lg">导出EXCEL</button>
+			<button type="button" class="btn btn-danger btn-lg">进入下一页</button>
+		</div>
 	</div>
 
-	<div class="score-percentage">
-	  <div class="sub-title"><span class="badge">2</span>每个班xx课程的分数段分布概率统计图</div>
+	<div class="grade-picture" style="display: none;">
+		<div class="average-score row">
+		  <div class="sub-title"><span class="badge">1</span>xx班xx课的题目错误率统计图</div>
+	  	  <div id="wrongPercentage" class="col-sm-11"></div>
+		</div>
 
-	  <div class="row">
-	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
-  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
-  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
-	  </div>
+		<div class="score-percentage">
+		  <div class="sub-title"><span class="badge">2</span>xx班xx课成绩的统计表</div>
+		  <div class="col-sm-12 grade-score-table">
+		  	<table class="table table-bordered" >
+		  	<tr class="info">
+		  		<th>学号</th>
+		  		<th>姓名</th>
+		  		<th>成绩</th>
+		  		<th>01</th>
+		  		<th>02</th>
+		  		<th>03</th>
+		  		<th>04</th>
+		  		<th>05</th>
+		  		<th>06</th>
+		  		<th>07</th>
+		  		<th>08</th>
+		  		<th>09</th>
+		  		<th>10</th>
+		  		<th>11</th>
+		  		<th>12</th>
+		  		<th>13</th>
+		  		<th>14</th>
+		  		<th>15</th>
+		  		<th>16</th>
+		  		<th>17</th>
+		  		<th>18</th>
+		  		<th>19</th>
+		  		<th>20</th>
+		  		<th>等级</th>
+		  	</tr>
 
-	  <div class="row">
-	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
-  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
-  	  	<div class="col-sm-4 score-percentage-picture" style="height: 250px;"></div>
-	  </div>
+		  	<tr>
+		  		<td>20150012</td>
+		  		<td>吴琼</td>
+		  		<td>96</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td class="text-danger">A</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>A</td>
+		  		<td>A</td>
+		  		<td>C</td>
+		  		<td>D</td>
+		  		<td>B</td>
+		  		<td>C</td>
+		  		<td>优秀</td>
+		  	</tr>
+
+		  	<tr class="success">
+		  		<td>20150012</td>
+		  		<td>吴琼</td>
+		  		<td>96</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>A</td>
+		  		<td>A</td>
+		  		<td>C</td>
+		  		<td>D</td>
+		  		<td>B</td>
+		  		<td>C</td>
+		  		<td>优秀</td>
+		  	</tr>
+
+		  	<tr>
+		  		<td>20150012</td>
+		  		<td>吴琼</td>
+		  		<td>96</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td class="text-danger">A</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>A</td>
+		  		<td>A</td>
+		  		<td>C</td>
+		  		<td>D</td>
+		  		<td>B</td>
+		  		<td>C</td>
+		  		<td>优秀</td>
+		  	</tr>
+
+		  	<tr class="success">
+		  		<td>20150012</td>
+		  		<td>吴琼</td>
+		  		<td>96</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>A</td>
+		  		<td>A</td>
+		  		<td>C</td>
+		  		<td>D</td>
+		  		<td>B</td>
+		  		<td>C</td>
+		  		<td>优秀</td>
+		  	</tr>
+
+		  	<tr>
+		  		<td>20150012</td>
+		  		<td>吴琼</td>
+		  		<td>96</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td class="text-danger">A</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>A</td>
+		  		<td>A</td>
+		  		<td>C</td>
+		  		<td>D</td>
+		  		<td>B</td>
+		  		<td>C</td>
+		  		<td>优秀</td>
+		  	</tr>
+
+		  	<tr class="success">
+		  		<td>20150012</td>
+		  		<td>吴琼</td>
+		  		<td>96</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>B</td>
+		  		<td>A</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>B</td>
+		  		<td>D</td>
+		  		<td>C</td>
+		  		<td>A</td>
+		  		<td>A</td>
+		  		<td>C</td>
+		  		<td>D</td>
+		  		<td>B</td>
+		  		<td>C</td>
+		  		<td>优秀</td>
+		  	</tr>
+		  </table>
+		  </div>
+		</div>
+
+		<div class="search-score-btn">
+			<button type="button" class="btn btn-primary btn-lg">导出EXCEL</button>
+			<button type="button" class="btn btn-danger btn-lg">返回首页</button>
+		</div>
 	</div>
-
-	<div class="search-score-btn">
-		<button type="button" class="btn btn-primary btn-lg">导出EXCEL</button>
-		<button type="button" class="btn btn-danger btn-lg">进入下一页</button>
-	</div>
+	
   </div>
 </div>
 
@@ -92,12 +303,13 @@
 
         //==========================================================================================================================
 
-
-		option = {
+		$('.score-percentage-picture').each(function(index){
+			var scorePercentage = echarts.init($(this).get(0)); 
+			option = {
 			title: {
 				x: "center",
 				y: "bottom",
-				text: "计算机（1）班"
+				text: "计算机（" + (index+1) + "）班"
 			},
 		    tooltip : {
 		        trigger: 'item',
@@ -139,9 +351,62 @@
 		        }
 		    ]
 		};
-
-		$('.score-percentage-picture').each(function(){
-			var scorePercentage = echarts.init($(this).get(0)); 
         	scorePercentage.setOption(option);   
 		});
+
+//======================================================================================================
+		var wrongPercentage = echarts.init(document.getElementById('wrongPercentage')); 
+
+        option = {
+		    tooltip: {
+		        trigger: 'item'
+		    },
+		     legend: {
+		     	orient: "vertical",
+		     	x: "right",
+		     	y: "top",
+		        data:['错误率最高的题目：第11题','错误率最低的题目：第07题']
+		    },
+		    xAxis: [
+		        {
+		            type: 'category',
+		            data: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15',
+		            '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'],
+		            name: "题目/题"
+		        }
+		    ],
+		    yAxis: [
+		        {
+		            type: 'value',
+		            name: "错误率/%",
+		            splitNumber: 10
+		        }
+		    ],
+		    series: [
+		        {
+		            type: 'bar',
+		            itemStyle: {
+		                normal: {
+		                    color: function(params) {
+		                        var colorList = [
+		                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+		                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+		                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0',
+		                           '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+		                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD'
+		                        ];
+		                        return colorList[params.dataIndex]
+		                    },
+		                    label: {
+		                        show: true,
+		                        position: 'top',
+		                        formatter: '{c}'
+		                    }
+		                }
+		            },
+		            data: [3,4,5,23,12,12,2,23,3,4,56,23,12,23,31,12,34,23,34,50,12,34,18,23,34],
+		        }
+		    ]
+		};
+        wrongPercentage.setOption(option); 
     </script>

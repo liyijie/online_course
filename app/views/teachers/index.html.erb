@@ -5,8 +5,9 @@
   <ul class="teachers-list">
     <% @teachers.each do |teacher|%>
       <li>
-        <%= link_to image_tag("teacher.png"), show_teachers_path(teacher.number)%>
+        <%= link_to image_tag(teacher.image.avatar.url(:t_170x220)), show_teachers_path(teacher.number)%>
       </li>
     <%end%>
   </ul>
+  <%= paginate @teachers%>
 </div>

@@ -55,12 +55,12 @@ class UserController < ApplicationController
 
   #我的课程
   def my_courses
-
+    @collect_course = current_user.find_up_voted_items vote_scope: :collect, votable_type: :Course
   end
 
   #我的考试
   def my_exams
-    @complete_exams = current_user.try(:exams)
+    @exams = current_user.try(:exams)
   end
 
   #成绩查询

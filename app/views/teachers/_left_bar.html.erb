@@ -31,11 +31,6 @@
         <%end%>
       </li>
       <li>
-        <%= link_to upload_course_ware_teachers_path do %>
-          <span class="glyphicon glyphicon-upload">上传课件</span>
-        <%end%>
-      </li>
-      <li>
         <%= link_to my_info_teachers_path do %>
           <span class="glyphicon glyphicon-user">教师介绍</span>
         <%end%>
@@ -75,20 +70,15 @@
       $("#left-bar .list li").eq(4).find("a").addClass("active");
       $("#left-bar .list li").eq(4).siblings().find("a").removeClass("active");
     }
-    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "upload_course_ware"){
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_info"){
       $("#left-bar .list .list-bg").css("top", "392px");
       $("#left-bar .list li").eq(5).find("a").addClass("active");
       $("#left-bar .list li").eq(5).siblings().find("a").removeClass("active");
     }
-    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_info"){
+    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_account"){
       $("#left-bar .list .list-bg").css("top", "458px");
       $("#left-bar .list li").eq(6).find("a").addClass("active");
       $("#left-bar .list li").eq(6).siblings().find("a").removeClass("active");
-    }
-    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_account"){
-      $("#left-bar .list .list-bg").css("top", "524px");
-      $("#left-bar .list li").eq(7).find("a").addClass("active");
-      $("#left-bar .list li").eq(7).siblings().find("a").removeClass("active");
     }
   });
 </script>

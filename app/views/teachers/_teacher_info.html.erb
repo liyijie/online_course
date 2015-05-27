@@ -1,6 +1,6 @@
 <div id="teacher-info" class="teacher-wrapper">
 	<div class="teacher-img">
-		<%= image_tag("my-teacher.png")%>
+		<%= image_tag( current_teacher.show_image )%>
 	</div>
 	<div class="teacher-data">
 	  <div class="title-content">
@@ -9,34 +9,34 @@
 	  </div>
 	  <ul>
 	  	<li class="width-50">
-	  		姓名:	钱红
+	  		姓名:	<%= current_teacher.name %>
 	  	</li>
 	  	<li class="width-50">
-	  		出生年月:	 1982-09
+	  		出生年月:	 <%= current_teacher.birthday %>
 	  	</li>
 	  	<li class="width-50">
-	  		专业技术职位:	讲师
+	  		专业技术职位:	<%= current_teacher.tec_position %>
 	  	</li>
 	  	<li class="width-50">
-	  		所属院系:	 计算机信息系
+	  		所属院系:	 <%= current_teacher.try(:grade).try(:specialty).try(:academy).try(:name) %>
 	  	</li>
 	  	<li class="width-50">
-	  		手机号码:	 13636338706
+	  		手机号码:	 <%= current_teacher.phone %>
 	  	</li>
 	  	<li class="width-50">
-	  		电子邮箱:	 qianhong@aliyun.com
+	  		电子邮箱:	 <%= current_teacher.email %>
 	  	</li>
 	  	<li class="width-50">
-	  		资格证书:	 高级教师资格， 信息安全讲师
+	  		资格证书:	 <%= current_teacher.qualification %>
 	  	</li>
 	  	<li class="width-50">
-	  		传真号码:	 暂无
+	  		传真号码:	 <%= current_teacher.fax %>
 	  	</li>
 	  	<li class="width-50">
-	  		最终学历:	 本科
+	  		最终学历:	 <%= current_teacher.final_education %>
 	  	</li>
 	  	<li class="width-50">
-	  		最高学位:	 硕士
+	  		最高学位:	 <%= current_teacher.final_degree %>
 	  	</li>
 	  	<li class="width-100">
 	  		教学与技术专长:	 C语言程序基础，ASP.NET开发， java编程基础， 数据库技术

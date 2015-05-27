@@ -1,7 +1,7 @@
 <div class="main-content">
 	<div id="teacher-info" class="wrapper">
 		<div class="teacher-img">
-			<%= image_tag("my-teacher.png")%>
+			<%= image_tag(@teacher.image.avatar.url(:t_280x370))%>
 		</div>
 		<div class="teacher-data plus">
 		  <div class="title-content">
@@ -10,37 +10,37 @@
 		  </div>
 		  <ul>
 		  	<li class="width-50">
-		  		姓名:	钱红
+		  		姓名:	<%= @teacher.name %>
 		  	</li>
 		  	<li class="width-50">
-		  		出生年月:	 1982-09
+		  		出生年月:	 <%= @teacher.birthday %>
 		  	</li>
 		  	<li class="width-50">
-		  		专业技术职位:	讲师
+		  		专业技术职位:	<%= @teacher.tec_position %>
 		  	</li>
 		  	<li class="width-50">
-		  		所属院系:	 计算机信息系
+		  		所属院系:	 <%= @teacher.try(:grade).try(:academy).try(:name) %>
 		  	</li>
 		  	<li class="width-50">
-		  		手机号码:	 13636338706
+		  		手机号码:	 <%= @teacher.phone %>
 		  	</li>
 		  	<li class="width-50">
-		  		电子邮箱:	 qianhong@aliyun.com
+		  		电子邮箱:	 <%= @teacher.email %>
 		  	</li>
 		  	<li class="width-50">
-		  		资格证书:	 高级教师资格， 信息安全讲师
+		  		资格证书:	 <%= @teacher.qualification %>
 		  	</li>
 		  	<li class="width-50">
-		  		传真号码:	 暂无
+		  		传真号码:	 <%= @teacher.fax.present? ? @teacher.fax : '暂无'%>
 		  	</li>
 		  	<li class="width-50">
-		  		最终学历:	 本科
+		  		最终学历:	 <%= @teacher.final_education %>
 		  	</li>
 		  	<li class="width-50">
-		  		最高学位:	 硕士
+		  		最高学位:	 <%= @teacher.final_degree %>
 		  	</li>
 		  	<li class="width-100">
-		  		教学与技术专长:	 C语言程序基础，ASP.NET开发， java编程基础， 数据库技术
+		  		教学与技术专长:	 <%= @teacher.tec_expertise %>
 		  	</li>
 		  </ul>
 		  <div class="title-content">
@@ -49,10 +49,7 @@
 		  </div>
 		  <ul>
 		  	<li class="width-100">
-		  		2013年2月-至今: 	上海新侨职业技术学院 计算机信息系专任教师
-		  	</li>
-		  	<li class="width-100">
-		  		2005年2月-2013年1月: 	上海新侨职业技术学院 计算机信息系专任教师
+		  		<%= @teacher.resume %>
 		  	</li>
 		  </ul>
 		</div>
@@ -62,18 +59,16 @@
   		<span class="btn btn-primary by-btn-bg">课程中心</span>
   	</div>
   	<ul class="courses">
-  	  <% 6.times do %>
+  	  <% @teacher.teacher_courses.each do |teacher_course|%>
 	  		<li>
-	  			<%= link_to "#", class: 'image' do%>
-	  			  <%= image_tag("340x200.png")%>
+	  			<%= link_to show_courses_path(teacher_course.course.number), class: 'image' do%>
+	  			  <%= image_tag(teacher_course.course.image.avatar.url(:c_340_200))%>
 	  			<% end %>
-	  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
+	  			<p class="course-title"><%= link_to teacher_course.course.name, show_courses_path(teacher_course.course.number)%></p>
 	    			<div class="description">
 	    				<span>该课程一共有15课时</span>
 	    				<label>
-	    					<%= link_to "" do %>
-	  		  			  <span class="glyphicon glyphicon-star"></span>
-	  		  			<%end%>
+	  		  			<span class="glyphicon glyphicon-star"></span>
 	  		  			<span>2015人收藏</span>
 	    				</label>
 	    			</div>

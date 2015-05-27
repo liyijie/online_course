@@ -22,7 +22,7 @@
       <div class='single-vedio-content'>
     	  <div class="vedio-content">
           <div class="image-wrapper">
-            <%= link_to image_tag(course.image.avatar), show_courses_path(course.number), class: 'img' if course.image%>
+            <%= link_to image_tag(course.image.avatar.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.image%>
           </div>
     	    <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
     	    <p class="description">
@@ -43,7 +43,7 @@
   <div class="info-teachers-content wrapper">
     <% @teachers.each do |teacher|%>
       <div class="teacher-content">
-        <%= link_to image_tag(teacher.image.avatar), my_courses_teachers_path if teacher.image%>
+        <%= link_to image_tag(teacher.image.avatar.url(:t_170x220)), my_courses_teachers_path if teacher.image%>
         <p>国家优秀教师称号</p>
       </div>
     <%end%>

@@ -9,7 +9,7 @@
       <p class="title"><%= index + 1 %> <%= question.title%></p>
       <% question.options.each do |option|%>
         <p class="option">
-          <%= radio_button_tag("option_" + index.to_s, option.index_type, ei.answer == option.index_type)%>
+          <%= radio_button_tag("option_" + index.to_s, option.index_type, ei.answer == option.index_type, disabled: true )%>
           <span><%= option.index_type %>.  <%= option.name%></span>
         </p>
       <% end %>

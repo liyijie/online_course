@@ -1,5 +1,5 @@
 <%= content_for :script do %>
-  <%= javascript_include_tag "_user" %>
+  <%= javascript_include_tag "_user", 'data-turbolinks-track' => true %>
 <% end %>
 <div class="row user">
 
@@ -16,81 +16,36 @@
 	  <div class="row self-main-context">
 
 	    <ul class="nav nav-pills show-content">
-        <li role="presentation" class="active"><%= link_to "正在学习的课程","#" %></li>
-        <li role="presentation"><%= link_to "完成的课程","#" %></li>
-        <li role="presentation"><%= link_to "即将开始的课程","#" %></li>
+        <li role="presentation" class="active"><%= link_to "我的课程","#" %></li>
       </ul>
       <!-- ###########################正在学习的课程########################## -->
       <div class="my-course-container div-content">
-      <% (1..5).each do |i| %>
-        <div class="row my-course">
-          <div class="col-sm-3 ov-hidden">
-            <%= image_tag "my-course.png" %>
-            <span class="badge">7%</span>
-          </div>
-          <div class="col-sm-7">
-            <div class="my-course-desc"> 
-              <h4>CSS实现网页平滑过渡效果<br>
-                <small>
-                  <span class="text-success">18小时前更新至3-3</span> | 
-                  学习耗时：15分钟 |
-                  最后学习：32分钟
-                </small>
-              </h4><br>
-              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
+         <% if @collect_course.blank? %>
+          <div class="blank">没有收藏的课程</div>
+        <% else %>
+          <% @collect_course.each do |course| %>
+            <div class="row my-course">
+              <div class="col-sm-3 ov-hidden">
+                <%= link_to image_tag("my-course.png"), show_courses_path(course.number)%>
+              </div>
+              <div class="col-sm-9">
+                <div class="my-course-desc"> 
+                  <h4><%= link_to course.name, show_courses_path(course.number) %><br>
+                    <small>
+                      <span class="text-success">18小时前更新至3-3</span> | 
+                      学习耗时：15分钟 |
+                      最后学习：32分钟
+                    </small>
+                  </h4><br>
+                  <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-2">
-              <button type="button" class="btn btn-success">开始学习</button>
-            </div>
-        </div>
+          <% end %>
         <% end %>
+
 	    </div>
       <!-- ###########################正在学习的课程########################## -->
-
-      <!-- ###########################完成的课程########################## -->
-      <div class="my-course-container div-content" style="display: none;">
-        <div class="row my-course">
-          <div class="col-sm-3 ov-hidden">
-            <%= image_tag "my-course.png" %>
-          </div>
-          <div class="col-sm-9">
-            <div class="my-course-desc"> 
-              <h4>CSS实现网页平滑过渡效果<br>
-                <small>
-                  <span class="text-success">18小时前更新至3-3</span> | 
-                  学习耗时：15分钟 |
-                  最后学习：7分钟
-                </small>
-              </h4><br>
-              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ###########################完成的课程########################## -->
-
-      <!-- ###########################即将开始的课程########################## -->
-      <div class="my-course-container div-content" style="display: none;">
-        <div class="row my-course">
-          <div class="col-sm-3 ov-hidden">
-            <%= image_tag "my-course.png" %>
-          </div>
-          <div class="col-sm-9">
-            <div class="my-course-desc"> 
-              <h4>CSS实现网页平滑过渡效果<br>
-                <small>
-                  <span class="text-success">18小时前更新至3-3</span> | 
-                  学习耗时：15分钟 |
-                  最后学习：7分钟
-                </small>
-              </h4><br>
-              <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ###########################即将开始的课程########################## -->
 
     </div>
 

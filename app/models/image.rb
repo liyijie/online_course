@@ -16,6 +16,17 @@
 class Image < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "150x150>" }, :default_url => "missing.png"
+  #t_开头的为teachers头像切图 #c_开头的为课程展示图片切图
+  has_attached_file :avatar, :styles => {
+  	                                    :t_60 => "60x60", #课程展示页教师团队图
+  	                                    :t_170x220 => "170x220", #首页教师列表图
+                                        :t_280x370 => "280x370", #首页教师列表图
+  	                                    :c_350_230 => "350x230", #首页课程展示图
+  	                                    :c_420_285 => "420x285", #课程展示页展示图
+                                        :c_340_200 => "340x200", #教师展示页课程图片
+  	                                    :medium => "300x300>",
+  	                                    :thumb => "150x150>"
+  	                                    },
+  	                                    :default_url => "missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 end
