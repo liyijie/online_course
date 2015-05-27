@@ -1052,7 +1052,7 @@ body.teachers__show_score {
       }
 
       .average-score {
-        #averageScore {
+        #averageScore, #wrongPercentage {
           height: 380px;
         }
 
@@ -1070,6 +1070,10 @@ body.teachers__show_score {
           font-size: 18px;
           background-color: #337ab7;
         }
+      }
+
+      .score-percentage-picture {
+      	height: 250px;
       }
     }
   }

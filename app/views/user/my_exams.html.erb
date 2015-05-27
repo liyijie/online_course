@@ -1,5 +1,5 @@
 <%= content_for :script do %>
-  <%= javascript_include_tag "_user" %>
+  <%= javascript_include_tag "_user", 'data-turbolinks-track' => true %>
 <% end %>
 <div class="row user">
 
@@ -21,28 +21,51 @@
       </ul>
 
       <!-- ###########################完成的考试########################## -->
-      <div class="my-exams-container div-content">
-        <% if @complete_exams.blank? %>
+      <div class="div-content scoure-search">
+
+        <% if @exams.blank? %>
           <div class="blank">没有已完成的考试</div>
         <% else %>
-          <% @complete_exams.each do |exam| %>
-            <div class="row my-exams">
-              <div class="col-sm-3 ov-hidden">
-                <%= link_to image_tag("my-course.png"), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %>
-              </div>
-              <div class="col-sm-9">
-                <div class="my-exams-desc"> 
-                  <h4>
-                    <%= link_to exam.try(:sub_course).try(:name), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %><br>
-                    <small>
-                      <span>考试时间：40分钟</span>
-                    </small>
-                  </h4><br>
-                  <p><%= exam.try(:sub_course).try(:content)%></p>
+          <% @exams.each_with_index do |exam,index| %>
+            <% if index % 2 == 0 %>
+              <div class="row score-list">
+            <% end %>
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="col-sm-7 ov-hidden">
+                     <%= link_to image_tag("score-search1.png"), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %>
+                  </div>
+                  <div class="col-sm-5">
+                    <h4><%= link_to exam.try(:sub_course).try(:name), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %></h4>
+                    <div class="score-detail">
+                      <span class="text-primary">&bull;</span>
+                      时间：<%= exam.created_at.try(:strftime,'%Y-%m-%d').try(:to_s) %>
+                    </div>
+                    <div class="score-detail">
+                      <span class="text-primary">&bull;</span>
+                      总分：100分
+                    </div>
+                    <div class="score-detail">
+                      <span class="text-primary">&bull;</span>
+                      得分：<%= exam.total_score %>分
+                    </div>
+                    <%= link_to "查看试卷",exam_path(exam.id) ,class: "btn btn-warning"%>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <% if index % 2 == 1 %>
+              </div>
+            <% end %>
+
           <% end %>
+
+          <% if @exams.size % 2 != 0 %>
+              </div>
+          <% end %>
+          
         <% end %>
         
       </div>
