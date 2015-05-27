@@ -102,47 +102,14 @@
     <a href="javascript:void(0)" class="policy public-common-style">特色与政策</a>
   </div>
   <div class="category-list-content">
-    <a href="javascript:void(0)" class="btn btn-primary by-btn-bg">课程设计理念</a>
     <div class="text-content">
-      <h5>1.课程设计的理念</h5>
-      <h5>1.1 教学过程与企业用人要求对接，课程内容与职业标准对接</h5>
-      <h5>学习过程与典型的工作过程的对接 </h5> 
-      <h5>教师与开发人员的对接</h5>
-      <h5>训练项目与实际项目的对接</h5>
-      <h5>工作能力与企业用人要求的对接</h5>
-      <h5>1.2 基于岗位需求的人才培养</h5>
-      <h5>根据不同岗位需求来培养学生，在课程的学习与实践过程中注重培养学生的职业岗位素质与能力。</h5>
-      <h5>2.课程设计的思路</h5>
-      <h5>本课程一直有学校专任教师和企业资深工程师合作授课。专任教师具有丰富的课堂教学经验，擅长于只是的讲解与传授，企业工程师非常了解市场对人才的需求，有丰富的实际工作经验，能够营造真实的企业工作环境，带领学生做真实的企业项目开发，更好的培养学生的职业能力。</h5>
-      <h5>2.1为学生提供企业环境和项目开发……</h5>
-      <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
+      <%= render partial: "/course_info/course_home"%>
     </div>
     <div class="text-content">
-      <h5>教学录像</h5>
-      <ul class="container-fluid">
-        <% (0..2).each do |index|%>
-        <li class="col-sm-12">
-          <a href= "#" class="col-sm-10">ios图形界面的应用</a>
-          <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-        </li>
-        <% end %>
-      </ul>
-      <h5> </h5>
-      <h5>教学录像</h5>
-      <ul class="container-fluid">
-        <li class="col-sm-12">
-          <a href= "#" class="col-sm-10">ios图形界面的应用</a>
-          <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-        </li>
-      </ul>
+      <%= render partial: "/course_info/course_data" %>
     </div>
     <div class="text-content">
-      <dl>
-        <dt>
-          1．课程设计的理念
-        </dt>
-        <dd>hello</dd>
-      </dl>
+      <%= render partial:"/course_info/course_setup"%>
     </div>
     <div class="text-content">
       教学队伍
@@ -180,7 +147,7 @@
     </div>
     <div class="fast-entry-content">
       <div class="entry-content">
-        <%= render partial: "teach_content"%>
+        <%= render partial: "/course_info/teach_content"%>
       </div>
       <div class="entry-content">
         教学方法
