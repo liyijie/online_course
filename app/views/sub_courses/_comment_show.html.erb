@@ -1,29 +1,50 @@
-<% if comments.blank? %>
-  <div class="blank">暂时没有评论</div>
-<% else %>
-  <ul class="comment-list">
-    <% comments.each  do |comment| %>
-      <li class="media">
-        <hr>
-        <div class="media-left">
-          <a href="#">
-            <%= image_tag comment.try(:usertable).try(:show_image) %>
-          </a>
-        </div>
-        <div class="media-body">
-          <h5 class="media-heading"><%= comment.try(:usertable).try(:show_name)%></h5>
-          <p><%= comment.body%></p>
-          <p class="comment_date">
-            <span>时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
-              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
-            <button class="btn btn-primary btn-xs comment_reply" type="button">回复</button>
-            <button type="button" class="btn pull-right"><span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> </button>
-          </p>
-        </div>
-      </li>
+<div class="links">
+  <%= link_to "评论",sub_courses_comment_create_list_path(number: params[:number], comment_scope: "discuss"), 
+  class: "btn #{params[:comment_scope] == 'answer' ? 'btn-default' : 'btn-primary'} btn-lg", remote: true %>
+  <%= link_to "问答",sub_courses_comment_create_list_path(number: params[:number], comment_scope: "answer"),
+   class: "btn #{params[:comment_scope] == 'answer' ? 'btn-primary' : 'btn-default'} btn-lg", remote: true %>
+</div>
+<div class="links-content">
+  <div class="comment-input">
+    <%= form_tag sub_courses_comment_create_list_path, method: :post, remote: true do %>
+      <%= text_area_tag "comment", "", class: "comment_text", rows: 5, 
+        cols: 118, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
+        <%= hidden_field_tag "number", params[:number] %>
+        <%= hidden_field_tag "comment_scope", params[:comment_scope] || "discuss" %>
+      <%= submit_tag "#{params[:comment_scope] == 'answer' ? '发布问题' : '发布评论'}", class: "btn btn-success pull-right", onclick: "if($('#comment').val() == ''){return false;};" %>
     <% end %>
-  </ul>
-   <div class="paginate text-center">
-        <%= paginate @comments, remote: true,params: {controller: 'sub_courses', action: 'comment_create_list'} %>
-    </div>
-<% end %>
+  </div>
+  <div id="commentOrAnswer">
+    <% if comments.blank? %>
+      <div class="blank">
+        <%= params[:comment_scope] == 'answer' ? '暂时没有问答' : '暂时没有评论'%>
+      </div>
+    <% else %>
+      <ul class="comment-list">
+        <% comments.each  do |comment| %>
+          <li class="media">
+            <hr>
+            <div class="media-left">
+              <a href="#">
+                <%= image_tag comment.try(:usertable).try(:show_image) %>
+              </a>
+            </div>
+            <div class="media-body">
+              <h5 class="media-heading"><%= comment.try(:usertable).try(:show_name)%></h5>
+              <p><%= comment.body%></p>
+              <p class="comment_date">
+                <span>时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
+                <button class="btn btn-primary btn-xs comment_reply" type="button">回复</button>
+                <button type="button" class="btn pull-right"><span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> </button>
+              </p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+       <div class="paginate text-center">
+            <%= paginate @comments, remote: true,params: {controller: 'sub_courses', action: 'comment_create_list'} %>
+        </div>
+    <% end %>
+  </div>
+</div>

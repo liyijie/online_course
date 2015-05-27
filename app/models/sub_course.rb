@@ -49,19 +49,18 @@ class SubCourse < ActiveRecord::Base
   #发布评论并返回新的评论一览
   #参数，user:登录的用户，params：提交的参数
   def self.save_comment_return_comments user, params
-    pp "2222222222222222222222222222222"
     sub_course = SubCourse.where(number: params[:number]).first
     if sub_course.blank?
       nil
     else
        #新评论保存
-      if user.present? && params[:comment].present?
-        comment = Comment.build_from sub_course,user,params[:comment],"discuss"
+      if user.present? && params[:comment].present? && params[:comment_scope]
+        comment = Comment.build_from sub_course, user, params[:comment], params[:comment_scope]
         comment.save
       end
       
       #返回所有评论
-      sub_course.root_comments.where(comment_scope: "discuss").order("created_at DESC").page(params[:page])
+      sub_course.root_comments.where(comment_scope:  params[:comment_scope]).order("created_at DESC").page(params[:page])
     end
   end
 end

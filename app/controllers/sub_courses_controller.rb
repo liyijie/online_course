@@ -18,7 +18,7 @@ class SubCoursesController < ApplicationController
 	end
 
 
-  #视频评论
+  #视频评论或者发起提问
   def comment_create_list
     user = current_user || current_teacher
 
@@ -28,7 +28,5 @@ class SubCoursesController < ApplicationController
     respond_to do |format|
       format.js 
     end
-
   end
-
 end

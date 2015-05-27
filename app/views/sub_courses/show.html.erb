@@ -23,24 +23,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="comments-content">
-			<div class="links">
-				<a href="#" class="btn btn-primary btn-lg">评论</a>
-				<a href="#" class="btn btn-default btn-lg">问答</a>
-			</div>
-			<div class="links-content">
-				<div class="comment-input">
-					<%= form_tag sub_courses_comment_create_list_path, method: :post, remote: true do %>
-						<%= text_area_tag "comment", "", class: "comment_text", rows: 5, 
-							cols: 118, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
-							<%= hidden_field_tag "number", @sub_course.number %>
-						<%= submit_tag "发表评论", class: "btn btn-success pull-right", onclick: "if($('#comment').val() == ''){return false;};" %>
-					<% end %>
-				</div>
-				<div id="commentOrAnswer">
-					<%= render :partial => "comment_show" , locals: {comments: @comments }%>
-				</div>
-			</div>
+		<div id="commentContent" class="comments-content">
+    	<%= render :partial => "comment_show" , locals: {comments: @comments }%>
 		</div>
 	</div>
 	<div class="right-bar">
