@@ -71,7 +71,7 @@
       <% @sub_courses.each do |sub_course|%>
         <li>
           <!-- 如果是视频如mp4, flv等格式文件进入播放页 -->
-          <% if sub_course.attachment && sub_course.attachment.content.content_type =~ /video(.*)/%>
+          <% if sub_course.attachment && sub_course.attachment.content_content_type =~ /video(.*)/%>
             <a href= <%= show_sub_courses_courses_path%> class="title"><%= sub_course.name %></a>
           <!-- 如果是视频如pdf, docx等格式文件执行下载 -->
           <% elsif sub_course.attachment && sub_course.attachment.content.content_type =~ /application(.*)/ %>

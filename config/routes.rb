@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     end
     member do
       patch :update_password
+      get :get_sub_course
     end
   end
 

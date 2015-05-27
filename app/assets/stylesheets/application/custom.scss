@@ -897,7 +897,7 @@ body.teachers__show_score {
             color: #555555;
             float: right;
             font-weight: normal;
-            a span {
+            span.glyphicon {
               color: #ffc704;
             }
           }
@@ -906,6 +906,45 @@ body.teachers__show_score {
           }
         }
       }
+      .sub-courses-list {
+      		padding: 40px;
+			height: 200px;
+			overflow: hidden;
+			li {
+				overflow: hidden;
+			}
+			a.title {
+				width: 500px;
+				padding-left: 20px;
+				float: left;
+			}
+			a.total {
+				width: 150px;
+				text-align:center;
+				float: left;
+			}
+			a.already {
+				width: 150px;
+				text-align:center;
+				float: left;
+			}
+			li {
+				height: 46px;
+				line-height: 46px;
+				border-bottom: 2px solid #c7e0fb;
+			}
+			li:before {
+				content: counter(li);
+				counter-increment: li;
+				position: absolute;
+				width: 40px;
+				height: 46px;
+				line-height: 46px;
+				text-align:center;
+				color: #FFF;
+				background: image-url("li-arrow.png") no-repeat 0px 17px;
+			}
+		}
       /*班级列表*/
       ul.grades-list {
         width: 992px;

@@ -13,6 +13,17 @@ class TeachersController < ApplicationController
 
 	#我的课程
 	def my_courses
+		@courses = Course.joins(:teacher_courses).where(teacher_courses: {teacher_id: current_teacher.id})
+	end
+
+	def get_sub_course
+		course = Course.where(number: params[:id]).first
+		@sub_courses = course.try(:sub_courses)
+		pp params
+		pp course,@sub_courses,"122222222222"
+		respond_to do |format|
+			format.js
+		end
 	end
 
   #我的班级

@@ -1,0 +1,20 @@
+<ul id="subCoursesList" class="sub-courses-list">
+  <% @sub_courses.each do |sub_course|%>
+    <li>
+      <!-- 如果是视频如mp4, flv等格式文件进入播放页 -->
+      <% if sub_course.attachment && sub_course.attachment.content_content_type =~ /video(.*)/%>
+        <a href= <%= show_sub_courses_courses_path%> class="title"><%= sub_course.name %></a>
+      <!-- 如果是视频如pdf, docx等格式文件执行下载 -->
+      <% elsif sub_course.attachment && sub_course.attachment.content_content_type =~ /application(.*)/ %>
+        <%=link_to sub_course.name, download_sub_course_path( sub_course.number), class: "title" %>
+      <% end %>
+      <a href="" class="total">格式<%= File.extname(sub_course.attachment.content_file_name).split(".").last%></a>
+      <!-- 显示KB还是Mb判断 -->
+      <% if sub_course.attachment.content_file_size / 1048576 < 1 %>
+        <a href="" class="already">（文件<%= sub_course.attachment.content_file_size / 1024%>Kb）</a>
+      <% else %>
+        <a href="" class="already">（文件<%= sub_course.attachment.content_file_size / 1048576%>Mb）</a>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
