@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "courses/:number/sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses_courses
   get "courses/:number/sub_courses/:number/exams/new", to: "exams#new", as: :new_courses_sub_courses_exams
 
+  post "sub_courses/comment_create_list"
+  get "sub_courses/comment_create_list"
+
   #当子课程为pdf等格式文件时下载链接
   get "/sub_courses/:number/download", to: "sub_courses#download", as: :download_sub_course
 
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
       post :course_praise
     end
   end
+
 
   #限定教师编号为数字形式
   constraints(number: /\d+/) do
@@ -60,7 +64,6 @@ Rails.application.routes.draw do
       get :my_answers
       get :discuss_center
 
-      post :comment_create
       post :update_password
     end
   end

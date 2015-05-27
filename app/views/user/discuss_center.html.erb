@@ -26,7 +26,7 @@
       <!-- ######################我的评论##################### -->
       <div class="div-content discuss-center-content">
         <% if @comments.blank? %>
-        <div class="blank">暂时没有评论</div>
+          <div class="blank">暂时没有评论</div>
         <% else %>
           <% @comments.each do |comment| %>
             <div class="row discuss-center-list">

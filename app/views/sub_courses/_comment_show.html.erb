@@ -1,0 +1,29 @@
+<% if comments.blank? %>
+  <div class="blank">暂时没有评论</div>
+<% else %>
+  <ul class="comment-list">
+    <% comments.each  do |comment| %>
+      <li class="media">
+        <hr>
+        <div class="media-left">
+          <a href="#">
+            <%= image_tag comment.try(:usertable).try(:show_image) %>
+          </a>
+        </div>
+        <div class="media-body">
+          <h5 class="media-heading"><%= comment.try(:usertable).try(:show_name)%></h5>
+          <p><%= comment.body%></p>
+          <p class="comment_date">
+            <span>时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
+            <button class="btn btn-primary btn-xs comment_reply" type="button">回复</button>
+            <button type="button" class="btn pull-right"><span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> </button>
+          </p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+   <div class="paginate text-center">
+        <%= paginate @comments, remote: true,params: {controller: 'sub_courses', action: 'comment_create_list'} %>
+    </div>
+<% end %>

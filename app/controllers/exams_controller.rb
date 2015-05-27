@@ -24,6 +24,7 @@ class ExamsController < ApplicationController
 		if @exam.blank?
 			flash[:notice] = "查看的试卷不存在"
 			redirect_to root_path
+			return
 		end
 	end
 
