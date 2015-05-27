@@ -21,4 +21,27 @@ class SubCourse < ActiveRecord::Base
 	before_create do
 		self.number = NumberHelper.random_course_number
 	end
+
+  #判断附件格式是否是视频类
+	def regex_video
+		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /video(.*)/
+	end
+
+  #判断附件格式是否是文档类
+	def regex_res
+		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /application(.*)/
+	end
+
+  #计算附件大小
+	def count_file_size
+		size = ""
+		if self.attachment && self.attachment.content_file_size
+			if (self.attachment.content_file_size / 1048576) < 1
+				size = (self.attachment.content_file_size / 1024).to_s + "KB"
+			else
+				size = (self.attachment.content_file_size / 1048576).to_s + "MB"
+			end
+		end
+		size
+	end
 end

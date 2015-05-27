@@ -55,7 +55,7 @@
       <% @sub_courses.each do |sub_course|%>
         <li class="col-sm-12">
           <span class="title"><%= sub_course.name%></span>
-          <a href= <%= new_courses_exams_path(sub_course_number: sub_course.number)%> class="pull-right">测试 ></a>
+          <a href= <%= new_courses_sub_courses_exams_path(sub_course.course.number, sub_course.number)%> class="pull-right">测试 ></a>
         </li>
       <% end %>
     </ul>

@@ -1,7 +1,7 @@
 class ExamsController < ApplicationController
   before_action :authenticate_user!
 	def new
-		@sub_course = SubCourse.find_by_number(params[:sub_course_number])
+		@sub_course = SubCourse.find_by_number(params[:number])
 		@questions = @sub_course.questions 
 	end
 

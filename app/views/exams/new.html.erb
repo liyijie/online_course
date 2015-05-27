@@ -5,11 +5,11 @@
 <div class="main-content">
   <a href="javascript:void(0)" class="btn btn-primary">题目列表</a>
   <div class="main-title">
-    网络设备维护基础（一）测试
+    <%= @sub_course.try(:course).name%>（测试）
   </div>
   <div class="question-content">
     <%= simple_form_for Exam.new do |f|%>
-      <%= f.hidden_field :sub_course_number, value: params[:sub_course_number]%>
+      <%= f.hidden_field :sub_course_number, value: params[:number]%>
       <% @questions.each_with_index do |question, index|%>
         <p class="title"><%= index + 1 %> <%= question.title%></p>
           <% question.options.each do |option|%>
@@ -20,10 +20,9 @@
           <% end %>
         <% end %>
         <div class="col-sm-6 col-md-offset-3">
-          <%= f.submit '提交', class: "btn btn-primary"%>
+          <%= f.submit '提交', class: "btn btn-lg btn-primary"%>
         </div>
       <% end %>
-    <%= link_to "成绩查询", " ", class: "btn btn-warning"%>
   </div>
   <div class="tieshi">
     <div id="countdown"></div>
