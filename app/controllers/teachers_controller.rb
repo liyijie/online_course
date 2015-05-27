@@ -19,8 +19,6 @@ class TeachersController < ApplicationController
 	def get_sub_course
 		course = Course.where(number: params[:id]).first
 		@sub_courses = course.try(:sub_courses)
-		pp params
-		pp course,@sub_courses,"122222222222"
 		respond_to do |format|
 			format.js
 		end
