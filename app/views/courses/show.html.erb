@@ -14,7 +14,7 @@
   <div class="top-content">
     <div class="left-content">
       <div class="course-image">
-        <%= image_tag("course-show.png")%>
+        <%= image_tag(@course.image.avatar.url(:c_420_285))%>
         <div class="course-and-score">
           <%= link_to "课后作业", after_class_courses_path, class: "course"%>
           <%= link_to "成绩查询", "", class: "score"%>
@@ -56,7 +56,7 @@
           <div class="teachers">
             <% @teacher_courses.each do |teacher_course|%>
               <div class="teacher-info">
-                 <%= link_to image_tag(teacher_course.teacher.image.avatar.url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
+                 <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
                  <p><%= teacher_course.teacher.name %></p>
               </div>
             <% end %>

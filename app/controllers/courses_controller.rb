@@ -25,6 +25,7 @@ class CoursesController < ApplicationController
   #课后作业
 	def after_class
 		@course = Course.find_by(number: params[:number])
+		@teacher_courses = @course.teacher_courses
 		@sub_courses = @course.sub_courses
 	end
 

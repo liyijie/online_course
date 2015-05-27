@@ -3,7 +3,7 @@ class TeachersController < ApplicationController
 
 	#教师风采
 	def index
-		@teachers = Teacher.all
+		@teachers = Teacher.page(params[:page]).per(20)
 	end
 
 	#教师展示
