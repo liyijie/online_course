@@ -1,3 +1,9 @@
+<%= content_for :script do %>
+ <%= javascript_tag do %>
+    actionPath = "<%= my_score_teachers_path %>"
+  <% end %>
+  <%= javascript_include_tag "_teacher_page" %>
+<%end%>
 <div class="main-content">
   <%= render "left_bar" %>
 
@@ -10,15 +16,15 @@
         <li role="presentation"><a href="javascript:void(0)">第三步 选择课程</a></li>
       </ul>
 	</div>
-	<%= form_tag select_course_teachers_path, method: :post do %>
+	<%= form_tag select_course_teachers_path, method: :post, id: "selectGradeForm" do %>
 	  <% if @grades.present? %>
 	  	<% @grades.each_with_index do |grade,index| %>
 		  <% if index%4 == 0 %>
 		  <div class="condition-row">
 		  <% end %>
 			<div class="col-sm-3">
-			  <%= check_box_tag "grade_ids[#{index}]",grade[0] %>
-			  <lable for="grade_ids_<%= index %>"><%= grade[1] %></lable>
+			  <%= check_box_tag "grade_ids[#{index}]", grade[0] %>
+			  <label for="grade_ids_<%= index %>"><%= grade[1] %></label>
 			</div>
 		  <% if index%4 == 3 %>
 		  </div>
@@ -34,8 +40,8 @@
 
 	  <%= hidden_field_tag "academy_id", params[:academy_id]%>
 	  <div class="search-score-btn">
-		<button type="button" class="btn btn-primary btn-lg">上一步</button>
-		<%= submit_tag "下一步", class: "btn btn-danger btn-lg" %>
+		<button type="button" class="btn btn-primary btn-lg" onclick="this.form.action='<%= my_score_teachers_path%>';this.form.submit();">上一步</button>
+		<%= submit_tag "下一步", class: "btn btn-danger btn-lg", id: "nextStep", disabled: params[:grade_ids].blank? %>
 	  </div>
 	<% end %>
 

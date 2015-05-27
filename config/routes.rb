@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get :my_questions
       get :my_answers
       get :my_score
+      post :my_score
       post :select_grade
       post :select_course
       post :show_score

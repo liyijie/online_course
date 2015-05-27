@@ -1,3 +1,7 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "_teacher_page" %>
+<%end%>
+
 <div class="main-content">
   <%= render "left_bar" %>
 
@@ -10,7 +14,7 @@
         <li role="presentation" class="active"><a href="javascript:void(0)">第三步 选择课程</a></li>
       </ul>
 	</div>
-	<%= form_tag show_score_teachers_path, method: :post do %>
+	<%= form_tag show_score_teachers_path, method: :post, id: "scoreSearch" do %>
 	  <% if @courses.present? %>
 	  	<% @courses.each_with_index do |course,index| %>
 		  <% if index%4 == 0 %>
@@ -18,7 +22,7 @@
 		  <% end %>
 			<div class="col-sm-3">
 			  <%= radio_button_tag "course_id",course[0] %>
-			  <lable for="course_id_<%= index + 1 %>"><%= course[1] %></lable>
+			  <label for="course_id_<%= index + 1 %>"><%= course[1] %></label>
 			</div>
 		  <% if index%4 == 3 %>
 		  </div>
@@ -33,10 +37,10 @@
 	  <% end %>
 
 	  <%= hidden_field_tag "academy_id", params[:academy_id]%>
-	  <%= hidden_field_tag "grade_id", params[:grade_id]%>
+	  <%= hidden_field_tag "grade_ids", @grade_ids %>
 	  <div class="search-score-btn">
-		<button type="button" class="btn btn-primary btn-lg">上一步</button>
-		<%= submit_tag "下一步", class: "btn btn-danger btn-lg" %>
+		<button type="button" class="btn btn-primary btn-lg" onclick="this.form.action='<%= select_grade_teachers_path%>';this.form.submit();">上一步</button>
+		<%= submit_tag "下一步", class: "btn btn-danger btn-lg", id: "nextStep", disabled: true %>
 	  </div>
 	<% end %>
 
