@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526021619) do
+ActiveRecord::Schema.define(version: 20150528090336) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -169,6 +169,16 @@ ActiveRecord::Schema.define(version: 20150526021619) do
   add_index "teacher_courses", ["course_id"], name: "index_teacher_courses_on_course_id", using: :btree
   add_index "teacher_courses", ["teacher_id"], name: "index_teacher_courses_on_teacher_id", using: :btree
 
+  create_table "teacher_grages", force: :cascade do |t|
+    t.integer  "teacher_id", limit: 4
+    t.integer  "grade_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "teacher_grages", ["grade_id"], name: "index_teacher_grages_on_grade_id", using: :btree
+  add_index "teacher_grages", ["teacher_id"], name: "index_teacher_grages_on_teacher_id", using: :btree
+
   create_table "teachers", force: :cascade do |t|
     t.string   "phone",                  limit: 255,   default: "", null: false
     t.string   "encrypted_password",     limit: 255,   default: "", null: false
@@ -199,11 +209,11 @@ ActiveRecord::Schema.define(version: 20150526021619) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "sex",                    limit: 255
-    t.integer  "grade_id",               limit: 4
     t.text     "signature",              limit: 65535
+    t.integer  "academy_id",             limit: 4
   end
 
-  add_index "teachers", ["grade_id"], name: "index_teachers_on_grade_id", using: :btree
+  add_index "teachers", ["academy_id"], name: "index_teachers_on_academy_id", using: :btree
   add_index "teachers", ["phone"], name: "index_teachers_on_phone", unique: true, using: :btree
   add_index "teachers", ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true, using: :btree
 
@@ -271,7 +281,9 @@ ActiveRecord::Schema.define(version: 20150526021619) do
   add_foreign_key "sub_courses", "courses"
   add_foreign_key "teacher_courses", "courses"
   add_foreign_key "teacher_courses", "teachers"
-  add_foreign_key "teachers", "grades"
+  add_foreign_key "teacher_grages", "grades"
+  add_foreign_key "teacher_grages", "teachers"
+  add_foreign_key "teachers", "academies"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"
 end

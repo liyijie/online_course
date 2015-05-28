@@ -32,22 +32,18 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  sex                    :string(255)
-#  grade_id               :integer
 #  signature              :text(65535)
+#  academy_id             :integer
 #
 
 class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
-
-  attr_accessor :academy_id
-  attr_accessor :specialty_id
-
   has_many :comment, as: :usertable, dependent: :destroy
   has_one :image, as: :imageable
   has_many :teacher_courses, dependent: :destroy
-  belongs_to :grade
+  belongs_to :academy
 
   #教师学位列表
   enum final_education: {
