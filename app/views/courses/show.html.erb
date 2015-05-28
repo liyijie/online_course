@@ -57,7 +57,7 @@
           <div class="teachers">
             <% @teacher_courses.each do |teacher_course|%>
               <div class="teacher-info">
-                 <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
+                 <%#= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
                  <p><%= teacher_course.teacher.name %></p>
               </div>
             <% end %>
@@ -96,25 +96,25 @@
       <%= render partial:"/course_info/course_setup"%>
     </div>
     <div class="text-content">
-      教学队伍
+      <%= render partial:"/course_info/course_team"%>
     </div>
     <div class="text-content">
-      教学条件
+      <%= render partial:"/course_info/course_condition"%>
     </div>
     <div class="text-content">
-      教学方法
+      <%= render partial:"/course_info/course_method"%>
     </div>
     <div class="text-content">
-      教学内容
+      <%= render partial:"/course_info/course_content"%>
     </div>
     <div class="text-content">
-      教学资源
+      <%= render partial:"/course_info/course_resource"%>
     </div>
     <div class="text-content">
-      教学效果
+      <%= render partial:"/course_info/course_effect"%>
     </div>
     <div class="text-content">
-      特色与政策
+      <%= render partial:"/course_info/course_policy"%>
     </div>
   </div>
   <div class="fast-entry">

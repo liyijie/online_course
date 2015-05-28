@@ -590,7 +590,16 @@ body.courses__show, body.courses__after_class {
 				li {
 					height: 46px;
 					line-height: 46px;
-					border-bottom: 2px dashed #d6d6d6;
+					border-bottom: 1px dashed #d6d6d6;
+				}
+				.img-left{
+					margin: 0 auto;
+					height: 400px;
+				}
+				.img-right{
+					margin: 0 auto;	
+					height: 185px;
+					margin-bottom: 30px;
 				}
 			}
 		}
@@ -601,10 +610,6 @@ body.courses__show, body.courses__after_class {
 			.entry-content {
 				display: none;
 				margin-top: 15px;
-				.entry-content-title{
-					font-size: 18px;
-					color: #337AB7;
-				}
 				.entry-content-table{
 					width: 800px;
 					padding: 10px;
@@ -618,8 +623,12 @@ body.courses__show, body.courses__after_class {
 				}
 			}
 		}
-		h5{
-			padding: 15px 0;
+		.entry-content-title{
+			font-size: 16px;
+			color: #337AB7;
+		}
+		dd{
+			margin: 15px 0;
 		}
 		p{
 			margin-bottom: 5px;
