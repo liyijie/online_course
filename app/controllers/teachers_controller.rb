@@ -79,7 +79,13 @@ class TeachersController < ApplicationController
 
 	#我的账户
 	def my_account
-	
+		#学院专业回显赋值
+  	current_teacher.academy_id = current_teacher.try(:grade).try(:specialty).try(:academy).try(:id)
+  	current_teacher.specialty_id = current_teacher.try(:grade).try(:specialty).try(:id)
+
+    #专业、班级下拉对应值查
+  	@specialties = Specialty.where(academy_id: current_teacher.academy_id).pluck(:name, :id)
+  	@grades = Grade.where(specialty_id: current_teacher.specialty_id).pluck(:name, :id)
 	end
 
   #讨论中心

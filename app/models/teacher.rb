@@ -41,9 +41,13 @@ class Teacher < ActiveRecord::Base
          :recoverable, :rememberable, :trackable#, :validatable
 
 
+  attr_accessor :academy_id
+  attr_accessor :specialty_id
+
   has_many :comment, as: :usertable, dependent: :destroy
   has_one :image, as: :imageable
   has_many :teacher_courses, dependent: :destroy
+  belongs_to :grade
 
   #教师学位列表
   enum final_education: {
@@ -81,6 +85,6 @@ class Teacher < ActiveRecord::Base
 
    #页面头像显示
   def show_image 
-    self.image.present? ? self.try(:image).try(:avatar).try(:url) : "teacher-default.jpg"
+    self.image.present? ? self.try(:image).try(:avatar).try(:url, :t_280x370) : "teacher-default.jpg"
   end
 end

@@ -1,5 +1,10 @@
 <%= content_for :script do %>
   <%= javascript_include_tag "_teacher_page",'data-turbolinks-track' => true  %>
+  <%= javascript_tag do %>
+    get_specialties_path = "<%= get_specialties_user_index_path %>"
+    get_grades_path = "<%= get_grades_user_index_path %>"
+  <% end %>
+  <%= javascript_include_tag "_user_show" %>
 <%end%>
 
 <div class="main-content">
@@ -14,10 +19,10 @@
 		  	<%= simple_form_for(current_teacher, url: teacher_path(current_teacher.id), html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input, radio_buttons: :horizontal_radio_and_checkboxes }) do |f|%>
 		  		<%= f.input :name, label: "我的姓名" %>
           <div class="col-sm-offset-2">
-            <%= image_tag(current_teacher.image.avatar) if current_teacher.image.present? %>
+            <%= image_tag(current_teacher.show_image, class: "img-thumbnail edit-teacher-image") %>
           </div>
 		  		<%= f.input :avatar, as: :file, label: "我的头像" %>
-          <%= f.input :grade_id, label: "所属班级" %>
+          <%= render :partial => "common/common_select", locals: {f: f} %>
           <%= f.input :final_degree, label: "专业技术职位" %>
           <%= f.input :qualification, label: "资格证书" %>
           <%= f.input :final_education, collection: Teacher.final_educations, prompt: "请选择学位", label: "我的学历" %>

@@ -25,8 +25,9 @@ class Image < ActiveRecord::Base
   	                                    :c_420_285 => "420x285", #课程展示页展示图
                                         :c_340_200 => "340x200", #教师展示页课程图片
   	                                    :medium => "300x300>",
-  	                                    :thumb => "150x150>"
+  	                                    :thumb => "150x150>",
+                                        :u_145x145 => "145x145>"
   	                                    },
-  	                                    :default_url => "missing.png"
+  	                         :default_url => "/images/missing/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 end

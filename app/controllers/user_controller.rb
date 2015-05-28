@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_action :authenticate_user!  
+  before_action :authenticate_user! , except: [:get_specialties, :get_grades] 
 	
   #我的账户
   def show
