@@ -59,7 +59,7 @@
         <% end %>
       </ul>
        <div class="paginate text-center">
-            <%= paginate @comments, remote: true,params: {controller: 'sub_courses', action: 'comment_create_list', comment_scope: params[:comment_scope] || "discuss" } %>
+            <%= paginate @comments, remote: true,params: {controller: 'sub_courses', action: 'comment_create_list', comment_scope: params[:comment_scope] || "discuss",comment: "" } %>
         </div>
     <% end %>
   </div>
