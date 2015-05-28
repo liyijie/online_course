@@ -9,9 +9,9 @@
     <%= form_tag sub_courses_comment_create_list_path, method: :post, remote: true do %>
       <%= text_area_tag "comment", "", class: "comment_text", rows: 5, 
         cols: 118, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
-        <%= hidden_field_tag "number", params[:number] %>
-        <%= hidden_field_tag "comment_scope", params[:comment_scope] || "discuss" %>
-      <%= submit_tag "#{params[:comment_scope] == 'answer' ? '发布问题' : '发布评论'}", class: "btn btn-success pull-right", onclick: "if($('#comment').val() == ''){return false;};" %>
+      <%= hidden_field_tag "number", params[:number] %>
+      <%= hidden_field_tag "comment_scope", params[:comment_scope] || "discuss" %>
+      <%= submit_tag "#{params[:comment_scope] == 'answer' ? '发布问题' : '发布评论'}", class: "btn btn-success pull-right", onclick: "if($('#comment').val() == ''){alert('请填写内容在发布');return false;};" %>
     <% end %>
   </div>
   <div id="commentOrAnswer">
@@ -26,7 +26,7 @@
             <hr>
             <div class="media-left">
               <a href="#">
-                <%= image_tag comment.try(:usertable).try(:show_image) %>
+                <%= image_tag comment.try(:usertable).try(:show_image), class: "img-circle" %>
               </a>
             </div>
             <div class="media-body">
@@ -35,16 +35,53 @@
               <p class="comment_date">
                 <span>时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
-                <button class="btn btn-primary btn-xs comment_reply" type="button">回复</button>
-                <button type="button" class="btn pull-right"><span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> </button>
+                <button class="btn btn-primary btn-xs comment_reply" type="button" comment-id="<%= comment.id %>">回复</button>
+                <button type="button" class="btn pull-right">
+                  <span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> 
+                </button>
+                <% if comment.has_children? %>
+                  <ul class="child-comment-list">
+                    <% comment.children.each do |child_comment| %>
+                      <li>
+                        <span class="sub-user">
+                          <%= image_tag child_comment.try(:usertable).try(:show_image), class: "img-circle small" %>
+                          <%= child_comment.try(:usertable).try(:show_name) %>&nbsp;
+                          <span class="text-muted"><%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %> 回复:</span>
+                        </span>
+                        <span><%= child_comment.body%></span>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
               </p>
             </div>
           </li>
         <% end %>
       </ul>
        <div class="paginate text-center">
-            <%= paginate @comments, remote: true,params: {controller: 'sub_courses', action: 'comment_create_list'} %>
+            <%= paginate @comments, remote: true,params: {controller: 'sub_courses', action: 'comment_create_list', comment_scope: params[:comment_scope] || "discuss" } %>
         </div>
     <% end %>
   </div>
 </div>
+
+<div id="relyCommentForm" style="display: none;">
+  <%= form_tag sub_courses_reply_comment_list_path, method: :post, remote: true, class: "reply-comment-form" do %>
+    <%= text_area_tag "comment", "", rows: 3, 
+      cols: 110, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
+    <%= hidden_field_tag "number", params[:number] %>
+    <%= hidden_field_tag "comment_scope", params[:comment_scope] || "discuss" %>
+    <%= hidden_field_tag "comment_id" %>
+    <%= submit_tag "发布", class: "btn btn-success pull-right", onclick: "if($(this).siblings('#comment').first().val() == ''){alert('请填写内容在发布');return false;};" %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $(".comment_reply").click(function(){
+        $(".comment-list form").remove();
+        $("#comment_id").val($(this).attr("comment-id"));
+        $(this).parent().append($("#relyCommentForm").html());
+      });
+  });
+</script>

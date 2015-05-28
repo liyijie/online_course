@@ -2,6 +2,4 @@
 $("#commentContent").html('<%= escape_javascript( render :partial => "comment_show",
   :locals => {:comments => @comments}) %>');
 
-<% if params[:comment].present? && params[:page].blank? %>
-  alert("评论成功");
-<% end %>
+alert("回复成功");

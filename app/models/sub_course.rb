@@ -63,4 +63,21 @@ class SubCourse < ActiveRecord::Base
       sub_course.root_comments.where(comment_scope:  params[:comment_scope]).order("created_at DESC").page(params[:page])
     end
   end
+
+
+  #回复评论后返回新的评论一览
+  def self.reply_comment_returns_comments user,params
+    sub_course = SubCourse.where(number: params[:number]).first
+    parent_comment = Comment.where(id: params[:comment_id]).first
+
+    #保存新的评论
+    if sub_course.present? && parent_comment.present?
+      comment = Comment.build_from sub_course, user, params[:comment], params[:comment_scope]
+      comment.save
+      comment.move_to_child_of parent_comment
+    end
+
+    #返回所有评论
+    sub_course.root_comments.where(comment_scope:  params[:comment_scope]).order("created_at DESC").page(params[:page])
+  end
 end
