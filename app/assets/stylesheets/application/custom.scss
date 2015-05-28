@@ -797,6 +797,14 @@ body.exams__new, body.exams__show {
 			left: 0;
 			background: image-url("teacher-active-bg.png") no-repeat 0 0;
 		}
+		.list-bg-user {
+			height: 46px;
+			width: 172px;
+			position: absolute;
+			top: 62px;
+			left: 0;
+			background: #6a94c1;
+		}
 		ul.list li {
 			width: 184px;
 			a {
@@ -806,8 +814,14 @@ body.exams__new, body.exams__show {
 				margin: 20px 0;
 				display: block;
 				color: #535353;
+				span {
+					position: relative;
+				}
 				&.active {
 					color: #fff;
+					span {
+						color: #fff;
+					}
 				}
 			}
 		}
