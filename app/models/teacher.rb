@@ -46,7 +46,12 @@ class Teacher < ActiveRecord::Base
   has_many :teacher_courses, dependent: :destroy
 
   #教师学位列表
-  TeacherDegree =[{text: '大专', value: 'dazhuan'}, {text: '本科', value: 'benke'}, {text: '硕士', value: 'shuoshi'}, {text: '博士', value: 'boshi'}]
+  enum final_education: {
+    '大专': 'dazhuan',
+    '本科': 'benke',
+    '硕士': 'shuoshi',
+    '博士': 'boshi'
+  }
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login

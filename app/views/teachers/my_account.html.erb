@@ -20,7 +20,7 @@
           <%= f.input :grade_id, label: "所属班级" %>
           <%= f.input :final_degree, label: "专业技术职位" %>
           <%= f.input :qualification, label: "资格证书" %>
-          <%= f.input :final_education,  collection: Teacher::TeacherDegree.collect{ |p| [p[:text], p[:value]] }, prompt: "请选择学位", label: "我的学历" %>
+          <%= f.input :final_education, collection: Teacher.final_educations, prompt: "请选择学位", label: "我的学历" %>
           <%= f.input :tec_expertise, label: "教学与技术专长" %>
           <%= f.input :phone, label: "手机号码" %>
           <%= f.input :sex, as: :radio_buttons, collection: ["男", "女"], label: "性别" %>
