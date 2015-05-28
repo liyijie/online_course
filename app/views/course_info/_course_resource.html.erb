@@ -1,41 +1,91 @@
-<a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>教学资源</strong></a>
-<br><br>
-<ul class="container-fluid">
-  <div class="col-sm-12"><dt class="col-sm-12">教学大纲</dt></div>
-  <li class="col-sm-12">
-    <a href= "#" class="col-sm-10">《 iOS 图形界面开发》教学大纲</a>
-    <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-  </li>
-  </ul>
+<% if course == Course.first %>
+  <a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>教学资源</strong></a>
   <br><br>
   <ul class="container-fluid">
-  <div class="col-sm-12"><dt class="col-sm-12">考核方法</dt></div>
-  <li class="col-sm-12">
-    <a pef= "#" class="col-sm-10">考核方法</a>
-    <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-  </li>
+    <div class="col-sm-12"><dt class="col-sm-12">教学大纲</dt></div>
+    <li class="col-sm-12">
+      <a href= "#" class="col-sm-10">《 iOS 图形界面开发》教学大纲</a>
+      <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+    </li>
+    </ul>
+    <br><br>
+
+    <ul class="container-fluid">
+    <div class="col-sm-12"><dt class="col-sm-12">考核方法</dt></div>
+    <li class="col-sm-12">
+      <a pef= "#" class="col-sm-10">考核方法</a>
+      <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+    </li>
+    </ul>
+    <br><br>
+
+   <ul class="container-fluid">
+    <div class="col-sm-12"><dt class="col-sm-12">电子教案</dt></div>
+    <li class="col-sm-12">
+      <a pef= "#" class="col-sm-10">项目一 初识 iOS</a>
+      <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+    </li>
+    <li class="col-sm-12">
+      <a pef= "#" class="col-sm-10">项目二 利用 http 协议从微博服务器获取</a>
+      <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+    </li>
+    <li class="col-sm-12">
+      <a pef= "#" class="col-sm-10">项目三 利用 html 协议实现登陆微博的功能</a>
+      <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+    </li>
+    <li class="col-sm-12">
+      <a pef= "#" class="col-sm-10">项目四 主页列表功能界面设计</a>
+      <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+    </li>
+    <li class="col-sm-12">
+      <a pef= "#" class="col-sm-10">项目五 sqlite 数据库缓存功能介绍</a>
+      <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+    </li>
   </ul>
-  <br><br>
- <ul class="container-fluid">
-  <div class="col-sm-12"><dt class="col-sm-12">电子教案</dt></div>
-  <li class="col-sm-12">
-    <a pef= "#" class="col-sm-10">项目一 初识 iOS</a>
-    <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-  </li>
-  <li class="col-sm-12">
-    <a pef= "#" class="col-sm-10">项目二 利用 http 协议从微博服务器获取</a>
-    <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-  </li>
-  <li class="col-sm-12">
-    <a pef= "#" class="col-sm-10">项目三 利用 html 协议实现登陆微博的功能</a>
-    <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-  </li>
-  <li class="col-sm-12">
-    <a pef= "#" class="col-sm-10">项目四 主页列表功能界面设计</a>
-    <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-  </li>
-  <li class="col-sm-12">
-    <a pef= "#" class="col-sm-10">项目五 sqlite 数据库缓存功能介绍</a>
-    <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
-  </li>
-</ul>
+
+  <% elsif %>
+    <a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>教学资源</strong></a>
+    <br><br>
+
+    <ul class="container-fluid">
+      <div class="col-sm-12"><dt class="col-sm-12">教学大纲</dt></div>
+      <li class="col-sm-12">
+        <a href= "#" class="col-sm-10">《Java web开发设计》教学大纲</a>
+        <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+      </li>
+      <li class="col-sm-12">
+        <a href= "#" class="col-sm-10">学习细目表</a>
+        <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+      </li>
+      </ul>
+      <br><br>
+
+      <ul class="container-fluid">
+      <div class="col-sm-12"><dt class="col-sm-12">授课计划与进度</dt></div>
+      </ul>
+      <br><br>
+
+     <ul class="container-fluid">
+      <div class="col-sm-12"><dt class="col-sm-12">电子教案</dt></div>
+      <li class="col-sm-12">
+        <a pef= "#" class="col-sm-10">1、课程概述</a>
+        <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+      </li>
+      <li class="col-sm-12">
+        <a pef= "#" class="col-sm-10">2、Tomcat简介</a>
+        <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+      </li>
+      <li class="col-sm-12">
+        <a pef= "#" class="col-sm-10">3、脚本语言1</a>
+        <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+      </li>
+      <li class="col-sm-12">
+        <a pef= "#" class="col-sm-10">4、脚本语言2</a>
+        <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+      </li>
+      <li class="col-sm-12">
+        <a pef= "#" class="col-sm-10">5、脚本语言3</a>
+        <a href class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+      </li>
+    </ul>
+  <% end %>

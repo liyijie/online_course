@@ -87,34 +87,34 @@
   </div>
   <div class="category-list-content">
     <div class="text-content">
-      <%= render partial: "/course_info/course_home"%>
+      <%= render partial:"/course_info/course_home", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial: "/course_info/course_data" %>
+      <%= render partial:"/course_info/course_data" , locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_setup"%>
+      <%= render partial:"/course_info/course_setup", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_team"%>
+      <%= render partial:"/course_info/course_team", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_condition"%>
+      <%= render partial:"/course_info/course_condition", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_method"%>
+      <%= render partial:"/course_info/course_method", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_content"%>
+      <%= render partial:"/course_info/course_content", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_resource"%>
+      <%= render partial:"/course_info/course_resource", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_effect"%>
+      <%= render partial:"/course_info/course_effect", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_policy"%>
+      <%= render partial:"/course_info/course_policy", locals: {course: @course} %>
     </div>
   </div>
   <div class="fast-entry">

@@ -1,18 +1,19 @@
-<a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>学校的政策支持与措施</strong></a>
-<a href="javascript:void(0)" class="btn"><strong>本课程改进的方向与途径</strong></a>
-<a href="javascript:void(0)" class="btn"><strong>本课程与国内外同类课程的比较</strong></a>
-<a href="javascript:void(0)" class="btn"><strong>本课程的特色与创新点</strong></a>
-<br><br>
-<dl>
-  <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 学校对精品课程建设的政策支持与措施及其落实情况</p>
-  <div class="container-fluid">
-    <dd>精品课程建设是教育部“高等学校教学质量与教学改革工程”的重要组成部分，上海市教育委员会将精品课建设纳入上海市高等教育内涵建设“085”工程范畴，也是学校课程建设的重要内容。我院历来重视课程建设工作，采取多种措施促进和保证院重点课程建设工作，促进市级精品课程的形成。学院鼓励精品课程建设的具体政策措施如下：</dd>
-  </div>
+<% if course == Course.first %>
+  <a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>学校的政策支持与措施</strong></a>
+  <a href="javascript:void(0)" class="btn"><strong>本课程改进的方向与途径</strong></a>
+  <a href="javascript:void(0)" class="btn"><strong>本课程与国内外同类课程的比较</strong></a>
+  <a href="javascript:void(0)" class="btn"><strong>本课程的特色与创新点</strong></a>
+  <br><br>
+  <dl>
+    <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 学校对精品课程建设的政策支持与措施及其落实情况</p>
+    <div class="container-fluid">
+      <dd>精品课程建设是教育部“高等学校教学质量与教学改革工程”的重要组成部分，上海市教育委员会将精品课建设纳入上海市高等教育内涵建设“085”工程范畴，也是学校课程建设的重要内容。我院历来重视课程建设工作，采取多种措施促进和保证院重点课程建设工作，促进市级精品课程的形成。学院鼓励精品课程建设的具体政策措施如下：</dd>
+    </div>
 
-  <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 1 . 组织保障</p>
-  <div class="container-fluid">
-    <dd>学院专门成立了课程建设指导委员会，负责全院课程建设的规划制定、立项、评审等工作，加强对课程建设的领导工作，严格按照课程建设立项要求组织中期检查和结题评审，并在整个课程建设过程中实行院系两级监控。对于申报市级精品的课程，首先必须是院级重点课程建设中优秀的，同时，特别强调应符合高职高专人才培养的要求，通过“工学结合”，企业学校一起交流，共同开发。并且有一支专兼结合的“双师素质”教师队伍，突出培养职业能力和职业素养，体现职业性、实践性和开发性要求。</dd>
-  </div>
+    <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 1 . 组织保障</p>
+    <div class="container-fluid">
+      <dd>学院专门成立了课程建设指导委员会，负责全院课程建设的规划制定、立项、评审等工作，加强对课程建设的领导工作，严格按照课程建设立项要求组织中期检查和结题评审，并在整个课程建设过程中实行院系两级监控。对于申报市级精品的课程，首先必须是院级重点课程建设中优秀的，同时，特别强调应符合高职高专人才培养的要求，通过“工学结合”，企业学校一起交流，共同开发。并且有一支专兼结合的“双师素质”教师队伍，突出培养职业能力和职业素养，体现职业性、实践性和开发性要求。</dd>
+    </div>
 
     <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 2. 经费保障</p>
     <div class="container-fluid">
@@ -45,3 +46,31 @@
       <dd>学院对已列为市级的精品课程，每个学期进行一次专门检查，着重检查是否按“建设规划”如期落实。并且，在校内组织推广、交流精品课程，总结精品课程经验，对他课程起到辐射、带动作用。同时，经常听取授课学生对精品课程的评价，督促其不断完善。</dd>
     </div>
   </dl>
+
+<% elsif %>
+  <a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>特色与创新</strong></a>
+  <br><br>
+  <dl>
+    <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 本课程的特色</p>
+    <div class="container-fluid">
+      <dl>
+        <dd>1．基于行为导向进行课程设计<br>以就业为导向，通过与教育、行业专家一起进行分析调研得出专业所针对的职业岗位，根据职业岗位确定行动领域，根据行动领域确定学习情景。 </dd>
+        <dd>2．工作过程与教学过程有机融合的“工学结合”<br>将实际的商业项目转化成适合教学的项目；在课程中观组织中，将项目实际开发的工作情景变成适合教学的学习情景；在课程微观组织上，我们采用行为导向教学法，分六步完成一个学习情景，能够真正的让学生在工作中学习，在学习中工作。</dd>
+        <dd>3．多元化的课程考核<br>本课程打破单一的考试方式，采用多方位的考核和评价——考试与考核相结合，过程与结果考核相结合。本课程的学生成绩由平时考核和期末考试组成，期末考试为上机操作考试。平时考核就是一个学习情景完成后根据考核标准进行评定，作为本课程过程考核的一个节点，每个节点对应一个学习情景。最后在整个教学项目完成之后进行课堂项目答辩，作为结果考核之一。</dd>
+      </dl>
+    </div>
+
+    <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span>本课程的创新点</p>
+    <div class="container-fluid">
+      <dd>采用“J2EE与软件工程实训平台”进行教学，真实项目，真实工程环境，工学结合。</dd>
+      <dd>（1）实训管理系统在实训过程中充当了一个电子化的项目经理角色。<br>（2）针对不同的实训案例，已经事先设计好符合RUP规范的软件开发流程。<br>（3）初始化虚拟团队，以及学员的开发角色，在载入实训案例后，学员便可根据系统指示，按照步骤完成开发任务。<br>（4）每个案例都已经由专家团队严格按照开发流程开发完毕。学员将按照相同的开发流程进行开发。<br>（5）案例按照组件的方式构建。一旦出现学员在某些模块不能正确完成的情况，便可调出标准模块进行部署，从而保证整体实训任务继续按照计划推进。</dd>
+    </div>
+
+    <p class="entry-content-title"><span class="glyphicon glyphicon-triangle-bottom"></span> 政策支持</p>
+    <div class="container-fluid">
+      <dd>（1）学院经过多年来的不断建设，自2005年以来已投入200余万元建成了计算机实验实训室、软件开发仿真实验室、购置了开发环境软件、用于教学的多媒体电子教室等相应的教学软件；同时，拨出相当经费用于教师的培训，尤其是近两年来，从教学理念、专业技能、校企结合、多媒体制作能力等各方面对教师进行了较全面的培训。</dd>
+      <dd>（2）除上述经费外，学院对精品课程建设所需的实践教学场地和设备，开发校内、外实训基地、课程网站等费用，每年在预算中另行拔出专款，以保证精品课程教学质量的提高，保证精品课程教学条件的完善，保证精品课程的维护与共享。</dd>
+    </div>
+
+  </dl>
+<% end %>
