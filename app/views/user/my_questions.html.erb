@@ -33,11 +33,15 @@
               <div class="col-sm-9">
                 <div><%= current_user.show_name %> <span class="grey-font">提问</span></div>
                 <p>
-                  <div><%= comment.body %></div>
+                  <div>
+                    <%= link_to comment.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                  </div>
                   <% if comment.has_children? %>
                     <span class="text-muted">[最新回答]</span>
                     <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
-                    <span class="text-muted"><%= comment.children.last.try(:body) %></span>
+                    <span class="text-muted">
+                      <%= link_to comment.children.last.try(:body),show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                    </span>
                   <% end %>
                 </p><br>
                 <div class="grey-font">时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></div>

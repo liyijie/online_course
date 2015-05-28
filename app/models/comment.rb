@@ -18,7 +18,7 @@
 #  comment_scope    :string(255)
 #
 
-# comment_scope: discuss表示我的评论，question表示我的提问，answer表示我的提问的回答
+# comment_scope: discuss表示我的评论，answer表示我的问答
 
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
@@ -89,11 +89,16 @@ class Comment < ActiveRecord::Base
   #参数：评论的发布者，comment_scope查找评论还是问题
   #返回：当前发布者的评论或者问题
   def self.find_root_comments_by_usertable usertable, comment_scope
-    Comment.where(parent_id:nil, usertable: usertable, comment_scope: comment_scope).order("created_at DESC")
+    Comment.where(parent_id: nil, usertable: usertable, comment_scope: comment_scope).order("created_at DESC")
   end
 
   #获取用户对提问的回答
   def self.find_answer_by_usertable usertable
-    Comment.where(usertable: usertable, comment_scope: :answer).order("created_at DESC")
+    #Comment.where(usertable: usertable, comment_scope: :answer).order("created_at DESC")
+    Comment.where("usertable_id = ? and usertable_type =? and comment_scope = ? and parent_id is not null",usertable.id,usertable.class,"answer").order("created_at DESC")
+  end
+
+  def parent
+    Comment.find self.parent_id
   end
 end

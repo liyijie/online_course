@@ -68,7 +68,7 @@ class TeachersController < ApplicationController
 
   #我的提问
 	def my_questions
-		@question_comments = Comment.find_root_comments_by_usertable(current_teacher, :question).page(params[:page])
+		@question_comments = Comment.find_root_comments_by_usertable(current_teacher, :answer).page(params[:page])
 	end
 
   #我的回答

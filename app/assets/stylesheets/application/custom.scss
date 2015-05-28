@@ -954,6 +954,7 @@ body.teachers__show_score {
 				background: image-url("li-arrow.png") no-repeat 0px 17px;
 			}
 		}
+
       /*班级列表*/
       ul.grades-list {
         width: 992px;
@@ -1018,6 +1019,14 @@ body.teachers__show_score {
               border-right: solid 1px #edf1f2;
             }
           }
+        }
+
+        a {
+        	color: #000;
+        }
+        .img-circle {
+        	max-width: 60px;
+        	max-height: 60px;
         }
       }
       ul.my-answers {

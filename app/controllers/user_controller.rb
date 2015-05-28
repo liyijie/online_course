@@ -75,7 +75,7 @@ class UserController < ApplicationController
 
   #我的问答
   def my_questions
-    @question_comments = Comment.find_root_comments_by_usertable(current_user, :question).page(params[:page])
+    @question_comments = Comment.find_root_comments_by_usertable(current_user, :answer).page(params[:page])
   end
 
   #我的回答

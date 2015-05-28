@@ -18,18 +18,20 @@
 		        	<% @comments.each do |comment| %>
 		        		<li>
 		  		 		  <div class="avatar">
-		  		 		  	<%= image_tag("teacher-avatar.png")%>
+		  		 		  	<%= image_tag comment.try(:usertable).try(:show_image),class: "img-circle", style: "max-width: 60px;" %>
 		  		 		  </div>
 		  		 		  <div class="question-info">
 		  		 		  	<p class="name">
 			  		 		    <%= current_teacher.show_name %>
 			  		 		    <span>提问</span>
 			  		 		  </p>
-			  		 		  <p class="content"><%= comment.body %></p>
+			  		 		  <p class="content">
+                    <%= link_to comment.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>      
+                  </p>
 			  		 		  <% if comment.has_children? %>
 			                    <p><span class="text-muted">[最新回答]</span>
 			                    <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
-			                    <span class="text-muted"><%= comment.children.last.try(:body) %></span></p>
+			                    <span class="text-muted"> <%= link_to comment.children.last.try(:body),show_sub_courses_courses_path(comment.try(:commentable).try(:number))%></span></p>
 			                  <% end %>
 			  		 		  <p class="time">时间: <%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></p>
 		  		 		  </div>
