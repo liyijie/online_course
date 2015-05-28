@@ -18,7 +18,7 @@
 		        	<% @comments.each do |comment| %>
 		        		<li>
 		  		 		  <div class="avatar">
-		  		 		  	<%= image_tag comment.try(:usertable).try(:show_image),class: "img-circle", style: "max-width: 60px;" %>
+		  		 		  	<%= image_tag comment.try(:usertable).try(:show_image),class: "img-circle" %>
 		  		 		  </div>
 		  		 		  <div class="question-info">
 		  		 		  	<p class="name">

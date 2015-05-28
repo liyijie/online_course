@@ -98,7 +98,8 @@ class Comment < ActiveRecord::Base
     Comment.where("usertable_id = ? and usertable_type =? and comment_scope = ? and parent_id is not null",usertable.id,usertable.class,"answer").order("created_at DESC")
   end
 
+  #取得comment的父节点
   def parent
-    Comment.find self.parent_id
+    Comment.find self.parent_id if self.parent_id.present?
   end
 end

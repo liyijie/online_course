@@ -29,6 +29,23 @@ header {
 			}
 		}
 	}
+
+	p.login-info {
+		img.img-thumbnail {
+			max-height: 30px;
+			max-width: 30px
+		}
+		a{
+			color: #000;
+		}
+		.glyphicon {
+			color: #1a5aa0;
+		}
+	}
+	p.navbar-text.outer {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
 }
 
 footer {

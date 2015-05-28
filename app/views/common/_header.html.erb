@@ -1,36 +1,52 @@
 <nav class="main-nav">
 	<div class="wrapper">
-		<div class="navbar-header">
-		  <a class="navbar-brand"  style="padding-top:2px;" href="#">
+		<p class="navbar-text outer">
+		  <a class="navbar-link" href="#">
 		  	<%= image_tag "logo.jpg", alt: "上海工商职业技术学院"%>
 		  </a>
-		</div>
 
-		<nav class="collapse navbar-collapse bs-navbar-collapse">
-		 	<!-- <div id="navbar" class="navbar-collapse collapse col-md-2 col-md-offset-4">
-		      <form class="navbar-form navbar-left" role="search">
-				<div class="input-group">
-			      <input type="text" class="form-control" placeholder="搜索">
-			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">
-			        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					</button>
-			      </span>
-			    </div>
-			  </form>
-		    </div> -->
-		  	<p class="navbar-text pull-right">
-		      <% if current_user %>
-		      	  <%= link_to("学生：#{current_user.show_name}", my_courses_user_index_path, class: "navbar-link") %> | 
-		          <%= link_to('退出', destroy_user_session_path, :method => :delete, class: "navbar-link") %>
-		      <% elsif current_teacher %>
-		      	  <%= link_to("教师：#{current_teacher.show_name}", my_courses_teachers_path, class: "navbar-link") %> | 
-		          <%= link_to('退出', destroy_teacher_session_path, :method => :delete, class: "navbar-link") %>
-		      <% else %>
-		          <%= link_to('登录', new_session_path(:user), class: "navbar-link") %> | 
-		          <%= link_to('注册', new_registration_path(:user), class: "navbar-link") %>
-		      <% end %>
-		    </p>
-		</nav>
+			<nav class="collapse navbar-collapse bs-navbar-collapse">
+			 	<!-- <div id="navbar" class="navbar-collapse collapse col-md-2 col-md-offset-4">
+			      <form class="navbar-form navbar-left" role="search">
+					<div class="input-group">
+				      <input type="text" class="form-control" placeholder="搜索">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button">
+				        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</button>
+				      </span>
+				    </div>
+				  </form>
+			    </div> -->
+			  	<p class="navbar-text pull-right login-info">
+			      <% if current_user %>
+		  				<%= image_tag current_user.try(:show_image),class: "img-thumbnail" %> 
+		  				欢迎您，<%= link_to("#{current_user.show_name}同学", my_courses_user_index_path, class: "navbar-link") %> | 
+		      	  <%= link_to root_path, class: "navbar-link" do %> 
+			      	  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 回到首页
+		      	  <% end %> | 
+		          <%= link_to destroy_user_session_path, :method => :delete, class: "navbar-link" do %>
+			      	  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出
+		          <% end %>
+			      <% elsif current_teacher %>
+			          <%= image_tag current_teacher.try(:show_image),class: "img-thumbnail" %> 
+			          欢迎您，<%= link_to("#{current_teacher.show_name}老师", my_courses_teachers_path, class: "navbar-link") %> | 
+			      	  <%= link_to root_path, class: "navbar-link" do %> 
+				      	  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 回到首页
+			      	  <% end %> | 
+			          <%= link_to destroy_teacher_session_path, :method => :delete, class: "navbar-link" do %>
+				      	  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出
+			          <% end %>
+			      <% else %>
+			       		<%= link_to root_path, class: "navbar-link" do %> 
+				      	<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 回到首页
+			      	  <% end %> | 
+			          <%= link_to new_session_path(:user), class: "navbar-link" do %>
+				      	  <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 登录
+			          <% end %>
+			      <% end %>
+			    </p>
+			</nav>
+		</p>
 	</div>
 </nav>
