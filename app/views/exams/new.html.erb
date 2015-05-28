@@ -3,7 +3,12 @@
 <%end%>
 
 <div class="main-content">
-  <% if @questions.present?%>
+  <% if @exam.present? %>
+    <%= render partial: 'common/blank_alert', locals: {message: '您已经参加过该测试!'}%>
+    <div class="form-group">
+      <%= link_to "查看我的试卷", '', class: 'btn center btn-primary'%>
+    </div>
+  <% elsif @questions.present? %>
     <a href="javascript:void(0)" class="btn btn-primary">题目列表</a>
     <a href="javascript:void(0)" class="btn btn-success js-start-answer-question">开始答题</a>
     <div class="main-title">
@@ -54,6 +59,6 @@
       <a href="javascript:void(0)" id="back-to-top"></a>
     </div>
   <% else %>
-    <div class="alert alert-warning" role="alert">该课程还未上传课后习题!</div>
+    <%= render partial: 'common/blank_alert', locals: {message: '该课程还未上传课后习题!'}%>
   <% end %>
 </div>

@@ -3,6 +3,9 @@ class ExamsController < ApplicationController
 	def new
 		@sub_course = SubCourse.find_by_number(params[:sub_course_number])
 		@questions = @sub_course.questions
+
+		#查找判断用户是否已经参加过该次考试
+		@exam = Exam.find_by(user_id: current_user.id, sub_course_id: @sub_course.id)
 	end
 
 	def create
