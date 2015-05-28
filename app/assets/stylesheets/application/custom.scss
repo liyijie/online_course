@@ -677,12 +677,8 @@ body.exams__new, body.exams__show {
 			p.title {
 				height: 40px;
 				line-height: 40px;
-				padding-left: 20px;
-				//background: #b0d6ff;
-				background: -webkit-gradient(linear, 100% 0%, 100% 100%, from(#b0d6ff), to(#fff));
-				background: -o-linear-gradient(left, #b0d6ff, #fff);
-				background: -moz-linear-gradient(left, #b0d6ff, #fff);
-				FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#b0d6ff,endColorStr=#ffffff);
+				padding-left: 40px;
+				background: image-url("question-title-bg.png") no-repeat 0 0;
 				margin: 20px 0;
 			}
 			p.option {
