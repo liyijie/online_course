@@ -117,6 +117,7 @@ body.home__index {
 		width: 100%;
 		height: 30px;
 		padding: 0 8px;
+		position: relative;
 		span a {
 			width: 138px;
 			height: 30px;
@@ -125,6 +126,7 @@ body.home__index {
 			display: block;
 			float: left;
 			color: #070707;
+			position: absolute;
 			background: image-url("tabs-bg.png") no-repeat 0 0;
 			border-bottom: 2px solid #6599d2;
 			&.first-tab {
@@ -207,6 +209,9 @@ body.home__index {
 		float: left;
 		overflow: hidden;
 		position: relative;
+		a img {
+			width: 100%;
+		}
 		p {
 			height: 26px;
 			width: 100%;
