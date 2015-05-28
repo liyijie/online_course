@@ -74,6 +74,8 @@ gem "mediaelement_rails"
 #导入功能
 gem "roo"
 
+gem 'remotipart', '~> 1.2'
+
 
 
 
