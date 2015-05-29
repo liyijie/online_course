@@ -43,6 +43,8 @@ class Teacher < ActiveRecord::Base
   has_many :comment, as: :usertable, dependent: :destroy
   has_one :image, as: :imageable
   has_many :teacher_courses, dependent: :destroy
+  has_many :teacher_grades, dependent: :destroy
+  has_many :grades, through: :teacher_grades
   belongs_to :academy
 
   #教师学位列表

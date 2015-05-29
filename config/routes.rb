@@ -84,6 +84,8 @@ Rails.application.routes.draw do
         resources :questions, only: [:index]
       end
     end
+
+    resources :teachers 
   end
 
 end
