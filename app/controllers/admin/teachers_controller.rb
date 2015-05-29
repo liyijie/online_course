@@ -14,10 +14,9 @@ class Admin::TeachersController < ApplicationController
     @teacher.teacher_grades << TeacherGrade.new(grade_id: params[:teacher][:grade_ids],
                               teacher_id: @teacher.id)
     if @teacher.save && @teacher.image.save
-      flash.now[:notice] = "课程创建成功"
+      flash.now[:notice] = "教师创建成功"
       return redirect_to admin_teachers_url
     else
-      flash.now[:notice] = "课程创建失败"
       return render :new
     end
   end
@@ -31,10 +30,9 @@ class Admin::TeachersController < ApplicationController
     @teacher.image = Image.new if @teacher.image.blank?
     params[:teacher][:grade_ids] ||= []
     if @teacher.update(teacher_params) && @teacher.image.update(avatar: params[:teacher][:image])
-      flash.now[:notice] = "课程更新成功"
+      flash.now[:notice] = "教师更新成功"
       return redirect_to admin_teachers_url
     else
-      flash.now[:notice] = "课程更新失败"
       return :update
     end
   end 
