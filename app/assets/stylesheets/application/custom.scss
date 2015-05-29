@@ -211,6 +211,18 @@ body.home__index {
 		position: relative;
 		a img {
 			width: 100%;
+			-webkit-transition:all 0.25s ease-in-out;
+			-moz-transition:all 0.25s ease-in-out;
+			-o-transition:all 0.25s ease-in-out;
+			-ms-transition:all 0.25s ease-in-out;
+			transition:all 0.25s ease-in-out;
+		}
+		a:hover img {
+			transform: scale(1.15,1.15);
+			-webkit-transform:scale(1.15,1.15);
+			-moz-transform:scale(1.15,1.15);
+			-ms-transform:scale(1.15,1.15);
+			-o-transform:scale(1.15,1.15);
 		}
 		p {
 			height: 26px;
@@ -1172,8 +1184,39 @@ body.teachers__index {
 		ul.teachers-list {
 			overflow: hidden;
 			li {
+				width: 170px;
+				height: 210px;
 				float: left;
+				overflow: hidden;
 				margin: 15px 28px;
+				position: relative;
+				a img {
+					width: 100%;
+					-webkit-transition:all 0.25s ease-in-out;
+					-moz-transition:all 0.25s ease-in-out;
+					-o-transition:all 0.25s ease-in-out;
+					-ms-transition:all 0.25s ease-in-out;
+					transition:all 0.25s ease-in-out;
+				}
+				a:hover img {
+					transform: scale(1.15,1.15);
+					-webkit-transform:scale(1.15,1.15);
+					-moz-transform:scale(1.15,1.15);
+					-ms-transform:scale(1.15,1.15);
+					-o-transform:scale(1.15,1.15);
+				}
+				p {
+					height: 26px;
+				  width: 100%;
+				  line-height: 26px;
+				  color: #fff;
+				  text-align: center;
+				  background: #000;
+				  position: absolute;
+				  bottom: 0;
+				  opacity: 0.5;
+				  display: none;
+				}
 			}
 		}
 	}

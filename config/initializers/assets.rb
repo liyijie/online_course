@@ -12,5 +12,5 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( slider.min.js _page_index.js _course_show.js _user.js jquery.countdown.min.js _user_show.js _teacher_page.js _user_discuss_center.js)
 
-Rails.application.config.assets.precompile += %w( admin.css admin.js _exam_new.js _sub_course_show.js )
+Rails.application.config.assets.precompile += %w( admin.css admin.js _exam_new.js _sub_course_show.js _teachers.js)
 
