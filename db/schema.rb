@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528090336) do
+ActiveRecord::Schema.define(version: 20150529004310) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -169,15 +169,15 @@ ActiveRecord::Schema.define(version: 20150528090336) do
   add_index "teacher_courses", ["course_id"], name: "index_teacher_courses_on_course_id", using: :btree
   add_index "teacher_courses", ["teacher_id"], name: "index_teacher_courses_on_teacher_id", using: :btree
 
-  create_table "teacher_grages", force: :cascade do |t|
+  create_table "teacher_grades", force: :cascade do |t|
     t.integer  "teacher_id", limit: 4
     t.integer  "grade_id",   limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
-  add_index "teacher_grages", ["grade_id"], name: "index_teacher_grages_on_grade_id", using: :btree
-  add_index "teacher_grages", ["teacher_id"], name: "index_teacher_grages_on_teacher_id", using: :btree
+  add_index "teacher_grades", ["grade_id"], name: "index_teacher_grades_on_grade_id", using: :btree
+  add_index "teacher_grades", ["teacher_id"], name: "index_teacher_grades_on_teacher_id", using: :btree
 
   create_table "teachers", force: :cascade do |t|
     t.string   "phone",                  limit: 255,   default: "", null: false
@@ -281,8 +281,8 @@ ActiveRecord::Schema.define(version: 20150528090336) do
   add_foreign_key "sub_courses", "courses"
   add_foreign_key "teacher_courses", "courses"
   add_foreign_key "teacher_courses", "teachers"
-  add_foreign_key "teacher_grages", "grades"
-  add_foreign_key "teacher_grages", "teachers"
+  add_foreign_key "teacher_grades", "grades"
+  add_foreign_key "teacher_grades", "teachers"
   add_foreign_key "teachers", "academies"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"

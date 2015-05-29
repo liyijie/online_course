@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: teacher_grages
+# Table name: teacher_grades
 #
 #  id         :integer          not null, primary key
 #  teacher_id :integer
@@ -9,5 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class TeacherGrage < ActiveRecord::Base
+class TeacherGrade < ActiveRecord::Base
+  belongs_to :teacher
+  belongs_to :grade
 end
