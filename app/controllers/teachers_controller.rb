@@ -51,7 +51,7 @@ class TeachersController < ApplicationController
 
   #我的班级
 	def my_grades
-		@grades = current_teacher.try(:grades)
+		@grades = Grade.joins(:teacher_grades).where(teacher_grades: { teacher_id: current_teacher.id })
 	end
 
   #教师介绍

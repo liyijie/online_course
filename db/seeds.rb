@@ -27,192 +27,182 @@ begin
 	Grade.create!([{name: '2015级计算机（1）班', specialty_id: 1},
 			{name: '2015级计算机（2）班', specialty_id: 1}])
 
-	User.create!([{
-			phone: '13600001111',
-			username: 'dtby', 
-            nickname: '张三丰',
-			password: 'dtby123456', 
-			password_confirmation: 'dtby123456',
-			name: '唐邦彦',
-			number: '20154802001',
-            position: '学生',
-			grade_id: 1
-		},{
-			phone: '13600002222',
-			username: 'dtby', 
-            nickname: '张无忌',
-			password: 'dtby123456', 
-			password_confirmation: 'dtby123456',
-			name: '唐邦彦2号',
-			number: '20154802002',
-            position: "学生",
-			grade_id: 1,
-		}])
+	
 
 	Teacher.create!([{
-            number: '498483984',
-			phone: '18800001111',
-			username: 'dtby', 
-			password: 'dtby123456', 
-			password_confirmation: 'dtby123456',
-			name: '钱红',
-			birthday: '1981-08',
-			tec_position: '讲师',
-			email: 'ianhongq@aliyun.com',
-			qualification: '高级教师资格 信息安全师（高级）',
-			fax: '',
-			final_education: '本科',
-			final_degree: '硕士',
-			tec_expertise: 'C语言基础、java变成基础、数据库安全与设计',
-			resume: ''
-		},{
-            number: '89439934',
-			phone: '18800002222',
-			username: 'dtby', 
-			password: 'dtby123456', 
-			password_confirmation: 'dtby123456',
-			name: '赵红',
-			birthday: '1988-08',
-			tec_position: '教授',
-			email: 'zha0hongq@aliyun.com',
-			qualification: '高级教师资格 信息安全师（高级）',
-			fax: '',
-			final_education: '本科',
-			final_degree: '硕士',
-			tec_expertise: 'C语言基础、java变成基础、数据库安全与设计',
-			resume: ''
-		}])
-	Course.create!([
-		  {id: 1,
-		   number: '98947322', 
-		   name: 'Ruby课程入门', 
-		   description: 'Ruby是一门编程语言，多用于...', 
-		   content: '这是文件视屏或者图片，pdf等'
-		  },{
-		   id: 2,
-			 number: '38946552', 
-		   name: 'Python课程入门',
-		   description: 'Python是一门编程语言，多用于...', 
-		   content: '这是文件视屏或者图片，pdf等'}])
-	SubCourse.create!([
-		  {id: 1,
-           number: '124322533',
-		   course_id: 1,
-		   name: '第一节课，课程大纲',
-		   content: '这是文件视屏或者图片，pdf等'
-		  },{
-		   id: 2,
-           number: '6434354345',
-		   course_id: 1,
-		   name: '第二节课，第一个ruby项目', 
-		   content: '这是文件视屏或者图片，pdf等'
-		 },{
-		   id: 3,
-           number: '775757345',
-		   course_id: 2,
-		   name: '第1节课，python可以做什么',
-		   content: '这是文件视屏或者图片，pdf等'
-		 }])
-	 Question.create!([
-    {
-    	id: 1,
-    	sub_course_id: 1,
-        correct_option: "A",
-    	title: "Ruby中变量的写法那一项是错误的？",
-    	signal_score: 2
-    },
-    {
-    	id: 2,
-    	sub_course_id: 1,
-        correct_option: "B",
-    	title: "RubyChina的创始人是谁？",
-    	signal_score: 2
-    },
-    {
-    	id: 3,
-    	sub_course_id: 1,
-        correct_option: "C",
-    	title: "Ruby中关于块的论述正确的选项？",
-    	signal_score: 2
-    }
-  	])
-  Option.create!([
-    {
-    	id: 1,
-    	index_type: "A",
-    	question_id: 1, 
-    	name: "hunlunlee"
-    },
-    {
-    	id: 2,
-    	index_type: "B",
-    	question_id: 1, 
-    	be_right: true,
-    	name: "rei"
-    },
-    {
-    	id: 3,
-    	index_type: "C",
-    	question_id: 1, 
-    	name: "luke"
-    },
-    {
-    	id: 4,
-    	index_type: "D",
-    	question_id: 1, 
-    	name: "aliceton"
-    },
-    {
-    	id: 5,
-    	index_type: "A",
-    	question_id: 2, 
-    	name: "var a = 1"
-    },
-    {
-    	id: 6,
-    	index_type: "B",
-    	question_id: 2, 
-    	name: "a = 1"
-    },
-    {
-    	id: 7,
-    	index_type: "C",
-    	question_id: 2, 
-    	name: "@a = 1"
-    },
-    {
-    	id: 8,
-    	index_type: "D",
-    	question_id: 2, 
-    	be_right: true,
-    	name: "a"
-    },
-    {
-    	id: 9,
-    	index_type: "A",
-    	question_id: 3, 
-    	name: "var a = 1"
-    },
-    {
-    	id: 10,
-    	index_type: "B",
-    	question_id: 3, 
-    	name: "a = 1"
-    },
-    {
-    	id: 11,
-    	index_type: "C",
-    	question_id: 3, 
-    	be_right: true,
-    	name: "@a = 1"
-    },
-    {
-    	id: 12,
-    	index_type: "D",
-    	question_id: 3, 
-    	name: "a"
-    }
-  	])
+        number: '498483984',
+    	phone: '13636338706',
+    	username: 'qianhong', 
+    	password: 'dtby123456', 
+    	password_confirmation: 'dtby123456',
+    	name: '钱红',
+    	birthday: '1981-09',
+    	tec_position: '讲师',
+    	email: 'ianhongq@aliyun.com',
+    	qualification: '高级教师资格 信息安全师（高级）',
+    	fax: '',
+    	final_education: '本科',
+    	final_degree: '硕士',
+    	tec_expertise: 'C语言程序基础，ASP.NET项目开发，Java编程基础，数据库技术',
+    	academy_id: 7,
+        sex: '女'
+    },{
+        number: '89439934',
+    	phone: '13585676467',
+    	username: 'yudieqiong', 
+    	password: 'dtby123456', 
+    	password_confirmation: 'dtby123456',
+    	name: '俞蝶琼',
+    	birthday: '1982-11',
+    	tec_position: '讲师',
+    	email: 'yudieqiong@126.com',
+    	qualification: '软件设计师 信息安全师高级',
+    	fax: '',
+    	final_education: '硕士',
+    	final_degree: '硕士',
+    	tec_expertise: '计算机应用技术',
+    	academy_id: 7,
+        sex: '女'
+    },{
+        number: '12339934',
+        phone: '13916463504',
+        username: 'wangxiuying', 
+        password: 'dtby123456', 
+        password_confirmation: 'dtby123456',
+        name: '王秀英',
+        birthday: '1971-03',
+        tec_position: '副教授',
+        email: 'xywang71@163.com',
+        qualification: 'MCSE（微软认证系统工程师）、计算机网络设备调试员（三级/高级技能）',
+        fax: '',
+        final_education: '博士',
+        final_degree: '博士',
+        tec_expertise: 'Linux操作系统管理与维护、Windows 操作系统管理与维护，计算机网络与信息安全',
+        academy_id: 7,
+        sex: '女'
+    },{
+        number: '812339934',
+        phone: '18800001111',
+        username: 'yudieqiong', 
+        password: 'dtby123456', 
+        password_confirmation: 'dtby123456',
+        name: '赵霞',
+        birthday: '1982-11',
+        tec_position: '讲师',
+        email: 'zhaoxia@126.com',
+        qualification: '软件设计师 信息安全师高级',
+        fax: '',
+        final_education: '硕士',
+        final_degree: '硕士',
+        tec_expertise: '计算机应用技术',
+        academy_id: 7,
+        sex: '女'
+    },{
+        number: '81223234934',
+        phone: '18621633901',
+        username: 'liuxionghua', 
+        password: 'dtby123456', 
+        password_confirmation: 'dtby123456',
+        name: '刘雄华',
+        birthday: '1974-09',
+        tec_position: '讲师',
+        email: '9553966@qq.com',
+        qualification: '优秀企业家（省级）',
+        fax: '',
+        final_education: '硕士',
+        final_degree: '硕士',
+        tec_expertise: '软件开发教学',
+        academy_id: 7,
+        sex: '男'
+    }])
+
+    TeacherGrade.create!([{
+            teacher_id: '1',
+            grade_id: '1'
+        },{
+            teacher_id: '1',
+            grade_id: '2'
+        },{
+            teacher_id: '2',
+            grade_id: '1'
+        },{
+            teacher_id: '2',
+            grade_id: '2'
+        },{
+            teacher_id: '3',
+            grade_id: '1'
+        },{
+            teacher_id: '3',
+            grade_id: '2'
+        },{
+            teacher_id: '4',
+            grade_id: '1'
+        },{
+            teacher_id: '4',
+            grade_id: '2'
+        },{
+            teacher_id: '5',
+            grade_id: '1'
+        },{
+            teacher_id: '5',
+            grade_id: '2'
+        }])
+
+    User.create!([{
+            phone: '13600001111',
+            username: 'wuqiong', 
+            nickname: '斯塔克',
+            password: 'dtby123456', 
+            password_confirmation: 'dtby123456',
+            name: '吴琼',
+            number: '20154802001',
+            position: '学生',
+            grade_id: 1
+        },{
+            phone: '13600002222',
+            username: 'lijing', 
+            nickname: '乌尔奇',
+            password: 'dtby123456', 
+            password_confirmation: 'dtby123456',
+            name: '李静',
+            number: '20154802002',
+            position: "学生",
+            grade_id: 1,
+        },{
+            phone: '13600003333',
+            username: 'jiangminjie', 
+            nickname: 'ican队长',
+            password: 'dtby123456', 
+            password_confirmation: 'dtby123456',
+            name: '蒋敏捷',
+            number: '20154802003',
+            position: "学生",
+            grade_id: 1,
+        },{
+            phone: '13600004444',
+            username: 'anran', 
+            nickname: '蛮王',
+            password: 'dtby123456', 
+            password_confirmation: 'dtby123456',
+            name: '安然',
+            number: '20154802004',
+            position: "学生",
+            grade_id: 2,
+        },{
+            phone: '13600005555',
+            username: 'bangyan', 
+            nickname: '大唐邦彦',
+            password: 'dtby123456', 
+            password_confirmation: 'dtby123456',
+            name: '唐邦彦',
+            number: '20154802005',
+            position: "学生",
+            grade_id: 2,
+        }
+        ])
+	
+	
+  
 
 rescue Exception => e
 	pp e.message

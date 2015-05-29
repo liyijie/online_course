@@ -1008,7 +1008,11 @@ body.teachers__show_score {
             margin: 20px 12px;
             float: left;
           }
-          .description, p.course-title a {
+          .description {
+            padding: 10px 10px;
+            height: 80px;
+          } 
+          p.course-title a {
             padding: 0 10px;
             height: 40px;
             line-height: 40px;
@@ -1017,7 +1021,7 @@ body.teachers__show_score {
             color: #555555;
             float: right;
             font-weight: normal;
-            span.name {
+            div.name {
             }
             a span {
               color: #ffc704;
