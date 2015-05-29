@@ -22,10 +22,30 @@ class Admin::TeachersController < ApplicationController
     end
   end
 
+  def edit
+    @teacher = Teacher.where(id: params[:id]).first
+  end
+
+  def update
+    @teacher = Teacher.where(id: params[:id]).first
+    @teacher.image = Image.new if @teacher.image.blank?
+    params[:teacher][:grade_ids] ||= []
+    if @teacher.update(teacher_params) && @teacher.image.update(avatar: params[:teacher][:image])
+      flash.now[:notice] = "课程更新成功"
+      return redirect_to admin_teachers_url
+    else
+      flash.now[:notice] = "课程更新失败"
+      return :update
+    end
+  end 
+
+  def show
+  end 
+
   private
 
     def teacher_params
       params.require(:teacher).permit(:phone, :name, :username, :academy_id, {grade_ids: []}, 
-        :final_degree, :final_education, :qualification, :tec_expertise)
+        :final_degree, :final_education, :qualification, :tec_expertise, :password, :password_confirmation)
     end
 end
