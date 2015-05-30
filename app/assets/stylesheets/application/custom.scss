@@ -376,8 +376,14 @@ body.courses__show, body.courses__after_class {
 			overflow: hidden;
 			.left-content {
 				float: left;
-				width: 514px;
+				width: 500px;
+				.course-image {
+					width: 500px;
+					height: 350px;
+					overflow: hidden;
+				}
 				.course-and-score {
+					overflow: hidden;
 					margin-top: 14px;
 					a {
 						height: 70px;
@@ -450,6 +456,11 @@ body.courses__show, body.courses__after_class {
 								float: left;
 								margin-right: 8px;
 								text-align: center;
+								a img {
+									height: 60px;
+									width: 60px;
+									overflow: hidden;
+								}
 							}
 						}
 					}

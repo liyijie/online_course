@@ -13,15 +13,17 @@
 
 <div class="main-content">
   <div class="top-content">
+
     <div class="left-content">
       <div class="course-image">
-        <%= image_tag(@course.image.avatar.url(:c_420_285))%>
-        <div class="course-and-score">
-          <%= link_to "课后作业", after_class_courses_path, class: "course"%>
-          <%= link_to "成绩查询", "", class: "score"%>
-        </div>
+        <%= image_tag(@course.image.avatar.url(:c_500_350))%>
+      </div>
+      <div class="course-and-score">
+        <%= link_to "课后作业", after_class_courses_path, class: "course"%>
+        <%= link_to "成绩查询", "", class: "score"%>
       </div>
     </div>
+
     <div class="right-content">
       <h1><%= @course.name %></h1>
       <div class="collect-zan-btns">
