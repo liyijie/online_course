@@ -1046,25 +1046,39 @@ body.teachers__show_score {
       }
       //学生列表
       ul.grade-students-list {
-        width: 992px;
+      	width: 992px;
         margin: 20px auto 0 auto;
-        overflow: hidden;
-        li {
-          border: solid 1px #dbdbdb;
+				overflow: hidden;
+				li {
+					border: solid 1px #dbdbdb;
           margin-bottom: 24px;
-          &.grade {
+					position: relative;
+					&.grade {
             width: 100px;
             margin: 20px 12px;
             float: left;
-            img {
-            	max-width: 100px;
-            }
-            div {
-            	text-align: center;
-            }
           }
-        }
-      }
+					img {
+						width: 100%;
+						-webkit-transition:all 0.25s ease-in-out;
+						-moz-transition:all 0.25s ease-in-out;
+						-o-transition:all 0.25s ease-in-out;
+						-ms-transition:all 0.25s ease-in-out;
+						transition:all 0.25s ease-in-out;
+					}
+					p {
+						height: 20px;
+					  width: 100%;
+					  line-height: 26px;
+					  color: #fff;
+					  text-align: center;
+					  background: #000;
+					  position: absolute;
+					  bottom: 0;
+					  opacity: 0.5;
+					}
+				}
+			}
       /*提问列表*/
       ul.my-questions li {
         padding: 20px 0px 20px 32px;
