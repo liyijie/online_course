@@ -11,7 +11,7 @@
       <ul class="grades-list">
         <% @grades.each do |grade| %>
           <li class="grade">
-            <%= link_to image_tag("teacher-grade.png"), get_grade_students_teacher_path(grade.id) %>
+            <%= link_to image_tag("teacher-grade.png"), grade_students_teacher_path(grade.id) %>
             <div class="description">
               <div class="name">系别：<%= grade.try(:specialty).try(:academy).try(:name) %></div>
               <div class="name">专业：<%= grade.try(:specialty).try(:name) %></div>
