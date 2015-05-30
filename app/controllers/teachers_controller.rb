@@ -54,6 +54,10 @@ class TeachersController < ApplicationController
 		@grades = Grade.joins(:teacher_grades).where(teacher_grades: { teacher_id: current_teacher.id })
 	end
 
+	def grade_students
+		@grade = Grade.where(id: params[:id]).first
+	end
+
   #教师介绍
 	def my_info
 	end

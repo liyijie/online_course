@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     member do
       patch :update_password
       get :get_sub_course
+      get :grade_students
     end
   end
 

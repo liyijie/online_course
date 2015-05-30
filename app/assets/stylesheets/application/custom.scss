@@ -911,7 +911,7 @@ body.exams__new, body.exams__show {
 	}
 }
 /*教师我的课程, 我的班级, 教师介绍, 我的账户*/
-body.teachers__my_courses, body.teachers__my_grades, body.teachers__my_info,
+body.teachers__my_courses, body.teachers__my_grades, body.teachers__grade_students, body.teachers__my_info,
 body.teachers__my_account, body.teachers__upload_course_ware,
 body.teachers__my_questions, body.teachers__my_answers, body.teachers__discuss_center,
 body.teachers__my_score, body.teachers__select_grade, body.teachers__select_course,
@@ -1041,6 +1041,27 @@ body.teachers__show_score {
           }
           p.course-title a {
             color: #000;
+          }
+        }
+      }
+      //学生列表
+      ul.grade-students-list {
+        width: 992px;
+        margin: 20px auto 0 auto;
+        overflow: hidden;
+        li {
+          border: solid 1px #dbdbdb;
+          margin-bottom: 24px;
+          &.grade {
+            width: 100px;
+            margin: 20px 12px;
+            float: left;
+            img {
+            	max-width: 100px;
+            }
+            div {
+            	text-align: center;
+            }
           }
         }
       }
