@@ -205,5 +205,5 @@ begin
   
 
 rescue Exception => e
-	pp e.message
+	p e.message
 end
