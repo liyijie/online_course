@@ -44,7 +44,7 @@
     <% @teachers.each do |teacher|%>
       <div class="teacher-content">
         <%= link_to image_tag(teacher.image.avatar.url(:t_170x220)), show_teachers_path(teacher.number) if teacher.image %>
-        <p>国家优秀教师称号</p>
+        <p><%= teacher.name %>(<%= teacher.final_degree%>)</p>
       </div>
     <%end%>
   </div>
