@@ -24,12 +24,12 @@ class SubCourse < ActiveRecord::Base
 
   #判断附件格式是否是视频类
 	def regex_video
-		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /video(.*)/
+		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /^video/
 	end
 
   #判断附件格式是否是文档类
 	def regex_res
-		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /application(.*)/
+		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /^application/
 	end
 
   #计算附件大小
