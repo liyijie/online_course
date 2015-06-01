@@ -33,13 +33,13 @@
               <div class="col-sm-9">
                 <div>奋斗在路上 <span class="grey-font">回答</span></div>
                 <p>
-                  <%= link_to comment.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                  <%= link_to comment.body,show_sub_courses_path(comment.try(:commentable).try(:number),course_number: comment.try(:commentable).try(:course).try(:number))%>
                 </p>
                 <% if comment.parent.present? %>
                     <p><span class="text-muted">[问题]</span>
                     <span><%= comment.parent.try(:usertable).try(:show_name) %>:<span>
                     <span class="text-muted">
-                    <%= link_to comment.parent.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                    <%= link_to comment.parent.body,show_sub_courses_path(comment.try(:commentable).try(:number),course_number: comment.try(:commentable).try(:course).try(:number))%>
                     </span></p>
                  <% end %>
                 <div class="grey-font">时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></div>

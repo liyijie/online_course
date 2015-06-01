@@ -34,13 +34,13 @@
                 <div><%= current_user.show_name %> <span class="grey-font">提问</span></div>
                 <p>
                   <div>
-                    <%= link_to comment.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                    <%= link_to comment.body,show_sub_courses_path(comment.try(:commentable).try(:number),course_number: comment.try(:commentable).try(:course).try(:number))%>
                   </div>
                   <% if comment.has_children? %>
                     <span class="text-muted">[最新回答]</span>
                     <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
                     <span class="text-muted">
-                      <%= link_to comment.children.last.try(:body),show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                      <%= link_to comment.children.last.try(:body),show_sub_courses_path(comment.try(:commentable).try(:number),course_number: comment.try(:commentable).try(:course).try(:number))%>
                     </span>
                   <% end %>
                 </p><br>

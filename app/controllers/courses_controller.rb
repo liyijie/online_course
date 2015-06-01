@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-	before_action :authenticate_user! , only: [:course_collect, :course_praise] 
+	before_action :authenticate_user! , only: [:course_collect, :course_praise] , if: "!teacher_signed_in?"
 
 	def index
 		@courses = Course.all
@@ -42,7 +42,7 @@ class CoursesController < ApplicationController
     	end
 		else
 	 		respond_to do |format|
-	  			format.js { render js: "alert('用户登录后才可以收藏');" }
+	  			format.js { render js: "alert('学生登录才可以收藏');" }
     		end
 		end 
 	end
@@ -57,7 +57,7 @@ class CoursesController < ApplicationController
     	end
 		else
 	 		respond_to do |format|
-	  			format.js { render js: "alert('用户登录后才可以收藏');" }
+	  			format.js { render js: "alert('学生登录才可以收藏');" }
     		end
 		end 
 	end
