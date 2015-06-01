@@ -20,27 +20,27 @@
 			    </div> -->
 			  	<p class="navbar-text pull-right login-info">
 			      <% if current_user %>
-		  				<%= image_tag current_user.try(:show_image),class: "img-thumbnail" %> 
-		  				欢迎您，<%= link_to("#{current_user.show_name}同学", my_courses_user_index_path, class: "navbar-link") %> | 
+		  				<%= image_tag current_user.try(:show_image),class: "img-thumbnail" %>
+		  				欢迎您，<%= link_to("#{current_user.show_name}同学", my_courses_user_index_path, class: "navbar-link") %> &nbsp;&nbsp;| &nbsp;&nbsp;
 		      	  <%= link_to root_path, class: "navbar-link" do %> 
 			      	  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 回到首页
-		      	  <% end %> | 
+		      	  <% end %> &nbsp;&nbsp;|&nbsp;&nbsp;
 		          <%= link_to destroy_user_session_path, :method => :delete, class: "navbar-link" do %>
 			      	  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出
 		          <% end %>
 			      <% elsif current_teacher %>
-			          <%= image_tag current_teacher.try(:show_image),class: "img-thumbnail" %> 
-			          欢迎您，<%= link_to("#{current_teacher.show_name}老师", my_courses_teachers_path, class: "navbar-link") %> | 
+			          <%= image_tag current_teacher.try(:show_image),class: "img-thumbnail" %>
+			          欢迎您，<%= link_to("#{current_teacher.show_name}老师", my_courses_teachers_path, class: "navbar-link") %> &nbsp;&nbsp;| &nbsp;&nbsp;
 			      	  <%= link_to root_path, class: "navbar-link" do %> 
 				      	  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 回到首页
-			      	  <% end %> | 
+			      	  <% end %> &nbsp;&nbsp;|&nbsp;&nbsp;
 			          <%= link_to destroy_teacher_session_path, :method => :delete, class: "navbar-link" do %>
 				      	  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出
 			          <% end %>
 			      <% else %>
 			       		<%= link_to root_path, class: "navbar-link" do %> 
 				      	<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 回到首页
-			      	  <% end %> | 
+			      	  <% end %> &nbsp;&nbsp;|&nbsp;&nbsp;
 			          <%= link_to new_session_path(:user), class: "navbar-link" do %>
 				      	  <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 登录
 			          <% end %>
