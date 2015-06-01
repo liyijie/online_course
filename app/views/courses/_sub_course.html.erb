@@ -3,7 +3,7 @@
     <% if sub_course.regex_video %>
       <li>
         <!-- 如果是视频如mp4, flv等格式文件进入播放页 -->
-        <a href= <%= show_sub_courses_courses_path(sub_course.number) %> class="title"><%= sub_course.name %></a>
+        <a href= <%= show_sub_courses_path(number: sub_course.number, course_number: @course.number) %> class="title"><%= sub_course.name %></a>
         <a href="" class="total">格式<%= file_format(sub_course.attachment.content_file_name)%></a>
         <!-- 显示文件大小 -->
         <a href="" class="already">（文件<%= sub_course.count_file_size%>）</a>

@@ -6,6 +6,16 @@
   <% end %>
   <%= javascript_include_tag "_course_show" %>
 <%end%>
+
+<% content_for :crumbs do%>
+  <ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
+    <li><%= link_to "首页", root_path %></li>
+    <li><%= link_to @course.name, show_courses_path(@course.number) %></li>
+    <li class="active">课后作业</li>
+  </ol>
+<% end %>
+
 <div class="main-content">
   <div class="top-content">
     <div class="left-content">

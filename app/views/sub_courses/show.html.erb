@@ -1,3 +1,12 @@
+<% content_for :crumbs do%>
+  <ol class="breadcrumb">
+  	<li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
+  	<li><%= link_to "首页", root_path %></li>
+  	<li><%= link_to @sub_course.course.name, show_courses_path(@sub_course.course.number) %></li>
+  	<li class="active"><%= @sub_course.name %></li>
+  </ol>
+<% end %>
+
 <div class="main-content">
 	<div class="left-content">
 		<div class="video-content">
