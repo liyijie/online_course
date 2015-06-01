@@ -4,25 +4,17 @@
   <div class="teacher-content teacher-wrapper">
   	<div class="nav-bar">
   		<span class="btn btn-primary by-btn-bg">课程中心</span>
+      <%= link_to "创建课程", new_sub_course_path, remote: true, class: 'btn btn-primary by-btn-bg pull-right'%>
   	</div>
-  	<ul id="subCoursesList" class="courses-list cl-sm-12">
-      <% if @courses.blank? %>
-        <div class="blank">没有课程</div>
-      <% else %>
-        <% @courses.each do |course| %>
-          <li class="course">
-            <%= link_to image_tag("my-courses.png"), get_sub_course_teacher_path(course.number), remote: true %>
-            <p class="course-title"><%= link_to course.name, get_sub_course_teacher_path(course.number), remote: true %></p>
-            <div class="description">
-              <span>该课程一共有15课时</span>
-              <label>
-                <span class="glyphicon glyphicon-star"></span>
-                <span><%= course.get_likes(vote_scope: :collect).size %>人收藏</span>
-              </label>
-            </div>
-          </li>
-        <% end %>
+    <ul id="subCoursesList">
+      <% @sub_courses.each do |sub_course|%>
+        <li>
+          <span class="title"><%= sub_course.name %></span>
+          <%= link_to "导入试题", edit_sub_course_path(sub_course), remote: true, class: "upload pull-left" %>
+          <%= link_to "编辑", edit_sub_course_path(sub_course), remote: true, class: "edit pull-left" %>
+          <%= link_to "删除", "", class: "delete pull-left" %>
+        </li>
       <% end %>
-  	</ul>
+    </ul>
   </div>
 </div>

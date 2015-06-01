@@ -14,6 +14,7 @@ class TeachersController < ApplicationController
 	#我的课程
 	def my_courses
 		@courses = Course.joins(:teacher_courses).where(teacher_courses: {teacher_id: current_teacher.id})
+    @sub_courses = SubCourse.where({course_id: @courses.pluck(:id)})
 	end
 
 	#取得子课程

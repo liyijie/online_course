@@ -947,9 +947,48 @@ body.teachers__show_score, body.teachers__show_grade_score {
         margin-top: 0;
       }
       .nav-bar {
-        padding-left: 46px;
+        padding: 0 46px;
         margin-top: 5px;
       }
+      ul#subCoursesList {
+      	padding: 20px 0 60px 0;
+      	li {
+					height: 46px;
+					line-height: 46px;
+					border-bottom: 2px solid #c7e0fb;
+					span.title {
+						width: 700px;
+						padding-left: 50px;
+						float: left;
+					}
+					a {
+						height: 46px;
+						line-height: 46px;
+						width: 100px;
+						text-align: center;
+						&.upload {
+							background: image-url("subcourse-bg.png") no-repeat 0 10px;
+						}
+						&.edit {
+							background: image-url("subcourse-bg.png") no-repeat 0 -60px;
+						}
+						&.delete {
+							background: image-url("subcourse-bg.png") no-repeat 0 -118px;
+						}
+					}
+				}
+	      li:before {
+					content: counter(li);
+					counter-increment: li;
+					position: absolute;
+					width: 40px;
+					height: 46px;
+					line-height: 46px;
+					text-align:center;
+					color: #FFF;
+					background: image-url("li-arrow.png") no-repeat 22px 18px;
+				}
+			}
       /*课程列表*/
       ul.courses-list {
         width: 936px;

@@ -1,0 +1,8 @@
+<%= simple_form_for(@sub_course, remote: true, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input, radio_buttons: :horizontal_radio_and_checkboxes }) do |f|%>
+  <%= f.association :course, collection: [['请选择所属课程','']] + @courses.pluck(:name,:id), as: :select, include_blank: false, label: "所属课程" %>
+  <%= f.input :name, label: '名称', class: 'form-control' %>
+  <%= f.input :attachment, as: :file, label: '课件', class: 'form-control' %>
+  <div class="col-sm-6 col-sm-offset-1">
+    <%= f.submit '保存', class: "btn btn-primary center-block"%>
+  </div>
+<%end%>

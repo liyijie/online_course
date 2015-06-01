@@ -6,13 +6,17 @@ Rails.application.routes.draw do
   get "select_courses", to: "home#select_courses", as: :select_courses_home
   get "courses/:number", to: "courses#show", as: :show_courses
   get "courses/:number/after_class", to: "courses#after_class", as: :after_class_courses
-  get "sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses
+
+  #限定子课程编号为数字
+  constraints(number: /\d+/) do
+    get "sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses
+  end
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
 
   post "sub_courses/comment_create_list"
   get "sub_courses/comment_create_list"
   post "sub_courses/reply_comment_list"
-  
+
   #当子课程为pdf等格式文件时下载链接
   get "/sub_courses/:number/download", to: "sub_courses#download", as: :download_sub_course
 
@@ -23,6 +27,8 @@ Rails.application.routes.draw do
       post :course_praise
     end
   end
+
+  resources :sub_courses, only: [:new, :create, :edit, :update]
 
 
   #限定教师编号为数字形式
