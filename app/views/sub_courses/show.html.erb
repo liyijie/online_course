@@ -54,28 +54,28 @@
 				</li>
 			</ul>
 			<div class="buttons">
-				<%= link_to "课后作业", after_class_courses_path, class: "btn btn-primary"%>
-				<%= link_to "成绩查询", "", class: "btn btn-success"%>
+				<%= link_to "课后作业", after_class_courses_path(@course.number), class: "btn btn-primary"%>
+				<%= link_to "成绩查询", teacher_signed_in? ? my_score_teachers_path : my_exams_user_index_path, class: "btn btn-success"%>
 			</div>
 		</div>
 		<div class="students-content">
 			<p class="total">
-				<span class="text">1053</span> 位共同战斗的同学
+				<span class="text"><%= @partners.size %></span> 位共同战斗的同学
 				<%= link_to "" do %>
 					<span class="glyphicon glyphicon-refresh"></span>
 				<% end %>
 			</p>
 			<ul class="students">
-				<% (1..6).each do |i| %>
+				<% @partners.each do |partner| %>
 					<li>
 						<div class="media-left">
-							<a href="#">
-								<%= image_tag "user-picture1.jpg"%>
+							<a href="javascript:void(0)">
+								<%= image_tag partner.try(:voter).try(:show_image), class: "img-circle" %>
 							</a>
 						</div>
 						<div class="media-body">
-							<h5 class="media-heading">猪虫鼠小弟</h5>
-							<p class="comment-info">Web前段工程师</p>
+							<h5 class="media-heading"><%= partner.try(:voter).try(:show_name) %></h5>
+							<p class="comment-info"><%= partner.try(:voter).try(:position) %></p>
 						</div>
 					</li>
 				<% end %>

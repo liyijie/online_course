@@ -1,8 +1,8 @@
 <div class="links">
   <%= link_to "评论",sub_courses_comment_create_list_path(number: params[:number], comment_scope: "discuss"), 
-  class: "btn #{params[:comment_scope] == 'answer' ? 'btn-default' : 'btn-primary'} btn-lg", remote: true %>
+  class: "btn #{params[:comment_scope] == 'answer' ? 'btn-default' : 'btn-primary'}", remote: true %>
   <%= link_to "问答",sub_courses_comment_create_list_path(number: params[:number], comment_scope: "answer"),
-   class: "btn #{params[:comment_scope] == 'answer' ? 'btn-primary' : 'btn-default'} btn-lg", remote: true %>
+   class: "btn #{params[:comment_scope] == 'answer' ? 'btn-primary' : 'btn-default'}", remote: true %>
 </div>
 <div class="links-content">
   <div class="comment-input">
@@ -36,9 +36,9 @@
                 <span>时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
                 <button class="btn btn-primary btn-xs comment_reply" type="button" comment-id="<%= comment.id %>">回复</button>
-                <button type="button" class="btn pull-right">
-                  <span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> 
-                </button>
+                <%= link_to( sub_courses_comment_parise_path(comment_id: comment.id), class: "btn pull-right", remote: true) do %>
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> 
+                <% end %>
                 <% if comment.has_children? %>
                   <ul class="child-comment-list">
                     <% comment.children.each do |child_comment| %>

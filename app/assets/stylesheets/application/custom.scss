@@ -413,6 +413,22 @@ body.courses__show, body.courses__after_class {
 				float: left;
 				.collect-zan-btns {
 					margin-top: 20px;
+					.btn.btn-default {
+						width: 80px;
+					}
+
+					//收藏图标
+					.glyphicon-star {
+						color: orange;
+					}
+					//赞图标
+					.glyphicon-heart {
+						color: pink;
+					}
+
+					.text-muted {
+						color: #777777;
+					}
 				}
 				ul.course-main{
 					li:before {
@@ -474,15 +490,6 @@ body.courses__show, body.courses__after_class {
 					}
 				}
 			}
-		}
-
-		//收藏图标
-		.glyphicon-star {
-			color: orange;
-		}
-		//赞图标
-		.glyphicon-heart {
-			color: pink;
 		}
 
 		.btn-default-no:hover {
@@ -1426,6 +1433,9 @@ body.sub_courses__show  {
 				background: #fff;
 				.links {
 					margin: 0 0 20px 0;
+					.btn {
+						width: 100px;
+					}
 				}
 				.links-content {
 					overflow: hidden;
@@ -1514,6 +1524,10 @@ body.sub_courses__show  {
 					margin: 25px 0;
 					.comment-info {
 						color: #969b9e;
+					}
+					img.img-circle {
+						max-height: 40px;
+						max-width: 40px;
 					}
 				}
 			}

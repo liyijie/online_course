@@ -50,42 +50,41 @@ $(".courses__show").ready ->
   _category_toggle()
   _entry_toggle_btn()
 
-  #用户登录时绑定以下函数
-  if user_login
-    #点击收藏按钮
-    $("#courseCollectBtn").click ->
-      $("#courseCollectPraise").attr("action",course_collect_path)
-      $("#courseCollectPraise").submit()
+  
+  #点击收藏按钮
+  $("#courseCollectBtn").click ->
+    $("#courseCollectPraise").attr("action",course_collect_path)
+    $("#courseCollectPraise").submit()
 
-    #鼠标移入收藏按钮
-    $("#courseCollectBtn").mouseenter ->
-      collect_str = ""
-      if $("#collectFont").attr("iscollect") is "true"
-        collect_str = "取消收藏"
-      else
-        collect_str = "收藏"
-      $("#collectFont").text(collect_str)
+  #鼠标移入收藏按钮
+  $("#courseCollectBtn").mouseenter ->
+    collect_str = ""
+    if $("#collectFont").attr("iscollect") is "true"
+      collect_str = "取消"
+    else
+      collect_str = "收藏"
+    $("#collectFont").text(collect_str)
 
-    #鼠标移出收藏按钮
-    $("#courseCollectBtn").mouseleave ->
-      count = $("#collectFont").attr("count")
-      $("#collectFont").text(count + "人收藏")  
+  #鼠标移出收藏按钮
+  $("#courseCollectBtn").mouseleave ->
+    count = $("#collectFont").attr("count")
+    $("#collectFont").text(count)  
 
-    #点击赞按钮
-    $("#coursePraiseBtn").click ->
-      $("#courseCollectPraise").attr("action",course_praise_path)
-      $("#courseCollectPraise").submit()
+  #点击赞按钮
+  $("#coursePraiseBtn").click ->
+    $("#courseCollectPraise").attr("action",course_praise_path)
+    $("#courseCollectPraise").submit()
 
-    #鼠标移入赞按钮
-    $("#coursePraiseBtn").mouseenter ->
-      praise_str = ""
-      if $("#praiseFont").attr("ispraise") is "true"
-        praise_str = "取消赞"
-      else
-        praise_str = "赞"
-      $("#praiseFont").text(praise_str)
+  #鼠标移入赞按钮
+  $("#coursePraiseBtn").mouseenter ->
+    praise_str = ""
+    if $("#praiseFont").attr("ispraise") is "true"
+      praise_str = "取消"
+    else
+      praise_str = "赞"
+    $("#praiseFont").text(praise_str)
 
-    #鼠标移出赞按钮
-    $("#coursePraiseBtn").mouseleave ->
-      count = $("#praiseFont").attr("count")
-      $("#praiseFont").text(count + "人赞")  
+  #鼠标移出赞按钮
+  $("#coursePraiseBtn").mouseleave ->
+    count = $("#praiseFont").attr("count")
+    $("#praiseFont").text(count)  

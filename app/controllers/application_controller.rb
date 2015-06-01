@@ -22,7 +22,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_user!
+    if request.xhr?
+      if !user_signed_in?
+        respond_to do |format|
+          format.js { render js: "parent.location.href='#{new_user_session_path}'" }
+        end
+      end
+    else
+      super
+    end
+  end
 
+  def authenticate_user_or_teacher
+    if !user_signed_in? and !teacher_signed_in?
+      if request.xhr?
+        pp "111111111111111111111111"
+        respond_to do |format|
+          format.js { render js: "parent.location.href='#{new_user_session_path}'" }
+        end
+      else 
+        pp "22222222222222222222222222222222"
+        authenticate_user!
+      end 
+    end 
+  end 
 
 
   protected
@@ -40,7 +64,13 @@ class ApplicationController < ActionController::Base
   def is_login!
     if (user_signed_in? || teacher_signed_in?) && params[:action] == "sign_in"
       flash[:error] = "你已经登录系统，不能重复登录"
-      redirect_to root_url
+      if request.xhr?
+        respond_to do |format|
+          format.js { render js: "parent.location.href='#{new_user_session_path}'" }
+        end
+      else 
+        redirect_to root_url
+      end 
     end
   end
 

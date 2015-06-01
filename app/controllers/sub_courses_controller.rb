@@ -1,4 +1,7 @@
 class SubCoursesController < ApplicationController
+  before_action :authenticate_user_or_teacher, only: [:comment_create_list, :reply_comment_list], if: "params[:comment].present?"
+  before_action :authenticate_user_or_teacher, only: [:comment_parise]
+
 	def show
     @sub_course = SubCourse.where(number: params[:number]).first
     if @sub_course.blank?
@@ -6,42 +9,10 @@ class SubCoursesController < ApplicationController
       redirect_to root_path
       return
     end
+    @course = @sub_course.try(:course)
+    @partners = @course.get_likes(vote_scope: :collect).page(params[:partner_page])
     @comments = @sub_course.root_comments.where(comment_scope: "discuss").order("created_at DESC").page(params[:page])
 	end
-
-  def new
-    @sub_course = SubCourse.new
-    @courses = Course.joins(:teacher_courses).where(teacher_courses: {teacher_id: current_teacher.id})
-  end
-
-  def create
-    @sub_course = SubCourse.new(sub_course_params)
-    @sub_course.attachment = Attachment.new if @sub_course.attachment.blank?
-    @sub_course.attachment.content = params[:sub_course][:attachment]
-    if @sub_course.save && @sub_course.attachment.save
-      flash[:notice] = "创建成功"
-      return render js: "window.location.href='#{my_courses_teachers_url}'"
-    else
-      flash[:notice] = "创建失败"
-      return render js: "window.location.href='#{my_courses_teachers_url}'"
-    end
-  end
-
-  def edit
-    @sub_course = SubCourse.find(params[:id])
-    @courses = Course.joins(:teacher_courses).where(teacher_courses: {teacher_id: current_teacher.id})
-  end
-
-  def update
-    @sub_course = SubCourse.find(params[:id])
-    if @sub_course.update(sub_course_params)
-      flash[:notice] = "更新成功"
-      return render js: "window.location.href='#{my_courses_teachers_url}'"
-    else
-      flash[:notice] = "更新失败"
-      return render js: "window.location.href='#{my_courses_teachers_url}'"
-    end
-  end
 
   #课件下载
 	def download
@@ -55,19 +26,12 @@ class SubCoursesController < ApplicationController
   #视频评论或者发起提问
   def comment_create_list
     user = current_user || current_teacher
+    
+    #保存发布的评论并返回新的评论列表
+    @comments = SubCourse.save_comment_return_comments user,params
 
-    if user.blank? && params[:comment].present?
-      #没登录时不能发布评论
-      respond_to do |format|
-        format.js {render js: "alert('登录后才可以评论');"}
-      end
-    else
-      #保存发布的评论并返回新的评论列表
-      @comments = SubCourse.save_comment_return_comments user,params
-
-      respond_to do |format|
-        format.js
-      end
+    respond_to do |format|
+      format.js 
     end
   end
 
@@ -75,19 +39,33 @@ class SubCoursesController < ApplicationController
   #回复评论
   def reply_comment_list
     user = current_user || current_teacher
-    if user.blank?
-      respond_to do |format|
-        format.js {render js: "alert('登录后才可以评论');"}
-      end
-    else
-      #保存回复的评论并返回新的评论列表
-      @comments = SubCourse.reply_comment_returns_comments user,params
+    
+    @comments = SubCourse.reply_comment_returns_comments user,params
 
-      respond_to do |format|
-        format.js
-      end
+    respond_to do |format|
+      format.js 
     end
   end
+
+  #评论点赞
+  def comment_praise
+    user = current_user || current_teacher
+    comment = Comment.where(id: params[:comment_id]).first
+    
+    if comment.present?
+      #评论点赞
+      @is_parise = comment.comment_praise user
+
+      respond_to do |format|
+        format.js 
+      end
+    else
+      respond_to do |format|
+        format.js {render js: "alert('评论不存在');"}
+      end
+    end 
+    
+  end 
 
   private
   def sub_course_params

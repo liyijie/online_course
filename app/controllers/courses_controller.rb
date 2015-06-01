@@ -1,7 +1,9 @@
 class CoursesController < ApplicationController
-  	def index
+	before_action :authenticate_user! , only: [:course_collect, :course_praise] 
+
+	def index
 		@courses = Course.all
-  	end
+	end
 
 	def show
 		@course = Course.find_by(number: params[:number])

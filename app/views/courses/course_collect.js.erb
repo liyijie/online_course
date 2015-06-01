@@ -4,12 +4,14 @@ if(collect == "collect"){
 	$("#collectFont").attr("iscollect","false");
 	new_count = parseInt($("#collectFont").attr("count")) - 1;
 	$("#collectFont").attr("count",new_count);
-	$("#collectFont").text(new_count + "人收藏");
+	$("#collectFont").text(new_count);
+	$("#collectIcon").addClass("text-muted");
 	alert("已取消收藏");
 }else{
 	$("#collectFont").attr("iscollect","true");
 	new_count = parseInt($("#collectFont").attr("count")) + 1;
 	$("#collectFont").attr("count",new_count);
-	$("#collectFont").text(new_count + "人收藏");
+	$("#collectFont").text(new_count);
+	$("#collectIcon").removeClass("text-muted");
 	alert("收藏成功");
 }
