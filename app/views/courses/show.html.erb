@@ -56,7 +56,7 @@
           <div class="teachers">
             <% @teacher_courses.each do |teacher_course|%>
               <div class="teacher-info">
-                 <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
+                 <%#= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
                  <p><%= teacher_course.teacher.name %></p>
               </div>
             <% end %>
