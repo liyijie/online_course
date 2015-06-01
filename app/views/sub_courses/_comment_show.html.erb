@@ -36,8 +36,9 @@
                 <span>时间：<%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp源自：3-10 总结</span>
                 <button class="btn btn-primary btn-xs comment_reply" type="button" comment-id="<%= comment.id %>">回复</button>
-                <%= link_to( sub_courses_comment_parise_path(comment_id: comment.id), class: "btn pull-right", remote: true) do %>
-                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">4</span> 
+                <%= link_to( sub_courses_comment_praise_path(comment_id: comment.id), class: "btn pull-right", remote: true, id: "commentPraise#{comment.id}") do %>
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+                  <span class="parise-count"><%= comment.get_likes(vote_scope: :praise).size %></span>
                 <% end %>
                 <% if comment.has_children? %>
                   <ul class="child-comment-list">

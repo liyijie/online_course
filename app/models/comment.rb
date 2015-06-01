@@ -23,7 +23,7 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
-  acts_as_voter
+  acts_as_votable
 
   validates :body, :presence => true
   validates :usertable, :presence => true
@@ -108,12 +108,12 @@ class Comment < ActiveRecord::Base
   #评论点赞
   #参数：点赞用户
   #返回值：true，点赞；false，取消点赞
-  def comment_pasise user
-    if user.voted_up_on? comment, vote_scope: :parise
-      comment.downvote_from user, vote_scope: :parise
+  def comment_praise user
+    if user.voted_up_on? self, vote_scope: :praise
+      self.downvote_from user, vote_scope: :praise
       return false
     else
-      comment.like_by user, vote_scope: :parise
+      self.like_by user, vote_scope: :praise
       return true
     end
   end
