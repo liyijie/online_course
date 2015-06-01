@@ -2,6 +2,14 @@
   <%= javascript_include_tag "_teachers", 'data-turbolinks-track' => true %>
 <%end%>
 
+<% content_for :crumbs do%>
+  <ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
+    <li><%= link_to "首页", root_path %></li>
+    <li class="active">教师风采</li>
+  </ol>
+<% end %>
+
 <div class="main-content">
   <section class="common-title">
   	<span class="pull-left">教师风采</span>

@@ -2,6 +2,16 @@
   <%= javascript_include_tag "jquery.countdown.min", "_exam_new" %>
 <%end%>
 
+<% content_for :crumbs do%>
+  <ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
+    <li><%= link_to "首页", root_path %></li>
+    <li><%= link_to @sub_course.course.name, show_courses_path(@sub_course.course.number) %></li>
+    <li><%= link_to @sub_course.name, after_class_courses_path(@sub_course.course.number) %></li>
+    <li class="active">测试</li>
+  </ol>
+<% end %>
+
 <div class="main-content">
   <% if @exam.present? %>
     <%= render partial: 'common/blank_alert', locals: {message: '您已经参加过该测试!'}%>

@@ -332,28 +332,30 @@ body.home__index {
 		display: block;
 		width: 4%;
 		height: 100%;
-		float: left; 
+		float: left;
 		text-indent: -9999px;
 	}
-	.prev { height: 182px;
+	.prev {
+		height: 182px;
 		width: 48px;
 		display: block;
-		border: solid 1px #eee;
+		//border: solid 1px #eee;
 		position: absolute;
 		left: 8px;
 		text-indent: -9999px;
-		background: #fff image-url("arrow-bg") no-repeat 7px center;
+		background: #fff image-url("left-right-arrow.png") no-repeat 7px center;
 		z-index: 9999;
 	}
-	.next { height: 182px;
+	.next {
+	  height: 182px;
 		width: 48px;
 		display: block;
-		border: solid 1px #eee;
+		//border: solid 1px #eee;
 		position: absolute;
 		right: 8px;
 		text-indent: -9999px;
 		z-index: 9999;
-		background: #fff image-url("arrow-bg") no-repeat -60px center;
+		background: #fff image-url("left-right-arrow.png") no-repeat -60px center;
 	}
 	.carousel_items_holder { background: #fff;
 		width: 92%;

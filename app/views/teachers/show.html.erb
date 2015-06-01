@@ -1,3 +1,12 @@
+<% content_for :crumbs do%>
+  <ol class="breadcrumb">
+  	<li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
+  	<li><%= link_to "首页", root_path %></li>
+  	<li><%= link_to "教师信息", teachers_path %></li>
+  	<li class="active"><%= @teacher.name %>【老师】</li>
+  </ol>
+<% end %>
+
 <div class="main-content">
 	<div id="teacher-info" class="wrapper">
 		<div class="teacher-img">
