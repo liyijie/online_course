@@ -433,6 +433,11 @@ body.courses__show, body.courses__after_class {
 							color: #000;
 						}
 						&.course-info {
+							a {
+								height: 20px;
+								line-height: 20px;
+								overflow: hidden;
+							}
 							div.content {
 								font-size: 14px;
 								line-height: 14px;
@@ -444,7 +449,7 @@ body.courses__show, body.courses__after_class {
 									line-height: 20px;
 								}
 								&.lg-height {
-									height: 162px;
+									height: 142px;
 								}
 								&.sm-height {
 									height: 82px;
@@ -459,7 +464,7 @@ body.courses__show, body.courses__after_class {
 								text-align: center;
 								a img {
 									height: 60px;
-									width: 60px;
+									width: 48px;
 									overflow: hidden;
 								}
 							}

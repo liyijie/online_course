@@ -6,7 +6,7 @@ _category_toggle = ->
   _list.each (index) ->
     _this = $(this);
     _index = index;
-    _this.hover ->
+    _this.on 'click', ->
       _this.addClass("active public-active-style").siblings().removeClass("active public-active-style")
       _list_content.eq(_index).css("display","block").siblings().not("a").css("display","none");
 #展开效果

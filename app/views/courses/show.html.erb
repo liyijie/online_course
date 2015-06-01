@@ -51,8 +51,11 @@
         <li class="course-info">
           <span class="title">课程简介</span>
           <div class="content lg-height">
-          <p><%= @course.description %></p>
-         </div>
+            <p>
+              <%= @course.description %>
+            </p>
+          </div>
+          <%= link_to("更多 >>", show_courses_path(@course.number, anchor: "category-list"))%>
         </li>
         <li class="teach-team">
           <p class="title">教学团队</p>
@@ -77,7 +80,7 @@
     </ul>
     <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
   </div>
-  <div class="category-list">
+  <div class="category-list" id="category-list">
     <a href="javascript:void(0)" class="index public-common-style">首页</a>
     <a href="javascript:void(0)" class="material public-common-style">申报材料</a>
     <a href="javascript:void(0)" class="setup public-common-style">课程设置</a>
