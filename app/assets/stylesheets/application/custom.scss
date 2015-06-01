@@ -937,7 +937,7 @@ body.teachers__my_courses, body.teachers__my_grades, body.teachers__grade_studen
 body.teachers__my_account, body.teachers__upload_course_ware,
 body.teachers__my_questions, body.teachers__my_answers, body.teachers__discuss_center,
 body.teachers__my_score, body.teachers__select_grade, body.teachers__select_course,
-body.teachers__show_score {
+body.teachers__show_score, body.teachers__show_grade_score {
   .main-content {
     .teacher-content {
       margin-top: 20px;
@@ -1228,6 +1228,10 @@ body.teachers__show_score {
 
       .score-percentage-picture {
       	height: 250px;
+      }
+
+      .student-score-list {
+      	margin-top: 15px;
       }
     }
   }

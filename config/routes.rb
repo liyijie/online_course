@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       post :select_grade
       post :select_course
       post :show_score
+      get :show_grade_score
       post :upload_attachment
     end
     member do

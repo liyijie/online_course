@@ -82,6 +82,11 @@ class TeachersController < ApplicationController
 		
 	end
 
+	#成绩查询----显示班级考试结果统计
+	def show_grade_score
+
+	end
+
 	#我的账户
 	def my_account
 		
