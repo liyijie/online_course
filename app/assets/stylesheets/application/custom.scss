@@ -543,7 +543,10 @@ body.courses__show, body.courses__after_class {
 			margin-top: 10px;
 			text-align: center;
 			display: block;
-			background: image-url("drop-down-arrow.png") no-repeat 12px 0;
+			background: image-url("drop-down.png") no-repeat 12px 0;
+			&.slide-up {
+				background: image-url("drop-down.png") no-repeat 12px -36px;
+			}
 		}
 		/*分类效果*/
 		.category-list {

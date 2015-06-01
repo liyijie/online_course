@@ -9,6 +9,7 @@ _category_toggle = ->
     _this.on 'click', ->
       _this.addClass("active public-active-style").siblings().removeClass("active public-active-style")
       _list_content.eq(_index).css("display","block").siblings().not("a").css("display","none");
+
 #展开效果
 _drop_down = ->
   oLenght = $(".courses-list li").length
@@ -22,10 +23,10 @@ _drop_down = ->
   $(".drop-down-arrow").on 'click', ->
     if($(".courses-list").height() == 200)
       $(".related-courses .courses-list").css("height","auto")
-      $(".drop-down-arrow").text("收起")
+      $(".drop-down-arrow").text("收起").addClass("slide-up")
     else
       $(".related-courses .courses-list").css("height","200px")
-      $(".drop-down-arrow").text("展开")
+      $(".drop-down-arrow").text("展开").removeClass("slide-up")
 
 #只有首页存在的最低部切换效果
 _entry_toggle_btn = ->
