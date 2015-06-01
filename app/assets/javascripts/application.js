@@ -16,3 +16,5 @@
 //= require turbolinks
 //= require mediaelement_rails
 //= require bootstrap-sprockets
+//= require jquery.remotipart
+

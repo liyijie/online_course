@@ -5,22 +5,24 @@
   	<div class="nav-bar">
   		<span class="btn btn-primary by-btn-bg">课程中心</span>
   	</div>
-  	<ul class="courses-list cl-sm-12">
-      <% 6.times do%>
-    		<li class="course">
-    			<%= link_to image_tag("my-courses.png")%>
-    			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
-    			<div class="description">
-    				<span>该课程一共有15课时</span>
-    				<label>
-    					<%= link_to "" do %>
-  		  			  <span class="glyphicon glyphicon-star"></span>
-  		  			<%end%>
-  		  			<span>2015人收藏</span>
-    				</label>
-    			</div>
-    		</li>
-      <%end%>
+  	<ul id="subCoursesList" class="courses-list cl-sm-12">
+      <% if @courses.blank? %>
+        <div class="blank">没有课程</div>
+      <% else %>
+        <% @courses.each do |course| %>
+          <li class="course">
+            <%= link_to image_tag("my-courses.png"), get_sub_course_teacher_path(course.number), remote: true %>
+            <p class="course-title"><%= link_to course.name, get_sub_course_teacher_path(course.number), remote: true %></p>
+            <div class="description">
+              <span>该课程一共有15课时</span>
+              <label>
+                <span class="glyphicon glyphicon-star"></span>
+                <span><%= course.get_likes(vote_scope: :collect).size %>人收藏</span>
+              </label>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
   	</ul>
   </div>
 </div>

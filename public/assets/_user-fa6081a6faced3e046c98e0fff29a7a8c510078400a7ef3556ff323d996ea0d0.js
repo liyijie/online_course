@@ -1,0 +1,1 @@
+(function(){$(function(){return $(".show-content li").click(function(){return $(".show-content li").removeAttr("class"),$(this).attr("class","active"),$(".div-content").hide(),$(".div-content").eq($(this).index()).show()})})}).call(this);

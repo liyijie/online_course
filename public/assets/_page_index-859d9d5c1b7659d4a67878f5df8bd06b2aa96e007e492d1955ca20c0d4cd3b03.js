@@ -1,0 +1,1 @@
+(function(){$(".home__index").ready(function(){return $(".info-teachers-content .teacher-content").each(function(){var e;return e=$(this),e.find("a").hover(function(){return e.find("p").fadeIn("fast"),e.siblings().find("p").fadeOut("fast")})})}),$(".home__index").ready(function(){return $("#xc-carousel").responsiveCarousel({carousel_item_width_default:.2})})}).call(this);

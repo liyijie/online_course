@@ -1,0 +1,22 @@
+<div class="main-content">
+  <%= render "left_bar" %>
+  <%= render "teacher_info" %>
+  <div class="teacher-content teacher-wrapper">
+    <div class="nav-bar">
+      <span class="btn btn-primary by-btn-bg"><%= @grade.name %></span>
+    </div>
+    <% if @grade.users.blank? %>
+      <div class="blank">没有学生</div>
+    <% else %>
+      <ul class="grade-students-list">
+        <% @grade.users.each do |user| %>
+          <li class="grade">
+            <%= image_tag user.show_image %>
+            <p><%= user.name %></p>
+          </li>
+        <%end%>
+      </ul>
+    <% end %>
+    
+  </div>
+</div>

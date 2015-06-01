@@ -4,30 +4,35 @@
       个人中心
     </div>
     <ul class="list">
-      <div class="list-bg"></div>
+      <div class="list-bg-user"></div>
       <li>
         <%= link_to my_courses_user_index_path do %>
-          <span class="glyphicon glyphicon-sound-dolby" aria-hidden="true">我的课程</span> 
+          <i class="glyphicon glyphicon-sound-dolby" aria-hidden="true"></i>
+          <span>我的课程</span>
         <% end %>
       </li>
       <li>
         <%= link_to my_exams_user_index_path do %>
-          <span class="glyphicon glyphicon-edit" aria-hidden="true">我的考试</span> 
+          <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+          <span>我的考试</span>
         <% end %>
       </li>
        <li>
         <%= link_to my_questions_user_index_path do %>
-          <span class="glyphicon glyphicon-tag" aria-hidden="true">我的问答</span> 
+          <i class="glyphicon glyphicon-tag" aria-hidden="true"></i>
+          <span>我的问答</span>
         <% end %>
       </li>
        <li>
         <%= link_to discuss_center_user_index_path do %>
-          <span class="glyphicon glyphicon-list-alt" aria-hidden="true">讨论中心</span> 
+          <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+          <span>讨论中心</span>
         <% end %>
       </li>
       <li>
         <%= link_to user_index_path do %>
-          <span class="glyphicon glyphicon-cog" aria-hidden="true">我的账户</span> 
+          <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
+          <span>我的账户</span>
         <% end %>
       </li>
     </ul>
@@ -37,27 +42,27 @@
 <script type="text/javascript">
   $(function(){
     if("<%= controller.controller_path %>" == "user" && "<%= controller.action_name%>" == "my_courses"){
-      $("#left-bar .list .list-bg").css("top", "62px");
+      $("#left-bar .list .list-bg-user").css("top", "60px");
       $("#left-bar .list li").eq(0).find("a").addClass("active");
       $("#left-bar .list li").eq(0).siblings().find("a").removeClass("active");
     }
     else if("<%= controller.controller_path %>" == "user" && "<%= controller.action_name%>" == "my_exams"){
-      $("#left-bar .list .list-bg").css("top", "128px");
+      $("#left-bar .list .list-bg-user").css("top", "126px");
       $("#left-bar .list li").eq(1).find("a").addClass("active");
       $("#left-bar .list li").eq(1).siblings().find("a").removeClass("active");
     }
     else if("<%= controller.controller_path %>" == "user" && ("<%= controller.action_name%>" == "my_questions" || "<%= controller.action_name%>" == "my_answers")){
-      $("#left-bar .list .list-bg").css("top", "194px");
+      $("#left-bar .list .list-bg-user").css("top", "192px");
       $("#left-bar .list li").eq(2).find("a").addClass("active");
       $("#left-bar .list li").eq(2).siblings().find("a").removeClass("active");
     }
     else if("<%= controller.controller_path %>" == "user" && "<%= controller.action_name%>" == "discuss_center"){
-      $("#left-bar .list .list-bg").css("top", "260px");
+      $("#left-bar .list .list-bg-user").css("top", "258px");
       $("#left-bar .list li").eq(3).find("a").addClass("active");
       $("#left-bar .list li").eq(3).siblings().find("a").removeClass("active");
     }
     else if("<%= controller.controller_path %>" == "user" && "<%= controller.action_name%>" == "show"){
-      $("#left-bar .list .list-bg").css("top", "326px");
+      $("#left-bar .list .list-bg-user").css("top", "324px");
       $("#left-bar .list li").eq(4).find("a").addClass("active");
       $("#left-bar .list li").eq(4).siblings().find("a").removeClass("active");
     }

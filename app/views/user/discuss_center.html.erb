@@ -26,7 +26,7 @@
       <!-- ######################我的评论##################### -->
       <div class="div-content discuss-center-content">
         <% if @comments.blank? %>
-        <div class="blank">暂时没有评论</div>
+          <div class="blank">暂时没有评论</div>
         <% else %>
           <% @comments.each do |comment| %>
             <div class="row discuss-center-list">
@@ -37,14 +37,16 @@
               <div class="col-sm-9">
                 <h5>
                   <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-                  <%= comment.body %>
+                  <%= link_to comment.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
                 </h5>
                 <p>
                   <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                   <% if comment.has_children? %>
                     <span class="text-muted">[最新回答]</span>
                     <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
-                    <span class="text-muted"><%= comment.children.last.try(:body) %></span>
+                    <span class="text-muted">
+                      <%= link_to comment.children.last.try(:body),show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                    </span>
                   <% else %>
                     <span class="text-muted">嗯 ~ ~，这个提问大家都在考虑....</span>
                   <% end %>

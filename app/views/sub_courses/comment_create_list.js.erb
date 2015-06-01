@@ -1,0 +1,7 @@
+//一览显示变换
+$("#commentContent").html('<%= escape_javascript( render :partial => "comment_show",
+  :locals => {:comments => @comments}) %>');
+
+<% if params[:comment].present? && params[:page].blank? %>
+  alert("<%= params[:comment_scope] == 'answer' ? '提问成功' : '评论成功'%>");
+<% end %>

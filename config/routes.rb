@@ -2,11 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :teachers
   root :to => "home#index"
+
+  get "select_courses", to: "home#select_courses", as: :select_courses_home
   get "courses/:number", to: "courses#show", as: :show_courses
   get "courses/:number/after_class", to: "courses#after_class", as: :after_class_courses
   get "courses/:number/sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses_courses
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
 
+  post "sub_courses/comment_create_list"
+  get "sub_courses/comment_create_list"
+  post "sub_courses/reply_comment_list"
+  
   #当子课程为pdf等格式文件时下载链接
   get "/sub_courses/:number/download", to: "sub_courses#download", as: :download_sub_course
 
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
       post :course_praise
     end
   end
+
 
   #限定教师编号为数字形式
   constraints(number: /\d+/) do
@@ -38,9 +45,12 @@ Rails.application.routes.draw do
       post :select_grade
       post :select_course
       post :show_score
+      post :upload_attachment
     end
     member do
       patch :update_password
+      get :get_sub_course
+      get :grade_students
     end
   end
 
@@ -59,7 +69,6 @@ Rails.application.routes.draw do
       get :my_answers
       get :discuss_center
 
-      post :comment_create
       post :update_password
     end
   end
@@ -76,6 +85,9 @@ Rails.application.routes.draw do
         resources :questions, only: [:index]
       end
     end
+
+    resources :teachers 
+    resources :users 
   end
 
 end

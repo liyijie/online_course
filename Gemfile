@@ -28,7 +28,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
+
+#mina部署
+group :development do
+  gem 'mina'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -73,6 +78,8 @@ gem "mediaelement_rails"
 
 #导入功能
 gem "roo"
+
+gem 'remotipart', '~> 1.2'
 
 
 

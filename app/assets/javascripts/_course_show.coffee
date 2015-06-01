@@ -40,6 +40,7 @@ $(".courses__show").ready ->
   if user_login
     #点击收藏按钮
     $("#courseCollectBtn").click ->
+      $("#courseCollectPraise").attr("action",course_collect_path)
       $("#courseCollectPraise").submit()
 
     #鼠标移入收藏按钮

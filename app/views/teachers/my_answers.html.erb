@@ -19,24 +19,26 @@
 		        	<% @answer_comments.each do |comment| %>
 		        		<li>
 		  		 		  <div class="avatar">
-		  		 		  	<%= image_tag("teacher-avatar.png")%>
+		  		 		  	<%= image_tag comment.try(:usertable).try(:show_image),class: "img-circle" %>
 		  		 		  </div>
 		  		 		  <div class="question-info">
 		  		 		  	<p class="name">
 			  		 		    <%= current_teacher.show_name %>
 			  		 		    <span>回答</span>
 			  		 		  </p>
-			  		 		  <p class="content"><%= comment.body %></p>
-			  		 		  <% if comment.has_children? %>
-			                    <p><span class="text-muted">[最新回答]</span>
-			                    <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
-			                    <span class="text-muted"><%= comment.children.last.try(:body) %></span></p>
-			                  <% end %>
+			  		 		  <p class="content"><%= link_to comment.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%> </p>
+			  		 		  <% if comment.parent.present? %>
+                    <p><span class="text-muted">[问题]</span>
+                    <span><%= comment.parent.try(:usertable).try(:show_name) %>:<span>
+                    <span class="text-muted">
+                    <%= link_to comment.parent.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%>
+                    </span></p>
+			           <% end %>
 			  		 		  <p class="time">时间: <%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></p>
 		  		 		  </div>
 		  		 		  <div class="answer-broswer">
-		  		 		  	<div class="list bl <%= comment.has_children? ? "text-success" : "text-muted"%>">
-		  		 		  		<p class="num"><%= comment.children.size %></p>
+		  		 		  	<div class="list bl <%= comment.parent.present? ? "text-success" : "text-muted"%>">
+		  		 		  		<p class="num"><%= comment.parent.children.size %></p>
 		  		 		  		<p class="answer">回答</p>
 		  		 		  	</div>
 		  		 		  	<div class="list">

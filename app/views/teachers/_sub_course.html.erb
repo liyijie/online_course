@@ -1,0 +1,52 @@
+<ul id="subCoursesList" class="sub-courses-list">
+  <% sub_courses.each do |sub_course|%>
+    <% if sub_course.regex_video %>
+      <li>
+        <!-- 如果是视频如mp4, flv等格式文件进入播放页 -->
+        <%= link_to sub_course.name, show_courses_path(sub_course.try(:course).try(:number)) ,class: "title" %>
+        <%= link_to show_sub_courses_courses_path(sub_course.number), class: "total" do %>
+          <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+          <%= sub_course.attachment.content_file_name %>
+        <% end %>
+        <a href="javascript:void(0);" class="already" number="<%= sub_course.number %>">
+          <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+          上传课件
+        </a>
+      </li>
+      <!-- 如果是视频如pdf, docx等格式文件执行下载 -->
+    <% elsif sub_course.regex_res %>
+      <li>
+        <%= link_to sub_course.name, show_courses_path(sub_course.try(:course).try(:number)) ,class: "title" %>
+        <%= link_to download_sub_course_path( sub_course.number), class: "total" do %>
+          <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+          <%= sub_course.attachment.content_file_name%>
+        <% end %>
+        <a href="javascript:void(0);" class="already" number="<%= sub_course.number %>">
+          <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+          上传课件
+        </a>
+      </li>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- 隐藏表单，用于上传课件 -->
+<%= form_tag upload_attachment_teachers_path,methed: :post, style: "display: none;", multipart: true, remote: true do %>
+  <%= file_field_tag "attachment" %>
+  <%= hidden_field_tag "sub_course_number" %>
+<% end %>
+
+<script type="text/javascript">
+  $(function(){
+
+    $(".already").click(function(){
+      $("#sub_course_number").val($(this).attr("number"));
+      $("#attachment").click();
+    });
+
+    $("#attachment").change(function(){
+      $(this).parent().submit();
+    });
+  });
+</script>

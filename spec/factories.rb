@@ -1,6 +1,9 @@
 require 'rack/test'
 
-FactoryGirl.define do  factory :teacher_course do
+FactoryGirl.define do  factory :teacher_grage do
+    
+  end
+  factory :teacher_course do
     teacher nil
 course nil
   end

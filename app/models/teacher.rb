@@ -32,21 +32,28 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  sex                    :string(255)
-#  grade_id               :integer
 #  signature              :text(65535)
+#  academy_id             :integer
 #
 
 class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
-
   has_many :comment, as: :usertable, dependent: :destroy
   has_one :image, as: :imageable
   has_many :teacher_courses, dependent: :destroy
+  has_many :teacher_grades, dependent: :destroy
+  has_many :grades, through: :teacher_grades
+  belongs_to :academy
 
   #教师学位列表
-  TeacherDegree =[{text: '大专', value: 'dazhuan'}, {text: '本科', value: 'benke'}, {text: '硕士', value: 'shuoshi'}, {text: '博士', value: 'boshi'}]
+  enum final_education: {
+    '大专': 'dazhuan',
+    '本科': 'benke',
+    '硕士': 'shuoshi',
+    '博士': 'boshi'
+  }
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
@@ -76,6 +83,6 @@ class Teacher < ActiveRecord::Base
 
    #页面头像显示
   def show_image 
-    self.image.present? ? self.try(:image).try(:avatar).try(:url, :thumb) : "teacher-default.jpg"
+    self.image.present? ? self.try(:image).try(:avatar).try(:url, :t_280x370) : "teacher-default.jpg"
   end
 end

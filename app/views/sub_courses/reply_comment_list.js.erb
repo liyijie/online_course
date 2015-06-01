@@ -1,0 +1,5 @@
+//一览显示变换
+$("#commentContent").html('<%= escape_javascript( render :partial => "comment_show",
+  :locals => {:comments => @comments}) %>');
+
+alert("回复成功");

@@ -20,7 +20,7 @@ module Admin
 				return redirect_to admin_courses_url
 			else
 				flash.now[:notice] = "课程创建失败"
-				return redirect_to admin_courses_url
+				render redirect_to admin_courses_url
 			end
 		end
 

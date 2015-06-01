@@ -1,3 +1,11 @@
+<%= content_for :script do %>
+  <%= javascript_tag do %>
+    user_login = <%= current_user.present? %>
+    course_praise_path = "<%= course_praise_courses_path%>"
+    course_collect_path = "<%= course_collect_courses_path%>"
+  <% end %>
+  <%= javascript_include_tag "_course_show" %>
+<%end%>
 <div class="main-content">
   <div class="top-content">
     <div class="left-content">
@@ -40,8 +48,8 @@
           <div class="teachers">
             <% @teacher_courses.each do |teacher_course|%>
               <div class="teacher-info">
-                <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
-                <p><%= teacher_course.try(:teacher).name %></p>
+                <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
+                <p><%= teacher_course.try(:teacher).try(:name) %></p>
               </div>
             <% end %>
           </div>

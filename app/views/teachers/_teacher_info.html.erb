@@ -18,7 +18,7 @@
 	  		专业技术职位:	<%= current_teacher.tec_position %>
 	  	</li>
 	  	<li class="width-50">
-	  		所属院系:	 <%= current_teacher.try(:grade).try(:specialty).try(:academy).try(:name) %>
+	  		所属院系:	 <%= current_teacher.try(:academy).try(:name) %>
 	  	</li>
 	  	<li class="width-50">
 	  		手机号码:	 <%= current_teacher.phone %>

@@ -1,0 +1,2 @@
+$(".vedio-course-content").empty().append("<%= escape_javascript(render(partial: 'select_courses',
+	locals: {courses: @courses})) %>");

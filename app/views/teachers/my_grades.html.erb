@@ -5,22 +5,22 @@
   	<div class="nav-bar">
   		<span class="btn btn-primary by-btn-bg">我的班级</span>
   	</div>
-  	<ul class="grades-list">
-  	  <% 8.times do%>
-	  		<li class="grade">
-	  			<%= link_to image_tag("teacher-grade.png")%>
-	  			<p class="course-title"><%= link_to "Python交互编程入门"%></p>
-	  			<div class="description">
-	  				<span class="name">计算机3班</span>
-	  				<label>
-	  					<%= link_to "" do %>
-			  			  <span class="glyphicon glyphicon-heart"></span>
-			  			<%end%>
-			  			<span>共1000人</span>
-	  				</label>
-	  			</div>
-	  		</li>
-	  	<%end%>
-  	</ul>
+    <% if @grades.blank? %>
+      <div class="blank">没有班级</div>
+    <% else %>
+      <ul class="grades-list">
+        <% @grades.each do |grade| %>
+          <li class="grade">
+            <%= link_to image_tag("teacher-grade.png"), grade_students_teacher_path(grade.id) %>
+            <div class="description">
+              <div class="name">系别：<%= grade.try(:specialty).try(:academy).try(:name) %></div>
+              <div class="name">专业：<%= grade.try(:specialty).try(:name) %></div>
+              <div class="name">班级：<%= grade.try(:name) %></div>
+            </div>
+          </li>
+        <%end%>
+      </ul>
+    <% end %>
+  	
   </div>
 </div>

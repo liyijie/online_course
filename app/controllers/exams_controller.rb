@@ -2,7 +2,10 @@ class ExamsController < ApplicationController
   before_action :authenticate_user!
 	def new
 		@sub_course = SubCourse.find_by_number(params[:sub_course_number])
-		@questions = @sub_course.questions 
+		@questions = @sub_course.questions
+
+		#查找判断用户是否已经参加过该次考试
+		@exam = Exam.find_by(user_id: current_user.id, sub_course_id: @sub_course.id)
 	end
 
 	def create
@@ -24,6 +27,7 @@ class ExamsController < ApplicationController
 		if @exam.blank?
 			flash[:notice] = "查看的试卷不存在"
 			redirect_to root_path
+			return
 		end
 	end
 

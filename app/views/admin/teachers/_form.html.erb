@@ -1,0 +1,89 @@
+<%= simple_form_for([:admin, @teacher], html: {class: "form-horizontal"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :academy_id, '所属学院', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.select(:academy_id, Academy.all.pluck(:name, :id), {prompt: '请选择学院'}, {class: 'form-control'}) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :grades, '所教班级', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <% Grade.all.each do |grade| %>
+        <%= check_box_tag("teacher[grade_ids][]", grade.id, grade.id.in?(@teacher.grades.collect(&:id)))%>
+        <%= grade.name%>
+      <%end%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :image, '头像', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.file_field :image, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, '手机号', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :phone, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :username, '用户名', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+  </div>
+   <div class="form-group">
+    <%= f.label :password, '密码', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+   <div class="form-group">
+    <%= f.label :password_confirmation, '确认密码', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '姓名', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :final_degree, '专业技术职位 ', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :final_degree , class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :final_education, '学历 ', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.select(:final_education, Teacher.final_educations, {prompt: '请选择学历'}, {class: 'form-control'}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :qualification, '资格证书 ', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :qualification , class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tec_expertise, '教学与技术专长 ', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :tec_expertise , class: 'form-control' %>
+    </div>
+  </div>
+
+  <hr></hr>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-success" type="submit">
+        <span class="glyphicon glyphicon-floppy-save">保存</span>
+      </button>
+    </div>
+  </div>
+<%end%>

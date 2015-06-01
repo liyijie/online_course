@@ -13,10 +13,49 @@ class TeachersController < ApplicationController
 
 	#我的课程
 	def my_courses
+		@courses = Course.joins(:teacher_courses).where(teacher_courses: {teacher_id: current_teacher.id})
 	end
+
+	#取得子课程
+	def get_sub_course
+		course = Course.where(number: params[:id]).first
+		@sub_courses = course.try(:sub_courses)
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	#上传课件
+	def upload_attachment
+		sub_course = SubCourse.where(number: params[:sub_course_number]).first
+		if sub_course.blank?
+			respond_to do |format|
+				format.js {render js: "alert('上传失败');"}
+			end
+		else
+			sub_course.attachment = Attachment.new if sub_course.attachment.blank?
+			if sub_course.attachment.update(content: params[:attachment])
+				#上传成功
+				@sub_courses = Course.where(id: sub_course.course_id).first.sub_courses
+				respond_to do |format|
+					format.js
+				end
+			else
+				respond_to do |format|
+					format.js {render js: "alert('上传失败');"}
+				end
+			end
+		end
+	end 
+
 
   #我的班级
 	def my_grades
+		@grades = Grade.joins(:teacher_grades).where(teacher_grades: { teacher_id: current_teacher.id })
+	end
+
+	def grade_students
+		@grade = Grade.where(id: params[:id]).first
 	end
 
   #教师介绍
@@ -45,11 +84,7 @@ class TeachersController < ApplicationController
 
 	#我的账户
 	def my_account
-	
-	end
-
-  #上传课件
-	def upload_course_ware
+		
 	end
 
   #讨论中心
@@ -59,7 +94,7 @@ class TeachersController < ApplicationController
 
   #我的提问
 	def my_questions
-		@question_comments = Comment.find_root_comments_by_usertable(current_teacher, :question).page(params[:page])
+		@question_comments = Comment.find_root_comments_by_usertable(current_teacher, :answer).page(params[:page])
 	end
 
   #我的回答
@@ -110,6 +145,6 @@ class TeachersController < ApplicationController
 			                              :birthday, :tec_position, :email, :qualification,
 			                              :fax, :final_education, :final_degree, :tec_expertise,
 			                              :resume, :tec_situation, :tec_service, :deleted_at,
-			                              :sex, :grade_id, :signature)
+			                              :sex, :grade_id, :signature, :academy_id)
 	end
 end

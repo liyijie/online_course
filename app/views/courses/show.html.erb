@@ -2,6 +2,7 @@
   <%= javascript_tag do %>
     user_login = <%= current_user.present? %>
     course_praise_path = "<%= course_praise_courses_path%>"
+    course_collect_path = "<%= course_collect_courses_path%>"
   <% end %>
   <%= javascript_include_tag "_course_show" %>
 <%end%>
@@ -12,15 +13,17 @@
 
 <div class="main-content">
   <div class="top-content">
+
     <div class="left-content">
       <div class="course-image">
-        <%= image_tag(@course.image.avatar.url(:c_420_285))%>
-        <div class="course-and-score">
-          <%= link_to "课后作业", after_class_courses_path, class: "course"%>
-          <%= link_to "成绩查询", "", class: "score"%>
-        </div>
+        <%= image_tag(@course.image.avatar.url(:c_500_350))%>
+      </div>
+      <div class="course-and-score">
+        <%= link_to "课后作业", after_class_courses_path, class: "course"%>
+        <%= link_to "成绩查询", "", class: "score"%>
       </div>
     </div>
+
     <div class="right-content">
       <h1><%= @course.name %></h1>
       <div class="collect-zan-btns">
@@ -56,8 +59,10 @@
           <div class="teachers">
             <% @teacher_courses.each do |teacher_course|%>
               <div class="teacher-info">
-                 <%#= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number)%>
-                 <p><%= teacher_course.teacher.name %></p>
+
+                 <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
+                 <p><%= teacher_course.try(:teacher).try(:name) %></p>
+
               </div>
             <% end %>
           </div>
@@ -68,24 +73,7 @@
   <div class="related-courses">
     <a href="javascript:void(0)" class="btn btn-primary">相关课程</a>
     <ul class="courses-list">
-      <% @sub_courses.each do |sub_course|%>
-        <li>
-          <!-- 如果是视频如mp4, flv等格式文件进入播放页 -->
-          <% if sub_course.attachment && sub_course.attachment.content.content_type =~ /video(.*)/%>
-            <a href= <%= show_sub_courses_courses_path%> class="title"><%= sub_course.name %></a>
-          <!-- 如果是视频如pdf, docx等格式文件执行下载 -->
-          <% elsif sub_course.attachment && sub_course.attachment.content.content_type =~ /application(.*)/ %>
-            <%=link_to sub_course.name, download_sub_course_path( sub_course.number), class: "title" %>
-          <% end %>
-          <a href="" class="total">格式<%= File.extname(sub_course.attachment.content_file_name).split(".").last%></a>
-          <!-- 显示KB还是Mb判断 -->
-          <% if sub_course.attachment.content_file_size / 1048576 < 1 %>
-            <a href="" class="already">（文件<%= sub_course.attachment.content_file_size / 1024%>Kb）</a>
-          <% else %>
-            <a href="" class="already">（文件<%= sub_course.attachment.content_file_size / 1048576%>Mb）</a>
-          <% end %>
-        </li>
-      <% end %>
+      <%= render partial: "sub_course", locals: {sub_courses: @sub_courses}%>
     </ul>
     <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
   </div>
@@ -103,34 +91,34 @@
   </div>
   <div class="category-list-content">
     <div class="text-content">
-      <%= render partial: "/course_info/course_home"%>
+      <%= render partial:"/course_info/course_home", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial: "/course_info/course_data" %>
+      <%= render partial:"/course_info/course_data" , locals: {course: @course} %>
     </div>
     <div class="text-content">
-      <%= render partial:"/course_info/course_setup"%>
+      <%= render partial:"/course_info/course_setup", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      教学队伍
+      <%= render partial:"/course_info/course_team", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      教学条件
+      <%= render partial:"/course_info/course_condition", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      教学方法
+      <%= render partial:"/course_info/course_method", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      教学内容
+      <%= render partial:"/course_info/course_content", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      教学资源
+      <%= render partial:"/course_info/course_resource", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      教学效果
+      <%= render partial:"/course_info/course_effect", locals: {course: @course} %>
     </div>
     <div class="text-content">
-      特色与政策
+      <%= render partial:"/course_info/course_policy", locals: {course: @course} %>
     </div>
   </div>
   <div class="fast-entry">

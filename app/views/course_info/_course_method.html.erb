@@ -1,0 +1,34 @@
+<% if course == Course.first %>
+	<a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>网络教学资源和硬件环境</strong></a>
+	<a href="javascript:void(0)" class="btn"><strong>现代教学技术手段的应用</strong></a>
+	<a href="javascript:void(0)" class="btn"><strong>多种教学方法的运用</strong></a>
+	<a href="javascript:void(0)" class="btn"><strong>教学模式的设计与创新</strong></a>
+	<br><br>
+	<div class="contrainer-fluid">
+		<dl>
+			<dt>1. 校园网网络硬件环境有力支撑教学</dt>
+			<dd>校园网主干为千兆以太网、到桌面为百兆，拥有CERNET和电信两条出口和Internet的联接，如下图所示，提供了一个功能齐全、运行高效、使用灵活、易于扩展的校园网系统，保证了学生通过课程网站在线学习。</dd>
+			<dd><%= image_tag "method1.gif", class:"img-responsive img-right"%></dd>
+			<dd class="text-center">校园网拓扑图</dd>
+			<dt>2. 网络教学平台有力辅助课堂教学</dt>
+			<dd>本课程提供的网络教学平台提供了丰富的教学资源丰富，包括：多媒体课件、电子教案、实训指导书、习题库、试题库、站点推荐和参考资料等教学辅助资料。学生可以在如下图所示的校内电子阅览室进行在线学习。</dd>
+			<dd><%= image_tag "method2.jpg", class:"img-responsive img-right"%></dd>
+			<dd class="text-center">电子阅览室</dd>
+		</dl>
+	</div>
+
+<% elsif %>
+	<a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>教学模式的设计与创新</strong></a>
+	<a href="javascript:void(0)" class="btn"><strong>现代教学技术手段的应用</strong></a>
+	<a href="javascript:void(0)" class="btn"><strong>多种教学方法的运用</strong></a>
+	<a href="javascript:void(0)" class="btn"><strong>网络教学资源和硬件环境</strong></a>
+	<br><br>
+	<div class="contrainer-fluid">
+		<dl>
+			<dt>1.教学模式改革 </dt>
+			<dd>实施“课堂、实训室、公司”三位一体的教学模式，依托学校“实训中心”集专业教学、产品研发、生产经营、社会服务、职业资格培训、鉴定、对外展示、交流的真实氛围，让学生“在工作中学习，学习的内容是工作”。使“中心”成为融“课堂、实训室、公司”为一体的新型“产、学、教”实训基地，成为课堂与市场的“桥梁”和三位一体教学模式必需的教学平台，使学生在校期间，基本完成由大学生到企业员工的身份转变，各种能力得到广泛锻炼，真正做到零距离与企业接轨。</dd>
+			<dt>2.教学组织模式改革</dt>
+			<dd>采用《J2EE与软件工程实训平台》进行案例培训。 通过“实训平台＋案例”的手段，真实再现企业软件开发过程中的问题与先进的国际软件开发理念。“J2EE与软件工程实训平台”将软件开发中的各种应用系统、数据资源和开发工具统一集成到一个管理平台之上，根据每个用户的岗位特点和角色的不同，形成个性化的应用界面，使用户可以快速适应标准化软件开发流程。学员只要通过统一入口，就可以访问相关案例实训信息和各个实训子任务，与其它学员交流协作，完成既定的实训任务。<br>实训案例是以包括IBM公司在内的众多国际知名公司众多成功的具有代表性的项目中抽取出来为蓝本，包括详细的项目管理手册与完整的开发流程及各类文档和代码，让学生在最短的时间内，直接体验到世界顶级软件公司项目实施精华，培养出企业工作岗位必需的技能与协作精神。</dd>
+		</dl>
+	</div>
+<% end %>
