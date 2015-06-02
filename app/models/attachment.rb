@@ -16,7 +16,8 @@ class Attachment < ActiveRecord::Base
   belongs_to :sub_course
 
   has_attached_file :content, :styles => {
-    :thumb => { :geometry => "860x500", :format => 'jpg', :time => 10 }
+    :c_860_500 => { :geometry => "860x500", :format => 'jpg', :time => 10 },
+    :c_260_140 => { :geometry => "260x140", :format => 'jpg', :time => 10 }
   }, :processors => [:ffmpeg]
 
   validates_attachment :content, :content_type => {:content_type => %w()}

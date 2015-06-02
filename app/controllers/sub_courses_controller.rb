@@ -13,9 +13,9 @@ class SubCoursesController < ApplicationController
     @course = @sub_course.try(:course)
     @partners = @course.get_likes(vote_scope: :collect).page(params[:partner_page])
     @comments = @sub_course.root_comments.where(comment_scope: "discuss").order("created_at DESC").page(params[:page])
-    @video = SubCourse.joins(:attachment).where("sub_courses.course_id = ? and attachments.content_content_type like 'video%'",
-                      @course.id).order("RAND()").limit(3).order("RAND()").limit(3)
-	end
+    @relate_sub_courses = SubCourse.joins(:attachment).where("sub_courses.course_id = ? AND attachments.content_content_type like ?", @course.id, "%video%")
+                                          .order("RAND()").limit(3)
+  end
 
   def new
     @sub_course = SubCourse.new

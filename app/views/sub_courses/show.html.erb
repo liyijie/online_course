@@ -14,7 +14,7 @@
 	<div class="left-content">
 		<div class="video-content">
 			<!-- video -->
-			<video width="860" height="500" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:thumb))%>" controls="controls" preload="none">
+			<video width="860" height="500" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:c_860_500))%>" controls="controls" preload="none">
 				<source type="video/mp4" src="<%= @sub_course.attachment.content.url %>" />
 				<source type="video/webm" src="myvideo.webm" />
 				<source type="video/ogg" src="myvideo.ogv" />
@@ -52,10 +52,10 @@
 				相关视频
 			</p>
 			<ul class="videos">
-				<% @video.each do |video| %>
+				<% @relate_sub_courses.each do |relate_sub_course| %>
 					<li>
-						<%= image_tag "video-play2.jpg", class:"photo2"%>
-            <p><%= video.name %></p>
+						<%= link_to image_tag(relate_sub_course.attachment.content.url(:c_260_140), class: "photo2"), show_sub_courses_path(number: relate_sub_course.number, course_number: @course.number)%>
+            <p><%= relate_sub_course.name %></p>
 					</li>
 				<% end %>
 			</ul>
