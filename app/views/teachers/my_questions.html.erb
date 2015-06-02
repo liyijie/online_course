@@ -14,45 +14,45 @@
   		<div class="infos">
   		 	<ul class="my-questions">
   		 		<% if @question_comments.blank? %>
-		          <div class="blank">暂时没有提问</div>
-		        <% else %>
-		        	<% @question_comments.each do |comment| %>
-		        		<li>
-		  		 		  <div class="avatar">
-		  		 		  	<%= image_tag comment.try(:usertable).try(:show_image),class: "img-circle" %>
-		  		 		  </div>
-		  		 		  <div class="question-info">
-		  		 		  	<p class="name">
-			  		 		    <%= current_teacher.show_name %>
-			  		 		    <span>提问</span>
-			  		 		  </p>
-			  		 		  <p class="content">
-                    <%= link_to comment.body,show_sub_courses_path(comment.try(:commentable).try(:number),course_number: comment.try(:commentable).try(:course).try(:number))%> 
-                  </p>
-			  		 		  <% if comment.has_children? %>
-			                    <p><span class="text-muted">[最新回答]</span>
-			                    <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
-			                    <span class="text-muted"><%= link_to comment.children.last.try(:body),show_sub_courses_path(comment.try(:commentable).try(:number),course_number: comment.try(:commentable).try(:course).try(:number))%></span></p>
-			                  <% end %>
-			  		 		  <p class="time">时间: <%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></p>
-		  		 		  </div>
-		  		 		  <div class="answer-broswer">
-		  		 		  	<div class="list bl <%= comment.has_children? ? "text-success" : "text-muted"%>">
-		  		 		  		<p class="num"><%= comment.children.size %></p>
-		  		 		  		<p class="answer">回答</p>
-		  		 		  	</div>
-		  		 		  	<div class="list">
-		  		 		  		<p class="num">0</p>
-		  		 		  		<p class="answer">浏览</p>
-		  		 		  	</div>
-		  		 		  </div>
-		  		 		</li>
-		        	<% end %>
-		        <% end %>
-  		 		
+  		 		  <div class="blank-alert">
+		          <%= render partial: 'common/blank_alert', locals: {message: '您暂未发起任何提问!'}%>
+		        </div>
+	        <% else %>
+	        	<% @question_comments.each do |comment| %>
+	        		<li>
+	  		 		  <div class="avatar">
+	  		 		  	<%= image_tag comment.try(:usertable).try(:show_image),class: "img-circle" %>
+	  		 		  </div>
+	  		 		  <div class="question-info">
+	  		 		  	<p class="name">
+		  		 		    <%= current_teacher.show_name %>
+		  		 		    <span>提问</span>
+		  		 		  </p>
+		  		 		  <p class="content">
+                  <%= link_to comment.body,show_sub_courses_courses_path(comment.try(:commentable).try(:number))%> 
+                </p>
+		  		 		  <% if comment.has_children? %>
+		                    <p><span class="text-muted">[最新回答]</span>
+		                    <span><%= comment.children.last.try(:usertable).try(:show_name) %>:<span>
+		                    <span class="text-muted"><%= link_to comment.children.last.try(:body),show_sub_courses_courses_path(comment.try(:commentable).try(:number))%></span></p>
+		                  <% end %>
+		  		 		  <p class="time">时间: <%= comment.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %></p>
+	  		 		  </div>
+	  		 		  <div class="answer-broswer">
+	  		 		  	<div class="list bl <%= comment.has_children? ? "text-success" : "text-muted"%>">
+	  		 		  		<p class="num"><%= comment.children.size %></p>
+	  		 		  		<p class="answer">回答</p>
+	  		 		  	</div>
+	  		 		  	<div class="list">
+	  		 		  		<p class="num">0</p>
+	  		 		  		<p class="answer">浏览</p>
+	  		 		  	</div>
+	  		 		  </div>
+	  		 		</li>
+	        	<% end %>
+	        <% end %>
   		 	</ul>
   		</div>
-  		
   	</div>
     <div class="paginate text-center">
         <%= paginate @question_comments %>

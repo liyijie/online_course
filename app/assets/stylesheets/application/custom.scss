@@ -961,6 +961,10 @@ body.teachers__show_score, body.teachers__show_grade_score, body.teachers__impor
       	overflow: hidden;
       	padding: 20px;
       }
+      .blank-alert {
+      	width: 90%;
+      	margin: 20px;
+      }
       ul#subCoursesList {
       	padding: 20px 0 60px 0;
       	li {
@@ -1201,9 +1205,7 @@ body.teachers__show_score, body.teachers__show_grade_score, body.teachers__impor
           display: none;
         }
       }
-
 		}
-		
 		img.edit-teacher-image {
 			max-height: 100px;
 			max-width: 100px;
@@ -1212,7 +1214,6 @@ body.teachers__show_score, body.teachers__show_grade_score, body.teachers__impor
      //成绩查询
     div.search-step {
       padding: 20px;
-      
       a:hover {
         background-color: #fff;
         cursor: default;

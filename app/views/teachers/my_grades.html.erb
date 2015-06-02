@@ -6,7 +6,9 @@
   		<span class="btn btn-primary by-btn-bg">我的班级</span>
   	</div>
     <% if @grades.blank? %>
-      <div class="blank">没有班级</div>
+      <div class="blank-alert">
+        <%= render partial: 'common/blank_alert', locals: {message: '您暂未分配到任何班级，请联系管理员!'}%>
+      </div>
     <% else %>
       <ul class="grades-list">
         <% @grades.each do |grade| %>
@@ -21,6 +23,5 @@
         <%end%>
       </ul>
     <% end %>
-  	
   </div>
 </div>
