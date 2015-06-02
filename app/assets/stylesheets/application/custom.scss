@@ -967,6 +967,14 @@ body.teachers__show_score, body.teachers__show_grade_score, body.teachers__impor
       }
       ul#subCoursesList {
       	padding: 20px 0 60px 0;
+      	p {
+      		font-size: 18px;
+      		height: 36px;
+      		line-height: 36px;
+      		color: #777;
+      		margin: 10px 0;
+      		padding-left:  20px;
+      	}
       	li {
 					height: 46px;
 					line-height: 46px;

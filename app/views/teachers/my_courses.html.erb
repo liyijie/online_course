@@ -4,21 +4,24 @@
   <div class="teacher-content teacher-wrapper">
   	<div class="nav-bar">
   		<span class="btn btn-primary by-btn-bg">课程中心</span>
-      <%= link_to "创建课程", new_sub_course_path, remote: true, class: 'btn btn-primary by-btn-bg pull-right'%>
+      <%= link_to "创建子课程", new_sub_course_path, remote: true, class: 'btn btn-primary by-btn-bg pull-right'%>
   	</div>
-    <% if @sub_courses.present? %>
+    <% if @courses.present? %>
       <ul id="subCoursesList">
-        <% @sub_courses.each do |sub_course|%>
-          <li>
-            <span class="title"><%= sub_course.name %></span>
-            <%= link_to "导入试题", import_question_teachers_path(sub_course_number: sub_course.number), class: "upload pull-right" %>
-            <%= link_to "编辑", edit_sub_course_path(sub_course), remote: true, class: "edit pull-right" %>
-            <!--<%= link_to "删除", sub_course_path(sub_course.id), data: {confirm: '确认要删除吗'}, method: :delete, class: "delete pull-left" %>-->
-          </li>
+        <% @courses.each_with_index do |course, index|%>
+          <p><span><%= index+1 %>. </span><%= course.name %></p>
+          <% course.sub_courses.each do |sub_course|%>
+            <li>
+              <span class="title"><%= sub_course.name %></span>
+              <%= link_to "导入试题", import_question_teachers_path(sub_course_number: sub_course.number), class: "upload pull-right" %>
+              <%= link_to "编辑", edit_sub_course_path(sub_course), remote: true, class: "edit pull-right" %>
+              <!--<%= link_to "删除", sub_course_path(sub_course.id), data: {confirm: '确认要删除吗'}, method: :delete, class: "delete pull-left" %>-->
+            </li>
+          <% end %>
         <% end %>
       </ul>
     <% else %>
-      <%= render partial: 'common/blank_alert', locals: {message: '您尚未创建课程!'}%>
+      <%= render partial: 'common/blank_alert', locals: {message: '您尚未创建子课程!'}%>
     <% end %>
   </div>
 </div>
