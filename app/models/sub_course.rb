@@ -15,7 +15,7 @@ class SubCourse < ActiveRecord::Base
   acts_as_commentable
   acts_as_votable
   belongs_to :course
-  has_one :attachment
+  has_one :attachment, dependent: :destroy
   has_many :questions, dependent: :destroy
 
   #创建sub_course生成编号

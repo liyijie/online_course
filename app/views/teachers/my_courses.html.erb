@@ -15,7 +15,7 @@
               <span class="title"><%= sub_course.name %></span>
               <%= link_to "导入试题", import_question_teachers_path(sub_course_number: sub_course.number), class: "upload pull-right" %>
               <%= link_to "编辑", edit_sub_course_path(sub_course), remote: true, class: "edit pull-right" %>
-              <!--<%= link_to "删除", sub_course_path(sub_course.id), data: {confirm: '确认要删除吗'}, method: :delete, class: "delete pull-left" %>-->
+              <%= link_to "删除", sub_course_path(sub_course.id), data: {confirm: '确认要删除吗'}, method: :delete, class: "delete pull-left" %>
             </li>
           <% end %>
         <% end %>
