@@ -70,6 +70,7 @@ gem "paperclip", "~> 4.2.1"
 
 #剪切视频预览图片
 gem "paperclip-ffmpeg"
+gem 'cocaine', '~> 0.5.3'
 
 gem 'acts_as_commentable_with_threading', '~> 2.0.0'
 
