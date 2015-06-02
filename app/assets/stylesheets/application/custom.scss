@@ -1510,15 +1510,40 @@ body.sub_courses__show  {
 					padding-left: 10px;
 					border-left: solid 4px $main-color;
 				}
-			 ul.videos li {
-				 text-align: center;
-				 display: block;
-				 margin: 15px 0;
+				 ul.videos {
+	      	width: 260px;
+	        margin: 15px auto 0 auto;
+					overflow: hidden;
+					li {
+						border: solid 1px #dbdbdb;
+	          margin-bottom: 24px;
+						position: relative;
+						img {
+							width: 100%;
+							-webkit-transition:all 0.25s ease-in-out;
+							-moz-transition:all 0.25s ease-in-out;
+							-o-transition:all 0.25s ease-in-out;
+							-ms-transition:all 0.25s ease-in-out;
+							transition:all 0.25s ease-in-out;
+						}
+						p {
+							height: 30px;
+						  width: 100%;
+						  line-height: 30px;
+						  color: #fff;
+						  text-align: center;
+						  background: #000;
+						  position: absolute;
+						  bottom: 0;
+						  opacity: 0.5;
+						}
+					}
 				}
 				.buttons {
 					text-align: center;
 				}
 			}
+
 			.students-content {
 				margin-top: 40px;
 				background: #fff;

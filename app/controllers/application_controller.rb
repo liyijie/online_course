@@ -37,12 +37,10 @@ class ApplicationController < ActionController::Base
   def authenticate_user_or_teacher
     if !user_signed_in? and !teacher_signed_in?
       if request.xhr?
-        pp "111111111111111111111111"
         respond_to do |format|
           format.js { render js: "parent.location.href='#{new_user_session_path}'" }
         end
       else 
-        pp "22222222222222222222222222222222"
         authenticate_user!
       end 
     end 

@@ -33,29 +33,31 @@
 
     <div class="right-content">
       <h1><%= @course.name %></h1>
-      <div class="collect-zan-btns">
-        <%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do %>
-          <%= hidden_field_tag "course_id", @course.id%>
-          <button id="courseCollectBtn" type="button" class="btn btn-default">
-            <% collect_count = @course.get_likes(vote_scope: :collect).size %>
-            <% is_collect = current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>
-            <span id="collectIcon" class="glyphicon glyphicon-star <%= 'text-muted' if !is_collect %>"></span>
-            <span id="collectFont" count="<%= collect_count %>" 
-              iscollect = "<%= is_collect %>" >
-              <%= collect_count %>
-            </span>
-          </button>
-          <button id="coursePraiseBtn" type="button" class="btn btn-default">
-            <% praise_count = @course.get_likes(vote_scope: :praise).size %>
-            <% is_praise = current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>
-            <span id="praiseIcon" class="glyphicon glyphicon-heart <%= 'text-muted' if !is_praise %>"></span>
-            <span id="praiseFont" count="<%= praise_count %>" 
-              ispraise = "<%= is_praise %>" >
-              <%= praise_count %>
-            </span>
-          </button>
-        <% end %>
-      </div>
+      <% if !teacher_signed_in? %>
+        <div class="collect-zan-btns">
+          <%= form_tag course_collect_courses_path, method: :post, remote: true, id: "courseCollectPraise" do %>
+            <%= hidden_field_tag "course_id", @course.id%>
+            <button id="courseCollectBtn" type="button" class="btn btn-default">
+              <% collect_count = @course.get_likes(vote_scope: :collect).size %>
+              <% is_collect = current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>
+              <span id="collectIcon" class="glyphicon glyphicon-star <%= 'text-muted' if !is_collect %>"></span>
+              <span id="collectFont" count="<%= collect_count %>" 
+                iscollect = "<%= is_collect %>" >
+                <%= collect_count %>
+              </span>
+            </button>
+            <button id="coursePraiseBtn" type="button" class="btn btn-default">
+              <% praise_count = @course.get_likes(vote_scope: :praise).size %>
+              <% is_praise = current_user.present? && (current_user.voted_up_on? @course,vote_scope: :praise) %>
+              <span id="praiseIcon" class="glyphicon glyphicon-heart <%= 'text-muted' if !is_praise %>"></span>
+              <span id="praiseFont" count="<%= praise_count %>" 
+                ispraise = "<%= is_praise %>" >
+                <%= praise_count %>
+              </span>
+            </button>
+          <% end %>
+        </div>
+      <% end %>
       <ul class="course-main">
         <li class="course-info">
           <span class="title">课程简介</span>
