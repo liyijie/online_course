@@ -509,23 +509,20 @@ body.courses__show, body.courses__after_class {
 				li {
 					overflow: hidden;
 				}
-				a.title {
+				span.title {
 					width: 740px;
 					padding-left: 20px;
 					float: left;
 				}
-				a.total {
+				span.total {
 					width: 200px;
 					text-align:center;
 					float: left;
 				}
-				a.already {
+				span.already {
 					width: 200px;
 					text-align:center;
 					float: left;
-				}
-				span.title {
-					padding-left: 20px;
 				}
 				li {
 					height: 46px;
