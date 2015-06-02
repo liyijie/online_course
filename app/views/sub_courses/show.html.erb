@@ -14,7 +14,7 @@
 	<div class="left-content">
 		<div class="video-content">
 			<!-- video -->
-			<video width="860" height="500" class="mejs-player" poster="/assets/course-show.png" controls="controls" preload="none">
+			<video width="860" height="500" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:thumb))%>" controls="controls" preload="none">
 				<source type="video/mp4" src="<%= @sub_course.attachment.content.url %>" />
 				<source type="video/webm" src="myvideo.webm" />
 				<source type="video/ogg" src="myvideo.ogv" />

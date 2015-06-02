@@ -127,6 +127,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-ffmpeg (1.2.0)
+      paperclip (>= 2.5.2)
+      rails
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -246,6 +249,7 @@ DEPENDENCIES
   mina
   mysql2
   paperclip (~> 4.2.1)
+  paperclip-ffmpeg
   rails (= 4.2.1)
   remotipart (~> 1.2)
   roo
