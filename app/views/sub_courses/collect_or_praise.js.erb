@@ -1,0 +1,19 @@
+<% if @success %> 
+  <% type = params[:scope]=="collect" ? "收藏" : "喜欢" %>
+  var span = $("#subCourseCollectPraise a:eq(<%= params[:scope]=='collect' ? 1 : 0 %>) span:eq(1)");
+  var spanIcon = $("#subCourseCollectPraise a:eq(<%= params[:scope]=='collect' ? 1 : 0 %>) span:eq(0)");
+  var count = 0;
+  <% if @like %>
+    count = parseInt(span.text()) + 1;
+    spanIcon.addClass("glyphicon-<%= params[:scope]=='collect' ? 'orange' : 'pink' %>");
+  <% else %>
+   count = parseInt(span.text()) - 1;
+   spanIcon.removeClass("glyphicon-<%= params[:scope]=='collect' ? 'orange' : 'pink' %>");
+  <% end %>
+  span.text(count);
+
+  alert('<%= @like ? "#{type}成功" : "取消#{type}" %>');
+
+<% else %>
+  alert("收藏失败");
+<% end %>

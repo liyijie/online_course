@@ -6,6 +6,9 @@
   	<li class="active"><%= @sub_course.name %></li>
   </ol>
 <% end %>
+<%= content_for :script do %>
+  <%= javascript_include_tag "_sub_course_show", 'data-turbolinks-track' => true %>
+<%end%>
 
 <div class="main-content">
 	<div class="left-content">
@@ -17,18 +20,22 @@
 				<source type="video/ogg" src="myvideo.ogv" />
 			</video>
 			<div class="collect-content">
-				<div class="collect">
-				  <%= link_to "" do %>
-				    <span class="glyphicon glyphicon-heart"></span>
-				  <span>我喜欢</span>
-				  <% end %>
-				</div>
-			  <div class="collect">
-				  <%= link_to "" do %>
-				    <span class="glyphicon glyphicon-star"></span>
-				  <span>收藏</span>
-				  <% end %>
-				</div>
+				<%= form_tag sub_courses_collect_or_praise_path, method: :post, remote: true, id: "subCourseCollectPraise" do %>
+				<%= hidden_field_tag "sub_course_id", @sub_course.id%>
+				<%= hidden_field_tag "scope", '' %>
+					<div class="collect">
+					  <%= link_to "javascript:void(0);", scope: "praise" do %>
+					  	<span class="glyphicon glyphicon-heart <%= @sub_course.is_praise? ? 'glyphicon-pink' : '' %>"></span>
+					  	<span><%= @sub_course.get_likes(vote_scope: :praise).size %></span>
+					  <% end %>
+					</div>
+				  <div class="collect">
+					  <%= link_to "javascript:void(0);", scope: "collect" do %>
+					    <span class="glyphicon glyphicon-star <%= @sub_course.is_collect? ? 'glyphicon-orange' : '' %>"></span>
+					  	<span><%= @sub_course.get_likes(vote_scope: :collect).size %></span>
+					  <% end %>
+					</div>
+				<% end %>
 			</div>
 		</div>
 

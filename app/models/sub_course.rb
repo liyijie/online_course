@@ -13,6 +13,7 @@
 
 class SubCourse < ActiveRecord::Base
   acts_as_commentable
+  acts_as_votable
   belongs_to :course
   has_one :attachment
   has_many :questions, dependent: :destroy
@@ -80,4 +81,33 @@ class SubCourse < ActiveRecord::Base
     #返回所有评论
     sub_course.root_comments.where(comment_scope:  params[:comment_scope]).order("created_at DESC").page(params[:page])
   end
+
+  #是否收藏
+  def is_collect?
+    self.get_likes(vote_scope: :collect).size > 0
+  end
+
+  #是否喜欢
+  def is_praise?
+    self.get_likes(vote_scope: :praise).size > 0
+  end 
+
+  #收藏或者喜欢子课程
+  #参数：user,收藏的用户；vote_scope，收藏还是喜欢
+  #返回值：第一个收藏是否成功，第二个这次是收藏还是取消收藏
+  def self.collect_or_praise user,vote_scope,sub_course_id
+    sub_course = SubCourse.where(id: sub_course_id).first
+
+    return false if sub_course.blank? || user.blank? || !(['collect','praise'].include? (vote_scope))
+
+    if user.voted_up_on? sub_course, vote_scope: vote_scope.to_sym
+      #已经收藏（赞）过时取消收藏（取消赞）
+      sub_course.downvote_from user, vote_scope: vote_scope.to_sym
+      return true, false
+    else
+      #未收藏（赞）则收藏（赞）
+      sub_course.like_by user, vote_scope: vote_scope.to_sym
+      return true,true
+    end
+  end 
 end

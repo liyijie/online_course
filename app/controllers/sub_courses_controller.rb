@@ -1,6 +1,7 @@
 class SubCoursesController < ApplicationController
   before_action :authenticate_user_or_teacher, only: [:comment_create_list, :reply_comment_list], if: "params[:comment].present?"
   before_action :authenticate_user_or_teacher, only: [:comment_parise]
+  before_action :authenticate_user! , only: [:collect_or_praise] , if: "!teacher_signed_in?"
 
 	def show
     @sub_course = SubCourse.where(number: params[:number]).first
@@ -62,6 +63,22 @@ class SubCoursesController < ApplicationController
     else
       respond_to do |format|
         format.js {render js: "alert('评论不存在');"}
+      end
+    end 
+    
+  end 
+
+
+  #收藏或者喜欢
+  def collect_or_praise
+    if current_user.present?
+      @success, @like = SubCourse.collect_or_praise current_user, params[:scope], params[:sub_course_id]
+      respond_to do |format|
+        format.js 
+      end
+    else
+      respond_to do |format|
+        format.js {render js: "alert('学生登录才可以操作');"}
       end
     end 
     

@@ -1423,6 +1423,16 @@ body.sub_courses__show  {
 					.collect {
 						width: 80px;
 						float: right;
+						a {
+							color: #fff;
+							width: 100px;
+							span.glyphicon-pink {
+							color: pink;
+							}
+							span.glyphicon-orange {
+								color: orange;
+							}
+						}
 					}
 				}
 			}

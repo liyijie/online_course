@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "sub_courses/comment_create_list"
   post "sub_courses/reply_comment_list"
   get "sub_courses/comment_praise"
+  post "sub_courses/collect_or_praise"
   
   #当子课程为pdf等格式文件时下载链接
   get "/sub_courses/:number/download", to: "sub_courses#download", as: :download_sub_course
