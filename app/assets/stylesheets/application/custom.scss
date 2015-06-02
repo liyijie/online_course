@@ -158,11 +158,11 @@ body.home__index {
 			a.img {
 				width: 345px;
 				height: 230px;
-				width: 100%;
 				display: block;
 				overflow: hidden;
 			}
 			a.img img {
+				width: 100%;
 				-webkit-transition:all 0.25s ease-in-out;
 				-moz-transition:all 0.25s ease-in-out;
 				-o-transition:all 0.25s ease-in-out;
@@ -1380,6 +1380,7 @@ body.teachers__show {
 						display: block;
 					}
 					a img {
+						width: 100%;
 						-webkit-transition:all 0.25s ease-in-out;
 						-moz-transition:all 0.25s ease-in-out;
 						-o-transition:all 0.25s ease-in-out;
