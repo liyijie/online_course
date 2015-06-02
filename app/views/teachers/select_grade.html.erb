@@ -30,7 +30,7 @@
 		  </div>
 		  <% end %>
 		<% end %>
-		
+
 		<% if @grades.length % 4 != 3 %>
 		   </div>
 		<% end %>
@@ -40,10 +40,13 @@
 
 	  <%= hidden_field_tag "academy_id", params[:academy_id]%>
 	  <div class="search-score-btn">
-		<button type="button" class="btn btn-primary btn-lg" onclick="this.form.action='<%= my_score_teachers_path%>';this.form.submit();">上一步</button>
-		<%= submit_tag "下一步", class: "btn btn-danger btn-lg", id: "nextStep", disabled: params[:grade_ids].blank? %>
+			<button type="button" class="btn btn-primary" onclick="this.form.action='<%= my_score_teachers_path%>';this.form.submit();">
+	    <span class="glyphicon glyphicon-hand-left"></span>
+			上一步</button>
+			<%= button_tag(type: "submit", class: "btn btn-success", id: "nextStep", disabled: params[:grade_ids].blank?) do %>
+			  下一步  <span class="glyphicon glyphicon-hand-right"></span>
+			<% end %>
 	  </div>
 	<% end %>
-
   </div>
 </div>

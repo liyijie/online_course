@@ -37,8 +37,12 @@
 		</div>
 
 		<div class="search-score-btn">
-			<button type="button" class="btn btn-primary btn-lg">导出EXCEL</button>
-			<%= link_to("进入下一页", show_grade_score_teachers_path, class: "btn btn-danger btn-lg") %>
+			<button type="button" class="btn btn-primary">
+			<span class="glyphicon glyphicon-export"></span>
+			导出EXCEL</button>
+			<%= link_to show_grade_score_teachers_path, class: "btn btn-danger" do %>
+			  进入下一页  <span class="glyphicon glyphicon-hand-right"></span>
+		  <% end %>
 		</div>
 	</div>
 
