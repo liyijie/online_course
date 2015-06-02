@@ -15,6 +15,46 @@ class SubCoursesController < ApplicationController
     @comments = @sub_course.root_comments.where(comment_scope: "discuss").order("created_at DESC").page(params[:page])
 	end
 
+  def new
+    @sub_course = SubCourse.new
+    @courses = Course.joins(:teacher_courses).where(teacher_courses: {teacher_id: current_teacher.id})
+  end
+
+  def create
+    @sub_course = SubCourse.new(sub_course_params)
+    @sub_course.attachment = Attachment.new if @sub_course.attachment.blank?
+    @sub_course.attachment.content = params[:sub_course][:attachment]
+    if @sub_course.save && @sub_course.attachment.save
+      flash[:notice] = "创建成功"
+      return render js: "window.location.href='#{my_courses_teachers_url}'"
+    else
+      flash[:notice] = "创建失败"
+      return render js: "window.location.href='#{my_courses_teachers_url}'"
+    end
+  end
+
+  def edit
+    @sub_course = SubCourse.find(params[:id])
+    @courses = Course.joins(:teacher_courses).where(teacher_courses: {teacher_id: current_teacher.id})
+  end
+
+  def update
+    @sub_course = SubCourse.find(params[:id])
+    if @sub_course.update(sub_course_params)
+      flash[:notice] = "更新成功"
+      return render js: "window.location.href='#{my_courses_teachers_url}'"
+    else
+      flash[:notice] = "更新失败"
+      return render js: "window.location.href='#{my_courses_teachers_url}'"
+    end
+  end
+
+  def destroy
+    @sub_course = SubCourse.find(params[:id])
+    @sub_course.destroy
+    return redirect_to my_courses_teachers_url
+  end
+
   #课件下载
 	def download
 		@sub_course = SubCourse.find_by(number: params[:number])

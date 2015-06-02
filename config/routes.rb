@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sub_courses, only: [:new, :create, :edit, :update]
+  resources :sub_courses, only: [:new, :create, :edit, :update, :destroy]
 
 
   #限定教师编号为数字形式
@@ -55,6 +55,8 @@ Rails.application.routes.draw do
       post :show_score
       get :show_grade_score
       post :upload_attachment
+      get :import_question
+      post :import
     end
     member do
       patch :update_password

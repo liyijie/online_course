@@ -1,0 +1,42 @@
+<div class="main-content">
+  <%= render "left_bar" %>
+   <div class="teacher-content teacher-wrapper">
+  	<div class="nav-bar">
+  		<span class="btn btn-primary by-btn-bg">导入试题</span>
+  	</div>
+  	<div class="question-list">
+  		<table class="table-common table table-hover table-bordered text-center">
+				<thead>
+					<tr>
+					  <th class="col-sm-2 text-center">题目标题</th>
+						<th class="col-sm-2 text-center">单项分数</th>
+						<th class="col-sm-2 text-center">正确选项</th>
+			      <th class="col-sm-6 text-center">题目分析</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%= render partial: 'question', locals: {questions: @questions} %>
+				</tbody>
+			</table>
+
+			<%= paginate @questions%>
+
+			<hr></hr>
+			<%= form_tag import_teachers_path, multipart: true do %>
+			  <%= hidden_field_tag :sub_course_number, @sub_course.number%>
+			  <div class="form-group">
+			    <div class="col-sm-12">
+			      <div class="col-sm-4">
+			        <%= file_field_tag :file, class: 'form-control' %>
+			      </div>
+			      <div class="col-sm-2">
+			        <button class="btn btn-primary" type="submit">
+			          <span class="glyphicon glyphicon-floppy-open">导入EXCEL试题</span>
+			        </button>
+			      </div>
+			    </div>
+			  </div>
+			<% end %>
+  	</div>
+  </div>
+</div>

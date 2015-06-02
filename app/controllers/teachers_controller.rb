@@ -47,8 +47,24 @@ class TeachersController < ApplicationController
 				end
 			end
 		end
-	end 
+	end
 
+  #导入试题
+	def import_question
+		@sub_course = SubCourse.find_by(number: params[:sub_course_number])
+		@questions = @sub_course.questions.page(params[:page]).per(15)
+	end
+
+	def import
+		sub_course = SubCourse.find_by(number: params[:sub_course_number])
+	  if Question.where(sub_course_id: sub_course.id).import(params[:file])
+	    flash.now[:notice] = "试题导入成功!"
+	    return redirect_to import_question_teachers_path(sub_course_number: sub_course.number)
+	  else
+	  	flash.now[:notice] = "试题导入失败!"
+	  	return redirect_to import_question_teachers_path(sub_course_number: sub_course.number)
+	  end
+	end
 
   #我的班级
 	def my_grades

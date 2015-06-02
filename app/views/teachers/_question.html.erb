@@ -1,0 +1,8 @@
+<% questions.each do |question| %>
+	<tr>
+	  <td><%= question.title %></td>
+	  <td><%= question.signal_score %></td>
+	  <td><%= question.correct_option %></td>
+	  <td><%= question.correct_hint %></td>
+	</tr>
+<% end %>
