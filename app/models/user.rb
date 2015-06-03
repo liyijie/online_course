@@ -92,14 +92,16 @@ class User < ActiveRecord::Base
     #创建grade班级对象， 存入专业的值
     (3..spreadsheet.last_row).each do |g|
       row = Hash[[header, spreadsheet.row(g)].transpose]
-      grade_arr.push(row["grade"])
-    end
-    grade_arr.uniq.each do |grade_name|
-      grade = Grade.new
-      grade.name = grade_name
-      grade.specialty_id = specialty.id
+      specialty = Specialty.find_by(code: row["specialty"].to_i.to_s)
+      grade = specialty.grades.find_by(name: row["grade"])
+      if grade.present?
+        grade.name = row["grade"]
+      else
+        grade = Grade.new(name: row["grade"])
+      end
       grade.save!
     end
+
     #创建用户对象，存入班级的值
     (3..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]

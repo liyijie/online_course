@@ -3,7 +3,7 @@
   <td><%= user.phone %></td>
   <td><%= user.name %></td>
   <!-- <td><%= user.nickname%></td> -->
-  <td><%= user.gender %></td>
+  <td><%= User::PartnerGender[user.gender.to_sym] %></td>
   <td><%= user.try(:grade).try(:name) %></td>
   <td><%= user.encrypted_password%></td>
   <!-- <td><%= user.position %></td> -->
