@@ -9,6 +9,10 @@ _category_toggle = ->
     _this.on 'click', ->
       _this.addClass("active public-active-style").siblings().removeClass("active public-active-style")
       _list_content.eq(_index).css("display","block").siblings().not("a").css("display","none");
+      if _index is 0
+        $(".fast-entry").show()
+      else
+        $(".fast-entry").hide()
 
 #展开效果
 _drop_down = ->
@@ -124,3 +128,7 @@ $(".courses__show").ready ->
     #显示对应的内容
     $(".course-content-policy-div").hide()
     $(".course-content-policy-div").eq($(this).index()).show()
+
+  $(".fast-entry-links a").click ->
+    $(".entry-content").hide()
+    $(".entry-content").eq($(this).index()).show()
