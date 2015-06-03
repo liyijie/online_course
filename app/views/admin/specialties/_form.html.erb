@@ -1,0 +1,28 @@
+  <%= simple_form_for([:admin, @specialty], html: {class: "form-horizontal"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :academy_id, '所属院系', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.select(:academy_id, Academy.all.collect{ |p| [p.name, p.id]}, {prompt: '请选择学院'}, {class: 'form-control'}) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '专业名称', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :code, '专业代码', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :code, class: 'form-control' %>
+    </div>
+    </div>
+  <hr></hr>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-success" type="submit">
+        <span class="glyphicon glyphicon-floppy-save">保存</span>
+      </button>
+    </div>
+  </div>
+<% end %>

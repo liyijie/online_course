@@ -32,7 +32,6 @@ Rails.application.routes.draw do
 
   resources :sub_courses, only: [:new, :create, :edit, :update, :destroy]
 
-
   #限定教师编号为数字形式
   constraints(number: /\d+/) do
     get "teachers/:number", to: "teachers#show", as: :show_teachers
@@ -86,6 +85,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root "home#index"
+    resources :specialties
     resources :questions, only: [] do
       collection do
          post :import
