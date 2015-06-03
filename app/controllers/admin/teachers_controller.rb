@@ -1,6 +1,6 @@
 class Admin::TeachersController < ApplicationController
   def index
-    @teachers = Teacher.all.page(params[:page])
+    @teachers = Teacher.page(params[:page]).per(15)
   end
 
   def new
@@ -35,10 +35,15 @@ class Admin::TeachersController < ApplicationController
     else
       return :update
     end
-  end 
-  
+  end
+
   def show
-  end 
+  end
+
+  def import
+    Teacher.import(params[:file])
+    redirect_to admin_teachers_url
+  end
 
   private
 

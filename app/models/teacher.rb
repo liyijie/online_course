@@ -36,6 +36,7 @@
 #  academy_id             :integer
 #
 
+require 'csv'
 class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
@@ -86,5 +87,27 @@ class Teacher < ActiveRecord::Base
    #页面头像显示
   def show_image
     self.image.present? ? self.try(:image).try(:avatar).try(:url, :t_280x370) : "teacher-default.jpg"
+  end
+
+  #excel,csv导入功能
+  def self.import(file)
+    allowed_attributes = [ "id","name","password","phone","sex"]
+    spreadsheet = open_spreadsheet(file)
+    header = spreadsheet.row(2)
+    (3..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      teacher = Teacher.new
+      teacher.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+      teacher.save!
+    end
+  end
+
+  def self.open_spreadsheet(file)
+    case File.extname(file.original_filename)
+    when ".csv" then Roo::CSV.new(file.path)
+    when ".xls" then Roo::Excel.new(file.path)
+    when ".xlsx" then Roo::Excelx.new(file.path)
+    else raise "未知格式: #{file.original_filename}"
+    end
   end
 end

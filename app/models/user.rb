@@ -89,9 +89,12 @@ class User < ActiveRecord::Base
     allowed_attributes = ["grade" "number", "name", "phone", "gender", "password"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(2)
-    #创建grade班级对象， 存入专业的值
-    (3..spreadsheet.last_row).each do |g|
-      row = Hash[[header, spreadsheet.row(g)].transpose]
+
+    #创建用户对象，存入班级的值
+    (3..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      user = User.new
+      #创建grade班级对象， 存入专业的值
       specialty = Specialty.find_by(code: row["specialty"].to_i.to_s)
       grade = specialty.grades.find_by(name: row["grade"])
       if grade.present?
@@ -100,26 +103,20 @@ class User < ActiveRecord::Base
       else
         grade = Grade.new(name: row["grade"], specialty_id: specialty.id)
       end
-      grade.save!
-    end
 
-    #创建用户对象，存入班级的值
-    (3..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
-      user = User.new
+      #创建用户，将grade_id存入用户
+      grade.save!
+      user.grade_id = grade.id
+      p "yyyyyyy"
+      p grade.id
       u = row.to_hash.select { |k,v|
        allowed_attributes.include? k
       }
-      p "yyyyyyy"
-      p u
+
       u["gender"] = User::PartnerGender.key(u["gender"])
       u["password"] = row["password"].to_i.to_s
       u["number"] = row["number"].to_i.to_s
       u["phone"] = row["phone"].to_i.to_s
-
-      #学生存入班级的值
-      grade = Grade.find_by(name: row["grade"])
-      user.grade_id = grade.id
 
       user.attributes = u
       user.save!
