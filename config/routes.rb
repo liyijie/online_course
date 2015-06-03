@@ -97,8 +97,17 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :teachers 
-    resources :users 
+    resources :teachers do
+      collection do
+        post :import
+      end
+    end
+
+    resources :users do
+      collection do
+        post :import
+      end
+    end
   end
 
 end

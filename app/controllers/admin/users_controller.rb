@@ -19,7 +19,12 @@ class Admin::UsersController < ApplicationController
     else
       return render :new
     end
-  end 
+  end
+
+  def import
+    User.import(params[:file])
+    redirect_to admin_users_url
+  end
 
 
   def edit
@@ -31,7 +36,7 @@ class Admin::UsersController < ApplicationController
     #专业、班级下拉对应值查
     @specialties = Specialty.where(academy_id: @user.academy_id).pluck(:name, :id)
     @grades = Grade.where(specialty_id: @user.specialty_id).pluck(:name, :id)
-  end 
+  end
 
   def update
     @user = User.where(id: params[:id]).first
@@ -45,7 +50,7 @@ class Admin::UsersController < ApplicationController
       @grades = Grade.where(specialty_id: @user.specialty_id).pluck(:name, :id)
       return :update
     end
-  end 
+  end
 
    private
 

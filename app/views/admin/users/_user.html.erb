@@ -2,10 +2,11 @@
   <td><%= image_tag(user.show_image, style: "max-height:60px;max-width:60px;") %></td>
   <td><%= user.phone %></td>
   <td><%= user.name %></td>
-  <td><%= user.nickname%></td>
+  <!-- <td><%= user.nickname%></td> -->
   <td><%= user.gender %></td>
   <td><%= user.try(:grade).try(:name) %></td>
-  <td><%= user.position %></td>
+  <td><%= user.encrypted_password%></td>
+  <!-- <td><%= user.position %></td> -->
   <td>
     <%= link_to [:admin, user], class: 'btn btn-xs btn-info', title: '查看' do %>
       <span class="glyphicon glyphicon-eye-open"></span>

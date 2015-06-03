@@ -79,12 +79,12 @@ class Teacher < ActiveRecord::Base
   end
 
   #有你昵称显示昵称，没有则显示其名字
-  def show_name 
+  def show_name
     self.name
   end
 
    #页面头像显示
-  def show_image 
+  def show_image
     self.image.present? ? self.try(:image).try(:avatar).try(:url, :t_280x370) : "teacher-default.jpg"
   end
 end

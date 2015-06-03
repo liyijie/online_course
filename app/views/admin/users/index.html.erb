@@ -25,10 +25,11 @@
       <th class="text-center">头像</th>
       <th class="text-center">手机号</th>
       <th class="text-center">姓名</th>
-      <th class="text-center">昵称</th>
+      <!--<th class="text-center">昵称</th>-->
       <th class="text-center">性别</th>
       <th class="text-center">班级</th>
-      <th class="text-center">职位</th>
+      <th>密码</th>
+      <!-- <th class="text-center">职位</th> -->
       <th class="text-center" colspan="3">操作</th>
     </tr>
   </thead>
@@ -37,3 +38,18 @@
   </tbody>
 </table>
 <%= paginate @users %>
+
+<%= form_tag import_admin_users_path, multipart: true do %>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="col-sm-4">
+        <%= file_field_tag :file, class: 'form-control' %>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-success" type="submit">
+          <span class="glyphicon glyphicon-floppy-save">导入学生信息</span>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>
