@@ -1,5 +1,5 @@
 <tr>
-  <td><%= image_tag(course.image.avatar) if course.image%></td>
+  <td><%= image_tag(course.image.avatar.url(:thumb), size: "50x50") if course.image%></td>
   <td><%= course.number %></td>
   <td><%= course.name %></td>
   <td><%= course.description.to_s[0..20] %></td>
@@ -9,10 +9,10 @@
       <span class="glyphicon glyphicon-eye-open"></span>
     <%end%>
     <%= link_to edit_admin_course_path(course), class: 'btn btn-xs btn-default', title: '编辑' do %>
-      <span class="glyphicon glyphicon-eye-open"></span>
+      <span class="glyphicon glyphicon-edit"></span>
     <%end%>
     <%= link_to nil, class: 'btn btn-xs btn-danger', title: '删除' do %>
-      <span class="glyphicon glyphicon-eye-open"></span>
+      <span class="glyphicon glyphicon-trash"></span>
     <%end%>
   </td>
 </tr>

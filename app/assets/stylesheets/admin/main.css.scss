@@ -91,9 +91,13 @@ footer{
     font-weight: 700;
     display: block;
     color:#888;
+    text-align: center;
     text-decoration: none;
     margin-bottom: 10px;
     padding-left: 10px;
+    span {
+      padding-right: 10px;
+    }
   }
   a.active, a:hover {
     background: #eee;
