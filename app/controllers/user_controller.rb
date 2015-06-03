@@ -39,7 +39,7 @@ class UserController < ApplicationController
 
   	  #更新成功
   	  #重新登录更新session以及current_user等相关变量方法的值	
-  	  sign_in(:user, current_user)
+  	  sign_in(:user, @user)
 
   	  flash.now[:notice] = "个人资料更新成功"
   	  redirect_to user_index_path
@@ -90,7 +90,7 @@ class UserController < ApplicationController
 
   #修改密码
   def update_password
-
+    @user = current_user
   end
 
   #根据系别的id，查找到该系下所有的专业
@@ -113,12 +113,15 @@ class UserController < ApplicationController
 
 
   private
-	def user_params
-		params.require(:user).permit(:nickname, :name, :number, :position, :academy_id, :specialty_id, :grade_id, 
-			:phone, :gender, :signature)
-	end
+  	def user_params
+  		params.require(:user).permit(:nickname, :name, :position, :academy_id, :specialty_id, :grade_id, :gender, :signature)
+  	end
 
-  def comment_params
-    params.require(:comment).permit(:title, :body)
-  end
+    def user_password_params
+      params.require(:user).permit(:password, :password_confirmation)
+    end
+
+    def comment_params
+      params.require(:comment).permit(:title, :body)
+    end
 end
