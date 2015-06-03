@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
-  acts_as_voter 
+  acts_as_voter
 
   belongs_to :grade
   has_one :image, as: :imageable
@@ -96,8 +96,9 @@ class User < ActiveRecord::Base
       grade = specialty.grades.find_by(name: row["grade"])
       if grade.present?
         grade.name = row["grade"]
+        grade.specialty_id = specialty.id
       else
-        grade = Grade.new(name: row["grade"])
+        grade = Grade.new(name: row["grade"], specialty_id: specialty.id)
       end
       grade.save!
     end
@@ -109,8 +110,12 @@ class User < ActiveRecord::Base
       u = row.to_hash.select { |k,v|
        allowed_attributes.include? k
       }
+      p "yyyyyyy"
+      p u
       u["gender"] = User::PartnerGender.key(u["gender"])
-      u["password"] = row["password"]
+      u["password"] = row["password"].to_i.to_s
+      u["number"] = row["number"].to_i.to_s
+      u["phone"] = row["phone"].to_i.to_s
 
       #学生存入班级的值
       grade = Grade.find_by(name: row["grade"])

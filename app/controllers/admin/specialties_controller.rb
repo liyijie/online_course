@@ -28,13 +28,14 @@ module Admin
         return redirect_to admin_specialties_url
       else
         return :update
-      end   
+      end
     end
 
     def destroy
       @specialty.destroy
       return redirect_to admin_specialties_url
     end
+
     def show
     end
 

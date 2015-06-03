@@ -103,6 +103,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :academies
+
     resources :users do
       collection do
         post :import
