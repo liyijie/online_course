@@ -5,7 +5,8 @@
   <% end %>
   <%= javascript_include_tag "_user_show", 'data-turbolinks-track' => true %>
 <% end %>
-<%= simple_form_for([:admin, @user], html: {class: "form-horizontal"}) do |f| %>
+
+<%= simple_form_for([:admin, @user], html: {class: "form-horizontal"}, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input, radio_buttons: :horizontal_radio_and_checkboxes }) do |f| %>
   <%= f.input :nickname %>
   <%= f.input :image , as: :file %>
   <%= f.input :name %>
