@@ -88,3 +88,39 @@ $(".courses__show").ready ->
   $("#coursePraiseBtn").mouseleave ->
     count = $("#praiseFont").attr("count")
     $("#praiseFont").text(count)  
+
+  $(".course-content-step-nav").click ->
+    #将点击的菜单选中
+    $(".course-content-step-nav").removeClass("btn-primary by-btn-bg")
+    $(this).addClass("btn-primary by-btn-bg")
+    #显示对应的内容
+    $(".course-content-step-div").hide()
+    $(".course-content-step-div").eq($(this).index()).show()
+  $(".course-content-method-nav").click ->
+    #将点击的菜单选中
+    $(".course-content-method-nav").removeClass("btn-primary by-btn-bg")
+    $(this).addClass("btn-primary by-btn-bg")
+    #显示对应的内容
+    $(".course-content-method-div").hide()
+    $(".course-content-method-div").eq($(this).index()).show()
+  $(".course-content-nav").click ->
+    #将点击的菜单选中
+    $(".course-content-nav").removeClass("btn-primary by-btn-bg")
+    $(this).addClass("btn-primary by-btn-bg")
+    #显示对应的内容
+    $(".course-content-div").hide()
+    $(".course-content-div").eq($(this).index()).show()
+  $(".course-content-effect-nav").click ->
+    #将点击的菜单选中
+    $(".course-content-effect-nav").removeClass("btn-primary by-btn-bg")
+    $(this).addClass("btn-primary by-btn-bg")
+    #显示对应的内容
+    $(".course-content-effect-div").hide()
+    $(".course-content-effect-div").eq($(this).index()).show()
+  $(".course-content-policy-nav").click ->
+    #将点击的菜单选中
+    $(".course-content-policy-nav").removeClass("btn-primary by-btn-bg")
+    $(this).addClass("btn-primary by-btn-bg")
+    #显示对应的内容
+    $(".course-content-policy-div").hide()
+    $(".course-content-policy-div").eq($(this).index()).show()
