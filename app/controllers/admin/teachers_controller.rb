@@ -36,7 +36,7 @@ class Admin::TeachersController < ApplicationController
       return :update
     end
   end 
-
+  
   def show
   end 
 

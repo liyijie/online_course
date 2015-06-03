@@ -39,9 +39,6 @@ module Admin
 			end
 		end
 
-		def destroy
-		end
-
 		private
 
 		def course_params
