@@ -25,7 +25,7 @@ class ExamsController < ApplicationController
 	def show
 		@exam = Exam.where(id: params[:id]).first
 		if @exam.blank?
-			flash[:notice] = "查看的试卷不存在"
+			flash.now[:notice] = "查看的试卷不存在"
 			redirect_to root_path
 			return
 		end

@@ -6,7 +6,7 @@ class SubCoursesController < ApplicationController
 	def show
     @sub_course = SubCourse.where(number: params[:number]).first
     if @sub_course.blank?
-      flash[:notice] = "视频不存在"
+      flash.now[:notice] = "视频不存在"
       redirect_to root_path
       return
     end
@@ -27,10 +27,10 @@ class SubCoursesController < ApplicationController
     @sub_course.attachment = Attachment.new if @sub_course.attachment.blank?
     @sub_course.attachment.content = params[:sub_course][:attachment]
     if @sub_course.save && @sub_course.attachment.save
-      flash[:notice] = "创建成功"
+      flash.now[:notice] = "创建成功"
       return render js: "window.location.href='#{my_courses_teachers_url}'"
     else
-      flash[:notice] = "创建失败"
+      flash.now[:notice] = "创建失败"
       return render js: "window.location.href='#{my_courses_teachers_url}'"
     end
   end
@@ -43,10 +43,10 @@ class SubCoursesController < ApplicationController
   def update
     @sub_course = SubCourse.find(params[:id])
     if @sub_course.update(sub_course_params)
-      flash[:notice] = "更新成功"
+      flash.now[:notice] = "更新成功"
       return render js: "window.location.href='#{my_courses_teachers_url}'"
     else
-      flash[:notice] = "更新失败"
+      flash.now[:notice] = "更新失败"
       return render js: "window.location.href='#{my_courses_teachers_url}'"
     end
   end
