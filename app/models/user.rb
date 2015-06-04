@@ -49,11 +49,11 @@ class User < ActiveRecord::Base
   attr_accessor :academy_id
   attr_accessor :specialty_id
 
-  # validates_presence_of     :phone
-  # validates_uniqueness_of   :phone, case_sensitive: false
-  # validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: [:create, :update_password]
-  # validates_confirmation_of :password, on: [:create, :update_password]
-  # validates_uniqueness_of   :number
+  validates_presence_of     :phone
+  validates_uniqueness_of   :phone, case_sensitive: false
+  validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: [:create, :update_password]
+  validates_confirmation_of :password, on: [:create, :update_password]
+  validates_uniqueness_of   :number
   validates_associated :image
 
 
@@ -86,40 +86,45 @@ class User < ActiveRecord::Base
   #excel导入
   def self.import(file)
     grade_arr = []
-    allowed_attributes = ["grade" "number", "name", "phone", "gender", "password"]
+    allowed_attributes = ["number", "name", "phone", "gender"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(2)
 
     #创建用户对象，存入班级的值
-    (3..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
-      user = User.new
-      #创建grade班级对象， 存入专业的值
-      specialty = Specialty.find_by(code: row["specialty"].to_i.to_s)
-      grade = specialty.grades.find_by(name: row["grade"])
-      if grade.present?
-        grade.name = row["grade"]
-        grade.specialty_id = specialty.id
-      else
-        grade = Grade.new(name: row["grade"], specialty_id: specialty.id)
+    begin
+      User.transaction do
+        (3..spreadsheet.last_row).each do |i|
+          row = Hash[[header, spreadsheet.row(i)].transpose]
+          user = User.new
+          #创建grade班级对象， 存入专业的值
+          specialty = Specialty.find_by(code: row["specialty"].to_i.to_s)
+          grade = specialty.grades.find_by(name: row["grade"])
+          if grade.present?
+            grade.name = row["grade"]
+            grade.specialty_id = specialty.id
+          else
+            grade = Grade.new(name: row["grade"], specialty_id: specialty.id)
+          end
+
+          #创建用户，将grade_id存入用户
+          grade.save!
+          user.grade_id = grade.id
+
+          #初始化hash
+          u_hash = row.to_hash.select { |k,v|
+           allowed_attributes.include? k
+          }
+          u_hash["gender"] = User::PartnerGender.key(u_hash["gender"])
+          #修复纯数字execl会默认加.0的情况
+          u_hash["number"] = row["number"].to_i.to_s
+          u_hash["phone"] = row["phone"].to_i.to_s
+          user.password = row["phone"].to_i.to_s.last(6) #初始密码为手机号后六位
+          user.attributes = u_hash
+          user.save!
+        end
       end
-
-      #创建用户，将grade_id存入用户
-      grade.save!
-      user.grade_id = grade.id
-      p "yyyyyyy"
-      p grade.id
-      u = row.to_hash.select { |k,v|
-       allowed_attributes.include? k
-      }
-
-      u["gender"] = User::PartnerGender.key(u["gender"])
-      u["password"] = row["password"].to_i.to_s
-      u["number"] = row["number"].to_i.to_s
-      u["phone"] = row["phone"].to_i.to_s
-
-      user.attributes = u
-      user.save!
+    rescue Exception => e
+      puts "transaction abort"
     end
   end
 
