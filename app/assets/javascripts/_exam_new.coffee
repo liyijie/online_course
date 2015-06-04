@@ -12,7 +12,7 @@ _init_exam = ->
   #点击开始考试按钮
   $(".js-start-answer-question").click ->
     al_click()  #记时开始允许提交
-    minutes = 90  #初始化时间为90
+    minutes = 60  #初始化时间为60
     dataStart = new Date()
     dataEnd = new Date( dataStart )
     dataEnd.setMinutes( dataStart.getMinutes() + minutes )

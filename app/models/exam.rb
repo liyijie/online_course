@@ -45,14 +45,14 @@ class Exam < ActiveRecord::Base
   end
 
 
-  #获取考试回答正确的题 
+  #获取考试回答正确的题
   def right_items
     rights = []
     self.exam_items.each_with_index {|item,index| rights << (index + 1) if item.correct}
     rights
   end
 
-  #获取考试回答错误的题 
+  #获取考试回答错误的题
   def wrong_items
     wrong = []
     self.exam_items.each_with_index {|item,index| wrong << (index + 1) if !item.correct}
