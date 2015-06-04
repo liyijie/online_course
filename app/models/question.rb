@@ -15,23 +15,30 @@ require 'csv'
 class Question < ActiveRecord::Base
   belongs_to :sub_course
   has_many :options, dependent: :destroy
+  validates :title, uniqueness: true
 
   def self.import(file)
-    allowed_attributes = [ "title", "signal_score", "correct_option", "correct_hint"]
+    allowed_attributes = [ "title", "correct_option", "correct_hint"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(2)
-    (3..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
-      question = Question.new
-      question.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
-      question.save!
-      option_length = row.length - 4  #行中减去question选项长度
-      (1..option_length).each do |i|
-        _opt = 'option_' + i.to_s
-        option = question.options.new
-        option.name = row[_opt]
-        option.save!
+    begin
+      Question.transaction do
+        (3..spreadsheet.last_row).each do |i|
+          row = Hash[[header, spreadsheet.row(i)].transpose]
+          question = Question.new
+          question.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+          question.save!
+          option_length = row.length - 3  #行中减去question选项长度
+          (1..option_length).each do |i|
+            _opt = 'option_' + i.to_s
+            option = question.options.new
+            option.name = row[_opt]
+            option.save!
+          end
+        end
       end
+    rescue Exception => e
+      puts 'import abort'
     end
   end
 

@@ -31,13 +31,13 @@
           <p class="title"><%= index + 1 %>. <%= question.title%></p>
           <% question.options.each do |option|%>
             <p class="option">
-              <%= radio_button_tag("option_" + index.to_s, option.index_type)%>
-              <span><%= option.index_type %>.  <%= option.name%></span>
+              <%= radio_button_tag("option_" + index.to_s, option.name.to_s.split(" ").join("").first)%>
+              <span><%= option.name%></span>
             </p>
           <% end %>
         <% end %>
         <div class="form-group">
-          <%= f.submit '提 交', class: "btn center-block btn-lg btn-primary js-submit-btn"%>
+          <%= f.submit '提 交 测 试', class: "btn center-block btn-lg btn-primary js-submit-btn"%>
         </div>
       <% end %>
     </div>

@@ -1,4 +1,9 @@
 _init_exam = ->
+  #默认禁止提交
+  $(".js-submit-btn").attr("disabled", true)
+  #运行提交按钮操作
+  al_click = ->
+    $(".js-submit-btn").attr("disabled", false)
   #禁止提交按钮样式和事件
   pr_click = ->
     $(".js-submit-btn").attr("disabled", true)
@@ -6,6 +11,7 @@ _init_exam = ->
       return false
   #点击开始考试按钮
   $(".js-start-answer-question").click ->
+    al_click()  #记时开始允许提交
     minutes = 90  #初始化时间为90
     dataStart = new Date()
     dataEnd = new Date( dataStart )
