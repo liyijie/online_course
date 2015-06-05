@@ -11,11 +11,11 @@ module Admin
 
 		def create
 			@course = Course.new(course_params)
-			@course.image = Image.new
-			@course.image.avatar = params[:course][:image]
+			@course.attachment = Attachment.new if @course.attachment.blank?
+			@course.attachment.content = params[:course][:attachment]
 			@course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids],
 				                        course_id: @course.id)
-			if @course.save && @course.image.save
+			if @course.save && @course.attachment.save
 				flash.now[:notice] = "课程创建成功"
 				return redirect_to admin_courses_url
 			else
@@ -28,9 +28,9 @@ module Admin
 		end
 
 		def update
-			@course.image = Image.new if @course.image.blank?
+			@course.attachment = Attachment.new if @course.attachment.blank?
 			params[:course][:teacher_ids] ||= []
-			if @course.update(course_params) && @course.image.update(avatar: params[:course][:image])
+			if @course.update(course_params) && @course.attachment.update(content: params[:course][:attachment])
 				flash.now[:notice] = "课程更新成功"
 				redirect_to admin_courses_url
 			else

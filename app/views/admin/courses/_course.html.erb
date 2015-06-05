@@ -1,5 +1,5 @@
 <tr>
-  <td><%= image_tag(course.image.avatar.url(:thumb), size: "50x50") if course.image%></td>
+  <td><%= image_tag(course.attachment.content.url(:thumb), size: "50x50") if course.attachment%></td>
   <td><%= course.number %></td>
   <td><%= course.name %></td>
   <td><%= course.description.to_s[0..20] %></td>

@@ -15,7 +15,7 @@ class SubCourse < ActiveRecord::Base
   acts_as_commentable
   acts_as_votable
   belongs_to :course
-  has_one :attachment, dependent: :destroy
+  has_one :attachment, as: :attachmentable, dependent: :destroy
   has_many :questions, dependent: :destroy
 
   #创建sub_course生成编号
@@ -59,7 +59,6 @@ class SubCourse < ActiveRecord::Base
         comment = Comment.build_from sub_course, user, params[:comment], params[:comment_scope]
         comment.save
       end
-      
       #返回所有评论
       sub_course.root_comments.where(comment_scope:  params[:comment_scope]).order("created_at DESC").page(params[:page])
     end

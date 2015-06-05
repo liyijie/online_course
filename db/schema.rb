@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602075202) do
+ActiveRecord::Schema.define(version: 20150605080455) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150602075202) do
     t.string   "content_file_name",    limit: 255
     t.string   "content_content_type", limit: 255
     t.integer  "content_file_size",    limit: 4
+    t.integer  "attachmentable_id",    limit: 4
+    t.string   "attachmentable_type",  limit: 255
   end
 
   add_index "attachments", ["sub_course_id"], name: "index_attachments_on_sub_course_id", using: :btree

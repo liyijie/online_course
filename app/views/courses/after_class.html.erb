@@ -20,7 +20,11 @@
   <div class="top-content">
     <div class="left-content">
       <div class="course-image">
-        <%= image_tag(@course.image.avatar.url(:c_420_285))%>
+        <video width="500" height="350" class="mejs-player" poster="<%= (@course.attachment.content.url(:c_500_350))%>" controls="controls" preload="none">
+          <source type="video/mp4" src="<%= @course.attachment.content.url %>" />
+          <source type="video/webm" src="myvideo.webm" />
+          <source type="video/ogg" src="myvideo.ogv" />
+        </video>
       </div>
     </div>
     <div class="right-content">
