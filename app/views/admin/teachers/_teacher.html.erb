@@ -1,8 +1,10 @@
 <tr>
-  <td><%= image_tag(teacher.show_image, style: "max-height:60px;max-width:60px;") %></td>
-  <td><%= teacher.phone %></td>
+  <td><%= teacher.number %></td>
   <td><%= teacher.name %></td>
-  <td><%= teacher.try(:academy).try(:name) %></td>
+  <td><%= teacher.birthday %></td>
+  <td><%= teacher.tec_position %></td>
+  <td><%= teacher.phone %></td>
+  <td><%= teacher.email %></td>
   <td><%= teacher.final_education %></td>
   <td><%= teacher.final_degree %></td>
   <td>

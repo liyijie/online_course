@@ -91,13 +91,14 @@ class Teacher < ActiveRecord::Base
 
   #excel,csv导入功能
   def self.import(file)
-    allowed_attributes = [ "id","name","password","phone","sex"]
+    allowed_attributes = [ "number", "name", "birthday", "tec_position", "phone","email", "final_education", "final_degree"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(2)
     (3..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       teacher = Teacher.new
       teacher.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+      teacher.password = 8888
       teacher.save!
     end
   end

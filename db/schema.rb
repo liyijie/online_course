@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605080455) do
+ActiveRecord::Schema.define(version: 20150605103830) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -253,6 +253,7 @@ ActiveRecord::Schema.define(version: 20150605080455) do
     t.string   "nickname",               limit: 255
     t.boolean  "gender",                 limit: 1,     default: true
     t.text     "signature",              limit: 65535
+    t.string   "campus",                 limit: 255
   end
 
   add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree

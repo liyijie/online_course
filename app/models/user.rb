@@ -118,7 +118,7 @@ class User < ActiveRecord::Base
           #修复纯数字execl会默认加.0的情况,处理输入带有空格的bug
           u_hash["number"] = row["number"].to_i.to_s.split(" ").join("")
           u_hash["phone"] = row["phone"].to_i.to_s.split(" ").join("")
-          user.password = row["phone"].to_i.to_s.split(" ").join("").last(6) #初始密码为手机号后六位
+          user.password = "8888"
           user.attributes = u_hash
           user.save!
         end
