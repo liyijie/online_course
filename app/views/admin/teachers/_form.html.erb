@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @teacher], html: {class: "form-horizontal"}) do |f| %>
+<%= form_for([:admin, @teacher], html: {class: "form-horizontal"}) do |f| %>
   <div class="form-group">
     <%= f.label :academy_id, '所属学院', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
@@ -18,6 +18,12 @@
     <%= f.label :image, '头像', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.file_field :image, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :number, '工号', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :number, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
@@ -51,21 +57,28 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :final_degree, '专业技术职位 ', class: 'col-sm-2 control-label' %>
+    <%= f.label :tec_position, '专业技术职位', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.text_field :final_degree , class: 'form-control' %>
+      <%= f.text_field :tec_position, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :final_education, '学历 ', class: 'col-sm-2 control-label' %>
+    <%= f.label :final_education, '最终学历', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.select(:final_education, Teacher.final_educations, {prompt: '请选择学历'}, {class: 'form-control'}) %>
+      <%= f.text_field :final_education, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :qualification, '资格证书 ', class: 'col-sm-2 control-label' %>
+    <%= f.label :final_degree, '最终学位', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :final_degree, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :qualification, '资格证书', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.text_field :qualification , class: 'form-control' %>
     </div>

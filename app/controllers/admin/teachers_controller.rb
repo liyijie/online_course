@@ -33,7 +33,7 @@ class Admin::TeachersController < ApplicationController
       flash.now[:notice] = "教师更新成功"
       return redirect_to admin_teachers_url
     else
-      return :update
+      return render action: :update
     end
   end
 
@@ -48,7 +48,7 @@ class Admin::TeachersController < ApplicationController
   private
 
     def teacher_params
-      params.require(:teacher).permit(:phone, :name, :username, :academy_id, {grade_ids: []}, 
+      params.require(:teacher).permit(:number, :phone, :name, :username, :academy_id, {grade_ids: []},
         :final_degree, :final_education, :qualification, :tec_expertise, :password, :password_confirmation)
     end
 end

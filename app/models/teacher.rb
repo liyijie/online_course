@@ -50,18 +50,6 @@ class Teacher < ActiveRecord::Base
   has_many :grades, through: :teacher_grades
   belongs_to :academy
 
-  #教师学位列表
-  enum final_education: {
-    '大专': 'dazhuan',
-    '大专在读': 'dazhuanzaidu',
-    '本科': 'benke',
-    '本科在读': 'benkezaidu',
-    '硕士': 'shuoshi',
-    '硕士在读': 'shuoshizaidu',
-    '博士': 'boshi',
-    '博士在读': 'boshizaidu'
-  }
-
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
 

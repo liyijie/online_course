@@ -163,7 +163,7 @@ class TeachersController < ApplicationController
 
 	private
 	def teacher_params
-		params.require(:teacher).permit(:phone, :username, :number, :name, :avatar,
+		params.require(:teacher).permit(:number, :phone, :username, :number, :name, :avatar,
 			                              :birthday, :tec_position, :email, :qualification,
 			                              :fax, :final_education, :final_degree, :tec_expertise,
 			                              :resume, :tec_situation, :tec_service, :deleted_at,
