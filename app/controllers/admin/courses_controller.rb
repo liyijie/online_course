@@ -20,7 +20,7 @@ module Admin
 				return redirect_to admin_courses_url
 			else
 				flash.now[:notice] = "课程创建失败"
-				render redirect_to admin_courses_url
+				return render action: :new
 			end
 		end
 
@@ -32,10 +32,10 @@ module Admin
 			params[:course][:teacher_ids] ||= []
 			if @course.update(course_params) && @course.attachment.update(content: params[:course][:attachment])
 				flash.now[:notice] = "课程更新成功"
-				redirect_to admin_courses_url
+				return redirect_to admin_courses_url
 			else
 				flash.now[:notice] = "课程更新失败"
-				redirect_to admin_courses_url
+				return render action: :edit
 			end
 		end
 
