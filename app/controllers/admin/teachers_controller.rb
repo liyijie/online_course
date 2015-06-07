@@ -45,10 +45,6 @@ class Admin::TeachersController < ApplicationController
     redirect_to admin_teachers_url
   end
 
-  #模板下载
-  def download
-  end
-
   private
 
     def teacher_params

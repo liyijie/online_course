@@ -52,11 +52,7 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  #模板下载
-  def download
-  end
-
-   private
+  private
 
     def user_params
       params.require(:user).permit(:campus, :phone, :nickname,:name, :username, :grade_id,

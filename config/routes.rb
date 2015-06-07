@@ -100,7 +100,6 @@ Rails.application.routes.draw do
     resources :teachers do
       collection do
         post :import
-        get :download
       end
     end
 
@@ -109,7 +108,6 @@ Rails.application.routes.draw do
     resources :users do
       collection do
         post :import
-        get :download
       end
     end
   end
