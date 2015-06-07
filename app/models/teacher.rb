@@ -53,9 +53,13 @@ class Teacher < ActiveRecord::Base
   #教师学位列表
   enum final_education: {
     '大专': 'dazhuan',
+    '大专在读': 'dazhuanzaidu',
     '本科': 'benke',
+    '本科在读': 'benkezaidu',
     '硕士': 'shuoshi',
-    '博士': 'boshi'
+    '硕士在读': 'shuoshizaidu',
+    '博士': 'boshi',
+    '博士在读': 'boshizaidu'
   }
 
   # Virtual attribute for authenticating by either username or phone
@@ -65,11 +69,6 @@ class Teacher < ActiveRecord::Base
   validates_uniqueness_of   :phone, case_sensitive: false
   validates :password, presence: true, length: {minimum:6,maximum: 32}, on: :update
   validates_confirmation_of :password, on: :create
-
-  #创建teacher生成编号
-  before_create do
-    self.number = NumberHelper.random_course_number
-  end
 
   def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup
