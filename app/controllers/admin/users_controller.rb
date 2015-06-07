@@ -52,6 +52,10 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  #模板下载
+  def download
+  end
+
    private
 
     def user_params

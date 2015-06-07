@@ -19,6 +19,7 @@
   <%= f.input :password_confirmation, label: "确认密码" %>
   <%= f.input :gender, collection: User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons %>
   <%= f.input :signature, as: :text %>
+  <%= f.input :campus, label: '校区'%>
 
   <hr></hr>
   <div class="form-group">

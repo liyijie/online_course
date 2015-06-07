@@ -25,7 +25,9 @@
 #  nickname               :string(255)
 #  gender                 :boolean          default(TRUE)
 #  signature              :text(65535)
+#  campus                 :string(255)
 #
+
 require 'csv'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -51,7 +53,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :phone
   validates_uniqueness_of   :phone, case_sensitive: false
-  validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: [:create, :update_password]
+  validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: [:update_password]
   validates_confirmation_of :password, on: [:create, :update_password]
   validates_uniqueness_of   :number
   validates_associated :image
@@ -86,7 +88,7 @@ class User < ActiveRecord::Base
   #excel导入
   def self.import(file)
     grade_arr = []
-    allowed_attributes = ["number", "name", "phone", "gender"]
+    allowed_attributes = ["number", "name", "phone", "gender", "campus"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(2)
 
@@ -118,7 +120,7 @@ class User < ActiveRecord::Base
           #修复纯数字execl会默认加.0的情况,处理输入带有空格的bug
           u_hash["number"] = row["number"].to_i.to_s.split(" ").join("")
           u_hash["phone"] = row["phone"].to_i.to_s.split(" ").join("")
-          user.password = "8888"
+          user.password = 8888
           user.attributes = u_hash
           user.save!
         end

@@ -46,10 +46,11 @@
       <div class="col-sm-4">
         <%= file_field_tag :file, class: 'form-control' %>
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-6">
         <button class="btn btn-success" type="submit">
           <span class="glyphicon glyphicon-floppy-save">导入学生信息</span>
         </button>
+        <%= link_to "导入模板下载", "/excels/user.xlsx", class: "btn btn-primary" %>
       </div>
     </div>
   </div>

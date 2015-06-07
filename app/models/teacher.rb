@@ -63,7 +63,7 @@ class Teacher < ActiveRecord::Base
 
   validates_presence_of     :phone
   validates_uniqueness_of   :phone, case_sensitive: false
-  validates :password, presence: true, length: {minimum:6,maximum: 32}, on: :create
+  validates :password, presence: true, length: {minimum:6,maximum: 32}, on: :update
   validates_confirmation_of :password, on: :create
 
   #创建teacher生成编号
@@ -91,14 +91,17 @@ class Teacher < ActiveRecord::Base
 
   #excel,csv导入功能
   def self.import(file)
-    allowed_attributes = [ "number", "name", "birthday", "tec_position", "phone","email", "final_education", "final_degree"]
+    allowed_attributes = [ "number", "name", "birthday", "tec_position", "phone", "email", "final_education", "final_degree"]
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(2)
     (3..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       teacher = Teacher.new
-      teacher.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+      u_hash = row.to_hash.select { |k,v| allowed_attributes.include? k }
+      u_hash["number"] = row["number"].to_i.to_s.split(" ").join("")
+      u_hash["phone"] = row["phone"].to_i.to_s.split(" ").join("")
       teacher.password = 8888
+      teacher.attributes = u_hash
       teacher.save!
     end
   end
