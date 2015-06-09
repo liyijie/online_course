@@ -1,7 +1,7 @@
 class SubCoursesController < ApplicationController
   before_action :authenticate_user_or_teacher, only: [:comment_create_list, :reply_comment_list], if: "params[:comment].present?"
-  #before_action :authenticate_user_or_teacher, only: [:comment_parise]
-  before_action :authenticate_user! , only: [:collect_or_praise] , if: "!teacher_signed_in?"
+  before_action :authenticate_user_or_teacher2, only: :comment_praise
+  before_action :authenticate_user , only: [:collect_or_praise] , if: "!teacher_signed_in?"
 
 	def show
     @sub_course = SubCourse.where(number: params[:number]).first

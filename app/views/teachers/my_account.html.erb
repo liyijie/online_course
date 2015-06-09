@@ -11,14 +11,15 @@
 	<%= render "left_bar" %>
 	<div class="teacher-content teacher-wrapper none-mt">
   	<div class="nav-bar">
-  		<a href="javascript:void(0)" class="btn btn-default by-btn-bg">个人资料</a>
-  		<a href="javascript:void(0)" class="btn btn-default">修改密码</a>
+  		<%= link_to("个人资料", my_account_teachers_path , class: "btn btn-default by-btn-bg") %>
+      <%= link_to("修改密码", edit_teacher_registration_path , class: "btn btn-default") %>
   	</div>
   	<div class="teacher-info-content teacher-wrapper">
   		<div class="infos col-sm-offset-3">
 		  	<%= simple_form_for(current_teacher, url: teacher_path(current_teacher.id), html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input, radio_buttons: :horizontal_radio_and_checkboxes }) do |f|%>
-		  		<%= f.input :name, label: "我的姓名" %>
-          <%= f.input :number, label: "工号" %>
+          <%= f.input :number, label: "教师工号", readonly: true %>
+          <%= f.input :phone, label: "手机号码",required: false, readonly: true %>
+          <%= f.input :name, label: "我的姓名" %>
           <div class="col-sm-offset-2">
             <%= image_tag(current_teacher.show_image, class: "img-thumbnail edit-teacher-image") %>
           </div>
@@ -30,7 +31,6 @@
           <%= f.input :final_education,label: "最终学历" %>
           <%= f.input :final_degree,label: "最终学位" %>
           <%= f.input :tec_expertise, label: "教学与技术专长" %>
-          <%= f.input :phone, label: "手机号码",required: false %>
           <%= f.input :sex, as: :radio_buttons, collection: ["男", "女"], label: "性别", item_wrapper_class: "radio-inline" %>
           <%= f.input :signature, label: "个性签名" %>
 		  		<div class="col-sm-6 col-sm-offset-3">
@@ -38,18 +38,6 @@
             <input class="btn btn-danger" type="button" value="取消修改">
           </div>
   		 	<%end%>
-  		</div>
-  		<div class="infos col-sm-offset-3">
-  		 	<%= simple_form_for current_teacher, url: update_password_teacher_path(current_teacher, remote: true), html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|%>
-          <div class="error-info"></div>
-          <%= f.input :password, label: "原始密码", placeholder: '请输入原始密码', autofocus: false %>
-          <%= f.input :new_password, label: "新密码", placeholder: '请输入新密码', autofocus: false %>
-          <%= f.input :confirm_new_password, label: "确认密码", placeholder: '请输入确认密码', autofocus: false %>
-          <div class="col-sm-6 col-sm-offset-3">
-            <%= f.submit "确认修改", class: "btn btn-success" %>
-            <input class="btn btn-danger" type="button" value="取消修改">
-          </div>
-        <%end%>
   		</div>
   	</div>
   </div>

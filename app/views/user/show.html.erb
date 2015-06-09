@@ -11,55 +11,41 @@
 
 	  <div class="row self-main-context">
   	  <ul class="nav nav-pills show-content">
-  		  <li role="presentation" class="active"><a href="javascript:void(0);">个人资料</a></li>
-  		  <li role="presentation"><a href="javascript:void(0);">修改密码</a></li>
+  		  <li role="presentation" class="active">
+            <%= link_to("个人资料", user_index_path) %>
+          </li>
+          <li role="presentation" >
+            <%= link_to("修改密码", edit_user_registration_path)  %>
+          </li>
   	  </ul>
 
   	  <div class="container div-form div-content">
-  		<%= simple_form_for(@user, url: user_path(current_user.id), wrapper: "horizontal_form", html: { method: :put, multipart: true, class: "form-horizontal" }) do |f| %>
-        <%= f.input :number, readonly: true %>
-        <%= f.input :phone, required: false, readonly: true %>
-        <%= f.input :name %>
-  		  <%= f.input :nickname %>
-  		  <%= f.input :image , as: :file, wrapper: "horizontal_file_input"%>
-  		  <%= f.input :position %>
-  		  <%= render :partial => "common/common_select", locals: {f: f} %>
-  		  <%= f.input :gender, collection: User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons, wrapper: "horizontal_radio_and_checkboxes", item_wrapper_class: "radio-inline" %>
-  		  <%= f.input :signature, as: :text %>
-
-  		  <div class="col-sm-5 col-sm-offset-2">
-  			<p class="text-center">
-  			  <%= f.submit "确认修改", class: "btn btn-success" %>
-  			  <input class="btn btn-danger" type="button" value="取消修改">
-  			</p>
-  		  </div>
-  		<% end %>
-  	  </div>
-
-    	 <div class="container div-form div-content" style="display: none;">
-    		<%= simple_form_for(@user, url: update_password_user_index_path(current_user.id), wrapper: "horizontal_form", html: { method: :post, multipart: true, class: "form-horizontal" }) do |f| %>
-    		  <%= f.input :old_password, required: false, label: "旧密码" %>
-    		  <%= f.input :password, label: "新密码", required: false %>
-    		  <%= f.input :password_confirmation, label: "确认密码", required: false %>
-    		  <%#= f.input :phone %>
-    		  <%#= f.input :code %>
+    		<%= simple_form_for(@user, url: user_path(current_user.id), wrapper: "horizontal_form", html: { method: :put, multipart: true, class: "form-horizontal" }) do |f| %>
+          <%= f.input :number, readonly: true %>
+          <%= f.input :phone, required: false, readonly: true %>
+          <%= f.input :name %>
+    		  <%= f.input :nickname %>
+    		  <%= f.input :image , as: :file, wrapper: "horizontal_file_input"%>
+    		  <%= f.input :position %>
+    		  <%= render :partial => "common/common_select", locals: {f: f} %>
+    		  <%= f.input :gender, collection: User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons, wrapper: "horizontal_radio_and_checkboxes", item_wrapper_class: "radio-inline" %>
+    		  <%= f.input :signature, as: :text %>
 
     		  <div class="col-sm-5 col-sm-offset-2">
     			<p class="text-center">
     			  <%= f.submit "确认修改", class: "btn btn-success" %>
-    			  <input class="btn btn-danger" type="button" value="取消修改">
     			</p>
     		  </div>
     		<% end %>
     	  </div>
-	</div>
+
+  	</div>
 
   </div>
 
 </div>
 
 <%= content_for :script do %>
-  <%= javascript_include_tag "_user" %>
   <%= javascript_tag do %>
     get_specialties_path = "<%= get_specialties_user_index_path %>"
     get_grades_path = "<%= get_grades_user_index_path %>"

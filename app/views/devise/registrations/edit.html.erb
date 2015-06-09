@@ -1,27 +1,81 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% if user_signed_in? %>
+  <div class="row user">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+    <div class="col-md-2" role="complementary">
+    <%= render :partial => "/user/nav_left" %>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="col-md-10">
+      <div class="row common-info">
+        <%= render :partial => "/user/base_info" %>
+      </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+      <div class="row self-main-context">
+        <ul class="nav nav-pills show-content">
+          <li role="presentation">
+            <%= link_to("个人资料", user_index_path) %>
+          </li>
+          <li role="presentation" class="active">
+            <%= link_to("修改密码", edit_user_registration_path)  %>
+          </li>
+        </ul>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+         <div class="container div-form div-content">
+          <%= simple_form_for current_user, url: registration_path(:user), html: { class: 'form-horizontal', method: :put}, wrapper: :horizontal_form do |f|%>
+            <%= f.input :current_password, label: "原始密码", placeholder: '请输入原始密码', autofocus: false %>
+            <%= f.input :password, label: "新密码", placeholder: '请输入新密码', autofocus: false %>
+            <%= f.input :password_confirmation, label: "确认密码", placeholder: '请输入确认密码', autofocus: false %>
+
+            <div class="col-sm-5 col-sm-offset-2">
+            <p class="text-center">
+              <%= f.submit "确认修改", class: "btn btn-success" %>
+            </p>
+            </div>
+          <% end %>
+          </div>
+    </div>
+
+    </div>
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <%= content_for :script do %>
+    <%= javascript_tag do %>
+      get_specialties_path = "<%= get_specialties_user_index_path %>"
+      get_grades_path = "<%= get_grades_user_index_path %>"
+    <% end %>
+    <%= javascript_include_tag "_user_show" %>
+  <% end %>
+
+<% elsif teacher_signed_in? %>
+  <%= content_for :script do %>
+    <%= javascript_include_tag "_teacher_page",'data-turbolinks-track' => true  %>
+    <%= javascript_tag do %>
+      get_specialties_path = "<%= get_specialties_user_index_path %>"
+      get_grades_path = "<%= get_grades_user_index_path %>"
+    <% end %>
+    <%= javascript_include_tag "_user_show" %>
+  <%end%>
+
+  <div class="main-content">
+    <%= render "teachers/left_bar" %>
+    <div class="teacher-content teacher-wrapper none-mt">
+      <div class="nav-bar">
+        <%= link_to("个人资料", my_account_teachers_path , class: "btn btn-default") %>
+        <%= link_to("修改密码", edit_teacher_registration_path , class: "btn btn-default by-btn-bg") %>
+      </div>
+      <div class="teacher-info-content teacher-wrapper">
+        <div class="infos col-sm-offset-3">
+          <%= simple_form_for current_teacher, url: registration_path(:teacher), html: { class: 'form-horizontal', method: :put}, wrapper: :horizontal_form do |f|%>
+            <%= f.input :current_password, label: "原始密码", placeholder: '请输入原始密码', autofocus: false %>
+            <%= f.input :password, label: "新密码", placeholder: '请输入新密码', autofocus: false %>
+            <%= f.input :password_confirmation, label: "确认密码", placeholder: '请输入确认密码', autofocus: false %>
+            <div class="col-sm-6 col-sm-offset-3">
+              <%= f.submit "确认修改", class: "btn btn-success" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

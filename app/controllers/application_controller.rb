@@ -15,14 +15,14 @@ class ApplicationController < ActionController::Base
   #【注意】
   #【著作】2015/05/7 by fw
   def get_layout
-    if devise_controller?
-    	'login'
+    if devise_controller? && params[:controller] != "devise/registrations"
+      'login'
     elsif is_admin?
       'admin'
     end
   end
 
-  def authenticate_user!
+  def authenticate_user
     if request.xhr?
       if !user_signed_in?
         respond_to do |format|
@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
       end 
     end 
   end 
+
+  def authenticate_user_or_teacher2
+    authenticate_user_or_teacher
+  end
 
 
   protected
