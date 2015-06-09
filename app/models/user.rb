@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :phone
   validates_uniqueness_of   :phone, case_sensitive: false
-  validates :password, presence: true, length: { minimum:6, maximum: 32 }, on: [:update_password]
+  validates :password, presence: true, length: { minimum:4, maximum: 32 }, on: [:create, :update_password]
   validates_confirmation_of :password, on: [:create, :update_password]
   validates_uniqueness_of   :number
   validates_associated :image
@@ -121,6 +121,7 @@ class User < ActiveRecord::Base
           u_hash["number"] = row["number"].to_i.to_s.split(" ").join("")
           u_hash["phone"] = row["phone"].to_i.to_s.split(" ").join("")
           user.password = 8888
+          user.password_confirmation = 8888
           user.attributes = u_hash
           user.save!
         end

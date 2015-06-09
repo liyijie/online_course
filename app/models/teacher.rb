@@ -55,7 +55,8 @@ class Teacher < ActiveRecord::Base
 
   validates_presence_of     :phone
   validates_uniqueness_of   :phone, case_sensitive: false
-  validates :password, presence: true, length: {minimum:6,maximum: 32}, on: :update
+  validates_uniqueness_of   :number, case_sensitive: false
+  validates :password, presence: true, length: {minimum:4,maximum: 32}, on: :create
   validates_confirmation_of :password, on: :create
 
   def self.find_for_database_authentication(warden_conditions)
@@ -63,7 +64,7 @@ class Teacher < ActiveRecord::Base
 
    login = conditions.delete(:login)
 
-   where(conditions).where(["lower(username) = :value OR lower(phone) = :value", { :value => login.strip.downcase }]).first
+   where(conditions).where(["lower(number) = :value OR lower(phone) = :value", { :value => login.strip.downcase }]).first
   end
 
   #有你昵称显示昵称，没有则显示其名字
@@ -87,7 +88,8 @@ class Teacher < ActiveRecord::Base
       u_hash = row.to_hash.select { |k,v| allowed_attributes.include? k }
       u_hash["number"] = row["number"].to_i.to_s.split(" ").join("")
       u_hash["phone"] = row["phone"].to_i.to_s.split(" ").join("")
-      teacher.password = 8888
+      teacher.password = "8888"
+      teacher.password_confirmation = "8888"
       teacher.attributes = u_hash
       teacher.save!
     end
