@@ -1424,6 +1424,11 @@ body.sub_courses__show  {
 		.left-content {
 			width: 900px;
 			float: left;
+			.fix-size-bg {
+				height: 60px;
+				line-height: 60px;
+				background: #eee;
+			}
 			.video-content {
 				padding: 20px;
 				background: #fff;
@@ -1516,6 +1521,16 @@ body.sub_courses__show  {
 					color: $main-color;
 					padding-left: 10px;
 					border-left: solid 4px $main-color;
+					margin: 18px 0;
+				}
+				ul.teachers {
+					li {
+						text-align: center;
+						margin: 10px 0 20px 0;
+						img {
+							width: 100%;
+						}
+					}
 				}
 				 ul.videos {
 	      	width: 260px;

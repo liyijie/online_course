@@ -85,6 +85,7 @@ gem "roo"
 
 gem 'remotipart', '~> 1.2'
 
+gem 'pdfjs_viewer-rails'
 
 
 

@@ -12,51 +12,68 @@
 
 <div class="main-content">
 	<div class="left-content">
-		<div class="video-content">
-			<!-- video -->
-			<video width="860" height="500" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:c_860_500))%>" controls="controls" preload="none">
-				<source type="video/mp4" src="<%= @sub_course.attachment.content.url %>" />
-				<source type="video/webm" src="myvideo.webm" />
-				<source type="video/ogg" src="myvideo.ogv" />
-			</video>
-			<% if !teacher_signed_in? %>
-				<div class="collect-content">
-					<%= form_tag sub_courses_collect_or_praise_path, method: :post, remote: true, id: "subCourseCollectPraise" do %>
-					<%= hidden_field_tag "sub_course_id", @sub_course.id%>
-					<%= hidden_field_tag "scope", '' %>
-						<div class="collect">
-						  <%= link_to "javascript:void(0);", scope: "praise" do %>
-						  	<span class="glyphicon glyphicon-heart <%= @sub_course.is_praise? ? 'glyphicon-pink' : '' %>"></span>
-						  	<span><%= @sub_course.get_likes(vote_scope: :praise).size %></span>
-						  <% end %>
-						</div>
-					  <div class="collect">
-						  <%= link_to "javascript:void(0);", scope: "collect" do %>
-						    <span class="glyphicon glyphicon-star <%= @sub_course.is_collect? ? 'glyphicon-orange' : '' %>"></span>
-						  	<span><%= @sub_course.get_likes(vote_scope: :collect).size %></span>
-						  <% end %>
-						</div>
-					<% end %>
-				</div>
-			<% end %>
-		</div>
+	  <% if @sub_course.regex_video %>
+			<div class="video-content">
+				<!-- video -->
+				<video width="860" height="500" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:c_860_500))%>" controls="controls" preload="none">
+					<source type="video/mp4" src="<%= @sub_course.attachment.content.url %>" />
+					<source type="video/webm" src="myvideo.webm" />
+					<source type="video/ogg" src="myvideo.ogv" />
+				</video>
+				<% if !teacher_signed_in? %>
+					<div class="collect-content">
+						<%= form_tag sub_courses_collect_or_praise_path, method: :post, remote: true, id: "subCourseCollectPraise" do %>
+						<%= hidden_field_tag "sub_course_id", @sub_course.id%>
+						<%= hidden_field_tag "scope", '' %>
+							<div class="collect">
+							  <%= link_to "javascript:void(0);", scope: "praise" do %>
+							  	<span class="glyphicon glyphicon-heart <%= @sub_course.is_praise? ? 'glyphicon-pink' : '' %>"></span>
+							  	<span><%= @sub_course.get_likes(vote_scope: :praise).size %></span>
+							  <% end %>
+							</div>
+						  <div class="collect">
+							  <%= link_to "javascript:void(0);", scope: "collect" do %>
+							    <span class="glyphicon glyphicon-star <%= @sub_course.is_collect? ? 'glyphicon-orange' : '' %>"></span>
+							  	<span><%= @sub_course.get_likes(vote_scope: :collect).size %></span>
+							  <% end %>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		<% else %>
+		  <div style="width: 900px; height: 500px; overflow: hidden; background: #fff;" ><%= pdfjs_viewer pdf_url: @sub_course.attachment.content.url, style: :full %></div>
+		  <div class="fix-size-bg">
+			  <div class="col-sm-4 pull-right">
+			  	<div class="col-sm-6 pull-left text-center">
+			    	大小: <%= @sub_course.count_file_size %>
+			    </div>
+			    <div class="col-sm-6 pull-right text-right">
+			    	<%= link_to "下载", download_sub_course_path( @sub_course.number), class: 'btn btn-success'%>
+			    </div>
+			  </div>
+		  </div>
+		<% end %>
 
 		<div id="commentContent" class="comments-content">
     	<%= render :partial => "comment_show" , locals: {comments: @comments }%>
-
 		</div>
 	</div>
 	<div class="right-bar">
 		<div class="related-video">
 			<p class="title">
-				相关视频
+				<%= @sub_course.try(:course).try(:name) %>
 			</p>
 			<ul class="videos">
-				<% @relate_sub_courses.each do |relate_sub_course| %>
-					<li>
-						<%= link_to image_tag(relate_sub_course.attachment.content.url(:c_260_140), class: "photo2"), show_sub_courses_path(number: relate_sub_course.number, course_number: @course.number)%>
-            <p><%= relate_sub_course.name %></p>
-					</li>
+				<%= @sub_course.course.description %>
+			</ul>
+			<p class="title">认课教师</p>
+			<ul class="teachers col-sm-12">
+				<% @sub_course.try(:course).try(:teacher_courses).each do |teacher_course| %>
+				  <li class="col-sm-4">
+				    <%= teacher_course.try(:teacher).try(:name) %>
+				    <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
+				  </li>
 				<% end %>
 			</ul>
 			<div class="buttons">
