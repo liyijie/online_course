@@ -1,5 +1,5 @@
 <%= content_for :script do %>
-  <%= javascript_include_tag "slider.min", "_page_index", 'data-turbolinks-track' => false %>
+  <%#= javascript_include_tag "slider.min", "_page_index", 'data-turbolinks-track' => false %>
 <%end%>
 
 <%= content_for :lunbo do %>
@@ -8,65 +8,133 @@
 
 <div class="main-content">
   <section class="common-title">
-  	<span class="pull-left">精品课程</span>
+  	<span class="pull-left">课程中心特色</span>
   	<!--<span class="pull-right common"><%= link_to "更多", "#", class: "more" %></span>-->
   </section>
-  <section class="department-tabs">
-    <span class="first"><%= link_to "全部", select_courses_home_path, remote: true, class: "first-tab factive"%></span>
-    <% @academies.each_with_index do |academy, index| %>
-      <span class="tab-select-span"><%= link_to academy.name, select_courses_home_path(academy_id: academy.id), remote: true, class: 'common-tab', style: "left: #{index * 118 + 68 }px" %></span>
-    <% end %>
-  </section>
-  <div class="vedio-course-content wrapper">
-    <% @courses.each do |course|%>
-      <div class='single-vedio-content'>
-        <div class="vedio-content">
-          <div class="image-wrapper">
-            <%= link_to image_tag(course.attachment.content.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.attachment%>
-          </div>
-          <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
-          <p class="description">
-            <span class="pull-left section"><%= link_to course.description.to_s[0..10], show_courses_path(course.number) %></span>
-            <span class="pull-right">
-              <span class="glyphicon glyphicon-star"></span>
-              <%= course.get_likes(vote_scope: "collect").size %>人收藏
-            </span>
-          </p>
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center panel-bg">海量精品课程</div>
+        <div class="panel-body course-center">
+          <p>集中了全学院各院系优质的市级、校级精品课程</p>
+          <%= image_tag("book.png")%>
         </div>
       </div>
-    <%end%>
-  </div>
-  <section class="common-title">
-  	<span class="pull-left">教师风采</span>
-  	<!-- <span class="pull-right"><%= link_to "更多", "#", class: "more" %></span> -->
-  </section>
-  <div class="info-teachers-content wrapper">
-    <% @teachers.each do |teacher|%>
-      <div class="teacher-content">
-        <%= link_to image_tag(teacher.image.avatar.url(:t_170x220)), show_teachers_path(teacher.number) if teacher.image %>
-        <p><%= teacher.name %>(<%= teacher.final_degree%>)</p>
-      </div>
-    <%end%>
-  </div>
-  <section class="common-title">
-  	<span class="pull-left">校园文化</span>
-  	<!-- <span class="pull-right"><%= link_to "更多", "#", class: "more" %></span> -->
-  </section>
-
-  <div id="xc-carousel" class="xc-carousel">
-    <a class="nav prev" href="javascript:void(0)"></a>
-    <div class="carousel_items_holder">
-        <ul class="carousel_items">
-          <!-- 图片数量尽量大于5张 -->
-          <li><%= image_tag("school-4.jpg")%></li>
-          <li><%= image_tag("school-1.jpg")%></li>
-          <li><%= image_tag("school-2.jpg")%></li>
-          <li><%= image_tag("school-3.png")%></li>
-          <li><%= image_tag("school-4.jpg")%></li>
-          <li><%= image_tag("school-1.jpg")%></li>
-          <li><%= image_tag("school-2.jpg")%></li>
-        </ul>
     </div>
-    <a class="nav next" href="javascript:void(0)"></a>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center panel-bg">师生在线互动</div>
+        <div class="panel-body course-center">
+          <p>学生可通过收藏、点赞、评论和提问等方式与老师在线互动</p>
+          <%= image_tag("blackboard.png")%>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center panel-bg">在线答题测试</div>
+        <div class="panel-body course-center">
+          <p>丰富的课后习题与测试，及时巩固知识点，学与练的无缝对接</p>
+          <%= image_tag("notes.png")%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="common-title">
+  	<span class="pull-left">课程设置和资源介绍</span>
+  	<!-- <span class="pull-right"><%= link_to "更多", "#", class: "more" %></span> -->
+  </section>
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <div class="col-sm-6">
+      <span  class="btn btn-default btn-lg btn-block border-yellow pull-left">教学过程与企业用人要求对接</span>
+    </div>
+    <div class="col-sm-6">
+      <span  class="btn btn-default btn-lg btn-block border-blue pull-right">课程内容与职业标准对接</span>
+    </div>
+  </div>
+  <div class="tips-bg"></div>
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <div class="col-sm-6">
+      <span  class="btn btn-default btn-lg btn-block border-red pull-left">为学生提供企业环境和开发项目</span>
+    </div>
+    <div class="col-sm-6">
+      <span  class="btn btn-default btn-lg btn-block border-green pull-right">引入项目教学法，以任务驱动为载体做教学设计</span>
+    </div>
+  </div>
+  <section class="common-title">
+    <span class="pull-left">教师风采</span>
+    <!-- <span class="pull-right"><%= link_to "更多", "#", class: "more" %></span> -->
+  </section>
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <div class="col-sm-12 col-xs-12 col-md-12">
+      <div class="list-images">
+        <% @teachers.each_with_index do |teacher, index|%>
+          <% if index%5 == 0 %>
+            <%= link_to show_teachers_path(teacher.number), class: 'large' do %>
+              <%= image_tag(teacher.image.avatar.url(:t_220_220)) if teacher.image %>
+              <div class="mask"><%= teacher.name %></div>
+            <% end %>
+          <% else %>
+              <% if index%5 == 1 %>
+                <div class="small-div">
+              <% end %>
+              <% if index%5 == 1 ||  index%5 == 3%>
+                <%= link_to show_teachers_path(teacher.number), class: 'little pull-left' do %>
+                  <%= image_tag(teacher.image.avatar.url(:t_110_110), alt: teacher.name, title: teacher.final_degree)  if teacher.image %>
+                  <div class="sm-mask"><%= teacher.name %></div>
+                <% end %>
+              <% else %>
+                <%= link_to show_teachers_path(teacher.number), class: 'little' do %>
+                  <%= image_tag(teacher.image.avatar.url(:t_110_110), alt: teacher.name, title: teacher.name)  if teacher.image %>
+                  <div class="sm-mask"><%= teacher.name %></div>
+                <% end %>
+              <% end %>
+              <% if index%5 == 4%>
+                </div>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <section class="common-title">
+    <span class="pull-left">明星课程</span>
+    <!-- <span class="pull-right"><%= link_to "更多", "#", class: "more" %></span> -->
+  </section>
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <% @courses.each do |course|%>
+      <div class="col-sm-4">
+        <div class="star-course">
+          <div class="col-sm-12">
+            <%= link_to image_tag(course.attachment.content.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.attachment%>
+          </div>
+          <div class="col-sm-12">
+            <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
+            <p class="description">
+              <span class="pull-left section"><%= link_to course.description.to_s[0..10], show_courses_path(course.number) %></span>
+              <span class="pull-right">
+                <span class="glyphicon glyphicon-star"></span>
+                <%= course.get_likes(vote_scope: "collect").size %>人收藏
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-12 col-xs-12 col-md-12">
+    <div class="col-sm-6 col-xs-6 col-md-6 col-sm-offset-3 margin-tb">
+      <%= link_to "开始学习", "", class: "btn btn-lg btn-primary center-block"%>
+    </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(function(){
+    $(".list-images .large").each(function(){
+      var _this = $(this);
+      _this.find("img").hover(function(){
+        _this.find(".mask").slideToggle();
+      })
+    });
+  });
+</script>

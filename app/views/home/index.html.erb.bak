@@ -1,0 +1,72 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "slider.min", "_page_index", 'data-turbolinks-track' => false %>
+<%end%>
+
+<%= content_for :lunbo do %>
+  <%= render partial: "/common/lunbo"%>
+<%end%>
+
+<div class="main-content">
+  <section class="common-title">
+  	<span class="pull-left">精品课程</span>
+  	<!--<span class="pull-right common"><%= link_to "更多", "#", class: "more" %></span>-->
+  </section>
+  <section class="department-tabs">
+    <span class="first"><%= link_to "全部", select_courses_home_path, remote: true, class: "first-tab factive"%></span>
+    <% @academies.each_with_index do |academy, index| %>
+      <span class="tab-select-span"><%= link_to academy.name, select_courses_home_path(academy_id: academy.id), remote: true, class: 'common-tab', style: "left: #{index * 118 + 68 }px" %></span>
+    <% end %>
+  </section>
+  <div class="vedio-course-content wrapper">
+    <% @courses.each do |course|%>
+      <div class='single-vedio-content'>
+        <div class="vedio-content">
+          <div class="image-wrapper">
+            <%= link_to image_tag(course.attachment.content.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.attachment%>
+          </div>
+          <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
+          <p class="description">
+            <span class="pull-left section"><%= link_to course.description.to_s[0..10], show_courses_path(course.number) %></span>
+            <span class="pull-right">
+              <span class="glyphicon glyphicon-star"></span>
+              <%= course.get_likes(vote_scope: "collect").size %>人收藏
+            </span>
+          </p>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <section class="common-title">
+  	<span class="pull-left">教师风采</span>
+  	<!-- <span class="pull-right"><%= link_to "更多", "#", class: "more" %></span> -->
+  </section>
+  <div class="info-teachers-content wrapper">
+    <% @teachers.each do |teacher|%>
+      <div class="teacher-content">
+        <%= link_to image_tag(teacher.image.avatar.url(:t_170x220)), show_teachers_path(teacher.number) if teacher.image %>
+        <p><%= teacher.name %>(<%= teacher.final_degree%>)</p>
+      </div>
+    <%end%>
+  </div>
+  <section class="common-title">
+  	<span class="pull-left">校园文化</span>
+  	<!-- <span class="pull-right"><%= link_to "更多", "#", class: "more" %></span> -->
+  </section>
+
+  <div id="xc-carousel" class="xc-carousel">
+    <a class="nav prev" href="javascript:void(0)"></a>
+    <div class="carousel_items_holder">
+        <ul class="carousel_items">
+          <!-- 图片数量尽量大于5张 -->
+          <li><%= image_tag("school-4.jpg")%></li>
+          <li><%= image_tag("school-1.jpg")%></li>
+          <li><%= image_tag("school-2.jpg")%></li>
+          <li><%= image_tag("school-3.png")%></li>
+          <li><%= image_tag("school-4.jpg")%></li>
+          <li><%= image_tag("school-1.jpg")%></li>
+          <li><%= image_tag("school-2.jpg")%></li>
+        </ul>
+    </div>
+    <a class="nav next" href="javascript:void(0)"></a>
+  </div>
+</div>

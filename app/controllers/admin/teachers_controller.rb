@@ -48,7 +48,7 @@ class Admin::TeachersController < ApplicationController
   private
 
     def teacher_params
-      params.require(:teacher).permit(:number, :phone, :name, :username, :academy_id, {grade_ids: []},
+      params.require(:teacher).permit(:tec_position, :number, :phone, :name, :username, :academy_id, {grade_ids: []},
         :final_degree, :final_education, :qualification, :tec_expertise, :password, :password_confirmation)
     end
 end
