@@ -70,7 +70,7 @@
           <% if index%5 == 0 %>
             <%= link_to show_teachers_path(teacher.number), class: 'large' do %>
               <%= image_tag(teacher.image.avatar.url(:t_220_220)) if teacher.image %>
-              <div class="mask"><%= teacher.name %></div>
+              <div class="mask"><p><%= teacher.name %></p></div>
             <% end %>
           <% else %>
               <% if index%5 == 1 %>
@@ -131,7 +131,7 @@
     $(".list-images .large").each(function(){
       var _this = $(this);
       _this.find("img").hover(function(){
-        _this.find(".mask").slideToggle();
+        _this.find(".mask").slideToggle(600);
       })
     });
   });
