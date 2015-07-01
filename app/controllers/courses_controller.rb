@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
 	before_action :authenticate_user! , only: [:course_collect, :course_praise] , if: "!teacher_signed_in?"
 
 	def index
+		@academies = Academy.all
 		@courses = Course.all
 	end
 

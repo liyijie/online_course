@@ -1,0 +1,102 @@
+/*课程中心*/
+body.courses__index {
+  section.common-title {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 16px 0 60px;
+    margin-top: 20px;
+    background: image-url('title-bg.png') no-repeat 8px 15px;
+    span.pull-left {
+      font-size: 24px;
+      font-weight: bold;
+      color: #070707;
+    }
+    span.pull-right {
+      color: #669ad3;
+      a.more {
+        width: 55px;
+        height: 60px;
+        line-height: 60px;
+        display: block;
+        background: image-url('more.png') no-repeat center right;
+      }
+    }
+  }
+  .main-content {
+    padding: 20px 30px;
+    background: #fff;
+    .serach-content {
+      .serach-name {
+        padding-top: 5px
+      }
+
+      .serach-course {
+        li a {
+          color: #171717;
+          padding: 5px 25px;
+        }
+        li.active a {
+          background-color: #ea1c25;
+          padding: 5px 25px;
+          color: #fff;
+        }
+      }
+    }
+
+    .single-vedio-content {
+      .vedio-content {
+        height: 320px;
+        width: 370px;
+        display: block;
+        float: left;
+        margin: 10px 8px;
+        padding: 10px;
+        border: solid #dfdede 1px;
+        overflow: hidden;
+        a.img {
+          width: 345px;
+          height: 230px;
+          display: block;
+          overflow: hidden;
+        }
+        a.img img {
+          width: 100%;
+          -webkit-transition:all 0.25s ease-in-out;
+          -moz-transition:all 0.25s ease-in-out;
+          -o-transition:all 0.25s ease-in-out;
+          -ms-transition:all 0.25s ease-in-out;
+          transition:all 0.25s ease-in-out;
+        }
+        a.img:hover img {
+          transform: scale(1.15,1.15);
+          -webkit-transform:scale(1.15,1.15);
+          -moz-transform:scale(1.15,1.15);
+          -ms-transform:scale(1.15,1.15);
+          -o-transform:scale(1.15,1.15);
+        }
+        p.title  a {
+          height: 30px;
+          line-height: 30px;
+          color: #070707;
+          font-size: 16px;
+          overflow: hidden;
+        }
+        .description{
+          height: 26px;
+          line-height: 26px;
+          overflow: hidden;
+          span.section {
+            width: 50%;
+          }
+          label {
+            font-size: normal;
+          }
+          a {
+            color: #5d5d5d;
+          }
+        }
+      }
+    }
+    
+  }
+}

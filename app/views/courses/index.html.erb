@@ -1,0 +1,77 @@
+<%= content_for :lunbo do %>
+  <%= render partial: "/common/lunbo"%>
+<%end%>
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left">精品课程</span>
+  </section>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <!-- 、、、、、、、、、、、、、、、、系别。。。。。。。。。。。。。。。。。 -->
+      <div class="row serach-content">
+        <div class="col-sm-1 text-right serach-name">
+          <span>系别：</span>
+        </div>
+        <div class="col-sm-11">
+          <ul class="nav nav-pills serach-course">
+            <li class="active"><a href="#">全部</a></li>
+            <% @academies.each_with_index do |academy, index| %>
+              <li><%= link_to academy.name, "#" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <!-- 、、、、、、、、、、、、、、、、系别。。。。。。。。。。。。。。。。。 -->
+      <hr>
+      <!-- 、、、、、、、、、、、、、、、、类别。。。。。。。。。。。。。。。。。 -->
+      <div class="row serach-content">
+        <div class="col-sm-1 text-right serach-name">
+          <span>类别：</span>
+        </div>
+        <div class="col-sm-11">
+          <ul class="nav nav-pills serach-course">
+            <li class="active"><a href="#">全部</a></li>
+            <li><a href="#">市级</a></li>
+            <li><a href="#">校级</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 、、、、、、、、、、、、、、、、类别。。。。。。。。。。。。。。。。。 -->
+      <hr>
+      <!-- 、、、、、、、、、、、、、、、、其他。。。。。。。。。。。。。。。。。 -->
+      <div class="row serach-content">
+        <div class="col-sm-1 text-right serach-name">
+          <span>其他：</span>
+        </div>
+        <div class="col-sm-11">
+          <ul class="nav nav-pills serach-course">
+            <li class="active"><a href="#">全部</a></li>
+            <li><a href="#">最新</a></li>
+            <li><a href="#">最热</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 、、、、、、、、、、、、、、、、类别。。。。。。。。。。。。。。。。。 -->
+    </div>
+  </div>
+
+  <div class="vedio-course-content wrapper">
+    <% @courses.each do |course|%>
+      <div class='single-vedio-content'>
+        <div class="vedio-content">
+          <div class="image-wrapper">
+            <%= link_to image_tag(course.attachment.content.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.attachment%>
+          </div>
+          <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
+          <p class="description">
+            <span class="pull-left section"><%= link_to truncate(course.description.to_s,length: 15), show_courses_path(course.number) %></span>
+            <span class="pull-right">
+              <span class="glyphicon glyphicon-star"></span>
+              <%= course.get_likes(vote_scope: "collect").size %>人收藏
+            </span>
+          </p>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
