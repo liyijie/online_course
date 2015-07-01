@@ -13,7 +13,7 @@ module ApplicationHelper
 	  menu = Array.new
   	#controller.action_name
   	menu << content_tag('li', link_to('首页', root_path), class: controller.controller_path == 'home' ? 'active' : '')
-  	menu << content_tag('li', link_to('课程中心', courses_path), class: ["courses","index"].include?(controller.controller_path) ? 'active' : '')
+  	menu << content_tag('li', link_to('精品课程', courses_path), class: ["courses","index"].include?(controller.controller_path) ? 'active' : '')
   	menu << content_tag('li', link_to('教师风采', teachers_path), 
       class: (controller.controller_path == 'teachers' and controller.action_name=="index") ? 'active' : '' )
   	if user_signed_in?

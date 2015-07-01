@@ -1,0 +1,15 @@
+<div class='single-vedio-content'>
+  <div class="vedio-content">
+    <div class="image-wrapper">
+      <%= link_to image_tag(course.attachment.content.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.attachment%>
+    </div>
+    <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
+    <p class="description">
+      <span class="pull-left section"><%= link_to truncate(course.description.to_s,length: 15), show_courses_path(course.number) %></span>
+      <span class="pull-right">
+        <span class="glyphicon glyphicon-star"></span>
+        <%= course.get_likes(vote_scope: "collect").size %>人收藏
+      </span>
+    </p>
+  </div>
+</div>

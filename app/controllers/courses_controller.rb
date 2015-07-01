@@ -3,7 +3,12 @@ class CoursesController < ApplicationController
 
 	def index
 		@academies = Academy.all
-		@courses = Course.all
+		@courses = Course.search_courses(params)
+
+		respond_to do |format|
+	  	format.html
+	  	format.js
+    end
 	end
 
 	def show

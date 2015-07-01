@@ -50,4 +50,26 @@ class Course < ActiveRecord::Base
 			return true,"un#{vote_scope}"
 		end
 	end
+
+
+	def self.search_courses params
+		conn = [['1=1']]
+		if params[:academy_id].present?
+			conn[0] << 'academy_id = ?'
+      conn << params[:academy_id]
+		end
+
+		if params[:scope].present?
+			conn[0] << 'scope = ?'
+      conn << params[:scope]
+		end
+		conn[0] = conn[0].join(' and ')
+
+		if params[:type].present?
+			Course.where(conn).order("created_at DESC")
+		else
+			Course.where(conn)
+		end
+
+	end
 end
