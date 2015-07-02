@@ -33,6 +33,9 @@ Rails.application.routes.draw do
 
   resources :sub_courses, only: [:new, :create, :edit, :update, :destroy]
 
+  #讨论中心
+  resources :discusses, except: [:edit, :update, :destroy]
+
   #限定教师编号为数字形式
   constraints(number: /\d+/) do
     get "teachers/:number", to: "teachers#show", as: :show_teachers

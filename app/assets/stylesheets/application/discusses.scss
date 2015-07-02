@@ -1,0 +1,113 @@
+/*讨论中心*/
+.discusses__index, .discusses__new, .discusses__create, .discusses__show {
+  section.common-title {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 16px 0 60px;
+    margin-top: 20px;
+    background: image-url('title-bg.png') no-repeat 8px 15px;
+    span.pull-left {
+      font-size: 24px;
+      font-weight: bold;
+      color: #070707;
+    }
+    span.pull-right {
+      color: #669ad3;
+      a.more {
+        width: 55px;
+        height: 60px;
+        line-height: 60px;
+        display: block;
+        background: image-url('more.png') no-repeat center right;
+      }
+    }
+  }
+
+  .main-content {
+    padding: 20px 30px;
+    background: #fff;
+    .serach-content {
+      .serach-name {
+        padding-top: 5px
+      }
+
+      .serach-course {
+        li a {
+          color: #171717;
+          padding: 5px 25px;
+        }
+        li.active a {
+          background-color: #6499d3;
+          padding: 5px 25px;
+          color: #fff;
+        }
+      }
+    }
+
+    //讨论中心菜单栏
+    ul.discuss-menu {
+      background-color: #6a94c1;
+      padding: 0px 74px;
+
+      li {
+        padding-top: 10px;
+
+        a {
+          color: #fff;
+        }
+
+        a:hover {
+          color: #6a94c1;
+          background-color: #fff;
+          border-radius: 0px;
+        }
+
+        &.active {
+          a {
+            background-color: #fff;
+            color: #6a94c1;
+            border-radius: 0px;
+          }
+        }
+
+        &.create-discuss {
+          padding: 5px 0px;
+          a, a:hover {
+            background-color: #fff;
+            border-radius: 16px;
+            color: #6a94c1;
+          }
+        }
+      }
+    }
+
+    //话题列表
+    .discuss-list{
+      padding: 40px;
+      span.glyphicon-question-sign {
+        color: #0088cc;
+      }
+      a {
+        color: #000;
+      }
+      h5 {
+        padding-bottom: 10px;
+      }
+      .discuss-content {
+        line-height: 2;
+      }
+
+      span.label.label-default {
+        margin-left: 30px;
+        background-color: #edf1f2;
+        color: #787d82;
+      }
+
+      .answer-count {
+        border-right: 1px solid #edf1f2;
+      }
+    }
+
+  }
+
+}
