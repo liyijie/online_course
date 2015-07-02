@@ -17,26 +17,28 @@
 	<%= form_tag show_score_teachers_path, method: :post, id: "scoreSearch" do %>
 	  <% if @courses.present? %>
 	  	<% @courses.each_with_index do |course,index| %>
-		  <% if index%4 == 0 %>
-		  <div class="condition-row">
-		  <% end %>
-			<div class="col-sm-3">
-			  <%= radio_button_tag "course_id",course[0] %>
-			  <label for="course_id_<%= index + 1 %>"><%= course[1] %></label>
-			</div>
-		  <% if index%4 == 3 %>
-		  </div>
-		  <% end %>
-		<% end %>
-		<% if @courses.length % 4 != 3 %>
-		   </div>
-		<% end %>
+			  <% if index%4 == 0 %>
+			  	<div class="condition-row">
+			  <% end %>
+
+				<div class="col-sm-3">
+				  <%= radio_button_tag "course_id",course[0] %>
+				  <label for="course_id_<%= index + 1 %>"><%= course[1] %></label>
+				</div>
+
+			  <% if index%4 == 3 %>
+			  	</div>
+			  <% end %>
+			<% end %>
+			<% if @courses.length % 4 != 3 %>
+			   </div>
+			<% end %>
 	  <% else %>
-	  	<div class="blank">当前学院没有课程</div>
+	  	<div class="blank">当前专业没有课程</div>
 	  <% end %>
 
-	  <%= hidden_field_tag "academy_id", params[:academy_id]%>
-	  <%= hidden_field_tag "grade_ids", @grade_ids %>
+	  <%= hidden_field_tag "specialty_id", params[:specialty_id]%>
+	  <%= hidden_field_tag "grade_ids", params[:grade_ids].values.join(",") %>
 	  <div class="search-score-btn">
 			<button type="button" class="btn btn-primary btn" onclick="this.form.action='<%= select_grade_teachers_path%>';this.form.submit();">
 			<span class="glyphicon glyphicon-hand-left"></span>上一步</button>

@@ -81,22 +81,23 @@ class TeachersController < ApplicationController
 
   #成绩查询
 	def my_score
-		@academies = Academy.all.pluck(:id, :name)
+		@specialties = Specialty.all.pluck(:id, :name)
 	end
 
 	#成绩查询----选择班级
 	def select_grade
-		@grades = Grade.joins(:specialty).where(specialties: {academy_id: params[:academy_id]}).pluck("grades.id","grades.name")
+		@grades = Grade.joins(:specialty).where(specialties: {id: params[:specialty_id]}).pluck("grades.id","grades.name")
 	end
 
 	#成绩查询----选择课程
 	def select_course
-		@courses = Course.where(academy_id: params[:academy_id]).pluck(:id, :name)
+		specialtie = Specialty.where(id: params[:specialty_id]).first
+		@courses = Course.where(academy_id: specialtie.academy_id).pluck(:id, :name)
 	end
 
 	#成绩查询----显示查询结果
 	def show_score
-		
+		@course = Course.where(id: params[:course_id]).first
 	end
 
 	#成绩查询----显示班级考试结果统计

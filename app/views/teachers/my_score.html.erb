@@ -15,24 +15,28 @@
         </ul>
   	</div>
   	<%= form_tag select_grade_teachers_path, method: :post, id: "scoreSearch" do %>
-  		<% @academies.each_with_index do |academy,index| %>
+  		<% @specialties.each_with_index do |specialtie,index| %>
   		  <% if index%4 == 0 %>
   		  <div class="condition-row">
   		  <% end %>
   			<div class="col-sm-3">
-  			  <%= radio_button_tag "academy_id", academy[0], academy[0].to_s == params[:academy_id] %>
-  			  <label for="academy_id_<%= index + 1 %>"><%= academy[1] %></label>
+  			  <%= radio_button_tag "specialty_id", specialtie[0], specialtie[0].to_s == params[:specialty_id] %>
+  			  <label for="specialty_id_<%= index + 1 %>"><%= specialtie[1] %></label>
   			</div>
   		  <% if index%4 == 3 %>
   		  </div>
   		  <% end %>
   		<% end %>
 
+      <% if @specialties.length % 4 != 3 %>
+         </div>
+      <% end %>
+
   		<div class="search-score-btn">
   		  <a href="<%= root_path%>" class="btn btn-danger">
   		    <span class="glyphicon glyphicon-home"></span> 返回首页
   		  </a>
-  		  <%= button_tag(type: "submit", class: "btn btn-primary", disabled: params[:academy_id].blank? , id: "nextStep") do %>
+  		  <%= button_tag(type: "submit", class: "btn btn-primary", disabled: params[:specialty_id].blank? , id: "nextStep") do %>
   		    下一步  <span class="glyphicon glyphicon-hand-right"></span>
   		  <% end %>
   		</div>

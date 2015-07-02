@@ -23,7 +23,7 @@
 		  <div class="condition-row">
 		  <% end %>
 			<div class="col-sm-3">
-			  <%= check_box_tag "grade_ids[#{index}]", grade[0] %>
+			  <%= check_box_tag "grade_ids[#{index}]", grade[0], params[:grade_ids].present? &&  params[:grade_ids].include?(grade[0].to_s) %>
 			  <label for="grade_ids_<%= index %>"><%= grade[1] %></label>
 			</div>
 		  <% if index%4 == 3 %>
@@ -35,10 +35,10 @@
 		   </div>
 		<% end %>
 	  <% else %>
-	  	<div class="blank">当前学院没有班级</div>
+	  	<div class="blank">当前专业没有班级</div>
 	  <% end %>
 
-	  <%= hidden_field_tag "academy_id", params[:academy_id]%>
+	  <%= hidden_field_tag "specialty_id", params[:specialty_id]%>
 	  <div class="search-score-btn">
 			<button type="button" class="btn btn-primary" onclick="this.form.action='<%= my_score_teachers_path%>';this.form.submit();">
 	    <span class="glyphicon glyphicon-hand-left"></span>
