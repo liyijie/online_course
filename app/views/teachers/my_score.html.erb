@@ -7,39 +7,35 @@
 
   <div class="teacher-wrapper">
 
-	<div class="search-step col-sm-offset-3">
-	  <ul class="nav nav-pills">
-        <li role="presentation" class="active"><a href="javascript:void(0)">第一步 选择专业</a></li>
-        <li role="presentation"><a href="javascript:void(0)">第二步 选择班级</a></li>
-        <li role="presentation"><a href="javascript:void(0)">第三步 选择课程</a></li>
-      </ul>
-	</div>
-	<%= form_tag select_grade_teachers_path, method: :post, id: "scoreSearch" do %>
-		<% @academies.each_with_index do |academy,index| %>
-		  <% if index%4 == 0 %>
-		  <div class="condition-row">
-		  <% end %>
-			<div class="col-sm-3">
-			  <%= radio_button_tag "academy_id", academy[0], academy[0].to_s == params[:academy_id] %>
-			  <label for="academy_id_<%= index + 1 %>"><%= academy[1] %></label>
-			</div>
-		  <% if index%4 == 3 %>
-		  </div>
-		  <% end %>
-		<% end %>
+  	<div class="search-step col-sm-offset-3">
+  	  <ul class="nav nav-pills">
+          <li role="presentation" class="active"><a href="javascript:void(0)">第一步 选择专业</a></li>
+          <li role="presentation"><a href="javascript:void(0)">第二步 选择班级</a></li>
+          <li role="presentation"><a href="javascript:void(0)">第三步 选择课程</a></li>
+        </ul>
+  	</div>
+  	<%= form_tag select_grade_teachers_path, method: :post, id: "scoreSearch" do %>
+  		<% @academies.each_with_index do |academy,index| %>
+  		  <% if index%4 == 0 %>
+  		  <div class="condition-row">
+  		  <% end %>
+  			<div class="col-sm-3">
+  			  <%= radio_button_tag "academy_id", academy[0], academy[0].to_s == params[:academy_id] %>
+  			  <label for="academy_id_<%= index + 1 %>"><%= academy[1] %></label>
+  			</div>
+  		  <% if index%4 == 3 %>
+  		  </div>
+  		  <% end %>
+  		<% end %>
 
-		<% if @academies.length % 4 != 3 %>
-		   </div>
-		<% end %>
-
-		<div class="search-score-btn">
-		  <a href="<%= root_path%>" class="btn btn-danger">
-		    <span class="glyphicon glyphicon-home"></span> 返回首页
-		  </a>
-		  <%= button_tag(type: "submit", class: "btn btn-primary", disabled: params[:academy_id].blank? , id: "nextStep") do %>
-		    下一步  <span class="glyphicon glyphicon-hand-right"></span>
-		  <% end %>
-		</div>
-	<% end %>
+  		<div class="search-score-btn">
+  		  <a href="<%= root_path%>" class="btn btn-danger">
+  		    <span class="glyphicon glyphicon-home"></span> 返回首页
+  		  </a>
+  		  <%= button_tag(type: "submit", class: "btn btn-primary", disabled: params[:academy_id].blank? , id: "nextStep") do %>
+  		    下一步  <span class="glyphicon glyphicon-hand-right"></span>
+  		  <% end %>
+  		</div>
+  	<% end %>
   </div>
 </div>

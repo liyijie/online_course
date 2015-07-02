@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
   attr_accessor :academy_id
   attr_accessor :specialty_id
 
-  validates_presence_of     :phone
-  validates_uniqueness_of   :phone, case_sensitive: false
+  validates_presence_of     :number
+  validates_uniqueness_of   :number, case_sensitive: false
   validates :password, presence: true, length: { minimum:4, maximum: 32 }, on: [:create, :update_password]
   validates_confirmation_of :password, on: [:create, :update_password]
   validates_uniqueness_of   :number
@@ -92,20 +92,27 @@ class User < ActiveRecord::Base
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(2)
 
+    error_line = 0
+    error_message = ""
+
     #创建用户对象，存入班级的值
     begin
       User.transaction do
         (3..spreadsheet.last_row).each do |i|
+          error_line = i
+
           row = Hash[[header, spreadsheet.row(i)].transpose]
           user = User.new
           #创建grade班级对象， 存入专业的值
           specialty = Specialty.find_by(code: row["specialty"].to_i.to_s)
-          grade = specialty.grades.find_by(name: row["grade"])
+          grade_name = row["grade1"] + "级" + row["grade2"].to_s[1] +"班"
+          grade = specialty.grades.find_by(name: grade_name)
+
           if grade.present?
-            grade.name = row["grade"]
+            grade.name = grade_name
             grade.specialty_id = specialty.id
           else
-            grade = Grade.new(name: row["grade"], specialty_id: specialty.id)
+            grade = Grade.new(name: grade_name, specialty_id: specialty.id)
           end
 
           #创建用户，将grade_id存入用户
@@ -118,8 +125,8 @@ class User < ActiveRecord::Base
           }
           u_hash["gender"] = User::PartnerGender.key(u_hash["gender"])
           #修复纯数字execl会默认加.0的情况,处理输入带有空格的bug
-          u_hash["number"] = row["number"].to_i.to_s.split(" ").join("")
-          u_hash["phone"] = row["phone"].to_i.to_s.split(" ").join("")
+          u_hash["number"] = row["number"].to_i.to_s.strip
+          u_hash["phone"] = row["phone"].present? ? row["phone"].to_i.to_s.strip : "189#{i.to_s}1"
           user.password = 8888
           user.password_confirmation = 8888
           user.attributes = u_hash
@@ -127,7 +134,9 @@ class User < ActiveRecord::Base
         end
       end
     rescue Exception => e
-      puts "transaction abort"
+      pp "================= student import error start =============="
+      pp "error_line:#{error_line}" + e.message
+      pp "================= student import error end =============="
     end
   end
 
