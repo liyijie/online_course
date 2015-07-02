@@ -62,14 +62,14 @@
 	<div class="right-bar">
 		<div class="related-video">
 			<p class="title">
-				<%= @sub_course.try(:course).try(:name) %>
+				<%= @course.name %>
 			</p>
 			<ul class="videos">
-				<%= @sub_course.course.description %>
+				<%= @course.description %>
 			</ul>
 			<p class="title">任课教师</p>
 			<ul class="teachers col-sm-12">
-				<% @sub_course.try(:course).try(:teacher_courses).each do |teacher_course| %>
+				<% @course.teacher_courses.each do |teacher_course| %>
 				  <li class="col-sm-4">
 				    <%= teacher_course.try(:teacher).try(:name) %>
 				    <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
