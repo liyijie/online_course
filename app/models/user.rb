@@ -134,9 +134,9 @@ class User < ActiveRecord::Base
         end
       end
     rescue Exception => e
-      pp "================= student import error start =============="
-      pp "error_line:#{error_line}" + e.message
-      pp "================= student import error end =============="
+      puts "================= student import error start =============="
+      puts "error_line:#{error_line}" + e.message
+      puts "================= student import error end =============="
     end
   end
 
