@@ -67,7 +67,7 @@
 			<ul class="videos">
 				<%= @sub_course.course.description %>
 			</ul>
-			<p class="title">认课教师</p>
+			<p class="title">任课教师</p>
 			<ul class="teachers col-sm-12">
 				<% @sub_course.try(:course).try(:teacher_courses).each do |teacher_course| %>
 				  <li class="col-sm-4">
