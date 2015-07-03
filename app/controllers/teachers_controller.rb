@@ -3,7 +3,8 @@ class TeachersController < ApplicationController
 
 	#教师风采
 	def index
-		@teachers = Teacher.page(params[:page]).per(20)
+		@teachers = Teacher.joins(:image).where("images.avatar_content_type IS NOT NULL")
+		                    .page(params[:page]).per(20)
 	end
 
 	#教师展示
