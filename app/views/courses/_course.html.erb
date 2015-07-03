@@ -5,7 +5,9 @@
     </div>
     <p class="title"><%= link_to course.name, show_courses_path(course.number) %></p>
     <p class="description">
-      <span class="pull-left section"><%= link_to truncate(course.description.to_s,length: 15), show_courses_path(course.number) %></span>
+      <span class="pull-left section">
+        <span>该课程一共有<%= course.try(:sub_courses).try(:size)%>课时</span>
+      </span>
       <span class="pull-right">
         <span class="glyphicon glyphicon-star"></span>
         <%= course.get_likes(vote_scope: "collect").size %>人收藏
