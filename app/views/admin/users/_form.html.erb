@@ -8,6 +8,14 @@
 
 <%= simple_form_for([:admin, @user], html: {class: "form-horizontal"}, wrapper: :horizontal_form, wrapper_mappings: {file: :horizontal_file_input, radio_buttons: :horizontal_radio_and_checkboxes }) do |f| %>
   <%= f.input :nickname %>
+  <% if @user.image.present? %>
+    <div class="form-group">
+      <%= label_tag :image, '已传头像', class: 'col-sm-2 control-label' %>
+      <div class="col-sm-4">
+        <%= image_tag(@user.image.avatar.url, size: "300x200") %>
+      </div>
+    </div>
+  <% end %>
   <%= f.input :image , as: :file %>
   <%= f.input :name %>
   <%= f.input :username, label: "用户名" %>
@@ -30,3 +38,9 @@
     </div>
   </div>
 <%end%>
+
+<script type="text/javascript">
+  $(function(){
+    $("#user_image").fileinput();
+  });
+</script>

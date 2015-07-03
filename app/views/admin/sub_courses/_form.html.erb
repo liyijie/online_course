@@ -8,6 +8,13 @@
   </div>
 
   <div class="form-group">
+    <%= label :attachment_tag, '已传课件', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-8">
+      <div style="width: 100%; height: 400px; overflow: hidden; background: #fff;" ><%= pdfjs_viewer pdf_url: @sub_course.attachment.content.url, style: :full %></div>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :attachment, '课件上传', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.file_field :attachment, class: 'form-control' %>
@@ -23,3 +30,9 @@
     </div>
   </div>
 <%end%>
+
+<script type="text/javascript">
+  $(function(){
+    $("#sub_course_attachment").fileinput();
+  });
+</script>

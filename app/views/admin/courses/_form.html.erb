@@ -14,10 +14,18 @@
       <%end%>
     </div>
   </div>
+  <% if @course.attachment.present? %>
+    <div class="form-group">
+      <%= label_tag :attachment, '已上传附件', class: 'col-sm-2 control-label' %>
+      <div class="col-sm-4 container">
+        <%= image_tag(@course.attachment.content.url(:c_500_350), size: "340x200") %>
+      </div>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.label :attachment, '课程附件', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.file_field :attachment, class: 'form-control' %>
+    <div class="col-sm-4 container">
+      <%= f.file_field :attachment %>
     </div>
   </div>
   <div class="form-group">
@@ -41,3 +49,9 @@
     </div>
   </div>
 <%end%>
+
+<script type="text/javascript">
+  $(function(){
+    $("#course_attachment").fileinput();
+  });
+</script>
