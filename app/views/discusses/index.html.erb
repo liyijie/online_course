@@ -25,8 +25,8 @@
     <li class="active"><a href="#">最新话题</a></li>
     <li><a href="#">热门话题</a></li>
     <li><a href="#">等待回复</a></li>
-    <li id="newCreateBtn" class="navbar-right create-discuss">
-      <a href="javascript:void(0);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
+    <li class="navbar-right create-discuss">
+      <a id="newCreateBtn" href="javascript:void(0);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
     </li>
   </ul>
 
@@ -120,7 +120,7 @@
 
 <script type="text/javascript">
   $(function(){
-    $("newCreateBtn").click(function(){
+    $("#newCreateBtn").click(function(){
       $("#createDiscuss").modal();
     });
   });

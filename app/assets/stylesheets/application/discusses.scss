@@ -111,6 +111,9 @@
 
   //新建话题模态框
   #createDiscuss {
+    .modal-dialog {
+      margin: 150px auto;
+    }
     .modal-header {
       background-color: #6a94c1;
       color: #fff;
