@@ -27,9 +27,10 @@ class Admin::TeachersController < ApplicationController
 
   def update
     @teacher = Teacher.where(id: params[:id]).first
-    @teacher.image = Image.new if @teacher.image.blank?
+    @teacher.image = Image.new if @teacher.image.blank? && params[:teacher][:image].present?
     params[:teacher][:grade_ids] ||= []
-    if @teacher.update(teacher_params) && @teacher.image.update(avatar: params[:teacher][:image])
+    if @teacher.update(teacher_params) 
+      @teacher.image.update(avatar: params[:teacher][:image]) if params[:teacher][:image].present?
       flash.now[:notice] = "教师更新成功"
       return redirect_to admin_teachers_url
     else

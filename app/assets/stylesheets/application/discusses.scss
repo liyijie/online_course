@@ -107,7 +107,16 @@
         border-right: 1px solid #edf1f2;
       }
     }
-
   }
+
+  //新建话题模态框
+  #createDiscuss {
+    .modal-header {
+      background-color: #6a94c1;
+      color: #fff;
+      padding: 10px 30px;
+    }
+  }
+
 
 }

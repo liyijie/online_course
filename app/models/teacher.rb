@@ -74,7 +74,7 @@ class Teacher < ActiveRecord::Base
 
    #页面头像显示
   def show_image
-    self.image.present? ? self.try(:image).try(:avatar).try(:url, :t_280x370) : "teacher-default.jpg"
+    self.image.present? ? self.try(:image).try(:avatar).try(:url, :t_280_370) : "teacher-default.jpg"
   end
 
   #excel,csv导入功能

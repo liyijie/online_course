@@ -28,9 +28,10 @@ module Admin
 		end
 
 		def update
-			@course.attachment = Attachment.new if @course.attachment.blank?
+			@course.attachment = Attachment.new if @course.attachment.blank? && params[:course][:attachment].present?
 			params[:course][:teacher_ids] ||= []
-			if @course.update(course_params) && @course.attachment.update(content: params[:course][:attachment])
+			if @course.update(course_params)
+				@course.attachment.update(content: params[:course][:attachment]) if params[:course][:attachment].present?
 				flash.now[:notice] = "课程更新成功"
 				return redirect_to admin_courses_url
 			else

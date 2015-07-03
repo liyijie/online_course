@@ -25,8 +25,8 @@
     <li class="active"><a href="#">最新话题</a></li>
     <li><a href="#">热门话题</a></li>
     <li><a href="#">等待回复</a></li>
-    <li class="navbar-right create-discuss">
-      <a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
+    <li id="newCreateBtn" class="navbar-right create-discuss">
+      <a href="javascript:void(0);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
     </li>
   </ul>
 
@@ -74,3 +74,54 @@
     <% end %>
   </div>
 </div>
+
+
+<div id="createDiscuss" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">新建话题</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">标题</label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">系别</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">内容</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" rows="9"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2 text-center">
+              <button type="submit" class="btn btn-info">确认发布</button>
+            </div>
+            <div class="col-sm-5 text-center">
+              <button  class="btn btn-danger">取消发布</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $("newCreateBtn").click(function(){
+      $("#createDiscuss").modal();
+    });
+  });
+</script>
