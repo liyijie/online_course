@@ -5,26 +5,31 @@
 header {
 	nav.navbar-default {
 		background-color: $main-color;
-		ul.navbar-nav{
-			margin-left: 20px;
+		ul.nav-header{
+			margin-left: 10px;
 			li {
+				padding: 0px 10px;
 				a {
 					background-color: $main-color;
 					color: #fff;
+					border-radius: 0px;
 				}
 				a:hover {
 					background-color: #b0c4de;
 					color: #fff;
+					border-radius: 0px;
 				}
 			}
 			.active {
 				a {
 					background-color: #b0c4de;
 					color: #fff;
+					border-radius: 0px;
 				}
 				a:hover {
 					background-color: #b0c4de;
 					color: #fff;
+					border-radius: 0px;
 				}
 			}
 		}
