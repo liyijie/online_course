@@ -3,7 +3,7 @@
     course_praise_path = "<%= course_praise_courses_path%>"
     course_collect_path = "<%= course_collect_courses_path%>"
   <% end %>
-  <%= javascript_include_tag "_course_show" %>
+  <%= javascript_include_tag "_course_show", 'data-turbolinks-track' => true %>
 <%end%>
 
 <%= content_for :lunbo do %>
