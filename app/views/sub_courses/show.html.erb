@@ -65,7 +65,7 @@
 				<%= @course.name %>
 			</p>
 			<ul class="videos">
-				<%= @course.description %>
+				<%= truncate(@course.description, length: 220) %>
 			</ul>
 			<p class="title">任课教师</p>
 			<ul class="teachers col-sm-12">
