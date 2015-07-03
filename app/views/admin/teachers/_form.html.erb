@@ -57,6 +57,24 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :email, '电子邮箱', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :fax, '传真号码', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :fax, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthday, '出生年月', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.text_field :birthday, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :tec_position, '专业技术职位', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.text_field :tec_position, class: 'form-control' %>
