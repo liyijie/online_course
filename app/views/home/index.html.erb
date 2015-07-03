@@ -66,7 +66,7 @@
   <div class="info-teachers-content wrapper">
     <% @teachers.each do |teacher|%>
       <div class="teacher-content">
-        <%= link_to image_tag(teacher.image.avatar.url(:t_170x220)), show_teachers_path(teacher.number) if teacher.image %>
+        <%= link_to image_tag(teacher.image.avatar.url(:t_170_220)), show_teachers_path(teacher.number) if teacher.image %>
         <p><%= teacher.name %>(<%= teacher.final_degree%>)</p>
       </div>
     <%end%>
