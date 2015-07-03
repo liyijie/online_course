@@ -3,7 +3,7 @@
     <span class="pull-left">讨论中心</span>
   </section>
 
-  <div class="panel panel-default">
+  <!-- <div class="panel panel-default">
     <div class="panel-body">
       <div class="row serach-content">
         <div class="col-sm-1 text-right serach-name">
@@ -12,14 +12,14 @@
         <div class="col-sm-11">
           <ul class="nav nav-pills serach-course">
             <li param="" class="active"><a href="#">全部</a></li>
-            <% @academies.each_with_index do |academy, index| %>
-              <li param="<%= academy.id %>"><%= link_to academy.name, "#" %></li>
-            <% end %>
+            <%# @academies.each_with_index do |academy, index| %>
+              <li param="<%#= academy.id %>"><%#= link_to academy.name, "#" %></li>
+            <%# end %>
           </ul>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <ul class="nav nav-pills discuss-menu">
     <li class="active"><a href="#">最新话题</a></li>
@@ -77,45 +77,7 @@
 
 
 <div id="createDiscuss" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">新建话题</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">标题</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">系别</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-9">
-              <textarea class="form-control" rows="9"></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-4 col-sm-offset-2 text-center">
-              <button type="submit" class="btn btn-info">确认发布</button>
-            </div>
-            <div class="col-sm-5 text-center">
-              <button  class="btn btn-danger">取消发布</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  <%= render "new_modal" %>
 </div>
 
 <script type="text/javascript">

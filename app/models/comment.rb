@@ -18,7 +18,7 @@
 #  comment_scope    :string(255)
 #
 
-# comment_scope: discuss表示我的评论，answer表示我的问答
+# comment_scope: discuss表示我的评论，answer表示我的问答，topic讨论中心的话题
 
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
