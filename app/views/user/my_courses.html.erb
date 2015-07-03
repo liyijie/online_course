@@ -25,8 +25,8 @@
         <% else %>
           <% @collect_course.each do |course| %>
             <div class="row my-course">
-              <div class="col-sm-3 ov-hidden">
-                <%= link_to image_tag("my-course.png"), show_courses_path(course.number)%>
+              <div class="col-sm-3 ov-hidden text-center">
+                <%= link_to image_tag(course.attachment.content.url(:c_350_230), width: "100%"), show_courses_path(course.number), class: 'img' if course.attachment%>
               </div>
               <div class="col-sm-9">
                 <div class="my-course-desc"> 
@@ -37,7 +37,7 @@
                       最后学习：32分钟
                     </small>
                   </h4><br>
-                  <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
+                  <p><%= course.description %></p>
                 </div>
               </div>
             </div>
