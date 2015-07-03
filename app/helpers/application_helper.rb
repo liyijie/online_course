@@ -15,13 +15,13 @@ module ApplicationHelper
   	menu << content_tag('li', link_to('首页', root_path), class: controller.controller_path == 'home' ? 'active' : '')
   	menu << content_tag('li', link_to('精品课程', courses_path), class: ["courses","index"].include?(controller.controller_path) ? 'active' : '')
   	menu << content_tag('li', link_to('教师风采', teachers_path), 
-      class: (controller.controller_path == 'teachers' and controller.action_name=="index") ? 'active' : '' )
+      class: (controller.controller_path == 'teachers' and (controller.action_name=="index" || controller.action_name=="show")) ? 'active' : '' )
   	unless teacher_signed_in? 
   		menu << content_tag('li', link_to('个人中心', my_courses_user_index_path) , 
         class: (controller.controller_path == 'user' or controller.controller_path == 'devise/registrations') ? 'active' : '')
     else
       menu << content_tag('li', link_to('个人中心', my_courses_teachers_path) , 
-        class: ((controller.controller_path == 'teachers' or controller.controller_path == 'devise/registrations') and controller.action_name!="index") ? 'active' : '')
+        class: (((controller.controller_path == 'teachers' && controller.action_name != "show") or controller.controller_path == 'devise/registrations') and controller.action_name!="index") ? 'active' : '')
   	end
   	
   	menu.join.html_safe
