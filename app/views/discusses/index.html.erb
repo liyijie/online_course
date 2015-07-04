@@ -22,56 +22,16 @@
   </div> -->
 
   <ul class="nav nav-pills discuss-menu">
-    <li class="active"><a href="#">最新话题</a></li>
-    <li><a href="#">热门话题</a></li>
-    <li><a href="#">等待回复</a></li>
+    <li class="<%= 'active' if params[:type].blank? || params[:type] == 'new' %>"><%= link_to("最新话题", discusses_path) %></li>
+    <li class="<%= 'active' if params[:type] == 'hot' %>"><%= link_to("热门话题", discusses_path(type: "hot")) %></li>
+    <li class="<%= 'active' if params[:type] == 'wait' %>"><%= link_to("等待回复", discusses_path(type: "wait")) %></li>
     <li class="navbar-right create-discuss">
       <a id="newCreateBtn" href="javascript:void(0);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
     </li>
   </ul>
 
-  <div class="container discuss-list">
-    <% 10.times do |i| %>
-      <div class="row">
-        <div class="col-sm-1 text-center">
-          <%= image_tag "missing/u_145x145/missing.png", class: "img-circle", width: "100%" %>
-          <p class="center-block grey-font">斯塔克</p>
-        </div>
-        <div class="col-sm-9">
-          <h5>
-            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-            <%= link_to "为什么我的代码不能拍照", "#" %>
-          </h5>
-          <p class="discuss-content">
-            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-            <% if i%2 == 0 %>
-                <span class="text-muted">嗯 ~ ~，这个提问大家都在考虑....</span>
-            <% else %>
-              <span class="text-muted">[最新回答]</span>
-                <span>乌尔奇奥拉:<span>
-                <span class="text-muted">
-                  最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答最新回答
-                </span>
-            <% end %>
-          </p>
-          <div class="text-muted">
-            提问时间：2015-06-12 12:12:12
-            <span class="label label-default">JavaScript</span>
-          </div>
-        </div>
-        <div class="col-sm-2">
-          <div class="col-sm-6 text-center answer-count">
-            <div>4</div>
-            <div>回答</div>
-          </div>
-          <div class="col-sm-6 text-center">
-            <div>6</div>
-            <div>浏览</div>
-          </div>
-        </div>
-      </div>
-      <hr>
-    <% end %>
+  <div id="topicList" class="container discuss-list">
+    <%= render "topic", locals: {topics: @topics} %>
   </div>
 </div>
 

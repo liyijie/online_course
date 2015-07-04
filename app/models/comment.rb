@@ -118,4 +118,19 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  #讨论中心取得话题
+  def self.find_topics_by_type type, page
+    case type
+    when "new"
+      Comment.includes(:usertable).where(comment_scope: :topic).order("created_at DESC").page(page)
+    when "hot"
+      Comment.includes(:usertable).where(comment_scope: :topic).order("created_at DESC").page(page)
+    when "wait"
+       Comment.includes(:usertable).where(comment_scope: :topic).order("created_at DESC").page(page)
+    else
+      Comment.includes(:usertable).where(comment_scope: :topic).order("created_at DESC").page(page)
+    end
+      
+  end
+
 end

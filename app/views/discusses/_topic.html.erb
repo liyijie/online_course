@@ -1,0 +1,44 @@
+<% @topics.each do |topic| %>
+  <div class="row">
+    <div class="col-sm-1 text-center">
+      <%= image_tag topic.try(:usertable).try(:show_image),class: "img-circle", width: "100%" %>
+      <p class="center-block text-muted"><%= truncate(topic.try(:usertable).try(:show_name),length: 4)%></p>
+    </div>
+    <div class="col-sm-9">
+      <h5>
+        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+        <%= link_to topic.title, discusses_path(topic) %>
+      </h5>
+      <p class="discuss-content">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        <% if topic.has_children?  %>
+            <span class="text-muted">[最新回答]</span>
+            <span><%= topic.children.last.try(:usertable).try(:show_name) %>:<span>
+            <span class="text-muted">
+              <%= link_to topic.children.last.body, discusses_path(topic) %>
+            </span>
+        <% else %>
+          <span class="text-muted">嗯 ~ ~，这个提问大家都在考虑....</span>
+        <% end %>
+      </p>
+      <div class="text-muted">
+        提问时间：<%= topic.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
+        <span class="label label-default">JavaScript</span>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="col-sm-6 text-center answer-count">
+        <div><%= topic.children.size %></div>
+        <div>回答</div>
+      </div>
+      <div class="col-sm-6 text-center">
+        <div>6</div>
+        <div>浏览</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+<% end %>
+<div class="paginate text-center">
+  <%= paginate @topics, remote: true, format: :js %>
+</div>

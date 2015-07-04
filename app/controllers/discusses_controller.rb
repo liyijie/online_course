@@ -2,8 +2,16 @@ class DiscussesController < ApplicationController
   before_action :authenticate_user_or_teacher, only: [:create]
 
   def index
-    @academies = Academy.all
+    #找出相关话题
+    @topics = Comment.find_topics_by_type params[:type], params[:page]
+
+    #新建话题
     @discuss = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -24,7 +32,7 @@ class DiscussesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.js {render js: "alert('请填写好标题、内容');"}
+        format.js {render js: "alert('请填写标题、内容');"}
       end
     end
   end
