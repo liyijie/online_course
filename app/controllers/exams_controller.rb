@@ -1,5 +1,11 @@
 class ExamsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user_or_teacher, only: [:index]
+
+  def index
+
+  end
+
 	def new
 		@sub_course = SubCourse.find_by_number(params[:sub_course_number])
 		@questions = @sub_course.questions
