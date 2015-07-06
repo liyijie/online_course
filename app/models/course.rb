@@ -10,6 +10,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  academy_id  :integer
+#  scope       :integer          default(1)
 #
 
 class Course < ActiveRecord::Base
