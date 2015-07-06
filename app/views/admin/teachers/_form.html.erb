@@ -9,7 +9,7 @@
     <%= label_tag :grades, '所教班级', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <% Grade.all.each do |grade| %>
-        <%= check_box_tag("teacher[grade_ids][]", grade.id, grade.id.in?(@teacher.grades.collect(&:id)))%>
+        <%= check_box_tag("teacher[grade_ids][]", grade.id, grade.id.in?(@teacher.grades.collect(&:id)), required: true)%>
         (<%= grade.try(:specialty).try(:name) %>)<%= grade.name%>
       <%end%>
     </div>
@@ -25,37 +25,37 @@
   <div class="form-group">
     <%= f.label :image, '头像', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.file_field :image, class: 'form-control' %>
+      <%= f.file_field :image, class: 'form-control', required: true %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :number, '工号', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.text_field :number, class: 'form-control' %>
+      <%= f.text_field :number, class: 'form-control', required: true %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :phone, '手机号', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.text_field :phone, class: 'form-control' %>
+      <%= f.text_field :phone, class: 'form-control', required: true %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :username, '用户名', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.text_field :username, class: 'form-control' %>
+      <%= f.text_field :username, class: 'form-control', required: true %>
     </div>
   </div>
    <div class="form-group">
     <%= f.label :password, '密码', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', required: true %>
     </div>
   </div>
    <div class="form-group">
     <%= f.label :password_confirmation, '确认密码', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
     </div>
   </div>
   <div class="form-group">
@@ -67,7 +67,7 @@
   <div class="form-group">
     <%= f.label :email, '电子邮箱', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.text_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
