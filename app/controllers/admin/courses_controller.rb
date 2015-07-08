@@ -13,6 +13,7 @@ module Admin
 			@course = Course.new(course_params)
 			@course.attachment = Attachment.new if @course.attachment.blank?
 			@course.attachment.content = params[:course][:attachment]
+			@course.attachment.file_url = params[:attachment_file_url]
 			@course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids],
 				                        course_id: @course.id)
 			if @course.save && @course.attachment.save
@@ -32,6 +33,12 @@ module Admin
 			params[:course][:teacher_ids] ||= []
 			if @course.update(course_params)
 				@course.attachment.update(content: params[:course][:attachment]) if params[:course][:attachment].present?
+				if @course.attachment.present?
+				  @course.attachment.update(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
+				else
+					@course.attachment = Attachment.new
+					@course.attachment.create(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
+				end
 				flash.now[:notice] = "课程更新成功"
 				return redirect_to admin_courses_url
 			else

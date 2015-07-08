@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702033914) do
+ActiveRecord::Schema.define(version: 20150708151839) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150702033914) do
     t.integer  "content_file_size",    limit: 4
     t.integer  "attachmentable_id",    limit: 4
     t.string   "attachmentable_type",  limit: 255
+    t.string   "file_url",             limit: 255
   end
 
   add_index "attachments", ["sub_course_id"], name: "index_attachments_on_sub_course_id", using: :btree
@@ -257,7 +258,7 @@ ActiveRecord::Schema.define(version: 20150702033914) do
     t.string   "campus",                 limit: 255
   end
 
-  add_index "users", ["number"], name: "index_users_on_number", unique: true, using: :btree
+  add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|

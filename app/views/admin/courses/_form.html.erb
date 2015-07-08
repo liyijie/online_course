@@ -29,6 +29,17 @@
     </div>
   </div>
   <div class="form-group">
+    <%= label_tag :or, '或者', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4 container">
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :attachment_file_url, '课程附件[地址]', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-4 container">
+      <%= text_field_tag :attachment_file_url, nil, class: 'form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :name, '课程名称', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.text_field :name, class: 'form-control' %>

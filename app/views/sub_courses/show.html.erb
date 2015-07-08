@@ -15,11 +15,19 @@
 	  <% if @sub_course.regex_video %>
 			<div class="video-content">
 				<!-- video -->
-				<video width="860" height="500" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:c_860_500))%>" controls="controls" preload="none">
-					<source type="video/mp4" src="<%= @sub_course.attachment.content.url %>" />
-					<source type="video/webm" src="myvideo.webm" />
-					<source type="video/ogg" src="myvideo.ogv" />
-				</video>
+				<% if @sub_course.attachment && @sub_course.attachment.file_url.present? %>
+				  <video width="860" height="500" class="mejs-player" controls="controls" preload="none">
+						<source type="video/mp4" src="<%= @sub_course.attachment.file_url %>" />
+						<source type="video/webm" src="myvideo.webm" />
+						<source type="video/ogg" src="myvideo.ogv" />
+					</video>
+			  <% else %>
+					<video width="860" height="500" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:c_860_500))%>" controls="controls" preload="none">
+						<source type="video/mp4" src="<%= @sub_course.attachment.content.url %>" />
+						<source type="video/webm" src="myvideo.webm" />
+						<source type="video/ogg" src="myvideo.ogv" />
+					</video>
+				<% end %>
 				<% if !teacher_signed_in? %>
 					<div class="collect-content">
 						<%= form_tag sub_courses_collect_or_praise_path, method: :post, remote: true, id: "subCourseCollectPraise" do %>

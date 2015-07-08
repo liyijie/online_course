@@ -80,7 +80,11 @@
       <div class="col-sm-4">
         <div class="star-course">
           <div class="col-sm-12">
-            <%= link_to image_tag(course.attachment.content.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.attachment%>
+            <% unless course.attachment.present? && course.attachment.file_url.present? %>
+              <%= link_to image_tag(course.attachment.content.url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.attachment%>
+              <% else %>
+                <%= link_to image_tag("course-show.png"), show_courses_path(course.number), class: 'img'%>
+            <% end %>
           </div>
           <div class="col-sm-12 course-description">
             <p class="description">

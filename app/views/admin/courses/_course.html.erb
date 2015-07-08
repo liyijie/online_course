@@ -1,5 +1,11 @@
 <tr>
-  <td><%= image_tag(course.attachment.content.url(:thumb), size: "50x50") if course.attachment%></td>
+  <td>
+    <% if course.attachment.present? && course.attachment.content.present? %>
+      <%= image_tag(course.attachment.content.url(:thumb), size: "50x50") if course.attachment%>
+    <% else %>
+      <%= image_tag(course.attachment.file_url, size: "50x50") if course.attachment%>
+    <% end %>
+  </td>
   <td><%= course.number %></td>
   <td><%= course.name %></td>
   <td><%= course.description.to_s[0..20] %></td>
