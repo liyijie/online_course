@@ -258,7 +258,7 @@ ActiveRecord::Schema.define(version: 20150708151839) do
     t.string   "campus",                 limit: 255
   end
 
-  add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
+  add_index "users", ["number"], name: "index_users_on_number", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|

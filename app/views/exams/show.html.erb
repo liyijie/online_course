@@ -1,7 +1,7 @@
 <div class="main-content">
   <a href="javascript:void(0)" class="btn btn-primary">题目列表</a>
   <div class="main-title">
-    网络设备维护基础（一）测试
+    <%= @exam.try(:sub_course).try(:course).try(:name) %>
   </div>
   <div class="question-content">
     <% @exam.exam_items.each_with_index do |ei, index|%>
@@ -19,7 +19,7 @@
       </div>
     <% end %>
     <div class="center-block" align="center">
-      <%= link_to "返回首页", root_path, class: "btn btn-primary btn-lg"%>
+      <%= link_to "返回", after_class_courses_path(@exam.try(:sub_course).try(:course).try(:number)), class: "btn btn-primary btn-lg"%>
       <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#showExamResult">
         成绩查询
       </button>
