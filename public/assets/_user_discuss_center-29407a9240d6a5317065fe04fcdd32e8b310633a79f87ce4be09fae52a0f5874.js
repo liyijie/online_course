@@ -1,1 +1,0 @@
-(function(){$(function(){return"comment_create"===action?$(".show-content li").last().click():void 0})}).call(this);
