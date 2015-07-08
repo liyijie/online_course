@@ -14,6 +14,16 @@ class ExamsController < ApplicationController
 		@exam = Exam.find_by(user_id: current_user.id, sub_course_id: @sub_course.id)
 	end
 
+	def test_new
+		@sub_course = SubCourse.first
+		@questions = @sub_course.questions
+	end
+
+
+	def show_test
+		@exam = Exam.first
+	end
+
 	def create
 		answer_params = {}
 		sub_course = SubCourse.find_by_number(params[:exam][:sub_course_number])

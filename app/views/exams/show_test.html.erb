@@ -1,0 +1,48 @@
+<div class="main-content">
+  <div class="main-title">
+    计算机组成原理期末考试
+  </div>
+  <div class="question-content">
+    <% @exam.exam_items.each_with_index do |ei, index|%>
+      <% question = ei.question %>
+      <p class="title">
+        <%= index + 1 %> <%= question.title%>
+        <span class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;得分：<%= ei.correct ? 5 : 0 %>分</span>
+      </p>
+      <% question.options.each_with_index do |option, option_index|%>
+        <p class="option <%= 'text-info' if is_selected?(option_index,ei.answer) %>">
+          <%= radio_button_tag("option_" + index.to_s, option.index_type, is_selected?(option_index,ei.answer), disabled: true )%>
+          <span><%= option.name%></span>
+        </p>
+      <% end %>
+      <div class="right-answer">
+        <div>正确答案：<%= question.correct_option %></div>
+        <div>答案解析：<%= question.correct_hint.present? ? question.correct_hint : "无" %></div>
+      </div>
+    <% end %>
+    <p class="title">
+      <%= @exam.exam_items.length + 1 %>. 请讲数组[1,2,17,12,34,38]使用冒泡排序进行排序，输出排序后结果。
+      <span class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;得分：8分</span>
+    </p>
+    <p class="option">
+      <textarea cols="100" rows="4">a = [1,2,17,12,34,38] print a</textarea>
+    </p>
+    <div class="right-answer">
+      <div>答案解析：参考第三课时</div>
+    </div>
+    <p class="title">
+      <%= @exam.exam_items.length + 2 %>. 请讲一个二位数组转置，输出转置后结果。
+      <span class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;得分：8分</span>
+    </p>
+    <p class="option">
+      <textarea cols="100" rows="4">a = [1,2,17,12,34,38] print a</textarea>
+    </p>
+    <div class="right-answer">
+      <div>答案解析：参考第四课时</div>
+    </div>
+    <div class="center-block" align="center">
+      <%= link_to "考试中心", exams_path, class: "btn btn-primary btn-lg"%>
+    </div>
+  </div>
+
+</div>

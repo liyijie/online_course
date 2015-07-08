@@ -72,7 +72,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :exams, only: [:new, :create, :show, :index]  
+  resources :exams, only: [:new, :create, :show, :index]  do 
+    collection do
+      get :test_new
+      get :show_test
+    end
+  end
 
   resources :user, only: [:show, :update] do
     collection do

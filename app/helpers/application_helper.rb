@@ -17,7 +17,7 @@ module ApplicationHelper
   	menu << content_tag('li', link_to('教师风采', teachers_path), 
       class: (controller.controller_path == 'teachers' and (controller.action_name=="index" || controller.action_name=="show")) ? 'active' : '' )
     menu << content_tag('li', link_to('讨论中心', discusses_path), class: controller.controller_path == 'discusses' ? 'active' : '')
-    menu << content_tag('li', link_to('考试中心', exams_path), class: controller.controller_path == 'exams' && controller.action_name=="index" ? 'active' : '')
+    menu << content_tag('li', link_to('考试中心', exams_path), class: controller.controller_path == 'exams' && (controller.action_name=="index" || controller.action_name=="test_new" || controller.action_name=="show_test") ? 'active' : '')
   	unless teacher_signed_in? 
   		menu << content_tag('li', link_to('个人中心', my_courses_user_index_path) , 
         class: (controller.controller_path == 'user' or controller.controller_path == 'devise/registrations') ? 'active' : '')
