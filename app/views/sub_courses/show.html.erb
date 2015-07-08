@@ -12,7 +12,7 @@
 
 <div class="main-content">
 	<div class="left-content">
-	  <% if @sub_course.regex_video %>
+	  <% if @sub_course.regex_video || @sub_course.attachment.file_url.present? %>
 			<div class="video-content">
 				<!-- video -->
 				<% if @sub_course.attachment && @sub_course.attachment.file_url.present? %>
