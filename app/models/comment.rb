@@ -124,7 +124,7 @@ class Comment < ActiveRecord::Base
     when "new"
       Comment.includes(:usertable).where("comment_scope = 'topic' and parent_id is null").order("created_at DESC").page(page)
     when "hot"
-      Comment.includes(:usertable).where("comment_scope = 'topic' and parent_id is null").order("created_at DESC").page(page)
+      Comment.includes(:usertable).where("comment_scope = 'topic' and parent_id is null").order("(select count(*) from comments cs where parent_id = comments.id) DESC").page(page)
     when "wait"
       Comment.includes(:usertable).where("comment_scope = 'topic' and parent_id is null and (select count(*) from comments cs where parent_id = comments.id) = 0").order("created_at DESC").page(page)
     else
