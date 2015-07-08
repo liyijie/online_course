@@ -23,7 +23,8 @@
       </p>
       <div class="text-muted">
         提问时间：<%= topic.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
-        <span class="label label-default">JavaScript</span>
+        <span class="label label-default">JavaScript</span>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary btn-xs comment_reply" type="button" comment-id="<%= topic.id %>">回复</button>
       </div>
     </div>
     <div class="col-sm-2">
@@ -39,6 +40,17 @@
   </div>
   <hr>
 <% end %>
+
 <div class="paginate text-center">
   <%= paginate @topics, remote: true, format: :js %>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    $(".comment_reply").click(function(){
+        $("#topicList form").remove();
+        $("#comment_id").val($(this).attr("comment-id"));
+        $(this).parent().append($("#relyCommentForm").html());
+      });
+  });
+</script>

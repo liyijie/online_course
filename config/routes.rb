@@ -34,7 +34,11 @@ Rails.application.routes.draw do
   resources :sub_courses, only: [:new, :create, :edit, :update, :destroy]
 
   #讨论中心
-  resources :discusses, except: [:edit, :update, :destroy]
+  resources :discusses, except: [:edit, :update, :destroy] do 
+    collection do
+      post :reply_topic
+    end
+  end
 
   #限定教师编号为数字形式
   constraints(number: /\d+/) do
@@ -68,7 +72,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :exams, only: [:new, :create, :show, :index]
+  resources :exams, only: [:new, :create, :show, :index]  
 
   resources :user, only: [:show, :update] do
     collection do

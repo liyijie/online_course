@@ -21,11 +21,23 @@
           <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
           <%= link_to @topic.title, discuss_path(@topic) %>
         </h5>
+        <p>
+          <%= @topic.body %>
+        </p>
         <div class="text-muted">
           提问时间：<%= @topic.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
           <span class="label label-default">JavaScript</span>
-          
         </div>
+        <%= form_tag reply_topic_discusses_path, method: :post, remote: true, class: "reply-comment-form" do %>
+          <br><br>
+          <%= text_area_tag "comment", "", rows: 3, 
+            cols: 100, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
+          <%= hidden_field_tag "comment_id", @topic.id %>
+          <%= hidden_field_tag "type", params[:type] %>
+          <%= hidden_field_tag "page", params[:page] %>
+          <%= hidden_field_tag "is_show", "show" %>
+          <%= submit_tag "回复", class: "btn btn-success pull-right", onclick: "if($(this).siblings('#comment').first().val() == ''){alert('请填写内容在发布');return false;};" %>
+        <% end %>
       </div>
       <div class="col-sm-2">
         <div class="col-sm-6 text-center answer-count">
@@ -39,21 +51,22 @@
       </div>
     </div>
     <hr>
-
-    <% @topic.children do |tc| %>
+    <% @topic.children.each do |tc| %>
       <div class="row">
-        <div class="col-sm-1 text-center">
-          <%= image_tag tc.try(:usertable).try(:show_image),class: "img-circle", width: "100%" %>
-          <p class="center-block text-muted"><%= truncate(tc.try(:usertable).try(:show_name),length: 4)%></p>
-        </div>
-        <div class="col-sm-9">
-          <h5>
-            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-            <%= tc.title %>
-          </h5>
-          <div class="text-muted">
-            提问时间：<%= tc.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
-            <span class="label label-default">JavaScript</span>
+        <div class="col-sm-11 col-sm-offset-1">
+          <div class="col-sm-1 text-center">
+            <%= image_tag tc.try(:usertable).try(:show_image),class: "img-circle", width: "100%" %>
+            <p class="center-block text-muted"><%= truncate(tc.try(:usertable).try(:show_name),length: 4)%></p>
+          </div>
+          <div class="col-sm-9">
+            <h5>
+              <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+              <%= tc.body %>
+            </h5>
+            <div class="text-muted">
+              回答时间：<%= tc.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
+              <span class="label label-default">JavaScript</span>
+            </div>
           </div>
         </div>
       </div>

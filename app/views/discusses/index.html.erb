@@ -40,6 +40,18 @@
   <%= render "new_modal" %>
 </div>
 
+<div id="relyCommentForm" style="display: none;">
+  <%= form_tag reply_topic_discusses_path, method: :post, remote: true, class: "reply-comment-form" do %>
+    <br><br>
+    <%= text_area_tag "comment", "", rows: 3, 
+      cols: 100, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
+    <%= hidden_field_tag "comment_id" %>
+    <%= hidden_field_tag "type", params[:type] %>
+    <%= hidden_field_tag "page", params[:page] %>
+    <%= submit_tag "发布", class: "btn btn-success pull-right", onclick: "if($(this).siblings('#comment').first().val() == ''){alert('请填写内容在发布');return false;};" %>
+  <% end %>
+</div>
+
 <script type="text/javascript">
   $(function(){
     $("#newCreateBtn").click(function(){

@@ -39,6 +39,33 @@ class DiscussesController < ApplicationController
     end
   end
 
+  #回复讨论
+  def reply_topic
+    usertable = current_user || current_teacher
+    discuss = Comment.new 
+    discuss.usertable = usertable
+    discuss.comment_scope = "topic"
+    discuss.body = params[:comment]
+
+    discuss.save
+
+    parent_comment = Comment.where(id: params[:comment_id]).first
+
+    discuss.move_to_child_of parent_comment
+
+    @topics = Comment.find_topics_by_type params[:type], params[:page]
+
+    if params[:is_show].present?
+      respond_to do |format|
+        format.js {render js: "location.href='#{discuss_path(parent_comment)}'"}
+      end
+    else
+      respond_to do |format|
+        format.js 
+      end
+    end
+  end
+
 
   private
     def comment_params
