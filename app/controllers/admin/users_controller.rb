@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.page(params[:page]).keyword_like(params[:keyword])
   end
 
   def new

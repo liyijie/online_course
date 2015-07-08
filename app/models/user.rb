@@ -58,6 +58,18 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :number
   validates_associated :image
 
+  scope :keyword_like, -> (keyword) do
+    return all if keyword.blank?
+    where(
+      'users.number LIKE ?
+      OR users.name LIKE ?
+      OR users.phone LIKE ?',
+      "%#{keyword}%",
+      "%#{keyword}%",
+      "%#{keyword}%"
+    )
+  end
+
 
 
   #用户权限划分
