@@ -1,21 +1,10 @@
 <a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>教学团队</strong></a>
 <br><br>
 <div class="row">
-	<div class="col-xs-4">
-		<%= image_tag "my-teacher.png", class:"img-responsive img-left"%>
-	</div>
-	<div class="col-xs-8">
-		<div class="row">
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-			<div class="col-xs-3"><%= image_tag "my-teacher.png", class:"img-responsive img-right"%></div>
-		</div>
+   <div class="col-sm-12">
+    <% teacher_courses.each_with_index do |teacher_course, index|%>
+			<div class="col-sm-3 text-center"><%= image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_220_220), class: "img-rounded")%>
+			</div>
+	  <% end %>
 	</div>
 </div>

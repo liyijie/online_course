@@ -21,7 +21,7 @@
     <%= render partial: "courses/2/course_setup", locals: {course: @course} %>
   </div>
   <div class="text-content">
-    <%= render partial: "courses/2/course_team", locals: {course: @course} %>
+    <%= render partial: "courses/2/course_team", locals: {teacher_courses: teacher_courses} %>
   </div>
   <div class="text-content">
     <%= render partial: "courses/2/course_condition", locals: {course: @course} %>
