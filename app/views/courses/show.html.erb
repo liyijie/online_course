@@ -23,11 +23,22 @@
 
     <div class="left-content">
       <div class="course-image">
-        <video width="500" height="350" class="mejs-player" poster="<%= (@course.attachment.content.url(:c_500_350))%>" controls="controls" preload="none">
-          <source type="video/mp4" src="<%= @course.attachment.content.url %>" />
-          <source type="video/webm" src="myvideo.webm" />
-          <source type="video/ogg" src="myvideo.ogv" />
-        </video>
+        <video width="500" height="350" id="player2" poster="" controls="controls" preload="none">
+  <!-- MP4 source must come first for iOS -->
+  <source type="video/mp4" src="http://7xj8j2.com1.z0.glb.clouddn.com/datangvideo.mp4" />
+  <!-- WebM for Firefox 4 and Opera -->
+  <source type="video/webm" src="../media/echo-hereweare.webm" />
+  <!-- OGG for Firefox 3 -->
+  <source type="video/ogg" src="../media/echo-hereweare.ogv" />
+  <!-- Fallback flash player for no-HTML5 browsers with JavaScript turned off -->
+  <object width="640" height="360" type="application/x-shockwave-flash" data="../build/flashmediaelement.swf">    
+    <param name="movie" value="../build/flashmediaelement.swf" /> 
+    <param name="flashvars" value="controls=true&amp;file=http://7xj8j2.com1.z0.glb.clouddn.com/datangvideo.mp4" />     
+    <!-- Image fall back for non-HTML5 browser with JavaScript turned off and no Flash player installed -->
+    <img src="../media/echo-hereweare.jpg" width="640" height="360" alt="Here we are" 
+      title="No video playback capabilities" />
+  </object>   
+</video>
       </div>
       <div class="course-and-score">
         <%= link_to "课后作业", after_class_courses_path, class: "course"%>
@@ -101,3 +112,13 @@
     <%= render partial: "courses/2/main" %>
   <% end %>
 </div>
+<script>
+
+$('audio,video').mediaelementplayer({
+  //mode: 'shim',
+  success: function(player, node) {
+    $('#' + node.id + '-mode').html('mode: ' + player.pluginType);
+  }
+});
+
+</script>
