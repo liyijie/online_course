@@ -8,7 +8,7 @@ listen "/tmp/unicorn.online_courses.sock", :backlog => 64
 #listen 4201, :tcp_nopush => false
 
 # Nuke workers after 30 seconds instead of 60 seconds (the default)
-timeout 3000
+timeout 30
 
 # App PID
 pid "#{app_root}/tmp/pids/unicorn.pid"
