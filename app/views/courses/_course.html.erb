@@ -1,6 +1,7 @@
 <div class='single-vedio-content'>
   <div class="vedio-content">
-    <div class="image-wrapper">
+    <div class="image-wrapper" style="
+    height: 225px;">
       <% if course.attachment.present? && course.attachment.file_url.present? %>
       <%= link_to image_tag("course-show.png"), show_courses_path(course.number), class: 'img', style: "height: 192px" if course.attachment%>
      <% else %>
