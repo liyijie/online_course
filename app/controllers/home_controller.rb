@@ -8,7 +8,8 @@ class HomeController < ApplicationController
   	@academies = Academy.where({id: academy_arr}).limit(9)
 
     #读取4组老师
-  	@teachers = Teacher.joins(:image).where("images.avatar_content_type IS NOT NULL").limit(5)
+  	#@teachers = Teacher.joins(:image).where("images.avatar_content_type IS NOT NULL").limit(5)
+    @teachers = Teacher.joins(:image).where("images.avatar_content_type IS NOT NULL").where({number: ["108522013004", "108522011004", "108522018038", "10852018039", "108522011052"]})
   end
 
   def select_courses
