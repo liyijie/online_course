@@ -34,7 +34,7 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="col-sm-7 ov-hidden">
-                     <%= link_to image_tag("score-search1.png"), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %>
+                     <%= link_to image_tag(exam.try(:sub_course).try(:course).attachment.content.url(:c_350_230), width: "100%"), show_courses_path(exam.try(:sub_course).try(:course).number), class: 'img' if exam.try(:sub_course).try(:course).attachment%>
                   </div>
                   <div class="col-sm-5">
                     <h4><%= link_to exam.try(:sub_course).try(:name), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %></h4>

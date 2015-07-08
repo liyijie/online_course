@@ -16,7 +16,7 @@
   <% if @exam.present? %>
     <%= render partial: 'common/blank_alert', locals: {message: '您已经参加过该测试!'}%>
     <div class="form-group">
-      <%= link_to "查看我的试卷", '', class: 'btn center btn-primary'%>
+      <%= link_to "查看我的试卷", my_exams_user_index_path, class: 'btn center btn-primary'%>
     </div>
   <% elsif @questions.present? %>
     <a href="javascript:void(0)" class="btn btn-primary">题目列表</a>
@@ -25,7 +25,7 @@
       <%= @sub_course.try(:course).name%>（测试）
     </div>
     <div class="question-content">
-      <%= simple_form_for Exam.new do |f|%>
+      <%= simple_form_for Exam.new, format: :js, remote: true do |f|%>
         <%= f.hidden_field :sub_course_number, value: params[:sub_course_number]%>
         <% @questions.each_with_index do |question, index|%>
           <p class="title"><%= index + 1 %>. <%= question.title%></p>
@@ -72,3 +72,5 @@
     <%= render partial: 'common/blank_alert', locals: {message: '该课程还未上传课后习题!'}%>
   <% end %>
 </div>
+
+<div id="modalResult"></div>

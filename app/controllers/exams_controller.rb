@@ -26,8 +26,11 @@ class ExamsController < ApplicationController
 		  @exam.sub_course_id = sub_course.id
 		  @exam.generate_by_answer_params(answer_params)
 		end
-		flash.now['notice'] = "恭喜您, 测试提交成功"
-		return redirect_to after_class_courses_path(sub_course.course.number)
+		flash['notice'] = "恭喜您, 测试提交成功"
+		#return redirect_to after_class_courses_path(sub_course.course.number)
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def show

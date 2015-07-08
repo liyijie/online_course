@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="showExamResult" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -47,7 +47,7 @@
 						</li>
 					</ul>
 					<div  class="modal-btn">
-						<button type="button" class="btn btn-primary  btn-sm" data-dismiss="modal">查看题目</button>
+					<%= link_to('查看题目', exam_path(@exam.id) , class: "btn btn-primary  btn-sm") %>
 						<button type="button" class="btn btn-warning btn-sm small" data-dismiss="modal" style="margin-left:50px;">关闭</button>
 					</div>
 				</div>

@@ -1,2 +1,76 @@
-<h1>Discusses#show</h1>
-<p>Find me in app/views/discusses/show.html.erb</p>
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left">讨论中心</span>
+  </section>
+
+  <ul class="nav nav-pills discuss-menu">
+    <li class="active"><%= link_to("<<返回讨论中心", discusses_path) %></li>
+    <li class="navbar-right create-discuss">
+      <a id="newCreateBtn" href="javascript:void(0);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
+    </li>
+  </ul>
+
+  <div id="topicList" class="container discuss-list">
+    <div class="row">
+      <div class="col-sm-1 text-center">
+        <%= image_tag @topic.try(:usertable).try(:show_image),class: "img-circle", width: "100%" %>
+        <p class="center-block text-muted"><%= truncate(@topic.try(:usertable).try(:show_name),length: 4)%></p>
+      </div>
+      <div class="col-sm-9">
+        <h5>
+          <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          <%= link_to @topic.title, discuss_path(@topic) %>
+        </h5>
+        <div class="text-muted">
+          提问时间：<%= @topic.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
+          <span class="label label-default">JavaScript</span>
+          
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="col-sm-6 text-center answer-count">
+          <div><%= @topic.children.size %></div>
+          <div>回答</div>
+        </div>
+        <div class="col-sm-6 text-center">
+          <div>6</div>
+          <div>浏览</div>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <% @topic.children do |tc| %>
+      <div class="row">
+        <div class="col-sm-1 text-center">
+          <%= image_tag tc.try(:usertable).try(:show_image),class: "img-circle", width: "100%" %>
+          <p class="center-block text-muted"><%= truncate(tc.try(:usertable).try(:show_name),length: 4)%></p>
+        </div>
+        <div class="col-sm-9">
+          <h5>
+            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+            <%= tc.title %>
+          </h5>
+          <div class="text-muted">
+            提问时间：<%= tc.created_at.try(:strftime,'%Y-%m-%d %H:%M:%S') %>
+            <span class="label label-default">JavaScript</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>
+
+
+<div id="createDiscuss" class="modal fade">
+  <%= render "new_modal" %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $("#newCreateBtn").click(function(){
+      $("#createDiscuss").modal();
+    });
+  });
+</script>

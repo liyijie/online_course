@@ -7,7 +7,7 @@
     <div class="col-sm-9">
       <h5>
         <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-        <%= link_to topic.title, discusses_path(topic) %>
+        <%= link_to topic.title, discuss_path(topic) %>
       </h5>
       <p class="discuss-content">
         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
@@ -15,7 +15,7 @@
             <span class="text-muted">[最新回答]</span>
             <span><%= topic.children.last.try(:usertable).try(:show_name) %>:<span>
             <span class="text-muted">
-              <%= link_to topic.children.last.body, discusses_path(topic) %>
+              <%= link_to topic.children.last.body, discuss_path(topic) %>
             </span>
         <% else %>
           <span class="text-muted">嗯 ~ ~，这个提问大家都在考虑....</span>

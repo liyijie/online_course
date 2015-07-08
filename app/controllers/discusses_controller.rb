@@ -15,7 +15,9 @@ class DiscussesController < ApplicationController
   end
 
   def show
-
+    @topic = Comment.where(id: params[:id]).first
+    #新建话题
+    @discuss = Comment.new
   end
 
   def create

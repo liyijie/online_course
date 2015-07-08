@@ -7,10 +7,10 @@
     <% @exam.exam_items.each_with_index do |ei, index|%>
       <% question = ei.question %>
       <p class="title"><%= index + 1 %> <%= question.title%></p>
-      <% question.options.each do |option|%>
-        <p class="option">
-          <%= radio_button_tag("option_" + index.to_s, option.index_type, ei.answer == option.index_type, disabled: true )%>
-          <span><%= option.index_type %>.  <%= option.name%></span>
+      <% question.options.each_with_index do |option, option_index|%>
+        <p class="option <%= 'text-info' if is_selected?(option_index,ei.answer) %>">
+          <%= radio_button_tag("option_" + index.to_s, option.index_type, is_selected?(option_index,ei.answer), disabled: true )%>
+          <span><%= option.name%></span>
         </p>
       <% end %>
       <div class="right-answer">
@@ -20,7 +20,7 @@
     <% end %>
     <div class="center-block" align="center">
       <%= link_to "返回首页", root_path, class: "btn btn-primary btn-lg"%>
-      <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#showExamResult">
         成绩查询
       </button>
     </div>
@@ -54,4 +54,4 @@
     <a href="javascript:void(0)" id="back-to-top"></a>
   </div>
 </div>
- <%= render :partial => "score_modal_fade.html.erb" %>
+ <%= render :partial => "score_modal_fade" %>
