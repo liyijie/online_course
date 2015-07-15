@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
   	#读取3个课程
-  	@courses = Course.limit(3)
+  	@courses = Course.limit(6)
 
   	#读取拥有课程内容的学院，限制9个
   	academy_arr = Course.pluck(:academy_id)
