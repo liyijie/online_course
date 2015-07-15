@@ -32,7 +32,7 @@ module Admin
 
 		def update
 			@course.attachment = Attachment.new if @course.attachment.blank? && params[:course][:attachment].present?
-			@course.image = Image.new if @course.image.blank? && params[:image][:avatar].present?
+			@course.image = Image.new if @course.image.blank? && params[:course][:image].present?
 			params[:course][:teacher_ids] ||= []
 			if @course.update(course_params)
 				@course.attachment.update(content: params[:course][:attachment]) if params[:course][:attachment].present?
