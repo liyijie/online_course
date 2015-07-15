@@ -6,10 +6,6 @@
   <%= javascript_include_tag "_course_show", 'data-turbolinks-track' => true %>
 <%end%>
 
-<%= content_for :lunbo do %>
-  <%= render partial: "/common/lunbo"%>
-<%end%>
-
 <% content_for :crumbs do%>
   <ol class="breadcrumb">
     <li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
@@ -92,7 +88,7 @@
     </div>
   </div>
   <div class="related-courses">
-    <a href="javascript:void(0)" class="btn btn-primary">相关课程</a>
+    <a href="javascript:void(0)" class="btn btn-primary">课程内容</a>
     <ul class="courses-list">
       <%= render partial: "sub_course", locals: {sub_courses: @sub_courses}%>
     </ul>

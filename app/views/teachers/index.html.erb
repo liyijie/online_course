@@ -14,13 +14,45 @@
   <section class="common-title">
   	<span class="pull-left">教师风采</span>
   </section>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <!-- 、、、、、、、、、、、、、、、、系别。。。。。。。。。。。。。。。。。 -->
+      <div class="row serach-content">
+        <div class="col-sm-1 text-right serach-name">
+          <span>系别：</span>
+        </div>
+        <div class="col-sm-11">
+          <ul class="nav nav-pills serach-course">
+            <li param="" class="active"><a href="#">全部</a></li>
+            <% @academies.each_with_index do |academy, index| %>
+              <li param="<%= academy.id %>"><%= link_to academy.name, "#" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <!-- 、、、、、、、、、、、、、、、、系别。。。。。。。。。。。。。。。。。 -->
+    </div>
+  </div>
   <ul class="teachers-list">
-    <% @teachers.each do |teacher|%>
-      <li>
-        <%= link_to image_tag(teacher.image.avatar.url(:t_170_220)), show_teachers_path(teacher.number) if teacher.image%>
-        <p><%= teacher.name %>(<%= teacher.final_degree %>)</p>
-      </li>
-    <%end%>
+    <%= render @teachers %>
   </ul>
   <%= paginate @teachers%>
 </div>
+
+<%= link_to "", "#", id: "ajaxIndex", style: "display: none;", remote: true, format: :js %>
+
+<script type="text/javascript">
+  $('.serach-content ul a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+
+    var url = "<%= teachers_path %>";
+    url += "?"
+    $('.serach-content ul').find(".active").each(function(index){
+      var param = $(this).attr("param");
+      url = url + "academy_id=" + param;
+    });
+    $("#ajaxIndex").attr("href", url);
+    $("#ajaxIndex").click();
+  })
+</script>
