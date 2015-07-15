@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708151839) do
+ActiveRecord::Schema.define(version: 20150715080927) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -60,10 +60,11 @@ ActiveRecord::Schema.define(version: 20150708151839) do
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
     t.string   "content",     limit: 255
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "academy_id",  limit: 4
     t.integer  "scope",       limit: 4,     default: 1
+    t.boolean  "excellented", limit: 1,     default: false
   end
 
   add_index "courses", ["academy_id"], name: "index_courses_on_academy_id", using: :btree
@@ -258,7 +259,7 @@ ActiveRecord::Schema.define(version: 20150708151839) do
     t.string   "campus",                 limit: 255
   end
 
-  add_index "users", ["number"], name: "index_users_on_number", unique: true, using: :btree
+  add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|

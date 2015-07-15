@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   #当子课程为pdf等格式文件时下载链接
   get "/sub_courses/:number/download", to: "sub_courses#download", as: :download_sub_course
 
+  get "/learning_center", to: "courses#learning_center", as: :courses_learning_center
   resources :courses, only: [:index] do
   	resources :sub_courses, only: [:show]
     collection do

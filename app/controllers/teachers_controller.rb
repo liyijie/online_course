@@ -4,8 +4,13 @@ class TeachersController < ApplicationController
 	#教师风采
 	def index
 		@academies = Academy.all
-		@teachers = Teacher.where(academy_id: params[:academy_id]).joins(:image).where("images.avatar_content_type IS NOT NULL")
+		unless params[:academy_id].blank?
+		  @teachers = Teacher.where(academy_id: params[:academy_id]).joins(:image).where("images.avatar_content_type IS NOT NULL")
 		                    .page(params[:page]).per(20)
+		else
+			@teachers = Teacher.joins(:image).where("images.avatar_content_type IS NOT NULL")
+		                    .page(params[:page]).per(20)
+		end
 	end
 
 	#教师展示

@@ -1,0 +1,70 @@
+<%= content_for :lunbo do %>
+  <%= render partial: "/common/lunbo"%>
+<%end%>
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left">课程中心</span>
+  </section>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <!-- 、、、、、、、、、、、、、、、、系别。。。。。。。。。。。。。。。。。 -->
+      <div class="row serach-content">
+        <div class="col-sm-1 text-right serach-name">
+          <span>系别：</span>
+        </div>
+        <div class="col-sm-11">
+          <ul class="nav nav-pills serach-course">
+            <li param="" class="active"><a href="#">全部</a></li>
+            <% @academies.each_with_index do |academy, index| %>
+              <li param="<%= academy.id %>"><%= link_to academy.name, "#" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <!-- 、、、、、、、、、、、、、、、、系别。。。。。。。。。。。。。。。。。 -->
+      <hr>
+      <!-- 、、、、、、、、、、、、、、、git、其他。。。。。。。。。。。。。。。。。 -->
+      <div class="row serach-content">
+        <div class="col-sm-1 text-right serach-name">
+          <span>其他：</span>
+        </div>
+        <div class="col-sm-11">
+          <ul class="nav nav-pills serach-course">
+            <li param="" class="active"><a href="#">全部</a></li>
+            <li param="new"><a href="#">最新</a></li>
+            <li param="hot"><a href="#">最热</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 、、、、、、、、、、、、、、、、类别。。。。。。。。。。。。。。。。。 -->
+    </div>
+  </div>
+
+  <div id="courseList" class="vedio-course-content wrapper">
+    <%= render @courses %>
+  </div>
+</div>
+
+<%= link_to "", "#", id: "ajaxIndex", style: "display: none;", remote: true, format: :js %>
+
+<script type="text/javascript">
+  $('.serach-content ul a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+
+    var url = "<%= courses_path %>";
+    url += "?"
+    $('.serach-content ul').find(".active").each(function(index){
+      var param = $(this).attr("param");
+      if(index == 0){
+        url = url + "academy_id=" + param
+      }else if(index == 1){
+        url = url + "&scope=" + param
+      }else if(index == 2){
+        url = url + "&type=" + param
+      }
+    });
+    $("#ajaxIndex").attr("href", url);
+    $("#ajaxIndex").click();
+  })
+</script>

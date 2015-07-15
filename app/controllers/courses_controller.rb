@@ -3,7 +3,18 @@ class CoursesController < ApplicationController
 
 	def index
 		@academies = Academy.all
-		@courses = Course.search_courses(params)
+		@courses = Course.where(excellented: true).search_courses(params)
+
+		respond_to do |format|
+	  	format.html
+	  	format.js
+    end
+	end
+
+  #学习中心
+	def learning_center
+		@academies = Academy.all
+		@courses = Course.where(excellented: true).search_courses(params)
 
 		respond_to do |format|
 	  	format.html
