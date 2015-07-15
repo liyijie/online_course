@@ -12,7 +12,9 @@ module Admin
 		def create
 			@course = Course.new(course_params)
 			@course.attachment = Attachment.new if @course.attachment.blank?
+			@course.image = Image.new if @course.image.blank?
 			@course.attachment.content = params[:course][:attachment]
+			@course.image.avatar = params[:course][:image]
 			@course.attachment.file_url = params[:attachment_file_url]
 			@course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids],
 				                        course_id: @course.id)
@@ -30,9 +32,11 @@ module Admin
 
 		def update
 			@course.attachment = Attachment.new if @course.attachment.blank? && params[:course][:attachment].present?
+			@course.image = Image.new if @course.image.blank? && params[:image][:avatar].present?
 			params[:course][:teacher_ids] ||= []
 			if @course.update(course_params)
 				@course.attachment.update(content: params[:course][:attachment]) if params[:course][:attachment].present?
+				@course.image.update(avatar: params[:course][:image]) if params[:course][:image].present?
 				if @course.attachment.present?
 				  @course.attachment.update(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
 				else

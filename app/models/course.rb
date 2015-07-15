@@ -20,7 +20,7 @@ class Course < ActiveRecord::Base
 	acts_as_votable
 	
 	acts_as_commentable
-	#has_one :image, as: :imageable
+	has_one :image, as: :imageable, dependent: :destroy
 	has_one :attachment, as: :attachmentable, dependent: :destroy
 	has_many :sub_courses, dependent: :destroy
 	belongs_to :academy

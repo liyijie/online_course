@@ -1,7 +1,7 @@
 <tr>
   <td>
-    <% if course.attachment.present? && course.attachment.content.present? %>
-      <%= image_tag(course.attachment.content.url(:thumb), size: "50x50") if course.attachment%>
+    <% if course.image.present? && course.image.avatar.present? %>
+      <%= image_tag(course.image.avatar.url(:thumb), size: "50x50") if course.image%>
     <% else %>
       <%= image_tag(course.attachment.file_url, size: "50x50") if course.attachment%>
     <% end %>
