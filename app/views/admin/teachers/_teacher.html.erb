@@ -8,13 +8,13 @@
   <td><%= teacher.final_education %></td>
   <td><%= teacher.final_degree %></td>
   <td>
-    <%= link_to [:admin, teacher], class: 'btn btn-xs btn-info', title: '查看' do %>
-      <span class="glyphicon glyphicon-eye-open"></span>
-    <%end%>
+    <%#= link_to [:admin, teacher], class: 'btn btn-xs btn-info', title: '查看' do %>
+     <!--  <span class="glyphicon glyphicon-eye-open"></span> -->
+    <%#end%>
     <%= link_to edit_admin_teacher_path(teacher), class: 'btn btn-xs btn-default', title: '编辑' do %>
       <span class="glyphicon glyphicon-edit"></span>
     <%end%>
-    <%= link_to nil, class: 'btn btn-xs btn-danger', title: '删除' do %>
+    <%= link_to admin_teacher_path(teacher), data:{ confirm: 'Are you sure?'},method: :delete, class: 'btn btn-xs btn-danger', title: '删除' do %>
       <span class="glyphicon glyphicon-trash"></span>
     <%end%>
   </td>

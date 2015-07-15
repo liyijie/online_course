@@ -16,5 +16,10 @@ module Admin
 		  end
 		  redirect_to admin_course_sub_course_questions_url(course.id, sub_course.id)
 		end
+
+		def destroy
+      #@academy.destroy
+      return redirect_to admin_course_sub_course_questions_url(course.id, sub_course.id)
+    end
 	end
 end

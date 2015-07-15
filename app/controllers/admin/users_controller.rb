@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update, :destroy]
   def index
     @users = User.all.page(params[:page]).keyword_like(params[:keyword])
   end
@@ -28,7 +29,6 @@ class Admin::UsersController < ApplicationController
 
 
   def edit
-    @user = User.where(id: params[:id]).first
     #学院专业回显赋值
     @user.academy_id = @user.try(:grade).try(:specialty).try(:academy).try(:id)
     @user.specialty_id = @user.try(:grade).try(:specialty).try(:id)
@@ -39,7 +39,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user = User.where(id: params[:id]).first
     @user.image = Image.new if @user.image.blank?
     if @user.update(user_params) && @user.image.update(avatar: params[:user][:image])
       flash.now[:notice] = "用户更新成功"
@@ -52,7 +51,16 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    return redirect_to admin_users_url
+  end
+
   private
+
+    def set_user
+      @user = User.where(id: params[:id]).first
+    end
 
     def user_params
       params.require(:user).permit(:campus, :phone, :nickname,:name, :username, :grade_id,

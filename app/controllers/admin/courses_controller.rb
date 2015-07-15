@@ -51,6 +51,11 @@ module Admin
 			end
 		end
 
+		def destroy
+      @course.destroy
+      return redirect_to admin_courses_url
+    end
+
 		private
 
 		def course_params

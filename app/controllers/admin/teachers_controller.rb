@@ -1,4 +1,6 @@
 class Admin::TeachersController < ApplicationController
+  before_action :set_teacher, only: [:edit, :update, :destroy]
+
   def index
     @teachers = Teacher.page(params[:page]).per(15)
   end
@@ -22,14 +24,12 @@ class Admin::TeachersController < ApplicationController
   end
 
   def edit
-    @teacher = Teacher.where(id: params[:id]).first
   end
 
   def update
-    @teacher = Teacher.where(id: params[:id]).first
     @teacher.image = Image.new if @teacher.image.blank? && params[:teacher][:image].present?
     params[:teacher][:grade_ids] ||= []
-    if @teacher.update(teacher_params) 
+    if @teacher.update(teacher_params)
       @teacher.image.update(avatar: params[:teacher][:image]) if params[:teacher][:image].present?
       flash.now[:notice] = "教师更新成功"
       return redirect_to admin_teachers_url
@@ -46,8 +46,15 @@ class Admin::TeachersController < ApplicationController
     redirect_to admin_teachers_url
   end
 
-  private
+  def destroy
+    @teacher.destroy
+    return redirect_to admin_teachers_url
+  end
 
+  private
+    def set_teacher
+      @teacher = Teacher.where(id: params[:id]).first
+    end
     def teacher_params
       params.require(:teacher).permit(:number, :phone, :username, :number, :name, :avatar,
                                     :birthday, :tec_position, :email, :qualification,

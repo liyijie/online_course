@@ -45,7 +45,9 @@ module Admin
 		end
 
 		def destroy
-		end
+      @sub_course.destroy
+      return redirect_to admin_course_sub_courses_path(@course)
+    end
 
 		private
 
