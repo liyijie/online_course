@@ -43,6 +43,7 @@
   <div id="courseList" class="vedio-course-content wrapper">
     <%= render @courses %>
   </div>
+  <%= paginate @courses %>
 </div>
 
 <%= link_to "", "#", id: "ajaxIndex", style: "display: none;", remote: true, format: :js %>
