@@ -15,10 +15,13 @@ class Admin::TeachersController < ApplicationController
     @teacher.image.avatar = params[:teacher][:image]
     @teacher.teacher_grades << TeacherGrade.new(grade_id: params[:teacher][:grade_ids],
                               teacher_id: @teacher.id)
+    @teacher.password = "8888"
+    @teacher.password_confirmation = "8888"
     if @teacher.save && @teacher.image.save
       flash.now[:notice] = "教师创建成功"
       return redirect_to admin_teachers_url
     else
+      p @teacher.errors
       return render :new
     end
   end

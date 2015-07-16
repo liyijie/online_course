@@ -25,7 +25,7 @@
   <div class="form-group">
     <%= f.label :image, '头像', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.file_field :image, class: 'form-control', required: true %>
+      <%= f.file_field :image, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
@@ -44,18 +44,6 @@
     <%= f.label :username, '用户名', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.text_field :username, class: 'form-control', required: true %>
-    </div>
-  </div>
-   <div class="form-group">
-    <%= f.label :password, '密码', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-  </div>
-   <div class="form-group">
-    <%= f.label :password_confirmation, '确认密码', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
