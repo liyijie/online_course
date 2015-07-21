@@ -25,12 +25,12 @@ class Course < ActiveRecord::Base
 	has_many :sub_courses, dependent: :destroy
 	belongs_to :academy
 	has_many :teacher_courses, dependent: :destroy
-  has_many :teachers, through: :teacher_courses
-  #创建course生成编号
+	has_many :teachers, through: :teacher_courses
+
+	#创建course生成编号
 	before_create do
 		self.number = NumberHelper.random_course_number
 	end
-
 
 	#课程收藏(赞)或取消收藏（取消赞）
 	#参数：课程：couorse_id,当前登录用户
@@ -52,17 +52,16 @@ class Course < ActiveRecord::Base
 		end
 	end
 
-
 	def self.search_courses params
 		conn = [['1=1']]
 		if params[:academy_id].present?
 			conn[0] << 'academy_id = ?'
-      conn << params[:academy_id]
+			conn << params[:academy_id]
 		end
 
 		if params[:scope].present?
 			conn[0] << 'scope = ?'
-      conn << params[:scope]
+			conn << params[:scope]
 		end
 		conn[0] = conn[0].join(' and ')
 

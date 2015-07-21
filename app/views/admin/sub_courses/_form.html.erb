@@ -1,11 +1,20 @@
 <%= form_for([:admin, @course, @sub_course], html: {class: "form-horizontal"}) do |f| %>
-
+<div class="form-group">
+  <%= label_tag :category, '所属分类', class: 'col-sm-2 control-label' %>
+  <div class="col-sm-8">
+    <% @categories.each do |category| %>
+      <%= f.radio_button :category_id, category.id %>
+      <%= f.label :category_id, category.name %>
+    <% end %>
+  </div>
+</div>
   <div class="form-group">
     <%= f.label :name, '子课程名称', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.text_field :name, class: 'form-control' %>
     </div>
   </div>
+
   <% if @sub_course.attachment.present? %>
     <div class="form-group">
       <%= label :attachment_tag, '已传课件', class: 'col-sm-2 control-label' %>

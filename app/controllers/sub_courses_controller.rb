@@ -3,7 +3,7 @@ class SubCoursesController < ApplicationController
   before_action :authenticate_user_or_teacher2, only: :comment_praise
   before_action :authenticate_user , only: [:collect_or_praise] , if: "!teacher_signed_in?"
 
-	def show
+  def show
     @sub_course = SubCourse.where(number: params[:number]).first
     if @sub_course.blank?
       flash.now[:notice] = "视频不存在"
@@ -14,7 +14,7 @@ class SubCoursesController < ApplicationController
     @partners = @course.get_likes(vote_scope: :collect).page(params[:partner_page])
     @comments = @sub_course.root_comments.where(comment_scope: "discuss").order("created_at DESC").page(params[:page])
     @relate_sub_courses = SubCourse.joins(:attachment).where("sub_courses.course_id = ? AND attachments.content_content_type like ?", @course.id, "%video%")
-                                          .order("RAND()").limit(3)
+    .order("RAND()").limit(3)
   end
 
   def new
@@ -58,12 +58,12 @@ class SubCoursesController < ApplicationController
   end
 
   #课件下载
-	def download
-		@sub_course = SubCourse.find_by(number: params[:number])
-		send_file @sub_course.attachment.content.path,
-		          type: @sub_course.attachment.content.content_type,
-		          x_sendfile: true
-	end
+  def download
+    @sub_course = SubCourse.find_by(number: params[:number])
+    send_file @sub_course.attachment.content.path,
+    type: @sub_course.attachment.content.content_type,
+    x_sendfile: true
+  end
 
 
   #视频评论或者发起提问

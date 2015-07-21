@@ -1,6 +1,6 @@
 <%= content_for :nav do%>
   <li>
-  	<a href="#{admin_root_path}">后台</a>
+   <a href="#{admin_root_path}">后台</a>
   </li>
   <li class="active">课程列表</li>
 <%end%>
@@ -8,31 +8,32 @@
 <%= content_for :toolbar do %>
   <div class="col-xs-12">
     <%= link_to new_admin_course_path, class: 'btn btn-success' do %>
-      <span class="glyphicon glyphicon-plus-sign">新建</span>
+    <span class="glyphicon glyphicon-plus-sign">新建</span>
     <%end%>
-  	<div class="col-xs-3 pull-right">
-  		<div class="form-group">
-  		  <%= render partial: 'admin/common/keyword', locals: {path: ""} %>
-  	  </div>
-  	</div>
+    <div class="col-xs-3 pull-right">
+      <div class="form-group">
+        <%= render partial: 'admin/common/keyword', locals: {path: ""} %>
+      </div>
+    </div>
   </div>
 <%end%>
 
 <hr></hr>
 <table class="table table-hover table-bordered text-center">
-	<thead>
-		<tr>
-		  <th class="text-center">展示图</th>
-			<th class="text-center">编号</th>
-			<th class="text-center">名称</th>
-			<th class="text-center">描述</th>
+  <thead>
+    <tr>
+      <th class="text-center">展示图</th>
+      <th class="text-center">编号</th>
+      <th class="text-center">名称</th>
+      <th class="text-center">描述</th>
       <th class="text-center">精品课程</th>
+      <th class="text-center">精品课程申报中</th>
       <th class="text-center">子课程</th>
-			<th class="text-center" colspan="2">操作</th>
-		</tr>
-	</thead>
-	<tbody>
-		<%= render @courses %>
-	</tbody>
+      <th class="text-center" colspan="2">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @courses %>
+  </tbody>
 </table>
 <%= paginate @courses %>

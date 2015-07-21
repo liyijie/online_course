@@ -68,6 +68,12 @@
     </div>
   </div>
   <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.check_box :applied, class: 'liyi-checkbox' %>
+      <%= f.label :applied, '申报精品课程中', class: 'liyi-label' %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :description, '课程描述', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
       <%= f.text_area :description, size: '80x6', class: 'form-control' %>

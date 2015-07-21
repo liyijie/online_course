@@ -1,6 +1,7 @@
 <tr>
   <td><%= sub_course.number %></td>
   <td><%= sub_course.name %></td>
+  <td><%= sub_course.try(:category).name %></td>
   <% if sub_course.attachment && sub_course.attachment.file_url.present? %>
     <td><%= sub_course.attachment.file_url.to_s[0..10] if sub_course.attachment%></td>
   <% else %>

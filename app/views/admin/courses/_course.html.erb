@@ -10,6 +10,7 @@
   <td><%= course.name %></td>
   <td><%= course.description.to_s[0..20] %></td>
   <td><%= course.excellented ? "是" : "否" %></td>
+  <td><%= course.applied ? "是" : "否" %></td>
   <td><%= link_to "子课程", admin_course_sub_courses_path(course)%></td>
   <td>
     <%#= link_to [:admin, course], class: 'btn btn-xs btn-info', title: '查看' do %>

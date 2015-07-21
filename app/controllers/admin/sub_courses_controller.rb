@@ -1,6 +1,6 @@
 module Admin
 	class SubCoursesController < ApplicationController
-    before_action :set_course
+		before_action :set_course
 		before_action :set_sub_course, only: [:edit, :update, :destroy]
 		def index
 			@sub_courses = @course.sub_courses.page(params[:page]).per(10)
@@ -8,6 +8,7 @@ module Admin
 
 		def new
 			@sub_course = @course.sub_courses.new
+			@categories = Category.where(deleted_at: nil)
 		end
 
 		def create
@@ -25,13 +26,14 @@ module Admin
 		end
 
 		def edit
+			@categories = Category.where(deleted_at: nil)
 		end
 
 		def update
 			@sub_course.attachment = Attachment.new if @sub_course.attachment.blank?
 			if @sub_course.update(sub_course_params) && @sub_course.attachment.update(content: params[:sub_course][:attachment])
 				if @sub_course.attachment.present?
-				  @sub_course.attachment.update(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
+					@sub_course.attachment.update(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
 				else
 					@sub_course.attachment = Attachment.new
 					@sub_course.attachment.create(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
@@ -45,9 +47,9 @@ module Admin
 		end
 
 		def destroy
-      @sub_course.destroy
-      return redirect_to admin_course_sub_courses_path(@course)
-    end
+			@sub_course.destroy
+			return redirect_to admin_course_sub_courses_path(@course)
+		end
 
 		private
 
@@ -56,7 +58,7 @@ module Admin
 		end
 
 		def sub_course_params
-			params.require(:sub_course).permit(:name, :number)
+			params.require(:sub_course).permit(:name, :number, :category_id)
 		end
 
 		def set_sub_course

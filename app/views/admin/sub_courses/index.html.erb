@@ -1,27 +1,27 @@
 <%= content_for :nav do%>
-  <li>
-  	<a href="#{admin_root_path}">后台</a>
-  </li>
-  <li>
-    <a href="#{admin_courses_path}">课程列表</a>
-  </li>
-  <li>
-    <a href="#"><%= @course.id %></a>
-  </li>
-  <li class="active">子课程列表</li>
+<li>
+ <a href="#{admin_root_path}">后台</a>
+</li>
+<li>
+	<a href="#{admin_courses_path}">课程列表</a>
+</li>
+<li>
+	<a href="#"><%= @course.id %></a>
+</li>
+<li class="active">子课程列表</li>
 <%end%>
 
 <%= content_for :toolbar do %>
-  <div class="col-xs-12">
-    <%= link_to new_admin_course_sub_course_path(@course), class: 'btn btn-success' do %>
-      <span class="glyphicon glyphicon-plus-sign">新建</span>
-    <%end%>
-  	<div class="col-xs-3 pull-right">
-  		<div class="form-group">
-  		  <%= render partial: 'admin/common/keyword', locals: {path: ""} %>
-  	  </div>
-  	</div>
-  </div>
+<div class="col-xs-12">
+	<%= link_to new_admin_course_sub_course_path(@course), class: 'btn btn-success' do %>
+	<span class="glyphicon glyphicon-plus-sign">新建</span>
+	<%end%>
+	<div class="col-xs-3 pull-right">
+		<div class="form-group">
+			<%= render partial: 'admin/common/keyword', locals: {path: ""} %>
+		</div>
+	</div>
+</div>
 <%end%>
 
 <hr></hr>
@@ -30,8 +30,9 @@
 		<tr>
 			<th class="text-center">编号</th>
 			<th class="text-center">名称</th>
-      <th class="text-center">附件</th>
-      <th>测试题目</th>
+			<th class="text-center">分类</th>
+			<th class="text-center">附件</th>
+			<th class="text-center">测试题目</th>
 			<th class="text-center" colspan="2">操作</th>
 		</tr>
 	</thead>
