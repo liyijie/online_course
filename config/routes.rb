@@ -119,6 +119,8 @@ Rails.application.routes.draw do
 
     resources :academies
 
+    resources :categories
+
     resources :users do
       collection do
         post :import
