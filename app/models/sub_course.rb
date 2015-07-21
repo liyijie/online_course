@@ -15,6 +15,7 @@ class SubCourse < ActiveRecord::Base
   acts_as_commentable
   acts_as_votable
   belongs_to :course
+  belongs_to :category
   has_one :attachment, as: :attachmentable, dependent: :destroy
   has_many :questions, dependent: :destroy
 
