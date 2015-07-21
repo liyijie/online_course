@@ -32,7 +32,7 @@ module Admin
 		end
 
 		def destroy
-			@category.destroy
+			@category.soft_destroy
 			return redirect_to admin_categories_path
 		end
 
