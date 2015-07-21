@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715080927) do
+ActiveRecord::Schema.define(version: 20150721023926) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20150715080927) do
   end
 
   add_index "attachments", ["sub_course_id"], name: "index_attachments_on_sub_course_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "deleted_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id",   limit: 4

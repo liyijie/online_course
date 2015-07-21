@@ -1,6 +1,10 @@
 require 'rack/test'
 
-FactoryGirl.define do  factory :teacher_grage do
+FactoryGirl.define do  factory :category do
+    name "MyString"
+deleted_at "2015-07-21 10:39:26"
+  end
+  factory :teacher_grage do
     
   end
   factory :teacher_course do
