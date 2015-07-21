@@ -1,13 +1,13 @@
 <% content_for :crumbs do%>
-  <ol class="breadcrumb">
-  	<li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
-  	<li><%= link_to "首页", root_path %></li>
-  	<li><%= link_to @sub_course.course.name, show_courses_path(@sub_course.course.number) %></li>
-  	<li class="active"><%= @sub_course.name %></li>
-  </ol>
+<ol class="breadcrumb">
+	<li><span class="glyphicon glyphicon-home">&nbsp;</span>当前位置</li>
+	<li><%= link_to "首页", root_path %></li>
+	<li><%= link_to @sub_course.course.name, show_courses_path(@sub_course.course.number) %></li>
+	<li class="active"><%= @sub_course.name %></li>
+</ol>
 <% end %>
 <%= content_for :script do %>
-  <%= javascript_include_tag "_sub_course_show", 'data-turbolinks-track' => true %>
+<%= javascript_include_tag "_sub_course_show", 'data-turbolinks-track' => true %>
 <%end%>
 
 <div class="main-content">
@@ -88,16 +88,15 @@
 				<%= link_to "课后作业", after_class_courses_path(@course.number), class: "btn btn-primary"%>
 				<%= link_to "成绩查询", teacher_signed_in? ? my_score_teachers_path : my_exams_user_index_path, class: "btn btn-success"%>
 			</div>
-		</div>
-		<div class="students-content">
-			<p class="total">
-				<span class="text"><%= @partners.size %></span> 位共同战斗的同学
-				<%= link_to "" do %>
+			<div class="students-content">
+				<p class="total">
+					<span class="text"><%= @partners.size %></span> 位共同战斗的同学
+					<%= link_to "" do %>
 					<span class="glyphicon glyphicon-refresh"></span>
-				<% end %>
-			</p>
-			<ul class="students">
-				<% @partners.each do |partner| %>
+					<% end %>
+				</p>
+				<ul class="students">
+					<% @partners.each do |partner| %>
 					<li>
 						<div class="media-left">
 							<a href="javascript:void(0)">
@@ -109,8 +108,8 @@
 							<p class="comment-info"><%= partner.try(:voter).try(:position) %></p>
 						</div>
 					</li>
-				<% end %>
-			</ul>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
