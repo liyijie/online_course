@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   resources :sub_courses, only: [:new, :create, :edit, :update, :destroy]
 
+  #精品课程申报
+  resources :applies
   #讨论中心
   resources :discusses, except: [:edit, :update, :destroy] do 
     collection do
