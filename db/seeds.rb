@@ -13,21 +13,21 @@ begin
 
   Academy.delete_all
   Academy.create!([{
-      id: 1, school_id: 1, name: "商务与管理系"
+      id: 1, school_id: 1, academy_code: "1", name: "商务与管理系"
     },{
-      id: 2, school_id: 1, name: "机电工程系"
+      id: 2, school_id: 1, academy_code: "2", name: "机电工程系"
     },{
-      id: 3, school_id: 1, name: "计算机信息系"
+      id: 3, school_id: 1, academy_code: "3", name: "计算机信息系"
     },{
-      id: 4, school_id: 1, name: "餐旅服务学院"
+      id: 4, school_id: 1, academy_code: "4", name: "餐旅服务学院"
     },{
-      id: 5, school_id: 1, name: "汽车工程系"
+      id: 5, school_id: 1, academy_code: "5", name: "汽车工程系"
     },{
-      id: 6, school_id: 1, name: "应用外语系"
+      id: 6, school_id: 1, academy_code: "6", name: "应用外语系"
     },{
-      id: 7, school_id: 1, name: "艺术设计系"
+      id: 7, school_id: 1, academy_code: "7", name: "艺术设计系"
     },{
-      id: 8, school_id: 1, name: "珠宝系"
+      id: 8, school_id: 1, academy_code: "8", name: "珠宝系"
     }])
 
   Specialty.delete_all

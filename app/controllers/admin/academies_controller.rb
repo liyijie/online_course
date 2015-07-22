@@ -43,7 +43,7 @@ module Admin
     private
 
     def academy_params
-      params.require(:academy).permit(:name, :school_id)
+      params.require(:academy).permit(:name, :school_id, :academy_code)
     end
     def set_academy
       @academy = Academy.find(params[:id])
