@@ -5,6 +5,7 @@
 			<%= f.select(:academy_id, Academy.all.collect{ |p| [p.name, p.id]}, {prompt: '请选择学院'}, {class: 'form-control'}) %>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<%= label_tag :teachers, '教师团队', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
@@ -12,6 +13,16 @@
 				<%= check_box_tag("course[teacher_ids][]", teacher.id, teacher.id.in?(@course.teachers.collect(&:id)))%>
 				<%= teacher.name%>
 			<%end%>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= label_tag :teachers, '课程负责人', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<% Teacher.all.each do |teacher| %>
+				<%= f.radio_button :manager_id, teacher.id %>
+				<%= teacher.name %>
+			<% end %>
 		</div>
 	</div>
 
@@ -70,7 +81,7 @@
 	<div id="applied" class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<%= f.check_box :applied, class: 'liyi-checkbox', id: "app_checkbox" %>
-			<%= f.label :applied, '精品课程申报进行中', class: 'liyi-label' %>
+			<%= f.label :applied, '申报精品课程中', class: 'liyi-label' %>
 		</div>
 	</div>
 	<div class="form-group">

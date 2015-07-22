@@ -28,6 +28,7 @@ class Course < ActiveRecord::Base
 	belongs_to :academy
 	has_many :teacher_courses, dependent: :destroy
 	has_many :teachers, through: :teacher_courses
+	belongs_to :manager, class_name: "Teacher",  foreign_key: "manager_id"
 
 	#创建course生成编号
 	before_create do

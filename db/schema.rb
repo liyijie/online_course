@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722072527) do
+ActiveRecord::Schema.define(version: 20150722082644) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",  limit: 4
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20150722072527) do
     t.integer  "scope",       limit: 4,     default: 1
     t.boolean  "excellented", limit: 1,     default: false
     t.boolean  "applied",     limit: 1,     default: false
-    t.integer  "manager",     limit: 4
+    t.integer  "manager_id",  limit: 4
   end
 
   add_index "courses", ["academy_id"], name: "index_courses_on_academy_id", using: :btree
