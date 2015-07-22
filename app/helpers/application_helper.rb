@@ -14,7 +14,7 @@ module ApplicationHelper
 		#controller.action_name
 		menu << content_tag('li', link_to('首页', root_path), class: controller.controller_path == 'home' ? 'active' : '')
 		menu << content_tag('li', link_to('精品课程', courses_path), class: ["courses","sub_courses"].include?(controller.controller_path) && ["index"].include?(controller.action_name) ? 'active' : '')
-		#menu << content_tag('li', link_to('精品课程申报', courses_path), class: ["courses","sub_courses"].include?(controller.controller_path) && ["index"].include?(controller.action_name) ? 'active' : '')
+		menu << content_tag('li', link_to('精品课程申报', apply_courses_path), class: ["apply_courses"].include?(controller.controller_path) && ["index"].include?(controller.action_name) ? 'active' : '')
 		menu << content_tag('li', link_to('教师风采', teachers_path), 
 			class: (controller.controller_path == 'teachers' and (controller.action_name=="index" || controller.action_name=="show")) ? 'active' : '' )
 			menu << content_tag('li', link_to('学习中心', courses_learning_center_path), class: (controller.controller_path == 'courses' && controller.action_name == "learning_center") ? 'active' : '')

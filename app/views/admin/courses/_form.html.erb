@@ -1,96 +1,102 @@
 <%= simple_form_for([:admin, @course], html: {class: "form-horizontal"}) do |f| %>
-  <div class="form-group">
-    <%= f.label :academy_id, '所属学院', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.select(:academy_id, Academy.all.collect{ |p| [p.name, p.id]}, {prompt: '请选择学院'}, {class: 'form-control'}) %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= label_tag :teachers, '教师团队', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <% Teacher.all.each do |teacher| %>
-        <%= check_box_tag("course[teacher_ids][]", teacher.id, teacher.id.in?(@course.teachers.collect(&:id)))%>
-        <%= teacher.name%>
-      <%end%>
-    </div>
-  </div>
+	<div class="form-group">
+		<%= f.label :academy_id, '所属学院', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.select(:academy_id, Academy.all.collect{ |p| [p.name, p.id]}, {prompt: '请选择学院'}, {class: 'form-control'}) %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= label_tag :teachers, '教师团队', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<% Teacher.all.each do |teacher| %>
+				<%= check_box_tag("course[teacher_ids][]", teacher.id, teacher.id.in?(@course.teachers.collect(&:id)))%>
+				<%= teacher.name%>
+			<%end%>
+		</div>
+	</div>
 
-  <% if @course.image.present? %>
-    <div class="form-group">
-      <%= label_tag :image, '已上传展示图', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-4 container">
-        <%= image_tag(@course.image.avatar.url(:c_500_350), size: "340x200") %>
-      </div>
-    </div>
-  <% end %>
-  <div class="form-group">
-    <%= f.label :image, '课程展示图', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4 container">
-      <%= f.file_field :image %>
-    </div>
-  </div>
+	<% if @course.image.present? %>
+		<div class="form-group">
+			<%= label_tag :image, '已上传展示图', class: 'col-sm-2 control-label' %>
+			<div class="col-sm-4 container">
+				<%= image_tag(@course.image.avatar.url(:c_500_350), size: "340x200") %>
+			</div>
+		</div>
+	<% end %>
+	<div class="form-group">
+		<%= f.label :image, '课程展示图', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4 container">
+			<%= f.file_field :image %>
+		</div>
+	</div>
 
-  <% if @course.attachment.present? %>
-    <div class="form-group">
-      <%= label_tag :attachment, '已上传附件', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-4 container">
-        <%= image_tag(@course.attachment.content.url(:c_500_350), size: "340x200") %>
-      </div>
-    </div>
-  <% end %>
-  <div class="form-group">
-    <%= f.label :attachment, '课程附件', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4 container">
-      <%= f.file_field :attachment %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= label_tag :or, '或者', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4 container">
-    </div>
-  </div>
-  <div class="form-group">
-    <%= label_tag :attachment_file_url, '课程附件[地址]', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4 container">
-      <%= text_field_tag :attachment_file_url, nil, class: 'form-control'%>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :name, '课程名称', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.check_box :excellented, class: 'liyi-checkbox' %>
-      <%= f.label :excellented, '是否精品课程', class: 'liyi-label' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.check_box :applied, class: 'liyi-checkbox' %>
-      <%= f.label :applied, '申报精品课程中', class: 'liyi-label' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :description, '课程描述', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.text_area :description, size: '80x6', class: 'form-control' %>
-    </div>
-  </div>
-  <hr></hr>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button class="btn btn-success" type="submit">
-        <span class="glyphicon glyphicon-floppy-save">保存</span>
-      </button>
-    </div>
-  </div>
+	<% if @course.attachment.present? %>
+		<div class="form-group">
+			<%= label_tag :attachment, '已上传附件', class: 'col-sm-2 control-label' %>
+			<div class="col-sm-4 container">
+				<%= image_tag(@course.attachment.content.url(:c_500_350), size: "340x200") %>
+			</div>
+		</div>
+	<% end %>
+	<div class="form-group">
+		<%= f.label :attachment, '课程附件', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4 container">
+			<%= f.file_field :attachment %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= label_tag :or, '或者', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4 container">
+		</div>
+	</div>
+	<div class="form-group">
+		<%= label_tag :attachment_file_url, '课程附件[地址]', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4 container">
+			<%= text_field_tag :attachment_file_url, nil, class: 'form-control'%>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :name, '课程名称', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+	</div>
+	<div id="excellented" class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<%= f.check_box :excellented, class: 'liyi-checkbox', id: "exc_checkbox" %>
+			<%= f.label :excellented, '是否是精品课程', class: 'liyi-label' %>
+		</div>
+	</div>
+	<div id="applied" class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<%= f.check_box :applied, class: 'liyi-checkbox', id: "app_checkbox" %>
+			<%= f.label :applied, '精品课程申报进行中', class: 'liyi-label' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :description, '课程描述', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.text_area :description, size: '80x6', class: 'form-control' %>
+		</div>
+	</div>
+	<hr></hr>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-success" type="submit">
+				<span class="glyphicon glyphicon-floppy-save">保存</span>
+			</button>
+		</div>
+	</div>
 <%end%>
 
 <script type="text/javascript">
-  $(function(){
-    $("#course_attachment, #course_image").fileinput();
-  });
+	$(function(){
+		$("#course_attachment, #course_image").fileinput();
+	});
+	$("#exc_checkbox").click(function(){
+		$("#applied").toggle();
+	});
+	$("#app_checkbox").click(function(){
+		$("#excellented").toggle();
+	});
 </script>

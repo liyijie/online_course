@@ -11,6 +11,8 @@
 #  updated_at  :datetime         not null
 #  academy_id  :integer
 #  scope       :integer          default(1)
+#  excellented  :boolean  limit: 1,     default: false
+#  applied   :boolean   limit: 1,     default: false
 #
 
 class Course < ActiveRecord::Base

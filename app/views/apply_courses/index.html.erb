@@ -1,0 +1,40 @@
+<div class="apply">
+	<h3>
+		<%= image_tag "title-bg.png"%>
+		<strong>精品课程申报</strong>
+	</h3>
+	<div class="apply-tab">
+
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">市级精品课程</a></li>
+			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">校级精品课程</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				<ul class="nav nav-justified apply-nav item text-center text-muted">
+					<li>课程名称</li>
+					<li>院系</li>
+					<li>课程负责人</li>
+					<li>教师团队</li>
+					<li>申报时间</li>
+				</ul>
+				<% @apply_courses.each do |apply_course|%>
+					<ul class="nav nav-justified item apply-item text-center">
+						<li><%= apply_course.name %></li>
+						<li><%= apply_course.try(:academy).name %></li>
+						<li><%= "课程负责人"%></li>
+						<li><%= apply_course.try(:teacher).try(:name) %></li>
+						<li><%= %></li>
+					</ul>
+				<% end %>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="profile">
+				<h1>校级精品课程</h1>				
+			</div>
+		</div>
+
+	</div>
+</div>
