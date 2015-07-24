@@ -17,20 +17,16 @@
 				<ul class="nav nav-justified apply-nav item text-center text-muted">
 					<li>课程名称</li>
 					<li>院系</li>
+					<li>所属专业</li>
 					<li>课程负责人</li>
-					<li>教师团队</li>
 					<li>申报时间</li>
 				</ul>
 				<% @apply_courses.each do |apply_course|%>
 					<ul class="nav nav-justified item apply-item text-center">
 						<li><%= apply_course.name %></li>
 						<li><%= apply_course.try(:academy).try(:name) %></li>
+						<li><%= apply_course.try(:specialty).try(:name) %></li>
 						<li><%= apply_course.try(:manager).try(:name) %></li>
-						<li>
-							<% apply_course.teacher_courses.each do |teacher_course| %>
-								<%= teacher_course.try(:teacher).try(:name) %>
-							<% end %>
-						</li>
 						<li><%= apply_course.created_at.to_date.to_s(:db) %></li>
 					</ul>
 				<% end %>

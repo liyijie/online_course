@@ -2,7 +2,14 @@
 	<div class="form-group">
 		<%= f.label :academy_id, '所属学院', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
-			<%= f.select(:academy_id, Academy.all.collect{ |p| [p.name, p.id]}, {prompt: '请选择学院'}, {class: 'form-control'}) %>
+			<%= f.select(:academy_id, Academy.all.pluck(:name, :id), {prompt: '请选择学院'}, {class: 'form-control', id: "common_academy_id"}) %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :specialty_id, '所属专业', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.select(:specialty_id,  @specialties, {prompt: '请选择专业'}, {class: 'form-control', id: "common_specialty_id"}) %>
 		</div>
 	</div>
 
@@ -111,3 +118,11 @@
 		$("#excellented").toggle();
 	});
 </script>
+
+<%= content_for :script do %>
+  <%= javascript_tag do %>
+    get_specialties_path = "<%= get_specialties_user_index_path %>"
+    get_grades_path = "<%= get_grades_user_index_path %>"
+  <% end %>
+  <%= javascript_include_tag "_user_show" %>
+<% end %>

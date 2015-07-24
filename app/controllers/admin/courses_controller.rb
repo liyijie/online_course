@@ -7,6 +7,7 @@ module Admin
 
 		def new
 			@course = Course.new
+		       @specialties = []
 		end
 
 		def create
@@ -23,11 +24,13 @@ module Admin
 				return redirect_to admin_courses_url
 			else
 				flash.now[:notice] = "课程创建失败"
+			       @specialties = []
 				return render action: :new
 			end
 		end
 
 		def edit
+		       @specialties = Specialty.where(academy_id: @course.academy_id).pluck(:name, :id)
 		end
 
 		def update
@@ -46,6 +49,7 @@ module Admin
 				flash.now[:notice] = "课程更新成功"
 				return redirect_to admin_courses_url
 			else
+				@specialties = Specialty.where(academy_id: @course.academy_id).pluck(:name, :id)
 				flash.now[:notice] = "课程更新失败"
 				return render action: :edit
 			end
@@ -59,7 +63,7 @@ module Admin
 		private
 
 		def course_params
-			params.require(:course).permit(:name, :description, :excellented, :applied,:manager_id, :academy_id, {teacher_ids: []})
+			params.require(:course).permit(:name, :description, :excellented, :applied,:manager_id, :academy_id, :specialty_id, {teacher_ids: []})
 		end
 
 		def set_course

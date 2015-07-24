@@ -26,6 +26,7 @@ class Course < ActiveRecord::Base
 	has_one :attachment, as: :attachmentable, dependent: :destroy
 	has_many :sub_courses, dependent: :destroy
 	belongs_to :academy
+	belongs_to :specialty
 	has_many :teacher_courses, dependent: :destroy
 	has_many :teachers, through: :teacher_courses
 	belongs_to :manager, class_name: "Teacher",  foreign_key: "manager_id"
