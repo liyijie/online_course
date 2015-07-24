@@ -24,7 +24,10 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find_by(number: params[:number])
-		@sub_courses = @course.sub_courses
+		#读取子课程分类
+		@category_arr = Category.joins(:sub_courses).pluck(:name).uniq
+
+		#读取教师课程
 		@teacher_courses = @course.teacher_courses
 	end
 

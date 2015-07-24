@@ -41,7 +41,7 @@ module Admin
 				params.require(:category).permit(:name)
 			end
 			def set_category
-				@category = Category.find(params[:id])				
+				@category = Category.find(params[:id])
 			end
 	end
 end

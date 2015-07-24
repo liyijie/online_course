@@ -87,13 +87,17 @@
       </ul>
     </div>
   </div>
-  <div class="related-courses">
-    <a href="javascript:void(0)" class="btn btn-primary">课程内容</a>
-    <ul class="courses-list">
-      <%= render partial: "sub_course", locals: {sub_courses: @sub_courses}%>
-    </ul>
-    <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
-  </div>
+  <% @category_arr.each do |category|%>
+    <div class="related-courses">
+      <a href="javascript:void(0)" class="btn btn-primary"><%= category %></a>
+      <% @sub_courses = @course.sub_courses.joins(:category).where("categories.name like ?", category) %>
+      <ul class="courses-list">
+        <%= render partial: "sub_course", locals: {sub_courses: @sub_courses}%>
+      </ul>
+      <%= link_to "展开", "javascript:void(0)", class: "drop-down-arrow"%>
+    </div>
+  <% end %>
+
   <% if @course.id == 1 %>
     <%= render partial: "courses/1/main", locals: {teacher_courses: @teacher_courses} %>
   <% elsif  @course.id == 2 %>
