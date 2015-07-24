@@ -3,7 +3,7 @@
   <%= label_tag :category, '所属分类', class: 'col-sm-2 control-label' %>
   <div class="col-sm-8">
     <% @categories.each do |category| %>
-      <%= f.radio_button :category_id, category.id %>
+      <%= f.radio_button :category_id, category.id, required: true %>
       <%= f.label :category_id, category.name %>
     <% end %>
   </div>
