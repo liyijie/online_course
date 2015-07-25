@@ -41,9 +41,8 @@
   </div>
 
   <div id="courseList" class="vedio-course-content wrapper">
-    <%= render @courses %>
+    <%= render partial: "course" %>
   </div>
-  <%= paginate @courses %>
 </div>
 
 <%= link_to "", "#", id: "ajaxIndex", style: "display: none;", remote: true, format: :js %>
@@ -53,7 +52,7 @@
     e.preventDefault();
     $(this).tab('show');
 
-    var url = "<%= courses_path %>";
+    var url = "<%= courses_learning_center_path %>";
     url += "?"
     $('.serach-content ul').find(".active").each(function(index){
       var param = $(this).attr("param");

@@ -1,22 +1,27 @@
-<div class='single-vedio-content'>
-  <div class="vedio-content">
-    <div class="image-wrapper" style="
-    height: 200px; overflow: hidden;">
-      <% if course.attachment.present? && course.attachment.file_url.present? %>
-      <%= link_to image_tag("course-show.png"), show_courses_path(course.number), class: 'img', style: "height: 200px" if course.attachment%>
-     <% else %>
-      <%= link_to image_tag(course.try(:image).try(:avatar).url(:c_500_350)), show_courses_path(course.number), class: 'img' if course.attachment%>
-    <% end %>
+<% @courses.each do |course|%>
+  <div class='single-vedio-content'>
+    <div class="vedio-content">
+      <div class="image-wrapper" style="
+      height: 200px; overflow: hidden;">
+        <% if course.attachment.present? && course.attachment.file_url.present? %>
+        <%= link_to image_tag("course-show.png"), show_courses_path(course.number), class: 'img', style: "height: 200px" if course.attachment%>
+       <% else %>
+        <%= link_to image_tag(course.try(:image).try(:avatar).url(:c_500_350)), show_courses_path(course.number), class: 'img' if course.attachment%>
+      <% end %>
+      </div>
+      <p class="title"><%= link_to truncate(course.name, length: 26), show_courses_path(course.number) %></p>
+      <p class="description">
+        <span class="pull-left section">
+          <span>该课程一共有<%= course.try(:sub_courses).try(:size)%>课时</span>
+        </span>
+        <span class="pull-right">
+          <span class="glyphicon glyphicon-star"></span>
+          <%= course.get_likes(vote_scope: "collect").size %>人收藏
+        </span>
+      </p>
     </div>
-    <p class="title"><%= link_to truncate(course.name, length: 26), show_courses_path(course.number) %></p>
-    <p class="description">
-      <span class="pull-left section">
-        <span>该课程一共有<%= course.try(:sub_courses).try(:size)%>课时</span>
-      </span>
-      <span class="pull-right">
-        <span class="glyphicon glyphicon-star"></span>
-        <%= course.get_likes(vote_scope: "collect").size %>人收藏
-      </span>
-    </p>
   </div>
+<% end %>
+<div class="col-xs-12 text-center">
+  <%= paginate @courses %>
 </div>
