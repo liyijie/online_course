@@ -112,10 +112,12 @@
 		$("#course_attachment, #course_image").fileinput();
 	});
 	$("#exc_checkbox").click(function(){
-		$("#applied").toggle();
+		if (this.checked == true) {
+			$("#app_checkbox").attr("checked", false);
+		}
 	});
 	$("#app_checkbox").click(function(){
-		$("#excellented").toggle();
+		$("#exc_checkbox").attr("checked", false);
 	});
 </script>
 
