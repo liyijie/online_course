@@ -50,5 +50,5 @@
     get_specialties_path = "<%= get_specialties_user_index_path %>"
     get_grades_path = "<%= get_grades_user_index_path %>"
   <% end %>
-  <%= javascript_include_tag "_user_show" %>
+  <%= javascript_include_tag "_user_show", 'data-turbolinks-track' => true %>
 <% end %>

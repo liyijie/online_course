@@ -1,5 +1,5 @@
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require_tree ./admin/.
