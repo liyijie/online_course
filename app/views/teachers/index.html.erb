@@ -32,10 +32,7 @@
       </div>
     </div>
   </div>
-  <ul class="teachers-list">
-    <%= render @teachers %>
-  </ul>
-  <%= paginate @teachers%>
+  <%= render partial: "teacher", locals: {teachers: @teachers} %>
 </div>
 
 <%= link_to "", "#", id: "ajaxIndex", style: "display: none;", remote: true, format: :js %>
