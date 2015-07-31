@@ -36,11 +36,15 @@
 				padding-bottom: 20px;
 				border: 1px solid #E5E5E5;
 				border-top: none;
+				a{
+					color: #333;
+				}
 			}
 			.item > li{
 				width: 5%;
 			}
 			.apply-nav{
+				text-align: center;
 				padding: 10px 0;
 				font-size: 12px;
 			}
@@ -49,6 +53,10 @@
 				border: 1px solid #E5E5E5;
 				border-radius: 5px;
 				margin-bottom: 10px;
+				text-align: center;
+				&:hover{
+					background-color: #eee;
+				}
 			}
 		}
 	}

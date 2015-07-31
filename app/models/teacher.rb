@@ -59,6 +59,11 @@ class Teacher < ActiveRecord::Base
   validates :password, presence: true, length: {minimum:4,maximum: 32}, on: :create
   validates_confirmation_of :password, on: :create
 
+  #去除number中的空格
+  before_create do
+    self.number = self.number.split(" ").join("")
+  end
+
   def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup
 
@@ -103,4 +108,5 @@ class Teacher < ActiveRecord::Base
     else raise "未知格式: #{file.original_filename}"
     end
   end
+
 end
