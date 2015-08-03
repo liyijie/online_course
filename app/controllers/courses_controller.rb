@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
 
 	def index
 		@academies = Academy.all
-		@courses = Course.where("excellented = ? OR applied = ?", true, true).search_courses(params).page(params[:page]).per(9)
+		@courses = Course.search_courses(params).page(params[:page]).per(9)
 
 		respond_to do |format|
 	  	format.html

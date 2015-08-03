@@ -31,3 +31,7 @@ table "teachers"
     t.string   "sex"                #性别
     t.integer  "grade_id"           #所属班级
     t.text     "signature"          #个人签名
+
+说明：表 courses
+    市级申请 city_applied
+    校级申请 college_applied

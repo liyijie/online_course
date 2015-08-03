@@ -79,18 +79,27 @@
 			<%= f.text_field :name, class: 'form-control' %>
 		</div>
 	</div>
-	<div id="excellented" class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<%= f.check_box :excellented, class: 'liyi-checkbox', id: "exc_checkbox" %>
-			<%= f.label :excellented, '是否是精品课程', class: 'liyi-label' %>
-		</div>
-	</div>
 	<div id="applied" class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<%= f.check_box :applied, class: 'liyi-checkbox', id: "app_checkbox" %>
-			<%= f.label :applied, '申报精品课程中', class: 'liyi-label' %>
+			<%= f.check_box :college_applied, class: 'liyi-checkbox' %>
+			<%= f.label :college_applied, '校级精品课程', class: 'liyi-label' %>
 		</div>
 	</div>
+
+	<div id="city-applied" class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<%= f.check_box :city_applied, class: 'liyi-checkbox' %>
+			<%= f.label :city_applied, '市级精品课程', class: 'liyi-label' %>
+		</div>
+	</div>
+
+	<!-- <div class="form-group">
+	  <%#= f.label :scope, '精品课程', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-offset-2 col-sm-10">
+			<%#= f.select :scope, options_for_select(Course.category_scopes.map {|k, v| [k, k]}), {prompt: '请选择。。。'} %>
+		</div>
+	</div> -->
+
 	<div class="form-group">
 		<%= f.label :applied_date, '申报时间', class: "col-sm-2 control-label" %>
 		<div class="col-sm-4">
@@ -112,20 +121,21 @@
 		</div>
 	</div>
 <%end%>
-
-<script type="text/javascript">
-	$(function(){
-		$("#course_attachment, #course_image").fileinput();
-	});
-	$("#exc_checkbox").click(function(){
-		if (this.checked == true) {
-			$("#app_checkbox").attr("checked", false);
-		}
-	});
-	$("#app_checkbox").click(function(){
-		$("#exc_checkbox").attr("checked", false);
-	});
-</script>
+<% if params[:action] == "new" %>
+	<script type="text/javascript">
+		$(function(){
+			$("#course_attachment, #course_image").fileinput();
+			$("#city-applied").hide();
+			$("#course_college_applied").click(function(){
+	      if($("#course_college_applied").is(":checked")) {
+	      	$("#city-applied").show();
+	      }else{
+	      	$("#city-applied").hide();
+	      }
+			});
+		});
+	</script>
+<% end %>
 
 <%= content_for :script do %>
   <%= javascript_tag do %>

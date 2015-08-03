@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803060138) do
+ActiveRecord::Schema.define(version: 20150803090229) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",    limit: 4
@@ -64,19 +64,19 @@ ActiveRecord::Schema.define(version: 20150803060138) do
   add_index "comments", ["usertable_id", "usertable_type"], name: "index_comments_on_usertable_id_and_usertable_type", using: :btree
 
   create_table "courses", force: :cascade do |t|
-    t.string   "number",       limit: 255
-    t.string   "name",         limit: 255
-    t.text     "description",  limit: 65535
-    t.string   "content",      limit: 255
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "academy_id",   limit: 4
-    t.integer  "scope",        limit: 4,     default: 1
-    t.boolean  "excellented",  limit: 1,     default: false
-    t.boolean  "applied",      limit: 1,     default: false
-    t.integer  "manager_id",   limit: 4
-    t.integer  "specialty_id", limit: 4
-    t.string   "applied_date", limit: 255
+    t.string   "number",          limit: 255
+    t.string   "name",            limit: 255
+    t.text     "description",     limit: 65535
+    t.string   "content",         limit: 255
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "academy_id",      limit: 4
+    t.integer  "scope",           limit: 4,     default: 1
+    t.boolean  "city_applied",    limit: 1,     default: false
+    t.boolean  "college_applied", limit: 1,     default: false
+    t.integer  "manager_id",      limit: 4
+    t.integer  "specialty_id",    limit: 4
+    t.string   "applied_date",    limit: 255
   end
 
   add_index "courses", ["academy_id"], name: "index_courses_on_academy_id", using: :btree

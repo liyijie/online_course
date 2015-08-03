@@ -21,20 +21,41 @@
 					<li>课程负责人</li>
 					<li>申报时间</li>
 				</ul>
-				<% @apply_courses.each do |apply_course|%>
-					<%= link_to show_courses_path(apply_course.number) do %>
+				<% @city_applied_courses.each do |city_applied_course|%>
+					<%= link_to show_courses_path(city_applied_course.number) do %>
 						<ul class="nav nav-justified item apply-item">
-							<li><%= apply_course.name %></li>
-							<li><%= apply_course.try(:academy).try(:name) %></li>
-							<li><%= apply_course.try(:specialty).try(:name) %></li>
-							<li><%= apply_course.try(:manager).try(:name) %></li>
-							<li><%= apply_course.applied_date %></li>
+							<li><%= city_applied_course.name %></li>
+							<li><%= city_applied_course.try(:academy).try(:name) %></li>
+							<li><%= city_applied_course.try(:specialty).try(:name) %></li>
+							<li><%= city_applied_course.try(:manager).try(:name) %></li>
+							<li><%= city_applied_course.applied_date %></li>
 						</ul>
 					<% end %>
 				<% end %>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="profile">
-				<label style="padding-top: 20px;">暂无校级精品课程</label>
+			  <% unless @college_applied_courses.present? %>
+				  <label style="padding-top: 20px;">暂无校级精品课程</label>
+				<% else %>
+					<ul class="nav nav-justified apply-nav item text-muted">
+						<li>课程名称</li>
+						<li>院系</li>
+						<li>所属专业</li>
+						<li>课程负责人</li>
+						<li>申报时间</li>
+					</ul>
+					<% @college_applied_courses.each do |college_applied_course|%>
+						<%= link_to show_courses_path(college_applied_course.number) do %>
+							<ul class="nav nav-justified item apply-item">
+								<li><%= college_applied_course.name %></li>
+								<li><%= college_applied_course.try(:academy).try(:name) %></li>
+								<li><%= college_applied_course.try(:specialty).try(:name) %></li>
+								<li><%= college_applied_course.try(:manager).try(:name) %></li>
+								<li><%= college_applied_course.applied_date %></li>
+							</ul>
+						<% end %>
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 

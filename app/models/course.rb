@@ -36,6 +36,10 @@ class Course < ActiveRecord::Base
 		self.number = NumberHelper.random_course_number
 	end
 
+  enum category_scopes: {
+  	'市级精品课程': 1,
+  	'校级精品课程': 2
+  }
 	#课程收藏(赞)或取消收藏（取消赞）
 	#参数：课程：couorse_id,当前登录用户
 	#返回值：第一个返回值表示操作是否成功，true，false
@@ -64,8 +68,11 @@ class Course < ActiveRecord::Base
 		end
 
 		if params[:scope].present?
-			conn[0] << 'scope = ?'
-			conn << params[:scope]
+			if params[:scope] == "1"
+				conn[0] << 'city_applied = true'
+			elsif params[:scope] == "2"
+				conn[0] << 'city_applied = false AND college_applied = true'
+			end
 		end
 		conn[0] = conn[0].join(' and ')
 
