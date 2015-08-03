@@ -1,7 +1,11 @@
 <tr>
   <td>
-    <%= link_to "向上", higher_admin_course_sub_course_path(@course, sub_course), method: :patch %> |
-    <%= link_to "向下", lower_admin_course_sub_course_path(@course, sub_course), method: :patch %>
+    <%= link_to higher_admin_course_sub_course_path(@course, sub_course), method: :patch, title: '上移', remote: true do %>
+      <span class="glyphicon glyphicon-arrow-up"></span>
+    <% end %>
+    <%= link_to lower_admin_course_sub_course_path(@course, sub_course), method: :patch, title: '下移', remote: true do %>
+      <span class="glyphicon glyphicon-arrow-down"></span>
+    <% end %>
   </td>
   <td><%= sub_course.number %></td>
   <td><%= sub_course.name %></td>

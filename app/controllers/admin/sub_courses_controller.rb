@@ -56,18 +56,18 @@ module Admin
     #移动对象位置
     def higher
 			if @sub_course.position > @course.sub_courses.pluck(:id).max
-				return render text: '该项目已经在最顶部'
+				return render js: "alert('该项目已经在最顶部!')"
 			end
 			@sub_course.update(position: @sub_course.position + 1)
-			return redirect_to admin_course_sub_courses_path(@course)
+			return render js: "window.location.href = '#{admin_course_sub_courses_path(@course)}';"
 		end
 
 		def lower
-			if @sub_course.position <= 0
-				return render text: '该项目已经在最底部'
+			if @sub_course.position <= @course.sub_courses.pluck(:id).min
+				return render js: "alert('该项目已经在最底部!')"
 			end
 			@sub_course.update(position: @sub_course.position - 1)
-			return redirect_to admin_course_sub_courses_path(@course)
+			return render js: "window.location.href = '#{admin_course_sub_courses_path(@course)}';"
 		end
 
 		private
