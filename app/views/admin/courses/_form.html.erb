@@ -94,7 +94,7 @@
 	<div class="form-group">
 		<%= f.label :applied_date, '申报时间', class: "col-sm-2 control-label" %>
 		<div class="col-sm-4">
-			<%= f.date_field :applied_date, class: "form-control" %>
+			<%= f.date_field :applied_date, class: "form-control", value: params[:action] == 'edit' ? @course.applied_date : "" %>
 		</div>
 	</div>
 	<div class="form-group">

@@ -28,7 +28,7 @@
 							<li><%= apply_course.try(:academy).try(:name) %></li>
 							<li><%= apply_course.try(:specialty).try(:name) %></li>
 							<li><%= apply_course.try(:manager).try(:name) %></li>
-							<li><%= apply_course.created_at.to_date.to_s(:db) %></li>
+							<li><%= apply_course.applied_date %></li>
 						</ul>
 					<% end %>
 				<% end %>

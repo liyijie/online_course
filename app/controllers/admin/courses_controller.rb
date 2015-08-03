@@ -63,7 +63,7 @@ module Admin
 		private
 
 		def course_params
-			params.require(:course).permit(:name, :description, :excellented, :applied,:manager_id, :academy_id, :specialty_id, {teacher_ids: []})
+			params.require(:course).permit(:name, :description, :excellented, :applied, :applied_date, :manager_id, :academy_id, :specialty_id, {teacher_ids: []})
 		end
 
 		def set_course
