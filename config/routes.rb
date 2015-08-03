@@ -110,6 +110,10 @@ Rails.application.routes.draw do
     end
     resources :courses do
       resources :sub_courses do
+        member do
+          patch :higher, :lower
+          post :lower, :higher
+        end
         resources :questions, only: [:index]
       end
     end

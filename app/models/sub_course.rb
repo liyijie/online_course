@@ -18,6 +18,8 @@ class SubCourse < ActiveRecord::Base
   belongs_to :category
   has_one :attachment, as: :attachmentable, dependent: :destroy
   has_many :questions, dependent: :destroy
+  acts_as_list
+  default_scope {order('position desc')}
 
   #创建sub_course生成编号
 	before_create do

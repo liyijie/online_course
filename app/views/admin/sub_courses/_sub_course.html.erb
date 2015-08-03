@@ -1,4 +1,8 @@
 <tr>
+  <td>
+    <%= link_to "向上", higher_admin_course_sub_course_path(@course, sub_course), method: :patch %> |
+    <%= link_to "向下", lower_admin_course_sub_course_path(@course, sub_course), method: :patch %>
+  </td>
   <td><%= sub_course.number %></td>
   <td><%= sub_course.name %></td>
   <td><%= sub_course.try(:category).name if sub_course.category %></td>

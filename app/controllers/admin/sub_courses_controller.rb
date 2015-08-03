@@ -1,7 +1,7 @@
 module Admin
 	class SubCoursesController < ApplicationController
 		before_action :set_course
-		before_action :set_sub_course, only: [:edit, :update, :destroy]
+		before_action :set_sub_course, only: [:edit, :update, :destroy, :lower, :higher]
 		def index
 			@sub_courses = @course.sub_courses.page(params[:page]).per(10)
 		end
@@ -13,6 +13,7 @@ module Admin
 
 		def create
 			@sub_course = @course.sub_courses.new(sub_course_params)
+			@sub_course.position = @sub_course.id
 			@sub_course.attachment = Attachment.new if @sub_course.attachment.blank?
 			@sub_course.attachment.content = params[:sub_course][:attachment] if params[:sub_course][:attachment].present?
 			@sub_course.attachment.file_url = params[:attachment_file_url] if params[:attachment_file_url].present?
@@ -31,6 +32,7 @@ module Admin
 
 		def update
 			@sub_course.attachment = Attachment.new if @sub_course.attachment.blank?
+			@sub_course.position = @sub_course.id
 			if @sub_course.update(sub_course_params) && @sub_course.attachment.update(content: params[:sub_course][:attachment])
 				if @sub_course.attachment.present?
 					@sub_course.attachment.update(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
@@ -48,6 +50,23 @@ module Admin
 
 		def destroy
 			@sub_course.destroy
+			return redirect_to admin_course_sub_courses_path(@course)
+		end
+
+    #移动对象位置
+    def higher
+			if @sub_course.position > @course.sub_courses.pluck(:id).max
+				return render text: '该项目已经在最顶部'
+			end
+			@sub_course.update(position: @sub_course.position + 1)
+			return redirect_to admin_course_sub_courses_path(@course)
+		end
+
+		def lower
+			if @sub_course.position <= 0
+				return render text: '该项目已经在最底部'
+			end
+			@sub_course.update(position: @sub_course.position - 1)
 			return redirect_to admin_course_sub_courses_path(@course)
 		end
 

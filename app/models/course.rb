@@ -17,10 +17,10 @@
 
 class Course < ActiveRecord::Base
 	#评论回复
-	acts_as_commentable  
+	acts_as_commentable
 	#关注、喜欢、收藏
 	acts_as_votable
-	
+
 	acts_as_commentable
 	has_one :image, as: :imageable, dependent: :destroy
 	has_one :attachment, as: :attachmentable, dependent: :destroy
