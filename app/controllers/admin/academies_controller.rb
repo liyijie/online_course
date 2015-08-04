@@ -21,12 +21,13 @@ module Admin
     end
 
     def edit
+      session[:return_to] ||= request.referer
     end
 
     def update
       if @academy.update(academy_params)
         flash.now[:notice] = "更新成功"
-        return redirect_to admin_academies_url
+        redirect_to session.delete(:return_to)
       else
         return :update
       end

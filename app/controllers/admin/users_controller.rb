@@ -36,13 +36,14 @@ class Admin::UsersController < ApplicationController
     #专业、班级下拉对应值查
     @specialties = Specialty.where(academy_id: @user.academy_id).pluck(:name, :id)
     @grades = Grade.where(specialty_id: @user.specialty_id).pluck(:name, :id)
+    session[:return_to] ||= request.referer
   end
 
   def update
     @user.image = Image.new if @user.image.blank?
     if @user.update(user_params) && @user.image.update(avatar: params[:user][:image])
       flash.now[:notice] = "用户更新成功"
-      return redirect_to admin_users_url
+      redirect_to session.delete(:return_to)
     else
       #专业、班级下拉对应值查
       @specialties = Specialty.where(academy_id: @user.academy_id).pluck(:name, :id)

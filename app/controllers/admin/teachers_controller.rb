@@ -26,6 +26,7 @@ class Admin::TeachersController < ApplicationController
   end
 
   def edit
+     session[:return_to] ||= request.referer
   end
 
   def update
@@ -34,7 +35,7 @@ class Admin::TeachersController < ApplicationController
     if @teacher.update(teacher_params)
       @teacher.image.update(avatar: params[:teacher][:image]) if params[:teacher][:image].present?
       flash.now[:notice] = "教师更新成功"
-      return redirect_to admin_teachers_url
+      redirect_to session.delete(:return_to)
     else
       return render action: :update
     end

@@ -20,12 +20,13 @@ module Admin
     end
 
     def edit
+      session[:return_to] ||= request.referer
     end
 
     def update
       if @specialty.update(specialty_params)
         flash.now[:notice] = "更新成功"
-        return redirect_to admin_specialties_url
+        redirect_to session.delete(:return_to)
       else
         return :update
       end

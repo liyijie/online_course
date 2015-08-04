@@ -28,6 +28,7 @@ module Admin
 
 		def edit
 			@categories = Category.where(deleted_at: nil)
+			session[:return_to] ||= request.referer
 		end
 
 		def update
@@ -41,10 +42,10 @@ module Admin
 					@sub_course.attachment.create(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
 				end
 				flash.now[:notice] = "课程更新成功"
-				redirect_to admin_course_sub_courses_path(@course)
+				redirect_to session.delete(:return_to)
 			else
 				flash.now[:notice] = "课程更新失败"
-				redirect_to admin_course_sub_courses_path(@course)
+				redirect_to session.delete(:return_to)
 			end
 		end
 

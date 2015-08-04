@@ -7,7 +7,7 @@ module Admin
 
 		def new
 			@course = Course.new
-		       @specialties = []
+		  @specialties = []
 		end
 
 		def create
@@ -24,13 +24,14 @@ module Admin
 				return redirect_to admin_courses_url
 			else
 				flash.now[:notice] = "课程创建失败"
-			       @specialties = []
+			  @specialties = []
 				return render action: :new
 			end
 		end
 
 		def edit
-		       @specialties = Specialty.where(academy_id: @course.academy_id).pluck(:name, :id)
+			session[:return_to] ||= request.referer
+		  @specialties = Specialty.where(academy_id: @course.academy_id).pluck(:name, :id)
 		end
 
 		def update
@@ -47,7 +48,8 @@ module Admin
 					@course.attachment.create(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
 				end
 				flash.now[:notice] = "课程更新成功"
-				return redirect_to admin_courses_url
+				redirect_to session.delete(:return_to)
+				#return redirect_to admin_courses_url
 			else
 				@specialties = Specialty.where(academy_id: @course.academy_id).pluck(:name, :id)
 				flash.now[:notice] = "课程更新失败"
