@@ -25,17 +25,11 @@ class ExamsController < ApplicationController
 	end
 
 	def create
-		answer_params = {}
 		sub_course = SubCourse.find_by_number(params[:exam][:sub_course_number])
 		@exam = Exam.new
-		sub_course.questions.each_with_index do |question, index|
-			val = "option_" + index.to_s
-			qid = question.id
-		  answer_params = {qid => params[val]}
-		  @exam.user_id = current_user.id
-		  @exam.sub_course_id = sub_course.id
-		  @exam.generate_by_answer_params(answer_params)
-		end
+		@exam.user_id = current_user.id
+		@exam.sub_course_id = sub_course.id
+		@exam.generate_by_answer_params(params[:options])
 		flash['notice'] = "恭喜您, 测试提交成功"
 		#return redirect_to after_class_courses_path(sub_course.course.number)
 		respond_to do |format|

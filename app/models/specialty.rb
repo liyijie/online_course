@@ -14,5 +14,6 @@
 class Specialty < ActiveRecord::Base
 	belongs_to :academy
 	has_many :grades, dependent: :destroy
+  has_many :users, through: :grades
 	has_many :courses
 end

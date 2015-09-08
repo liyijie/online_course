@@ -13,6 +13,7 @@
 class Academy < ActiveRecord::Base
 	belongs_to :school
 	has_many :specialties, dependent: :destroy
+  has_many :users, through: :specialties
 	has_many :courses, dependent: :destroy
-  	has_many :teachers, dependent: :destroy
+  has_many :teachers, dependent: :destroy
 end

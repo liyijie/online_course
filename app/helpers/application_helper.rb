@@ -35,6 +35,11 @@ module ApplicationHelper
 	#回显选中题
 	def is_selected? index, answer
 		answer_index = {1 => "A", 2 => "B", 3 => "C", 4 => "D", 5 => "E"}
-		answer_index[index].try(:strip) == answer.try(:strip)
+		answer_index[index + 1].try(:strip) == answer.try(:strip)
+	end
+
+	def select_item index
+		answer_index = {1 => "A", 2 => "B", 3 => "C", 4 => "D", 5 => "E"}
+		answer_index[index + 1]
 	end
 end

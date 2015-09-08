@@ -3,7 +3,7 @@
 <div class="row">
    <div class="col-sm-12">
     <% teacher_courses.each_with_index do |teacher_course, index|%>
-			<div class="col-sm-3 text-center"><%= image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_220_220), class: "img-rounded")%>
+			<div class="col-sm-3 text-center"><%= image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).try(:url, :t_220_220), class: "img-rounded")%>
 			</div>
 	  <% end %>
 	</div>

@@ -29,10 +29,10 @@
         <%= f.hidden_field :sub_course_number, value: params[:sub_course_number]%>
         <% @questions.each_with_index do |question, index|%>
           <p class="title"><%= index + 1 %>. <%= question.title%></p>
-          <% question.options.each do |option|%>
+          <% question.options.each_with_index do |option,option_index|%>
             <p class="option">
-              <%= radio_button_tag("option_" + index.to_s, option.name.to_s.split(" ").join("").first)%>
-              <span><%= option.name%></span>
+              <%= radio_button_tag("options[#{question.id}]", option.name.to_s.split(" ").join("").first)%>
+              <label for="options_<%= question.id %>_<%= select_item(option_index) %>"><%= option.name%></label>
             </p>
           <% end %>
         <% end %>

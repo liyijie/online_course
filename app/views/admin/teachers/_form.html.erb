@@ -18,7 +18,7 @@
     <div class="form-group">
       <%= label_tag :image, '已传头像', class: 'col-sm-2 control-label' %>
       <div class="col-sm-4">
-        <%= image_tag @teacher.image.avatar.url %>
+        <%= image_tag @teacher.image.avatar.url, style: "max-width: 200px" %>
       </div>
     </div>
   <% end %>
