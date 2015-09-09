@@ -121,7 +121,7 @@ class TeachersController < ApplicationController
 		@grades = Grade.where(id: params[:grade_ids].split(',').uniq)
 		@sub_course = SubCourse.where(id: params[:sub_course_id]).first
 		@questions = @sub_course.questions
-		@false_count = ExamItem.questions_false_count(@grades, @sub_course)
+		@exam_analyze = ExamItem.exam_analyze(@grades, @sub_course)
 	end
 
 	#我的账户

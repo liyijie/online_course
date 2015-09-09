@@ -1432,6 +1432,19 @@ body.teachers__show_score, body.teachers__show_grade_score, body.teachers__impor
         .desc {
           padding-top: 200px;
         }
+
+        .question-list {
+        	padding-left: 80px;
+        	.question {
+        		padding: 10px;
+        		.title {
+        			font-size: 16px;
+        		}
+        		p {
+        			padding: 5px 20px;
+        		}
+        	}
+        }
       }
 
       .sub-title {
