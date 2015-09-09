@@ -10,9 +10,10 @@
 	      <li role="presentation"><a href="javascript:void(0)">第一步 选择专业</a></li>
 	      <li role="presentation"><a href="javascript:void(0)">第二步 选择班级</a></li>
 	      <li role="presentation" class="active"><a href="javascript:void(0)">第三步 选择课程</a></li>
+	      <li role="presentation"><a href="javascript:void(0)">第四步 选择测试</a></li>
 	    </ul>
 		</div>
-		<%= form_tag show_score_teachers_path, method: :post, id: "scoreSearch" do %>
+		<%= form_tag select_exam_teachers_path, method: :post, id: "scoreSearch" do %>
 		  <% if @courses.present? %>
 		  	<% @courses.each_with_index do |course,index| %>
 				  <% if index%4 == 0 %>
@@ -20,7 +21,7 @@
 				  <% end %>
 
 					<div class="col-sm-3">
-					  <%= radio_button_tag "course_id",course[0] %>
+					  <%= radio_button_tag "course_id",course[0], course[0].to_s == params[:course_id] %>
 					  <label for="course_id_<%= index + 1 %>"><%= course[1] %></label>
 					</div>
 
@@ -36,11 +37,11 @@
 		  <% end %>
 
 		  <%= hidden_field_tag "specialty_id", params[:specialty_id]%>
-		  <%= hidden_field_tag "grade_ids", params[:grade_ids].values.join(",") %>
+		  <%= hidden_field_tag "grade_ids", params[:grade_ids].class.to_s == "String" ?  params[:grade_ids] : params[:grade_ids].values.join(",") %>
 		  <div class="search-score-btn">
 				<button type="button" class="btn btn-primary btn" onclick="this.form.action='<%= select_grade_teachers_path%>';this.form.submit();">
 				<span class="glyphicon glyphicon-hand-left"></span>上一步</button>
-				<%= button_tag(type: 'submit', class: "btn btn-success", id: "nextStep", disabled: true) do %>
+				<%= button_tag(type: 'submit', class: "btn btn-success", id: "nextStep", disabled: params[:course_id].blank?) do %>
 				  下一步  <span class="glyphicon glyphicon-hand-right"></span>
 			  <% end %>
 		  </div>

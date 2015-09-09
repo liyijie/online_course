@@ -102,9 +102,18 @@ class TeachersController < ApplicationController
 		@courses = Course.where(academy_id: specialtie.academy_id).pluck(:id, :name)
 	end
 
+	#成绩查询----选择课程
+	def select_exam
+		course = Course.where(id: params[:course_id]).first
+		@sub_courses = course.sub_courses.pluck(:id, :name) if course.present?
+	end	
+
 	#成绩查询----显示查询结果
 	def show_score
-		@course = Course.where(id: params[:course_id]).first
+		@specialtie = Specialty.where(id: params[:specialty_id]).first
+		@sub_course = SubCourse.where(id: params[:sub_course_id]).first
+		@grades = Grade.where(id: params[:grade_ids].split(',').uniq)
+		@grades.each{ |grade| grade.exam_result!(@sub_course) }
 	end
 
 	#成绩查询----显示班级考试结果统计

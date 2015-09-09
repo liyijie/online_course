@@ -6,34 +6,35 @@
 
   <div class="teacher-wrapper show-score">
   	<div class="show-score-title">
-  	  <a href="javascript:void(0)" class="btn btn-primary">教师查阅</a>
-      <div class="main-title"><%= @course.name %>测试</div>
+  	  <!-- <a href="javascript:void(0)" class="btn btn-primary">教师查阅</a> -->
+      <div class="main-title"><%= @sub_course.name %>测试</div>
   	</div>
 	
 	<div id="mutilGradepicture" class="mutil-grade-picture">
 	  <div class="average-score row">
 		  <div class="sub-title"><span class="badge">1</span>每个班每门课的平均分统计图</div>
 	  	  <div id="averageScore" class="col-sm-8"></div>
-	  	  <div class="col-sm-4">
-	  	  	<div>平均分最高的班级是：<span>计算机（5）班</span></div>
-	  	  	<div>平均分最低的班级是：<span>计算机（4）班</span></div>
+	  	  <div class="col-sm-3 desc">
+	  	  	<div><%= "#{@specialtie.name}#{@grades.map(&:name)}测试分析结果" %></div>
 	  	  </div>
 		</div>
 
-		<div class="score-percentage">
+		<div id="mutilGradePercentage" class="score-percentage">
 		  <div class="sub-title"><span class="badge">2</span>每个班的分数段分布概率统计图</div>
 
-		  <div class="row">
-		  	<div class="col-sm-4 score-percentage-picture"></div>
-	  	  	<div class="col-sm-4 score-percentage-picture"></div>
-	  	  	<div class="col-sm-4 score-percentage-picture"></div>
-		  </div>
+      <% @grades.each_with_index do |grade, index| %>
+        <% if index%3 == 0 %>
+  		    <div class="row">
+        <% end %>
+  		  	<div class="col-sm-4 score-percentage-picture"></div>
+  		  <% if index%3 == 2 %>
+          </div>
+        <% end %>
+      <% end %>
 
-		  <div class="row">
-		  	<div class="col-sm-4 score-percentage-picture"></div>
-	  	  	<div class="col-sm-4 score-percentage-picture"></div>
-	  	  	<div class="col-sm-4 score-percentage-picture"></div>
-		  </div>
+      <% if @grades.size%3 == 2 %>
+        </div>
+      <% end %>
 		</div>
 
 		<div class="search-score-btn">
@@ -58,7 +59,11 @@
     xAxis: [
         {
             type: 'category',
-            data: ['1班', '2班', '3班', '4班', '5班', '6班', '7班'],
+            data: [
+              <% @grades.each do |grade| %>
+                '<%= grade.name %>' ,
+              <% end %>
+            ],
             name: "班级"
         }
     ],
@@ -90,21 +95,24 @@
                     }
                 }
             },
-            data: [70,60,80,50,90,70,85],
+            data: [
+              <% @grades.each do |grade| %>
+                '<%= grade.exam_score[:avg_score] %>' ,
+              <% end %>
+            ]
         }
     ]
   };	
   averageScore.setOption(option);  
 
   //==========================================================================================================================
-
-	$('.score-percentage-picture').each(function(index){
-		var scorePercentage = echarts.init($(this).get(0)); 
+  <% @grades.each_with_index do |grade, index| %>
+		var scorePercentage = echarts.init($(".score-percentage-picture").eq(<%= index %>).get(0)); 
 		option = {
 			title: {
 				x: "center",
 				y: "bottom",
-				text: "计算机（" + (index+1) + "）班"
+				text: "<%= grade.name %>"
 			},
 		    tooltip : {
 		        trigger: 'item',
@@ -121,7 +129,7 @@
 		                    label : {
 		                        position : 'outter',
 		                        formatter : function (params) {                         
-		                          return params.name + ':' + (params.percent - 0).toFixed(0) + '%'
+		                          return params.name
 		                        }
 		                    },
 		                    labelLine : {
@@ -131,21 +139,31 @@
 		                emphasis : {
 		                    label : {
 		                        show : true,
-		                        formatter : "{b}\n{d}%"
+		                        formatter : "{b} {d}%"
 		                    }
 		                }
 		                
 		            },
 		            data:[
-		                {value:10, name:'60分以下'},
-		                {value:14, name:'60-70分'},
-		                {value:23, name:'70-80分'},
-		                {value:8, name:'80-90分'},
-		                {value:4, name:'90分以上'}
+                    <% unless grade.exam_score["E"] == 0 %>
+		                  {value: "<%= grade.exam_score["E"] %>", name:'60分以下'},
+                    <% end %>
+                    <% unless grade.exam_score["D"] == 0 %>
+                      {value: "<%= grade.exam_score["D"] %>", name:'60~70分'},
+                    <% end %>
+                    <% unless grade.exam_score["C"] == 0 %>
+                      {value: "<%= grade.exam_score["C"] %>", name:'70~80分'},
+                    <% end %>
+                    <% unless grade.exam_score["B"] == 0 %>
+                      {value: "<%= grade.exam_score["B"] %>", name:'80~90分'},
+                    <% end %>
+                    <% unless grade.exam_score["A"] == 0 %>
+                      {value: "<%= grade.exam_score["A"] %>", name:'90分以上'}
+                    <% end %>
 		            ]
 		        }
 		    ]
 		};
     scorePercentage.setOption(option);   
-	});
+  <% end %>
 </script>
