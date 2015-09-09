@@ -14,6 +14,7 @@ class Grade < ActiveRecord::Base
 	belongs_to :specialty
 	has_many :users, dependent: :destroy
   has_many :exams, through: :users
+  has_many :exam_items, through: :exams
 
   has_many :teacher_grades, dependent: :destroy
 

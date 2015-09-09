@@ -118,7 +118,10 @@ class TeachersController < ApplicationController
 
 	#成绩查询----显示班级考试结果统计
 	def show_grade_score
-
+		@grades = Grade.where(id: params[:grade_ids].split(',').uniq)
+		@sub_course = SubCourse.where(id: params[:sub_course_id]).first
+		@questions = @sub_course.questions
+		@false_count = ExamItem.questions_false_count(@grades, @sub_course)
 	end
 
 	#我的账户

@@ -15,7 +15,7 @@
           <li role="presentation"><a href="javascript:void(0)">第四步 选择测试</a></li>
         </ul>
   	</div>
-  	<%= form_tag select_grade_teachers_path, method: :post, id: "scoreSearch" do %>
+  	<%= form_tag select_grade_teachers_path, method: :get, id: "scoreSearch" do %>
   		<% @specialties.each_with_index do |specialtie,index| %>
   		  <% if index%4 == 0 %>
   		  <div class="condition-row">
