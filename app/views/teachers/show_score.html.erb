@@ -32,10 +32,11 @@
         <% end %>
       <% end %>
 
-      <% if @grades.size%3 == 2 %>
+      <% if @grades.size%3 != 0 %>
         </div>
       <% end %>
 		</div>
+
     <%= form_tag show_grade_score_teachers_path, method: :get, id: "selectGradeForm" do %>
       <%= hidden_field_tag "specialty_id", params[:specialty_id]%>
       <%= hidden_field_tag "course_id", params[:course_id]%>
