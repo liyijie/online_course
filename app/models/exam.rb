@@ -28,7 +28,7 @@ class Exam < ActiveRecord::Base
       # 与问题的正确答案对比考试这题的答案是否正确
       question = Question.find_by_id item.question_id
       next if question.blank?
-      if answer == question.correct_option
+      if answer.try(:strip) == question.correct_option.try(:strip)
         item.correct = true
         self.correct_count += 1
       else

@@ -16,21 +16,12 @@
     <%= form_tag show_score_teachers_path, method: :get, id: "scoreSearch" do %>
       <% if @sub_courses.present? %>
         <% @sub_courses.each_with_index do |sub_course,index| %>
-          <% if index%4 == 0 %>
-            <div class="condition-row">
-          <% end %>
-
-          <div class="col-sm-3">
-            <%= radio_button_tag "sub_course_id", sub_course[0] %>
-            <label for="sub_course_id_<%= index + 1 %>"><%= sub_course[1] %></label>
-          </div>
-
-          <% if index%4 == 3 %>
+          <div class="condition-row">
+            <div class="col-sm-3">
+              <%= radio_button_tag "sub_course_id", sub_course[0] %>
+              <label for="sub_course_id_<%= index + 1 %>"><%= sub_course[1] %></label>
             </div>
-          <% end %>
-        <% end %>
-        <% if @sub_courses.length % 4 != 0 %>
-           </div>
+          </div>
         <% end %>
       <% else %>
         <div class="blank">当前课程没有测试</div>
