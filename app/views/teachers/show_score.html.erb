@@ -43,10 +43,10 @@
       <%= hidden_field_tag "sub_course_id", params[:sub_course_id]%>
       <%= hidden_field_tag "grade_ids", params[:grade_ids] %>
   		<div class="search-score-btn">
-      <button type="button" class="btn btn-primary" onclick="this.form.action='<%= export_teachers_path%>';this.form.submit();">
+        <button type="button" class="btn btn-primary" onclick="this.form.action='<%= export_teachers_path%>';this.form.submit();">
         <span class="glyphicon glyphicon-hand-left"></span>导出EXCEL</button>
-        <%= button_tag(type: 'submit', class: "btn btn-danger", id: "nextStep") do %>
-          进入下一页  <span class="glyphicon glyphicon-hand-right"></span><% end %>
+        <button type="button" class="btn btn-danger" onclick="this.form.action='<%= show_grade_score_teachers_path%>';this.form.submit();">
+        <span class="glyphicon glyphicon-hand-left"></span>进入下一页</button>
   		</div>
     <% end %>
 	</div>
