@@ -45,7 +45,7 @@
     </div>
 
     <div class="search-score-btn">
-      <%=link_to "导出EXCEL", export_teachers_path(specialty_id: params[:specialty_id], course_id: params[:course_id], grade_ids:params[:grade_ids], sub_course_id: params[:sub_course_id]) , class: "btn btn-danger" %>
+      <%=link_to "导出EXCEL", export_teachers_path(specialty_id: params[:specialty_id], course_id: params[:course_id], grade_ids:params[:grade_ids], sub_course_id: params[:sub_course_id]) , class: "btn btn-primary" %>
       <%=link_to "返回上一页", show_score_teachers_path(specialty_id: params[:specialty_id], course_id: params[:course_id], grade_ids:params[:grade_ids], sub_course_id: params[:sub_course_id]) , class: "btn btn-danger" %>
     </div>
   </div>

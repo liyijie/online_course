@@ -8,7 +8,7 @@ class Batch < ActiveRecord::Base
     #保证最少对的题数
     less_right = questions.size/2 + 2
 
-    chars = ["A","B","C"]
+    chars = ["A","B","C","D"]
     answers = {}
     Academy.where(name: "计算机信息系").first.users.find_each do |user|
       # 设置缺考的人
@@ -21,7 +21,7 @@ class Batch < ActiveRecord::Base
           if index <= less_right
             answers[question.id] = question.correct_option.strip
           else
-            answers[question.id] = chars[rand(chars.size-1)]
+            answers[question.id] = chars[rand(chars.size)]
           end
         end
         exam = Exam.new

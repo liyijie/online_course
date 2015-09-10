@@ -81,10 +81,10 @@ class Grade < ActiveRecord::Base
       users = grade.users
                     .select("users.id, users.name, users.number, exams.total_score as total_score, 
                       group_concat(exam_items.question_id,':',exam_items.answer) as answers")
-                    .joins(exams: :exam_items)
-                    .where(exams: {sub_course_id: sub_course.id})
+                    .joins("left join exams on exams.user_id = users.id and exams.sub_course_id = #{sub_course.id} left join exam_items on exam_items.exam_id = exams.id")
                     .group("users.id")
-                    .order("exams.total_score DESC")
+                    .order("users.number ASC")
+
 
       offset = 6 #学生信息起始行
       users.each_with_index do |user, index|
@@ -92,9 +92,11 @@ class Grade < ActiveRecord::Base
 
         # 格式化学生选择的答案
         answers_hash = {}
-        answers = user.answers.split(',')
-        answers.each do |answer|
-          answers_hash[answer.split(':')[0].to_i] = answer.split(':')[1]
+        if user.answers.present?
+          answers = user.answers.split(',')
+          answers.each do |answer|
+            answers_hash[answer.split(':')[0].to_i] = answer.split(':')[1]
+          end
         end
         # 写入学生选择的相应选项
         questions.each do |question|
