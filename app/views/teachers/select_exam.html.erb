@@ -17,7 +17,7 @@
       <% if @sub_courses.present? %>
         <% @sub_courses.each_with_index do |sub_course,index| %>
           <div class="condition-row">
-            <div class="col-sm-3">
+            <div class="col-sm-10">
               <%= radio_button_tag "sub_course_id", sub_course[0] %>
               <label for="sub_course_id_<%= index + 1 %>"><%= sub_course[1] %></label>
             </div>
