@@ -129,7 +129,7 @@ class TeachersController < ApplicationController
 		grades = Grade.where(id: params[:grade_ids].split(',').uniq)
 		sub_course = SubCourse.where(id: params[:sub_course_id]).first
 		specialtie = Specialty.where(id: params[:specialty_id]).first
-		filename = URI.encode("#{specialtie.name}_#{sub_course.name}_#{Time.now.strftime("%Y%m%d%H%M%S")}.xls")
+		filename = URI.encode("#{specialtie.name}_#{sub_course.name}.xls")
 		send_data( 
 						Grade.export(grades, sub_course),
 						type: "text/excel;charset=utf-8; header=present",

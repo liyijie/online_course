@@ -74,21 +74,32 @@ class Grade < ActiveRecord::Base
       # 学生得分详细信息
       # title生成
       title = ['学号', '姓名', '得分']
-      # questions = sub_course.questions
-      # title += questions.map(&:title)
-
+      questions = sub_course.questions
+      title += questions.map(&:title)
       sheet.row(5).concat title
 
       users = grade.users
-                    .select("users.id, users.name, users.number, exams.total_score as total_score")
-                    .joins(:exams)
+                    .select("users.id, users.name, users.number, exams.total_score as total_score, 
+                      group_concat(exam_items.question_id,':',exam_items.answer) as answers")
+                    .joins(exams: :exam_items)
                     .where(exams: {sub_course_id: sub_course.id})
-                    .distinct
+                    .group("users.id")
                     .order("exams.total_score DESC")
 
       offset = 6 #学生信息起始行
       users.each_with_index do |user, index|
         content = [user.number, user.name, user.total_score]
+
+        # 格式化学生选择的答案
+        answers_hash = {}
+        answers = user.answers.split(',')
+        answers.each do |answer|
+          answers_hash[answer.split(':')[0].to_i] = answer.split(':')[1]
+        end
+        # 写入学生选择的相应选项
+        questions.each do |question|
+          content.push(answers_hash[question.id] || '')
+        end
         sheet.row(offset + index).concat content
       end
     end
