@@ -102,13 +102,13 @@ class TeachersController < ApplicationController
 		@courses = Course.where(academy_id: specialtie.academy_id).pluck(:id, :name)
 	end
 
-	#成绩查询----选择课程
+	# 成绩查询----选择课程
 	def select_exam
 		course = Course.where(id: params[:course_id]).first
 		@sub_courses = course.sub_courses.pluck(:id, :name) if course.present?
 	end	
 
-	#成绩查询----显示查询结果
+	# 成绩查询----显示查询结果
 	def show_score
 		@specialtie = Specialty.where(id: params[:specialty_id]).first
 		@sub_course = SubCourse.where(id: params[:sub_course_id]).first
@@ -116,7 +116,7 @@ class TeachersController < ApplicationController
 		@grades.each{ |grade| grade.exam_result!(@sub_course) }
 	end
 
-	#成绩查询----显示班级考试结果统计
+	# 成绩查询----显示班级考试结果统计
 	def show_grade_score
 		@grades = Grade.where(id: params[:grade_ids].split(',').uniq)
 		@sub_course = SubCourse.where(id: params[:sub_course_id]).first
@@ -124,27 +124,40 @@ class TeachersController < ApplicationController
 		@exam_analyze = ExamItem.exam_analyze(@grades, @sub_course)
 	end
 
-	#我的账户
+	# 成绩导出
+	def export
+		grades = Grade.where(id: params[:grade_ids].split(',').uniq)
+		sub_course = SubCourse.where(id: params[:sub_course_id]).first
+		specialtie = Specialty.where(id: params[:specialty_id]).first
+		filename = URI.encode("#{specialtie.name}_#{sub_course.name}_#{Time.now.strftime("%Y%m%d%H%M%S")}.xls")
+		send_data( 
+						Grade.export(grades, sub_course),
+						type: "text/excel;charset=utf-8; header=present",
+						filename: filename
+					)
+	end
+
+	# 我的账户
 	def my_account
 		
 	end
 
-  #讨论中心
+  # 讨论中心
 	def discuss_center
 		@comments = Comment.find_root_comments_by_usertable(current_teacher, :discuss).page(params[:page])
 	end
 
-  #我的提问
+  # 我的提问
 	def my_questions
 		@question_comments = Comment.find_root_comments_by_usertable(current_teacher, :answer).page(params[:page])
 	end
 
-  #我的回答
+  # 我的回答
 	def my_answers
 		@answer_comments = Comment.find_answer_by_usertable(current_teacher).page(params[:page])
 	end
 
-  #修改个人信息
+  # 修改个人信息
 	def update
 		if current_teacher.update(teacher_params)
 			current_teacher.image = Image.new
@@ -159,7 +172,7 @@ class TeachersController < ApplicationController
 		end
 	end
 
-  #修改密码
+  # 修改密码
 	def update_password
 		if params[:teacher][:password] != current_teacher.password
 			return render js: "$('.error-info').html('*原始密码不正确！');"

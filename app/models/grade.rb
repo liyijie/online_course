@@ -33,9 +33,6 @@ class Grade < ActiveRecord::Base
     exams = self.exams.where("exams.sub_course_id = ?", sub_course.id).pluck(:total_score)
 
     if exams.present?
-      pp eval(exams.join("+"))
-      pp users_count
-      pp exams.size
       self.exam_score[:avg_score] = (eval(exams.join("+"))/users_count.to_f).round(2) 
       self.exam_score["A"] = exams.count{ |score| score >= 90 }
       self.exam_score["B"] = exams.count{ |score| score >= 80 && score < 90 }
@@ -46,5 +43,57 @@ class Grade < ActiveRecord::Base
     end
 
     exam_score
+  end
+
+  # 生成指定班级、指定课程的成绩的xls
+  def self.export(grades, sub_course)
+    xls_report = StringIO.new
+    book = Spreadsheet::Workbook.new
+
+    grades.each do |grade|
+      sheet = book.create_worksheet :name => grade.name
+
+      # 课程信息
+      sheet.row(0).concat ['专业', grade.specialty.name]
+      sheet.row(1).concat ['课程', sub_course.course.name, '测试', sub_course.name]
+
+      # 班级分数信息
+      grade.exam_result!(sub_course)
+      sheet.row(2).concat [
+                          '班级人数', "#{grade.users.count}人",
+                          '班级平均分', "#{grade.exam_score[:avg_score]}分", "90以上"
+                        ]
+      sheet.row(3).concat [
+                          '90分以上', "#{grade.exam_score["A"]}人",
+                          '80~90分', "#{grade.exam_score["B"]}人",
+                          '70~80分', "#{grade.exam_score["C"]}人",
+                          '60~70分', "#{grade.exam_score["D"]}人",
+                          '60分以下', "#{grade.exam_score["E"]}人"
+                        ]
+
+      # 学生得分详细信息
+      # title生成
+      title = ['学号', '姓名', '得分']
+      # questions = sub_course.questions
+      # title += questions.map(&:title)
+
+      sheet.row(5).concat title
+
+      users = grade.users
+                    .select("users.id, users.name, users.number, exams.total_score as total_score")
+                    .joins(:exams)
+                    .where(exams: {sub_course_id: sub_course.id})
+                    .distinct
+                    .order("exams.total_score DESC")
+
+      offset = 6 #学生信息起始行
+      users.each_with_index do |user, index|
+        content = [user.number, user.name, user.total_score]
+        sheet.row(offset + index).concat content
+      end
+    end
+
+    book.write xls_report
+    xls_report.string
   end
 end

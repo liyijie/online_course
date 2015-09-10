@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       post :upload_attachment
       get :import_question
       post :import
+      get :export
     end
     member do
       patch :update_password

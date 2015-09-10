@@ -88,3 +88,5 @@ gem 'remotipart', '~> 1.2'
 gem 'pdfjs_viewer-rails'
 
 gem 'acts_as_list', '~> 0.7.2'
+
+gem "spreadsheet"
