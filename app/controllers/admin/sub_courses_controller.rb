@@ -34,12 +34,14 @@ module Admin
 		def update
 			@sub_course.attachment = Attachment.new if @sub_course.attachment.blank?
 			@sub_course.position = @sub_course.id
-			if @sub_course.update(sub_course_params) && @sub_course.attachment.update(content: params[:sub_course][:attachment])
+			if @sub_course.update(sub_course_params)
 				if @sub_course.attachment.present?
-					@sub_course.attachment.update(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
+					@sub_course.attachment.update(file_url: params[:attachment_file_url])
+					@sub_course.attachment.update(content: params[:sub_course][:attachment]) if params[:sub_course][:attachment].present?
 				else
 					@sub_course.attachment = Attachment.new
-					@sub_course.attachment.create(file_url: params[:attachment_file_url]) if params[:attachment_file_url].present?
+					@sub_course.attachment.update(file_url: params[:attachment_file_url])
+					@sub_course.attachment.update(content: params[:sub_course][:attachment]) if params[:sub_course][:attachment].present?
 				end
 				flash.now[:notice] = "课程更新成功"
 				redirect_to session.delete(:return_to)

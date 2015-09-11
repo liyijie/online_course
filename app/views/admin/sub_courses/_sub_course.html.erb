@@ -13,7 +13,7 @@
   <% if sub_course.attachment && sub_course.attachment.file_url.present? %>
     <td><%= sub_course.attachment.file_url.to_s[0..10] if sub_course.attachment%></td>
   <% else %>
-    <td><%= sub_course.attachment.content.to_s[0..10] if sub_course.attachment%></td>
+    <td><%= sub_course.attachment.content_file_name.to_s[0..10] if sub_course.attachment && sub_course.attachment.content.present? %></td>
   <% end %>
   <td>
     <%= link_to "测试题目", admin_course_sub_course_questions_path(@course.id, sub_course)%>

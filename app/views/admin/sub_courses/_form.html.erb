@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <% if @sub_course.attachment.present? %>
+  <% if @sub_course.attachment.present? && @sub_course.attachment.content.present? %>
     <div class="form-group">
       <%= label :attachment_tag, '已传课件', class: 'col-sm-2 control-label' %>
       <div class="col-sm-8">
@@ -39,7 +39,7 @@
   <div class="form-group">
     <%= label_tag :attachment_file_url, '课程附件[地址]', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4 container">
-      <%= text_field_tag :attachment_file_url, nil, class: 'form-control'%>
+      <%= text_field_tag :attachment_file_url, @sub_course.try(:attachment).try(:file_url), class: 'form-control'%>
     </div>
   </div>
 
