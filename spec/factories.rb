@@ -1,6 +1,34 @@
 require 'rack/test'
 
-FactoryGirl.define do  factory :category do
+FactoryGirl.define do  factory :answer do
+    user_paper nil
+paper_question nil
+content "MyString"
+score 1
+correct false
+  end
+  factory :paper_option do
+    content "MyString"
+index_type "MyString"
+paper_question nil
+  end
+  factory :paper_qestion do
+    paper nil
+title "MyString"
+correct_answer "MyString"
+signal_score 1
+correct_hint "MyText"
+question_type 1
+  end
+  factory :user_paper do
+    user nil
+paper nil
+total_score 1
+  end
+  factory :paper do
+    
+  end
+  factory :category do
     name "MyString"
 deleted_at "2015-07-21 10:39:26"
   end

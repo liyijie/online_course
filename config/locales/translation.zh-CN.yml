@@ -22,7 +22,6 @@ zh-CN:
       comment: 
         title: "标题"
         body: "内容"
-
     errors:
       models:
         user:

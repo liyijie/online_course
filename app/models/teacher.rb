@@ -46,9 +46,12 @@ class Teacher < ActiveRecord::Base
   has_many :comment, as: :usertable, dependent: :destroy
   has_one :image, as: :imageable
   has_many :teacher_courses, dependent: :destroy
+  has_many :courses, through: :teacher_courses
   has_many :teacher_grades, dependent: :destroy
   has_many :grades, through: :teacher_grades
   belongs_to :academy
+
+  has_many :papers, dependent: :destroy
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login

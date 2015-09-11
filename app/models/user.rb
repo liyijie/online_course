@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
 
   has_many :comment, as: :usertable, dependent: :destroy
 
-
+  has_many :user_papers, dependent: :destroy
+  has_many :papers, through: :user_papers
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login

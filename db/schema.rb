@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803090229) do
+ActiveRecord::Schema.define(version: 20150911031020) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",    limit: 4
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 20150803090229) do
     t.datetime "updated_at",               null: false
     t.string   "academy_code", limit: 255
   end
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "user_paper_id",     limit: 4
+    t.integer  "paper_question_id", limit: 4
+    t.string   "content",           limit: 255
+    t.integer  "score",             limit: 4
+    t.boolean  "correct",           limit: 1
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "answers", ["paper_question_id"], name: "index_answers_on_paper_question_id", using: :btree
+  add_index "answers", ["user_paper_id"], name: "index_answers_on_user_paper_id", using: :btree
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "sub_course_id",        limit: 4
@@ -138,6 +151,43 @@ ActiveRecord::Schema.define(version: 20150803090229) do
 
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
 
+  create_table "paper_options", force: :cascade do |t|
+    t.string   "content",           limit: 255
+    t.string   "index_type",        limit: 255
+    t.integer  "paper_question_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "paper_options", ["paper_question_id"], name: "index_paper_options_on_paper_question_id", using: :btree
+
+  create_table "paper_qestions", force: :cascade do |t|
+    t.integer  "paper_id",       limit: 4
+    t.string   "title",          limit: 255
+    t.string   "correct_answer", limit: 255
+    t.integer  "signal_score",   limit: 4
+    t.text     "correct_hint",   limit: 65535
+    t.integer  "question_type",  limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "paper_qestions", ["paper_id"], name: "index_paper_qestions_on_paper_id", using: :btree
+
+  create_table "papers", force: :cascade do |t|
+    t.integer  "teacher_id", limit: 4
+    t.integer  "course_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.text     "content",    limit: 65535
+    t.date     "start_at"
+    t.date     "end_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "papers", ["course_id"], name: "index_papers_on_course_id", using: :btree
+  add_index "papers", ["teacher_id"], name: "index_papers_on_teacher_id", using: :btree
+
   create_table "questions", force: :cascade do |t|
     t.string   "title",          limit: 255
     t.integer  "signal_score",   limit: 4
@@ -246,6 +296,18 @@ ActiveRecord::Schema.define(version: 20150803090229) do
 
   add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id", using: :btree
   add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id", using: :btree
+
+  create_table "user_papers", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "paper_id",    limit: 4
+    t.boolean  "answered",    limit: 1, default: false
+    t.integer  "total_score", limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "user_papers", ["paper_id"], name: "index_user_papers_on_paper_id", using: :btree
+  add_index "user_papers", ["user_id"], name: "index_user_papers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "phone",                  limit: 255,   default: "",   null: false

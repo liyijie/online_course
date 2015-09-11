@@ -44,6 +44,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # 考试中心
+  resources :papers
+
   #限定教师编号为数字形式
   constraints(number: /\d+/) do
     get "teachers/:number", to: "teachers#show", as: :show_teachers
