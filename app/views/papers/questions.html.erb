@@ -1,0 +1,112 @@
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left"><%= @paper.name %></span>
+  </section>
+  
+  <div class="exams-list container">
+    <%= simple_form_for(@paper, url: import_paper_path(@paper), wrapper: "horizontal_form28", html: { class: "form-horizontal", multipart: true }) do |f| %>
+      <table class="table impport-table">
+        <tr>
+          <td width="50%"><%= file_field_tag :attachment %></td>
+          <td><%= f.submit "导入试卷", class: "btn btn-success" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "导入模板下载", "#", class: "btn btn-info" %></td>
+        </tr>
+      </table>
+    <% end %>
+
+    <div class="questions-list">
+      <div class="row header text-center">
+        <h2 class=""><%= @paper.name %></h2>
+        <p>总分数：<%= @paper.total_score %> &nbsp;&nbsp;&nbsp;&nbsp; 总题数：<%= @paper.paper_questions.size %></p>
+      </div>
+      
+      <% if @paper.paper_questions.single.present? %>
+        <h4>单选题：</h4>
+        <div class="questions">
+          <% @paper.paper_questions.single.each_with_index do |question, index| %>
+            <div class="paper-question">
+              <div class="title"><%= index + 1 %>、<%= question.title %>（<span class="text-danger"><%= question.correct_answer %></span>）</div>
+              <div class="option">
+                <% question.paper_options.each do |option| %>
+                  <p><%= option.index_type + '、' + option.content %></p>
+                <% end %>
+                <p class="hint text-danger">
+                答案解析：<%= question.correct_hint %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @paper.paper_questions.multi.present? %>
+        <h4>多选题：</h4>
+        <div class="questions">
+          <% @paper.paper_questions.multi.each_with_index do |question, index| %>
+            <div class="paper-question">
+              <div class="title"><%= index + 1 %>、<%= question.title %>（<span class="text-danger"><%= question.correct_answer %></span>）</div>
+              <div class="option">
+                <% question.paper_options.each do |option| %>
+                  <p><%= option.index_type + '、' + option.content %></p>
+                <% end %>
+                <p class="hint text-danger">
+                答案解析：<%= question.correct_hint %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+
+      <% if @paper.paper_questions.judge.present? %>
+        <h4>判断题</h4>
+        <div class="questions">
+          <% @paper.paper_questions.judge.each_with_index do |question, index| %>
+            <div class="paper-question">
+              <div class="title"><%= index + 1 %>、<%= question.title %>（<span class="text-danger"><%= question.correct_answer %></span>）</div>
+              <div class="option">
+                <p class="hint text-danger">
+                答案解析：<%= question.correct_hint %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @paper.paper_questions.fill.present? %>
+        <h4>填空题</h4>
+        <div class="questions">
+          <% @paper.paper_questions.fill.each_with_index do |question, index| %>
+            <div class="paper-question">
+              <div class="title"><%= index + 1 %>、<%= question.title %></div>
+              <div class="option">
+                <p class="hint text-danger">
+                  答案解析：<%= question.correct_hint %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @paper.paper_questions.que_an.present? %>
+        <h4>问答题：</h4>
+        <div class="questions">
+          <% @paper.paper_questions.que_an.each_with_index do |question, index| %>
+            <div class="paper-question">
+              <div class="title"><%= index + 1 %>、<%= question.title %></div>
+              <div class="option">
+                <p class="hint text-danger">
+                  答案解析：<%= question.correct_hint %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

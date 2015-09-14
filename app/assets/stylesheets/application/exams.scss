@@ -1,5 +1,6 @@
 /*考试中心*/
-.exams__index, .papers__index, .papers__new, .papers__create, .papers__edit, .papers__update, .papers__show {
+.exams__index, .papers__index, .papers__new, .papers__create, .papers__edit, .papers__update, 
+.papers__show, .papers__questions, .papers__import {
   section.common-title {
     height: 60px;
     line-height: 60px;
@@ -41,6 +42,14 @@
           padding: 5px 25px;
           color: #fff;
         }
+      }
+    }
+
+    .impport-table {
+      padding: 20px;
+      tr td {
+        vertical-align: middle;
+        border: none;
       }
     }
 

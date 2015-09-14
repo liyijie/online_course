@@ -45,7 +45,12 @@ Rails.application.routes.draw do
   end
 
   # 考试中心
-  resources :papers
+  resources :papers do
+    member do
+      get :questions
+      patch :import
+    end
+  end
 
   #限定教师编号为数字形式
   constraints(number: /\d+/) do

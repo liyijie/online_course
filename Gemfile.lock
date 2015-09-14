@@ -43,12 +43,16 @@ GEM
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
     acts_as_votable (0.10.0)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     arel (6.0.0)
     autoprefixer-rails (5.1.11)
       execjs
       json
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -171,6 +175,10 @@ GEM
     roo (2.0.0)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
+    roo-xls (1.0.0)
+      nokogiri
+      roo (>= 2.0.0beta1, < 3)
+      spreadsheet (> 0.9.0)
     rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -244,6 +252,8 @@ DEPENDENCIES
   acts_as_commentable_with_threading (~> 2.0.0)
   acts_as_list (~> 0.7.2)
   acts_as_votable (~> 0.10.0)
+  annotate
+  awesome_print
   bootstrap-sass (~> 3.3.4)
   byebug
   cancan (~> 1.6.10)
@@ -264,6 +274,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   remotipart (~> 1.2)
   roo
+  roo-xls
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

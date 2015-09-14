@@ -2,12 +2,13 @@
 #
 # Table name: academies
 #
-#  id         :integer          not null, primary key
-#  school_id  :integer
-#  name       :string(255)
-#  deleted_at :datetime
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  school_id    :integer
+#  name         :string(255)
+#  deleted_at   :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  academy_code :string(255)
 #
 
 class Academy < ActiveRecord::Base

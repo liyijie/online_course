@@ -1,0 +1,24 @@
+.papers__questions {
+  .questions-list {
+    border: 1px solid #eee;
+    padding: 20px;
+  }
+  .questions, .header {
+    padding: 20px;
+    p {
+      line-height: 1.8;
+    }
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .option {
+    padding: 10px;
+    p {
+      line-height: 1.8;
+    }
+  }
+  
+}

@@ -56,6 +56,10 @@ group :development, :test do
 
 	# factory_girl is a fixtures replacement with a straightforward definition syntax
 	gem "factory_girl_rails", "~> 4.0"
+
+	gem 'annotate'
+
+	gem 'awesome_print'
 end
 
 gem 'devise', '~> 3.4.1'
@@ -82,6 +86,8 @@ gem "mediaelement_rails"
 
 #导入功能
 gem "roo"
+
+gem 'roo-xls'
 
 gem 'remotipart', '~> 1.2'
 

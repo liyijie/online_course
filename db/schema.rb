@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911031020) do
+ActiveRecord::Schema.define(version: 20150914054230) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",    limit: 4
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 20150911031020) do
 
   add_index "paper_options", ["paper_question_id"], name: "index_paper_options_on_paper_question_id", using: :btree
 
-  create_table "paper_qestions", force: :cascade do |t|
+  create_table "paper_questions", force: :cascade do |t|
     t.integer  "paper_id",       limit: 4
     t.string   "title",          limit: 255
     t.string   "correct_answer", limit: 255
@@ -172,17 +172,18 @@ ActiveRecord::Schema.define(version: 20150911031020) do
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "paper_qestions", ["paper_id"], name: "index_paper_qestions_on_paper_id", using: :btree
+  add_index "paper_questions", ["paper_id"], name: "index_paper_questions_on_paper_id", using: :btree
 
   create_table "papers", force: :cascade do |t|
-    t.integer  "teacher_id", limit: 4
-    t.integer  "course_id",  limit: 4
-    t.string   "name",       limit: 255
-    t.text     "content",    limit: 65535
+    t.integer  "teacher_id",  limit: 4
+    t.integer  "course_id",   limit: 4
+    t.string   "name",        limit: 255
+    t.text     "content",     limit: 65535
     t.date     "start_at"
     t.date     "end_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "total_score", limit: 4
   end
 
   add_index "papers", ["course_id"], name: "index_papers_on_course_id", using: :btree

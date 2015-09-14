@@ -1,10 +1,10 @@
 <div class="main-content">
   <section class="common-title">
-    <span class="pull-left">新建考试</span>
+    <span class="pull-left">编辑考试</span>
   </section>
   
   <div class="exams-list container">
-    <%= simple_form_for(@paper, url: papers_path(@paper), wrapper: "horizontal_form28", html: { class: "form-horizontal", multipart: true }) do |f| %>
+    <%= simple_form_for(@paper, url: paper_path(@paper), method: :put, wrapper: "horizontal_form28", html: { class: "form-horizontal", multipart: true }) do |f| %>
       <%= f.input :course_id, collection: current_teacher.courses %>
       <%= f.input :name %>
       <%= f.input :content %>

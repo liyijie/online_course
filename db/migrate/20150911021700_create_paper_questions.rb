@@ -1,6 +1,6 @@
-class CreatePaperQestions < ActiveRecord::Migration
+class CreatePaperQuestions < ActiveRecord::Migration
   def change
-    create_table :paper_qestions do |t|
+    create_table :paper_questions do |t|
       t.references :paper, index: true
       t.string :title
       t.string :correct_answer

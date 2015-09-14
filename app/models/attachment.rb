@@ -12,6 +12,7 @@
 #  content_file_size    :integer
 #  attachmentable_id    :integer
 #  attachmentable_type  :string(255)
+#  file_url             :string(255)
 #
 
 class Attachment < ActiveRecord::Base

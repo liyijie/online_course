@@ -2,17 +2,20 @@
 #
 # Table name: courses
 #
-#  id          :integer          not null, primary key
-#  number      :string(255)
-#  name        :string(255)
-#  description :text(65535)
-#  content     :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  academy_id  :integer
-#  scope       :integer          default(1)
-#  excellented  :boolean  limit: 1,     default: false
-#  applied   :boolean   limit: 1,     default: false
+#  id              :integer          not null, primary key
+#  number          :string(255)
+#  name            :string(255)
+#  description     :text(65535)
+#  content         :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  academy_id      :integer
+#  scope           :integer          default(1)
+#  city_applied    :boolean          default(FALSE)
+#  college_applied :boolean          default(FALSE)
+#  manager_id      :integer
+#  specialty_id    :integer
+#  applied_date    :string(255)
 #
 
 class Course < ActiveRecord::Base

@@ -2,11 +2,11 @@
 #
 # Table name: categories
 #
-#  id         :integer          not null
-#  t.string   "name",       limit: 255
-#  t.datetime "deleted_at"
-#  t.datetime "created_at",             null: false
-#  t.datetime "updated_at",             null: false
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  deleted_at :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Category < ActiveRecord::Base
