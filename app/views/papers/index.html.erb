@@ -7,11 +7,13 @@
     <li class="<%= 'active' if params[:type].blank? %>"><%= link_to("即将开始", papers_path) %></li>
     <li class="<%= 'active' if params[:type] == 'ing' %>"><%= link_to("正在进行", papers_path(type: "ing")) %></li>
     <li class="<%= 'active' if params[:type] == 'end' %>"><%= link_to("已结束", papers_path(type: "end")) %></li>
-    <li class="navbar-right create-discuss">
-      <%= link_to new_paper_path do %>
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建考试
-      <% end %>
-    </li>
+    <% if teacher_signed_in? %>
+      <li class="navbar-right create-discuss">
+        <%= link_to new_paper_path do %>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建考试
+        <% end %>
+      </li>
+    <% end %>
   </ul>
   <br>
   <div class="exams-list">
@@ -22,7 +24,9 @@
         <th>考试内容</th>
         <th>考试时间</th>
         <th>考试人数</th>
-        <th>操作</th>
+        <% if teacher_signed_in? || (user_signed_in? && params[:type].present?) %>
+          <th>操作</th>
+        <% end %>
       </tr>
       <% @papers.each do |paper| %>
       <tr>
@@ -30,12 +34,24 @@
         <td><%= paper.name %></td>
         <td><%= paper.content %></td>
         <td align="center"><%= paper.start_at.strftime("%F") %>至<%= paper.end_at.strftime("%F") %></td>
-        <td align="center"><%= paper.user_papers.size %></td>
         <td align="center">
-          <%= link_to("编辑", edit_paper_path(paper)) %> | 
-          <%= link_to("试卷", questions_paper_path(paper)) %> |
-          <%= link_to("考生", students_paper_path(paper)) %>
+          <%= params[:type].present? ? "#{paper.user_papers.answered.size }/#{paper.user_papers.size }" : paper.user_papers.size %>
         </td>
+        <% if teacher_signed_in? || (user_signed_in? && params[:type].present?) %>
+        <td align="center">
+          <% if teacher_signed_in? %>
+            <%= link_to("编辑", edit_paper_path(paper)) %> | 
+            <%= link_to("试卷", questions_paper_path(paper)) %> |
+            <%= link_to("考生", students_paper_path(paper)) %>
+          <% elsif user_signed_in? %>
+            <% if params[:type] == 'ing' %>
+              <%= link_to("进入考试", edit_paper_path(paper)) %>
+            <% elsif params[:type] == 'end'%>
+              <%= link_to("成绩查询", edit_paper_path(paper)) %>
+            <% end %>
+          <% end %>
+        </td>
+        <% end %>
       </tr>
       <% end %>
     </table>

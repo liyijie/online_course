@@ -12,6 +12,8 @@
 #
 
 class UserPaper < ActiveRecord::Base
+  scope :answered, -> {where(answered: true)}
+
   belongs_to :user
   belongs_to :paper
 

@@ -74,7 +74,7 @@ footer {
 	color: orange;
 }
 
-body.devise__sessions__new,body.devise__registrations__new,body.devise__registrations__create { 
+body.users__sessions__new, .teachers__sessions__new { 
 	.login-bg {
 		position: relative;
 		img{

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
-  devise_for :users
-  devise_for :teachers
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
+  devise_for :teachers, controllers: {
+        sessions: 'teachers/sessions'
+      }
   root :to => "home#index"
 
   get "select_courses", to: "home#select_courses", as: :select_courses_home
