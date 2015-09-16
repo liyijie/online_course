@@ -1,0 +1,57 @@
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left"><%= @paper.name %> | 添加考试班级</span>
+  </section>
+  
+  <div class="exams-list container">
+    <div class="header text-center">
+      <%= form_tag new_paper_user_paper_path(@paper), {id: 'searchFromList', class: "form-inline"} do %>
+        <div class="form-group">
+          <label for="academy_id">学院：</label>
+          <%= select_tag('academy_id', options_for_select(Academy.all.pluck(:name,:id), params[:academy_id]), class: "form-control", id: "common_academy_id", prompt: "请选择学院") %>
+        </div>
+        <div class="form-group">
+          <label for="specialy_id">专业：</label>
+          <%= select_tag('specialy_id', options_for_select(@specialties, params[:academy_id]), id: "common_specialty_id", class: "form-control", prompt: "请选择专业") %>
+        </div>
+        <div class="form-group">
+          <label for="grade">班级：</label>
+          <%= text_field_tag :grade, params[:grade], class: "form-control" %>
+        </div>
+        <button type="submit" class="btn btn-info">搜素</button>
+      <% end %>
+    </div>
+
+    <table class="table table-bordered table-hover students-list">
+      <thead>
+        <tr>
+          <th><input type="checkbox" value="all"></th>
+          <th>学院</th>
+          <th>专业</th>
+          <th>班级</th>
+          <th>班级总人数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @grades.each do |grade| %>
+          <tr>
+            <td align="center"><input type="checkbox" value="<%= grade.id %>"></td>
+            <td><%= grade.try(:specialty).try(:academy).try(:name) %></td>
+            <td><%= grade.try(:specialty).try(:name) %></td>
+            <td><%= grade.name %></td>
+            <td align="center"><%= grade.users.size %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<%= content_for :script do %>
+  <%= javascript_tag do %>
+    get_specialties_path = "<%= get_specialties_user_index_path %>"
+    get_grades_path = "<%= get_grades_user_index_path %>"
+  <% end %>
+  <%= javascript_include_tag "_user_show", 'data-turbolinks-track' => true %>
+<% end %>

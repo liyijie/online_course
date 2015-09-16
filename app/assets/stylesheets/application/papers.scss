@@ -22,3 +22,31 @@
   }
   
 }
+
+.papers__students {
+  .header {
+    padding-bottom: 10px;
+    h4 {
+      line-height: 2;
+    }
+  }
+
+  #addGrade {
+    .modal-dialog {
+      margin: 150px auto;
+    }
+    .modal-header {
+      background-color: #6a94c1;
+      color: #fff;
+      padding: 10px 30px;
+    }
+  }
+}
+
+
+.user_papers__new {
+  .header {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+}

@@ -60,6 +60,8 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
     builder (3.2.2)
+    by_star (2.2.1)
+      activesupport
     byebug (4.0.5)
       columnize (= 0.9.0)
     cancan (1.6.10)
@@ -255,6 +257,7 @@ DEPENDENCIES
   annotate
   awesome_print
   bootstrap-sass (~> 3.3.4)
+  by_star
   byebug
   cancan (~> 1.6.10)
   cocaine (= 0.5.3)

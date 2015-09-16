@@ -1,0 +1,44 @@
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left"><%= @paper.name %></span>
+  </section>
+  
+  <div class="exams-list container">
+    <div class="row header">
+      <div class="col-sm-12"><h4>以下为参加考试的班级<%= link_to "添加考试班级", new_paper_user_paper_path(@paper), remote: true, format: :js, class: "btn btn-info pull-right " %></h4></div>
+    </div>
+    <table class="table table-bordered table-hover students-list">
+      <thead>
+        <tr>
+          <th>学院</th>
+          <th>专业</th>
+          <th>班级</th>
+          <th>班级人数</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @grades.each do |grade| %>
+          <tr>
+            <td><%= grade.try(:specialty).try(:academy).try(:name) %></td>
+            <td><%= grade.try(:specialty).try(:name) %></td>
+            <td><%= grade.name %></td>
+            <td align="center"><%= grade.users.size %></td>
+            <td align="center">
+              <%= link_to "详情", paper_user_papers_path(@paper, grade_id: grade.id), remote: true, format: :js %> | 
+              <%= link_to "删除", "#" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div id="userPaperList">
+    </div>
+  </div>
+</div>
+
+<div id="addGrade" class="modal fade">
+  <%= render "user_papers/add_grade" %>
+</div>
+

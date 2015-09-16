@@ -4,9 +4,9 @@
   </section>
 
   <ul id="examListMenu" class="nav nav-pills discuss-menu">
-    <li class="active"><%= link_to("即将开始", "javascript:void(0);") %></li>
-    <li><%= link_to("正在进行", "javascript:void(0);") %></li>
-    <li><%= link_to("已结束", "javascript:void(0);") %></li>
+    <li class="<%= 'active' if params[:type].blank? %>"><%= link_to("即将开始", papers_path) %></li>
+    <li class="<%= 'active' if params[:type] == 'ing' %>"><%= link_to("正在进行", papers_path(type: "ing")) %></li>
+    <li class="<%= 'active' if params[:type] == 'end' %>"><%= link_to("已结束", papers_path(type: "end")) %></li>
     <li class="navbar-right create-discuss">
       <%= link_to new_paper_path do %>
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建考试
@@ -34,7 +34,7 @@
         <td align="center">
           <%= link_to("编辑", edit_paper_path(paper)) %> | 
           <%= link_to("试卷", questions_paper_path(paper)) %> |
-          <%= link_to("考生", edit_paper_path(paper)) %>
+          <%= link_to("考生", students_paper_path(paper)) %>
         </td>
       </tr>
       <% end %>

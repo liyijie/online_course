@@ -1,0 +1,33 @@
+<br><h4>班级参考人详情：</h4><br>
+<table class="table table-bordered students-list">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>学院</th>
+      <th>专业</th>
+      <th>班级</th>
+      <th>学号</th>
+      <th>姓名</th>
+      <th>考试状态</th>
+      <th>阅卷状态</th>
+      <th>得分</th>
+      <th>阅卷</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% user_papers.each_with_index do |user_paper, index|%>
+    <tr>
+      <td align="center"><%= index + 1 %></td>
+      <td align="center"><%= user_paper.try(:user).try(:grade).try(:specialty).try(:academy).try(:name) %></td>
+      <td align="center"><%= user_paper.try(:user).try(:grade).try(:specialty).try(:name) %></td>
+      <td align="center"><%= user_paper.try(:user).try(:grade).try(:name) %></td>
+      <td align="center"><%= user_paper.try(:user).try(:number) %></td>
+      <td align="center"><%= user_paper.try(:user).try(:name) %></td>
+      <td align="center" class="<%= 'text-danger' unless user_paper.answered %>"><%= user_paper.answered ? "已考" : "未考" %></td>
+      <td align="center" class="<%= 'text-warning' unless user_paper.evaluated %>"><%= user_paper.evaluated ? "已阅卷" : "未阅卷" %></td>
+      <td align="center"><%= user_paper.total_score %></td>
+      <td align="center"><%= link_to "阅卷", "#" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

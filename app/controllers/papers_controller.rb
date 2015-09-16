@@ -2,7 +2,13 @@ class PapersController < ApplicationController
   before_action :authenticate_user_or_teacher
 
   def index
-    @papers = (current_user || current_teacher).papers
+    if params[:type] == 'ing'
+      @papers = (current_user || current_teacher).papers.after(Date.today, field: "end_at").before(Date.today, field: "start_at") 
+    elsif params[:type] == 'end'
+      @papers = (current_user || current_teacher).papers.before(Date.today, field: "end_at") 
+    else
+      @papers = (current_user || current_teacher).papers.after(Date.today, field: "start_at")  
+    end
   end
 
   def new
@@ -41,6 +47,11 @@ class PapersController < ApplicationController
     @paper = Paper.where(id: params[:id]).first
     @paper.import(params[:attachment])
     redirect_to questions_paper_path(@paper)
+  end
+
+  def students
+    @paper = Paper.where(id: params[:id]).first
+    @grades = Grade.includes(users: :user_papers).where(user_papers: {paper_id: @paper.id}).distinct
   end
 
   private

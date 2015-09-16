@@ -49,7 +49,10 @@ Rails.application.routes.draw do
     member do
       get :questions
       patch :import
+      get :students
     end
+
+    resources :user_papers
   end
 
   #限定教师编号为数字形式
