@@ -22,6 +22,7 @@ class Paper < ActiveRecord::Base
   validates_presence_of :course_id, :name
   validates_presence_of :start_at, :end_at, message: "请输入YYYY-MM-DD格式的日期"
 
+  # 试卷导入
   def import(file)
     spreadsheet = Paper.open_spreadsheet(file)
     header = [:question_type, :signal_score, :title, :correct_answer, :correct_hint]

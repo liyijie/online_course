@@ -1,0 +1,101 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag "jquery.countdown.min", "_exam_new", 'data-turbolinks-track' => true %>
+<%end%>
+
+
+<div class="main-content">
+  <% if @answered %>
+    <%= render partial: 'common/blank_alert', locals: {message: '您已完成了当前考试，请耐心等待老师阅卷!'}%>
+  <% elsif @paper.paper_questions.present? %>
+    <a href="javascript:void(0)" class="btn btn-success js-start-answer-question">开始考试</a>
+    <div class="main-title">
+      <%= @paper.name %>
+    </div>
+    <div class="question-content">
+      <%= form_tag paper_answers_path(@paper, :answer) do%>
+        <% if @paper.paper_questions.single.present? %>
+          <h3 class="type-title">单选题</h3>
+          <% @paper.paper_questions.single.each_with_index do |question, index|%>
+            <p class="title"><%= index + 1 %>. <span class="text-danger"><%= "（" + question.signal_score.to_s  + "分）"%></span><%= question.title %></p>
+            <% question.paper_options.each_with_index do |option, option_index|%>
+              <p class="option">
+                <%= radio_button_tag("options[#{question.id}]", option.index_type)%>&nbsp;&nbsp;
+                <label for="options_<%= question.id %>_<%= select_item(option_index) %>" ><%= option.index_type + "、" + option.content %></label>
+              </p>
+            <% end %>
+          <% end %>
+        <% end %>
+        <br>
+        <% if @paper.paper_questions.multi.present? %>
+          <h3 class="type-title">多选题</h3>
+          <% @paper.paper_questions.multi.each_with_index do |question, index|%>
+            <p class="title"><%= index + 1 %>. <span class="text-danger"><%= "（" + question.signal_score.to_s  + "分）"%></span><%= question.title%></p>
+            <% question.paper_options.each_with_index do |option, option_index|%>
+              <p class="option">
+                <%= check_box_tag("options[#{question.id}][]", option.index_type, false , id: "options_#{question.id}_#{select_item(option_index)}")%>&nbsp;&nbsp;
+                <label for="options_<%= question.id %>_<%= select_item(option_index) %>" ><%= option.index_type + "、" + option.content %></label>
+              </p>
+            <% end %>
+          <% end %>
+        <% end %>
+        <br>
+        <% if @paper.paper_questions.judge.present? %>
+          <h3 class="type-title">判断题</h3>
+          <% @paper.paper_questions.judge.each_with_index do |question, index|%>
+            <p class="title"><%= index + 1 %>. <span class="text-danger"><%= "（" + question.signal_score.to_s  + "分）"%></span><%= question.title%></p>
+              <p class="option">
+                <%= radio_button_tag("options[#{question.id}]", "T")%>&nbsp;&nbsp;
+                <label for="options_<%= question.id %>_T" >正确</label>
+              </p>
+              <p class="option">
+                <%= radio_button_tag("options[#{question.id}]", "F")%>&nbsp;&nbsp;
+                <label for="options_<%= question.id %>_F" >错误</label>
+              </p>
+          <% end %>
+        <% end %>
+        <br>
+        <% if @paper.paper_questions.fill.present? %>
+          <h3 class="type-title">填空题</h3>
+          <% @paper.paper_questions.fill.each_with_index do |question, index|%>
+            <p class="title"><%= index + 1 %>. <span class="text-danger"><%= "（" + question.signal_score.to_s  + "分）"%></span><%= question.title%></p>
+              <p class="option">
+                <%= text_field_tag("options[#{question.id}]",'', style: 'width: 700px;')%>
+              </p>
+          <% end %>
+        <% end %>
+        <br>
+        <% if @paper.paper_questions.que_an.present? %>
+          <h3 class="type-title">问答题</h3>
+          <% @paper.paper_questions.que_an.each_with_index do |question, index|%>
+            <p class="title"><%= index + 1 %>. <span class="text-danger"><%= "（" + question.signal_score.to_s  + "分）"%></span><%= question.title%></p>
+              <p class="option">
+                <%= text_area_tag("options[#{question.id}]",'', rows: 4, cols: 99)%>
+              </p>
+          <% end %>
+        <% end %>
+
+        <div class="form-group">
+          <button type="submit" class="btn center-block btn-lg btn-primary js-submit-btn">
+            提 交 试 卷
+          </button>
+        </div>
+      <% end %>
+    </div>
+    <div class="tieshi">
+      <div id="countdown">00:00:00</div>
+      <ul class="question-num">
+        <li>
+          <p class="title">总题数</p>
+          <p class="number">
+            <span><%= @paper.paper_questions.size %></span>
+            题
+          </p>
+        </li>
+      </ul>
+      <a href="javascript:void(0)" id="back-to-top"></a>
+    </div>
+  <% else %>
+    <%= render partial: 'common/blank_alert', locals: {message: '当前考试还未上传试卷!'}%>
+  <% end %>
+</div>
+

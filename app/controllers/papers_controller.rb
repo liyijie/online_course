@@ -1,5 +1,6 @@
 class PapersController < ApplicationController
-  before_action :authenticate_user_or_teacher
+  before_action :authenticate_user_or_teacher, only: :index
+  before_action :authenticate_teacher!, except: :index
 
   def index
     if params[:type] == 'ing'

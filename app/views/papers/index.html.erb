@@ -45,7 +45,7 @@
             <%= link_to("考生", students_paper_path(paper)) %>
           <% elsif user_signed_in? %>
             <% if params[:type] == 'ing' %>
-              <%= link_to("进入考试", edit_paper_path(paper)) %>
+              <%= link_to("进入考试", new_paper_answer_path(paper)) %>
             <% elsif params[:type] == 'end'%>
               <%= link_to("成绩查询", edit_paper_path(paper)) %>
             <% end %>

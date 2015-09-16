@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     end
 
     resources :user_papers
+    resources :answers
   end
 
   #限定教师编号为数字形式
