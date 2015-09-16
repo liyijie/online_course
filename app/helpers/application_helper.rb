@@ -19,7 +19,7 @@ module ApplicationHelper
 			class: (controller.controller_path == 'teachers' and (controller.action_name=="index" || controller.action_name=="show")) ? 'active' : '' )
 			menu << content_tag('li', link_to('学习中心', courses_learning_center_path), class: (controller.controller_path == 'courses' && controller.action_name == "learning_center") ? 'active' : '')
 		menu << content_tag('li', link_to('讨论中心', discusses_path), class: controller.controller_path == 'discusses' ? 'active' : '')
-		menu << content_tag('li', link_to('考试中心', papers_path), class: controller.controller_path == 'papers' || controller.controller_path == 'answers' ? 'active' : '')
+		menu << content_tag('li', link_to('考试中心', papers_path), class: controller.controller_path == 'user_papers' || controller.controller_path == 'papers' || controller.controller_path == 'answers' ? 'active' : '')
 		unless teacher_signed_in?
 			menu << content_tag('li', link_to('个人中心', my_courses_user_index_path) , 
 				class: (controller.controller_path == 'user' or controller.controller_path == 'devise/registrations') ? 'active' : '')

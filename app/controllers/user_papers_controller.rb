@@ -1,5 +1,6 @@
 class UserPapersController < ApplicationController
-  before_action :authenticate_teacher!
+  before_action :authenticate_teacher!, except: :detail
+  before_action :authenticate_user!, only: :detail
 
   def index
     @paper = Paper.where(id: params[:paper_id]).first
@@ -24,6 +25,11 @@ class UserPapersController < ApplicationController
       UserPaper.create(user_id: user.id, paper_id: @paper.id)
     end
     redirect_to students_paper_path(@paper)
+  end
+
+  def detail
+    @paper = Paper.includes(:paper_questions).where(id: params[:paper_id]).first
+    @user_paper = UserPaper.where(user_id: current_user.id, paper_id: params[:paper_id]).first
   end
 
 end

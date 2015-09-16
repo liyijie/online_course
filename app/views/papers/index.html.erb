@@ -47,7 +47,7 @@
             <% if params[:type] == 'ing' %>
               <%= link_to("进入考试", new_paper_answer_path(paper)) %>
             <% elsif params[:type] == 'end'%>
-              <%= link_to("成绩查询", edit_paper_path(paper)) %>
+              <%= link_to("成绩查询", detail_paper_user_papers_path(paper)) %>
             <% end %>
           <% end %>
         </td>

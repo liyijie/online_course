@@ -15,6 +15,7 @@
 
 class PaperQuestion < ActiveRecord::Base
   belongs_to :paper
+  has_one :answer, dependent: :destroy
   has_many :paper_options, dependent: :destroy
 
   enum question_type: {single: 1, multi: 2, judge: 3, fill: 4, que_an: 5}

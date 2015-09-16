@@ -56,7 +56,11 @@ Rails.application.routes.draw do
       get :students
     end
 
-    resources :user_papers
+    resources :user_papers do
+      collection do
+        get :detail
+      end
+    end
     resources :answers
   end
 
