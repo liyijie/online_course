@@ -58,12 +58,12 @@ class UserPaper < ActiveRecord::Base
           answer.correct = false
         end
       end 
-      answer.save! 
+      answer.save 
     end
 
     self.answered = true
     self.objective_total = objective_total
-    self.save!
+    self.save
   end
 
   # 根据页面传入的答题params来更新学生考试的分数
@@ -75,11 +75,11 @@ class UserPaper < ActiveRecord::Base
       answer = Answer.where(id: answer_id).first
       if answer.present?
         answer.score = (score || 0).to_i
-        answer.save!
+        answer.save
         self.total_score += (score || 0).to_i
       end
     end
     self.evaluated = true
-    self.save!
+    self.save
   end
 end
