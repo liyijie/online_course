@@ -13,4 +13,5 @@ class AnswersController < ApplicationController
     flash[:notice] = " 试卷提交成功"
     redirect_to papers_path(type: "ing")
   end
+
 end

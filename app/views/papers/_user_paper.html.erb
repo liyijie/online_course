@@ -10,6 +10,7 @@
       <th>姓名</th>
       <th>考试状态</th>
       <th>阅卷状态</th>
+      <th>客观题得分</th>
       <th>得分</th>
       <th>阅卷</th>
     </tr>
@@ -25,8 +26,9 @@
       <td align="center"><%= user_paper.try(:user).try(:name) %></td>
       <td align="center" class="<%= 'text-danger' unless user_paper.answered %>"><%= user_paper.answered ? "已考" : "未考" %></td>
       <td align="center" class="<%= 'text-warning' unless user_paper.evaluated %>"><%= user_paper.evaluated ? "已阅卷" : "未阅卷" %></td>
+      <td align="center"><%= user_paper.objective_total %></td>
       <td align="center"><%= user_paper.total_score %></td>
-      <td align="center"><%= link_to "阅卷", "#" %></td>
+      <td align="center"><%= link_to "阅卷", edit_paper_user_paper_path(user_paper.paper, user_paper) %></td>
     </tr>
     <% end %>
   </tbody>

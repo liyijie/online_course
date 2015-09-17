@@ -32,4 +32,16 @@ class UserPapersController < ApplicationController
     @user_paper = UserPaper.where(user_id: current_user.id, paper_id: params[:paper_id]).first
   end
 
+  def edit
+    @paper = Paper.includes(:paper_questions).where(id: params[:paper_id]).first
+    @user_paper = UserPaper.where(id: params[:id]).first
+  end
+
+  def update
+    @paper = Paper.includes(:paper_questions).where(id: params[:paper_id]).first
+    @user_paper = UserPaper.where(id: params[:id]).first
+    @user_paper.generate_by_answer_score(params[:scores])
+    redirect_to students_paper_path(@paper)
+  end
+
 end

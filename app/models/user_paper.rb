@@ -2,13 +2,15 @@
 #
 # Table name: user_papers
 #
-#  id          :integer          not null, primary key
-#  user_id     :integer
-#  paper_id    :integer
-#  answered    :boolean          default(FALSE)
-#  total_score :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  paper_id        :integer
+#  answered        :boolean          default(FALSE)
+#  total_score     :integer          default(0)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  evaluated       :boolean          default(FALSE)
+#  objective_total :integer          default(0)
 #
 
 class UserPaper < ActiveRecord::Base
@@ -64,4 +66,20 @@ class UserPaper < ActiveRecord::Base
     self.save!
   end
 
+  # 根据页面传入的答题params来更新学生考试的分数
+  # 创建Exam对象的过程中，也会创建对应的ExamItem对象
+  # 输入参数，key为question.id，value为option_value
+  def generate_by_answer_score(answer_score)
+    self.total_score = objective_total
+    answer_score.each do |answer_id, score|
+      answer = Answer.where(id: answer_id).first
+      if answer.present?
+        answer.score = (score || 0).to_i
+        answer.save!
+        self.total_score += (score || 0).to_i
+      end
+    end
+    self.evaluated = true
+    self.save!
+  end
 end

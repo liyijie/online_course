@@ -12,7 +12,7 @@
     总分：<%= @paper.total_score %>  &nbsp;&nbsp;&nbsp;&nbsp;得分：<%= @user_paper.evaluated ? @user_paper.total_score : "未阅卷" %>
   </div>
   <div class="question-content">
-    <%= form_tag paper_answers_path(@paper, :answer) do%>
+    <%= form_tag paper_user_paper_path(@paper, @user_paper), method: :patch do%>
       <% if @paper.paper_questions.single.present? %>
         <h3 class="type-title">单选题</h3>
         <% @paper.paper_questions.single.each_with_index do |question, index|%>
@@ -73,6 +73,9 @@
             <p class="option text-danger">
               答案解析：<%= question.correct_hint %>
             </p>
+            <p class="option">
+              分数：<%= text_field_tag "scores[#{question.answer.id}]", question.answer.try(:score) %>
+            </p>
         <% end %>
       <% end %>
       <br>
@@ -86,9 +89,16 @@
              <p class="option text-danger">
               答案解析：<%= question.correct_hint %>
             </p>
+            <p class="option">
+              分数：<%= text_field_tag "scores[#{question.answer.id}]", question.answer.try(:score) %>
+            </p>
         <% end %>
       <% end %>
-
+      <div class="form-group">
+        <button type="submit" class="btn center-block btn-lg btn-primary">
+          提 交 分 数
+        </button>
+      </div>
     <% end %>
   </div>
 </div>

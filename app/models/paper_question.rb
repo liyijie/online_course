@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: paper_qestions
+# Table name: paper_questions
 #
 #  id             :integer          not null, primary key
 #  paper_id       :integer
