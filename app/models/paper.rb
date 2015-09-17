@@ -32,7 +32,6 @@ class Paper < ActiveRecord::Base
         total_score = 0 
         self.paper_questions.destroy_all # 删除原来的题
         spreadsheet.each_with_index  do |row, index|
-          pp row
           next if index == 0
           # 题目创建
           paper_question = PaperQuestion.new 
@@ -54,6 +53,9 @@ class Paper < ActiveRecord::Base
         self.update(total_score: total_score)
       end
     rescue Exception => e
+      puts "===================import======================="
+      puts e.message
+      puts "===================import======================="
       ActiveRecord::Rollback
     end
     
