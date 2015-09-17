@@ -47,11 +47,15 @@
       <p class="line"></p>
 	  </div>
 	  <ul>
-	  	<% current_teacher.resume.split("\r\n").each do |resume| %>
-	  	<li class="width-100">
-	  		<%= resume %>
-	  	</li>
-	  	<% end %>
+		<% if current_teacher.resume.present? %>
+		  	<% current_teacher.resume.split("\r\n").each do |resume| %>
+			  	<li class="width-100">
+			  		<%= resume %>
+			  	</li>
+		  	<% end %>
+		<% else %>
+			<li class="width-100">暂未填写工作建立 <%= link_to "前往填写>>", "#{my_account_teachers_path}#teacher_resume" %></li>
+		<% end %>
 	  </ul>
 	</div>
 </div>
