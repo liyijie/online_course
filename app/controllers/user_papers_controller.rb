@@ -50,4 +50,16 @@ class UserPapersController < ApplicationController
     UserPaper.includes(:user).where(users: {grade_id: params[:grade_id]}, user_papers: {paper_id: params[:paper_id]}).destroy_all
     redirect_to students_paper_path(@paper)
   end
+
+  # 按班级导出成绩
+  def export_grade
+    @paper = Paper.where(id: params[:paper_id]).first
+    grade = Grade.where(id: params[:grade_id]).first
+    filename = URI.encode("#{@paper.name}_#{grade.try(:specialty).try(:name)}_#{grade.name}.xls")
+    send_data( 
+            @paper.export_by_grade(grade),
+            type: "text/excel;charset=utf-8; header=present",
+            filename: filename
+          )
+  end
 end

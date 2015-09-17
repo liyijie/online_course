@@ -82,4 +82,5 @@ class UserPaper < ActiveRecord::Base
     self.evaluated = true
     self.save
   end
+
 end

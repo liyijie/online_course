@@ -6,9 +6,9 @@ class PapersController < ApplicationController
     if params[:type] == 'ing'
       @papers = (current_user || current_teacher).papers.after(Date.today, field: "end_at").before(Date.today, field: "start_at") 
     elsif params[:type] == 'end'
-      @papers = (current_user || current_teacher).papers.before(Date.today, field: "end_at") 
+      @papers = (current_user || current_teacher).papers.before(Date.today - 1, field: "end_at") 
     else
-      @papers = (current_user || current_teacher).papers.after(Date.today, field: "start_at")  
+      @papers = (current_user || current_teacher).papers.after(Date.today + 1, field: "start_at")  
     end
   end
 

@@ -70,4 +70,33 @@ class Paper < ActiveRecord::Base
     else raise "未知格式: #{file.original_filename}"
     end
   end
+
+
+  # 按班级导出成绩单
+  def export_by_grade(grade)
+    xls_report = StringIO.new
+    book = Spreadsheet::Workbook.new
+
+    sheet = book.create_worksheet :name => self.try(:paper).try(:name)
+
+    # 考试信息
+    sheet.row(0).concat ['学院', grade.specialty.academy.name]
+    sheet.row(1).concat ['专业', grade.specialty.name]
+    sheet.row(2).concat ['班级', grade.name]
+
+    user_papers = UserPaper.includes(:user).where(users: {grade_id: grade.id}, user_papers: {paper_id: self.id}).order("users.number asc")
+
+    title = ['学号', '姓名', '得分']
+    sheet.row(3).concat title
+
+    offset = 4 #学生信息起始行
+    user_papers.each_with_index do |user_paper, index|
+      user = user_paper.user
+      content = [user.number, user.name, user_paper.total_score]
+      sheet.row(offset + index).concat content
+    end
+
+    book.write xls_report
+    xls_report.string
+  end
 end

@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       collection do
         get :detail
         delete :destroy_grade
+        get :export_grade
       end
     end
     resources :answers

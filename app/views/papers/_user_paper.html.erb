@@ -33,3 +33,8 @@
     <% end %>
   </tbody>
 </table>
+<% if user_papers.present? %>
+  <div class="row text-center">
+    <%= link_to("导出成绩单", export_grade_paper_user_papers_path(user_papers.first.paper,grade_id: user_papers.first.user.grade.id), class: "btn btn-info btn-lg") %>
+  </div>
+<% end %>
