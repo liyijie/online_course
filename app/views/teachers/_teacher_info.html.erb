@@ -47,12 +47,11 @@
       <p class="line"></p>
 	  </div>
 	  <ul>
+	  	<% current_teacher.resume.split("\r\n").each do |resume| %>
 	  	<li class="width-100">
-	  		2013年2月-至今: 	上海新侨职业技术学院 计算机信息系专任教师
+	  		<%= resume %>
 	  	</li>
-	  	<li class="width-100">
-	  		2005年2月-2013年1月: 	上海新侨职业技术学院 计算机信息系专任教师
-	  	</li>
+	  	<% end %>
 	  </ul>
 	</div>
 </div>
