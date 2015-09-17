@@ -44,4 +44,10 @@ class UserPapersController < ApplicationController
     redirect_to students_paper_path(@paper)
   end
 
+
+  def destroy_grade
+    @paper = Paper.where(id: params[:paper_id]).first
+    UserPaper.includes(:user).where(users: {grade_id: params[:grade_id]}, user_papers: {paper_id: params[:paper_id]}).destroy_all
+    redirect_to students_paper_path(@paper)
+  end
 end

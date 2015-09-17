@@ -28,7 +28,7 @@
       <td align="center" class="<%= 'text-warning' unless user_paper.evaluated %>"><%= user_paper.evaluated ? "已阅卷" : "未阅卷" %></td>
       <td align="center"><%= user_paper.objective_total %></td>
       <td align="center"><%= user_paper.total_score %></td>
-      <td align="center"><%= link_to "阅卷", edit_paper_user_paper_path(user_paper.paper, user_paper) %></td>
+      <td align="center"><%= link_to_unless !user_paper.answered, "阅卷", edit_paper_user_paper_path(user_paper.paper, user_paper) %></td>
     </tr>
     <% end %>
   </tbody>

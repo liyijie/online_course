@@ -42,7 +42,8 @@
           <% if teacher_signed_in? %>
             <%= link_to("编辑", edit_paper_path(paper)) %> | 
             <%= link_to("试卷", questions_paper_path(paper)) %> |
-            <%= link_to("考生", students_paper_path(paper)) %>
+            <%= link_to("考生", students_paper_path(paper)) %> | 
+            <%= link_to("删除", paper_path(paper), method: :delete, data: { confirm: "确认删除该考试？" } ) %>
           <% elsif user_signed_in? %>
             <% if params[:type] == 'ing' %>
               <%= link_to("进入考试", new_paper_answer_path(paper)) %>

@@ -9,7 +9,7 @@
         <tr>
           <td width="50%" align="right"><%= file_field_tag :attachment %></td>
           <td ><%= f.submit "导入试卷", class: "btn btn-success", onclick: "if($('#attachment').val()==''){alert('请选择要上传的文件');return false;}" %>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "导入模板下载", URI.encode('/excels/试卷导入模板:.xls'), class: "btn btn-info" %></td>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "导入模板下载", URI.encode('/excels/试卷导入模板.xls'), class: "btn btn-info" %></td>
         </tr>
       </table>
     <% end %>

@@ -55,6 +55,12 @@ class PapersController < ApplicationController
     @grades = Grade.includes(users: :user_papers).where(user_papers: {paper_id: @paper.id}).distinct
   end
 
+  def destroy
+    @paper = Paper.where(id: params[:id]).first
+    @paper.destroy if @paper.present?
+    redirect_to papers_path
+  end
+
   private
 
   def paper_params

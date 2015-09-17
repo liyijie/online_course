@@ -74,7 +74,7 @@
               答案解析：<%= question.correct_hint %>
             </p>
             <p class="option">
-              分数：<%= text_field_tag "scores[#{question.answer.id}]", question.answer.try(:score) %>
+              分数：<%= text_field_tag "scores[#{question.answer.try(:id)}]", question.answer.try(:score) %>
             </p>
         <% end %>
       <% end %>
@@ -90,7 +90,7 @@
               答案解析：<%= question.correct_hint %>
             </p>
             <p class="option">
-              分数：<%= text_field_tag "scores[#{question.answer.id}]", question.answer.try(:score) %>
+              分数：<%= text_field_tag "scores[#{question.answer.try(:id)}]", question.answer.try(:score) %>
             </p>
         <% end %>
       <% end %>

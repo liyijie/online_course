@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     resources :user_papers do
       collection do
         get :detail
+        delete :destroy_grade
       end
     end
     resources :answers

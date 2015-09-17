@@ -26,7 +26,7 @@
             <td align="center"><%= grade.users.size %></td>
             <td align="center">
               <%= link_to "详情", paper_user_papers_path(@paper, grade_id: grade.id), remote: true, format: :js %> | 
-              <%= link_to "删除", "#" %>
+              <%= link_to "删除", destroy_grade_paper_user_papers_path(@paper, grade_id: grade.id), method: :delete, data: { confirm: "确认删除该班级？" } %>
             </td>
           </tr>
         <% end %>
