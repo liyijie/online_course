@@ -34,7 +34,9 @@
 			<th class="text-center">分类</th>
 			<th class="text-center">附件</th>
 			<th class="text-center">测试题目</th>
-			<th class="text-center" colspan="2">操作</th>
+			<% if can? :manage, SubCourse %>
+			  <th class="text-center" colspan="2">操作</th>
+			<% end %>
 		</tr>
 	</thead>
 	<tbody>

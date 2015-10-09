@@ -4,6 +4,8 @@ class Manager < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :login
+  has_many :manager_courses, dependent: :destroy
+  has_many :courses, through: :manager_courses
 
   def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup

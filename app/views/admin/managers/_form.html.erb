@@ -21,7 +21,20 @@
 	<div class="form-group">
 		<%= f.label :password_confirmation, '确认密码', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
-			<%= f.text_field :password_confirmation, class: 'form-control' %>
+			<%= f.password_field :password_confirmation, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= label_tag :courses, '授权课程', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+		  <ul>
+		  	<% Course.all.each do |course| %>
+		  	  <li>
+		  	  	<%= check_box_tag("manager[course_ids][]", course.id, course.id.in?(@manager.courses.collect(&:id)))%>
+					 【<%= course.number%>】<%= course.name%>
+		  	  </li>
+				<%end%>
+		  </ul>
 		</div>
 	</div>
 	<hr></hr>

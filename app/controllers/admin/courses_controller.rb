@@ -3,7 +3,12 @@ module Admin
 		load_and_authorize_resource
 		before_action :set_course, only: [:edit, :update, :destroy]
 		def index
-			@courses = Course.page(params[:page]).per(10)
+			#管理员读取所以数据，其他用户读取拥有权限数据
+			if current_manager.administer?
+			  @courses = Course.page(params[:page]).per(10)
+			else
+				@courses = current_manager.courses.page(params[:page]).per(10)
+			end
 		end
 
 		def new

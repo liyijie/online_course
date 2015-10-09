@@ -30,7 +30,9 @@
       <th class="text-center">校级精品课程</th>
       <th class="text-center">市级精品课程</th>
       <th class="text-center">子课程</th>
-      <th class="text-center" colspan="2">操作</th>
+      <% if can? :manage, Course %>
+        <th class="text-center" colspan="2">操作</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>

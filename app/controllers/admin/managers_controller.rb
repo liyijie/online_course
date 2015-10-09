@@ -12,6 +12,8 @@ module Admin
 
     def create
       @manager = Manager.new(manager_params)
+      @manager.manager_courses << ManagerCourse.new(course_id: params[:manager][:course_ids],
+                                course_id: @manager.id)
       if @manager.save
         flash.now[:notice] = "创建成功"
         return redirect_to admin_managers_url
@@ -25,6 +27,7 @@ module Admin
     end
 
     def update
+      params[:manager][:course_ids] ||= []
       if @manager.update(manager_params)
         flash.now[:notice] = "更新成功"
         redirect_to session.delete(:return_to)
@@ -44,7 +47,7 @@ module Admin
     private
 
     def manager_params
-      params.require(:manager).permit(:email, :password, :password_confirmation, :number, :roles)
+      params.require(:manager).permit(:email, :password, :password_confirmation, :number, :roles, {course_ids: []})
     end
     def set_manager
       @manager = Manager.find(params[:id])

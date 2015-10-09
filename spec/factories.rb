@@ -1,6 +1,10 @@
 require 'rack/test'
 
-FactoryGirl.define do  factory :manager do
+FactoryGirl.define do  factory :manager_course do
+    manager nil
+course nil
+  end
+  factory :manager do
     
   end
   factory :answer do
