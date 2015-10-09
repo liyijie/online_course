@@ -21,6 +21,10 @@ class Managers::SessionsController < Devise::SessionsController
     admin_root_path
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    new_manager_session_path
+  end
+
   #protected
 
   # You can put the params you want to permit in the empty array.

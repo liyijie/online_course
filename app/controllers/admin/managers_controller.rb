@@ -47,7 +47,7 @@ module Admin
     private
 
     def manager_params
-      params.require(:manager).permit(:email, :password, :password_confirmation, :number, :roles, {course_ids: []})
+      params.require(:manager).permit(:email, :password, :password_confirmation, :number, :name, :roles, {course_ids: []})
     end
     def set_manager
       @manager = Manager.find(params[:id])

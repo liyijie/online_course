@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20151009092334) do
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "roles",                  limit: 255
     t.string   "number",                 limit: 255
+    t.string   "name",                   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

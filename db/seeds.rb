@@ -11,6 +11,11 @@ begin
 	  id: 1, name: '上海工商职业技术学院'
 	})
 
+  Manager.delete_all
+  Manager.create!({
+    id: 1, name: '管理员', roles: "0", password: "dtby123456", password_confirmation: "dtby123456", number: "000000", email: "admin@dtby.com"
+  })
+
   Academy.delete_all
   Academy.create!([{
       id: 1, school_id: 1, academy_code: "1", name: "商务与管理系"

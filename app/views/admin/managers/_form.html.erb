@@ -5,6 +5,12 @@
 			<%= f.text_field :number, class: 'form-control' %>
 		</div>
 	</div>
+	<div class="form-group">
+		<%= f.label :name, '姓名', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+	</div>
 	<%= f.input :roles, label: '角 色', collection: Manager::ListRoles.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons %>
 	<div class="form-group">
 		<%= f.label :email, '邮 箱', class: 'col-sm-2 control-label' %>

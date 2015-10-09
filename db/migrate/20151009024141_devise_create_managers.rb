@@ -32,6 +32,7 @@ class DeviseCreateManagers < ActiveRecord::Migration
 
       t.string :roles
       t.string :number
+      t.string :name
 
       t.timestamps
     end
