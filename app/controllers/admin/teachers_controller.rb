@@ -1,4 +1,5 @@
 class Admin::TeachersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_teacher, only: [:edit, :update, :destroy]
 
   def index

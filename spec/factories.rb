@@ -1,6 +1,9 @@
 require 'rack/test'
 
-FactoryGirl.define do  factory :answer do
+FactoryGirl.define do  factory :manager do
+    
+  end
+  factory :answer do
     user_paper nil
 paper_question nil
 content "MyString"

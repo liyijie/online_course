@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: [:edit, :update, :destroy]
   def index
     @users = User.all.page(params[:page]).keyword_like(params[:keyword])

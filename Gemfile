@@ -64,7 +64,7 @@ end
 
 gem 'devise', '~> 3.4.1'
 
-gem 'cancan', '~> 1.6.10'
+gem 'cancancan', '~> 1.10'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 

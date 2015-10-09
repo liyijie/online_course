@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   devise_for :teachers, controllers: {
         sessions: 'teachers/sessions'
       }
+  devise_for :managers, controllers: {
+      sessions: 'managers/sessions'
+    }
   root :to => "home#index"
 
   get "select_courses", to: "home#select_courses", as: :select_courses_home
@@ -122,9 +125,10 @@ Rails.application.routes.draw do
       post :update_password
     end
   end
-  
+
   namespace :admin do
     root "home#index"
+    resources :managers
     resources :specialties
     resources :questions, only: [] do
       collection do

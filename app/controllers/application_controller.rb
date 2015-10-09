@@ -70,9 +70,9 @@ class ApplicationController < ActionController::Base
         respond_to do |format|
           format.js { render js: "parent.location.href='#{new_user_session_path}'" }
         end
-      else 
+      else
         redirect_to root_url
-      end 
+      end
     end
   end
 

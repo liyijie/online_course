@@ -1,5 +1,6 @@
 module Admin
 	class SubCoursesController < ApplicationController
+		load_and_authorize_resource
 		before_action :set_course
 		before_action :set_sub_course, only: [:edit, :update, :destroy, :lower, :higher]
 		def index

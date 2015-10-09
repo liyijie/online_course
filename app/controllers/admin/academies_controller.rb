@@ -1,5 +1,6 @@
 module Admin
   class AcademiesController < ApplicationController
+    load_and_authorize_resource
     before_action :set_academy, only: [:edit, :update, :destroy]
     def index
       @academies = Academy.page(params[:page]).per(10)

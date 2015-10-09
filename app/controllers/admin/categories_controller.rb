@@ -1,5 +1,6 @@
 module Admin
 	class CategoriesController < ApplicationController
+		load_and_authorize_resource
 		before_action :set_category, only: [:update, :edit, :destroy]
 		def index
 			@categories = Category.where(deleted_at: nil).page(params[:page]).per(10)

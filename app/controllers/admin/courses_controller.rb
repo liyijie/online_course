@@ -1,5 +1,6 @@
 module Admin
 	class CoursesController < ApplicationController
+		load_and_authorize_resource
 		before_action :set_course, only: [:edit, :update, :destroy]
 		def index
 			@courses = Course.page(params[:page]).per(10)

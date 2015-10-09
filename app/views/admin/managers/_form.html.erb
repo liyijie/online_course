@@ -1,0 +1,35 @@
+<%= simple_form_for([:admin, @manager], html: {class: "form-horizontal"}, wrapper: :horizontal_form, wrapper_mappings: {radio_buttons: :horizontal_radio_and_checkboxes, boolean: :horizontal_boolean }) do |f| %>
+	<div class="form-group">
+		<%= f.label :number, '人员编号', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.text_field :number, class: 'form-control' %>
+		</div>
+	</div>
+	<%= f.input :roles, label: '角 色', collection: Manager::ListRoles.to_a.reverse_each{|x| x.reverse!}, as: :radio_buttons %>
+	<div class="form-group">
+		<%= f.label :email, '邮 箱', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.text_field :email, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :password, '密 码', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.password_field :password, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :password_confirmation, '确认密码', class: 'col-sm-2 control-label' %>
+		<div class="col-sm-4">
+			<%= f.text_field :password_confirmation, class: 'form-control' %>
+		</div>
+	</div>
+	<hr></hr>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-success" type="submit">
+				<span class="glyphicon glyphicon-floppy-save">保存</span>
+			</button>
+		</div>
+	</div>
+<% end %>

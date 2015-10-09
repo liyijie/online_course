@@ -1,5 +1,6 @@
 module Admin
 	class QuestionsController < ApplicationController
+		load_and_authorize_resource
 		def index
 			@course = Course.find(params[:course_id])
 			@sub_course = SubCourse.find(params[:sub_course_id])

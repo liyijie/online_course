@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>上海工商职业技术学院后台管理系统</title>
+  <%= stylesheet_link_tag    'managers', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'managers', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="<%= controller.controller_path.gsub('/','__') + '__' + controller.action_name %>" >
+  <%= yield %>
+</body>
+</html>
