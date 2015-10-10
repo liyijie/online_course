@@ -1,7 +1,14 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag  "modal_pdf", 'data-turbolinks-track' => false %>
+<%end%>
+
 <ul class="container-fluid">
-  <br>
-  <br>
-  <%= link_to "/docs/2/jingpinkechengshenqing.doc", class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-download-alt"> 点击下载精品课程申请表 </span>
-  <% end %>
+  <li class="col-sm-12" style="height: 46px;line-height: 46px;border-bottom: 1px dashed #d6d6d6;">
+    <a href="/pdfs/2/高职高专上海市精品课程申报表（蔡长英）-20151010.pdf" data-toggle="modal" data-target="#myModal" class="col-sm-10 view-pdf">无线网络设备维护 精品课程申报表</a>
+    <a href="/pdfs/2/高职高专上海市精品课程申报表（蔡长英）-20151010.pdf" data-toggle="modal" data-target="#myModal" class="col-sm-2 view-pdf"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</a>
+  </li>
+  <li class="col-sm-12"  style="height: 46px;line-height: 46px;border-bottom: 1px dashed #d6d6d6;">
+    <a href="<%= show_courses_path(@course.number, anchor: "main-video")%>" class="col-sm-10">说课视频</a>
+    <a href="<%= show_courses_path(@course.number, anchor: "main-video")%>" class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;预览</a>
+  </li>
 </ul>

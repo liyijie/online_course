@@ -11,7 +11,7 @@ $(function(){
         var pdf_link = $(this).attr('href');
         var iframe = '<object type="application/pdf" data="'+pdf_link+'" width="100%" height="500">不支持该格式，建议替换为pdf格式</object>'
         $.createModal({
-            title:'ios图形界面开发精品课程申报表',
+            title:'无线网络设备维护',
             message: iframe,
             closeButton:true,
             scrollable:false

@@ -26,4 +26,16 @@ class Manager < ActiveRecord::Base
 	  charge: '课程负责人',
 	  teacher: '课程教师'
 	}
+
+  scope :keyword, -> (keyword) do
+    return all if keyword.blank?
+    where(
+      'managers.number LIKE ?
+      OR managers.name LIKE ?
+      OR managers.email LIKE ?',
+      "%#{keyword}%",
+      "%#{keyword}%",
+      "%#{keyword}%"
+    )
+  end
 end
