@@ -43,7 +43,7 @@
     <% if can? :index, Specialty %>
       <li>
         <%= link_to admin_specialties_path do %>
-          <span class="glyphicon glyphicon-th-list"></span> 专业列表
+          <span class="glyphicon glyphicon-th-large"></span> 专业列表
         <%end%>
       </li>
     <%end%>
@@ -51,7 +51,7 @@
     <% if can? :index, Manager %>
       <li>
         <%= link_to admin_managers_path do %>
-          <span class="glyphicon glyphicon-list"></span> 管理人员
+          <span class="glyphicon glyphicon-asterisk"></span> 管理人员
         <%end%>
       </li>
     <%end%>
