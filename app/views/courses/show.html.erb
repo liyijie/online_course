@@ -19,7 +19,8 @@
 
     <div class="left-content">
       <div class="course-image">
-        <% if @course.attachment && @course.attachment.content.present? %>
+        <!-- 优先选择file_url选项 -->
+        <% unless @course.attachment && @course.attachment.file_url.present? %>
           <video width="500" height="350" class="mejs-player" poster="<%= (@course.try(:image).try(:avatar).url(:c_500_350))%>" controls="controls" preload="none">
             <source type="video/mp4" src="<%= @course.attachment.content.url %>" />
           </video>
