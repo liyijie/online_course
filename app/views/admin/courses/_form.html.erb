@@ -67,6 +67,14 @@
 		<div class="col-sm-4 container">
 		</div>
 	</div>
+	<% if @course.attachment.file_url %>
+	  <div class="form-group">
+			<%= label_tag :attachment_file_url, '已上传课程附件地址', class: 'col-sm-2 control-label' %>
+			<div class="col-sm-4 container">
+				<%= text_field_tag :attachment_file_url, @course.attachment.file_url, class: 'form-control', disabled: true%>
+			</div>
+		</div>
+	<% end %>
 	<div class="form-group">
 		<%= label_tag :attachment_file_url, '课程附件[地址]', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4 container">

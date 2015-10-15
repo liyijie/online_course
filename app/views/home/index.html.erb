@@ -80,8 +80,8 @@
       <div class="col-sm-4">
         <div class="star-course">
           <div class="col-sm-12">
-            <% unless course.attachment.present? && course.attachment.file_url.present? %>
-              <%= link_to image_tag(course.try(:image).try(:avatar).url(:c_350_230)), show_courses_path(course.number), class: 'img' if course.image && course.image.avatar %>
+            <% if course.image.present? && course.image.avatar.present? %>
+              <%= link_to image_tag(course.try(:image).try(:avatar).url(:c_350_230)), show_courses_path(course.number), class: 'img'%>
             <% else %>
               <%= link_to image_tag("course-show.png"), show_courses_path(course.number), class: 'img'%>
             <% end %>
