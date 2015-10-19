@@ -98,3 +98,5 @@ gem 'acts_as_list', '~> 0.7.2'
 gem "spreadsheet"
 
 gem 'by_star'
+
+gem 'whenever', :require => false
