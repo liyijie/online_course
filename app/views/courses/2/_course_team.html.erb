@@ -1,10 +1,16 @@
 <a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>教学团队</strong></a>
 <br><br>
-<div class="row">
-   <div class="col-sm-12">
-    <% teacher_courses.each_with_index do |teacher_course, index|%>
-			<div class="col-sm-3 text-center"><%= image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).try(:url, :t_220_220), class: "img-rounded")%>
-			</div>
-	  <% end %>
-	</div>
-</div>
+<% teacher_courses.each_with_index do |teacher_course, index|%>
+  <div class="media" style="margin:80px 40px;">
+    <div class="media-left" style="padding-right:40px">
+      <a href="#">
+        <%= image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).try(:url, :t_220_220), class: "img-rounded")%>
+      </a>
+    </div>
+    <div class="media-body" style="font-size:18px; line-height:2;">
+      <h3 class="media-heading"><%= teacher_course.try(:teacher).try(:name) %><small>（<%= teacher_course.try(:teacher).try(:name) %>）</small></h3>
+      <p style="margin:20px 0">职称：</p>
+      <p style="margin:10px 0">描述：</p>
+    </div>
+  </div>
+<% end %>
