@@ -76,9 +76,9 @@
 				<%= truncate(@course.description, length: 220) %>
 			</ul>
 			<p class="title">任课教师</p>
-			<ul class="teachers col-sm-12">
+			<ul class="teachers">
 				<% @course.teacher_courses.each do |teacher_course| %>
-				  <li class="col-sm-4">
+				  <li class="list text-center">
 				    <%= teacher_course.try(:teacher).try(:name) %>
 				    <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
 				  </li>

@@ -1699,16 +1699,16 @@ body.sub_courses__show  {
 					border-left: solid 4px $main-color;
 					margin: 18px 0;
 				}
-				ul.teachers {
-					li {
-						text-align: center;
-						margin: 10px 0 20px 0;
-						img {
-							width: 100%;
-						}
+				.teachers {
+					overflow: hidden;
+					.list {
+						width: 60px;
+						float: left;
+					  display: block;
+						margin: 10px 10px;
 					}
 				}
-				 ul.videos {
+				ul.videos {
 	      	width: 260px;
 	        margin: 15px auto 0 auto;
 					overflow: hidden;
