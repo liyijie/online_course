@@ -67,7 +67,7 @@
 		<div class="col-sm-4 container">
 		</div>
 	</div>
-	<% if @course.attachment.file_url %>
+	<% if @course.attachment.present? && @course.attachment.file_url %>
 	  <div class="form-group">
 			<%= label_tag :attachment_file_url, '已上传课程附件地址', class: 'col-sm-2 control-label' %>
 			<div class="col-sm-4 container">
