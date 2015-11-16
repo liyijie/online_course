@@ -100,6 +100,7 @@ $(".courses__show").ready ->
     #显示对应的内容
     $(".course-content-step-div").hide()
     $(".course-content-step-div").eq($(this).index()).show()
+
     
   $(".course-content-method-nav").click ->
     #将点击的菜单选中
