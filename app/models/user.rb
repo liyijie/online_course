@@ -113,14 +113,13 @@ class User < ActiveRecord::Base
       User.transaction do
         (3..spreadsheet.last_row).each do |i|
           error_line = i
-
           row = Hash[[header, spreadsheet.row(i)].transpose]
           user = User.new
           #创建grade班级对象， 存入专业的值
           specialty = Specialty.find_by(code: row["specialty"].to_i.to_s)
-          grade_name = row["grade1"] + "级" + row["grade2"].to_s[1] +"班"
-          grade = specialty.grades.find_by(name: grade_name)
 
+          grade_name = row["grade1"].to_i.to_s + "级" + row["grade2"].to_s[1] +"班"
+          grade = specialty.grades.find_by(name: grade_name)
           if grade.present?
             grade.name = grade_name
             grade.specialty_id = specialty.id
