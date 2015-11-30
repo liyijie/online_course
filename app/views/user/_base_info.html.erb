@@ -20,10 +20,6 @@
 	      <tr>
 	      	<td>
 	          <span class="text-primary">&bull;</span>
-	          已学课程：34门
-	        </td> -->
-	        <!-- <td>
-	          <span class="text-primary">&bull;</span>
 	          职位：<%= current_user.position%>
 	        </td> -->
 	        <td>
@@ -32,17 +28,16 @@
 	        </td>
 	      </tr>
 	      <tr>
-	        
-	        <!-- <td>
+	        <td>
 	          <span class="text-primary">&bull;</span>
-	          未学课程：10门
+	          已学课程：<%#= @collect_course.count %>门
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          未学课程：<%#= @course.count - @collect_course.count %>门
 	        </td>
 	      </tr>
 	      <tr>
-	      	<td>
-	          <span class="text-primary">&bull;</span>
-	          测试次数：12次
-	        </td> -->
 	        <td>
 	          <span class="text-primary">&bull;</span>
 	          系部：<%= current_user.try(:grade).try(:specialty).try(:academy).try(:name) %>
@@ -53,7 +48,11 @@
 	        </td>
 	      </tr>
 	      <tr>
-	        <!-- <td>
+	      	<td>
+	          <span class="text-primary">&bull;</span>
+	          测试次数：12次
+	        </td>
+	        <td>
 	          <span class="text-primary">&bull;</span>
 	          提问数量：18条
 	        </td>
@@ -62,7 +61,7 @@
 	      	<td>
 	          <span class="text-primary">&bull;</span>
 	          回答数量：21条
-	        </td> -->
+	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
 	          班级：<%= current_user.try(:grade).try(:name) %>
