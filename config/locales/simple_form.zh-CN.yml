@@ -13,9 +13,9 @@ zh-CN:
     # Examples
     labels:
       paper:
-        name: "考试标题"
-        content: "考试内容"
-        course_id: "考试科目"
+        name: "测试标题"
+        content: "测试内容"
+        course_id: "测试科目"
         start_at: "开始时间"
         end_at: "结束时间"
     #   defaults:

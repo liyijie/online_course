@@ -16,15 +16,15 @@
 	  <div class="row self-main-context">
 
 	    <ul class="nav nav-pills show-content">
-        <li role="presentation" class="active"><%= link_to "完成的考试","javascript:void(0);" %></li>
-        <li role="presentation"><%= link_to "即将开始的考试","javascript:void(0);" %></li>
+        <li role="presentation" class="active"><%= link_to "完成的测试","javascript:void(0);" %></li>
+        <li role="presentation"><%= link_to "即将开始的测试","javascript:void(0);" %></li>
       </ul>
 
-      <!-- ###########################完成的考试########################## -->
+      <!-- ###########################完成的测试########################## -->
       <div class="div-content scoure-search">
 
         <% if @exams.blank? %>
-          <div class="blank">没有已完成的考试</div>
+          <div class="blank">没有已完成的测试</div>
         <% else %>
           <% @exams.each_with_index do |exam,index| %>
             <% if index % 2 == 0 %>
@@ -69,9 +69,9 @@
         <% end %>
         
       </div>
-      <!-- ###########################完成的考试########################## -->
+      <!-- ###########################完成的测试########################## -->
 
-      <!-- ###########################即将开始的考试########################## -->
+      <!-- ###########################即将开始的测试########################## -->
       <div class="my-exams-container div-content" style="display: none;" >
         <div class="row my-exams">
           <div class="col-sm-3 ov-hidden">
@@ -81,8 +81,8 @@
             <div class="my-exams-desc"> 
               <h4>CSS实现网页平滑过渡效果<br>
                 <small>
-                  <span>考试开始时间：2015-07-01 14:00:00</span>
-                  <span>考试时间：1小时30分钟</span>
+                  <span>测试开始时间：2015-07-01 14:00:00</span>
+                  <span>测试时间：1小时30分钟</span>
                 </small>
               </h4><br>
               <p>本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....本课程为Android消息推送的进阶篇，本课程重点讲解....</p>
@@ -90,7 +90,7 @@
           </div>
         </div>
       </div>
-      <!-- ###########################即将开始的考试########################## -->
+      <!-- ###########################即将开始的测试########################## -->
 
     </div>
 

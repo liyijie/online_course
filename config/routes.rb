@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # 考试中心
+  # 测试中心
   resources :papers do
     member do
       get :questions

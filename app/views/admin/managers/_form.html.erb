@@ -16,6 +16,7 @@
 		<%= f.label :email, '邮 箱', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
 			<%= f.text_field :email, class: 'form-control' %>
+			<%= f.error :email, id: 'email_error' %>
 		</div>
 	</div>
 	<div class="form-group">

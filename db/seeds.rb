@@ -16,6 +16,16 @@ begin
     id: 1, name: '管理员', roles: "0", password: "dtby123456", password_confirmation: "dtby123456", number: "000000", email: "admin@dtby.com"
   })
 
+  User.delete_all
+  User.create!({
+    id: 1, name: '张逸', password: "dtby123456", password_confirmation: "dtby123456", number: "111111"
+  })
+
+  # Teacher.delete_all
+  # Teacher.create!({
+  #   id: 1, name: '黎明', password: "dtby123456", password_confirmation: "dtby123456", number: "222222", email: "admin@dtby.com"
+  # })
+
   Academy.delete_all
   Academy.create!([{
       id: 1, school_id: 1, academy_code: "1", name: "商务与管理系"

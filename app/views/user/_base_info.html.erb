@@ -12,59 +12,60 @@
 	          <span class="text-primary">&bull;</span>
 	          姓名：<%= current_user.name%>
 	        </td>
-	        <td>
+	        <!-- <td>
 	          <span class="text-primary">&bull;</span>
 	          学习时长：830小时40分钟10秒
 	        </td>
 	      </tr>
 	      <tr>
-	        <td>
-	          <span class="text-primary">&bull;</span>
-	          职位：<%= current_user.position%>
-	        </td>
-	        <td>
+	      	<td>
 	          <span class="text-primary">&bull;</span>
 	          已学课程：34门
-	        </td>
-	      </tr>
-	      <tr>
+	        </td> -->
+	        <!-- <td>
+	          <span class="text-primary">&bull;</span>
+	          职位：<%= current_user.position%>
+	        </td> -->
 	        <td>
 	          <span class="text-primary">&bull;</span>
 	          学号：<%= current_user.number%>
 	        </td>
-	        <td>
+	      </tr>
+	      <tr>
+	        
+	        <!-- <td>
 	          <span class="text-primary">&bull;</span>
 	          未学课程：10门
 	        </td>
 	      </tr>
 	      <tr>
+	      	<td>
+	          <span class="text-primary">&bull;</span>
+	          测试次数：12次
+	        </td> -->
 	        <td>
 	          <span class="text-primary">&bull;</span>
 	          系部：<%= current_user.try(:grade).try(:specialty).try(:academy).try(:name) %>
 	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
-	          考试次数：12次
+	          专业：<%= current_user.try(:grade).try(:specialty).try(:name) %>
 	        </td>
 	      </tr>
 	      <tr>
-	        <td>
-	          <span class="text-primary">&bull;</span>
-	          专业：<%= current_user.try(:grade).try(:specialty).try(:name) %>
-	        </td>
-	        <td>
+	        <!-- <td>
 	          <span class="text-primary">&bull;</span>
 	          提问数量：18条
 	        </td>
 	      </tr>
 	      <tr>
+	      	<td>
+	          <span class="text-primary">&bull;</span>
+	          回答数量：21条
+	        </td> -->
 	        <td>
 	          <span class="text-primary">&bull;</span>
 	          班级：<%= current_user.try(:grade).try(:name) %>
-	        </td>
-	        <td>
-	          <span class="text-primary">&bull;</span>
-	          回答数量：21条
 	        </td>
 	      </tr>
 		</table>
@@ -76,10 +77,10 @@
 	<div class="gray-line">
 		<div>
 		  <button type="button" class="btn btn-primary">今日提醒</button>
-		  <span class="pull-right">2015-04-08 星期三</span>
+		  <span class="pull-right"><%= Time.now.try(:strftime,'%Y-%m-%d %A') %></span>
 		</div>
 		<p>
-		  &nbsp;&nbsp;&nbsp;&nbsp;今天下午02：30有一场关于<span class="text-danger">《CSS实现网页平滑过渡效果》</span>的考试，请抓紧复习，要记住时间，到时记得参加考试哦~
+		  &nbsp;&nbsp;&nbsp;&nbsp;今天有一场关于<span class="text-danger">《CSS实现网页平滑过渡效果》</span>的测试，请抓紧复习，要记住时间，到时记得参加测试哦~
 		<p>
 	</div>
 </div>

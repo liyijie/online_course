@@ -5,9 +5,9 @@
 
 <div class="main-content">
   <% if @answered %>
-    <%= render partial: 'common/blank_alert', locals: {message: '您已完成了当前考试，考试结束后才能查看试卷!'}%>
+    <%= render partial: 'common/blank_alert', locals: {message: '您已完成了当前测试，测试结束后才能查看试卷!'}%>
   <% elsif @paper.paper_questions.present? %>
-    <a href="javascript:void(0)" class="btn btn-success js-start-answer-question">开始考试</a>
+    <a href="javascript:void(0)" class="btn btn-success js-start-answer-question">开始测试</a>
     <div class="main-title">
       <%= @paper.name %>
     </div>
@@ -95,7 +95,7 @@
       <a href="javascript:void(0)" id="back-to-top"></a>
     </div>
   <% else %>
-    <%= render partial: 'common/blank_alert', locals: {message: '当前考试还未上传试卷!'}%>
+    <%= render partial: 'common/blank_alert', locals: {message: '当前测试还未上传试卷!'}%>
   <% end %>
 </div>
 
