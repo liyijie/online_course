@@ -6,7 +6,7 @@
 
   <div class="col-md-10">
     <div class="row common-info">
-      <%= render :partial => "base_info" %>
+      <%= render :partial => "base_info", locals: {numbers: @numbers} %>
 	  </div>
 
 	  <div class="row self-main-context">

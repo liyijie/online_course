@@ -4,7 +4,7 @@ class UserController < ApplicationController
   #我的账户
   def show
   	@user = current_user
-
+    @numbers = User.quantities(current_user)
   	#学院专业回显赋值
   	@user.academy_id = @user.try(:grade).try(:specialty).try(:academy).try(:id)
   	@user.specialty_id = @user.try(:grade).try(:specialty).try(:id)
@@ -18,7 +18,7 @@ class UserController < ApplicationController
   #个人资料更新
   def update
   	@user = User.where(id: params[:id]).first 
-
+    @numbers = User.quantities(current_user)
   	#未查找到对应数据时处理
   	if @user.blank?
   	  flash[:error] = "当前个人资料不存在"
@@ -55,42 +55,50 @@ class UserController < ApplicationController
 
   #我的课程
   def my_courses
+    @numbers = User.quantities(current_user)
     @course = Course.where(:academy_id => current_user.academy_id)
     @collect_course = current_user.find_up_voted_items vote_scope: :collect, votable_type: :Course
   end
 
   #我的考试
   def my_exams
+    @numbers = User.quantities(current_user)
     @exams = current_user.try(:exams)
   end
 
   #成绩查询
   def score_search
+    @numbers = User.quantities(current_user)
     @exams = current_user.try(:exams)
   end
 
   #我的收藏
   def my_collect
+    @numbers = User.quantities(current_user)
     @collect_course = current_user.find_up_voted_items vote_scope: :collect, votable_type: :Course
   end
 
   #我的问答
   def my_questions
+    @numbers = User.quantities(current_user)
     @question_comments = Comment.find_root_comments_by_usertable(current_user, :answer).page(params[:page])
   end
 
   #我的回答
   def my_answers
-     @answer_comments = Comment.find_answer_by_usertable(current_user).page(params[:page])
+    @numbers = User.quantities(current_user)
+    @answer_comments = Comment.find_answer_by_usertable(current_user).page(params[:page])
   end
 
   #讨论中心
   def discuss_center
+    @numbers = User.quantities(current_user)
     @comments = Comment.find_root_comments_by_usertable(current_user, :discuss).page(params[:page])
   end
 
   #修改密码
   def update_password
+    @numbers = User.quantities(current_user)
     @user = current_user
   end
 
@@ -114,6 +122,7 @@ class UserController < ApplicationController
 
 
   private
+
   	def user_params
   		params.require(:user).permit(:nickname, :name, :position, :academy_id, :specialty_id, :grade_id, :gender, :signature)
   	end

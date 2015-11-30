@@ -15,4 +15,76 @@
  *= require mediaelement_rails/mejs-skins
  *= require_tree ./application/.
  */
- 
+div.row.common-info {
+  background: #fff;
+  padding-top: 20px;
+
+  .gray-line {
+    border-left: 2px solid #dcdcdc; 
+    height: 140px;
+    padding: 5px;
+
+    p {
+      padding: 15px;
+    }
+  }
+  //公共信息table
+  table.no-border tbody tr td {
+    padding: 3px;
+    border: 0!important;
+  }
+}
+
+.div-form {
+  padding: 30px;
+  color: #808080;
+  input, select, textarea {
+    color: #808080;
+  }
+  .btn {
+   color: #fff;
+  }
+}
+
+div.row.self-main-context {
+  border-top: 4px solid #337ab7;
+  .nav {
+    li {
+      padding-left: 20px; 
+    } 
+  }
+}
+.self-main-context {
+  margin-top: 20px;
+  background: #fff;
+  padding-top: 5px;
+}
+
+.list-bg-user {
+  height: 46px;
+  width: 172px;
+  position: absolute;
+  top: 62px;
+  left: 0;
+  background: #6a94c1;
+}
+ul.list li {
+  width: 184px;
+  a {
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    margin: 20px 0;
+    display: block;
+    color: #535353;
+    span {
+      position: relative;
+    }
+    &.active {
+      color: #fff;
+      span {
+        color: #fff;
+      }
+    }
+  }
+}

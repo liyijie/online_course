@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   devise_for :users, controllers: {
-        sessions: 'users/sessions'
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
       }
   devise_for :teachers, controllers: {
         sessions: 'teachers/sessions'

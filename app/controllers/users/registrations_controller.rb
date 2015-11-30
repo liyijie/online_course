@@ -13,9 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @numbers = User.quantities(User.first)
+  end
 
   # PUT /resource
   # def update

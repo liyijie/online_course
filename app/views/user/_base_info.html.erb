@@ -30,11 +30,17 @@
 	      <tr>
 	        <td>
 	          <span class="text-primary">&bull;</span>
-	          已学课程：<%#= @collect_course.count %>门
+	          已学课程：<%= numbers[:collect_course] %>门
 	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
-	          未学课程：<%#= @course.count - @collect_course.count %>门
+	          未学课程：
+	          <% if numbers[:course].present? %>
+	          0
+	          <% else %>
+	          <%= numbers[:course] - numbers[:collect_course] %>
+	          <% end %>
+	          门
 	        </td>
 	      </tr>
 	      <tr>
@@ -50,17 +56,17 @@
 	      <tr>
 	      	<td>
 	          <span class="text-primary">&bull;</span>
-	          测试次数：12次
+	          测试次数：<%= numbers[:exams] %>次
 	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
-	          提问数量：18条
+	          提问数量：<%= numbers[:question_comments] %>条
 	        </td>
 	      </tr>
 	      <tr>
 	      	<td>
 	          <span class="text-primary">&bull;</span>
-	          回答数量：21条
+	          回答数量：<%= numbers[:answer_comments] %>条
 	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>

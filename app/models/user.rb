@@ -160,4 +160,14 @@ class User < ActiveRecord::Base
     else raise "未知格式: #{file.original_filename}"
     end
   end
+
+  def self.quantities(current_user)
+    cache = {}
+    cache[:course] = Course.where(:academy_id => current_user.academy_id).count
+    cache[:collect_course] = current_user.find_up_voted_items(vote_scope: :collect, votable_type: :Course).count
+    cache[:exams] = current_user.try(:exams).count
+    cache[:question_comments] = Comment.find_root_comments_by_usertable(current_user, :answer).count
+    cache[:answer_comments] = Comment.find_answer_by_usertable(current_user).count
+    return cache
+  end
 end
