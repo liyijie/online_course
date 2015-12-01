@@ -1,0 +1,45 @@
+Searching 1334 files for "测试中心"
+
+/Users/EndingJason/Documents/web D/online_course/app/helpers/application_helper.rb:
+   20  			menu << content_tag('li', link_to('学习中心', courses_learning_center_path), class: (controller.controller_path == 'courses' && controller.action_name == "learning_center") ? 'active' : '')
+   21  		menu << content_tag('li', link_to('讨论中心', discusses_path), class: controller.controller_path == 'discusses' ? 'active' : '')
+   22: 		menu << content_tag('li', link_to('测试中心', papers_path), class: controller.controller_path == 'user_papers' || controller.controller_path == 'papers' || controller.controller_path == 'answers' ? 'active' : '')
+   23  		unless teacher_signed_in?
+   24  			menu << content_tag('li', link_to('个人中心', my_courses_user_index_path) , 
+
+/Users/EndingJason/Documents/web D/online_course/app/views/exams/index.html.erb:
+    1  <div class="main-content">
+    2    <section class="common-title">
+    3:     <span class="pull-left">考试中心</span>
+    4    </section>
+    5  
+
+/Users/EndingJason/Documents/web D/online_course/app/views/exams/show_test.html.erb:
+   42      </div>
+   43      <div class="center-block" align="center">
+   44:       <%= link_to "考试中心", exams_path, class: "btn btn-primary btn-lg"%>
+   45      </div>
+   46    </div>
+
+/Users/EndingJason/Documents/web D/online_course/app/views/exams/test_new.html.erb:
+   75            <br><br><br>
+   76            <div  class="modal-btn">
+   77:             <%= link_to('考试中心', exams_path , class: "btn btn-primary  btn-sm") %>
+   78            </div>
+   79          </div>
+
+/Users/EndingJason/Documents/web D/online_course/app/views/papers/index.html.erb:
+    1  <div class="main-content">
+    2    <section class="common-title">
+    3:     <span class="pull-left">考试中心</span>
+    4    </section>
+    5  
+
+/Users/EndingJason/Documents/web D/online_course/config/routes.rb:
+   53    end
+   54  
+   55:   # 考试中心
+   56    resources :papers do
+   57      member do
+
+6 matches across 6 files

@@ -24,18 +24,18 @@
 	        </td> -->
 	        <td>
 	          <span class="text-primary">&bull;</span>
-	          学号：<%= current_user.number%>
+	          已学课程：<%= numbers[:collect_course] %>门
 	        </td>
 	      </tr>
 	      <tr>
-	        <td>
+	      	<td>
 	          <span class="text-primary">&bull;</span>
-	          已学课程：<%= numbers[:collect_course] %>门
+	          学号：<%= current_user.number%>
 	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
 	          未学课程：
-	          <% if numbers[:course].present? %>
+	          <% if numbers[:course] == 0 %>
 	          0
 	          <% else %>
 	          <%= numbers[:course] - numbers[:collect_course] %>
@@ -50,13 +50,13 @@
 	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
-	          专业：<%= current_user.try(:grade).try(:specialty).try(:name) %>
+	          测试次数：<%= numbers[:exams] %>次
 	        </td>
 	      </tr>
 	      <tr>
 	      	<td>
 	          <span class="text-primary">&bull;</span>
-	          测试次数：<%= numbers[:exams] %>次
+	          专业：<%= current_user.try(:grade).try(:specialty).try(:name) %>
 	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
@@ -64,13 +64,13 @@
 	        </td>
 	      </tr>
 	      <tr>
-	      	<td>
-	          <span class="text-primary">&bull;</span>
-	          回答数量：<%= numbers[:answer_comments] %>条
-	        </td>
 	        <td>
 	          <span class="text-primary">&bull;</span>
 	          班级：<%= current_user.try(:grade).try(:name) %>
+	        </td>
+	        <td>
+	          <span class="text-primary">&bull;</span>
+	          回答数量：<%= numbers[:answer_comments] %>条
 	        </td>
 	      </tr>
 		</table>

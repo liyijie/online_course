@@ -36,7 +36,7 @@
           <%= file_field_tag :file, class: 'form-control' %>
         </div>
         <div class="col-sm-2">
-          <button class="btn btn-success" type="submit">
+          <button class="btn btn-success excel-btn" type="submit">
             <span class="glyphicon glyphicon-floppy-save">导入EXCEL试题</span>
           </button>
         </div>
@@ -44,3 +44,11 @@
     </div>
   <% end %>
 <% end %>
+<script type="text/javascript">
+  $(".excel-btn").click(function(){
+    if($("#file").val()==""){
+      alert("请先选择所需上传的文件！");
+      return false;
+    }
+  });
+</script>
