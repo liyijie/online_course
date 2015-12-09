@@ -110,11 +110,33 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
     background: #1a5aa0;
     color: #fff;
   }
-  .modal-body {
+    .modal-body {
     min-height: 500px;
   }
   //==============================
   //珠宝课程教学条件样式
+  //电动汽车
+  .related-download{
+    margin-top: 40px;
+    padding: 20px 30px;
+    background: #fff;
+    > .text-content > ul > li{
+      height: 46px;
+      line-height: 45px;
+      border-bottom:1px dashed #ccc;
+    }
+    .mydata{
+      text-indent: 2em;
+    }
+  }
+  
+  .my-title{
+    background: image-url('course_4/mytitle.png') repeat-y;
+    background-size: 100% 100%;
+    margin-top: 10px;
+    text-indent: 2.5em;
+    font: 16px bolder "微软雅黑";
+  }
 }
 
 //申报材料模态框样式
