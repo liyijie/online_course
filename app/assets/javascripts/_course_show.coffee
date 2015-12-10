@@ -145,3 +145,9 @@ $(".courses__show").ready ->
   $(".fast-entry-links a").click ->
     $(".entry-content").hide()
     $(".entry-content").eq($(this).index()).show()
+
+  $("#teamwork a").each (index) ->
+    _this = $(@)
+    _this.click ->
+      $(@).addClass("btn-primary by-btn-bg").siblings().removeClass("btn-primary by-btn-bg");
+      $("#teamworkContent .teamwork").eq(index).css("display", "block").siblings().css("display", "none")
