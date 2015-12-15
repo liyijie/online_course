@@ -4,6 +4,7 @@
     course_collect_path = "<%= course_collect_courses_path%>"
   <% end %>
   <%= javascript_include_tag "_course_show", 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "course-3", 'data-turbolinks-track' => true %>
 <%end%>
 
 <% content_for :crumbs do%>
@@ -105,8 +106,9 @@
   <% elsif  @course.number == "64322745" %>
     <%= render partial: "courses/2/main", locals: {teacher_courses: @teacher_courses} %>
   <% elsif @course.number == "49097443" %>
+    <%= render partial: "courses/3/list", locals: {teacher_courses: @teacher_courses} %>
     <%= render partial: "courses/3/main", locals: {teacher_courses: @teacher_courses} %>
-    <% elsif @course.number == "61308289" %>
+  <% elsif @course.number == "61308289" %>
     <%= render partial: "courses/4/main", locals: {teacher_courses: @teacher_courses} %>
   <% end %>
 </div>

@@ -1,3 +1,6 @@
+.fright {
+  float: right;
+}
 /*课程中心*/
 body.courses__index, body.courses__learning_center, body.teachers__index {
   section.common-title {
@@ -110,12 +113,11 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
     background: #1a5aa0;
     color: #fff;
   }
-    .modal-body {
+  .modal-body {
     min-height: 500px;
   }
   //==============================
   //珠宝课程教学条件样式
-  //新能源汽车
   .related-download{
     margin-top: 40px;
     padding: 20px 30px;
@@ -129,13 +131,77 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
       text-indent: 2em;
     }
   }
-  
   .my-title{
     background: image-url('course_4/mytitle.png') repeat-y;
     background-size: 100% 100%;
     margin-top: 10px;
     text-indent: 2.5em;
     font: 16px bolder "微软雅黑";
+  }
+  .xcBtn {
+    width: 100%!important;
+    margin: 17px 0 10px 0;
+  }
+  .listBar {
+    overflow: hidden;
+  }
+  .baseContent {
+    ul {
+      display: none;
+    }
+    ul li {
+      height: 34px;
+      line-height: 34px;
+      padding-left: 42px;
+      border-bottom: dotted 1px #d7d7d7;
+    }
+  }
+  .partContent {
+    display: none;
+  }
+  .titleContent {
+    margin-top: 10px;
+    overflow: hidden;
+    .titleBlock {
+      height: 40px;
+      width: 2%;
+      margin-right: 2%;
+      line-height: 40px;
+      margin: 5px;
+      background: #c1ddf5;
+      float: left;
+    }
+    .titleBar {
+      height: 40px;
+      line-height: 40px;
+      width: 96%;
+      padding-left: 10px;
+      float: right;
+      margin: 5px 0;
+      cursor: pointer;
+      font-weight: bold;
+      background: #c1ddf5;
+      img {
+        margin-left: 5px;
+      }
+    }
+  }
+  .course3 {
+    .carousel-indicators {
+      bottom: -6px;
+      left: 80%!important;
+    }
+   .carousel-indicators li {
+      width: 10px!important;
+      height: 10px!important;
+      border-bottom: none!important;
+      border-radius: 0!important;
+      border: none;
+      background: #fff;
+      &.active {
+        background: #1a5aa0;
+      }
+    }
   }
 }
 

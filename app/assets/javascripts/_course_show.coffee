@@ -1,8 +1,15 @@
 #首页，申报材料， 课程设置等切换效果
 _category_toggle = ->
   _list = $(".category-list a")
+  _category = $(".category-list")
   _list_content = $(".category-list-content .text-content")
-  _list_content.first().css("display","block")
+  if _category.hasClass("zhubao")
+    _list.first().removeClass("public-active-style")
+    _list.last().addClass("active public-active-style")
+    _list_content.last().css("display","block")
+  else
+    _list.first().addClass("active public-active-style")
+    _list_content.first().css("display","block")
   _list.each (index) ->
     _this = $(this);
     _index = index;
