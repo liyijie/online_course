@@ -192,6 +192,7 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
       left: 80%!important;
     }
    .carousel-indicators li {
+<<<<<<< HEAD
       width: 10px!important;
       height: 10px!important;
       border-bottom: none!important;
@@ -201,7 +202,18 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
       &.active {
         background: #1a5aa0;
       }
+=======
+    width: 10px!important;
+    height: 10px!important;
+    border-bottom: none!important;
+    border-radius: 0!important;
+    border: none;
+    background: #fff;
+    &.active {
+      background: #1a5aa0;
+>>>>>>> fix effect
     }
+   }
   }
 }
 
