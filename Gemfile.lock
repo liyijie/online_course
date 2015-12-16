@@ -169,6 +169,10 @@ GEM
       activesupport (= 4.2.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbows (4.7.0)
+      kgio (~> 2.5)
+      rack (~> 1.1)
+      unicorn (~> 4.8)
     raindrops (0.13.0)
     rake (10.4.2)
     rdoc (4.2.0)
@@ -278,6 +282,7 @@ DEPENDENCIES
   paperclip-ffmpeg
   pdfjs_viewer-rails
   rails (= 4.2.1)
+  rainbows
   remotipart (~> 1.2)
   roo
   roo-xls
