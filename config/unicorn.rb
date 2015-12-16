@@ -1,3 +1,9 @@
+Rainbows! do
+  use :ThreadPool
+  worker_connections 20
+  client_max_body_size nil
+end
+
 worker_processes 1
 
 app_root = File.expand_path("../..", __FILE__)
