@@ -13,12 +13,7 @@ $ ->
         content.eq(_index).find("ul").show()
 
 $ ->
-  $(".titleContent").find(".titleBar img").attr("src", "/assets/course_3/down.png")
   $(".titleContent").click ->
     oUl = $(@).siblings("ul")
-    if oUl.css("display") == "block"
-      oUl.slideUp()
-      $(@).find(".titleBar img").attr("src", "/assets/course_3/down.png")
-    else
-      oUl.slideDown()
-      $(@).find(".titleBar img").attr("src", "/assets/course_3/up.png")
+    oUl.slideToggle()
+    $(@).find(".titleBar").toggleClass("up")

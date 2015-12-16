@@ -1,6 +1,9 @@
 .fright {
   float: right;
 }
+.fleft {
+  float: left;
+}
 /*课程中心*/
 body.courses__index, body.courses__learning_center, body.teachers__index {
   section.common-title {
@@ -32,7 +35,6 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
       .serach-name {
         padding-top: 5px
       }
-
       .serach-course {
         li a {
           color: #171717;
@@ -180,9 +182,9 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
       margin: 5px 0;
       cursor: pointer;
       font-weight: bold;
-      background: #c1ddf5;
-      img {
-        margin-left: 5px;
+      background: #c1ddf5 image-url("course_3/down.png") no-repeat 98% center;
+      &.up {
+        background: #c1ddf5 image-url("course_3/up.png") no-repeat 98% center;
       }
     }
   }
