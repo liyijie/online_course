@@ -100,5 +100,3 @@ gem "spreadsheet"
 gem 'by_star'
 
 gem 'whenever', :require => false
-
-gem 'rainbows'
