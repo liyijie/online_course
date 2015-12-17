@@ -3,16 +3,11 @@ _category_toggle = ->
   _list = $(".category-list a")
   _category = $(".category-list")
   _list_content = $(".category-list-content .text-content")
-  if _category.hasClass("zhubao")
-    _list.first().removeClass("public-active-style")
-    _list.last().addClass("active public-active-style")
-    _list_content.last().css("display","block")
-  else
-    _list.first().addClass("active public-active-style")
-    _list_content.first().css("display","block")
+  _list.first().addClass("active public-active-style")
+  _list_content.first().show()
   _list.each (index) ->
-    _this = $(this);
-    _index = index;
+    _this = $(this)
+    _index = index
     _this.on 'click', ->
       _this.addClass("active public-active-style").siblings().removeClass("active public-active-style")
       _list_content.eq(_index).css("display","block").siblings().not("a").css("display","none");
