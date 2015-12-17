@@ -142,7 +142,7 @@ Rails.application.routes.draw do
           patch :higher, :lower
           post :lower, :higher
         end
-        resources :questions, only: [:index]
+        resources :questions, only: [:index, :destroy]
       end
     end
 

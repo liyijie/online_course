@@ -19,8 +19,13 @@ module Admin
 		end
 
 		def destroy
-      #@academy.destroy
-      return redirect_to admin_course_sub_course_questions_url(course.id, sub_course.id)
-    end
+			@question = Question.find(params[:id])
+			@question.destroy
+			redirect_to admin_course_sub_course_questions_path(course_id: params[:course_id], sub_course_id: params[:sub_course_id])
+		end
+		# def destroy
+  #     #@academy.destroy
+  #     return redirect_to admin_course_sub_course_questions_url(course.id, sub_course.id)
+  #   end
 	end
 end
