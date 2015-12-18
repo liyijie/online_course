@@ -1,5 +1,5 @@
 <%= form_for([:admin, @course, @sub_course], html: {class: "form-horizontal"}) do |f| %>
-  <div class="form-group">
+  <div class="form-group" id="category">
     <%= label_tag :category, '所属分类', class: 'col-sm-2 control-label' %>
     <div class="col-sm-8">
       <% @categories.each do |category| %>
@@ -8,7 +8,7 @@
       <% end %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" id="tags" style="display: none;">
     <%= label_tag :tag, '课程标签', class: 'col-sm-2 control-label' %>
     <div class="col-sm-8">
       <% SubCourse::TAGS.to_a.each do |tag| %>
@@ -65,5 +65,12 @@
 <script type="text/javascript">
   $(function(){
     $("#sub_course_attachment").fileinput();
+    var fRadio = $("#category input[type='radio']").first();
+    fRadio.click(function(){
+      $("#tags").show();
+    })
+    fRadio.siblings().click(function(){
+      $("#tags").hide();
+    })
   });
 </script>
