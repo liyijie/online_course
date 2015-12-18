@@ -89,15 +89,13 @@
       </ul>
     </div>
   </div>
-
-  
+  <%= render partial: "list" %>
   <% if @course.number == "96659262" %>
     <%= render partial: "courses/1/main", locals: {teacher_courses: @teacher_courses} %>
     <!-- 34675886 -->
   <% elsif  @course.number == "64322745" %>
     <%= render partial: "courses/2/main", locals: {teacher_courses: @teacher_courses} %>
   <% elsif @course.number == "49097443" %>
-    <%= render partial: "courses/3/list", locals: {teacher_courses: @teacher_courses} %>
     <%= render partial: "courses/3/main", locals: {teacher_courses: @teacher_courses} %>
   <% elsif @course.number == "61308289" %>
     <%= render partial: "courses/4/main", locals: {teacher_courses: @teacher_courses} %>

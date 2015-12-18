@@ -1,0 +1,62 @@
+<div class="related-courses row">
+  <div class="listBar">
+    <% @categories.each_with_index do |category, index| %>
+      <div class="col-sm-2">
+        <% if index == 0 %>
+          <a href="javascript:void(0)" class="btn-primary xcBtn btn btn-default"><%= category.name %></a>
+        <% else %>
+          <a href="javascript:void(0)" class="xcBtn btn btn-default"><%= category.name %></a>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 教学基本条件 -->
+  <div class="partContent">
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @zyrc_sub_courses, title: "专业人才培养方案"}%>
+    </div>
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @kcbz_sub_courses, title: "课程标准"}%>
+    </div>
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @dzjc_sub_courses, title: "电子教材"}%>
+    </div>
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @dzja_sub_courses, title: "电子教案"}%>
+    </div>
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @khbz_sub_courses, title: "考核标准"}%>
+    </div>
+  </div>
+  <!-- 教学条件 -->
+  <div class="partContent">
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @jxtj_sub_courses, title: "教学条件"}%>
+    </div>
+  </div>
+  <!-- 教学视频 -->
+  <div class="partContent">
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @jxsp_sub_courses, title: "教学视频"}%>
+    </div>
+  </div>
+  <!-- 典型案例 -->
+  <div class="partContent">
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @dxal_sub_courses, title: "典型案例"}%>
+    </div>
+  </div>
+  <!-- 学生作品 -->
+  <div class="partContent">
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @xszp_sub_courses, title: "学生作品"}%>
+    </div>
+  </div>
+  <!-- 自助学习资源 -->
+  <div class="partContent">
+    <div class="baseContent col-sm-12">
+      <%= render partial: "sub_course", locals: {sub_courses: @zzxx_sub_courses, title: "自主学习资源"}%>
+    </div>
+  </div>
+</div>
