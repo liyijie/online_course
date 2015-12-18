@@ -4,6 +4,7 @@ module Admin
 	  # For APIs, you may want to use :null_session instead.
 	  protect_from_forgery with: :exception
 	  before_filter :authenticate_manager!
+    load_and_authorize_resource
 	  layout 'admin'
 
 	  private
