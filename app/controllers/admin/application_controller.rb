@@ -7,6 +7,7 @@ module Admin
 	  layout 'admin'
 
 	  private
+
 	  # 将会将CanCan通过current_manager获取当前登录用户
     def current_ability
       @current_ability ||= Ability.new(current_manager)

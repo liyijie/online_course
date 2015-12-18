@@ -4,7 +4,7 @@ class Ability
   def initialize(manager)
     manager ||= Manager.new
     if manager.administer?
-      role_administer
+      can :manage, :all
     elsif manager.charge?
       role_charge
     elsif manager.teacher?
@@ -15,9 +15,9 @@ class Ability
   end
 
   #管理员对所有模型有操作权限
-  def role_administer
-    can :manage, :all
-  end
+  # def role_administer
+  #   can :manage, :all
+  # end
 
   #负责人对所负责课程有操作权限
   def role_charge
