@@ -6,6 +6,7 @@ module Admin
 	  before_filter :authenticate_manager!
 	  layout 'admin'
 
+    private
 	  # 将会将CanCan通过current_manager获取当前登录用户
     def current_ability
       if current_manager.present?

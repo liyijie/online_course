@@ -1,4 +1,4 @@
-class Admin::TeachersController < ApplicationController
+class Admin::TeachersController < Admin::ApplicationController
   load_and_authorize_resource
   before_action :set_teacher, only: [:edit, :update, :destroy]
 
