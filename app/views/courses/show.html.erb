@@ -5,6 +5,7 @@
   <% end %>
   <%= javascript_include_tag "_course_show", 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "course-3", 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag  "modal_pdf", 'data-turbolinks-track' => true %>
 <%end%>
 
 <% content_for :crumbs do%>
@@ -102,3 +103,24 @@
     <%= render partial: "courses/4/main", locals: {teacher_courses: @teacher_courses} %>
   <% end %>
 </div>
+
+
+<script type="text/javascript">
+  $(function(){
+    $('.viewPdf').each(function(){
+      var _this = $(this);
+      var title = $(this).data('name');
+      var pdf_link = $(this).attr('href');
+      _this.on('click',function(){
+        var iframe = '<object type="application/pdf" data="'+pdf_link+'" width="100%" height="500">不支持该格式，建议替换为pdf格式</object>'
+        $.createModal({
+            title:title,
+            message: iframe,
+            closeButton:true,
+            scrollable:false
+        });
+        return false;
+    });
+    })
+  })
+</script>
