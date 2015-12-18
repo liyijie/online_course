@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009092334) do
+ActiveRecord::Schema.define(version: 20151218054741) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",    limit: 4
@@ -257,6 +257,7 @@ ActiveRecord::Schema.define(version: 20151009092334) do
     t.string   "number",      limit: 255
     t.integer  "category_id", limit: 4
     t.integer  "position",    limit: 4,   default: 0
+    t.string   "tag",         limit: 255
   end
 
   add_index "sub_courses", ["course_id"], name: "index_sub_courses_on_course_id", using: :btree

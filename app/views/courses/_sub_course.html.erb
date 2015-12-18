@@ -1,16 +1,42 @@
-<ul class="courses-list">
+<%= content_for :script do %>
+  <%= javascript_include_tag  "modal_pdf", 'data-turbolinks-track' => false %>
+<%end%>
+
+<div class="titleContent">
+  <div class="titleBlock"></div>
+  <div class="titleBar"><%= title %></div>
+</div>
+<ul>
   <% sub_courses.each do |sub_course|%>
     <li>
-        <!-- 如果是视频如mp4, flv等格式文件进入播放页 -->
       <%= link_to show_sub_courses_path(number: sub_course.number, course_number: @course.number) do %>
         <span class="title"><%= sub_course.name %></span>
-        <% unless sub_course.attachment && sub_course.attachment.file_url.present? %>
-          <span class="total">格式<%= file_format(sub_course.attachment.content_file_name)%></span>
-          <!-- 显示文件大小 -->
-          <span class="already">（文件<%= sub_course.count_file_size%>）</span>
-        <% end %>
       <%end%>
+      <% if sub_course.attachment.present? %>
+        <%= link_to sub_course.attachment.content.url, class: "fright viewPdf", 'data-toggle': "modal", 'data-target': "#myModal", 'data-name': sub_course.name do %>
+          <span>&nbsp;&nbsp;<%= image_tag "read_icon.png"%>观看</span>
+        <% end %>
+      <% end %>
     </li>
-    <!-- 如果是视频如pdf, docx等格式文件执行下载 -->
   <% end %>
 </ul>
+
+<script type="text/javascript">
+  $(function(){
+    $('.viewPdf').each(function(){
+      var _this = $(this);
+      var title = $(this).data('name')
+      var pdf_link = $(this).attr('href');
+      _this.on('click',function(){
+        var iframe = '<object type="application/pdf" data="'+pdf_link+'" width="100%" height="500">不支持该格式，建议替换为pdf格式</object>'
+        $.createModal({
+            title:title,
+            message: iframe,
+            closeButton:true,
+            scrollable:false
+        });
+        return false;
+    });
+    })
+  })
+</script>

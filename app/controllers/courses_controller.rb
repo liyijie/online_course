@@ -25,8 +25,29 @@ class CoursesController < ApplicationController
 	def show
 		@course = Course.find_by(number: params[:number])
 		#读取子课程分类
-		@category_arr = Category.joins(:sub_courses).pluck(:name).uniq
+		@categories = Category.all
+    @category_arr = Category.pluck(:id)
+		#专业人才培养方案子课程
+		@zyrc_sub_courses = SubCourse.zyrc.where({category_id: @category_arr})
+		#课程标准子课程
+		@kcbz_sub_courses = SubCourse.kcbz.where({category_id: @category_arr})
+		#电子教材子课程
+		@dzjc_sub_courses = SubCourse.dzjc.where({category_id: @category_arr})
+		#电子教案子课程
+		@dzja_sub_courses = SubCourse.dzja.where({category_id: @category_arr})
+		#考核标准子课程
+		@khbz_sub_courses = SubCourse.khbz.where({category_id: @category_arr})
 
+    #教学条件子课程
+    @jxtj_sub_courses = SubCourse.where(category_id: Category.find_by(name: "教学条件").id)
+    #教学视频子课程
+    @jxsp_sub_courses = SubCourse.where(category_id: Category.find_by(name: "教学视频").id)
+    #典型案例子课程
+    @dxal_sub_courses = SubCourse.where(category_id: Category.find_by(name: "典型案例").id)
+    #学生作品子课程
+    @xszp_sub_courses = SubCourse.where(category_id: Category.find_by(name: "学生作品").id)
+    #自主学习子课程
+    @zzxx_sub_courses = SubCourse.where(category_id: Category.find_by(name: "自主学习资源").id)
 		#读取教师课程
 		@teacher_courses = @course.teacher_courses
 	end

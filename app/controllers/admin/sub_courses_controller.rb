@@ -81,7 +81,7 @@ module Admin
 		end
 
 		def sub_course_params
-			params.require(:sub_course).permit(:name, :number, :category_id)
+			params.require(:sub_course).permit(:name, :number, :category_id, :tag)
 		end
 
 		def set_sub_course

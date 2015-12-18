@@ -28,6 +28,23 @@ class SubCourse < ActiveRecord::Base
 		self.number = NumberHelper.random_course_number
 	end
 
+  #标签选项
+  enum tag: {
+    zyrc: '0',
+    kcbz: '1',
+    dzjc: '2',
+    dzja: '3',
+    khbz: '3',
+  }
+
+  TAGS = {
+    zyrc: '专业人才培养方案',
+    kcbz: '课程标准',
+    dzjc: '电子教材',
+    dzja: '电子教案',
+    khbz: '考核标准',
+  }
+
   #判断附件格式是否是视频类
 	def regex_video
 		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /^video/
