@@ -1,4 +1,5 @@
-class Admin::TeachersController < Admin::ApplicationController
+module Admin
+class TeachersController < ApplicationController
   load_and_authorize_resource
   before_action :set_teacher, only: [:edit, :update, :destroy]
 
@@ -67,4 +68,5 @@ class Admin::TeachersController < Admin::ApplicationController
                                     :sex, :grade_id, :signature, {grade_ids: []}, 
                                     :academy_id, :password, :password_confirmation)
     end
+end
 end

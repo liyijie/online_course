@@ -1,4 +1,5 @@
-class Admin::UsersController < Admin::ApplicationController
+module Admin
+class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :set_user, only: [:edit, :update, :destroy]
   def index
@@ -68,4 +69,5 @@ class Admin::UsersController < Admin::ApplicationController
       params.require(:user).permit(:campus, :phone, :nickname,:name, :username, :grade_id,
         :number, :position, :gender, :signature, :password, :password_confirmation)
     end
+end
 end
