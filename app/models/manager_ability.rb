@@ -1,4 +1,4 @@
-class Ability
+class ManagerAbility
   include CanCan::Ability
 
   def initialize(manager)
