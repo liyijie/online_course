@@ -1,8 +1,12 @@
 <div class="courseResource related-courses row">
   <div class="listBar col-sm-2">
-    <% @categories.each do |category| %>
+    <% @categories.each_with_index do |category, index| %>
       <div class="col-sm-12">
-        <a href="javascript:void(0)" class="xcBtn btn btn-default btn-primary"><%= category.name %></a>
+        <% if index == 0 %>
+          <a href="javascript:void(0)" class="btn-primary xcBtn btn btn-default"><%= category.name %></a>
+        <% else %>
+          <a href="javascript:void(0)" class="xcBtn btn btn-default"><%= category.name %></a>
+        <% end %>
       </div>
     <% end %>
   </div>
