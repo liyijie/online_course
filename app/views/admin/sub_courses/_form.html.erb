@@ -12,7 +12,7 @@
     <%= label_tag :tag, '课程标签', class: 'col-sm-2 control-label' %>
     <div class="col-sm-8">
       <% SubCourse::TAGS.to_a.each do |tag| %>
-        <%= f.radio_button :tag, tag[0], required: true %>
+        <%= f.radio_button :tag, tag[0]%>
         <%= f.label :tag, tag[1] %>
       <% end %>
     </div>
