@@ -13,8 +13,8 @@
 #
 
 class ExamItem < ActiveRecord::Base
-  belongs_to :exam
-  belongs_to :question
+  belongs_to :exam, dependent: :destroy
+  belongs_to :question, dependent: :destroy
 
 
   # 统计若干班级某次测试的错误人数

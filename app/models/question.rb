@@ -13,7 +13,7 @@
 #
 require 'csv'
 class Question < ActiveRecord::Base
-  belongs_to :sub_course
+  belongs_to :sub_course, dependent: :destroy
   has_many :options, dependent: :destroy
   validates :title, uniqueness: true
 
