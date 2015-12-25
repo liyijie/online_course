@@ -8,8 +8,13 @@
 <%= content_for :toolbar do %>
   <div class="col-xs-12">
     <%= link_to new_admin_course_path, class: 'btn btn-success' do %>
-    <span class="glyphicon glyphicon-plus-sign">新建</span>
+      <span class="glyphicon glyphicon-plus-sign">新建</span>
     <%end%>
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to "全部", admin_courses_path, class: "btn btn-default #{params[:status].present? ? '' : 'btn-primary'}" %>
+      <%= link_to "未删除", admin_courses_path(status: "undeleted"), class: "btn btn-default #{params[:status] == 'undeleted' ? 'btn-primary' : ''}" %>
+      <%= link_to "已删除", admin_courses_path(status: "deleted"), class: "btn btn-default #{params[:status] == 'deleted' ? 'btn-primary' : ''}" %>
+    </div>
     <div class="col-xs-3 pull-right">
       <div class="form-group">
         <%= render partial: 'admin/common/keyword', locals: {path: ""} %>

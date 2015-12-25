@@ -4,7 +4,13 @@ module Admin
 		before_action :set_course
 		before_action :set_sub_course, only: [:edit, :update, :destroy, :lower, :higher, :delete, :restore]
 		def index
-			@sub_courses = @course.sub_courses.page(params[:page]).per(10)
+			if params[:status] == "deleted"
+			  @sub_courses = @course.sub_courses.bedeleted.page(params[:page]).per(10)
+			elsif params[:status] == "undeleted"
+				@sub_courses = @course.sub_courses.undeleted.page(params[:page]).per(10)
+			else
+				@sub_courses = @course.sub_courses.page(params[:page]).per(10)
+			end
 		end
 
 		def new

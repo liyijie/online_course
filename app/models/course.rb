@@ -68,6 +68,7 @@ class Course < ActiveRecord::Base
 	end
 
 	scope :undeleted, -> {where("deleted_at is null")}
+	scope :bedeleted, -> {where("deleted_at is not null")}
 
 	def self.search_courses params
 		conn = [['1=1']]

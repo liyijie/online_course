@@ -19,6 +19,7 @@
   <td>
     <%= link_to "测试题目", admin_course_sub_course_questions_path(@course.id, sub_course)%>
   </td>
+  <td><%= sub_course.deleted? ? raw("<span class='text-danger'>已删除</span>") : ""%></td>
   <% if can? :manage, SubCourse %>
     <td>
       <%#= link_to [:admin, @course, sub_course], class: 'btn btn-xs btn-info', title: '查看' do %>
@@ -27,9 +28,15 @@
       <%= link_to edit_admin_course_sub_course_path(@course, sub_course), class: 'btn btn-xs btn-default', title: '编辑' do %>
         <span class="glyphicon glyphicon-edit"></span>
       <%end%>
-      <%= link_to admin_course_sub_course_path(@course, sub_course), data:{ confirm: 'Are you sure?'},method: :delete, class: 'btn btn-xs btn-danger', title: '删除' do %>
-        <span class="glyphicon glyphicon-trash"></span>
-      <%end%>
+      <% if sub_course.deleted? %>
+        <%= link_to restore_admin_course_sub_course_path(@course, sub_course), method: :patch, data: { confirm: '确定要还原吗？' }, class: 'btn btn-xs btn-default' do%>
+          <span class="glyphicon glyphicon-export"></span>
+        <% end %>
+      <% else%>
+        <%= link_to delete_admin_course_sub_course_path(@course, sub_course), method: :patch, data: { confirm: '确定要删除吗？' }, class: 'btn btn-xs btn-default' do%>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+      <% end %>
     </td>
   <% end %>
 </tr>

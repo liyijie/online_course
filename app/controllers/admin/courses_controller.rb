@@ -9,6 +9,25 @@ module Admin
 			else
 				@courses = current_manager.courses.page(params[:page]).per(10)
 			end
+			if params[:status] == "deleted"
+				if current_manager.administer?
+			    @courses = Course.bedeleted.page(params[:page]).per(10)
+			  else
+			  	@courses = current_manager.courses.bedeleted.page(params[:page]).per(10)
+			  end
+			elsif params[:status] == "undeleted"
+				if current_manager.administer?
+				  @courses = Course.undeleted.page(params[:page]).per(10)
+				else
+					@courses = current_manager.courses.undeleted.page(params[:page]).per(10)
+				end
+			else
+				if current_manager.administer?
+				  @courses = Course.page(params[:page]).per(10)
+				else
+					@courses = current_manager.courses.page(params[:page]).per(10)
+				end
+			end
 		end
 
 		def new

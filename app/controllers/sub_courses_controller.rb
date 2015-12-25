@@ -13,7 +13,7 @@ class SubCoursesController < ApplicationController
     @course = @sub_course.try(:course)
     @partners = @course.get_likes(vote_scope: :collect).page(params[:partner_page])
     @comments = @sub_course.root_comments.where(comment_scope: "discuss").order("created_at DESC").page(params[:page])
-    @relate_sub_courses = SubCourse.joins(:attachment).where("sub_courses.course_id = ? AND attachments.content_content_type like ?", @course.id, "%video%")
+    @relate_sub_courses = SubCourse.undeleted.joins(:attachment).where("sub_courses.course_id = ? AND attachments.content_content_type like ?", @course.id, "%video%")
     .order("RAND()").limit(3)
   end
 
@@ -94,7 +94,6 @@ class SubCoursesController < ApplicationController
   def comment_praise
     user = current_user || current_teacher
     comment = Comment.where(id: params[:comment_id]).first
-    
     if comment.present?
       #评论点赞
       @is_parise = comment.comment_praise user
@@ -106,9 +105,8 @@ class SubCoursesController < ApplicationController
       respond_to do |format|
         format.js {render js: "alert('评论不存在');"}
       end
-    end 
-    
-  end 
+    end
+  end
 
 
   #收藏或者喜欢
@@ -116,14 +114,13 @@ class SubCoursesController < ApplicationController
     if current_user.present?
       @success, @like = SubCourse.collect_or_praise current_user, params[:scope], params[:sub_course_id]
       respond_to do |format|
-        format.js 
+        format.js
       end
     else
       respond_to do |format|
         format.js {render js: "alert('学生登录才可以操作');"}
       end
-    end 
-    
+    end
   end 
 
   private

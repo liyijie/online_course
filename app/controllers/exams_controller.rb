@@ -15,7 +15,7 @@ class ExamsController < ApplicationController
 	end
 
 	def test_new
-		@sub_course = SubCourse.first
+		@sub_course = SubCourse.undeleted.first
 		@questions = @sub_course.questions
 	end
 

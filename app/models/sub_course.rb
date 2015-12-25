@@ -55,6 +55,13 @@ class SubCourse < ActiveRecord::Base
 		self.attachment && self.attachment.content_file_name && self.attachment.content.content_type =~ /^application/
 	end
 
+  def deleted?
+    self.deleted_at.present? ? true : false
+  end
+
+  scope :undeleted, -> {where("deleted_at is null")}
+  scope :bedeleted, -> {where("deleted_at is not null")}
+
   #计算附件大小
 	def count_file_size
 		size = ""

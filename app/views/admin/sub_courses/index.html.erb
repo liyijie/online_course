@@ -14,8 +14,14 @@
 <%= content_for :toolbar do %>
 <div class="col-xs-12">
 	<%= link_to new_admin_course_sub_course_path(@course), class: 'btn btn-success' do %>
-	<span class="glyphicon glyphicon-plus-sign">新建</span>
+	  <span class="glyphicon glyphicon-plus-sign">新建</span>
 	<%end%>
+	<div class="btn-group" role="group" aria-label="...">
+	  <%= link_to "全部", admin_course_sub_courses_path(@course), class: "btn btn-default #{params[:status].present? ? '' : 'btn-primary'}" %>
+	  <%= link_to "未删除", admin_course_sub_courses_path(@course, status: "undeleted"), class: "btn btn-default #{params[:status] == 'undeleted' ? 'btn-primary' : ''}" %>
+	  <%= link_to "已删除", admin_course_sub_courses_path(@course, status: "deleted"), class: "btn btn-default #{params[:status] == 'deleted' ? 'btn-primary' : ''}" %>
+	</div>
+
 	<div class="col-xs-3 pull-right">
 		<div class="form-group">
 			<%= render partial: 'admin/common/keyword', locals: {path: ""} %>
@@ -35,6 +41,7 @@
 			<th class="text-center">标签</th>
 			<th class="text-center">附件</th>
 			<th class="text-center">测试题目</th>
+			<th class="text-center">状态</th>
 			<% if can? :manage, SubCourse %>
 			  <th class="text-center" colspan="2">操作</th>
 			<% end %>
