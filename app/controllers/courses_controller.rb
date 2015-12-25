@@ -69,7 +69,7 @@ class CoursesController < ApplicationController
 	def after_class
 		@course = Course.find_by(number: params[:number])
 		@teacher_courses = @course.teacher_courses
-		@sub_courses = @course.sub_courses
+		@sub_courses = @course.sub_courses.undeleted
 	end
 
 
