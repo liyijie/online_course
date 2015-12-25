@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218054741) do
+ActiveRecord::Schema.define(version: 20151225025821) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",    limit: 4
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20151218054741) do
     t.integer  "manager_id",      limit: 4
     t.integer  "specialty_id",    limit: 4
     t.string   "applied_date",    limit: 255
+    t.datetime "deleted_at"
   end
 
   add_index "courses", ["academy_id"], name: "index_courses_on_academy_id", using: :btree
@@ -178,6 +179,7 @@ ActiveRecord::Schema.define(version: 20151218054741) do
     t.integer  "question_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.datetime "deleted_at"
   end
 
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
@@ -228,6 +230,7 @@ ActiveRecord::Schema.define(version: 20151218054741) do
     t.datetime "updated_at",                 null: false
     t.string   "correct_option", limit: 255
     t.string   "correct_hint",   limit: 255
+    t.datetime "deleted_at"
   end
 
   add_index "questions", ["sub_course_id"], name: "index_questions_on_sub_course_id", using: :btree
@@ -258,6 +261,7 @@ ActiveRecord::Schema.define(version: 20151218054741) do
     t.integer  "category_id", limit: 4
     t.integer  "position",    limit: 4,   default: 0
     t.string   "tag",         limit: 255
+    t.datetime "deleted_at"
   end
 
   add_index "sub_courses", ["course_id"], name: "index_sub_courses_on_course_id", using: :btree

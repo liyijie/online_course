@@ -137,10 +137,14 @@ Rails.application.routes.draw do
       end
     end
     resources :courses do
+      member do
+        post :delete, :delete, :restore
+        patch :delete, :delete, :restore
+      end
       resources :sub_courses do
         member do
-          patch :higher, :lower
-          post :lower, :higher
+          patch :higher, :lower, :delete, :restore
+          post :lower, :higher, :delete, :restore
         end
         resources :questions, only: [:index, :destroy]
       end

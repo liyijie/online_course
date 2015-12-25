@@ -1,7 +1,7 @@
 module Admin
 	class CoursesController < ApplicationController
 		load_and_authorize_resource
-		before_action :set_course, only: [:edit, :update, :destroy]
+		before_action :set_course, only: [:edit, :update, :destroy, :delete, :restore]
 		def index
 			#管理员读取所以数据，其他用户读取拥有权限数据
 			if current_manager.administer?
@@ -63,9 +63,16 @@ module Admin
 			end
 		end
 
-		def destroy
-      @course.destroy
-      return redirect_to admin_courses_url
+    def delete
+      @course.update(deleted_at: Time.now)
+      flash[:notice] = '删除成功'
+      redirect_to admin_courses_path
+    end
+
+    def restore
+      @course.update(deleted_at: nil)
+      flash[:notice] = '恢复成功'
+      redirect_to admin_courses_path
     end
 
 		private

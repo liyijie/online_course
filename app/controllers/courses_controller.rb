@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
 
 	def index
 		@academies = Academy.all
-		@courses = Course.search_courses(params).page(params[:page]).per(9)
+		@courses = Course.undeleted.search_courses(params).page(params[:page]).per(9)
 
 		respond_to do |format|
 	  	format.html
@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
   #学习中心
 	def learning_center
 		@academies = Academy.all
-		@courses = Course.search_courses(params).page(params[:page]).per(9)
+		@courses = Course.undeleted.search_courses(params).page(params[:page]).per(9)
 
 		respond_to do |format|
 	  	format.html

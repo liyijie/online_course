@@ -2,7 +2,7 @@ module Admin
 	class SubCoursesController < ApplicationController
 		load_and_authorize_resource
 		before_action :set_course
-		before_action :set_sub_course, only: [:edit, :update, :destroy, :lower, :higher]
+		before_action :set_sub_course, only: [:edit, :update, :destroy, :lower, :higher, :delete, :restore]
 		def index
 			@sub_courses = @course.sub_courses.page(params[:page]).per(10)
 		end
@@ -52,10 +52,17 @@ module Admin
 			end
 		end
 
-		def destroy
-			@sub_course.destroy
-			return redirect_to admin_course_sub_courses_path(@course)
-		end
+		def delete
+      @sub_course.update(deleted_at: Time.now)
+      flash[:notice] = '删除成功'
+      redirect_to admin_course_sub_courses_path(@course)
+    end
+
+    def restore
+      @sub_course.update(deleted_at: nil)
+      flash[:notice] = '恢复成功'
+      redirect_to admin_course_sub_courses_path(@course)
+    end
 
     #移动对象位置
     def higher

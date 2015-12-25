@@ -63,6 +63,12 @@ class Course < ActiveRecord::Base
 		end
 	end
 
+	def deleted?
+		self.deleted_at.present? ? true : false
+	end
+
+	scope :undeleted, -> {where("deleted_at is null")}
+
 	def self.search_courses params
 		conn = [['1=1']]
 		if params[:academy_id].present?
