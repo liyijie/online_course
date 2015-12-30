@@ -5,6 +5,8 @@ $ ->
   _list_content = $(".category-list-content .text-content")
   _list.last().addClass("active public-active-style")
   _list_content.last().show()
+  _list.first().removeClass("active public-active-style")
+  _list_content.first().hide()
   _list.each (index) ->
     _this = $(this)
     _index = index

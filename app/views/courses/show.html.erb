@@ -117,6 +117,9 @@
 
 <script type="text/javascript">
   $(function(){
+    $('.carousel').carousel({
+      interval: 1500
+    });
     $('.viewPdf').each(function(){
       var _this = $(this);
       var title = $(this).data('name');
