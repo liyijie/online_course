@@ -33,8 +33,8 @@
         <% end %>
       </div>
       <div class="course-and-score">
-        <%= link_to "课后作业", after_class_courses_path, class: "course"%>
-        <%= link_to "成绩查询", teacher_signed_in? ? my_score_teachers_path : my_exams_user_index_path, class: "score"%>
+        <%= link_to "单元测试", after_class_courses_path, class: "course"%>
+        <%= link_to "测试成绩", teacher_signed_in? ? my_score_teachers_path : my_exams_user_index_path, class: "score"%>
       </div>
     </div>
 
@@ -91,13 +91,25 @@
   </div>
   <%= render partial: "list" %>
   <% if @course.number == "96659262" %>
+    <%= content_for :script do %>
+      <%= javascript_include_tag  "_toggle", 'data-turbolinks-track' => true %>
+    <%end%>
     <%= render partial: "courses/1/main", locals: {teacher_courses: @teacher_courses} %>
     <!-- 34675886 -->
   <% elsif  @course.number == "64322745" %>
+    <%= content_for :script do %>
+      <%= javascript_include_tag  "_toggle", 'data-turbolinks-track' => true %>
+    <%end%>
     <%= render partial: "courses/2/main", locals: {teacher_courses: @teacher_courses} %>
   <% elsif @course.number == "49097443" %>
+    <%= content_for :script do %>
+      <%= javascript_include_tag  "_toggle_self", 'data-turbolinks-track' => true %>
+    <%end%>
     <%= render partial: "courses/3/main", locals: {teacher_courses: @teacher_courses} %>
   <% elsif @course.number == "61308289" %>
+    <%= content_for :script do %>
+      <%= javascript_include_tag  "_toggle", 'data-turbolinks-track' => true %>
+    <%end%>
     <%= render partial: "courses/4/main", locals: {teacher_courses: @teacher_courses} %>
   <% end %>
 </div>

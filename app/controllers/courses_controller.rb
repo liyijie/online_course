@@ -39,15 +39,15 @@ class CoursesController < ApplicationController
 		@khbz_sub_courses = @course.sub_courses.khbz.where({category_id: @category_arr})
 
     #教学条件子课程
-    @jxtj_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "教学课件").id)
+    @jxtj_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "教学课件").id) if Category.find_by(name: "教学课件")
     #教学视频子课程
-    @jxsp_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "教学视频").id)
+    @jxsp_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "教学视频").id) if Category.find_by(name: "教学视频")
     #典型案例子课程
-    @dxal_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "典型案例").id)
+    @dxal_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "典型案例").id) if Category.find_by(name: "典型案例")
     #学生作品子课程
-    @xszp_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "学生作品").id)
+    @xszp_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "学生作品").id) if Category.find_by(name: "学生作品")
     #自主学习子课程
-    @zzxx_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "自主学习资源").id)
+    @zzxx_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "自主学习资源").id) if Category.find_by(name: "自主学习资源")
 		#读取教师课程
 		@teacher_courses = @course.teacher_courses
 	end
