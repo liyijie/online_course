@@ -1,0 +1,12 @@
+<div class="on-content">
+  <% if params[:type] == "hot" %>
+    <%= image_tag("tmp/2.png", class: "img-responsive") %>
+    <%= link_to "立即进入", errors_path, class: "on-button hot left" %>
+  <% elsif params[:type] == "wait" %>
+    <%= image_tag("tmp/3.png", class: "img-responsive") %>
+    <%= link_to "立即进入", errors_path, class: "on-button wait" %>
+  <% else %>
+    <%= image_tag("tmp/1.png", class: "img-responsive") %>
+    <%= link_to "立即进入", errors_path, class: "on-button new" %>
+  <% end %>
+</div>

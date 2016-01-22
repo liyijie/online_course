@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "select_courses", to: "home#select_courses", as: :select_courses_home
   get "courses/:number", to: "courses#show", as: :show_courses
   get "courses/:number/after_class", to: "courses#after_class", as: :after_class_courses
-
+  resources :errors, only: :index
   #限定子课程编号为数字
   constraints(number: /\d+/) do
     get "sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses
