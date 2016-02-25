@@ -22,9 +22,9 @@
   </div> -->
 
   <ul class="nav nav-pills discuss-menu">
-    <li class="<%= 'active' if params[:type].blank? || params[:type] == 'new' %>"><%= link_to("最新话题", discusses_path) %></li>
-    <li class="<%= 'active' if params[:type] == 'hot' %>"><%= link_to("热门话题", discusses_path(type: "hot")) %></li>
-    <li class="<%= 'active' if params[:type] == 'wait' %>"><%= link_to("等待回复", discusses_path(type: "wait")) %></li>
+    <li class="<%= 'active' if params[:type].blank? || params[:type] == 'new' %>"><%= link_to("专业人才培养校企论坛", discusses_path) %></li>
+    <li class="<%= 'active' if params[:type] == 'hot' %>"><%= link_to("课程学习讨论", discusses_path(type: "hot")) %></li>
+    <li class="<%= 'active' if params[:type] == 'wait' %>"><%= link_to("创新创意论坛", discusses_path(type: "wait")) %></li>
     <li class="navbar-right create-discuss">
       <a id="newCreateBtn" href="javascript:void(0);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
     </li>
