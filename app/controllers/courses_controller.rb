@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
 		@khbz_sub_courses = @course.sub_courses.khbz.where({category_id: @category_arr})
 
     #教学条件子课程
-    @jxtj_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "教学课件").id) if Category.find_by(name: "教学课件")
+    @jxtj_sub_courses = @course.sub_courses.undeleted.where(category_id: Category.find_by(name: "教学课件").id) if Category.find_by(name: "教学课件")
     #教学视频子课程
     @jxsp_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "教学视频").id) if Category.find_by(name: "教学视频")
     #典型案例子课程
