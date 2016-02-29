@@ -1,0 +1,8 @@
+<li class="<%= 'active' if params[:action] == 'index' || params[:action] == 'sorts' %>"><%= link_to("专业人才培养校企论坛", discusses_path) %></li>
+<li class="<%= 'active' if params[:action] == 'learns' %>"><%= link_to("课程学习讨论", learns_discusses_path) %></li>
+<li class="<%= 'active' if params[:action] == 'innovations' %>"><%= link_to("创新创意论坛", innovations_discusses_path) %></li>
+<% if params[:action] == "innovations" %>
+  <li class="navbar-right create-discuss">
+    <a id="newCreateBtn" href="javascript:void(0);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建话题</a>
+  </li>
+<% end %>

@@ -1,0 +1,34 @@
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left">讨论中心</span>
+  </section>
+
+  <ul class="nav nav-pills discuss-menu">
+    <%= render "tabs" %>
+  </ul>
+
+  <div id="topicList" class="container discuss-list">
+    <%#= render "topic", locals: {topics: @topics} %>
+    <%#= render "wait"%>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">课程名称</th>
+          <th class="text-center">院系</th>
+          <th class="text-center">收藏人数</th>
+          <th class="text-center">课时总数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <td class="text-center"><%= link_to course.name, "#" %></td>
+            <td class="text-center"><%= course.try(:specialty).try(:name) %></td>
+            <td class="text-center"><%= course.try(:comments).try(:length) %></td>
+            <td class="text-center"><%= course.try(:sub_courses).length %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

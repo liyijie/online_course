@@ -16,4 +16,6 @@ class Specialty < ActiveRecord::Base
 	has_many :grades, dependent: :destroy
   has_many :users, through: :grades
 	has_many :courses
+
+  scope :enabled, -> {where("deleted_at is null")}
 end

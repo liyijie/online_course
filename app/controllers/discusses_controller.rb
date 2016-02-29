@@ -2,11 +2,8 @@ class DiscussesController < ApplicationController
   before_action :authenticate_user_or_teacher, only: [:create]
 
   def index
-    #找出相关话题
-    @topics = Comment.find_topics_by_type params[:type], params[:page]
-
-    #新建话题
-    @discuss = Comment.new
+    #科系列表
+    @specialties = Specialty.enabled
 
     respond_to do |format|
       format.html
@@ -61,9 +58,26 @@ class DiscussesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.js 
+        format.js
       end
     end
+  end
+
+  def sorts
+  end
+
+  #学习论坛
+  def learns
+    @courses = Course.all
+  end
+
+  #创新论坛
+  def innovations
+    #找出相关话题
+    @topics = Comment.find_topics_by_type params[:type], params[:page]
+
+    #新建话题
+    @discuss = Comment.new
   end
 
 

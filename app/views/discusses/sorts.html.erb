@@ -1,0 +1,54 @@
+<div class="main-content">
+  <section class="common-title">
+    <span class="pull-left">讨论中心</span>
+  </section>
+
+  <ul class="nav nav-pills discuss-menu">
+    <%= render "tabs" %>
+  </ul>
+
+  <div id="topicList" class="container discuss-list">
+    <div class="col-sm 12">
+      <div class="col-sm-6">
+        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
+          <div class="col-sm-4 gap">
+            <div class="icon book"></div>
+          </div>
+          <div class="col-sm-8 text-center">
+            <span>专业课程论坛</span>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
+          <div class="col-sm-4 gap">
+            <div class="icon people1"></div>
+          </div>
+          <div class="col-sm-8 text-center">
+            <span>培养模式论坛</span>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
+          <div class="col-sm-4 gap">
+            <div class="icon hand"></div>
+          </div>
+          <div class="col-sm-8 text-center">
+            <span>校企合作论坛</span>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
+          <div class="col-sm-4 gap">
+            <div class="icon people2"></div>
+          </div>
+          <div class="col-sm-8 text-center">
+            <span>实习就业论坛</span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

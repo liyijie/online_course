@@ -1,5 +1,6 @@
 /*讨论中心*/
-.discusses__index, .discusses__new, .discusses__create, .discusses__show {
+.discusses__index, .discusses__new, .discusses__create, .discusses__show,
+.discusses__learns, .discusses__innovations, .discusses__sorts {
   section.common-title {
     height: 60px;
     line-height: 60px;
@@ -21,6 +22,12 @@
         background: image-url('more.png') no-repeat center right;
       }
     }
+  }
+
+  .btn-height {
+    height: 60px;
+    padding: 20px 0;
+    margin-bottom: 20px;
   }
 
   .main-content {
@@ -120,9 +127,9 @@
       padding: 10px 30px;
     }
   }
-
-
 }
+
+//建设中样式
 .on-content {
   position: relative;
 }
@@ -148,5 +155,41 @@
   }
   &.wait {
     background: #253963;
+  }
+}
+
+//讨论分类
+.discusses__sorts {
+   .sorts {
+    height: 200px;
+    display: block;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: solid 1px #e4e4e4;
+    .gap {
+      margin: 32px 0;
+    }
+    .icon {
+      height: 136px;
+      width: 136px;
+      &.book {
+        background: image-url("sorts-book.png") no-repeat 0 0;
+      }
+      &.people1 {
+        background: image-url("sorts-people1.png") no-repeat 0 0;
+      }
+      &.hand {
+        background: image-url("sorts-hand.png") no-repeat 0 0;
+      }
+      &.people2 {
+        background: image-url("sorts-people2.png") no-repeat 0 0;
+      }
+    }
+    span {
+      line-height: 200px;
+      color: #252525;
+      font-size: 18px;
+    }
   }
 }
