@@ -6,7 +6,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 set :term_mode, nil
 
 set :domain, '112.124.97.145'
-set :deploy_to, '/mnt/www/online_courses/online_course'
+set :deploy_to, '/www/deploy/online_course'
 set :repository, 'https://github.com/liyijie/online_course'
 set :branch, 'master'
 
