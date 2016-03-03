@@ -90,7 +90,9 @@
       </ul>
     </div>
   </div>
+  <!-- 子课程分类列表 -->
   <%= render partial: "list" %>
+
   <% if @course.number == "96659262" %>
     <%= content_for :script do %>
       <%= javascript_include_tag  "_toggle", 'data-turbolinks-track' => true %>

@@ -28,26 +28,26 @@ class CoursesController < ApplicationController
 		@categories = Category.all
     @category_arr = Category.pluck(:id)
 		#专业人才培养方案子课程
-		@zyrc_sub_courses = @course.sub_courses.zyrc.where({category_id: @category_arr})
+		@zyrc_sub_courses = @course.sub_courses.enabled.zyrc.where({category_id: @category_arr})
 		#课程标准子课程
-		@kcbz_sub_courses = @course.sub_courses.kcbz.where({category_id: @category_arr})
+		@kcbz_sub_courses = @course.sub_courses.enabled.kcbz.where({category_id: @category_arr})
 		#电子教材子课程
-		@dzjc_sub_courses = @course.sub_courses.dzjc.where({category_id: @category_arr})
+		@dzjc_sub_courses = @course.sub_courses.enabled.dzjc.where({category_id: @category_arr})
 		#电子教案子课程
-		@dzja_sub_courses = @course.sub_courses.dzja.where({category_id: @category_arr})
+		@dzja_sub_courses = @course.sub_courses.enabled.dzja.where({category_id: @category_arr})
 		#考核标准子课程
-		@khbz_sub_courses = @course.sub_courses.khbz.where({category_id: @category_arr})
+		@khbz_sub_courses = @course.sub_courses.enabled.khbz.where({category_id: @category_arr})
 
     #教学条件子课程
-    @jxtj_sub_courses = @course.sub_courses.undeleted.where(category_id: Category.find_by(name: "教学课件").id) if Category.find_by(name: "教学课件")
+    @jxtj_sub_courses = @course.sub_courses.enabled.undeleted.where(category_id: Category.find_by(name: "教学课件").id) if Category.find_by(name: "教学课件")
     #教学视频子课程
-    @jxsp_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "教学视频").id) if Category.find_by(name: "教学视频")
+    @jxsp_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "教学视频").id) if Category.find_by(name: "教学视频")
     #典型案例子课程
-    @dxal_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "典型案例").id) if Category.find_by(name: "典型案例")
+    @dxal_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "典型案例").id) if Category.find_by(name: "典型案例")
     #学生作品子课程
-    @xszp_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "学生作品").id) if Category.find_by(name: "学生作品")
+    @xszp_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "学生作品").id) if Category.find_by(name: "学生作品")
     #自主学习子课程
-    @zzxx_sub_courses = @course.sub_courses.where(category_id: Category.find_by(name: "自主学习资源").id) if Category.find_by(name: "自主学习资源")
+    @zzxx_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "自主学习资源").id) if Category.find_by(name: "自主学习资源")
 		#读取教师课程
 		@teacher_courses = @course.teacher_courses
 	end

@@ -28,6 +28,10 @@ class SubCourse < ActiveRecord::Base
 		self.number = NumberHelper.random_course_number
 	end
 
+  scope :enabled, -> {
+    where("deleted_at is null")
+  }
+
   #标签选项
   enum tag: {
     zyrc: '0',
