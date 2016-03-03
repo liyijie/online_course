@@ -49,7 +49,6 @@ task :deploy => :environment do
     # instance of your project.
     invoke :'git:clone'
     invoke :'bundle:install'
-    invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:link_shared_paths'
 
