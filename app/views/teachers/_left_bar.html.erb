@@ -35,7 +35,7 @@
           <span>讨论中心</span>
         <%end%>
       </li>
-      <!-- <li>
+<!--       <li>
         <%= link_to my_info_teachers_path do %>
           <i class="glyphicon glyphicon-user"></i>
           <span>教师介绍</span>
@@ -77,15 +77,15 @@
       $("#left-bar .list li").eq(4).find("a").addClass("active");
       $("#left-bar .list li").eq(4).siblings().find("a").removeClass("active");
     }
-    else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_info"){
-      $("#left-bar .list .list-bg").css("top", "392px");
-      $("#left-bar .list li").eq(5).find("a").addClass("active");
-      $("#left-bar .list li").eq(5).siblings().find("a").removeClass("active");
-    }
+    // else if("<%= controller.controller_path %>" == "teachers" && "<%= controller.action_name%>" == "my_info"){
+    //   $("#left-bar .list .list-bg").css("top", "392px");
+    //   $("#left-bar .list li").eq(5).find("a").addClass("active");
+    //   $("#left-bar .list li").eq(5).siblings().find("a").removeClass("active");
+    // }
     else if( ("<%= controller.action_name%>" == "my_account" || "<%= controller.action_name%>" == "edit" || "<%= controller.action_name%>" == "update")){
-      $("#left-bar .list .list-bg").css("top", "458px");
-      $("#left-bar .list li").eq(6).find("a").addClass("active");
-      $("#left-bar .list li").eq(6).siblings().find("a").removeClass("active");
+      $("#left-bar .list .list-bg").css("top", "392px"); // 458px
+      $("#left-bar .list li").eq(5).find("a").addClass("active");// 6
+      $("#left-bar .list li").eq(5).siblings().find("a").removeClass("active"); // 6
     }
   });
 </script>
