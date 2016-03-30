@@ -23,7 +23,7 @@ capybara-*.html
 /doc/
 /spec/tmp
 /config/database.yml
-/config/weixin_rails_middleware.rb
+/config/initializers/weixin_rails_middleware.rb
 **.orig
 rerun.txt
 pickle-email-*.html
