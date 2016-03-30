@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title><%= wechat_title %></title>
+  <%= stylesheet_link_tag    'wechat', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'wechat', 'data-turbolinks-track' => true %>
+  <%= yield :script %>
+  <%= csrf_meta_tags %>
+</head>
+  <body ontouchstart class="<%= controller.controller_path.gsub('/','__') + '__' + controller.action_name %>">
+      <div class="container js_container">
+        <%= yield %>
+      </div>
+  </body>
+</html>

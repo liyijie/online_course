@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225025821) do
+ActiveRecord::Schema.define(version: 20160330150144) do
 
   create_table "academies", force: :cascade do |t|
     t.integer  "school_id",    limit: 4
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20151225025821) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "academy_code", limit: 255
+  end
+
+  create_table "admin_diymenus", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "answers", force: :cascade do |t|
@@ -94,6 +99,20 @@ ActiveRecord::Schema.define(version: 20151225025821) do
   end
 
   add_index "courses", ["academy_id"], name: "index_courses_on_academy_id", using: :btree
+
+  create_table "diymenus", force: :cascade do |t|
+    t.integer  "parent_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.string   "key",        limit: 255
+    t.string   "url",        limit: 255
+    t.boolean  "is_show",    limit: 1
+    t.integer  "sort",       limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "diymenus", ["key"], name: "index_diymenus_on_key", using: :btree
+  add_index "diymenus", ["parent_id"], name: "index_diymenus_on_parent_id", using: :btree
 
   create_table "exam_items", force: :cascade do |t|
     t.integer  "exam_id",     limit: 4
@@ -374,7 +393,7 @@ ActiveRecord::Schema.define(version: 20151225025821) do
     t.string   "campus",                 limit: 255
   end
 
-  add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
+  add_index "users", ["number"], name: "index_users_on_number", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|

@@ -1,6 +1,14 @@
 require 'rack/test'
 
-FactoryGirl.define do  factory :manager_course do
+FactoryGirl.define do  factory :diymenu do
+    parent_id 1
+name "MyString"
+key "MyString"
+url "MyString"
+is_show false
+sort 1
+  end
+  factory :manager_course do
     manager nil
 course nil
   end

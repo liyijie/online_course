@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://gems.ruby-china.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -100,3 +100,6 @@ gem "spreadsheet"
 gem 'by_star'
 
 gem 'whenever', :require => false
+
+gem 'weixin_rails_middleware'
+gem 'weixin_authorize'

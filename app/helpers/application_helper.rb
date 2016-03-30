@@ -42,4 +42,7 @@ module ApplicationHelper
 		answer_index = {1 => "A", 2 => "B", 3 => "C", 4 => "D", 5 => "E"}
 		answer_index[index + 1]
 	end
+
+	def wechat_title
+	end
 end

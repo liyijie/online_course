@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount WeixinRailsMiddleware::Engine, at: "/"
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   devise_for :users, controllers: {
         sessions: 'users/sessions',
@@ -168,6 +169,11 @@ Rails.application.routes.draw do
         post :import
       end
     end
+  end
+
+  # 微信
+  namespace :wechat do
+    root 'users#show'
   end
 
 end

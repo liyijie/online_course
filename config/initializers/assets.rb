@@ -10,7 +10,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += %w( slider.min.js _page_index.js _course_show.js _user.js jquery.countdown.min.js _user_show.js _teacher_page.js _user_discuss_center.js)
+Rails.application.config.assets.precompile += %w( slider.min.js _page_index.js _course_show.js _user.js jquery.countdown.min.js _user_show.js _teacher_page.js _user_discuss_center.js wechat.js wechat.css)
 
 Rails.application.config.assets.precompile += %w( admin.css admin.js _exam_new.js _sub_course_show.js _teachers.js modal_pdf.js managers.css managers.js course-3.js _toggle_self.js _toggle.js)
 
