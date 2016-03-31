@@ -10,7 +10,9 @@
 #  updated_at     :datetime         not null
 #  correct_option :string(255)
 #  correct_hint   :string(255)
+#  deleted_at     :datetime
 #
+
 require 'csv'
 class Question < ActiveRecord::Base
   belongs_to :sub_course, dependent: :destroy

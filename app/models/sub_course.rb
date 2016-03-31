@@ -11,6 +11,8 @@
 #  number      :string(255)
 #  category_id :integer
 #  position    :integer          default(0)
+#  tag         :string(255)
+#  deleted_at  :datetime
 #
 
 class SubCourse < ActiveRecord::Base

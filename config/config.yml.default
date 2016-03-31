@@ -1,0 +1,14 @@
+defaults: &defaults
+  app_id: 'wenxin app id'
+  app_secret: 'wenxin app secret'
+
+
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

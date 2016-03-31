@@ -16,6 +16,7 @@
 #  manager_id      :integer
 #  specialty_id    :integer
 #  applied_date    :string(255)
+#  deleted_at      :datetime
 #
 
 class Course < ActiveRecord::Base

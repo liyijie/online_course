@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: diymenus
+#
+#  id         :integer          not null, primary key
+#  parent_id  :integer
+#  name       :string(255)
+#  key        :string(255)
+#  url        :string(255)
+#  is_show    :boolean
+#  sort       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Diymenu < ActiveRecord::Base
 
   validates_uniqueness_of :name
@@ -53,6 +68,17 @@ class Diymenu < ActiveRecord::Base
         end
       end
     end
+
+    def create_menu
+      weixin_client = WeixinAuthorize::Client.new(Setting.app_id, Setting.app_secret)
+      if weixin_client.is_valid?
+        result = weixin_client.create_menu(build_menu)
+        result
+      else
+        msg = "invalid appid or appsecret."
+      end
+    end
+
   end
 
 end
