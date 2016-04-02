@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><%= wechat_title %></title>
-  <%= stylesheet_link_tag    'wechat', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'wechat', 'data-turbolinks-track' => true %>
-  <%= yield :script %>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <%= stylesheet_link_tag    'wechat', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
   <body ontouchstart class="<%= controller.controller_path.gsub('/','__') + '__' + controller.action_name %>">
-      <div class="container js_container">
-        <%= yield %>
+      <div class="page-group">
+        <div class="page page-current">
+          <%= yield %>
+        </div>
       </div>
+      <%= javascript_include_tag 'wechat' %>
+      <%= yield :script %>
   </body>
 </html>

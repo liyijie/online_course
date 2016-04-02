@@ -1,5 +1,5 @@
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
-//= require bootstrap-sprockets
+//= require zepto.min
+//= require sui/sm.min
+//= require sui/sm-extend.min

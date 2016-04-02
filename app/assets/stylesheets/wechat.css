@@ -11,5 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require sui/sm.min
+ *= require sui/sm-extend.min
  *= require_tree ./wechat/.
  */

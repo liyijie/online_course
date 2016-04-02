@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   #【著作】2015/05/7 by fw
   def get_layout
     if devise_controller? && params[:controller] != "users/registrations" && params[:controller] != "devise/registrations"
-      'login'
+      params[:c] == 'weixin' ? 'wechat' : 'login'
     elsif is_admin?
       'admin'
     end

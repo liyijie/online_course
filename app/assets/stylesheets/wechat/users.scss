@@ -1,3 +1,29 @@
 // Place all the styles related to the wechat/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.users__sessions__new {
+  .page, .page-group {
+    background: #e4e4e4;
+  }
+  .wechat-logo {
+    padding-top: 0.8rem;
+  }
+  
+  .wechat-login {
+    margin-left:  1.4rem;
+    margin-right: 1.4rem;
+  }
+  .card.login {
+    border-radius: 0.6rem;
+    margin: 0.7rem;
+    background: #f8f8f8;
+  }
+
+  .list-block input {
+    height: 2.65rem;
+  }
+
+  .button.button-submit {
+    background: #1a5aa0;
+  }
+}

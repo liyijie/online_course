@@ -44,5 +44,10 @@ module ApplicationHelper
 	end
 
 	def wechat_title
+		title = {
+			"users/sessions" => "用户登录"
+		}
+
+		title[params[:controller]]
 	end
 end
