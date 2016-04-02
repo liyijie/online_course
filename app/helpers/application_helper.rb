@@ -45,10 +45,14 @@ module ApplicationHelper
 
 	def wechat_title
 		title = {
-			"users/sessions" => "用户登录"
+			"users/sessions" => {"new" => "用户登录"},
+			"wechat/users" => {
+				"show" => "个人资料",
+				"edit" => "编辑资料",
+				"update" => "编辑资料",
+			}
 		}
-
-		title[params[:controller]]
+		title[params[:controller]][params[:action]] if title[params[:controller]].present?
 	end
 
 	def show_current_time

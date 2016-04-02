@@ -1,5 +1,3 @@
-
-                 
 <div class="content">
   <div class="top">
     <div class="row info">
@@ -9,7 +7,9 @@
         <div><%= show_current_time %></div>
         <div>
           <div class="row buttons">
-            <div class="col-50"><a href="javascript:;" class="button button-fill button-default">编辑</a></div>
+            <div class="col-50">
+              <%= link_to "编辑", edit_wechat_user_path(@user), class: "button button-fill button-default external" %>
+            </div>
             <div class="col-50">
               <%= link_to "退出", destroy_user_session_path(c: :weixin), :method => :delete, class: "button button-fill button-danger external" %>
             </div>
@@ -90,3 +90,10 @@
     </ul>
   </div>
 </div>
+
+<script>
+  var notice = "<%= flash[:notice] %>";
+  if(notice){
+    $.toast(notice);
+  }
+</script>

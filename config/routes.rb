@@ -174,6 +174,8 @@ Rails.application.routes.draw do
   # 微信
   namespace :wechat do
     root 'users#show'
+
+    resources :users, only: [:edit, :update]
   end
 
 end

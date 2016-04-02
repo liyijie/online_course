@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
 
   #有你昵称显示昵称，没有则显示其名字
   def show_name
-    self.nickname || self.name
+   self.name || self.nickname
   end
 
   def self.find_for_database_authentication(warden_conditions)

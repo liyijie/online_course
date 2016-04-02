@@ -3,3 +3,4 @@
 //= require zepto.min
 //= require sui/sm.min
 //= require sui/sm-extend.min
+//= require wechat/common
