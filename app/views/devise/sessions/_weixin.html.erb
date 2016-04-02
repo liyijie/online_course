@@ -61,8 +61,8 @@
 
     <div class="content-block">
       <div class="row">
-        <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
-        <div class="col-50"><a href="javascript:;" onclick="$('#loginForm').submit()" class="button button-big button-fill button-submit">提交</a></div>
+        <div class="col-50"><a href="javascript:;" onclick="$(':input','#loginForm').not(':button, :submit, :reset, :hidden').val('');" class="button button-big button-fill button-danger">重置</a></div>
+        <div class="col-50"><a href="javascript:;" onclick="$('#loginForm').submit()" class="button button-big button-fill button-submit">登录</a></div>
       </div>
     </div>
     <% end %>

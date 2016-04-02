@@ -1,5 +1,7 @@
+@import "wechat_variables";
+
 h3.logo, h3.logo small {
-  color: #1a5aa0;
+  color: $primaryBg;
   margin-top: 0rem;
 }
 h3.logo {
@@ -10,7 +12,18 @@ body {
   line-height: 1.5;
 }
 
-$iconBasePath: "wechat/icon/";
+.text-center {
+  text-align: center;
+}
+
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+// 图标
 .icon.icon-form-name {
   width: 1.45rem;
   height: 1.45rem;

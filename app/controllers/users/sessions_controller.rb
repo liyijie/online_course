@@ -35,4 +35,12 @@ class Users::SessionsController < Devise::SessionsController
       super
     end
   end
+
+  def after_sign_out_path_for(resource)
+    if params[:c] == "weixin"
+      new_session_path(:user, c: :weixin)
+    else
+      super
+    end
+  end
 end
