@@ -9,6 +9,14 @@
   </div>
   
   <div class="wechat-login">
+    <div id="flash_alert">
+      <% flash.each do |key, value| %>
+        <% if value.present? %>
+            <div class="text-danger"><%= value%></div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name, c: :weixin), html: {id: "loginForm"}) do |f| %>
     <div class="card login">
       <div class="card-content">
         <div class="card-content-inner">
@@ -19,7 +27,7 @@
                   <div class="item-media"><i class="icon icon-form-name"></i></div>
                   <div class="item-inner">
                     <div class="item-input">
-                      <input type="text" placeholder="用户名或账号" autocomplete="off">
+                      <%= f.text_field :login, placeholder: "用户名或账号", autofocus: true%>
                     </div>
                   </div>
                 </div>
@@ -37,10 +45,10 @@
             <ul>
               <li>
                 <div class="item-content">
-                <div class="item-media"><i class="icon icon-form-password"></i></div>
+                  <div class="item-media"><i class="icon icon-form-password"></i></div>
                   <div class="item-inner">
                     <div class="item-input">
-                      <input type="password" placeholder="密码" autocomplete="off">
+                      <%= f.password_field :password, placeholder: "密码", autofocus: true%>
                     </div>
                   </div>
                 </div>
@@ -54,10 +62,13 @@
     <div class="content-block">
       <div class="row">
         <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
-        <div class="col-50"><a href="#" class="button button-big button-fill button-submit">提交</a></div>
+        <div class="col-50"><a href="javascript:;" onclick="$('#loginForm').submit()" class="button button-big button-fill button-submit">提交</a></div>
       </div>
     </div>
+    <% end %>
   </div>
+
+  
   
   
 </div>
