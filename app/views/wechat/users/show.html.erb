@@ -1,4 +1,4 @@
-<div class="content">
+<div id="page-preloader" class="content">
   <div class="top">
     <div class="row info">
       <div class="col-30 text-center"><%= image_tag(@user.show_image) %></div>
@@ -91,9 +91,16 @@
   </div>
 </div>
 
-<script>
-  var notice = "<%= flash[:notice] %>";
-  if(notice){
-    $.toast(notice);
-  }
-</script>
+<%= content_for :script do %>
+  <script>
+    $(function () {
+      'use strict';
+      $(document).on("pageInit", "#page-preloader", function(e, id, page) {
+        var notice = "<%= flash[:notice] %>";
+        if(notice){
+          $.toast(notice);
+        }
+      });
+    });
+  </script>
+<% end %>

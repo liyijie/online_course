@@ -133,6 +133,7 @@
     </div>
   <% end %>
 </div>
+<div class="notice" data-notice-msg="<%= flash[:notice] %>"></div>
 
 <%= content_for :script do %>
   <%= javascript_tag do %>
@@ -142,10 +143,4 @@
   <%= javascript_include_tag "_user_show" %>
 <% end %>
 
-<script>
-  var notice = "<%= flash[:notice] %>";
-  if(notice){
-    $.toast(notice);
-  }
-</script>
 

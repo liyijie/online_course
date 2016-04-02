@@ -1,4 +1,0 @@
-$ ->
-  $.config = {
-    autoInit: true
-  }
