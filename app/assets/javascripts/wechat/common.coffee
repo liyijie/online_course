@@ -7,6 +7,7 @@ $ ->
       notice = $(this).data("notice").trim()
       if notice
         $.toast notice
+        $(this).data("notice", "")
     return
   $.init()
 
