@@ -1,106 +1,97 @@
-<div id="page-preloader" class="content">
-  <div class="top">
-    <div class="row info">
-      <div class="col-30 text-center"><%= image_tag(@user.show_image) %></div>
-      <div class="col-70 font-info">
-        <div class="welcome">欢迎您，<%= @user.show_name %>同学</div>
-        <div><%= show_current_time %></div>
-        <div>
-          <div class="row buttons">
-            <div class="col-50">
-              <%= link_to "编辑", edit_wechat_user_path(@user), class: "button button-fill button-default external" %>
-            </div>
-            <div class="col-50">
-              <%= link_to "退出", destroy_user_session_path(c: :weixin), :method => :delete, class: "button button-fill button-danger external" %>
+<div id="userShowPage" class="page page-current">
+  <div id="page-preloader" class="content">
+    <div class="top">
+      <div class="row info">
+        <div class="col-30 text-center"><%= image_tag(@user.show_image) %></div>
+        <div class="col-70 font-info">
+          <div class="welcome">欢迎您，<%= @user.show_name %>同学</div>
+          <div><%= show_current_time %></div>
+          <div>
+            <div class="row buttons">
+              <div class="col-50">
+                <%= link_to "编辑", edit_wechat_user_path(@user), class: "button button-fill button-default external" %>
+              </div>
+              <div class="col-50">
+                <%= link_to "退出", destroy_user_session_path(c: :weixin), :method => :delete, class: "button button-fill button-danger external" %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="list-block">
+      <ul>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">姓名</div>
+            <div class="item-after"><%= @user.name%></div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">学号</div>
+            <div class="item-after"><%= @user.number%></div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">系部</div>
+            <div class="item-after"><%= @user.try(:grade).try(:specialty).try(:academy).try(:name) %></div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">专业</div>
+            <div class="item-after"><%= @user.try(:grade).try(:specialty).try(:name) %></div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">班级</div>
+            <div class="item-after"><%= @user.try(:grade).try(:name) %></div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">已学课程</div>
+            <div class="item-after"><%= @numbers[:collect_course] %> 门</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">未学课程</div>
+            <div class="item-after">
+              <% if @numbers[:course] == 0 %>
+                0
+              <% else %>
+                <%= @numbers[:course] - @numbers[:collect_course] %>
+              <% end %> 门
+            </div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">测试次数</div>
+            <div class="item-after"><%= @numbers[:exams] %> 次</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">提问数量</div>
+            <div class="item-after"><%= @numbers[:question_comments] %> 条</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title">回答数量</div>
+            <div class="item-after"><%= @numbers[:answer_comments] %> 条</div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <div class="list-block">
-    <ul>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">姓名</div>
-          <div class="item-after"><%= @user.name%></div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">学号</div>
-          <div class="item-after"><%= @user.number%></div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">系部</div>
-          <div class="item-after"><%= @user.try(:grade).try(:specialty).try(:academy).try(:name) %></div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">专业</div>
-          <div class="item-after"><%= @user.try(:grade).try(:specialty).try(:name) %></div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">班级</div>
-          <div class="item-after"><%= @user.try(:grade).try(:name) %></div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">已学课程</div>
-          <div class="item-after"><%= @numbers[:collect_course] %> 门</div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">未学课程</div>
-          <div class="item-after">
-            <% if @numbers[:course] == 0 %>
-              0
-            <% else %>
-              <%= @numbers[:course] - @numbers[:collect_course] %>
-            <% end %> 门
-          </div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">测试次数</div>
-          <div class="item-after"><%= @numbers[:exams] %> 次</div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">提问数量</div>
-          <div class="item-after"><%= @numbers[:question_comments] %> 条</div>
-        </div>
-      </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title">回答数量</div>
-          <div class="item-after"><%= @numbers[:answer_comments] %> 条</div>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <div class="notice" data-notice="<%= flash[:notice] %> "></div>
 </div>
 
-<%= content_for :script do %>
-  <script>
-    $(function () {
-      'use strict';
-      $(document).on("pageInit", "#page-preloader", function(e, id, page) {
-        var notice = "<%= flash[:notice] %>";
-        if(notice){
-          $.toast(notice);
-        }
-      });
-    });
-  </script>
-<% end %>

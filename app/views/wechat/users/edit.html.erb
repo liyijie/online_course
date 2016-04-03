@@ -1,146 +1,149 @@
-<header class="bar bar-nav">
-  <a class="icon icon-left pull-left back" href="<%= wechat_root_path %>"></a>
-  <button class="button button-link button-nav pull-right" onclick="$('#userInfoForm').submit();">
-    保存&nbsp;&nbsp;&nbsp;
-  </button>
-  <h1 class="title"><%= @user.name %></h1>
-</header>
-<div class="content native-scroll">
-  <%= form_for @user, url: wechat_user_path(@user),  html: { multipart: true, id: "userInfoForm" } do |f|%>
-    <div class="list-block">
-      <ul>
-        <li>
-          <div class="item-content">
-            <div class="item-inner">
-              <div class="item-title label">学号</div>
-              <div class="item-input">
-                <%= f.text_field :number, readonly: true %>
+<div id="userEditPage" class="page page-current">
+  <header class="bar bar-nav">
+    <a class="icon icon-left pull-left back" href="<%= wechat_root_path %>"></a>
+    <button class="button button-link button-nav pull-right external" onclick="$('#userInfoForm').submit();">
+      保存&nbsp;&nbsp;&nbsp;
+    </button>
+    <h1 class="title"><%= @user.name %></h1>
+  </header>
+  <div class="content native-scroll">
+    <%= form_for @user, url: wechat_user_path(@user),  html: { multipart: true, id: "userInfoForm" } do |f|%>
+      <div class="list-block">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title label">学号</div>
+                <div class="item-input">
+                  <%= f.text_field :number, readonly: true %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">手机号码</div>
-              <div class="item-input">
-                <%= f.telephone_field :phone %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">手机号码</div>
+                <div class="item-input">
+                  <%= f.telephone_field :phone %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">名字</div>
-              <div class="item-input">
-                <%= f.text_field :name %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">名字</div>
+                <div class="item-input">
+                  <%= f.text_field :name %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">昵称</div>
-              <div class="item-input">
-                <%= f.text_field :nickname %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">昵称</div>
+                <div class="item-input">
+                  <%= f.text_field :nickname %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">头像</div>
-              <div class="item-input">
-                <%= f.file_field :image %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">头像</div>
+                <div class="item-input">
+                  <%= f.file_field :image %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">职位</div>
-              <div class="item-input">
-                <%= f.text_field :position %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">职位</div>
+                <div class="item-input">
+                  <%= f.text_field :position %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">学院</div>
-              <div class="item-input">
-                <%= f.select :academy_id, [['请选择学院','']] + Academy.all.pluck(:name, :id), {}, id: "common_academy_id" %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">学院</div>
+                <div class="item-input">
+                  <%= f.select :academy_id, [['请选择学院','']] + Academy.all.pluck(:name, :id), {}, id: "common_academy_id" %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">专业</div>
-              <div class="item-input">
-                <%= f.select :specialty_id, [['请选择专业','']] + @specialties, {}, id: "common_specialty_id" %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">专业</div>
+                <div class="item-input">
+                  <%= f.select :specialty_id, [['请选择专业','']] + @specialties, {}, id: "common_specialty_id" %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">班级</div>
-              <div class="item-input">
-                <%= f.select :grade_id, [['请选择班级','']] + @grades, {}, id: "common_grade_id" %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">班级</div>
+                <div class="item-input">
+                  <%= f.select :grade_id, [['请选择班级','']] + @grades, {}, id: "common_grade_id" %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">性别</div>
-              <div class="item-input">
-                <%= f.select :gender, [['请选择性别','']] + User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, {}, id: "common_grade_id" %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">性别</div>
+                <div class="item-input">
+                  <%= f.select :gender, [['请选择性别','']] + User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, {}, id: "common_grade_id" %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li>
-          <div class="item-content item-link">
-            <div class="item-inner">
-              <div class="item-title label">个性签名</div>
-              <div class="item-input">
-                <%= f.text_area :signature %>
+          <li>
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title label">个性签名</div>
+                <div class="item-input">
+                  <%= f.text_area :signature %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="notice" data-notice="<%= flash[:notice] %>"></div>
+
+  <%= content_for :script do %>
+    <%= javascript_tag do %>
+      get_specialties_path = "<%= get_specialties_user_index_path %>.js"
+      get_grades_path = "<%= get_grades_user_index_path %>.js"
+    <% end %>
+    <%= javascript_include_tag "wechat/users" %>
   <% end %>
+
+
+
 </div>
-<div class="notice" data-notice-msg="<%= flash[:notice] %>"></div>
-
-<%= content_for :script do %>
-  <%= javascript_tag do %>
-    get_specialties_path = "<%= get_specialties_user_index_path %>"
-    get_grades_path = "<%= get_grades_user_index_path %>"
-  <% end %>
-  <%= javascript_include_tag "_user_show" %>
-<% end %>
-
-
