@@ -1,97 +1,88 @@
-<div id="userShowPage" class="page page-current">
-  <div id="page-preloader" class="content">
-    <div class="top">
-      <div class="row info">
-        <div class="col-30 text-center"><%= image_tag(@user.show_image) %></div>
-        <div class="col-70 font-info">
-          <div class="welcome">欢迎您，<%= @user.show_name %>同学</div>
-          <div><%= show_current_time %></div>
-          <div>
-            <div class="row buttons">
-              <div class="col-50">
-                <%= link_to "编辑", edit_wechat_user_path(@user), class: "button button-fill button-default external" %>
-              </div>
-              <div class="col-50">
-                <%= link_to "退出", destroy_user_session_path(c: :weixin), :method => :delete, class: "button button-fill button-danger external" %>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="page">
+  <div class="weui_panel_bd top">
+    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+      <div class="weui_media_hd image">
+        <%= image_tag(@user.show_image, class: "weui_media_appmsg_thumb") %>
+      </div>
+      <div class="weui_media_bd">
+        <h4 class="weui_media_title">欢迎您，<%= @user.show_name %>同学</h4>
+        <p class="weui_media_desc"><%= show_current_time %></p>
+      </div>
+      <div class="weui_media_bd text-right small">
+        编辑 <span class="glyphicon glyphicon-menu-right"></span>
+      </div>
+    </a>
+  </div>
+  <div class="weui_cells">
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>姓名</p>
+      </div>
+      <div class="weui_cell_ft"><%= @user.name%></div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>学号</p>
+      </div>
+      <div class="weui_cell_ft"><%= @user.number%></div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>系部</p>
+      </div>
+      <div class="weui_cell_ft"><%= @user.try(:grade).try(:specialty).try(:academy).try(:name) %></div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>专业</p>
+      </div>
+      <div class="weui_cell_ft"><%= @user.try(:grade).try(:specialty).try(:name) %></div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>班级</p>
+      </div>
+      <div class="weui_cell_ft"><%= @user.try(:grade).try(:name) %></div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>已学课程</p>
+      </div>
+      <div class="weui_cell_ft"><%= @numbers[:collect_course] %> 门</div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>未学课程</p>
+      </div>
+      <div class="weui_cell_ft">
+        <% if @numbers[:course] == 0 %>
+        0
+        <% else %>
+        <%= @numbers[:course] - @numbers[:collect_course] %>
+        <% end %> 门
       </div>
     </div>
-
-    <div class="list-block">
-      <ul>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">姓名</div>
-            <div class="item-after"><%= @user.name%></div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">学号</div>
-            <div class="item-after"><%= @user.number%></div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">系部</div>
-            <div class="item-after"><%= @user.try(:grade).try(:specialty).try(:academy).try(:name) %></div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">专业</div>
-            <div class="item-after"><%= @user.try(:grade).try(:specialty).try(:name) %></div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">班级</div>
-            <div class="item-after"><%= @user.try(:grade).try(:name) %></div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">已学课程</div>
-            <div class="item-after"><%= @numbers[:collect_course] %> 门</div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">未学课程</div>
-            <div class="item-after">
-              <% if @numbers[:course] == 0 %>
-                0
-              <% else %>
-                <%= @numbers[:course] - @numbers[:collect_course] %>
-              <% end %> 门
-            </div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">测试次数</div>
-            <div class="item-after"><%= @numbers[:exams] %> 次</div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">提问数量</div>
-            <div class="item-after"><%= @numbers[:question_comments] %> 条</div>
-          </div>
-        </li>
-        <li class="item-content">
-          <div class="item-inner">
-            <div class="item-title">回答数量</div>
-            <div class="item-after"><%= @numbers[:answer_comments] %> 条</div>
-          </div>
-        </li>
-      </ul>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>测试次数</p>
+      </div>
+      <div class="weui_cell_ft"><%= @numbers[:exams] %> 次</div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>提问数量</p>
+      </div>
+      <div class="weui_cell_ft"><%= @numbers[:question_comments] %> 条</div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>回答数量</p>
+      </div>
+      <div class="weui_cell_ft"><%= @numbers[:answer_comments] %> 条</div>
     </div>
   </div>
-
-  <div class="notice" data-notice="<%= flash[:notice] %> "></div>
+  
+  <div class="buttons">
+    <a href="javascript:;" class="weui_btn weui_btn_warn">退出账户</a>
+  </div>
 </div>
-
