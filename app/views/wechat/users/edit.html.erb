@@ -1,149 +1,128 @@
-<div id="userEditPage" class="page page-current">
-  <header class="bar bar-nav">
-    <a class="icon icon-left pull-left external" href="<%= wechat_root_path %>"></a>
-    <button class="button button-link button-nav pull-right external" onclick="$('#userInfoForm').submit();">
-      保存&nbsp;&nbsp;&nbsp;
-    </button>
-    <h1 class="title"><%= @user.name %></h1>
-  </header>
-  <div class="content native-scroll">
-    <%= form_for @user, url: wechat_user_path(@user),  html: { multipart: true, id: "userInfoForm" } do |f|%>
-      <div class="list-block">
-        <ul>
-          <li>
-            <div class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">学号</div>
-                <div class="item-input">
-                  <%= f.text_field :number, readonly: true %>
-                </div>
+<div class="page">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="header">
+      <a href="javascript:;" onclick="history.back();">
+        <span class="glyphicon glyphicon-menu-left"></span>返回
+      </a>
+      <a href="javascript:;" onclick="$('#userInfoForm').submit();" class="pull-right">保存</a>
+    </div>  
+  </nav>
+  <%= form_for @user, url: wechat_user_path(@user),  html: { multipart: true, id: "userInfoForm" } do |f|%>
+    <div class="weui_cells weui_cells_form">
+      <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+          <div class="weui_uploader">
+            <div class="weui_uploader_bd">
+              <ul class="weui_uploader_files">
+                <li class="weui_uploader_file" style="background-image:url(<%= asset_path(@user.show_image) %>)"></li>
+              </ul>
+              <div class="weui_uploader_input_wrp pull-right">
+                <%= f.file_field :image, class: "weui_uploader_input", accept: "image/jpg,image/jpeg,image/png,image/gif" %>
               </div>
             </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">手机号码</div>
-                <div class="item-input">
-                  <%= f.telephone_field :phone %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">名字</div>
-                <div class="item-input">
-                  <%= f.text_field :name %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">昵称</div>
-                <div class="item-input">
-                  <%= f.text_field :nickname %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">头像</div>
-                <div class="item-input">
-                  <%= f.file_field :image %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">职位</div>
-                <div class="item-input">
-                  <%= f.text_field :position %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">学院</div>
-                <div class="item-input">
-                  <%= f.select :academy_id, [['请选择学院','']] + Academy.all.pluck(:name, :id), {}, id: "common_academy_id" %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">专业</div>
-                <div class="item-input">
-                  <%= f.select :specialty_id, [['请选择专业','']] + @specialties, {}, id: "common_specialty_id" %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">班级</div>
-                <div class="item-input">
-                  <%= f.select :grade_id, [['请选择班级','']] + @grades, {}, id: "common_grade_id" %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">性别</div>
-                <div class="item-input">
-                  <%= f.select :gender, [['请选择性别','']] + User::PartnerGender.to_a.reverse_each{|x| x.reverse!}, {}, id: "common_grade_id" %>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-content item-link">
-              <div class="item-inner">
-                <div class="item-title label">个性签名</div>
-                <div class="item-input">
-                  <%= f.text_area :signature %>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <div class="notice" data-notice="<%= flash[:notice] %>"></div>
+    </div>
+    <div class="weui_cells weui_cells_form base">
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">学号</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.text_field :number, readonly: true, class: "weui_input" %>
+        </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.telephone_field :phone, placeholder: "请输入手机号", class: "weui_input" %>
+        </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.text_field :name, placeholder: "请输入姓名", class: "weui_input" %>
+        </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">昵称</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.text_field :nickname, placeholder: "请输入昵称", class: "weui_input" %>
+        </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">职位</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.text_field :position, placeholder: "请输入职位", class: "weui_input" %>
+        </div>
+      </div>
+    </div>
+    <div class="weui_cells_title">学院</div>
+    <div class="weui_cells">
+      <div class="weui_cell weui_cell_select">
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.select :academy_id, [['请选择学院','']] + Academy.all.pluck(:name, :id), {}, id: "common_academy_id", class: "weui_select" %>
+        </div>
+      </div>
+    </div>
 
-  <%= content_for :script do %>
-    <%= javascript_tag do %>
-      get_specialties_path = "<%= get_specialties_user_index_path %>.js"
-      get_grades_path = "<%= get_grades_user_index_path %>.js"
-    <% end %>
-    <%= javascript_include_tag "wechat/users" %>
+    <div class="weui_cells_title">专业</div>
+    <div class="weui_cells">
+      <div class="weui_cell weui_cell_select">
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.select :specialty_id, [['请选择专业','']] + @specialties, {}, id: "common_specialty_id", class: "weui_select" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui_cells_title">班级</div>
+    <div class="weui_cells">
+      <div class="weui_cell weui_cell_select">
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.select :grade_id, [['请选择班级','']] + @grades, {}, id: "common_grade_id", class: "weui_select" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui_cells_title">性别</div>
+    <div class="weui_cells weui_cells_radio">
+      <label class="weui_cell weui_check_label" for="x11">
+        <div class="weui_cell_bd weui_cell_primary">
+          <p>男</p>
+        </div>
+        <div class="weui_cell_ft">
+          <%= radio_button_tag("user[gender]", "man", @user.gender == "man", class: "weui_check", id: "x11") %>
+          <span class="weui_icon_checked"></span>
+        </div>
+      </label>
+      <label class="weui_cell weui_check_label" for="x12">
+
+        <div class="weui_cell_bd weui_cell_primary">
+          <p>女</p>
+        </div>
+        <div class="weui_cell_ft">
+          <%= radio_button_tag("user[gender]", "woman", @user.gender == "woman", class: "weui_check", id: "x12") %>
+          <span class="weui_icon_checked"></span>
+        </div>
+      </label>
+    </div>
+
+    <div class="weui_cells_title">个性签名</div>
+    <div class="weui_cells weui_cells_form">
+      <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+          <%= f.text_area :signature, class: "weui_textarea", placeholder: "请输入个性签名", row: 3 %>
+          <div class="weui_textarea_counter"><span>0</span>/200</div>
+        </div>
+      </div>
+    </div>
   <% end %>
 
-
-
 </div>
+
+<%= content_for :script do %>
+  <%= javascript_tag do %>
+    get_specialties_path = "<%= get_specialties_user_index_path %>"
+    get_grades_path = "<%= get_grades_user_index_path %>"
+  <% end %>
+  <%= javascript_include_tag "_user_show", 'data-turbolinks-track' => true %>
+<% end %>

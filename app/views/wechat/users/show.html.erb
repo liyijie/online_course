@@ -1,6 +1,6 @@
 <div class="page">
   <div class="weui_panel_bd top">
-    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+    <a href="<%= edit_wechat_user_path(@user) %>" class="weui_media_box weui_media_appmsg">
       <div class="weui_media_hd image">
         <%= image_tag(@user.show_image, class: "weui_media_appmsg_thumb") %>
       </div>
@@ -9,7 +9,7 @@
         <p class="weui_media_desc"><%= show_current_time %></p>
       </div>
       <div class="weui_media_bd text-right small">
-        编辑 <span class="glyphicon glyphicon-menu-right"></span>
+        <span class="glyphicon glyphicon-menu-right"></span>
       </div>
     </a>
   </div>
@@ -83,6 +83,6 @@
   </div>
   
   <div class="buttons">
-    <a href="javascript:;" class="weui_btn weui_btn_warn">退出账户</a>
+    <%= link_to "退出账户", destroy_user_session_path(c: :weixin), :method => :delete, class: "weui_btn weui_btn_warn" %>
   </div>
 </div>

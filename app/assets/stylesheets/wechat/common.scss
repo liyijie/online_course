@@ -16,7 +16,11 @@ body {
   a, a:link, a:visited, a:hover, a:active{
     text-decoration: none !important;
   }
-  p {
+  p, label {
+    margin: 0;
+  }
+
+  ul, ol {
     margin: 0;
   }
 }

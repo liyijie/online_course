@@ -52,8 +52,26 @@
 
 // 个人资料编辑
 .wechat__users__edit {
-  .list-block {
-    margin: 0;
+  .header {
+    background: #fff;
+    height: 40px;
+    line-height: 20px;
+    padding: 10px 20px;
+
+    a {
+      color: #0894ec;
+      font-size: 16px;
+    }
+  }
+  .navbar {
+    min-height: 40px;
+  }
+  form {
+    padding-top: 40px;
+  }
+ 
+  .base {
+    margin-top: 0px;
   }
 }
 
