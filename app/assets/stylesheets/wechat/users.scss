@@ -2,29 +2,52 @@
 
 // 登录页面
 .users__sessions__new {
-  .page, .page-group {
+  .page {
     background: #e4e4e4;
-  }
-  .wechat-logo {
-    padding-top: 0.8rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
   
+  .wechat-logo {
+    padding-top: 3rem;
+    h3 {
+      font-size: 2rem;
+      color: $blueBg;
+    }
+    small {
+      color: $blueBg;
+    }
+  }
+
   .wechat-login {
-    margin-left:  1.4rem;
-    margin-right: 1.4rem;
-  }
-  .card.login {
-    border-radius: 0.6rem;
-    margin: 0.7rem;
-    background: #f8f8f8;
-  }
+    padding: 20px;
 
-  .list-block input {
-    height: 2.65rem;
-  }
+    .form-control {
+      height: 50px;
+    }
+    
+    .buttons {
+      padding-top: 20px;
+    }
+    .btn {
+      height: 46px;
+      width: 49%;
+    }
 
-  .button.button-submit {
-    background: #1a5aa0;
+    .btn-default {
+      color: #fff;
+      background: $blueBg;
+      border-color: $blueBg;
+    }
+
+    .btn-info {
+      color: #fff;
+      background: #f53737;
+      border-color: #f53737;
+    }
   }
 
   // 错误提示
