@@ -79,8 +79,10 @@
 			<ul class="teachers">
 				<% @course.teacher_courses.each do |teacher_course| %>
 				  <li class="list text-center">
-				    <%= teacher_course.try(:teacher).try(:name) %>
-				    <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
+					  <% unless teacher_course.teacher.nil? %>
+					  	<%= teacher_course.try(:teacher).try(:name) %>
+					    <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
+					  <% end %>
 				  </li>
 				<% end %>
 			</ul>
