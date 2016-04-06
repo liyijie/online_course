@@ -74,7 +74,10 @@
               <%= @course.description %>
             </p>
           </div>
-          <%= link_to("更多 >>", show_courses_path(@course.number, anchor: "category-list"))%>
+          <!-- 不是精品课程不显示更多 -->
+          <% if ["96659262", "64322745", "49097443", "61308289"].include? @course.number.to_s %>
+            <%= link_to("更多 >>", show_courses_path(@course.number, anchor: "category-list"))%>
+          <% end %>
         </li>
         <li class="teach-team">
           <p class="title">教学团队</p>
@@ -82,7 +85,8 @@
             <% @teacher_courses.each do |teacher_course|%>
               <div class="teacher-info">
                  <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.try(:teacher).try(:number)) if teacher_course.try(:teacher).try(:image).present? %>
-                 <p><%= teacher_course.try(:teacher).try(:name) %></p>
+                 <% name = teacher_course.try(:teacher).try(:name) %>
+                 <p><%= name if name.present? %></p>
               </div>
             <% end %>
           </div>
