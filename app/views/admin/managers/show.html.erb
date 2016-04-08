@@ -1,0 +1,59 @@
+<%= content_for :nav do%>
+  <li>
+    <a href="<%= admin_root_path%>">后台</a>
+  </li>
+  <li>
+    <a href="<%= admin_managers_path%>">管理人员</a>
+  </li>
+  <li>
+    <a href="<%= admin_manager_path(@manager)%>"><%= @manager.email %></a>
+  </li>
+  <hr>
+
+  <div class="clearfix">
+    <div class="form-group col-md-12">
+      <%= label_tag :number, '人员编号', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @manager.number %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :name, '姓名', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @manager.name %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :name, '角色', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= Manager::ListRoles[@manager.roles.to_sym] %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :email, '邮 箱', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @manager.email %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '授权课程', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <ul>
+          <% @manager.courses.each do |course| %>
+            <li><%= course.name %></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="col-sm-12"><hr></div>
+    <div class="form-group col-sm-4 col-sm-offset-2">
+      <%= link_to "返回", admin_managers_path, class: "btn btn-info"  %>
+    </div>
+  </div>
+
+<%end%>

@@ -48,8 +48,13 @@ class TeachersController < ApplicationController
   end
 
   def import
-    Teacher.import(params[:file])
-    redirect_to admin_teachers_url
+    if params[:file].present?
+      Teacher.import(params[:file])
+      redirect_to admin_teachers_url
+    else
+      flash[:error] = "未选择任何文件"
+      redirect_to admin_teachers_url
+    end
   end
 
   def destroy

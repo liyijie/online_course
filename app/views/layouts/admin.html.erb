@@ -18,9 +18,11 @@
             <%= yield :nav%>
           </ol>
       <% end %>
+      <%= render :partial => "/common/messages" %>
       <% if content_for? :toolbar %>
         <%= yield :toolbar %>
       <% end %>
+
       <%= yield %>
     </div>
   </div>

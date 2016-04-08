@@ -1,0 +1,111 @@
+<%= content_for :nav do%>
+  <li>
+    <a href="<%= admin_root_path%>">后台</a>
+  </li>
+  <li>
+    <a href="<%= admin_users_path%>">学生列表</a>
+  </li>
+  <li>
+    <a href="<%= admin_user_path(@user)%>"><%= @user.name %></a>
+  </li>
+  <hr></hr>
+
+  <div class="clearfix">
+    <div class="form-group col-md-12">
+      <%= label_tag :number, '昵称', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.nickname %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :name, '头像', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.image %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :name, '姓名', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.name %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :name, '用户名', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.username %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :email, '学号', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.number %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '职位', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.position %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '学院', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.try(:grade).try(:specialty).try(:academy).try(:name) %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '专业', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.try(:grade).try(:specialty).try(:name) %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '班级', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.try(:grade).try(:name) %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '手机号码', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.phone %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '性别', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= User::PartnerGender[@user.gender.to_sym] %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '个性签名', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.signature %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= label_tag :courses, '校区', class: 'col-sm-2 control-label text-right' %>
+      <div class="col-sm-4">
+        <%= @user.campus %>
+      </div>
+    </div>
+
+    <div class="col-sm-12"><hr></div>
+
+    <div class="form-group col-sm-4 col-sm-offset-2">
+      <%= link_to "返回", admin_users_path, class: "btn btn-info"  %>
+    </div>
+  </div>
+<%end%>

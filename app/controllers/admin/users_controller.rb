@@ -26,8 +26,13 @@ class UsersController < ApplicationController
   end
 
   def import
-    User.import(params[:file])
-    redirect_to admin_users_url
+    if params[:file].present?
+      User.import(params[:file])
+      redirect_to admin_users_url
+    else
+      flash[:error] = "未选择任何文件"
+      redirect_to admin_users_url
+    end
   end
 
 
