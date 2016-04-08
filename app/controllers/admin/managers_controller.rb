@@ -3,7 +3,8 @@ module Admin
     load_and_authorize_resource
   	before_action :set_manager, only: [:show, :edit, :update, :destroy]
     def index
-      @managers = Manager.page(params[:page]).per(15).keyword(params[:keyword])
+      keyword = params[:keyword].nil? ? nil : params[:keyword].delete(" ")
+      @managers = Manager.page(params[:page]).per(15).keyword(keyword)
     end
 
     def new

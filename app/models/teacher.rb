@@ -62,6 +62,13 @@ class Teacher < ActiveRecord::Base
   validates :password, presence: true, length: {minimum:4,maximum: 32}, on: :create
   validates_confirmation_of :password, on: :create
 
+  scope :keyword_like, -> (keyword) do
+
+    pp keyword, "============="
+    return all if keyword.blank?
+    where( 'teachers.name LIKE ? OR teachers.number LIKE ?', keyword, keyword )
+  end
+
   #去除number中的空格
   before_create do
     self.number = self.number.split(" ").join("")

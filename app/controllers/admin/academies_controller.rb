@@ -3,7 +3,8 @@ module Admin
     load_and_authorize_resource
     before_action :set_academy, only: [:edit, :update, :destroy]
     def index
-      @academies = Academy.page(params[:page]).per(10)
+      keyword = params[:keyword].nil? ? nil : params[:keyword].delete(" ")
+      @academies = Academy.page(params[:page]).per(10).keyword_like(keyword)
     end
 
     def new

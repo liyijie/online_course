@@ -3,12 +3,22 @@ module Admin
 		load_and_authorize_resource
 		before_action :set_course, only: [:edit, :update, :destroy, :delete, :restore]
 		def index
+			# 把关键字，老师姓名转成id
+			cache = params[:keyword].nil? ? nil : params[:keyword].delete(" ")
+			teacher = Teacher.where(name: cache).first
+			if teacher.present?
+				keyword = teacher.id
+			else
+				keyword = cache
+			end
+
 			#管理员读取所以数据，其他用户读取拥有权限数据
 			if current_manager.administer?
-			  @courses = Course.page(params[:page]).per(10)
+			  @courses = Course.all.page(params[:page]).keyword_like(keyword)
 			else
-				@courses = current_manager.courses.page(params[:page]).per(10)
+				@courses = current_manager.courses.all.page(params[:page]).keyword_like(keyword)
 			end
+
 			if params[:status] == "deleted"
 				if current_manager.administer?
 			    @courses = Course.bedeleted.page(params[:page]).per(10)
@@ -23,11 +33,12 @@ module Admin
 				end
 			else
 				if current_manager.administer?
-				  @courses = Course.page(params[:page]).per(10)
+				  @courses = Course.page(params[:page]).per(10).keyword_like(keyword)
 				else
-					@courses = current_manager.courses.page(params[:page]).per(10)
+					@courses = current_manager.courses.page(params[:page]).per(10).keyword_like(keyword)
 				end
 			end
+
 		end
 
 		def new
@@ -42,8 +53,7 @@ module Admin
 			@course.attachment.content = params[:course][:attachment]
 			@course.image.avatar = params[:course][:image]
 			@course.attachment.file_url = params[:attachment_file_url]
-			@course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids],
-				                        course_id: @course.id)
+			@course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids].compact, course_id: @course.id)
 			if @course.save && @course.attachment.save
 				flash.now[:notice] = "课程创建成功"
 				return redirect_to admin_courses_url

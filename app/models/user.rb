@@ -65,9 +65,9 @@ class User < ActiveRecord::Base
       'users.number LIKE ?
       OR users.name LIKE ?
       OR users.phone LIKE ?',
-      "%#{keyword}%",
-      "%#{keyword}%",
-      "%#{keyword}%"
+      keyword,
+      keyword,
+      keyword
     )
   end
 

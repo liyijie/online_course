@@ -18,4 +18,16 @@ class Specialty < ActiveRecord::Base
 	has_many :courses
 
   scope :enabled, -> {where("deleted_at is null")}
+
+  scope :keyword_like, -> (keyword) do
+    return all if keyword.blank?
+    where(
+      'specialties.name LIKE ?
+      OR specialties.code LIKE ?
+      OR specialties.academy_id LIKE ?',
+      keyword,
+      keyword,
+      keyword
+    )
+  end
 end

@@ -17,4 +17,10 @@ class Category < ActiveRecord::Base
 	def soft_destroy
 		self.update(deleted_at: Time.current)
 	end
+
+	scope :keyword_like, -> (keyword) do
+    return all if keyword.blank?
+    where('categories.name LIKE ?', keyword)
+  end
+
 end

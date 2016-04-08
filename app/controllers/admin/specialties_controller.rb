@@ -3,7 +3,11 @@ module Admin
     load_and_authorize_resource
     before_action :set_specialty, only: [:edit, :update, :destroy]
     def index
-      @specialties = Specialty.page(params[:page]).per(10)
+      # 把院系关键词改为academy_id
+      cache = params[:keyword].nil? ? nil : params[:keyword].delete(" ")
+      academy = Academy.where(name: cache).first
+      keyword = academy.present? ? academy.id : cache
+      @specialties = Specialty.page(params[:page]).per(10).keyword_like(keyword)
     end
 
     def new

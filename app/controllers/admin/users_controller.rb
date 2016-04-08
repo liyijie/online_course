@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :set_user, only: [:edit, :update, :destroy]
   def index
-    @users = User.all.page(params[:page]).keyword_like(params[:keyword])
+    keyword = params[:keyword].nil? ? nil : params[:keyword].delete(" ")
+    @users = User.all.page(params[:page]).keyword_like(keyword)
   end
 
   def new

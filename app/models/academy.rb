@@ -17,4 +17,9 @@ class Academy < ActiveRecord::Base
   has_many :users, through: :specialties
 	has_many :courses, dependent: :destroy
   has_many :teachers, dependent: :destroy
+
+  scope :keyword_like, -> (keyword) do
+    return all if keyword.blank?
+    where('academies.name LIKE ?', keyword.lstrip)
+  end
 end

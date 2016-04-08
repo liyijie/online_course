@@ -4,7 +4,8 @@ class TeachersController < ApplicationController
   before_action :set_teacher, only: [:edit, :update, :destroy]
 
   def index
-    @teachers = Teacher.page(params[:page]).per(15)
+    keyword = params[:keyword].nil? ? nil : params[:keyword].delete(" ")
+    @teachers = Teacher.page(params[:page]).per(15).keyword_like(keyword)
   end
 
   def new

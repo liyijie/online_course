@@ -10,6 +10,8 @@
 #
 
 class TeacherCourse < ActiveRecord::Base
+	validates :teacher_id, :course_id, presence: true
+
   belongs_to :teacher
   belongs_to :course
 end

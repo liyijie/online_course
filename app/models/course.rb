@@ -44,6 +44,19 @@ class Course < ActiveRecord::Base
   	'市级精品课程': 1,
   	'校级精品课程': 2
   }
+
+  scope :keyword_like, -> (keyword) do
+    return all if keyword.blank?
+    where(
+      'courses.manager_id LIKE ?
+      OR courses.name LIKE ?
+      OR courses.number LIKE ?',
+      keyword,
+      keyword,
+      keyword
+    )
+  end
+
 	#课程收藏(赞)或取消收藏（取消赞）
 	#参数：课程：couorse_id,当前登录用户
 	#返回值：第一个返回值表示操作是否成功，true，false
