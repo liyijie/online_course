@@ -63,6 +63,13 @@ footer {
 	.footer-content {
 		padding: 26px 0 38px 0;
 	}
+	a {
+		color: #fff;
+		&:hover, &:visited {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
 }
 /*导航栏*/
 .main-nav {

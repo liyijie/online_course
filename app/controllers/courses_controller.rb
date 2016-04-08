@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
 		#考核标准子课程
 		@khbz_sub_courses = @course.sub_courses.enabled.khbz.where({category_id: @category_arr})
 
-    #教学条件子课程
+    #教学课件子课程
     @jxtj_sub_courses = @course.sub_courses.enabled.undeleted.where(category_id: Category.find_by(name: "教学课件").id) if Category.find_by(name: "教学课件")
     #教学视频子课程
     @jxsp_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "教学视频").id) if Category.find_by(name: "教学视频")

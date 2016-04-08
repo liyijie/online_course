@@ -51,9 +51,9 @@ class Course < ActiveRecord::Base
       'courses.manager_id LIKE ?
       OR courses.name LIKE ?
       OR courses.number LIKE ?',
-      keyword,
-      keyword,
-      keyword
+      "%#{keyword}%",
+      "%#{keyword}%",
+      "%#{keyword}%"
     )
   end
 

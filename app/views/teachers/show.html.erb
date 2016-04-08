@@ -75,7 +75,7 @@
 	  			<% end %>
 	  			<p class="course-title"><%= link_to teacher_course.course.name, show_courses_path(teacher_course.course.number)%></p>
 	    			<div class="description">
-	    				<span>该课程一共有<%= teacher_course.try(:course).try(:sub_courses).try(:size)%>课时</span>
+	    				<span>该课程一共有<%= teacher_course.try(:course).try(:sub_courses).try(:enabled).try(:size)%>课时</span>
 	    				<label>
 	  		  			<span class="glyphicon glyphicon-star"></span>
 	  		  			<span><%= teacher_course.try(:course).get_likes(vote_scope: "collect").size %>人收藏</span>

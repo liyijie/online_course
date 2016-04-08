@@ -20,7 +20,7 @@ class Category < ActiveRecord::Base
 
 	scope :keyword_like, -> (keyword) do
     return all if keyword.blank?
-    where('categories.name LIKE ?', keyword)
+    where('categories.name LIKE ?', "%#{keyword}%")
   end
 
 end

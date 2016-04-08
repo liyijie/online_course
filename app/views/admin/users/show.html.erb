@@ -21,7 +21,7 @@
     <div class="form-group col-md-12">
       <%= label_tag :name, '头像', class: 'col-sm-2 control-label text-right' %>
       <div class="col-sm-4">
-        <%= @user.image %>
+        <%= @user.try(:show_image) %>
       </div>
     </div>
 

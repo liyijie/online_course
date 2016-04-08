@@ -11,7 +11,7 @@
 		<p class="title"><%= link_to truncate(course.name, length: 26), show_courses_path(course.number) %></p>
 		<p class="description">
 			<span class="pull-left section">
-				<span>该课程一共有<%= course.try(:sub_courses).try(:size)%>课时</span>
+				<span>该课程一共有<%= course.try(:sub_courses).try(:enabled).try(:size)%>课时</span>
 			</span>
 			<span class="pull-right">
 				<span class="glyphicon glyphicon-star"></span>

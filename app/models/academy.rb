@@ -20,6 +20,6 @@ class Academy < ActiveRecord::Base
 
   scope :keyword_like, -> (keyword) do
     return all if keyword.blank?
-    where('academies.name LIKE ?', keyword.lstrip)
+    where('academies.name LIKE ?', "%#{keyword}%")
   end
 end

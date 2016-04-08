@@ -57,7 +57,12 @@
 			    	大小: <%= @sub_course.count_file_size %>
 			    </div>
 			    <div class="col-sm-6 pull-right text-right">
-			    	<%= link_to "下载", download_sub_course_path( @sub_course.number), class: 'btn btn-success'%>
+
+			    	<% if FileTest::exist? @sub_course.attachment.content.path %>
+			    		<%= link_to "下载", download_sub_course_path( @sub_course.number), class: 'btn btn-success'%>
+			    	<% else %>
+			    		<%= link_to "缺失", "#", class: 'btn btn-warning disabled'%>
+			    	<% end %>
 			    </div>
 			  </div>
 		  </div>

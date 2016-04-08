@@ -25,9 +25,9 @@ class Specialty < ActiveRecord::Base
       'specialties.name LIKE ?
       OR specialties.code LIKE ?
       OR specialties.academy_id LIKE ?',
-      keyword,
-      keyword,
-      keyword
+      "%#{keyword}%",
+      "%#{keyword}%",
+      "%#{keyword}%"
     )
   end
 end

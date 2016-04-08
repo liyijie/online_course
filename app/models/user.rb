@@ -65,9 +65,9 @@ class User < ActiveRecord::Base
       'users.number LIKE ?
       OR users.name LIKE ?
       OR users.phone LIKE ?',
-      keyword,
-      keyword,
-      keyword
+      "%#{keyword}%",
+      "%#{keyword}%",
+      "%#{keyword}%"
     )
   end
 
@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
 
   #有你昵称显示昵称，没有则显示其名字
   def show_name
-   self.name || self.nickname
+   self.name || self.nickname || self.username
   end
 
   def self.find_for_database_authentication(warden_conditions)
