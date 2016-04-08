@@ -18,7 +18,7 @@
 class Attachment < ActiveRecord::Base
   belongs_to :attachmentable, polymorphic: true
 
-  has_attached_file :content, styles: lambda { |a| a.instance.check_file_type}
+  has_attached_file :content, styles: lambda { |a| a.instance.check_file_type}, :default_url => "/contents/c_350_230/missing.png"
 
   validates_attachment :content, :content_type => {:content_type => %w()}
 

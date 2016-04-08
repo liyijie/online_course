@@ -5,11 +5,11 @@ class TeachersController < ApplicationController
 	def index
 		@academies = Academy.all
 		unless params[:academy_id].blank?
-		  @teachers = Teacher.where(academy_id: params[:academy_id]).joins(:image).where("images.avatar_content_type IS NOT NULL")
-		                    .page(params[:page]).per(20)
+		  @teachers = Teacher.where(academy_id: params[:academy_id]).joins(:image).page(params[:page]).per(20)
 		else
-			@teachers = Teacher.joins(:image).where("images.avatar_content_type IS NOT NULL")
-		                    .page(params[:page]).per(20)
+			@teachers = Teacher.joins(:image).page(params[:page]).per(20)
+			# @teachers = Teacher.joins(:image).where("images.avatar_content_type IS NOT NULL")
+		 #                    .page(params[:page]).per(20)
 		end
 	end
 

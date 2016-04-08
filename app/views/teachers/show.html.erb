@@ -10,7 +10,7 @@
 <div class="main-content">
 	<div id="teacher-info" class="wrapper">
 		<div class="teacher-img">
-			<%= image_tag(@teacher.image.avatar.url(:t_280_370))%>
+			<%= image_tag(@teacher.image.avatar.url)%>
 		</div>
 		<div class="teacher-data plus">
 		  <div class="title-content">
@@ -71,7 +71,8 @@
   	  <% @teacher.teacher_courses.each do |teacher_course|%>
 	  		<li>
 	  			<%= link_to show_courses_path(teacher_course.course.number), class: 'image' do%>
-	  			  <%= image_tag(teacher_course.course.attachment.content.url(:c_340_200))%>
+	  			<%#= image_tag(teacher_course.course.attachment.content.url(:c_340_200)) %>
+	  			<%= image_tag(teacher_course.course.try(:image).try(:avatar).url(:c_500_350)) %>
 	  			<% end %>
 	  			<p class="course-title"><%= link_to teacher_course.course.name, show_courses_path(teacher_course.course.number)%></p>
 	    			<div class="description">
