@@ -15,21 +15,22 @@
 
 require 'csv'
 class Question < ActiveRecord::Base
-  belongs_to :sub_course, dependent: :destroy
+  belongs_to :sub_course
   has_many :options, dependent: :destroy
-  validates :title, uniqueness: true
+  validates_uniqueness_of :title, scope: :sub_course_id
 
   def self.import(file)
     allowed_attributes = [ "title", "correct_option", "correct_hint"]
     spreadsheet = open_spreadsheet(file)
-    header = spreadsheet.row(2)
-    begin
-      Question.transaction do
-        (3..spreadsheet.last_row).each do |i|
-          row = Hash[[header, spreadsheet.row(i)].transpose]
-          question = Question.new
-          question.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
-          question.save!
+    header = ["title", "correct_option", "correct_hint", "option_1", "option_2", "option_3", "option_4"]
+    errors = []
+
+    Question.transaction do
+      (2..spreadsheet.last_row).each do |i|
+        row = Hash[[header, spreadsheet.row(i)].transpose]
+        question = Question.new
+        question.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+        if question.save
           option_length = row.length - 3  #行中减去question选项长度
           (1..option_length).each do |i|
             _opt = 'option_' + i.to_s
@@ -37,11 +38,16 @@ class Question < ActiveRecord::Base
             option.name = row[_opt]
             option.save!
           end
+        else
+          errors = errors + question.errors.full_messages
         end
+
+        ActiveRecord::Rollback unless errors.blank?
       end
-    rescue Exception => e
-      puts 'import abort'
+
+      errors
     end
+   
   end
 
   def self.open_spreadsheet(file)

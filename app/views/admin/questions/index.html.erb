@@ -1,6 +1,6 @@
 <%= content_for :nav do%>
   <li>
-  	<a href="#{admin_root_path}">后台</a>
+  	<%= link_to "后台", admin_root_path %>
   </li>
   <!-- <li>
     <a href="#{admin_courses_path}">课程列表</a>
@@ -27,6 +27,7 @@
 </table>
 <%= paginate @questions%>
 <hr></hr>
+
 <% if can? :manage, Question %>
   <%= form_tag import_admin_questions_path, multipart: true do %>
     <%= hidden_field_tag :sub_course_id, @sub_course.id%>
@@ -36,13 +37,12 @@
         <div class="col-sm-4">
           <%= file_field_tag :file, class: 'form-control' %>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-8">
           <button class="btn btn-success excel-btn" type="submit">
             <span class="glyphicon glyphicon-floppy-save">导入EXCEL试题</span>
           </button>
-        </div>
-        <div class="col-sm-2">
-          <%= link_to "导入模板下载", "/excels/试卷导入模板.xls", class: "btn btn-primary" %>
+          <%= link_to "导入模板下载", "/excels/子课程测试题导入模板.xlsx", class: "btn btn-primary" %>
+          <%= link_to "清空试题", clear_admin_course_sub_course_questions_path(params[:course_id], params[:sub_course_id], params[:id]), data: {confirm: "确定清空所有试题吗？"}, class: "btn btn-danger" %>
         </div>
       </div>
     </div>

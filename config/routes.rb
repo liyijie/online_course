@@ -149,8 +149,13 @@ Rails.application.routes.draw do
         member do
           patch :higher, :lower, :delete, :restore
           post :lower, :higher, :delete, :restore
+          delete :clearn
         end
-        resources :questions, only: [:index, :destroy]
+        resources :questions, only: [:index, :destroy] do
+          collection do
+             get :clear
+          end
+        end
       end
     end
 
