@@ -1,16 +1,20 @@
 module Admin
+	require 'pp'
 	class CoursesController < ApplicationController
 		load_and_authorize_resource
 		before_action :set_course, only: [:edit, :update, :destroy, :delete, :restore]
 		def index
 			# 把关键字，老师姓名转成id
 			cache = params[:keyword].nil? ? nil : params[:keyword].delete(" ")
+			pp cache, "1111111"
 			teacher = Teacher.where(name: cache).first
+			pp teacher, "222222"
 			if teacher.present?
 				keyword = teacher.id
 			else
 				keyword = cache
 			end
+			pp teacher, "333333"
 
 			#管理员读取所以数据，其他用户读取拥有权限数据
 			if current_manager.administer?

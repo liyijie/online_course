@@ -46,7 +46,7 @@ class Course < ActiveRecord::Base
   }
 
   scope :keyword_like, -> (keyword) do
-    return all if keyword.blank?
+    return all if keyword.nil?
     where(
       'courses.manager_id LIKE ?
       OR courses.name LIKE ?
