@@ -14,9 +14,9 @@ module Admin
 
 			#管理员读取所以数据，其他用户读取拥有权限数据
 			if current_manager.administer?
-			  @courses = Course.all.page(params[:page]).keyword_like(keyword)
+			  @courses = Course.keyword_like(keyword).page(params[:page])
 			else
-				@courses = current_manager.courses.all.page(params[:page]).keyword_like(keyword)
+				@courses = current_manager.courses.keyword_like(keyword).page(params[:page])
 			end
 
 			if params[:status] == "deleted"
@@ -33,9 +33,9 @@ module Admin
 				end
 			else
 				if current_manager.administer?
-				  @courses = Course.all.page(params[:page]).per(10).keyword_like(keyword)
+				  @courses = Course.keyword_like(keyword).page(params[:page]).per(10)
 				else
-					@courses = current_manager.courses.all.page(params[:page]).per(10).keyword_like(keyword)
+					@courses = current_manager.courses.keyword_like(keyword).page(params[:page]).per(10)
 				end
 			end
 
