@@ -61,6 +61,7 @@ class Teacher < ActiveRecord::Base
   validates_uniqueness_of   :number, case_sensitive: false
   validates :password, presence: true, length: {minimum:4,maximum: 32}, on: :create
   validates_confirmation_of :password, on: :create
+  validates :name, :number, presence: true
 
   scope :keyword_like, -> (keyword) do
     return all if keyword.blank?

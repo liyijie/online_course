@@ -25,7 +25,7 @@
   <div class="form-group">
     <%= f.label :image, '头像', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.file_field :image, class: 'form-control' %>
+      <%= f.file_field :image, class: 'form-control', required: true %>
     </div>
   </div>
   <div class="form-group">
@@ -49,7 +49,7 @@
   <div class="form-group">
     <%= f.label :name, '姓名', class: 'col-sm-2 control-label' %>
     <div class="col-sm-4">
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, class: 'form-control', required: true %>
     </div>
   </div>
   <div class="form-group">

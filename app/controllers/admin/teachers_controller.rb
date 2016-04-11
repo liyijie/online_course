@@ -23,7 +23,6 @@ class TeachersController < ApplicationController
       flash.now[:notice] = "教师创建成功"
       return redirect_to admin_teachers_url
     else
-      p @teacher.errors
       return render :new
     end
   end
