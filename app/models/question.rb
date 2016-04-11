@@ -22,11 +22,12 @@ class Question < ActiveRecord::Base
   def self.import(file)
     allowed_attributes = [ "title", "correct_option", "correct_hint"]
     spreadsheet = open_spreadsheet(file)
-    header = ["title", "correct_option", "correct_hint", "option_1", "option_2", "option_3", "option_4"]
+    # header = ["title", "correct_option", "correct_hint", "option_1", "option_2", "option_3", "option_4"]
+    header = spreadsheet.row(2)
     errors = []
 
     Question.transaction do
-      (2..spreadsheet.last_row).each do |i|
+      (3..spreadsheet.last_row).each do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
         question = Question.new
         question.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }

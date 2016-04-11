@@ -41,7 +41,7 @@
           <button class="btn btn-success excel-btn" type="submit">
             <span class="glyphicon glyphicon-floppy-save">导入EXCEL试题</span>
           </button>
-          <%= link_to "导入模板下载", "/excels/子课程测试题导入模板.xlsx", class: "btn btn-primary" %>
+          <%= link_to "导入模板下载", "/excels/子课程测试题模板.xlsx", class: "btn btn-primary" %>
           <%= link_to "清空试题", clear_admin_course_sub_course_questions_path(params[:course_id], params[:sub_course_id], params[:id]), data: {confirm: "确定清空所有试题吗？"}, class: "btn btn-danger" %>
         </div>
       </div>
