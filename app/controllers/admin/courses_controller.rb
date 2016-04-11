@@ -33,9 +33,9 @@ module Admin
 				end
 			else
 				if current_manager.administer?
-				  @courses = Course.page(params[:page]).per(10).keyword_like(keyword)
+				  @courses = Course.all.page(params[:page]).per(10).keyword_like(keyword)
 				else
-					@courses = current_manager.courses.page(params[:page]).per(10).keyword_like(keyword)
+					@courses = current_manager.courses.all.page(params[:page]).per(10).keyword_like(keyword)
 				end
 			end
 
