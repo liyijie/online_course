@@ -29,6 +29,8 @@ class Manager < ActiveRecord::Base
   has_many :manager_courses, dependent: :destroy
   has_many :courses, through: :manager_courses
 
+  validates_uniqueness_of   :number, case_sensitive: false, message: "该用户工号已存在！"
+
   def self.find_for_database_authentication(warden_conditions)
    conditions = warden_conditions.dup
 

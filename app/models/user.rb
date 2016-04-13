@@ -53,10 +53,10 @@ class User < ActiveRecord::Base
   attr_accessor :specialty_id
 
   validates_presence_of     :number
-  validates_uniqueness_of   :number, case_sensitive: false
+  validates_uniqueness_of   :number, case_sensitive: false, message: "该用户工号已存在!"
   validates :password, presence: true, length: { minimum:4, maximum: 32 }, on: [:create, :update_password]
   validates_confirmation_of :password, on: [:create, :update_password]
-  validates_uniqueness_of   :number
+  # validates_uniqueness_of   :number
   validates_associated :image
 
   scope :keyword_like, -> (keyword) do

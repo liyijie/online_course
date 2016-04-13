@@ -3,6 +3,7 @@
 		<%= f.label :number, '人员编号', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
 			<%= f.text_field :number, class: 'form-control' %>
+			<%= f.error :number, id: 'number_error' %>
 		</div>
 	</div>
 	<div class="form-group">

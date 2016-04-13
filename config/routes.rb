@@ -179,7 +179,7 @@ Rails.application.routes.draw do
   # 微信
   namespace :wechat do
     root 'users#show'
-    
+    # 个人中心
     resources :users, only: [:edit, :update] do
       collection do
         get :changepassword
@@ -195,13 +195,13 @@ Rails.application.routes.draw do
         get :innovations
       end
     end
-    
-  end
-
-  resources :courses, only:[:index, :show] do
-    collection do
-      post :course_collect
-      # post :course_praise
+    # 课程中心
+    resources :courses, only:[:index, :show] do
+      collection do
+        post :course_collect
+        # post :course_praise
+        get :sub_course
+      end
     end
   end
 end

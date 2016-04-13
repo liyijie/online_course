@@ -55,10 +55,10 @@ class Teacher < ActiveRecord::Base
 
   # Virtual attribute for authenticating by either username or phone
   attr_accessor :login
-
+  
   validates_presence_of     :phone
   validates_uniqueness_of   :phone, case_sensitive: false
-  validates_uniqueness_of   :number, case_sensitive: false
+  validates_uniqueness_of   :number, case_sensitive: false, message: "该用户工号已存在！"
   validates :password, presence: true, length: {minimum:4,maximum: 32}, on: :create
   validates_confirmation_of :password, on: :create
   validates :name, :number, presence: true
