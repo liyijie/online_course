@@ -198,11 +198,10 @@ Rails.application.routes.draw do
     
   end
 
-    resources :courses, only:[:index, :show] do
-      collection do
-        post :course_collect
-        # post :course_praise
-      end
+  resources :courses, only:[:index, :show] do
+    collection do
+      post :course_collect
+      # post :course_praise
     end
   end
 end
