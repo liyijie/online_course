@@ -1,38 +1,63 @@
 .wechat__discusses__index {
 }
 
-//讨论分类
 .wechat__discusses__show {
-   .sorts {
-    height: 200px;
-    display: block;
-    background: #fff;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: solid 1px #e4e4e4;
-    .gap {
-      margin: 32px 0;
-    }
-    .icon {
-      height: 136px;
-      width: 136px;
-      &.book {
-        background: image-url("sorts-book.png") no-repeat 0 0;
-      }
-      &.people1 {
-        background: image-url("sorts-people1.png") no-repeat 0 0;
-      }
-      &.hand {
-        background: image-url("sorts-hand.png") no-repeat 0 0;
-      }
-      &.people2 {
-        background: image-url("sorts-people2.png") no-repeat 0 0;
-      }
-    }
-    span {
-      line-height: 200px;
-      color: #252525;
-      font-size: 18px;
-    }
-  }
+	.sorts {
+		padding-top: 20px;
+		padding-left: 10px;
+		.col-xs-6 {
+	   	padding: 0 10px 10px 0;
+	  }
+		.item {
+			text-align: center;
+	    display: block;
+	    background: #fff;
+	    padding: 20px 0 30px;
+	    border-radius: 3px;
+	    border: solid 1px #e4e4e4;
+	    color: #252525;
+	    font-size: 16px;
+	    img {
+	    	margin: 0 auto 20px;
+	    }
+	  }
+	}
+}
+
+.wechat__discusses__innovations {
+	.content{
+		padding: 10px 0px 0;
+		.cell-link:active {
+			background-color: #000;
+		}
+		.cell {
+			padding: 10px 10px 0;
+			margin-top: 0;
+			border-top: 1px solid #ddd;
+			.media-body {
+				.media-heading{
+					font-size: 16px;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 3;
+					overflow: hidden;
+
+				}
+				.comment {
+
+				}
+				p {
+					margin-bottom: 5px;
+				}
+			}
+		}
+		.mcol {
+			padding: 0;
+		}
+	}
+
+}
+
+.wechat__discusses__learns {
+
 }

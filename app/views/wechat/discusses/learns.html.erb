@@ -1,0 +1,19 @@
+<% content_for :wechat_title, "讨论中心" %>
+
+<div class="weui_tab">
+	<div class="weui_tab_bd">
+
+		<div class="weui_cells weui_cells_access">
+			<% @courses.each do |course| %>
+				<%= link_to wechat_discuss_path(course), class: "weui_cell" do %>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p><%= course.name %></p>
+					</div>
+					<div class="weui_cell_ft"></div>
+				<% end %>
+			<% end %>
+		</div>
+
+	</div>
+	<%= render partial: "tabbar" %>
+</div>

@@ -1,0 +1,44 @@
+<% @topics.each do |topic| %>
+  <%= link_to wechat_discuss_path(topic), class: "cell-link" do %>
+    <div class="media cell">
+      <div class="media-left">
+        <%= image_tag topic.try(:usertable).try(:show_image), class: "media-object", width: 48, height: 48 %>
+      </div>
+      <div class="media-body">
+        <p class="media-heading text-primary"><%= topic.title %></p>
+        <!-- 最新回答 -->
+        <p class="comment text-muted">
+          <% if topic.has_children?  %>
+            <span>[最新回答]</span>
+            <span><%= topic.children.last.try(:usertable).try(:show_name) %>:<span>
+          <% else %>
+            <span>嗯 ~ ~，这个提问大家都在考虑....</span>
+          <% end %>
+        </p>
+        <!-- 时间、评论数、评论 -->
+        <p>
+        <span class="text-muted"><%= topic.created_at.try(:strftime,'%y-%m-%d %H:%M') %></span>
+         <span class="pull-right">
+           <span class="glyphicon glyphicon-comment text-info"></span>
+           <span class="text-muted"><%= topic.children.size %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+           <span class="glyphicon glyphicon-edit text-success comment_reply"></span>
+         </span>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="paginate text-center">
+  <%= paginate @topics, remote: true, format: :js %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $(".comment_reply").click(function(){
+        $("#topicList form").remove();
+        $("#comment_id").val($(this).attr("comment-id"));
+        $(this).parent().append($("#relyCommentForm").html());
+      });
+  });
+</script>

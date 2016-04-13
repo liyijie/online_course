@@ -1,51 +1,37 @@
 <% content_for :wechat_title, "讨论中心" %>
 
 <div class="weui_tab">
-	<div class="weui_tab_bd discuss-list">
+	<div class="weui_tab_bd">
 
-      <div class="col-xs-6">
-        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
-          <div class="col-xs-4 gap">
-            <div class="icon book"></div>
-          </div>
-          <div class="col-xs-8 text-center">
-            <span>专业课程论坛</span>
-          </div>
-        <% end %>
-      </div>
+		<div class="sorts clearfix">
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-book.png", width: "60%" %>
+					<p class="text-center">专业课程论坛</p>
+				<% end %>
+			</div>
 
-      <div class="col-xs-6">
-        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
-          <div class="col-xs-4 gap">
-            <div class="icon people1"></div>
-          </div>
-          <div class="col-xs-8 text-center">
-            <span>培养模式论坛</span>
-          </div>
-        <% end %>
-      </div>
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-hand.png", width: "60%" %>
+					<p class="text-center">校企合作论坛</p>
+				<% end %>
+			</div>
 
-      <div class="col-xs-6">
-        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
-          <div class="col-xs-4 gap">
-            <div class="icon hand"></div>
-          </div>
-          <div class="col-xs-8 text-center">
-            <span>校企合作论坛</span>
-          </div>
-        <% end %>
-      </div>
-      
-      <div class="col-xs-6">
-        <%= link_to "#", class: "sorts", onclick: "alert('模块维护中!')" do %>
-          <div class="col-xs-4 gap">
-            <div class="icon people2"></div>
-          </div>
-          <div class="col-xs-8 text-center">
-            <span>实习就业论坛</span>
-          </div>
-        <% end %>
-      </div>
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-people1.png", width: "60%" %>
+					<p class="text-center">培养模式论坛</p>
+				<% end %>
+			</div>
+
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-people2.png", width: "60%" %>
+					<p class="text-center">实习就业论坛</p>
+				<% end %>
+			</div>
+		</div>
 
 	</div>
 	<%= render partial: "tabbar" %>

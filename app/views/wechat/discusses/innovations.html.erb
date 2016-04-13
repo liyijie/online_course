@@ -1,0 +1,15 @@
+<% content_for :wechat_title, "讨论中心" %>
+
+<div class="weui_tab">
+	<div class="weui_tab_bd">
+		<div class="content clearfix">
+			<!-- 新建话题 -->
+			<%= link_to "新建话题", "#", class: "weui_btn weui_btn_plain_primary" %>
+			<!-- 评论内容 -->
+			<div id="topicList" class="discuss-list">
+		    <%= render partial: "topic", locals: {topics: @topics} %>
+		  </div>
+		</div>
+	</div>
+	<%= render partial: "tabbar" %>
+</div>
