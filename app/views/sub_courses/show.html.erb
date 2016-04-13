@@ -84,7 +84,7 @@
 			<ul class="teachers">
 				<% @course.teacher_courses.each do |teacher_course| %>
 				  <li class="list text-center">
-					  <% unless teacher_course.teacher.nil? %>
+					  <% if teacher_course.teacher_id.present? %>
 					  	<%= teacher_course.try(:teacher).try(:name) %>
 					    <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.teacher.number) if teacher_course.try(:teacher).try(:image).present? %>
 					  <% end %>

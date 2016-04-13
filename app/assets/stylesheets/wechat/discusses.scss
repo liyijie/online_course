@@ -1,0 +1,38 @@
+.wechat__discusses__index {
+}
+
+//讨论分类
+.wechat__discusses__show {
+   .sorts {
+    height: 200px;
+    display: block;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: solid 1px #e4e4e4;
+    .gap {
+      margin: 32px 0;
+    }
+    .icon {
+      height: 136px;
+      width: 136px;
+      &.book {
+        background: image-url("sorts-book.png") no-repeat 0 0;
+      }
+      &.people1 {
+        background: image-url("sorts-people1.png") no-repeat 0 0;
+      }
+      &.hand {
+        background: image-url("sorts-hand.png") no-repeat 0 0;
+      }
+      &.people2 {
+        background: image-url("sorts-people2.png") no-repeat 0 0;
+      }
+    }
+    span {
+      line-height: 200px;
+      color: #252525;
+      font-size: 18px;
+    }
+  }
+}

@@ -181,6 +181,15 @@ Rails.application.routes.draw do
     root 'users#show'
 
     resources :users, only: [:edit, :update]
+    #讨论中心
+    resources :discusses, except: [:edit, :update, :destroy] do 
+      collection do
+        post :reply_topic
+        get :sorts
+        get :learns
+        get :innovations
+      end
+    end
   end
 
 end

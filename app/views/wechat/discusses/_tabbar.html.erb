@@ -1,0 +1,22 @@
+<div class="weui_tabbar">
+    <a href="javascript:;" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:controller] == "wechat/discusses" && params[:action] == "index" %>">
+        <div class="weui_tabbar_icon">
+            <%= image_tag "wechat/icon_nav_button.png" %>
+        </div>
+        <p class="weui_tabbar_label">专业人才培养校企论坛</p>
+    </a>
+
+    <a href="javascript:;" class="weui_tabbar_item">
+        <div class="weui_tabbar_icon">
+            <%= image_tag "wechat/icon_nav_article.png" %>
+        </div>
+        <p class="weui_tabbar_label">课程学习论坛</p>
+    </a>
+    
+    <a href="javascript:;" class="weui_tabbar_item">
+        <div class="weui_tabbar_icon">
+            <%= image_tag "wechat/icon_nav_dialog.png" %>
+        </div>
+        <p class="weui_tabbar_label">创新创意论坛</p>
+    </a>
+</div>
