@@ -81,6 +81,9 @@
       <div class="weui_cell_ft"><%= @numbers[:answer_comments] %> 条</div>
     </div>
   </div>
+  <div class="buttons">
+    <%= link_to "修改密码", changepassword_wechat_users_path, class: "weui_btn weui_btn_primary" %>
+  </div>
   
   <div class="buttons">
     <%= link_to "退出账户", destroy_user_session_path(c: :weixin), :method => :delete, class: "weui_btn weui_btn_warn" %>

@@ -1,0 +1,27 @@
+<% @courses.each do |course|%>
+  <div class='single-vedio-content col-xs-12'>
+    <div class="vedio-content">
+    <div class="image-wrapper" style="height: 230px; overflow: hidden;">
+      <% unless course.image.present? && course.image.avatar.present? %>
+        <%= link_to image_tag("course-show.png"), wechat_course_path(course.number), id: 'course-img', class: 'img', style: "height: 230px" if course.attachment %>
+      <% else %>
+        <%= link_to image_tag(course.try(:image).try(:avatar).url(:c_500_350)), wechat_course_path(course.number), id: 'course-img',class: 'img' if course.attachment %>
+      <% end %>
+    </div>
+    <p class="description">
+      <span class="pull-left section">
+        <span class="title"><%= link_to truncate(course.name, length: 26), wechat_course_path(course.number) %></span>
+      </span>
+      <span class="pull-right">
+        <span class="glyphicon glyphicon-star"></span>
+        <%= course.get_likes(vote_scope: "collect").size %>人收藏
+      </span>
+    </p>
+  </div>
+  </div>
+<% end %>
+
+<!--<script type="text/javascript">
+  var width = $(window).width()-30;
+  $("div.vedio-content").width(width);
+</script> -->

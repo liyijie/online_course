@@ -6,6 +6,17 @@ class Wechat::UsersController < Wechat::BaseController
     @numbers = User.quantities(@user)
   end
 
+  #修改密码
+  def changepassword
+    
+  end
+
+  #我的考试
+  def my_exams
+    @numbers = User.quantities(current_user)
+    @exams = current_user.try(:exams)
+  end
+
   def edit
     #学院专业回显赋值
     @user.academy_id = @user.try(:grade).try(:specialty).try(:academy).try(:id)

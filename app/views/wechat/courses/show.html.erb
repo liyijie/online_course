@@ -1,0 +1,84 @@
+<div class="show-content">
+  <div class="course-image content1">
+    <!-- 优先选择file_url选项 -->
+    <% unless @course.attachment && @course.attachment.file_url.present? %>
+      <video width="100%" height="250" class="mejs-player" poster="<%= (@course.try(:image).try(:avatar).url(:c_500_350))%>" controls="controls" preload="none">
+        <source type="video/mp4" src="<%= @course.attachment.content.url %>" />
+      </video>
+    <% else %>
+      <video width="100%" height="250" class="mejs-player" controls="controls" preload="none">
+        <source type="video/mp4" src="<%= @course.attachment.file_url %>" />
+      </video>
+    <% end %>
+  </div>
+
+  <div class="container content2">
+    <div class="title-show"><%= @course.name %></div>
+    <hr class="course-show-hr">
+    <div class="description-content">
+      <p class="course-description">
+        <%= truncate(@course.description,length: 180) %><span class="showmore">［收起］</span>
+      </p>
+    </div>
+    <div class="course-exam pull-left">
+      <div class="collect-zan-btns">
+        <%= form_tag course_collect_wechat_courses_path, method: :post, remote: true, id: "courseCollectPraise" do %>
+          <%= hidden_field_tag "course_id", @course.id%>
+          <% collect_count = @course.get_likes(vote_scope: :collect).size %>
+          <% is_collect = current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>
+            <span id="collectIcon" class="glyphicon glyphicon-star <%= 'text-muted' if !is_collect %>"></span>
+            <span id="collectFont" count="<%= collect_count %>" iscollect = "<%= is_collect %>" >
+              <%= collect_count %>
+            </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="course-exam pull-right">
+      <%= link_to "课程测试", "#{}", class: "exam"%>
+    </div>
+  </div>
+  <div class="container content3">
+    <div class="col-xs-6 courses-sub sub1">
+      <%= link_to "#{}", class: 'wenjian', title: '教学基本文件' do %>
+        <%= image_tag "wechat/courses_show_06.png", width: "50%"%>
+        <h5>教学基本文件</h5>
+      <% end%>
+    </div>
+    <div class="col-xs-6 courses-sub sub2">
+      <%= link_to "#{}", class: 'wenjian', title: '教学课件' do %>
+        <%= image_tag "wechat/courses_show_03.png", width: "50%"%>
+        <h5>教学课件</h5>
+      <% end%>
+    </div>
+    <div class="col-xs-6 courses-sub sub1">
+      <%= link_to "#{}", class: 'wenjian', title: '教学视频' do %>
+        <%= image_tag "wechat/courses_show_10.png", width: "50%"%>
+        <h5>教学视频</h5>
+      <% end%>
+    </div>
+    <div class="col-xs-6 courses-sub sub2">
+      <%= link_to "#{}", class: 'wenjian', title: '典型案例' do %>
+        <%= image_tag "wechat/courses_show_11.png", width: "50%"%>
+        <h5>典型案例</h5>
+      <% end%>
+    </div>
+    <div class="col-xs-6 courses-sub sub3">
+      <%= link_to "#{}", class: 'wenjian', title: '学生作品' do %>
+        <%= image_tag "wechat/courses_show_15.png", width: "50%"%>
+        <h5>学生作品</h5>
+      <% end%>
+    </div>
+    <div class="col-xs-6 courses-sub">
+      <%= link_to "#{}", class: 'wenjian', title: '自主学习资源' do %>
+        <%= image_tag "wechat/courses_show_17.png", width: "50%"%>
+        <h5>自主学习资源</h5>
+      <% end%>
+    </div>
+  </div>
+</div>
+
+<%= content_for :script do %>
+  <%= javascript_tag do %>
+    course_collect_path = "<%= course_collect_wechat_courses_path%>"
+  <% end %>
+<%end%>
