@@ -4,12 +4,58 @@
 	<div class="weui_tab_bd">
 		<div class="content clearfix">
 			<!-- 新建话题 -->
-			<%= link_to "新建话题", "#", class: "weui_btn weui_btn_plain_primary" %>
-			<!-- 评论内容 -->
+			<%= link_to "新建话题", "javascript:;", class: "weui_btn weui_btn_plain_primary", id: "newCreateBtn" %>
+			<!-- 话题列表 -->
 			<div id="topicList" class="discuss-list">
 		    <%= render partial: "topic", locals: {topics: @topics} %>
 		  </div>
 		</div>
 	</div>
+	<!-- 底部导航 -->
 	<%= render partial: "tabbar" %>
 </div>
+
+<!-- 弹出模态框，创建话题 -->
+<div id="createDiscuss" class="modal fade">
+  <%= render "new_modal" %>
+</div>
+
+<!-- 回复表单 -->
+<div id="replyCommentForm" style="display: none;">
+  <%= form_tag reply_topic_wechat_discusses_path, method: :post, remote: true, class: "reply-comment-form" do %>
+    <div class="weui_cells weui_cells_form comment_form">
+      <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+			    <%= text_area_tag "comment", "", rows: 3, class: "weui_textarea", placeholder: "请输入评论" %>
+          <%= hidden_field_tag "comment_id" %>
+			    <%= hidden_field_tag "type", params[:type] %>
+			    <%= hidden_field_tag "page", params[:page] %>
+          <div class="weui_textarea_counter">
+          	<%= submit_tag "发送", class: "weui_btn weui_btn_mini weui_btn_primary", onclick: "if($(this).siblings('#comment').first().val() == ''){alert('请填写内容在发布');return false;};" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+	// 创建话题，打开模态框
+  $(function(){
+    $("#newCreateBtn").click(function(){
+      $("#createDiscuss").modal();
+    });
+  });
+</script>
+
+<% content_for :script do %>
+ <script>
+ 	// 点击条目的样式效果
+  function mouseDown(){
+		$(this).style.color="red";
+	}
+	function mouseUp(){
+		$(this).style.color="green";
+	}
+ </script>
+<% end %>

@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<div id="relyCommentForm" style="display: none;">
+<div id="replyCommentForm" style="display: none;">
   <%= form_tag sub_courses_reply_comment_list_path, method: :post, remote: true, class: "reply-comment-form" do %>
     <%= text_area_tag "comment", "", rows: 3, 
       cols: 110, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
@@ -82,7 +82,7 @@
     $(".comment_reply").click(function(){
         $(".comment-list form").remove();
         $("#comment_id").val($(this).attr("comment-id"));
-        $(this).parent().append($("#relyCommentForm").html());
+        $(this).parent().append($("#replyCommentForm").html());
       });
   });
 </script>

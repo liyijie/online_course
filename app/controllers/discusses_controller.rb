@@ -75,9 +75,13 @@ class DiscussesController < ApplicationController
   def innovations
     #找出相关话题
     @topics = Comment.find_topics_by_type params[:type], params[:page]
-
     #新建话题
     @discuss = Comment.new
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 

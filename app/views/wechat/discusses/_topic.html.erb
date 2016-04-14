@@ -1,44 +1,48 @@
 <% @topics.each do |topic| %>
-  <%= link_to wechat_discuss_path(topic), class: "cell-link" do %>
-    <div class="media cell">
-      <div class="media-left">
-        <%= image_tag topic.try(:usertable).try(:show_image), class: "media-object", width: 48, height: 48 %>
-      </div>
-      <div class="media-body">
-        <p class="media-heading text-primary"><%= topic.title %></p>
+  <div class="media cell">
+    <div class="media-left">
+      <a href="<%= wechat_discuss_path(topic) %>" ontouchstart="this.className='down'" ontouchend="this.className='up'">
+        <%= image_tag topic.try(:usertable).try(:show_image), class: "media-object img-circle", width: 48, height: 48 %>
+        <p class="text-center text-muted"><small><%= truncate(topic.try(:usertable).try(:show_name),length: 4)%></small></p>
+      </a>
+    </div>
+    <div class="media-body">
+      <!-- 点击进入话题详情页 -->
+      <a href="<%= wechat_discuss_path(topic) %>" ontouchstart="this.className='down'" ontouchend="this.className='up'">
+        <!-- 主题 -->
+        <p class="media-heading text-primary two_line"><%= topic.title %></p>
         <!-- 最新回答 -->
-        <p class="comment text-muted">
+        <p class="text-muted two_line">
           <% if topic.has_children?  %>
             <span>[最新回答]</span>
             <span><%= topic.children.last.try(:usertable).try(:show_name) %>:<span>
+            <span class="text-muted"><%= topic.children.last.body %></span>
           <% else %>
             <span>嗯 ~ ~，这个提问大家都在考虑....</span>
           <% end %>
         </p>
-        <!-- 时间、评论数、评论 -->
-        <p>
-        <span class="text-muted"><%= topic.created_at.try(:strftime,'%y-%m-%d %H:%M') %></span>
-         <span class="pull-right">
-           <span class="glyphicon glyphicon-comment text-info"></span>
-           <span class="text-muted"><%= topic.children.size %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-           <span class="glyphicon glyphicon-edit text-success comment_reply"></span>
-         </span>
-        </p>
-      </div>
+      </a>
+      <!-- 时间、评论数、评论 -->
+      <p class="text-right">
+        <span class="text-muted pull-left"><%= topic.created_at.try(:strftime,'%y-%m-%d %H:%M') %></span>
+        <span class="glyphicon glyphicon-comment text-info"></span>
+        <span class="text-muted"><%= topic.children.size %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="glyphicon glyphicon-edit text-success comment_reply" comment-id="<%= topic.id %>"></span>
+      </p>
     </div>
-  <% end %>
+  </div>
 <% end %>
 
 <div class="paginate text-center">
-  <%= paginate @topics, remote: true, format: :js %>
+  <%= paginate @topics %>
 </div>
 
 <script type="text/javascript">
   $(function(){
     $(".comment_reply").click(function(){
-        $("#topicList form").remove();
-        $("#comment_id").val($(this).attr("comment-id"));
-        $(this).parent().append($("#relyCommentForm").html());
-      });
+      $("#topicList form").remove();
+      $("#comment_id").val($(this).attr("comment-id"));
+      $(this).parent().append($("#replyCommentForm").html());
+    });
   });
 </script>

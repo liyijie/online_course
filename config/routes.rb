@@ -191,6 +191,7 @@ Rails.application.routes.draw do
     resources :discusses, except: [:edit, :update, :destroy] do 
       collection do
         post :reply_topic
+        get :sorts
         get :learns
         get :innovations
       end

@@ -1,0 +1,60 @@
+<div class="weui_dialog_confirm" id="topicDialog">
+	<div class="weui_mask"></div>
+	<div class="weui_dialog">
+		<div class="weui_dialog_hd">
+			<strong class="weui_dialog_title">新建话题</strong>
+		</div>
+		<div class="weui_dialog_bd p0">
+			<%= form_for @discuss, url: wechat_discusses_path, remote: true, html: {class: "form-horizontal"} do |f| %>
+				<div class="weui_cells weui_cells_form mt0">
+
+					<div class="weui_cell topic_title">
+						<div class="weui_cell_hd"><label class="weui_label">标题</label></div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<%= f.text_field :title, class: "weui_input", type: "text", placeholder: "输入话题标题" %>
+						</div>
+						<div class="weui_cell_ft">
+              <i class="weui_icon_warn"></i>
+            </div>
+					</div>
+
+					<div class="weui_cell topic_body">
+						<div class="weui_cell_bd weui_cell_primary">
+							<%= f.text_area :body, class: "weui_textarea", placeholder: "输入话题内容", rows: 5 %>
+						</div>
+						<div class="weui_cell_ft">
+	            <i class="weui_icon_warn"></i>
+	          </div>
+					</div>
+
+				</div>
+				<div class="weui_dialog_ft mt0 text-center">
+					<a href="javascript:;" class="weui_btn_dialog default" data-dismiss="modal" onclick="cancel()">取消</a>
+					<a href="javascript:;" class="weui_btn_dialog primary" onclick="commit()">确定</a>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<script>
+	// 确定
+	function commit() {
+		var title = $("#comment_title").val();
+		var content = $("#comment_body").val();
+		if (title.length <= 0) {
+			$(".topic_title").addClass("weui_cell_warn");
+		} else {
+			if (content.length <= 0) {
+				$(".topic_body").addClass("weui_cell_warn");
+			} else {
+				$("#new_comment").submit();
+			}
+		}
+	}
+	// 取消
+	function cancel() {
+		$(".topic_title").removeClass("weui_cell_warn");
+		$(".topic_body").removeClass("weui_cell_warn");
+	}
+</script>

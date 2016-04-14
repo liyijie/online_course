@@ -1,0 +1,38 @@
+<% content_for :wechat_title, "讨论中心" %>
+
+<div class="weui_tab">
+	<div class="weui_tab_bd">
+
+		<div class="sorts clearfix">
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-book.png", width: "60%" %>
+					<p class="text-center">专业课程论坛</p>
+				<% end %>
+			</div>
+
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-hand.png", width: "60%" %>
+					<p class="text-center">校企合作论坛</p>
+				<% end %>
+			</div>
+
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-people1.png", width: "60%" %>
+					<p class="text-center">培养模式论坛</p>
+				<% end %>
+			</div>
+
+			<div class="col-xs-6">
+				<%= link_to "#", class: "item", onclick: "alert('模块维护中！')" do %>
+					<%= image_tag "sorts-people2.png", width: "60%" %>
+					<p class="text-center">实习就业论坛</p>
+				<% end %>
+			</div>
+		</div>
+
+	</div>
+	<%= render partial: "tabbar" %>
+</div>

@@ -1,7 +1,25 @@
+// 点击鼠标样式
+.down {
+	background-color: #eeeeee;
+	display: block;
+}
+// 松开鼠标样式
+.up {
+	background-color: transparent;
+	display: block;
+}
+// 公共样式
+.mt0{
+	margin-top: 0;
+}
+.p0{
+	padding: 0;
+}
+
 .wechat__discusses__index {
 }
 
-.wechat__discusses__show {
+.wechat__discusses__sorts {
 	.sorts {
 		padding-top: 20px;
 		padding-left: 10px;
@@ -24,12 +42,9 @@
 	}
 }
 
-.wechat__discusses__innovations {
+.wechat__discusses__innovations, .wechat__discusses__show {
 	.content{
 		padding: 10px 0px 0;
-		.cell-link:active {
-			background-color: #000;
-		}
 		.cell {
 			padding: 10px 10px 0;
 			margin-top: 0;
@@ -37,22 +52,26 @@
 			.media-body {
 				.media-heading{
 					font-size: 16px;
+				}
+				.two_line {
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 3;
+					-webkit-line-clamp: 2;
 					overflow: hidden;
-
-				}
-				.comment {
-
 				}
 				p {
 					margin-bottom: 5px;
 				}
 			}
 		}
+		.comment_form {
+			margin: 5px 0;
+		}
 		.mcol {
 			padding: 0;
+		}
+		.error {
+			border: 1px solid red;
 		}
 	}
 

@@ -35,7 +35,7 @@
   <%= render "new_modal" %>
 </div>
 
-<div id="relyCommentForm" style="display: none;">
+<div id="replyCommentForm" style="display: none;">
   <%= form_tag reply_topic_discusses_path, method: :post, remote: true, class: "reply-comment-form" do %>
     <br><br>
     <%= text_area_tag "comment", "", rows: 3, 

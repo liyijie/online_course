@@ -42,7 +42,7 @@
 <% end %>
 
 <div class="paginate text-center">
-  <%= paginate @topics, remote: true, format: :js %>
+  <%= paginate @topics %>
 </div>
 
 <script type="text/javascript">
@@ -50,7 +50,7 @@
     $(".comment_reply").click(function(){
         $("#topicList form").remove();
         $("#comment_id").val($(this).attr("comment-id"));
-        $(this).parent().append($("#relyCommentForm").html());
+        $(this).parent().append($("#replyCommentForm").html());
       });
   });
 </script>
