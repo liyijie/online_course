@@ -1,7 +1,7 @@
 @import "wechat_variables";
 
-// 登录页面
-.users__sessions__new {
+// 登录页面 && //密码修改页面
+.users__sessions__new, .wechat__users__changepassword {
   .page {
     background: #e4e4e4;
     position: absolute;
@@ -24,7 +24,9 @@
 
   .wechat-login {
     padding: 20px;
-
+    .changepass {
+      padding: 0 30px
+    }
     .form-control {
       height: 50px;
     }
@@ -97,3 +99,41 @@
     margin-top: 0px;
   }
 }
+
+//我的测试页
+.wechat__users__my_exams {
+  .div-content {
+    padding: 20px 0;
+    .exams-panel-body {
+      padding: 10px;
+      .exam-name {
+        margin-bottom: 10px;
+        height: 26px;
+        line-height: 26px;
+        overflow: hidden;
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        a {
+          color: #fff;
+        }
+      }
+      .score-detail > p {
+        font-size: 12px;
+        padding: 4px 0;
+        .btn-text-check {
+          background-color: rgb(31, 92, 158);
+          padding: 4px 15px;
+          color: #fff;
+        }
+      }
+      .score-detail-right {
+        padding-left: 15%;
+      }
+    }
+  }
+}
+
+
+

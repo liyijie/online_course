@@ -1,0 +1,12 @@
+<div class="container div-form div-content">
+  <%= simple_form_for current_user, url: registration_path(:user, c: :weixin), html: { class: 'form-horizontal', method: :put}, wrapper: :horizontal_form do |f|%>
+    <%= f.input :current_password, label: "原始密码", placeholder: '请输入原始密码', autofocus: false %>
+    <%= f.input :password, label: "新密码", placeholder: '请输入新密码', autofocus: false %>
+    <%= f.input :password_confirmation, label: "确认密码", placeholder: '请输入确认密码', autofocus: false %>
+    <div class="col-sm-5 col-sm-offset-2">
+    <p class="text-center">
+      <%= f.submit "确认修改", class: "btn btn-success" %>
+    </p>
+    </div>
+  <% end %>
+</div>

@@ -8,7 +8,12 @@ class Wechat::UsersController < Wechat::BaseController
 
   #修改密码
   def changepassword
-    
+    # if @user.update(user_params)
+    #   #头像更新
+    # else
+    #   #更新失败
+    #   redirect_to wechat_root_path, notice: "个人资料更新失败"
+    # end
   end
 
   #我的考试

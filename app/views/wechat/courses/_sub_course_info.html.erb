@@ -1,0 +1,21 @@
+<%= content_for :script do %>
+  <%= javascript_include_tag  "modal_pdf", 'data-turbolinks-track' => false %>
+<%end%>
+<ul>
+  <% if sub_courses.present? %>
+    <% sub_courses.each do |sub_course|%>
+      <li class="sub-course-li">
+        <%= link_to show_sub_courses_path(number: sub_course.number, course_number: @course.number) do %>
+          <span class="title sub-courses-title"><%= sub_course.name %></span>
+        <%end%>
+        <% if sub_course.attachment.present? %>
+          <%= link_to sub_course.attachment.content.url, class: "fright viewPdf", 'data-toggle': "modal", 'data-target': "#myModal", 'data-name': sub_course.name do %>
+            <span>&nbsp;&nbsp;<%= image_tag "read_icon.png"%>观看</span>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  <% else %>
+    <h4 style="padding: 5px 45px">此栏目暂时未上传资料！</h4>
+  <% end %>
+</ul>

@@ -182,6 +182,9 @@ Rails.application.routes.draw do
     # 个人中心
     resources :users, only: [:edit, :update] do
       collection do
+        get :my_exams
+      end
+      member do
         get :changepassword
       end
     end
@@ -200,9 +203,11 @@ Rails.application.routes.draw do
     resources :courses, only:[:index, :show] do
       collection do
         post :course_collect
-        # post :course_praise
-        get :sub_course
       end
+      member do
+        get :sub_course
+        get :after_class_exams
+      end 
     end
   end
 end

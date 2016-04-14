@@ -165,6 +165,47 @@
   }  
 }
 
+//子课程、课程资料页
+.wechat__courses__sub_course {
+  .sub-courses-panel-group{
+    padding: 20px 25px;
+    a {
+        color: #fff;
+      }
+    .sub-courses-tab {
+      background-color: rgb(31, 92, 158);
+    }
+    .sub-courses-panel-body{
+      padding-left: 25px;
+      li.sub-course-li {
+        border-bottom: 1px dashed rgb(180, 180, 180);
+        padding-bottom: 3px;
+        .sub-courses-title {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+//课程测试页
+.wechat__courses__after_class_exams {
+  .courses-list {
+    padding: 20px 0;
+    .text-lists {
+      list-style-type:none;
+      padding: 10px 15px;
+      background-color: #fff;
+      color: #000;
+      margin: 14px 20px;
+      border: 1px solid rgb(198, 198, 198);
+      border-radius: 3px;
+      .exam-edit {
+        color: rgb(65, 181, 69);
+      }
+    }
+  }
+}
 
 
 

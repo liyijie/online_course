@@ -1,26 +1,94 @@
-<%= content_for :script do %>
-  <%= javascript_include_tag  "modal_pdf", 'data-turbolinks-track' => false %>
-<%end%>
+<% if @sub_course_name == "教学基本文件" %>
+  <div class="panel-group sub-courses-panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <div class="panel-heading sub-courses-tab" role="tab" id="headingOne">
+        <h4 class="panel-title">专业人才培养方案<span class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></h4>
+      </div>
+      </a>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body sub-courses-panel-body">
+          <%= render partial: "sub_course_info", locals: {sub_courses: @zyrc_sub_courses, title: "专业人才培养方案"}%>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <div class="panel-heading sub-courses-tab" role="tab" id="headingTwo">
+          <h4 class="panel-title"> 课程标准<span class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></h4>
+        </div>
+      </a>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body sub-courses-panel-body">
+          <%= render partial: "sub_course_info", locals: {sub_courses: @kcbz_sub_courses, title: "课程标准"}%>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <div class="panel-heading sub-courses-tab" role="tab" id="headingThree">
+          <h4 class="panel-title">电子教材<span class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></h4>
+        </div>
+      </a>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body sub-courses-panel-body">
+          <%= render partial: "sub_course_info", locals: {sub_courses: @dzjc_sub_courses, title: "电子教材"}%>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <div class="panel-heading sub-courses-tab" role="tab" id="headingFour">
+          <h4 class="panel-title">电子教案<span class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></h4>
+        </div>
+      </a>
+      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+        <div class="panel-body sub-courses-panel-body">
+          <%= render partial: "sub_course_info", locals: {sub_courses: @dzja_sub_courses, title: "电子教案"}%>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <div class="panel-heading sub-courses-tab" role="tab" id="headingFive">
+          <h4 class="panel-title">考核标准<span class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></h4>
+        </div>
+      </a>
+      <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+        <div class="panel-body sub-courses-panel-body">
+          <%= render partial: "sub_course_info", locals: {sub_courses: @khbz_sub_courses, title: "考核标准"}%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="panel-group sub-courses-panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <div class="panel-heading sub-courses-tab" role="tab" id="headingOne">
+        <h4 class="panel-title"><%= @sub_course_name %><span class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true"></span></h4>
+      </div>
+      </a>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body sub-courses-panel-body">
+          <%= render partial: "sub_course_info", locals: {sub_courses: @sub_courses_info, title: "教学课件"}%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<div class="titleContent">
-  <div class="titleBlock"></div>
-  <div class="titleBar"><%= title %></div>
-</div>
-<ul>
-  <% if sub_courses.present? %>
-    <% sub_courses.each do |sub_course|%>
-      <li>
-        <%= link_to show_sub_courses_path(number: sub_course.number, course_number: @course.number) do %>
-          <span class="title"><%= sub_course.name %></span>
-        <%end%>
-        <% if sub_course.attachment.present? %>
-          <%= link_to sub_course.attachment.content.url, class: "fright viewPdf", 'data-toggle': "modal", 'data-target': "#myModal", 'data-name': sub_course.name do %>
-            <span>&nbsp;&nbsp;<%= image_tag "read_icon.png"%>观看</span>
-          <% end %>
-        <% end %>
-      </li>
-    <% end %>
-  <% else %>
-    <h4 style="padding: 5px 45px">此栏目暂时未上传资料！</h4>
-  <% end %>
-</ul>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var val=$("a").attr("class");
+    if (val != 'collapsed')
+      $("span").addClass('glyphicon glyphicon-chevron-down pull-right');
+    else
+      $("span").addClass('glyphicon glyphicon-chevron-down pull-right');
+  }
+</script>
+
+
+
+
+

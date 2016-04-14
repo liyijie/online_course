@@ -1,39 +1,35 @@
 <div class="page">
   <div class="content native-scroll">
-  <div class="wechat-logo">
-    <div class="clearfix">
-      <div class="text-center">
-          <%= image_tag "wechat/logo.png", width: "30%"%>
-          <h3 class="logo">上海工商职业技术学院<small>&nbsp;&nbsp;|&nbsp;&nbsp;课程中心</small></h3>
+    <div class="wechat-logo">
+      <div class="clearfix">
+        <div class="text-center">
+            <%= image_tag "wechat/logo.png", width: "30%"%>
+            <h3 class="logo">上海工商职业技术学院<small>&nbsp;&nbsp;|&nbsp;&nbsp;课程中心</small></h3>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="wechat-login">
-    <div id="flash_alert">
-      <% flash.each do |key, value| %>
-        <% if value.present? %>
-            <div class="text-danger"><%= value%></div>
+    
+    <div class="wechat-login">
+      <div id="flash_alert">
+        <% flash.each do |key, value| %>
+          <% if value.present? %>
+              <div class="text-danger"><%= value%></div>
+          <% end %>
         <% end %>
+      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name, c: :weixin), html: {id: "loginForm"}) do |f| %>
+        <div class="form-group">
+          <%= f.text_field :login, placeholder: "用户名或账号", autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password, placeholder: "密码", autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="buttons">
+          <button type="reset" class="btn btn-default">重置</button>
+          <button type="submit" class="btn btn-info pull-right">提交</button>
+        </div>
       <% end %>
     </div>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name, c: :weixin), html: {id: "loginForm"}) do |f| %>
-      <div class="form-group">
-        <%= f.text_field :login, placeholder: "用户名或账号", autofocus: true, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.password_field :password, placeholder: "密码", autofocus: true, class: "form-control" %>
-      </div>
-
-      <div class="buttons">
-        <button type="reset" class="btn btn-default">重置</button>
-        <button type="submit" class="btn btn-info pull-right">提交</button>
-      </div>
-      <% end %>
-    </div>
-
-    
-    
-    
   </div>
 </div>

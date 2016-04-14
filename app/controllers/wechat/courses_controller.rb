@@ -1,4 +1,5 @@
 class Wechat::CoursesController < Wechat::BaseController
+  before_action :set_course_number
   def index
     @academies = Academy.all
     @courses = Course.undeleted.search_courses(params)
@@ -15,18 +16,28 @@ class Wechat::CoursesController < Wechat::BaseController
 
   def sub_course
     @course = Course.find_by(number: params[:id])
-    #教学课件子课程
-    @jxtj_sub_courses = @course.sub_courses.enabled.undeleted.where(category_id: Category.find_by(name: "教学课件").id) if Category.find_by(name: "教学课件")
-    #教学视频子课程
-    @jxsp_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "教学视频").id) if Category.find_by(name: "教学视频")
-    #典型案例子课程
-    @dxal_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "典型案例").id) if Category.find_by(name: "典型案例")
-    #学生作品子课程
-    @xszp_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "学生作品").id) if Category.find_by(name: "学生作品")
-    #自主学习子课程
-    @zzxx_sub_courses = @course.sub_courses.enabled.where(category_id: Category.find_by(name: "自主学习资源").id) if Category.find_by(name: "自主学习资源")
-    #读取教师课程
-    @teacher_courses = @course.teacher_courses
+
+    @categories = Category.all
+    @category_arr = Category.pluck(:id)
+    #专业人才培养方案子课程
+    @zyrc_sub_courses = @course.sub_courses.enabled.zyrc.where({category_id: @category_arr})
+    #课程标准子课程
+    @kcbz_sub_courses = @course.sub_courses.enabled.kcbz.where({category_id: @category_arr})
+    #电子教材子课程
+    @dzjc_sub_courses = @course.sub_courses.enabled.dzjc.where({category_id: @category_arr})
+    #电子教案子课程
+    @dzja_sub_courses = @course.sub_courses.enabled.dzja.where({category_id: @category_arr})
+    #考核标准子课程
+    @khbz_sub_courses = @course.sub_courses.enabled.khbz.where({category_id: @category_arr})
+
+    #课程子栏目
+    @sub_courses_info = @course.sub_courses.enabled.where(category_id: Category.find_by(name: params[:title]).id) if Category.find_by(name: params[:title])
+    @sub_course_name = params[:title]
+  end
+
+  def after_class_exams
+    # @course = Course.find_by(number: params[:number])
+    @sub_courses = @course.sub_courses.undeleted
   end
   #课程的收藏或者取消收藏
   def course_collect
@@ -41,5 +52,10 @@ class Wechat::CoursesController < Wechat::BaseController
           format.js { render js: "alert('学生登录才可以收藏');" }
         end
     end 
+  end
+
+  protected
+  def set_course_number
+    @course = Course.find_by(number: params[:id])
   end
 end

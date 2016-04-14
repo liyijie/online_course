@@ -34,42 +34,42 @@
       </div>
     </div>
     <div class="course-exam pull-right">
-      <%= link_to "课程测试", "#{}", class: "exam"%>
+      <%= link_to "课程测试", after_class_exams_wechat_course_path, class: "exam"%>
     </div>
   </div>
   <div class="container content3">
     <div class="col-xs-6 courses-sub sub1">
-      <%= link_to "#{}", class: 'wenjian', title: '教学基本文件' do %>
+      <%= link_to sub_course_wechat_course_path(id:@course.number, title:'教学基本文件'), class: 'wenjian', title: '教学基本文件' do %>
         <%= image_tag "wechat/courses_show_06.png", width: "50%"%>
         <h5>教学基本文件</h5>
       <% end%>
     </div>
     <div class="col-xs-6 courses-sub sub2">
-      <%= link_to "#{}", class: 'wenjian', title: '教学课件' do %>
+      <%= link_to sub_course_wechat_course_path(id:@course.number, title:'教学课件'), class: 'wenjian', title: '教学课件' do %>
         <%= image_tag "wechat/courses_show_03.png", width: "50%"%>
         <h5>教学课件</h5>
       <% end%>
     </div>
     <div class="col-xs-6 courses-sub sub1">
-      <%= link_to "#{}", class: 'wenjian', title: '教学视频' do %>
+      <%= link_to sub_course_wechat_course_path(id:@course.number, title:'教学视频'), class: 'wenjian', title: '教学视频' do %>
         <%= image_tag "wechat/courses_show_10.png", width: "50%"%>
         <h5>教学视频</h5>
       <% end%>
     </div>
     <div class="col-xs-6 courses-sub sub2">
-      <%= link_to "#{}", class: 'wenjian', title: '典型案例' do %>
+      <%= link_to sub_course_wechat_course_path(id:@course.number, title:'典型案例'), class: 'wenjian', title: '典型案例' do %>
         <%= image_tag "wechat/courses_show_11.png", width: "50%"%>
         <h5>典型案例</h5>
       <% end%>
     </div>
     <div class="col-xs-6 courses-sub sub3">
-      <%= link_to "#{}", class: 'wenjian', title: '学生作品' do %>
+      <%= link_to sub_course_wechat_course_path(id:@course.number, title:'学生作品'), class: 'wenjian', title: '学生作品' do %>
         <%= image_tag "wechat/courses_show_15.png", width: "50%"%>
         <h5>学生作品</h5>
       <% end%>
     </div>
     <div class="col-xs-6 courses-sub">
-      <%= link_to "#{}", class: 'wenjian', title: '自主学习资源' do %>
+      <%= link_to sub_course_wechat_course_path(id:@course.number, title:'自主学习资源'), class: 'wenjian', title: '自主学习资源' do %>
         <%= image_tag "wechat/courses_show_17.png", width: "50%"%>
         <h5>自主学习资源</h5>
       <% end%>

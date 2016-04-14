@@ -1,0 +1,10 @@
+<div class="related-courses">
+  <ul class="courses-list">
+    <% @sub_courses.each do |sub_course|%>
+      <li class="col-sm-12 text-lists">
+        <span class="title"><%= truncate(sub_course.name,length: 18) %></span>
+        <span class="glyphicon glyphicon-edit pull-right exam-edit" aria-hidden="true"></span>
+      </li>
+    <% end %>
+  </ul>
+</div>
