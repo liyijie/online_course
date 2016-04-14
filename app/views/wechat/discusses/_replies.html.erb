@@ -1,0 +1,14 @@
+<% @replies.each do |reply| %>
+<div class="media cell">
+  <div class="media-left">
+    <a href="#">
+      <%= image_tag reply.try(:usertable).try(:show_image), class: "media-object img-circle", width: 36, height: 36 %>
+      <p class="text-center text-muted"><small><%= truncate(reply.try(:usertable).try(:show_name),length: 4)%></small></p>
+    </a>
+  </div>
+  <div class="media-body">
+    <p class="text-justify"><%= reply.body %></p>
+    <p class="text-right text-muted"><%= reply.created_at.try(:strftime,'%Y-%m-%d %H:%M') %></p>
+  </div>
+</div>
+<% end %>

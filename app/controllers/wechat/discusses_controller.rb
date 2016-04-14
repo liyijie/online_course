@@ -12,6 +12,7 @@ class Wechat::DiscussesController < Wechat::BaseController
 
 	def show
 		@topic = Comment.where(id: params[:id]).first
+    @replies = @topic.children
     #新建话题
     @discuss = Comment.new
 	end
@@ -75,13 +76,9 @@ class Wechat::DiscussesController < Wechat::BaseController
     @topics = Comment.find_topics_by_type params[:type], params[:page]
 
     if params[:is_show].present?
-      respond_to do |format|
-        format.js {render js: "location.href='#{wechat_discuss_path(parent_comment)}'"}
-      end
+      redirect_to wechat_discuss_path(parent_comment)
     else
-      respond_to do |format|
-        format.js
-      end
+      redirect_to innovations_wechat_discusses_path
     end
   end
 

@@ -26,7 +26,7 @@
             </p><!-- 时间、评论数 -->
 
             <!-- brgin: 评论表单 -->
-            <%= form_tag reply_topic_wechat_discusses_path, method: :post, remote: true do %>
+            <%= form_tag reply_topic_wechat_discusses_path, method: :post do %>
               <div class="weui_cells weui_cells_form comment_form">
                 <div class="weui_cell">
                   <div class="weui_cell_bd weui_cell_primary">
@@ -45,20 +45,9 @@
             <% end %><!-- end: 评论表单 -->
             
             <!-- brgin: 话题的所有评论 -->
-            <% @topic.children.each do |child| %>
-              <div class="media cell">
-                <div class="media-left">
-                  <a href="#">
-                    <%= image_tag child.try(:usertable).try(:show_image), class: "media-object img-circle", width: 36, height: 36 %>
-                    <p class="text-center text-muted"><small><%= truncate(child.try(:usertable).try(:show_name),length: 4)%></small></p>
-                  </a>
-                </div>
-                <div class="media-body">
-                  <p class="text-justify"><%= child.body %></p>
-                  <p class="text-right text-muted"><%= child.created_at.try(:strftime,'%Y-%m-%d %H:%M') %></p>
-                </div>
-              </div>
-            <% end %><!-- end: 话题的所有评论 -->
+            <div id="replies">
+              <%= render partial: "replies" %>
+            </div>
           </div>
         </li>
       </ul><!-- end: 媒体对象列表 -->
