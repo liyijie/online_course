@@ -36,7 +36,7 @@ class Wechat::CoursesController < Wechat::BaseController
   end
 
   def after_class_exams
-    # @course = Course.find_by(number: params[:number])
+    @course = Course.find_by(number: params[:id])
     @sub_courses = @course.sub_courses.undeleted
   end
   #课程的收藏或者取消收藏

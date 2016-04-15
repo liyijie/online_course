@@ -3,7 +3,9 @@
     <% @sub_courses.each do |sub_course|%>
       <li class="col-sm-12 text-lists">
         <span class="title"><%= truncate(sub_course.name,length: 18) %></span>
-        <span class="glyphicon glyphicon-edit pull-right exam-edit" aria-hidden="true"></span>
+        <a href= <%= new_courses_wechat_exams_path(number: @course.number, sub_course_number: sub_course.number)%> class="pull-right">
+          <span class="glyphicon glyphicon-edit pull-right exam-edit" aria-hidden="true"></span>
+        </a>
       </li>
     <% end %>
   </ul>

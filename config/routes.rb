@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get "sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses
   end
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
-
+  get "wechat/courses/:number/exams/new", to: "wechat/exams#new", as: :new_courses_wechat_exams
   post "sub_courses/comment_create_list"
   get "sub_courses/comment_create_list"
   post "sub_courses/reply_comment_list"
@@ -190,7 +190,12 @@ Rails.application.routes.draw do
         get :persion_discusses
       end
     end
-    resources :users, only: [:edit, :update]
+    resources :exams, only: [:new, :create, :show, :index]  do 
+      collection do
+        get :test_new
+        get :show_test
+      end
+    end
 
     #讨论中心
     resources :discusses, except: [:edit, :update, :destroy] do 

@@ -1,0 +1,32 @@
+@import "wechat_variables";
+// 课程列表
+.wechat__exams__new {
+  .ceshi {
+    padding: 0 -15px !important;
+    div {
+      background-color: rgb(31, 92, 158);
+      padding: 15px 0 ;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+  }
+  .question-content {
+    min-height: 200px;
+    .title {
+      margin-bottom: 20px; 
+    }
+    .option {
+      padding: 10px;
+    }
+  }
+  .change-page {
+    margin: 50px 0;
+    position:absolute;
+      left: center;
+      bottom:40px;
+    .btn {
+      padding: 5px 40px;
+      margin: 10px auto;
+    }
+  }
+}

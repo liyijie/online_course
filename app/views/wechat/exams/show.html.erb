@@ -1,0 +1,57 @@
+<div class="main-content">
+  <a href="javascript:void(0)" class="btn btn-primary">题目列表</a>
+  <div class="main-title">
+    <%= @exam.try(:sub_course).try(:course).try(:name) %>
+  </div>
+  <div class="question-content">
+    <% @exam.exam_items.each_with_index do |ei, index|%>
+      <% question = ei.question %>
+      <p class="title"><%= index + 1 %> <%= question.title%></p>
+      <% question.options.each_with_index do |option, option_index|%>
+        <p class="option <%= 'text-info' if is_selected?(option_index,ei.answer) %>">
+          <%= radio_button_tag("option_" + index.to_s, option.index_type, is_selected?(option_index,ei.answer), disabled: true )%>
+          <span><%= option.name%></span>
+        </p>
+      <% end %>
+      <div class="right-answer">
+        <div>正确答案：<%= question.correct_option %></div>
+        <div>答案解析：<%= question.correct_hint.present? ? question.correct_hint : "无" %></div>
+      </div>
+    <% end %>
+    <div class="center-block" align="center">
+      <%= link_to "返回", after_class_courses_path(@exam.try(:sub_course).try(:course).try(:number)), class: "btn btn-primary btn-lg"%>
+      <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#showExamResult">
+        成绩查询
+      </button>
+    </div>
+  </div>
+
+  <div class="tieshi">
+    <div id="countdown"></div>
+    <ul class="question-num">
+      <li>
+        <p class="title">总有单选题</p>
+        <p class="number">
+          <span><%= @exam.exam_items.length%></span>
+          题
+        </p>
+      </li>
+      <li>
+        <p class="title">已答题数</p>
+        <p class="number">
+          <span class="already-reply-questions"><%= @exam.exam_items.size - @exam.no_answer_items.size %></span>
+          题
+        </p>
+      </li>
+      <li>
+        <p class="title">未答题数</p>
+        <p class="number">
+          <span class="yet-reply-questions"><%= @exam.no_answer_items.size %></span>
+          题
+        </p>
+      </li>
+    </ul>
+    <a href="javascript:void(0)" id="back-to-top"></a>
+  </div>
+</div>
+ <%= render :partial => "show_exam_result" %>
