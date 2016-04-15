@@ -25,3 +25,27 @@ body {
   }
 }
 
+// weui标签页 + bootstrap切换效果
+.tab_container {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  .topbar{
+    height: 47px;
+    .weui_navbar_item.active {
+      background-color: #eaeaea;
+      a {
+        color: #333;
+      }
+    }
+    .weui_navbar_item {
+      padding: 0;
+      display: block;
+      a {
+        color: #333;
+        display: block;
+        padding: 13px 0;
+      }
+    }
+  }
+}

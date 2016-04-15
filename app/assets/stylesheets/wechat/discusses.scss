@@ -81,6 +81,18 @@
 
 }
 
-.wechat__discusses__persion_discusses {
-
+.wechat__users__persion_discusses {
+	.tab-content {
+		.weui_tab_bd {
+			padding-bottom: 0;
+			.cell {
+				margin-top: 0;
+				padding: 10px 10px 0;
+				border-bottom: 1px solid #ddd;
+				.comment_time {
+					padding-top: 10px;
+				}
+			}
+		}
+	}
 }

@@ -22,7 +22,7 @@
 
 <!-- 回复表单 -->
 <div id="replyCommentForm" style="display: none;">
-  <%= form_tag reply_topic_wechat_discusses_path, method: :post, class: "reply-comment-form" do %>
+  <%= form_tag reply_topic_wechat_discusses_path, method: :post, class: "innovations" do %>
     <div class="weui_cells weui_cells_form comment_form">
       <div class="weui_cell">
         <div class="weui_cell_bd weui_cell_primary">
@@ -31,7 +31,7 @@
 			    <%= hidden_field_tag "type", params[:type] %>
 			    <%= hidden_field_tag "page", params[:page] %>
           <div class="weui_textarea_counter">
-          	<%= submit_tag "回复", class: "weui_btn weui_btn_mini weui_btn_primary", onclick: "if($(this).siblings('#comment').first().val() == ''){alert('请填写内容在发布');return false;};", data: {disable_with: "回复中..."} %>
+          	<%= submit_tag "回复", class: "weui_btn weui_btn_mini weui_btn_primary", data: {disable_with: "回复中..."} %>
           </div>
         </div>
       </div>
@@ -40,22 +40,16 @@
 </div>
 
 <script type="text/javascript">
-	// 创建话题，打开模态框
   $(function(){
+  	// 创建话题，打开模态框
     $("#newCreateBtn").click(function(){
       $("#createDiscuss").modal();
     });
+    // 回复按钮
+    $(".comment_reply").click(function(){
+      $("#topicList form").remove();
+      $("#comment_id").val($(this).attr("comment-id"));
+      $(this).parent().append($("#replyCommentForm").html());
+    });
   });
 </script>
-
-<% content_for :script do %>
- <script>
- 	// 点击条目的样式效果
-  function mouseDown(){
-		$(this).style.color="red";
-	}
-	function mouseUp(){
-		$(this).style.color="green";
-	}
- </script>
-<% end %>

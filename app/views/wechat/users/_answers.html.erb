@@ -1,0 +1,39 @@
+<!-- 我的回答 -->
+<% comments.each do |comment| %>
+  <div class="media cell">
+    <div class="media-left">
+      <a href="#" ontouchstart="this.className='down'" ontouchend="this.className='up'">
+        <%= image_tag comment.try(:usertable).try(:show_image), class: "media-object img-circle", width: 48, height: 48 %>
+      </a>
+    </div>
+    <div class="media-body">
+      <!-- 点击进入话题详情页 -->
+      <a href="#" ontouchstart="this.className='down'" ontouchend="this.className='up'">
+        <!-- 标题 -->
+        <p class="media-heading text-primary two_line"><%= comment.title %></p>
+        <p class="text-muted two_line">
+          <!-- 提问者 -->
+          <p><%= truncate(comment.try(:usertable).try(:show_name),length: 4)%>&nbsp;&nbsp;<span class="text-muted">回答</span></p>
+          <!-- 问题内容 -->
+          <p class="text-muted"><%= comment.body %></p>
+          <!-- 是否有回复 -->
+          <% if comment.parent.present? %>
+            <span class="text-muted">[问题]</span>
+            <span><%= comment.parent.try(:usertable).try(:show_name) %>:<span>
+            <span class="text-muted"><%= comment.parent.body %></span>
+          <% end %>
+        </p>
+      </a>
+      <!-- 时间、评论数 -->
+      <p class="text-right comment_time">
+        <span class="text-muted pull-left"><%= comment.created_at.try(:strftime,'%y-%m-%d %H:%M') %></span>
+        <span class="glyphicon glyphicon-comment text-info"></span>
+        <span class="text-muted"><%= comment.parent.children.size %></span>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<div class="paginate text-center">
+  <%= paginate comments %>
+</div>

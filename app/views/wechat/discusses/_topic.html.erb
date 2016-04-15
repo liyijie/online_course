@@ -1,4 +1,4 @@
-<% @topics.each do |topic| %>
+<% topics.each do |topic| %>
   <div class="media cell">
     <div class="media-left">
       <a href="<%= wechat_discuss_path(topic) %>" ontouchstart="this.className='down'" ontouchend="this.className='up'">
@@ -34,15 +34,5 @@
 <% end %>
 
 <div class="paginate text-center">
-  <%= paginate @topics %>
+  <%= paginate topics %>
 </div>
-
-<script type="text/javascript">
-  $(function(){
-    $(".comment_reply").click(function(){
-      $("#topicList form").remove();
-      $("#comment_id").val($(this).attr("comment-id"));
-      $(this).parent().append($("#replyCommentForm").html());
-    });
-  });
-</script>

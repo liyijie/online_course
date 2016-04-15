@@ -66,10 +66,13 @@ class Wechat::DiscussesController < Wechat::BaseController
     comment.comment_scope = "topic"
     comment.body = params[:comment]
 
+    pp params[:comment], "comment+============"
+
     comment.save
 
     # 找到父评论
     parent_comment = Comment.where(id: params[:comment_id]).first
+    pp parent_comment, "++++++++=++"
     # 为父评论添加子评论
     comment.move_to_child_of parent_comment
 
