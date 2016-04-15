@@ -2,7 +2,7 @@
     <div class="weui_tab_bd">
       <div class="container">
         <!-- ###########################完成的测试########################## -->
-        <div class="div-content scoure-search">
+        <div class="weui-content1 div-content scoure-search">
           <% if @exams.blank? %>
             <div class="blank">没有已完成的测试</div>
           <% else %>
@@ -30,9 +30,10 @@
             <% end -%>
           <% end %> 
         </div>
+        <div class="weui-content2 div-content"></div>
       </div>
     </div>
-    <div class="weui_tabbar">
+    <div id="wechat-tabbar" class="weui_tabbar">
         <a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">
             <div class="weui_tabbar_icon">
                 <img src="path/to/images/icon_nav_button.png" alt="">
@@ -47,3 +48,20 @@
         </a>
     </div>
 </div>
+
+ <script type="text/javascript">
+    $(function(){
+        var tabs = $("#wechat-tabbar a");
+        var cont = $(".weui_tab_bd .div-content");
+        var len = cont.length;
+         
+        cont.each(function(inx, elem){$(elem).css("z-index", len - inx);}).andSelf().hide().andSelf().eq(1).show();
+         
+        tabs.click(function(){
+          var inx = tabs.index(this);
+          tabs.removeAttr("class").addClass("weui_tabbar_item").andSelf().eq(inx + 1).addClass("div-content" + (inx + 1));
+          cont.fadeOut(300).not(this).andSelf().eq(inx).fadeIn(300);
+        });
+      }
+    );
+ </script>
