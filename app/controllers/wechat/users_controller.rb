@@ -52,6 +52,15 @@ class Wechat::UsersController < Wechat::BaseController
     end
   end
 
+    #我的问答
+  def persion_discusses
+    @numbers = User.quantities(current_user)
+    # 我的提问
+    @question_comments = Comment.find_root_comments_by_usertable(current_user, :answer).page(params[:page])
+    # 我的回答
+    @answer_comments = Comment.find_answer_by_usertable(current_user).page(params[:page])
+  end
+
   private 
     def set_user
       @user = User.find(params[:id])
