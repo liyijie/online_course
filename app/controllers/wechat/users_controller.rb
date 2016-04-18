@@ -6,14 +6,19 @@ class Wechat::UsersController < Wechat::BaseController
     @numbers = User.quantities(@user)
   end
 
-  #修改密码
-  def changepassword
-    # if @user.update(user_params)
-    #   #头像更新
-    # else
-    #   #更新失败
-    #   redirect_to wechat_root_path, notice: "个人资料更新失败"
-    # end
+  # 修改密码
+  def edit_password
+  end
+
+  # 更新密码
+  def update_password
+    msg = current_user.custom_reset_password params[:user]
+    if msg == "修改成功"
+      redirect_to wechat_root_path
+    else
+      flash[:error] = msg
+      redirect_to edit_password_wechat_user_path(current_user)
+    end
   end
 
   #我的考试

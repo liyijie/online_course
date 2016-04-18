@@ -185,7 +185,8 @@ Rails.application.routes.draw do
         get :my_exams
       end
       member do
-        get :changepassword
+        get :edit_password
+        put :update_password
         get :persion_discusses
       end
     end

@@ -170,4 +170,22 @@ class User < ActiveRecord::Base
     cache[:answer_comments] = Comment.find_answer_by_usertable(current_user).count
     return cache
   end
+
+  # 更新密码
+  def custom_reset_password params_user
+    if self.valid_password? params_user[:current_password]
+      if params_user[:password] == params_user[:password_confirmation]
+        if self.reset_password!(params_user[:password], params_user[:password_confirmation])
+          return "修改成功"
+        else
+          return "修改失败"
+        end
+      else
+        return "两次密码输入不一致"
+      end
+    else
+      return "原始密码不正确"
+    end
+  end
+
 end
