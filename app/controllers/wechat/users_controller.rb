@@ -16,7 +16,7 @@ class Wechat::UsersController < Wechat::BaseController
     if msg == "修改成功"
       redirect_to wechat_root_path
     else
-      flash[:error] = msg
+      flash[:danger] = msg
       redirect_to edit_password_wechat_user_path(current_user)
     end
   end
@@ -48,7 +48,8 @@ class Wechat::UsersController < Wechat::BaseController
     if @user.update(user_params)
       #头像更新
       @user.image.save(:validate => false)  if params[:user][:image]
-      redirect_to wechat_root_path, notice: "个人资料更新成功"
+      flash.now[:notice] = "个人资料更新成功"
+      redirect_to wechat_root_path
     else
       #更新失败
       @specialties = Specialty.where(academy_id: @user.academy_id).pluck(:name, :id)
