@@ -21,7 +21,7 @@
             <!-- 时间、评论数 -->
             <p class="text-right">
               <span class="text-muted pull-left"><%= @topic.created_at.try(:strftime,'%Y-%m-%d %H:%M') %></span>
-              <span class="glyphicon glyphicon-comment text-info"></span>
+              <i class="iconfont" style="color: #279A4A;">&#xe601;</i>
               <span class="text-muted"><%= @topic.children.size %></span>
             </p><!-- 时间、评论数 -->
 
@@ -37,7 +37,7 @@
                     <!-- 标识为讨论的show页面， -->
                     <%= hidden_field_tag "is_show", "show" %>
                     <div class="weui_textarea_counter">
-                      <%= submit_tag "回复", class: "weui_btn weui_btn_mini weui_btn_primary", data: {disable_with: "回复中..."}, onclick: "reply()" %>
+                      <%= submit_tag "回复", class: "weui_btn weui_btn_mini weui_btn_primary", data: {disable_with: "回复中..."}, onclick: "if($('#comment').first().val() == ''){$('.weui_cell').addClass('error');return false;};" %>
                     </div>
                   </div>
                 </div>
@@ -56,12 +56,3 @@
 
   <%= render partial: "tabbar" %>
 </div>
-
-<script>
-  function reply() {
-    if($(this).siblings('#comment').first().val() == ''){
-      $(".weui_cell").addClass("error");
-      return false;
-    };
-  }
-</script>

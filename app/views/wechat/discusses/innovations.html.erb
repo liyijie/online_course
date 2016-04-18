@@ -4,7 +4,9 @@
 	<div class="weui_tab_bd">
 		<div class="content clearfix">
 			<!-- 新建话题 -->
-			<%= link_to "新建话题", "javascript:;", class: "weui_btn weui_btn_plain_primary", id: "newCreateBtn" %>
+			<div class="col-xs-12">
+        <%= link_to "新建话题", "javascript:;", class: "weui_btn weui_btn_plain_primary", id: "newCreateBtn" %>   
+      </div>
 			<!-- 话题列表 -->
 			<div id="topicList" class="discuss-list">
 		    <%= render partial: "topic", locals: {topics: @topics} %>
@@ -31,7 +33,7 @@
 			    <%= hidden_field_tag "type", params[:type] %>
 			    <%= hidden_field_tag "page", params[:page] %>
           <div class="weui_textarea_counter">
-          	<%= submit_tag "回复", class: "weui_btn weui_btn_mini weui_btn_primary", data: {disable_with: "回复中..."} %>
+          	<%= submit_tag "回复", class: "weui_btn weui_btn_mini weui_btn_primary", data: {disable_with: "回复中..."}, onclick: "if($('#comment').first().val() == ''){$('.weui_cell').addClass('error');return false;};" %>
           </div>
         </div>
       </div>
@@ -48,6 +50,7 @@
     // 回复按钮
     $(".comment_reply").click(function(){
       $("#topicList form").remove();
+      $(".weui_cell").removeClass("error");
       $("#comment_id").val($(this).attr("comment-id"));
       $(this).parent().append($("#replyCommentForm").html());
     });

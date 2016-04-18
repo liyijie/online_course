@@ -1,22 +1,22 @@
 <div class="weui_tabbar" style="z-index: 999;">
     <a href="<%= wechat_discusses_path %>" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:controller] == "wechat/discusses" && (params[:action] == "index" || params[:action] == "sorts") %>">
         <div class="weui_tabbar_icon">
-            <%= image_tag "wechat/icon_nav_button.png" %>
+            <i class="iconfont">&#xe603;</i>
         </div>
-        <p class="weui_tabbar_label">专业人才培养校企论坛</p>
+        <p class="weui_tabbar_label">校企论坛</p>
     </a>
 
     <a href="<%= learns_wechat_discusses_path %>" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:action] == "learns" %>">
         <div class="weui_tabbar_icon">
-            <%= image_tag "wechat/icon_nav_article.png" %>
+            <i class="iconfont">&#xe602;</i>
         </div>
-        <p class="weui_tabbar_label">课程学习论坛</p>
+        <p class="weui_tabbar_label">课程论坛</p>
     </a>
     
     <a href="<%= innovations_wechat_discusses_path %>" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:action] == "innovations" || params[:action] == "show" %>">
         <div class="weui_tabbar_icon">
-            <%= image_tag "wechat/icon_nav_dialog.png" %>
+            <i class="iconfont">&#xe604;</i>
         </div>
-        <p class="weui_tabbar_label">创新创意论坛</p>
+        <p class="weui_tabbar_label">创意论坛</p>
     </a>
 </div>

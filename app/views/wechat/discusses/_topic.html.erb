@@ -25,9 +25,9 @@
       <!-- 时间、评论数、评论 -->
       <p class="text-right">
         <span class="text-muted pull-left"><%= topic.created_at.try(:strftime,'%y-%m-%d %H:%M') %></span>
-        <span class="glyphicon glyphicon-comment text-info"></span>
+        <i class="iconfont" style="color: #279A4A;">&#xe601;</i>
         <span class="text-muted"><%= topic.children.size %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="glyphicon glyphicon-edit text-success comment_reply" comment-id="<%= topic.id %>"></span>
+        <span class="glyphicon glyphicon-edit text-primary comment_reply" comment-id="<%= topic.id %>"></span>
       </p>
     </div>
   </div>

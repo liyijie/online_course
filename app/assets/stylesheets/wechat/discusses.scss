@@ -15,9 +15,23 @@
 .p0{
 	padding: 0;
 }
-
-.wechat__discusses__index {
+.weui_tabbar_item {
+	color: #888;
+	padding: 3px 0 3px;
+	&:hover {
+		color: #09bb07;
+	}
+	.weui_tabbar_icon {
+		i {
+			width: 24px;
+			height: 24px;
+		}
+	}	
 }
+.weui_bar_item_on {
+	color: #09bb07;
+}
+
 
 .wechat__discusses__sorts {
 	.sorts {
@@ -74,11 +88,6 @@
 			border: 1px solid red;
 		}
 	}
-
-}
-
-.wechat__discusses__learns {
-
 }
 
 .wechat__users__persion_discusses {
