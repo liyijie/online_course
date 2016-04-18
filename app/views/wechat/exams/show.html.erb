@@ -8,11 +8,11 @@
 
   <div class="question-content">
     <div id="carousel-example-generic" class="carousel slide container" data-ride="carousel">
-      <div class="carousel-inner question-content" role="listbox">
+      <div class="carousel-inner" role="listbox">
         <% @exam.exam_items.each_with_index do |ei, index|%>
           <div id="question-content-show" class="item <%= "active" if index == 0 %>">
             <% question = ei.question %>
-            <p class="title"><%= index + 1 %> <%= question.title%></p>
+            <p class="title"><%= index + 1 %>、<%= question.title%></p>
             <% question.options.each_with_index do |option, option_index|%>
               <p class="option <%= 'text-info' if is_selected?(option_index,ei.answer) %>">
                 <%= radio_button_tag("option_" + index.to_s, option.index_type, is_selected?(option_index,ei.answer), disabled: true )%>
@@ -46,6 +46,8 @@
   $(document).ready(function() {
     $('.carousel').carousel({
      interval: 0
-    })
+    });
+    var width = $(window).height()-200;
+      $("div.question-content").height(width);
   });
 </script>

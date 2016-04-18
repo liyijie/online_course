@@ -12,13 +12,16 @@
   }
   .title-exam-content {
     margin-bottom: 20px;
+    margin-top: 5px;
     .js-start-answer-question {
       margin-right: 28%;
     }
   }
   .question-content {
-    min-height: 200px;
-    margin-bottom: 80px;
+    width: 100%;
+    padding-bottom: 80px;
+    overflow:auto; /*需要的时候会出现滚动条*/
+    overflow-y:auto; /*控制Y方向的滚动条*/
     .title {
       margin-bottom: 20px; 
     }
@@ -37,6 +40,7 @@
     margin: 10px 0;
     background-color: rgb(251, 249, 254);
     padding-bottom: 20px;
+    padding-top: 10px;
     position:absolute;
       left: center;
       bottom:0px;
