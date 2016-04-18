@@ -1,3 +1,5 @@
+$blue: #315FBE;
+
 // 点击鼠标样式
 .down {
 	background-color: #eeeeee;
@@ -15,11 +17,12 @@
 .p0{
 	padding: 0;
 }
+// 修改样式
 .weui_tabbar_item {
 	color: #888;
 	padding: 3px 0 3px;
 	&:hover {
-		color: #09bb07;
+		color: $blue;
 	}
 	.weui_tabbar_icon {
 		i {
@@ -28,7 +31,14 @@
 	}	
 }
 .weui_bar_item_on {
-	color: #09bb07;
+	color: $blue;
+	.weui_tabbar_label {
+		color: $blue !important;
+	}
+}
+.weui_btn_plain_primary {
+	color: $blue;
+	border-color: $blue;
 }
 
 
