@@ -1,12 +1,12 @@
 <div class="weui_tabbar" style="z-index: 999;">
-    <a href="<%= wechat_discusses_path %>" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:controller] == "wechat/discusses" && (params[:action] == "index" || params[:action] == "sorts") %>">
+    <a href="<%= wechat_discusses_path %>" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:action] == "index" || params[:parent] == "index" %>">
         <div class="weui_tabbar_icon">
             <i class="iconfont">&#xe603;</i>
         </div>
         <p class="weui_tabbar_label">校企论坛</p>
     </a>
 
-    <a href="<%= learns_wechat_discusses_path %>" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:action] == "learns" %>">
+    <a href="<%= learns_wechat_discusses_path %>" class="weui_tabbar_item <%= "weui_bar_item_on" if params[:action] == "learns" || params[:parent] == "learns" %>">
         <div class="weui_tabbar_icon">
             <i class="iconfont">&#xe602;</i>
         </div>

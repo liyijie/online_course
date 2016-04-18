@@ -5,7 +5,7 @@
 
 		<div class="weui_cells weui_cells_access">
 			<% @talents.each do |talent| %>
-				<%= link_to sorts_wechat_discusses_path, class: "weui_cell" do %>
+				<%= link_to sorts_wechat_discusses_path(parent: "index"), class: "weui_cell" do %>
 					<div class="weui_cell_bd weui_cell_primary">
 						<p><%= talent.name %></p>
 					</div>
