@@ -14,7 +14,9 @@
           <div class="weui_uploader">
             <div class="weui_uploader_bd">
               <ul class="weui_uploader_files">
-                <li class="weui_uploader_file" style="background-image:url(<%= asset_path(@user.show_image) %>)"></li>
+                <li class="weui_uploader_file" id="upload_image" style="background-image:url(<%= asset_path(@user.show_image) %>);">
+                    <div class="weui_uploader_status_content" id="upload_status" style="display: none;">0%</div>
+                </li>
               </ul>
               <div class="weui_uploader_input_wrp pull-right">
                 <%= f.file_field :image, class: "weui_uploader_input", accept: "image/jpg,image/jpeg,image/png,image/gif" %>
@@ -126,3 +128,46 @@
   <% end %>
   <%= javascript_include_tag "_user_show", 'data-turbolinks-track' => true %>
 <% end %>
+
+<script>
+  $(function() {
+    $("#user_image").change(function(){
+      var file =document.getElementById('user_image').files[0];
+      if(file){
+        var image = $("#upload_image");
+        var status = $("#upload_status");
+
+        var reader=new FileReader();
+        reader.readAsDataURL(file);
+
+        // 读取开始时触发
+        reader.onloadstart=function(){
+            image.addClass("weui_uploader_status");
+            status.css("display", "block");
+        }
+        // 文件读取中
+        reader.onprogress=function(e){
+            var percent = e.loaded / e.total * 100;
+            status.text(percent + "%");
+        }
+        // 文件读取成功完成时触发
+        reader.onload=function(e){
+            image.css("background-image", "url("+this.result+")");
+        }
+        // 上传中断
+        reader.onabort=function(){
+            status.text("中断");  
+        } 
+        // 上传错误
+        reader.onerror=function(){
+            status.text("错误");
+        }
+        // 读取完成触发，无论成功或失败
+        reader.onloadend=function(){
+            image.removeClass("weui_uploader_status");
+            status.css("display", "none");
+        }
+      }
+    });
+  })
+</script>

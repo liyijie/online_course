@@ -81,11 +81,11 @@
       <div class="weui_cell_ft"><%= @numbers[:answer_comments] %> 条</div>
     </div>
   </div>
-  <div class="buttons">
+  <div class="buttons" style="padding-bottom: 0;">
     <%= link_to "修改密码", edit_password_wechat_user_path(@user), class: "weui_btn weui_btn_primary" %>
   </div>
   
-  <div class="buttons">
+  <div class="buttons" style="padding-top: 15px;">
     <%= link_to "退出账户", destroy_user_session_path(c: :weixin), :method => :delete, class: "weui_btn weui_btn_warn" %>
   </div>
 </div>
