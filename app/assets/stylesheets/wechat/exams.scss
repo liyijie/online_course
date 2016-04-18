@@ -1,6 +1,6 @@
 @import "wechat_variables";
 // 课程列表
-.wechat__exams__new {
+.wechat__exams__new, .wechat__exams__show {
   .ceshi {
     padding: 0 -15px !important;
     div {
@@ -10,23 +10,85 @@
       color: #fff;
     }
   }
+  .title-exam-content {
+    margin-bottom: 20px;
+    .js-start-answer-question {
+      margin-right: 28%;
+    }
+  }
   .question-content {
     min-height: 200px;
+    margin-bottom: 80px;
     .title {
       margin-bottom: 20px; 
     }
     .option {
       padding: 10px;
     }
+    .answer-hr {
+      border:1px solid rgb(31, 92, 158);
+    }
+    .right-answer {
+      color: red;
+      padding-left: 20px;
+    }
   }
   .change-page {
-    margin: 50px 0;
+    margin: 10px 0;
+    background-color: rgb(251, 249, 254);
+    padding-bottom: 20px;
     position:absolute;
       left: center;
-      bottom:40px;
+      bottom:0px;
     .btn {
-      padding: 5px 40px;
+      padding: 7px 23px;
       margin: 10px auto;
+    }
+  }
+  .modal-content {
+    .modal-header {
+      background-color: rgb(31, 92, 158);
+      .modal-title {
+
+      }
+    }
+    .score-bg {
+      .modal-body {
+        background-color: #fff;
+        li {
+          margin: 8px auto;
+        }
+      }
+    }
+  }
+}
+
+.wechat__exams__show {
+  .modal-content {
+    .modal-header {
+      background-color: rgb(31, 92, 158);
+      .modal-title {
+        color: #fff;
+      }
+    }
+    .score-bg {
+      background-color: #fff;
+      .modal-body {
+        li {
+          margin: 8px auto;
+          list-style-type:none;
+          .blue-icon {
+            padding-right: 10px;
+            padding-bottom: 5px;
+          }
+          .text-danger {
+            color: red;
+          }
+        }
+        .modal-btn {
+          margin: 20px auto;
+        }
+      }
     }
   }
 }

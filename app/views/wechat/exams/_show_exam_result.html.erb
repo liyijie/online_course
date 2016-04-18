@@ -4,19 +4,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">测试结果</h4>
+        <h4 class="modal-title text-center" id="myModalLabel">测试结果</h4>
       </div>
-      <div class="score-bg">
+      <div class="score-bg col-xs-12">
         <div class="modal-body">
           <ul>
             <li>
-              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>最终成绩：<span class="total-score"><%= @exam.total_score %></span>分
+              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>最终成绩：<span class="total-score text-danger"><%= @exam.total_score %></span>分
             </li>
             <li>
               <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>总分：100分
             </li>
             <li>
-              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>答对题数：<span class="text-danger"><%= @exam.right_items.size %></span>
+              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>答对题数：<span class="text-danger"><%= @exam.right_items.size %></span>题｜
               <% if  @exam.right_items.present? %>
                 <span class="left-20">分别是：
                 <% @exam.right_items.each do |item| %>
@@ -26,7 +26,7 @@
               <% end %>
             </li>
             <li>
-              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>答错题数：<span class="text-danger"><%= @exam.wrong_items.size %></span>
+              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>答错题数：<span class="text-danger"><%= @exam.wrong_items.size %></span>题｜
               <% if  @exam.wrong_items.present? %>
                 <span class="left-20">分别是：
                 <% @exam.wrong_items.each do |item| %>
@@ -36,7 +36,7 @@
               <% end %>
             </li>
             <li>
-              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>未答题数：<span class="text-danger"><%= @exam.no_answer_items.size %></span>
+              <span class="score-log"><%= image_tag "score-search-icon.png", class:"blue-icon"%></span>未答题数：<span class="text-danger"><%= @exam.no_answer_items.size %></span>题
               <% if  @exam.no_answer_items.present? %>
                 <span class="left-20">分别是：
                  <% @exam.no_answer_items.each do |item| %>
@@ -46,8 +46,8 @@
               <% end %>
             </li>
           </ul>
-          <div  class="modal-btn">
-          <%= link_to('查看题目', exam_path(@exam.id) , class: "btn btn-primary  btn-sm") %>
+          <div  class="modal-btn text-center">
+          <%= link_to('查看题目', wechat_exam_path(@exam.id) , class: "btn btn-primary  btn-sm") %>
             <button type="button" class="btn btn-warning btn-sm small" data-dismiss="modal" style="margin-left:50px;">关闭</button>
           </div>
         </div>

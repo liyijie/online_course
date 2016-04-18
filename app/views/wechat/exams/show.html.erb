@@ -1,57 +1,51 @@
 <div class="main-content">
-  <a href="javascript:void(0)" class="btn btn-primary">题目列表</a>
-  <div class="main-title">
-    <%= @exam.try(:sub_course).try(:course).try(:name) %>
+  <!-- 计时、答题统计区 -->
+  <div class="ceshi">
+    <div class="col-xs-4 text-center">共有：<%= @exam.exam_items.length%>题</div>
+    <div class="col-xs-3 text-center">已答：<%= @exam.exam_items.size - @exam.no_answer_items.size %>题</div>
+    <div class="col-xs-5 text-center">时间：<span id="countdown">00:00:00</span></div>
   </div>
+
   <div class="question-content">
-    <% @exam.exam_items.each_with_index do |ei, index|%>
-      <% question = ei.question %>
-      <p class="title"><%= index + 1 %> <%= question.title%></p>
-      <% question.options.each_with_index do |option, option_index|%>
-        <p class="option <%= 'text-info' if is_selected?(option_index,ei.answer) %>">
-          <%= radio_button_tag("option_" + index.to_s, option.index_type, is_selected?(option_index,ei.answer), disabled: true )%>
-          <span><%= option.name%></span>
-        </p>
-      <% end %>
-      <div class="right-answer">
-        <div>正确答案：<%= question.correct_option %></div>
-        <div>答案解析：<%= question.correct_hint.present? ? question.correct_hint : "无" %></div>
+    <div id="carousel-example-generic" class="carousel slide container" data-ride="carousel">
+      <div class="carousel-inner question-content" role="listbox">
+        <% @exam.exam_items.each_with_index do |ei, index|%>
+          <div id="question-content-show" class="item <%= "active" if index == 0 %>">
+            <% question = ei.question %>
+            <p class="title"><%= index + 1 %> <%= question.title%></p>
+            <% question.options.each_with_index do |option, option_index|%>
+              <p class="option <%= 'text-info' if is_selected?(option_index,ei.answer) %>">
+                <%= radio_button_tag("option_" + index.to_s, option.index_type, is_selected?(option_index,ei.answer), disabled: true )%>
+                <span><%= option.name%></span>
+              </p>
+            <% end %>
+            <hr class="answer-hr">
+            <div class="right-answer">
+              <div>正确答案：<%= question.correct_option %></div>
+              <div>答案解析：<%= question.correct_hint.present? ? question.correct_hint : "无" %></div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <div class="center-block" align="center">
-      <%= link_to "返回", after_class_courses_path(@exam.try(:sub_course).try(:course).try(:number)), class: "btn btn-primary btn-lg"%>
-      <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#showExamResult">
-        成绩查询
-      </button>
     </div>
   </div>
 
-  <div class="tieshi">
-    <div id="countdown"></div>
-    <ul class="question-num">
-      <li>
-        <p class="title">总有单选题</p>
-        <p class="number">
-          <span><%= @exam.exam_items.length%></span>
-          题
-        </p>
-      </li>
-      <li>
-        <p class="title">已答题数</p>
-        <p class="number">
-          <span class="already-reply-questions"><%= @exam.exam_items.size - @exam.no_answer_items.size %></span>
-          题
-        </p>
-      </li>
-      <li>
-        <p class="title">未答题数</p>
-        <p class="number">
-          <span class="yet-reply-questions"><%= @exam.no_answer_items.size %></span>
-          题
-        </p>
-      </li>
-    </ul>
-    <a href="javascript:void(0)" id="back-to-top"></a>
+  <!-- 选题控制区 -->
+  <div class="change-page col-xs-12 text-center">
+    <a class="col-xs-6" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="btn btn-primary last-question">上 一 题</span>
+    </a>
+    <a class="col-xs-6" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="btn btn-success next-question">下 一 题</span>
+    </a>
   </div>
+
 </div>
- <%= render :partial => "show_exam_result" %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.carousel').carousel({
+     interval: 0
+    })
+  });
+</script>

@@ -1,7 +1,0 @@
-<p class="title"><%= 0+1 %>. <%= @questions[0].title%></p>
-<% @questions[0].options.each_with_index do |option,option_index|%>
-  <p class="option">
-    <%= radio_button_tag("options[#{@questions[0].id}]", option.name.to_s.split(" ").join("").first)%>
-    <label for="options_<%= @questions[0].id %>_<%= select_item(option_index) %>"><%= option.name%></label>
-  </p>
-<% end %>

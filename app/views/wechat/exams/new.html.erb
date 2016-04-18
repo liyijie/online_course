@@ -6,48 +6,50 @@
   <% if @exam.present? %>
 
     <%= render partial: 'common/blank_alert', locals: {message: '您已经参加过该测试!'}%>
-    <div class="form-group">
-      <%= link_to "查看我的试卷", my_exams_user_index_path, class: 'btn center btn-primary'%>
+    <div class="form-group text-center">
+      <%= link_to "查看我的试卷", my_exams_wechat_users_path, class: 'btn center btn-primary'%>
     </div>
 
   <% elsif @questions.present? %>
 
+    <!-- 计时、答题统计区 -->
     <div class="ceshi">
       <div class="col-xs-4 text-center">共有：<%= @questions.length%>题</div>
       <div class="col-xs-3 text-center">已答：<span class="already-reply-questions">0</span>题</div>
       <div class="col-xs-5 text-center">时间：<span id="countdown">00:00:00</span></div>
     </div>
 
+    <!-- 试题区 -->
     <%= simple_form_for Exam.new, format: :js, remote: true do |f|%>
+
+      <!-- 计时提交按钮 -->
       <div class="title-exam-content text-center">
-        <!-- <div class="col-xs-6"> -->
-          <a href="javascript:void(0)" class="btn btn-info js-start-answer-question">开 始 计 时</a>
+        <a href="javascript:void(0)" class="btn btn-info js-start-answer-question">开 始 计 时</a>
+        <!-- <div class="col-xs-6 submit-answer form-group"> -->
+          <%= f.submit '提 交 测 试', class: "btn btn-warning submit-answer"%>
         <!-- </div> -->
-        <div class="col-xs-6 submit-answer form-group">
-          <%= f.submit '提 交 测 试', class: "btn btn-warning"%>
-        </div>
       </div>
 
+      <!-- 试题内容区 -->
       <div id="carousel-example-generic" class="carousel slide question-content container" data-ride="carousel">
         <div class="carousel-inner question-content" role="listbox">
           <%= f.hidden_field :sub_course_number, value: params[:sub_course_number]%>
           <% @questions.each_with_index do |question, index|%>
-          <div id="question-content-show" class="item <%= "active" if index == 0 %>">
-            <p class="title"><%= index+1 %>. <%= question.title%></p>
-            <% question.options.each_with_index do |option,option_index|%>
-              <p class="option">
-                <%= radio_button_tag("options[#{question.id}]", option.name.to_s.split(" ").join("").first)%>
-                <label for="options_<%= question.id %>_<%= select_item(option_index) %>"><%= option.name%></label>
-              </p>
-            <% end %>
-            <%#= render partial: 'question_content_show' %>
-          </div>
+            <div id="question-content-show" class="item <%= "active" if index == 0 %>">
+              <p class="title"><%= index+1 %>. <%= question.title%></p>
+              <% question.options.each_with_index do |option,option_index|%>
+                <p class="option">
+                  <%= radio_button_tag("options[#{question.id}]", option.name.to_s.split(" ").join("").first)%>
+                  <label for="options_<%= question.id %>_<%= select_item(option_index) %>"><%= option.name%></label>
+                </p>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
 
-      <!-- Controls -->
-      <div class="change-page text-center">
+      <!-- 选题控制区 -->
+      <div class="change-page col-xs-12 text-center">
         <a class="col-xs-6" href="#carousel-example-generic" role="button" data-slide="prev">
           <span class="btn btn-primary last-question">上 一 题</span>
         </a>
@@ -59,9 +61,19 @@
 
   <% else %>
 
+    <!-- 试题为空时的现实页面 -->
     <%= render partial: 'common/blank_alert', locals: {message: '该课程还未上传课后习题!'}%>
 
   <% end %>
 </div>
 
+<!-- 答题提交成绩现实弹框 -->
 <div id="modalResult"></div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.carousel').carousel({
+     interval: 0
+    })
+  });
+</script>

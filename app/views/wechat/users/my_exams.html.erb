@@ -10,7 +10,7 @@
             <div class="panel panel-default">
               <div class="panel-body exams-panel-body">
                 <div class="ov-hidden" style="min-height: 200px;overflow: hidden;width: 100%">
-                   <%= link_to image_tag(exam.try(:sub_course).try(:course).attachment.content.url(:c_350_230), width: "100%"), show_courses_path(exam.try(:sub_course).try(:course).number), class: 'img' if exam.try(:sub_course).try(:course).attachment%>
+                   <%= link_to image_tag(exam.try(:sub_course).try(:course).attachment.content.url(:c_350_230), width: "100%"), wechat_course_path(exam.try(:sub_course).try(:course).number), class: 'img' if exam.try(:sub_course).try(:course).attachment%>
                 </div>
                 <p class="exam-name">
                   <span ><%= link_to exam.try(:sub_course).try(:name), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %></span>
@@ -22,7 +22,7 @@
                   </div>
                   <div class="score-detail score-detail-right col-xs-6 text-center">
                     <p><span class="text-primary">&bull;</span>得分：<%= exam.total_score %>分</p>
-                    <p><%= link_to "查看试卷",exam_path(exam.id) ,class: "btn-text-check"%></p>
+                    <p><%= link_to "查看试卷",wechat_exam_path(exam.id) ,class: "btn-text-check"%></p>
                   </div>
                 </div>
               </div>
