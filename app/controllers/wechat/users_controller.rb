@@ -27,6 +27,13 @@ class Wechat::UsersController < Wechat::BaseController
     @exams = current_user.try(:exams)
   end
 
+  #我的课程
+  def my_courses
+    @numbers = User.quantities(current_user)
+    @course = Course.where(:academy_id => current_user.academy_id)
+    @collect_course = current_user.find_up_voted_items vote_scope: :collect, votable_type: :Course
+  end
+
   def edit
     #学院专业回显赋值
     @user.academy_id = @user.try(:grade).try(:specialty).try(:academy).try(:id)

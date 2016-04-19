@@ -13,7 +13,7 @@
                    <%= link_to image_tag(exam.try(:sub_course).try(:course).attachment.content.url(:c_350_230), width: "100%"), wechat_course_path(exam.try(:sub_course).try(:course).number), class: 'img' if exam.try(:sub_course).try(:course).attachment%>
                 </div>
                 <p class="exam-name">
-                  <span ><%= link_to exam.try(:sub_course).try(:name), show_courses_path(exam.try(:sub_course).try(:course).try(:number)) %></span>
+                  <span ><%= link_to exam.try(:sub_course).try(:name), wechat_course_path(exam.try(:sub_course).try(:course).try(:number)) %></span>
                 </p>
                 <div class="">
                   <div class="score-detail col-xs-6">

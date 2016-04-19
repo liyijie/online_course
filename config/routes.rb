@@ -183,11 +183,12 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update] do
       collection do
         get :my_exams
+        get :my_courses
+        get :edit_password
+        get :persion_discusses
       end
       member do
-        get :edit_password
         put :update_password
-        get :persion_discusses
       end
     end
     resources :exams, only: [:new, :create, :show, :index]  do 
