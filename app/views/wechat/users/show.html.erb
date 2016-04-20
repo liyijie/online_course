@@ -71,13 +71,13 @@
   </div>
 
   <div class="weui_cells weui_cells_access">
-    <a class="weui_cell" href="<%= persion_discusses_wechat_user_path(@user, tab: "questions") %>">
+    <a class="weui_cell" href="<%= persion_discusses_wechat_users_path(@user, tab: "questions") %>">
       <div class="weui_cell_bd weui_cell_primary">
           <p>提问数量</p>
       </div>
       <div class="weui_cell_ft"><%= @numbers[:question_comments] %> 条</div>
     </a>
-    <a class="weui_cell" href="<%= persion_discusses_wechat_user_path(@user, tab: "answers") %>">
+    <a class="weui_cell" href="<%= persion_discusses_wechat_users_path(@user, tab: "answers") %>">
       <div class="weui_cell_bd weui_cell_primary">
           <p>回答数量</p>
       </div>
