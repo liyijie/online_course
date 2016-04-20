@@ -53,7 +53,8 @@
     .modal-header {
       background-color: #315FBE;
       .modal-title {
-
+        text-align: center;
+        color: #fff;
       }
     }
     .score-bg {
@@ -61,6 +62,7 @@
         background-color: #fff;
         li {
           margin: 8px auto;
+          list-style-type:none;
         }
       }
     }
