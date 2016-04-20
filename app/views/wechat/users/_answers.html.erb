@@ -27,7 +27,7 @@
       <!-- 时间、评论数 -->
       <p class="text-right comment_time">
         <span class="text-muted pull-left"><%= comment.created_at.try(:strftime,'%y-%m-%d %H:%M') %></span>
-        <span class="glyphicon glyphicon-comment text-info"></span>
+        <i class="iconfont" style="color: #279A4A;">&#xe601;</i>
         <span class="text-muted"><%= comment.parent.children.size %></span>
       </p>
     </div>

@@ -1,4 +1,4 @@
-<% content_for :wechat_title, "讨论中心" %>
+<% content_for :wechat_title, "我的问答" %>
 
 <div class="tab_container">
   <div class="topbar">
@@ -6,10 +6,10 @@
       <div class="weui_tab">
         <!-- 切换按钮 -->
         <ul class="weui_navbar" role="tablist">
-          <li role="presentation" class="weui_navbar_item active">
+          <li role="presentation" class="weui_navbar_item <%= "active" if params[:tab] == "questions" || params[:tab].blank? %>">
             <a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">我的提问</a>
           </li>
-          <li role="presentation" class="weui_navbar_item">
+          <li role="presentation" class="weui_navbar_item <%= "active" if params[:tab] == "answers" %>">
             <a href="#answers" aria-controls="answers" role="tab" data-toggle="tab">我的回答</a>
           </li>
         </ul><!-- 切换按钮 -->
@@ -19,11 +19,11 @@
   <!-- 标签页 -->
   <div class="tab-content">
     <!-- 我的提问 -->
-    <div role="tabpanel" class="weui_tab_bd tab-pane fade in active" id="questions">
+    <div role="tabpanel" class="weui_tab_bd tab-pane fade <%= "in active" if params[:tab] == "questions" || params[:tab].blank? %>" id="questions">
       <%= render partial: "wechat/users/questions", locals: {comments: @question_comments} %>
     </div>
     <!-- 我的回答 -->
-    <div role="tabpanel" class="weui_tab_bd tab-pane fade" id="answers">
+    <div role="tabpanel" class="weui_tab_bd tab-pane fade <%= "in active" if params[:tab] == "answers" %>" id="answers">
       <%= render partial: "wechat/users/answers", locals: {comments: @answer_comments} %>
     </div>
   </div><!-- 标签页 -->

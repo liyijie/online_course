@@ -68,19 +68,24 @@
       </div>
       <div class="weui_cell_ft"><%= @numbers[:exams] %> 次</div>
     </div>
-    <div class="weui_cell">
+  </div>
+
+  <div class="weui_cells weui_cells_access">
+    <a class="weui_cell" href="<%= persion_discusses_wechat_user_path(@user, tab: "questions") %>">
       <div class="weui_cell_bd weui_cell_primary">
-        <p>提问数量</p>
+          <p>提问数量</p>
       </div>
       <div class="weui_cell_ft"><%= @numbers[:question_comments] %> 条</div>
-    </div>
-    <div class="weui_cell">
+    </a>
+    <a class="weui_cell" href="<%= persion_discusses_wechat_user_path(@user, tab: "answers") %>">
       <div class="weui_cell_bd weui_cell_primary">
-        <p>回答数量</p>
+          <p>回答数量</p>
       </div>
       <div class="weui_cell_ft"><%= @numbers[:answer_comments] %> 条</div>
-    </div>
+    </a>
   </div>
+
+
   <div class="buttons" style="padding-bottom: 0;">
     <%= link_to "修改密码", edit_password_wechat_users_path, class: "weui_btn weui_btn_primary" %>
   </div>
