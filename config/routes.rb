@@ -20,17 +20,26 @@ Rails.application.routes.draw do
   #限定子课程编号为数字
   constraints(number: /\d+/) do
     get "sub_courses/:number", to: "sub_courses#show", as: :show_sub_courses
+    get "wechat/sub_courses/:number", to: "wechat/sub_courses#show", as: :show_wechat_sub_courses
   end
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
   get "wechat/courses/:number/exams/new", to: "wechat/exams#new", as: :new_courses_wechat_exams
+
   post "sub_courses/comment_create_list"
   get "sub_courses/comment_create_list"
   post "sub_courses/reply_comment_list"
   get "sub_courses/comment_praise"
   post "sub_courses/collect_or_praise"
-  
   #当子课程为pdf等格式文件时下载链接
   get "/sub_courses/:number/download", to: "sub_courses#download", as: :download_sub_course
+
+  post "wechat/sub_courses/comment_create_list"
+  get "wechat/sub_courses/comment_create_list"
+  post "wechat/sub_courses/reply_comment_list"
+  get "wechat/sub_courses/comment_praise"
+  post "wechat/sub_courses/collect_or_praise"
+  #当子课程为pdf等格式文件时下载链接
+  get "wechat/sub_courses/:number/download", to: "wechat/sub_courses#download", as: :download_wechat_sub_course
 
   get "/learning_center", to: "courses#learning_center", as: :courses_learning_center
   resources :courses, only: [:index] do
@@ -217,5 +226,14 @@ Rails.application.routes.draw do
         get :after_class_exams
       end 
     end
+
+    resources :sub_courses, only:[:show] do
+      post :comment_create_list
+      get :comment_create_list
+      post :reply_comment_list
+      get :comment_praise
+      post :collect_or_praise
+    end
+    
   end
 end

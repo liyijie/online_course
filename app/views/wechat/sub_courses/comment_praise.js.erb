@@ -1,0 +1,8 @@
+var count = parseInt($("#commentPraise<%= params[:comment_id]%>").find(".parise-count").first().text());
+<% if @is_parise %>
+  $("#commentPraise<%= params[:comment_id]%>").find(".parise-count").text(count+1);
+  alert("点赞成功");
+<% else %>
+  $("#commentPraise<%= params[:comment_id]%>").find(".parise-count").text(count-1);
+  alert("取消点赞");
+<% end %>

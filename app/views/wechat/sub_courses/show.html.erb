@@ -1,0 +1,45 @@
+<div class="weui_tab main-content">
+  <div class="weui_tab_bd content">
+    <% if @sub_course.regex_video || @sub_course.attachment.file_url.present? %>
+      <div class="video-content">
+        <!-- video -->
+        <% if @sub_course.attachment && @sub_course.attachment.file_url.present? %>
+          <video width="100%" height="250" class="mejs-player" controls="controls" preload="none">
+            <source type="video/mp4" src="<%= @sub_course.attachment.file_url %>" />
+            <source type="video/webm" src="myvideo.webm" />
+            <source type="video/ogg" src="myvideo.ogv" />
+          </video>
+        <% else %>
+          <video width="100%" height="250" class="mejs-player" poster="<%= (@sub_course.attachment.content.url(:c_860_500))%>" controls="controls" preload="none">
+            <source type="video/mp4" src="<%= @sub_course.attachment.content.url %>" />
+            <source type="video/webm" src="myvideo.webm" />
+            <source type="video/ogg" src="myvideo.ogv" />
+          </video>
+        <% end %>
+      </div>
+    <% else %>
+      <div style="width: 100%; height: 400px; overflow: hidden; background: #fff;" ><%= pdfjs_viewer pdf_url: @sub_course.attachment.content.url, style: :full %></div>
+      <div class="fix-size-bg">
+        <div class="col-sm-4 pull-right">
+          <div class="col-sm-6 pull-left text-center">
+            大小: <%= @sub_course.count_file_size %>
+          </div>
+          <div class="col-sm-6 pull-right text-right">
+
+            <% if FileTest::exist? @sub_course.attachment.content.path %>
+              <%= link_to "下载", download_sub_course_path(@sub_course.number), class: 'btn btn-success'%>
+            <% else %>
+              <%= link_to "缺失", "#", class: 'btn btn-warning disabled'%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="wechat-comments-content">
+      <%= render :partial => "comment_show" , locals: {comments: @comments }%>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= render partial: "tabbar" %>
+  </div>
+</div>
