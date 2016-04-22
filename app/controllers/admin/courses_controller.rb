@@ -33,7 +33,7 @@ module Admin
 				end
 			else
 				if current_manager.administer?
-					@courses = Course.courses.page(params[:page]).per(10)
+					@courses = Course.all.page(params[:page]).per(10)
 				  # @courses = Course.keyword_like(keyword).page(params[:page]).per(10)
 				else
 					@courses = current_manager.courses.page(params[:page]).per(10)
