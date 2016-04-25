@@ -3,5 +3,5 @@ $("#commentContent").html('<%= escape_javascript( render :partial => "comment_sh
   :locals => {:comments => @comments}) %>');
 
 <% if params[:comment].present? && params[:page].blank? %>
-  alert("<%= params[:comment_scope] == 'answer' ? '提问成功' : '评论成功'%>");
+  // alert("<%= params[:comment_scope] == 'answer' ? '提问成功' : '评论成功'%>");
 <% end %>

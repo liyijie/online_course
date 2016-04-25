@@ -1,6 +1,6 @@
 <div id="commentContent1" class="wechat-links-content">
   <div class="comment-input container">
-    <%= form_tag sub_courses_comment_create_list_path, method: :post, remote: true do %>
+    <%= form_tag wechat_sub_courses_comment_create_list_path, method: :post, remote: true do %>
       <%= text_area_tag "comment", "", class: "comment_text", style: "width:100%;", rows: 5, 
         cols: 118, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
       <%= hidden_field_tag "number", params[:number] %>
@@ -36,7 +36,7 @@
                 <% end %>
                 <% if comment.has_children? %>
                 <hr>
-                  <ul class="child-comment-list">
+                  <ul id="child_comment" class="child-comment-list">
                     <% comment.children.each do |child_comment| %>
                       <li>
                         <span class="sub-user">
@@ -63,7 +63,7 @@
 </div>
 
 <div id="replyCommentForm" style="display: none;">
-  <%= form_tag sub_courses_reply_comment_list_path, method: :post, remote: true, class: "reply-comment-form" do %>
+  <%= form_tag wechat_sub_courses_reply_comment_list_path, method: :post, remote: true, class: "reply-comment-form" do %>
     <%= text_area_tag "comment", "",style:"width:100%",rows: 3, 
       cols: 110, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
     <%= hidden_field_tag "number", params[:number] %>

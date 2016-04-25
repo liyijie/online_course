@@ -17,27 +17,14 @@
           </video>
         <% end %>
       </div>
+      <div class="wechat-comments-content">
+        <%= render :partial => "comment_show" , locals: {comments: @comments }%>
+      </div>
     <% else %>
-      <div style="width: 100%; height: 400px; overflow: hidden; background: #fff;" ><%= pdfjs_viewer pdf_url: @sub_course.attachment.content.url, style: :full %></div>
-      <div class="fix-size-bg">
-        <div class="col-sm-4 pull-right">
-          <div class="col-sm-6 pull-left text-center">
-            大小: <%= @sub_course.count_file_size %>
-          </div>
-          <div class="col-sm-6 pull-right text-right">
-
-            <% if FileTest::exist? @sub_course.attachment.content.path %>
-              <%= link_to "下载", download_sub_course_path(@sub_course.number), class: 'btn btn-success'%>
-            <% else %>
-              <%= link_to "缺失", "#", class: 'btn btn-warning disabled'%>
-            <% end %>
-          </div>
-        </div>
+      <div class="file-content text-center">
+        <h4>微信版暂不支持查看文档文件！请登陆网页版课程中心查看！</h2>
       </div>
     <% end %>
-    <div class="wechat-comments-content">
-      <%= render :partial => "comment_show" , locals: {comments: @comments }%>
-    </div>
   </div>
   <div class="text-center">
     <%= render partial: "tabbar" %>

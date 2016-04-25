@@ -1,6 +1,16 @@
 <div class="weui_tabbar">
-    <%= link_to "评论",wechat_sub_courses_comment_create_list_path(number: params[:number], comment_scope: "discuss"), 
-    class: "weui_tabbar_item #{params[:comment_scope] == 'answer' ? 'weui_bar_item_on' : ''}", remote: true %>
-    <%= link_to "问答",wechat_sub_courses_comment_create_list_path(number: params[:number], comment_scope: "answer"),
-    class: "weui_tabbar_item #{params[:comment_scope] == 'answer' ? '' : 'weui_bar_item_on'}", remote: true %>
+    <%= link_to wechat_sub_courses_comment_create_list_path(number: params[:number], comment_scope: "discuss"), 
+    class: "weui_tabbar_item #{params[:comment_scope] == 'answer' ? '' : 'weui_bar_item_on'}", remote: true  do %>
+        <div class="weui_tabbar_icon">
+            <i class="iconfont">&#xe602;</i>
+        </div>
+        <p class="weui_tabbar_label">讨论</p>
+    <% end -%>
+    <%= link_to wechat_sub_courses_comment_create_list_path(number: params[:number], comment_scope: "answer"),
+    class: "weui_tabbar_item #{params[:comment_scope] == 'answer' ? 'weui_bar_item_on' : ''}", remote: true do %>
+        <div class="weui_tabbar_icon">
+            <i class="iconfont">&#xe603;</i>
+        </div>
+        <p class="weui_tabbar_label">问答</p>
+    <% end -%>
 </div>
