@@ -14,6 +14,10 @@ class Wechat::ExamsController < Wechat::BaseController
     @exam = Exam.find_by(user_id: current_user.id, sub_course_id: @sub_course.id)
   end
 
+  def show_exam_result
+    @exam = Exam.where(id: params[:id]).first
+  end
+
   def test_new
     @sub_course = SubCourse.undeleted.first
     @questions = @sub_course.questions
@@ -31,7 +35,7 @@ class Wechat::ExamsController < Wechat::BaseController
     @exam.sub_course_id = sub_course.id
     @exam.generate_by_answer_params(params[:options])
     flash['notice'] = "恭喜您, 测试提交成功"
-    #return redirect_to after_class_courses_path(sub_course.course.number)
+    # return redirect_to show_exam_result_wechat_exam_path(params[:id])
     respond_to do |format|
       format.js
     end

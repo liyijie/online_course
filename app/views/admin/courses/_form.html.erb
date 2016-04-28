@@ -50,14 +50,14 @@
 
 	<% if @course.attachment.present? %>
 		<div class="form-group">
-			<%= label_tag :attachment, '已上传附件', class: 'col-sm-2 control-label' %>
+			<%= label_tag :attachment, '已上传说课视频', class: 'col-sm-2 control-label' %>
 			<div class="col-sm-4 container">
 				<%= image_tag(@course.attachment.content.url(:c_500_350), size: "340x200") %>
 			</div>
 		</div>
 	<% end %>
 	<div class="form-group">
-		<%= f.label :attachment, '课程附件', class: 'col-sm-2 control-label' %>
+		<%= f.label :attachment, '说课视频', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4 container">
 			<%= f.file_field :attachment %>
 		</div>
@@ -69,14 +69,14 @@
 	</div>
 	<% if @course.attachment.present? && @course.attachment.file_url %>
 	  <div class="form-group">
-			<%= label_tag :attachment_file_url, '已上传课程附件地址', class: 'col-sm-2 control-label' %>
+			<%= label_tag :attachment_file_url, '说课视频地址', class: 'col-sm-2 control-label' %>
 			<div class="col-sm-4 container">
 				<%= text_field_tag :attachment_file_url, @course.attachment.file_url, class: 'form-control', disabled: true%>
 			</div>
 		</div>
 	<% end %>
 	<div class="form-group">
-		<%= label_tag :attachment_file_url, '课程附件[地址]', class: 'col-sm-2 control-label' %>
+		<%= label_tag :attachment_file_url, '说课视频[地址]', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4 container">
 			<%= text_field_tag :attachment_file_url, nil, class: 'form-control'%>
 		</div>

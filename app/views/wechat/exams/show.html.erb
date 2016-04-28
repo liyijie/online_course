@@ -3,7 +3,7 @@
   <div class="ceshi">
     <div class="col-xs-4 text-center">共有：<%= @exam.exam_items.length%>题</div>
     <div class="col-xs-3 text-center">已答：<%= @exam.exam_items.size - @exam.no_answer_items.size %>题</div>
-    <div class="col-xs-5 text-center">时间：<span id="countdown">00:00:00</span></div>
+    <div class="col-xs-5 text-center">时间：<span id="countdown">--:--:--</span></div>
   </div>
 
   <div class="question-content">

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
   get "courses/:number/exams/new", to: "exams#new", as: :new_courses_exams
   get "wechat/courses/:number/exams/new", to: "wechat/exams#new", as: :new_courses_wechat_exams
+  get "wechat/courses/:number/exams/show_exam_result", to: "wechat/exams#show_exam_result", as: :show_exam_result_courses_wechat_exams
 
   post "sub_courses/comment_create_list"
   get "sub_courses/comment_create_list"

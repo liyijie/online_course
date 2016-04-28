@@ -1,12 +1,12 @@
 <div id="commentContent1" class="wechat-links-content">
   <div class="comment-input container">
-    <%= form_tag wechat_sub_courses_comment_create_list_path, method: :post, remote: true do %>
+    <%= form_tag wechat_sub_courses_comment_create_list_path, method: :post, remote: true, html: { style: "display:inline;" } do %>
       <%= text_area_tag "comment", "", class: "comment_text", style: "width:100%;", rows: 5, 
         cols: 118, placeholder: "扯淡、吐槽、表扬、鼓励......想说啥就说啥！" %>
       <%= hidden_field_tag "number", params[:number] %>
       <%= hidden_field_tag "comment_scope", params[:comment_scope] || "discuss" %>
       <br>
-      <%= submit_tag "#{params[:comment_scope] == 'answer' ? '发布问题' : '发布评论'}", class: "btn btn-success", onclick: "if($('#comment').val() == ''){alert('请填写内容在发布');return false;};" %>
+      <%= submit_tag "#{params[:comment_scope] == 'answer' ? '发布问题' : '发布评论'}", class: "btn btn-success", id: "comment_submint_btn", onclick: "if($('#comment').val() == ''){alert('请填写内容在发布');return false;};" %>
     <% end %>
   </div>
   <div id="commentOrAnswer" class="container">
