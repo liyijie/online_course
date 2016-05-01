@@ -13,8 +13,7 @@ module Admin
 
     def create
       @manager = Manager.new(manager_params)
-      @manager.manager_courses << ManagerCourse.new(course_id: params[:manager][:course_ids],
-                                course_id: @manager.id)
+      @manager.manager_courses << ManagerCourse.new(course_id: params[:manager][:course_ids], manager_id: @manager.id)
       if @manager.save
         flash.now[:notice] = "创建成功"
         return redirect_to admin_managers_url
