@@ -5,7 +5,7 @@
   <% if sub_courses.present? %>
     <% sub_courses.each do |sub_course|%>
       <li class="sub-course-li">
-        <%= link_to wechat_sub_course_path(number: sub_course.number, course_number: @course.number) do %>
+        <%= link_to show_wechat_sub_courses_path(number: sub_course.number, course_number: @course.number) do %>
           <span class="title sub-courses-title"><%= sub_course.name %></span>
         <%end%>
         <% if sub_course.attachment.present? %>
