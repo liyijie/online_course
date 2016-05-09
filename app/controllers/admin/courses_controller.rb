@@ -55,8 +55,8 @@ module Admin
 			@course.attachment.content = params[:course][:attachment]
 			@course.image.avatar = params[:course][:image]
 			@course.attachment.file_url = params[:attachment_file_url]
-			@course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids].compact, course_id: @course.id)
-			if @course.save && @course.attachment.save
+			# @course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids].compact, course_id: @course.id)
+			if @course.save! && @course.attachment.save!
 				flash.now[:notice] = "课程创建成功"
 				return redirect_to admin_courses_url
 			else
