@@ -59,7 +59,7 @@ module Admin
 			@course.attachment.file_url = params[:attachment_file_url]
 			# @course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids].compact, course_id: @course.id)
 			@course.teachers << Teacher.where("id in (?)", teacher_ids)
-			if @course.save! && @course.attachment.save!
+			if @course.save! # && @course.attachment.save!
 				flash.now[:notice] = "课程创建成功"
 				return redirect_to admin_courses_url
 			else
