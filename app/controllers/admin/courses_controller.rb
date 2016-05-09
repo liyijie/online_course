@@ -49,8 +49,10 @@ module Admin
 		end
 
 		def create
-			teacher_ids = course_params.delete(:teacher_ids)
-			@course = Course.new(course_params)
+			course_params_hash = course_params.to_h
+			teacher_ids = course_params_hash.delete('teacher_ids')
+			
+			@course = Course.new(course_params_hash)
 			@course.save
 			@course.attachment = Attachment.new if @course.attachment.blank?
 			@course.image = Image.new if @course.image.blank?
@@ -58,8 +60,8 @@ module Admin
 			@course.image.avatar = params[:course][:image]
 			@course.attachment.file_url = params[:attachment_file_url]
 			# @course.teacher_courses << TeacherCourse.new(teacher_id: params[:course][:teacher_ids].compact, course_id: @course.id)
-			@course.teachers << Teacher.where("id in (?)", teacher_ids)
-			if @course.save! # && @course.attachment.save!
+			@course.teachers = Teacher.where("id in (?)", teacher_ids)
+			if @course.save! && @course.attachment.save!
 				flash.now[:notice] = "课程创建成功"
 				return redirect_to admin_courses_url
 			else
