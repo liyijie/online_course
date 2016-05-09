@@ -42,6 +42,8 @@ class Wechat::CoursesController < Wechat::BaseController
   #课程的收藏或者取消收藏
   def course_collect
     collect_sucess, @collect = Course.course_collect_or_praise params[:course_id], current_user, "collect"
+
+    pp "--------------------"
   
     if collect_sucess
         respond_to do |format|
@@ -57,5 +59,8 @@ class Wechat::CoursesController < Wechat::BaseController
   protected
   def set_course_number
     @course = Course.find_by(number: params[:id])
+  end
+  def course_params
+    params.require(:course).permit(:number, :name, :description, :manager_id)
   end
 end

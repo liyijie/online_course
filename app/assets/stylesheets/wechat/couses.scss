@@ -134,8 +134,15 @@
           color: #fff;
           padding: 5px 20px;
         }
-        #collectFont {
-          color: rgb(154, 154, 154);
+        #courseCollectBtn {
+          margin-top: -7px;
+          border: none;
+          &:hover {
+            background-color: #fff;
+          }
+          #collectIcon {
+            color: #777;
+          }
         }
       }
     }

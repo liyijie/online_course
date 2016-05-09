@@ -20,7 +20,7 @@
     </div>
 
     <!-- 试题区 -->
-    <%= simple_form_for Exam.new, format: :js, remote: true do |f|%>
+    <%= simple_form_for Exam.new, format: :js, remote: true, html: { style: "display:inline;" } do |f|%>
 
     <div class="question-content">
       <!-- 计时提交按钮 -->

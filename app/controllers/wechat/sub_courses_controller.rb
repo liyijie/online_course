@@ -41,7 +41,7 @@ class Wechat::SubCoursesController < Wechat::BaseController
     user = current_user || current_teacher
     
     @comments = SubCourse.reply_comment_returns_comments user,params
-
+    # redirect_to show_wechat_sub_courses_path(number: sub_course.number, course_number: @course.number)
     respond_to do |format|
       format.js 
     end
@@ -68,5 +68,7 @@ class Wechat::SubCoursesController < Wechat::BaseController
   private
   def sub_course_params
     params.require(:sub_course).permit(:name, :course_id)
+    @sub_course = SubCourse.where(number: params[:number]).first
+    @course = @sub_course.try(:course)
   end
 end

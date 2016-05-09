@@ -1,3 +1,10 @@
+<%= content_for :script do %>
+  <%= javascript_tag do %>
+    course_collect_path = "<%= course_collect_courses_path%>"
+  <% end %>
+  <%= javascript_include_tag "_course_show", 'data-turbolinks-track' => true %>
+<%end%>
+
 <div class="show-content">
   <div class="course-image content1">
     <!-- 优先选择file_url选项 -->
@@ -16,22 +23,30 @@
     <div class="title-show"><%= @course.name %></div>
     <hr class="course-show-hr">
     <div class="description-content">
-      <p class="course-description">
-        <%= truncate(@course.description,length: 180) %><span class="showmore">［收起］</span>
+      <p id="course_description" class="course-description">
+        <%= truncate(@course.description,length: 180) %><br><span id="showmore_btn" class="showmore btn">［展开］</span>
+      </p>
+      <p id="course_description1" class="course-description" style="display: none;">
+        <%= truncate(@course.description,length: 2000) %><br><span id="showmore_btn1" class="showmore btn">［收起］</span>
       </p>
     </div>
     <div class="course-exam pull-left">
-      <div class="collect-zan-btns">
-        <%= form_tag course_collect_wechat_courses_path, method: :post, remote: true, id: "courseCollectPraise" do %>
-          <%= hidden_field_tag "course_id", @course.id%>
-          <% collect_count = @course.get_likes(vote_scope: :collect).size %>
-          <% is_collect = current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>
-            <span id="collectIcon" class="glyphicon glyphicon-star <%= 'text-muted' if !is_collect %>"></span>
-            <span id="collectFont" count="<%= collect_count %>" iscollect = "<%= is_collect %>" >
-              <%= collect_count %>
-            </span>
-        <% end %>
-      </div>
+      <% if !teacher_signed_in? %>
+        <div class="collect-zan-btns">
+          <%= form_tag course_collect_wechat_courses_path, method: :post, remote: true, id: "courseCollectPraise" do %>
+            <%= hidden_field_tag "course_id", @course.id%>
+            <button id="courseCollectBtn" type="button" class="btn btn-default">
+              <% collect_count = @course.get_likes(vote_scope: :collect).size %>
+              <% is_collect = current_user.present? && (current_user.voted_up_on? @course,vote_scope: :collect) %>
+              <span id="collectIcon" class="glyphicon glyphicon-star <%= 'text-muted' if is_collect %>"></span>
+              <span id="collectFont" count="<%= collect_count %>" 
+                iscollect = "<%= is_collect %>" >
+                <%= collect_count %>
+              </span>
+            </button>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="course-exam pull-right">
       <%= link_to "课程测试", after_class_exams_wechat_course_path, class: "exam"%>
@@ -77,8 +92,15 @@
   </div>
 </div>
 
-<%= content_for :script do %>
-  <%= javascript_tag do %>
-    course_collect_path = "<%= course_collect_wechat_courses_path%>"
-  <% end %>
-<%end%>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#showmore_btn").on("click", function(){
+      $("#course_description").hide()
+      $("#course_description1").show()
+    });
+    $("#showmore_btn1").on("click", function(){
+      $("#course_description1").hide()
+      $("#course_description").show()
+    });
+  });
+</script>
