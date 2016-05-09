@@ -168,6 +168,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :tags, only: [:index, :create]
+
     resources :teachers do
       collection do
         post :import
@@ -176,7 +178,11 @@ Rails.application.routes.draw do
 
     resources :academies
 
-    resources :categories
+    resources :categories do
+      member do 
+        get :tags
+      end
+    end
 
     resources :users do
       collection do
