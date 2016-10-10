@@ -35,6 +35,8 @@ class Course < ActiveRecord::Base
 	has_many :teachers, through: :teacher_courses
 	belongs_to :manager, class_name: "Teacher",  foreign_key: "manager_id"
 
+	validates :content, :name, :specialty_id, :academy_id, presence: true
+
 	#创建course生成编号
 	before_create do
 		self.number = NumberHelper.random_course_number
@@ -44,6 +46,11 @@ class Course < ActiveRecord::Base
   	'市级精品课程': 1,
   	'校级精品课程': 2
   }
+
+  scope :undeleted, -> {where("deleted_at is null")}
+	scope :bedeleted, -> {where("deleted_at is not null")}
+	scope :city_course, -> { where(city_applied: true) }
+	scope :school_course, -> { where(college_applied: true, city_applied: false ) }
 
   scope :keyword_like, -> (keyword) do
     return all if keyword.nil?
@@ -80,9 +87,6 @@ class Course < ActiveRecord::Base
 	def deleted?
 		self.deleted_at.present? ? true : false
 	end
-
-	scope :undeleted, -> {where("deleted_at is null")}
-	scope :bedeleted, -> {where("deleted_at is not null")}
 
 	def self.search_courses params
 		conn = [['1=1']]

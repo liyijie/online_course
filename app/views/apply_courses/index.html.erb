@@ -7,35 +7,25 @@
 
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs m-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">市级精品课程</a></li>
-			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">校级精品课程</a></li>
+			<li role="presentation" class="active">
+				<a href="#city" aria-controls="city" role="tab" data-toggle="tab">市级精品课程</a>
+			</li>
+			<li role="presentation">
+				<a href="#school" aria-controls="school" role="tab" data-toggle="tab">校级精品课程</a>
+			</li>
+			<li role="presentation">
+				<a href="#city_histroy" aria-controls="city_history" role="tab" data-toggle="tab">市级精品课程申报历史</a>
+			</li>
+			<li role="presentation">
+				<a href="#school_histroy" aria-controls="school_history" role="tab" data-toggle="tab">校级精品课程申报历史</a>
+			</li>
 		</ul>
 
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
-				<ul class="nav nav-justified apply-nav item text-muted">
-					<li>课程名称</li>
-					<li>院系</li>
-					<li>所属专业</li>
-					<li>课程负责人</li>
-					<li>申报时间</li>
-				</ul>
-				<% @city_applied_courses.each do |city_applied_course|%>
-					<%= link_to show_courses_path(city_applied_course.number) do %>
-						<ul class="nav nav-justified item apply-item">
-							<li><%= city_applied_course.name %></li>
-							<li><%= city_applied_course.try(:academy).try(:name) %></li>
-							<li><%= city_applied_course.try(:specialty).try(:name) %></li>
-							<li><%= city_applied_course.try(:manager).try(:name) %></li>
-							<li><%= city_applied_course.applied_date %></li>
-						</ul>
-					<% end %>
-				<% end %>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="profile">
-			  <% unless @college_applied_courses.present? %>
-				  <label style="padding-top: 20px;">暂无校级精品课程</label>
+			<div role="tabpanel" class="tab-pane active" id="city">
+				<% if @city_applied_courses.empty? %>
+					<label style="padding-top: 20px;">暂无市级精品课程申报记录</label>
 				<% else %>
 					<ul class="nav nav-justified apply-nav item text-muted">
 						<li>课程名称</li>
@@ -44,20 +34,95 @@
 						<li>课程负责人</li>
 						<li>申报时间</li>
 					</ul>
-					<% @college_applied_courses.each do |college_applied_course|%>
-						<%= link_to show_courses_path(college_applied_course.number) do %>
+					<% @city_applied_courses.each do |city_applied_course|%>
+						<%= link_to show_courses_path(city_applied_course.number) do %>
 							<ul class="nav nav-justified item apply-item">
-								<li><%= college_applied_course.name %></li>
-								<li><%= college_applied_course.try(:academy).try(:name) %></li>
-								<li><%= college_applied_course.try(:specialty).try(:name) %></li>
-								<li><%= college_applied_course.try(:manager).try(:name) %></li>
-								<li><%= college_applied_course.applied_date %></li>
+								<li><%= city_applied_course.name %></li>
+								<li><%= city_applied_course.try(:academy).try(:name) %></li>
+								<li><%= city_applied_course.try(:specialty).try(:name) %></li>
+								<li><%= city_applied_course.try(:manager).try(:name) %></li>
+								<li><%= city_applied_course.applied_date %></li>
 							</ul>
 						<% end %>
 					<% end %>
 				<% end %>
 			</div>
-		</div>
 
+			<div role="tabpanel" class="tab-pane" id="school">
+			  <% if @school_applied_courses.empty? %>
+				  <label style="padding-top: 20px;">暂无校级精品课程申报记录</label>
+				<% else %>
+					<ul class="nav nav-justified apply-nav item text-muted">
+						<li>课程名称</li>
+						<li>院系</li>
+						<li>所属专业</li>
+						<li>课程负责人</li>
+						<li>申报时间</li>
+					</ul>
+					<% @school_applied_courses.each do |school_applied_course|%>
+						<%= link_to show_courses_path(school_applied_course.number) do %>
+							<ul class="nav nav-justified item apply-item">
+								<li><%= school_applied_course.name %></li>
+								<li><%= school_applied_course.try(:academy).try(:name) %></li>
+								<li><%= school_applied_course.try(:specialty).try(:name) %></li>
+								<li><%= school_applied_course.try(:manager).try(:name) %></li>
+								<li><%= school_applied_course.applied_date %></li>
+							</ul>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+
+			<div role="tabpanel" class="tab-pane" id="city_histroy">
+			  <% if @city_history_courses.empty? %>
+				  <label style="padding-top: 20px;">暂无市级精品课程历史记录</label>
+				<% else %>
+					<ul class="nav nav-justified apply-nav item text-muted">
+						<li>课程名称</li>
+						<li>院系</li>
+						<li>所属专业</li>
+						<li>课程负责人</li>
+						<li>申报时间</li>
+					</ul>
+					<% @city_history_courses.each do |city_history_course|%>
+						<%= link_to show_courses_path(city_history_course.number) do %>
+							<ul class="nav nav-justified item apply-item">
+								<li><%= city_history_course.name %></li>
+								<li><%= city_history_course.try(:academy).try(:name) %></li>
+								<li><%= city_history_course.try(:specialty).try(:name) %></li>
+								<li><%= city_history_course.try(:manager).try(:name) %></li>
+								<li><%= city_history_course.applied_date %></li>
+							</ul>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+
+			<div role="tabpanel" class="tab-pane" id="school_histroy">
+			  <% if @school_history_courses.empty? %>
+				  <label style="padding-top: 20px;">暂无校级精品课程历史记录</label>
+				<% else %>
+					<ul class="nav nav-justified apply-nav item text-muted">
+						<li>课程名称</li>
+						<li>院系</li>
+						<li>所属专业</li>
+						<li>课程负责人</li>
+						<li>申报时间</li>
+					</ul>
+					<% @school_history_courses.each do |school_history_course|%>
+						<%= link_to show_courses_path(school_history_course.number) do %>
+							<ul class="nav nav-justified item apply-item">
+								<li><%= school_history_course.name %></li>
+								<li><%= school_history_course.try(:academy).try(:name) %></li>
+								<li><%= school_history_course.try(:specialty).try(:name) %></li>
+								<li><%= school_history_course.try(:manager).try(:name) %></li>
+								<li><%= school_history_course.applied_date %></li>
+							</ul>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
+
+		</div>
 	</div>
 </div>

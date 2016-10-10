@@ -2,14 +2,14 @@
 	<div class="form-group">
 		<%= f.label :academy_id, '所属学院', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
-			<%= f.select(:academy_id, Academy.all.pluck(:name, :id), {prompt: '请选择学院'}, {class: 'form-control', id: "common_academy_id"}) %>
+			<%= f.select(:academy_id, Academy.all.pluck(:name, :id), {prompt: '请选择学院'}, {class: 'form-control', required: true, id: "common_academy_id"}) %>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<%= f.label :specialty_id, '所属专业', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
-			<%= f.select(:specialty_id,  @specialties, {prompt: '请选择专业'}, {class: 'form-control', id: "common_specialty_id"}) %>
+			<%= f.select(:specialty_id,  @specialties, {prompt: '请选择专业'}, {class: 'form-control', required: true, id: "common_specialty_id"}) %>
 		</div>
 	</div>
 
@@ -44,7 +44,7 @@
 	<div class="form-group">
 		<%= f.label :image, '课程展示图', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4 container">
-			<%= f.file_field :image %>
+			<%= f.file_field :image, required: true %>
 		</div>
 	</div>
 
@@ -84,7 +84,7 @@
 	<div class="form-group">
 		<%= f.label :name, '课程名称', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
-			<%= f.text_field :name, class: 'form-control' %>
+			<%= f.text_field :name, class: 'form-control', required: true %>
 		</div>
 	</div>
 	<div id="applied" class="form-group">
@@ -111,13 +111,13 @@
 	<div class="form-group">
 		<%= f.label :applied_date, '申报时间', class: "col-sm-2 control-label" %>
 		<div class="col-sm-4">
-			<%= f.date_field :applied_date, class: "form-control", value: params[:action] == 'edit' ? @course.applied_date : "" %>
+			<%= f.date_field :applied_date, class: "form-control", required: true, value: params[:action] == 'edit' ? @course.applied_date : "" %>
 		</div>
 	</div>
 	<div class="form-group">
 		<%= f.label :description, '课程描述', class: 'col-sm-2 control-label' %>
 		<div class="col-sm-4">
-			<%= f.text_area :description, size: '80x6', class: 'form-control' %>
+			<%= f.text_area :description, size: '80x6', class: 'form-control', required: true %>
 		</div>
 	</div>
 	<hr></hr>
