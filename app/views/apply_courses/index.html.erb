@@ -35,16 +35,19 @@
 						<li>申报时间</li>
 					</ul>
 					<% @city_applied_courses.each do |city_applied_course|%>
-						<%= link_to show_courses_path(city_applied_course.number) do %>
-							<ul class="nav nav-justified item apply-item">
-								<li><%= city_applied_course.name %></li>
-								<li><%= city_applied_course.try(:academy).try(:name) %></li>
-								<li><%= city_applied_course.try(:specialty).try(:name) %></li>
-								<li><%= city_applied_course.try(:manager).try(:name) %></li>
-								<li><%= city_applied_course.applied_date %></li>
-							</ul>
+						<% if is_applying? city_applied_course.applied_date %>
+							<%= link_to show_courses_path(city_applied_course.number) do %>
+								<ul class="nav nav-justified item apply-item">
+									<li><%= city_applied_course.name %></li>
+									<li><%= city_applied_course.try(:academy).try(:name) %></li>
+									<li><%= city_applied_course.try(:specialty).try(:name) %></li>
+									<li><%= city_applied_course.try(:manager).try(:name) %></li>
+									<li><%= city_applied_course.applied_date %></li>
+								</ul>
+							<% end %>
 						<% end %>
 					<% end %>
+
 				<% end %>
 			</div>
 
@@ -60,21 +63,24 @@
 						<li>申报时间</li>
 					</ul>
 					<% @school_applied_courses.each do |school_applied_course|%>
-						<%= link_to show_courses_path(school_applied_course.number) do %>
-							<ul class="nav nav-justified item apply-item">
-								<li><%= school_applied_course.name %></li>
-								<li><%= school_applied_course.try(:academy).try(:name) %></li>
-								<li><%= school_applied_course.try(:specialty).try(:name) %></li>
-								<li><%= school_applied_course.try(:manager).try(:name) %></li>
-								<li><%= school_applied_course.applied_date %></li>
-							</ul>
+						<% if is_applying? school_applied_course.applied_date %>
+							<%= link_to show_courses_path(school_applied_course.number) do %>
+								<ul class="nav nav-justified item apply-item">
+									<li><%= school_applied_course.name %></li>
+									<li><%= school_applied_course.try(:academy).try(:name) %></li>
+									<li><%= school_applied_course.try(:specialty).try(:name) %></li>
+									<li><%= school_applied_course.try(:manager).try(:name) %></li>
+									<li><%= school_applied_course.applied_date %></li>
+								</ul>
+							<% end %>
 						<% end %>
 					<% end %>
+
 				<% end %>
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="city_histroy">
-			  <% if @city_history_courses.empty? %>
+			  <% if @city_applied_courses.empty? %>
 				  <label style="padding-top: 20px;">暂无市级精品课程历史记录</label>
 				<% else %>
 					<ul class="nav nav-justified apply-nav item text-muted">
@@ -84,22 +90,25 @@
 						<li>课程负责人</li>
 						<li>申报时间</li>
 					</ul>
-					<% @city_history_courses.each do |city_history_course|%>
-						<%= link_to show_courses_path(city_history_course.number) do %>
-							<ul class="nav nav-justified item apply-item">
-								<li><%= city_history_course.name %></li>
-								<li><%= city_history_course.try(:academy).try(:name) %></li>
-								<li><%= city_history_course.try(:specialty).try(:name) %></li>
-								<li><%= city_history_course.try(:manager).try(:name) %></li>
-								<li><%= city_history_course.applied_date %></li>
-							</ul>
+					<% @city_applied_courses.each do |city_history_course|%>
+						<% unless is_applying? city_history_course.applied_date %>
+							<%= link_to show_courses_path(city_history_course.number) do %>
+								<ul class="nav nav-justified item apply-item">
+									<li><%= city_history_course.name %></li>
+									<li><%= city_history_course.try(:academy).try(:name) %></li>
+									<li><%= city_history_course.try(:specialty).try(:name) %></li>
+									<li><%= city_history_course.try(:manager).try(:name) %></li>
+									<li><%= city_history_course.applied_date %></li>
+								</ul>
+							<% end %>
 						<% end %>
 					<% end %>
+
 				<% end %>
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="school_histroy">
-			  <% if @school_history_courses.empty? %>
+			  <% if @school_applied_courses.empty? %>
 				  <label style="padding-top: 20px;">暂无校级精品课程历史记录</label>
 				<% else %>
 					<ul class="nav nav-justified apply-nav item text-muted">
@@ -109,17 +118,20 @@
 						<li>课程负责人</li>
 						<li>申报时间</li>
 					</ul>
-					<% @school_history_courses.each do |school_history_course|%>
-						<%= link_to show_courses_path(school_history_course.number) do %>
-							<ul class="nav nav-justified item apply-item">
-								<li><%= school_history_course.name %></li>
-								<li><%= school_history_course.try(:academy).try(:name) %></li>
-								<li><%= school_history_course.try(:specialty).try(:name) %></li>
-								<li><%= school_history_course.try(:manager).try(:name) %></li>
-								<li><%= school_history_course.applied_date %></li>
-							</ul>
+					<% @school_applied_courses.each do |school_history_course|%>
+						<% unless is_applying? school_history_course.applied_date %>
+							<%= link_to show_courses_path(school_history_course.number) do %>
+								<ul class="nav nav-justified item apply-item">
+									<li><%= school_history_course.name %></li>
+									<li><%= school_history_course.try(:academy).try(:name) %></li>
+									<li><%= school_history_course.try(:specialty).try(:name) %></li>
+									<li><%= school_history_course.try(:manager).try(:name) %></li>
+									<li><%= school_history_course.applied_date %></li>
+								</ul>
+							<% end %>
 						<% end %>
 					<% end %>
+					
 				<% end %>
 			</div>
 
