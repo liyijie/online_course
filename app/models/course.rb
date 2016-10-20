@@ -35,7 +35,7 @@ class Course < ActiveRecord::Base
 	has_many :teachers, through: :teacher_courses
 	belongs_to :manager, class_name: "Teacher",  foreign_key: "manager_id"
 
-	validates :content, :name, :specialty_id, :academy_id, presence: true
+	validates :name, :specialty_id, :academy_id, presence: true
 
 	#创建course生成编号
 	before_create do
