@@ -9,7 +9,7 @@ $ ->
       $(@).addClass("btn-primary").parent().siblings().find("a").removeClass("btn-primary")
       content.eq(_index).slideDown().siblings(".partContent").slideUp()
       titleBars = content.eq(_index).find(".titleBar")
-      if titleBars.length == 1
+      if titleBars.length != 0
         content.eq(_index).find("ul").show()
 
 $ ->
