@@ -1,0 +1,10 @@
+<a href="javascript:void(0)" class="btn btn-primary by-btn-bg"><strong>教学团队</strong></a>
+<br><br>
+<div class="row">
+  <div class="col-sm-12">
+    <% teacher_courses.each do |teacher_course|%>
+			<div class="col-sm-3 text-center" style="margin-bottom: 10px; float: right;"><%= image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).try(:url, :t_220_220))%>
+			</div>
+	  <% end %>
+	</div>
+</div>

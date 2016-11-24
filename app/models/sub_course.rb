@@ -40,7 +40,7 @@ class SubCourse < ActiveRecord::Base
     kcbz: '1',
     dzjc: '2',
     dzja: '3',
-    khbz: '3',
+    khbz: '4',
   }
 
   TAGS = {
