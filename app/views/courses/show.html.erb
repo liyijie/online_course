@@ -122,6 +122,11 @@
       <%= javascript_include_tag  "_toggle", 'data-turbolinks-track' => true %>
     <%end%>
     <%= render partial: "courses/4/main", locals: {teacher_courses: @teacher_courses} %>
+  <% elsif @course.number == "95842760" %>
+    <%= content_for :script do %>
+      <%= javascript_include_tag  "_toggle", 'data-turbolinks-track' => true %>
+    <%end%>
+    <%= render partial: "courses/5/main", locals: {teacher_courses: @teacher_courses} %>
   <% end %>
 </div>
 

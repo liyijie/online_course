@@ -1,0 +1,74 @@
+<div class="category-list" id="category-list">
+  <a href="javascript:void(0)" class="index  public-active-style active  public-common-style">首页</a>
+  <a href="javascript:void(0)" class="material public-common-style">申报材料</a>
+  <a href="javascript:void(0)" class="setup public-common-style">课程设置</a>
+  <a href="javascript:void(0)" class="team public-common-style">教学队伍</a>
+  <a href="javascript:void(0)" class="condition public-common-style">教学条件</a>
+  <a href="javascript:void(0)" class="method public-common-style">教学方法</a>
+  <a href="javascript:void(0)" class="content public-common-style">教学内容</a>
+  <a href="javascript:void(0)" class="resource public-common-style">教学资源</a>
+  <a href="javascript:void(0)" class="effect public-common-style">教学效果</a>
+  <a href="javascript:void(0)" class="policy public-common-style">特色与政策</a>
+</div>
+<div class="category-list-content">
+  <div class="text-content">
+    <%= render partial: "courses/5/course_home", locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_data" , locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_setup", locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_team", locals: {teacher_courses: teacher_courses} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_condition", locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_method", locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_content", locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_resource", locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_effect", locals: {course: @course} %>
+  </div>
+  <div class="text-content">
+    <%= render partial: "courses/5/course_policy", locals: {course: @course} %>
+  </div>
+</div>
+<div class="fast-entry">
+  <div class="fast-entry-links">
+    <a href="javascript:void(0)" class="btn btn-default">教学内容</a>
+    &nbsp;&nbsp;
+    <a href="javascript:void(0)" class="btn btn-default">教学方法</a>
+    &nbsp;&nbsp;
+    <a href="javascript:void(0)" class="btn btn-default">教学条件</a>
+    &nbsp;&nbsp;
+    <a href="javascript:void(0)" class="btn btn-default">教学效果</a>
+    &nbsp;&nbsp;
+    <a href="javascript:void(0)" class="btn btn-default">申报材料</a>
+  </div>
+  <div class="fast-entry-content">
+    <div class="entry-content">
+      <%= render partial: "courses/5/teach_content"%>
+    </div>
+    <div class="entry-content">
+      <%= render partial: "courses/5/teach_method"%>
+    </div>
+    <div class="entry-content">
+      <%= render partial: "courses/5/teach_condition"%>
+    </div>
+    <div class="entry-content">
+      <%= render partial: "courses/5/teach_effect"%>
+    </div>
+    <div class="entry-content">
+      <%= render partial: "courses/5/teach_data" %>
+    </div>
+  </div>
+</div>
