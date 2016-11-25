@@ -207,6 +207,15 @@ body.courses__index, body.courses__learning_center, body.teachers__index {
   }
 }
 
+.course-content-policy-div {
+  .carousel-inner {
+    img {
+      width: 30vw;
+      height: 300px;
+    }
+  }  
+}
+
 //申报材料模态框样式
 .iframe-container {
   padding-bottom: 60%;

@@ -1,1 +1,32 @@
-暂无材料
+<%= content_for :script do %>
+  <%= javascript_include_tag  "modal_pdf", 'data-turbolinks-track' => false %>
+<%end%>
+
+<ul class="container-fluid">
+  <li class="col-sm-12">
+    <a href="/pdfs/5/上海市高职高专院校市级精品课程申报表.pdf" data-toggle="modal" data-target="#myModal" class="view-pdf">
+      <div class="col-sm-10">上海市高职高专院校市级精品课程申报表</div>
+      <div class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;阅读</div>
+    </a>
+  </li>
+  <li class="col-sm-12">
+    <a href="<%= show_courses_path(@course.number, anchor: "main-video")%>" class="col-sm-10">说课视频</a>
+    <a href="<%= show_courses_path(@course.number, anchor: "main-video")%>" class="col-sm-2"><%= image_tag "read_icon.png"%>&nbsp;&nbsp;预览</a>
+  </li>
+</ul>
+
+<script type="text/javascript">
+  $(function(){
+    $('.view-pdf').on('click',function(){
+        var pdf_link = $(this).attr('href');
+        var iframe = '<object type="application/pdf" data="'+pdf_link+'" width="100%" height="500">不支持该格式，建议替换为pdf格式</object>'
+        $.createModal({
+            title:'上海市高职高专院校市级精品课程申报表',
+            message: iframe,
+            closeButton:true,
+            scrollable:false
+        });
+        return false;
+    });
+  })
+</script>
