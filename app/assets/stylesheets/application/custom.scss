@@ -1093,6 +1093,11 @@ body.exams__new, body.exams__show, body.exams__test_new,  body.exams__show_test,
 				margin-top: 11px;
 			}
 		}
+		.teacher-resume {
+			li {
+				height: auto !important;
+			}
+		}
 		ul {
 			margin-bottom: 10px;
 			overflow: hidden;
@@ -1105,6 +1110,7 @@ body.exams__new, body.exams__show, body.exams__test_new,  body.exams__show_test,
 			position: relative;
 			&.width-100 {
 				width: 100%;
+				word-wrap:break-word;
 			}
 			&.width-50 {
 				width: 50%;
