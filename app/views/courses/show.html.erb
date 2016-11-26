@@ -84,16 +84,29 @@
         </li>
         <li class="teach-team">
           <p class="title">教学团队</p>
-          <div class="teachers">
-            <% @teacher_courses.each do |teacher_course|%>
-              <% if teacher_course.teacher_id.present? %>
-                <div class="teacher-info">
-                   <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.try(:teacher).try(:number)) if teacher_course.try(:teacher).try(:image).present? %>
-                   <p><%= teacher_course.try(:teacher).try(:name) %></p>
-                </div>
+          <% if @course.number == "95842760" %>
+            <div class="teachers">
+              <% [1,6,5,7,8,4,2,3].each do |index|%>
+                <% if @teacher_courses[index].teacher_id.present? %>
+                  <div class="teacher-info">
+                     <%= link_to image_tag(@teacher_courses[index].try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(@teacher_courses[index].try(:teacher).try(:number)) if @teacher_courses[index].try(:teacher).try(:image).present? %>
+                     <p><%= @teacher_courses[index].try(:teacher).try(:name) %></p>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% else %>
+            <div class="teachers">
+              <% @teacher_courses.each do |teacher_course|%>
+                <% if teacher_course.teacher_id.present? %>
+                  <div class="teacher-info">
+                     <%= link_to image_tag(teacher_course.try(:teacher).try(:image).try(:avatar).url(:t_60)), show_teachers_path(teacher_course.try(:teacher).try(:number)) if teacher_course.try(:teacher).try(:image).present? %>
+                     <p><%= teacher_course.try(:teacher).try(:name) %></p>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
         </li>
       </ul>
     </div>
