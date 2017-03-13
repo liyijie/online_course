@@ -1,3 +1,4 @@
+# 数据库配置模板文件
 # MySQL.  Versions 5.0+ are recommended.
 #
 # Install the MYSQL driver
@@ -49,5 +50,5 @@ test:
 production:
   <<: *default
   database: online_course_production
-  username: online_course
+  username: root
   password: <%= ENV['ONLINE_COURSE_DATABASE_PASSWORD'] %>

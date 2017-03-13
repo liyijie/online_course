@@ -1,3 +1,4 @@
+# unicorn 服务配置文件
 worker_processes 1
 
 app_root = File.expand_path("../..", __FILE__)

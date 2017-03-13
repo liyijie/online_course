@@ -1,3 +1,6 @@
+# unicorn 服务脚本
+# 启动：sh unicorn_init.sh start
+# 停止：sh unicorn_init.sh stop
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          unicorn
@@ -12,12 +15,13 @@ set -e
 
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
+# 换成自己项目的路径
 APP_ROOT=/www/deploy/online_course
-#换成自己项目的路径
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
+# 换成自己的用户名
 AS_USER=deploy
-#换成自己的用户名
+
 set -u
 
 OLD_PIN="$PID.oldbin"

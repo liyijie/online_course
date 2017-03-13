@@ -35,3 +35,6 @@ app/.DS_Store
 app/assets/.DS_Store
 node_modules/
 node_modules/*
+/Find Results
+/Deploy.md
+/Env.md
