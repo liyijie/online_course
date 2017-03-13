@@ -6,9 +6,26 @@
 <%end%>
 
 <%= content_for :toolbar do %>
+  <div class="alert alert-warning" role="alert">批量导入学生时，如果导入的学生班级不存在，将会自动创建对应班级。</div>
+  <div class="col-xs-12">
+    <%= form_tag import_admin_users_path, multipart: true do %>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <%= file_field_tag :file, class: 'form-control' %>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-success" type="submit">
+            <span class="glyphicon glyphicon-floppy-save"> 批量导入学生信息</span>
+          </button>
+          <%= link_to "导入模板下载", "/excels/user.xlsx", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br/><br/>
   <div class="col-xs-12">
     <%= link_to new_admin_user_path, class: 'btn btn-success' do %>
-      <span class="glyphicon glyphicon-plus-sign">新建</span>
+      <span class="glyphicon glyphicon-plus-sign"> 新建</span>
     <%end%>
     <div class="col-xs-3 pull-right">
       <div class="form-group">
@@ -18,7 +35,7 @@
   </div>
 <%end%>
 
-<hr></hr>
+<hr>
 <table class="table table-hover table-bordered text-center">
   <thead>
     <tr>
@@ -39,19 +56,3 @@
   </tbody>
 </table>
 <%= paginate @users %>
-
-<%= form_tag import_admin_users_path, multipart: true do %>
-  <div class="form-group">
-    <div class="col-sm-12">
-      <div class="col-sm-4">
-        <%= file_field_tag :file, class: 'form-control' %>
-      </div>
-      <div class="col-sm-6">
-        <button class="btn btn-success" type="submit">
-          <span class="glyphicon glyphicon-floppy-save">导入学生信息</span>
-        </button>
-        <%= link_to "导入模板下载", "/excels/user.xlsx", class: "btn btn-primary" %>
-      </div>
-    </div>
-  </div>
-<% end %>
